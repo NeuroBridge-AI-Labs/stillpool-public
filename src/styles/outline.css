@@ -1,0 +1,143 @@
+/* The contents (Pool Band v2). On / it is one closed "Course contents" disclosure under the map. On a lesson it is the
+   rail: "In this lesson", a link to each section, with the course contents closed beneath it. The rail is a sidebar
+   where there is room and one closed Contents disclosure where there is not (lesson.css places it). Its list shows
+   through ::details-content where the summary is hidden: a browser without it keeps a working disclosure. */
+.toc {
+  overflow-wrap: anywhere;
+  margin-top: var(--s5);
+}
+.toc-all {
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+.toc summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+.toc summary::-webkit-details-marker {
+  display: none;
+}
+/* The caret turns as a pillar opens; with reduced motion it simply points the new way. */
+.toc summary > .icon {
+  transition: transform var(--motion-duration) var(--motion-ease);
+}
+.toc details[open] > summary > .icon {
+  transform: rotate(90deg);
+}
+.pillar > summary {
+  padding-inline: 0.25rem;
+  font-family: var(--font-display);
+}
+.toc-all > .pillar,
+.course > .pillar {
+  margin-inline: 0.5rem;
+}
+.toc ol {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+/* One row per lesson: its number and title, and for a lesson not written yet a small tag on the title's first line,
+   which never wraps or shrinks; a long title wraps in its own box (design-review S1). Only where one word of the title
+   and the tag cannot share a line (the largest text on a phone) does the tag go below, so no word is broken. */
+.toc :is(.pillar, .course) li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.5rem;
+  padding: 0.3rem 0 0.3rem 1.75rem;
+}
+.toc li > span:first-child {
+  flex: 1 1 0;
+}
+.toc li a {
+  text-decoration: none;
+}
+.toc li a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+/* The lesson you are reading: bold, with a bar beside it, so it is never colour alone. */
+.toc li:has([aria-current="page"]) {
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.later {
+  flex: none;
+  margin-left: auto;
+  padding: 0 0.5rem;
+  font-size: 0.75em;
+  white-space: nowrap;
+  color: var(--text-muted);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-pill);
+}
+
+/* The rail: where you are in the lesson. Every link is 44 px tall. */
+.rail {
+  font-size: 0.9rem;
+}
+.rail h2 {
+  margin: var(--s2) 0 0;
+  padding-inline: 0.75rem;
+  font-size: 1rem;
+}
+.rail .here {
+  margin: var(--s1) 0 0;
+  border-left: 2px solid var(--branch);
+}
+.rail .here a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-left: -2px;
+  padding: 4px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.rail .here a:hover {
+  text-decoration: underline;
+  border-left-color: var(--accent);
+}
+.rail .sub a {
+  padding-left: 28px;
+  color: var(--text-muted);
+}
+.rail .here [aria-current] {
+  font-weight: 700;
+  border-left-color: var(--accent);
+}
+.rail .course {
+  margin: var(--s3) 0 0;
+}
+.rail .course > summary {
+  padding-inline: 0.25rem;
+}
+.sidebar-toggle {
+  display: none;
+}
+/* Its picture is a mask in the button's own colour: no markup, so the page stays inside its 60 KB. */
+.sidebar-toggle::before {
+  content: "";
+  width: 1.25em;
+  height: 1.25em;
+  background: currentColor;
+  mask: url("@phosphor-icons/core/assets/regular/sidebar.svg?no-inline") center / contain no-repeat;
+}
+
+.whole {
+  margin: 0;
+  padding: 0 0.75rem 0.5rem 2rem;
+}
+.whole a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

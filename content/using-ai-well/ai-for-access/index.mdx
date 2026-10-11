@@ -1,0 +1,256 @@
+---
+title: AI for access
+promise: Can use AI to make hard material easier to reach, and check what was lost
+minutes: {simple: 8, deep: 14}
+tldr:
+  - AI can read text aloud, turn speech into text, and make a shorter or simpler copy of a text.
+  - A copy can leave something out or change a word. We asked two AI tools for eight copies of one paragraph. Three kept all ten key points.
+  - Use the copy to reach the material, then check it against the original.
+misconceptions: [M3]
+interactive: same-text-your-way
+inputs: [src/lib/same-text-your-way.ts, data/recorded/R-4.8.json, src/lib/p2-runs.ts, src/components/SameTextYourWay.astro, src/components/RunCard.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.3, UNESCO-AICFS-CG4.2.2.1, HEA-P2, HEA-ALT-4, AILIT-C3, AILIT-C1, AIF-3.a]
+checkin:
+  - question: In our test, one tool's plain-words copy kept all ten key points. What does that tell you?
+    options:
+      - text: Only that this copy, from this tool on this day, kept them. It does not show what plain-words copies do in general.
+        why: Yes. We asked two tools once each, for one paragraph. One day's runs do not show how every tool or every kind of copy behaves.
+        right: true
+      - text: Plain-words copies always keep every key point.
+        why: Not this one. Another tool's plain-words copy in the same test left out that people choose the learning rate. That is a number that sets how big each learning step is. Eight copies cannot show "always".
+      - text: Summaries are never worth reading.
+        why: Not this one. Our summaries were limited to two sentences, and both left out ideas from the paragraph. That is one test, not a rule about all summaries.
+      - text: A copy that keeps every point needs no check.
+        why: Not this one. We only know it kept them because we compared it with the original, point by point.
+  - question: A tool turns a long notice into bullet points. What is a good next step?
+    options:
+      - text: Compare the bullets with the notice, especially numbers, conditions and words such as "may".
+        why: Yes. Our test counted numbers, conditions and words like "may" one by one. The British Dyslexia Association, a UK charity, tells readers to fact check what chatbots give them against other credible sources.
+        right: true
+      - text: Trust the bullets, because they look neat.
+        why: Not this one. In our test, a neat bullet list changed a sentence about what happens when the numbers grow.
+      - text: Ask the same tool whether its bullets are right.
+        why: Not this one. The check we show is made against the original text, by you.
+      - text: Throw the bullets away and never use a tool like this.
+        why: Not this one. The aim is to reach the material more easily, then check what was lost.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You used an AI copy to reach a text, and checked what it lost.
+glossary:
+  - term: original
+    meaning: The text as its author wrote it. A copy is checked against it.
+  - term: key point
+    meaning: One idea in a text that a reader needs to keep.
+  - term: text-to-speech
+    meaning: Software that turns written text into spoken words, so you can listen while you read along.
+  - term: speech-to-text
+    meaning: Software that turns speech into written text. Dictation is one kind.
+  - term: summary
+    meaning: A shorter text that leaves some of the original out.
+  - term: outline
+    meaning: A text cut into headings and short lines under them.
+  - term: word error rate
+    meaning: The count of wrong, missing and extra words in a transcript, divided by the number of words really said.
+whereNext:
+  title: Hallucinated but Factual! (Cao, Dong and Cheung, 2022)
+  text: A free research paper about summaries that add things the text did not say. It is written for researchers. It is one page on the ACL Anthology site. In our test on 9 October 2026, it loaded files from four other hosts. They were cdn.jsdelivr.net, use.fontawesome.com, i.creativecommons.org and licensebuttons.net. No cookie was set.
+  url: https://aclanthology.org/2022.acl-long.236/
+sources:
+  - title: "Wood, Moxley, Tighe and Wagner, Does Use of Text-to-Speech and Related Read-Aloud Tools Improve Reading Comprehension for Students With Reading Disabilities? A Meta-Analysis, Journal of Learning Disabilities, January/February 2018 (abstract, read through PubMed)"
+    url: https://pubmed.ncbi.nlm.nih.gov/28112580/
+    licence: No licence stated
+    use: cite
+  - title: "Koenecke and others, Racial disparities in automated speech recognition, PNAS 117(14), 23 March 2020"
+    url: https://doi.org/10.1073/pnas.1915768117
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Cao, Dong and Cheung, Hallucinated but Factual! Inspecting the Factuality of Hallucinations in Abstractive Summarization, ACL 2022, pages 3340 to 3354"
+    url: https://aclanthology.org/2022.acl-long.236/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "British Dyslexia Association, Could ChatGPT change your life?, 25 January 2024"
+    url: https://www.bdadyslexia.org.uk/news/could-chatgpt-change-your-life
+    licence: No licence stated
+    use: cite
+  - title: "Pashler, McDaniel, Rohrer and Bjork, Concepts and Evidence, Psychological Science in the Public Interest 9(3), December 2008 (abstract, read through Crossref)"
+    url: https://doi.org/10.1111/j.1539-6053.2009.01038.x
+    licence: No licence stated
+    use: cite
+  - title: "Rayner, Schotter, Masson, Potter and Treiman, So Much to Read, So Little Time, Psychological Science in the Public Interest 17(1), 14 January 2016 (abstract, read through Crossref)"
+    url: https://doi.org/10.1177/1529100615623267
+    licence: No licence stated
+    use: cite
+  - title: "Regulation (EU) 2016/679 (GDPR), Official Journal L 119, 4 May 2016, Article 9"
+    url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+    licence: EU legal text, reuse under Commission Decision 2011/833/EU
+    use: cite
+  - title: "Jurafsky and Martin, Speech and Language Processing, chapter 4 (draft of 19 August 2026, read 9 October 2026)"
+    url: https://web.stanford.edu/~jurafsky/slp3/4.pdf
+    licence: Draft, copyright the authors, all rights reserved (title page)
+    use: cite
+  - title: "NIST/SEMATECH e-Handbook of Statistical Methods, 1.3.5.2 Confidence Limits for the Mean (read 9 October 2026)"
+    url: https://itl.nist.gov/div898/handbook/eda/section3/eda352.htm
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+take:
+  paragraphs:
+    - "I have ADHD, dyslexia, and autistic traits. When I went back to university, the system hadn't changed. Dense pages, timed exams, one road for everyone. For a while I tried to force my brain to fit."
+    - "Then I turned it round. I built tools so the material could fit how my brain actually works. Think of a shoe that pinches. Is the foot wrong? No. The shoe is the wrong shape. So I change the shape."
+    - "Read it aloud, break it into parts, draw it as a map. Then I check it against the original, because a summary can drop things. **Different minds, same standards.** Build **a system that fits**."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## What "access" means here
+
+<Simple>
+Some texts are hard to reach. The words may be dense, the page may be long, or reading may be slow for you.
+
+AI tools can help. Text-to-speech reads a text aloud while you follow along. Speech-to-text turns what you say into written words.
+
+A tool can also make a copy of a text: a summary, simpler words, bullet points or an outline. A summary is a shorter text that leaves some of the original out. An outline is headings with short lines under them.
+
+The original is the text as its author wrote it. This lesson is about checking a copy against the original.
+</Simple>
+
+<Deep>
+The British Dyslexia Association (BDA) is a UK charity. On 25 January 2024 its page "Could ChatGPT change your life?" said that software like ChatGPT, a chatbot (a program built to hold a conversation), "can summarise a long piece of text into bullet points or a few sentences". It also said: "Their responses can’t always be trusted and they have been accused of ‘making things up’." and "Always fact check information they provide against other credible sources."
+
+The page lists uses and warnings. It reports no trial. It also says the BDA recognises the potential for AI "To remove barriers to access to education and employment". That is the charity's aim, not a test result. We use the page for what a charity advised on one date.
+</Deep>
+
+## Same text, your way
+
+<Simple>
+Our test used one paragraph from another lesson on this site, "Training". It is about how an AI model learns. You do not need to follow it. You only need to compare copies of it.
+
+In Training, a model has three numbers. They set where a line runs across a chart of dots. The model guesses which side of the line each dot is on. The paragraph's "run" and "dots" come from there.
+
+Its "textbook" is Speech and Language Processing, by Daniel Jurafsky and James H. Martin.
+
+Here is what its main words mean. Training changes a model's numbers, round after round, so its guesses get less wrong. The loss is one number for how wrong the guesses are.
+
+Gradient descent is the way training finds each change. It works out which way the loss goes down fastest, and steps that way. The learning rate is a number people choose. It sets how big each step is.
+
+We asked two AI tools for four copies each. The copies were a two-sentence summary, simpler words, bullet points and an outline. We call the simpler-words copy "plain words".
+
+The tools are Claude Sonnet 5.5, made by Anthropic, and Ministral 3 14B, made by Mistral AI. We asked each tool once for each copy, on 8 October 2026. That gives eight copies.
+
+We wrote down a list of ten key points in the paragraph. We compared each copy with that list. A key point is one idea a reader needs to keep.
+
+Two examples: a number that people choose, the learning rate, sets the step size. Two claims are what "the textbook says", not the lesson's own.
+
+In the activity you choose a copy to read. You guess how many dropped a key point. Then you see each copy beside the original.
+</Simple>
+
+<Deep>
+The four requests were: "Summarise this text in two sentences:", "Rewrite this text in simpler words:", "Turn this text into bullet points:" and "Turn this text into an outline with headings:". Each was one message with the paragraph under it, and no other instruction. The summary request asked for two sentences, so a summary had little room by design.
+
+Each tool ran with no search tool and a length limit on its reply. No reply reached the limit. The paragraph is our own text, 170 words long. We copied it with a script, and checked that all eight requests held it exactly.
+</Deep>
+
+<TryIt />
+
+## What the eight copies kept
+
+<Simple>
+We read all eight copies against the ten key points. A key point is "kept" if all of it is there, in any words. It is "in part" if the main claim is there but a named piece is missing. It is "dropped" if it is not there.
+
+Our paragraph credits two of its claims to "the textbook".
+
+Three copies kept all ten: the plain-words copy, the bullet points and the outline from Claude. Five copies did not.
+
+Claude's summary kept seven points in full and one in part. It dropped two. It left out the credit to "the textbook" for those two claims, so they read as the summary's own.
+
+Ministral's summary kept three points in full, three in part and dropped four. All four of Ministral's copies lost something.
+</Simple>
+
+<Deep>
+The ten points, in short: gradient descent steps the way the loss falls fastest (1); the learning rate sets the step and people choose it (2); too small is slow (3); too big can bounce or rise (4); steps shrink as the slope flattens (5); a yes-or-no model like the one in Training has no other low points (6); several settings can share the lowest level (7); a perfect straight-line split means no lowest level (8); large networks may get stuck (9); points 6 and 9 are what "the textbook says" (10).
+
+Counting rule: each point got one mark. Kept means all of it is there. Part means the main claim is there but a named piece is missing. Changed means the copy says something different. Dropped means it is not there. We added no mark for true extra text. The table of every mark is in the research pack.
+
+Examples of what we saw. Ministral's outline dropped point 7 and point 10, and added "local minimum or saddle point", which the paragraph never says. Ministral's bullet points wrote that the loss keeps decreasing "as the model scales". The paragraph says "as the numbers grow". We marked that one changed. Claude's plain-words copy added the word "error" as another word for loss. The paragraph does not use it.
+
+This is one paragraph, two tools and one run each, on one day. It shows what these eight copies did. It does not show how any kind of copy behaves in general, and we do not call any copy accurate.
+</Deep>
+
+## Check a copy against the original
+
+<Simple>
+We compared each copy with the original, one key point at a time. We looked for three things: a point left out, a changed claim, and an idea the original never had.
+
+In our test, one copy changed "as the numbers grow" to "as the model scales". The paragraph says the loss keeps falling as the numbers grow. The copy said something different. A neat copy can still change a point.
+
+A copy is for reaching the text. The original is where you check it.
+</Simple>
+
+<Deep>
+A summary program in an academic study added things too. Cao, Dong and Cheung (ACL 2022) studied one older program, BART, on news stories from a set called XSum. ACL is the Association for Computational Linguistics, whose annual meeting published the paper. The paper calls BART "one of the state-of-the-art abstractive summarization models". XSum is a set of BBC articles, each paired with a one-sentence summary by BBC journalists. They called an item hallucinated if it was "not directly inferable from the source". About 30% of the people, places, dates and numbers it wrote, about 3 in 10, were hallucinated.
+
+Much of what it added was true outside the story. The paper calls this "factual" hallucination. A true extra can still be missing from the text you are meant to be reading.
+
+That is one program and one set of news stories. It is not a rate for any chatbot today.
+</Deep>
+
+## Listening and speaking
+
+<Simple>
+Text-to-speech may help some readers. A 2018 review looked at studies of read-aloud tools for students with reading difficulties.
+
+Its authors wrote that these tools "may assist students with reading comprehension". They also said more studies are needed.
+
+Speech-to-text makes mistakes too, and not equally for everyone. One study tested five speech-to-text systems. On average, they made nearly twice as many word errors for Black speakers as for white speakers. The numbers are in the Deep part.
+</Simple>
+
+<Deep>
+The 2018 review is Wood and others, in the Journal of Learning Disabilities. It reported an average effect size of .35, with a 95% confidence interval of .14 to .56. An effect size says how big a difference was. The interval shows how much uncertainty there is in the estimate, and a narrower interval means a more precise estimate. It does not mean there is a 95% chance that this interval holds the true value. The 95% belongs to the method: if many samples were collected, in the long run about 95% of the intervals computed this way would contain the true value. The authors wrote that it "is not clear how effective text-to-speech is at improving reading comprehension" before their study. It studied students with reading difficulties, not every adult with dyslexia, attention-deficit/hyperactivity disorder (ADHD) or autism.
+
+Koenecke and others (PNAS, 23 March 2020) tested five speech-to-text systems, made by Amazon, Apple, Google, IBM and Microsoft. They used interviews with 42 white speakers and 73 Black speakers, 19.8 hours of audio from five US cities. The average word error rate was 0.35 for the Black speakers and 0.19 for the white speakers. Word error rate counts wrong, missing and extra words, divided by the words really said.
+
+The authors note a limit: the white speakers' audio came from California and the Black speakers' from the Eastern United States. This is one study of five systems, tested before late 2019, on US English. It gives no figure for any tool today or for other speakers.
+</Deep>
+
+## Two ideas that sound helpful
+
+<Simple>
+People often say things about how we learn. Two of them sound helpful, so we looked at what research reviews found.
+
+**Idea one: each person is one fixed type of learner, and learns best when teaching matches it.**
+
+A review is a paper that weighs many studies. One from 2008 checked this idea. It found "virtually no evidence" that matching teaching to a type gives better results.
+
+People do say how they like information shown. The review says so too.
+
+**Idea two: you can read much faster and understand just as well.**
+
+A 2016 review found a trade-off between speed and accuracy. It judged it unlikely that readers can double or triple their speed and keep their understanding.
+
+So choose a format because it removes a barrier for you, and then check it.
+</Simple>
+
+<Deep>
+Pashler, McDaniel, Rohrer and Bjork (Psychological Science in the Public Interest, December 2008) say the matching idea needs a particular test. People are split by type, then randomly given different teaching, then given the same test. They found "very few studies" that used a design able to test it, and that several that did "flatly contradict" the idea. Their conclusion was that there is "no adequate evidence base to justify incorporating" such assessments "into general educational practice".
+
+They add that "it would be an error to conclude that all possible versions" have been "tested and found wanting; many have simply not been tested at all."
+
+Rayner and others (Psychological Science in the Public Interest, 14 January 2016) wrote: "It is unlikely that readers will be able to double or triple their reading speeds (e.g., from around 250 to 500–750 words per minute) while still being able to understand the text as well as if they read at normal speed." When thorough understanding is not the goal, skimming gets through a text faster "with moderate comprehension".
+
+A summary has a similar trade. It cuts the reading, and it can cut a point you needed.
+</Deep>
+
+## Health details
+
+<Simple>
+A copy tool needs your text. If that text holds health details, take care. The GDPR is the EU's data protection law. It lists "data concerning health" as a special category with extra protection.
+
+Another lesson on this site, "Privacy habits", covers what is safe to type into an AI tool.
+</Simple>
+
+<Deep>
+In the EU's GDPR, Article 9(1), as published on 4 May 2016, processing "data concerning health" "shall be prohibited". Paragraph 2 lists exceptions, such as when the person "has given explicit consent to the processing of those personal data for one or more specified purposes". We quote the 2016 text as published. We do not teach what each exception means.
+</Deep>

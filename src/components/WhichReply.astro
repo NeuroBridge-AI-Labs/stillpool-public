@@ -1,0 +1,96 @@
+---
+// 1.1's "Which reply sounds caring?" (PR 11, the 1.1 brief, T5.10) from R-1.1, the shell's first user (p6 D2). Until
+// data/recorded/R-1.1.json exists it says so; a file without its model, date or settings fails the build, and so does a
+// lesson recorded.yaml without R-1.1's summary (p6 D4). The instructions, the model and the summary show once a reply is
+// picked; without JavaScript or with "Show interactives as text", every step shows.
+import { existsSync, readFileSync } from 'node:fs';
+import { load } from 'js-yaml';
+import { recorded, recording, shownSetting } from '../lesson-schema.ts';
+import Shell from './Shell.astro';
+
+// The e2e fixture build (playwright.config.ts) reads fixtures/recorded; the site never does.
+const fixture = process.env.RECORDED_FIXTURE === '1';
+const file = `${fixture ? 'fixtures' : 'data'}/recorded/R-1.1.json`;
+const rec = existsSync(file) ? recording.parse(JSON.parse(readFileSync(file, 'utf8'))) : undefined;
+const said = fixture ? 'fixtures/recorded/recorded.yaml' : 'content/how-ai-works/what-ai-is-and-is-not/recorded.yaml';
+const summary = rec && recorded.parse(load(readFileSync(said, 'utf8')))['R-1.1']?.summary;
+if (rec && !summary) throw new Error(`${said}: no summary for R-1.1`);
+const day = rec && new Date(rec.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+// The brief's one sentence, kept: all six runs of R-1.1 (27-09-26) show the difference it names.
+const EXPLAIN = 'One AI wrote both replies, and the warm one sounds caring because it was told to.';
+---
+
+{
+  !rec ? (
+    <section data-part="tryit" aria-labelledby="part-try-it">
+      <h2 id="part-try-it">Try it: Which reply sounds caring?</h2>
+      <p>
+        The recorded replies for this activity are not ready yet. When they are, you will read two replies to one invented
+        message and guess which seems to understand you better. The AI model, the date and every setting will show with them.
+      </p>
+    </section>
+  ) : (
+    <Shell title="Which reply sounds caring?" reveal="Show what happened" class="which-reply">
+      <p>Imagine you sent this message. It is invented.</p>
+      <blockquote>{rec.message}</blockquote>
+      <p>An AI answered it twice. Recorded on {day}.</p>
+      <ol class="replies" aria-live="polite" data-runs={JSON.stringify(rec.variants.map((v) => v.runs.map((r) => r.reply)))}>
+        {rec.variants.map((v, i) => (
+          <li>
+            <h3>Reply {i + 1}</h3>
+            <p data-reply>{v.runs[0].reply}</p>
+            <p class="after-pick">It was told: {v.instruction}</p>
+          </li>
+        ))}
+      </ol>
+      <fieldset>
+        <legend>Which reply seems to understand you better?</legend>
+        {rec.variants.map((v, i) => (
+          <label>
+            <input type="radio" name="which-reply" value={i + 1} data-said={`You picked Reply ${i + 1}. It was told: ${v.instruction}`} />
+            Reply {i + 1}
+          </label>
+        ))}
+        <p>There is no wrong guess here.</p>
+      </fieldset>
+      <Fragment slot="after">
+        <p>Both replies came from the same AI.</p>
+        <p>{EXPLAIN}</p>
+        <p>The AI: {rec.model.name} ({rec.model.id}), on {rec.model.host}. Recorded on {day}.</p>
+        <ul>{Object.entries(rec.settings).map(([name, value]) => <li>{name}: {shownSetting(value)}</li>)}</ul>
+        <h3>What all the runs showed</h3>
+        <p>{summary}</p>
+        <details>
+          <summary>Show all runs</summary>
+          {rec.variants.map((v) => (
+            <div class="runs">
+              <h4>Told: {v.instruction}</h4>
+              <ol>
+                {v.runs.map((r, n) => (
+                  <li>
+                    <h5>Run {n + 1}</h5>
+                    <p>{r.reply}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </details>
+        <button type="button" data-again>Show another run</button>
+      </Fragment>
+    </Shell>
+  )
+}
+
+<script>
+  // "Show another run" cycles the recorded runs; it never calls a model (inventory section E rule 2).
+  for (const again of document.querySelectorAll<HTMLElement>('.which-reply [data-again]')) {
+    const replies = again.closest('.which-reply')?.querySelector<HTMLElement>('.replies');
+    const runs: string[][] = JSON.parse(replies?.dataset.runs ?? '[]');
+    let shown = 0;
+    again.addEventListener('click', () => {
+      shown = (shown + 1) % Math.max(...runs.map((r) => r.length)); // counts may differ (p5-pr11-review NICE 3)
+      replies?.querySelectorAll('[data-reply]').forEach((p, i) => (p.textContent = runs[i][shown % runs[i].length]));
+    });
+  }
+</script>

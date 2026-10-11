@@ -1,0 +1,79 @@
+R-2.1:
+  summary: |
+    Adding the length and tone made both models write much shorter emails. Adding the request, the reader and the reason did not.
+
+    The bad prompt got a template with blanks from both models. Claude asked what the email was for. Ministral did not.
+
+    Even the best prompt left blanks in every run. Ministral said a note was attached in four of its five replies to the last three prompts. Nothing was attached.
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: 5deb3355b339c9f7f0857a4a859fa711ea1f381936a97cae5ca241e099fdac4f
+  marks:
+    - variant: A
+      maker: A
+      run: 1
+      shows: true
+      note: A template with blanks. It asks what the email is for.
+    - variant: A
+      maker: B
+      run: 1
+      shows: true
+      note: A longer template with tips and examples. It does not ask what the email is for.
+    - variant: step 1
+      maker: A
+      run: 1
+      shows: true
+      note: The email is now about an extension. It is still long, and it has tips.
+    - variant: step 1
+      maker: B
+      run: 1
+      shows: true
+      note: The email is now about an extension. It is longer than Claude's, and it has tips.
+    - variant: step 2
+      maker: A
+      run: 1
+      shows: true
+      note: It names Dr Byrne and the illness. It is still long, with tips. It hedges on whether the note is attached.
+    - variant: step 2
+      maker: B
+      run: 1
+      shows: true
+      note: It names Dr Byrne and the illness. It is still long, with notes.
+      falseText: I have attached a doctor’s note for your records
+      reason: The prompt only said the learner has a note. Nothing was attached.
+    - variant: step 3
+      maker: A
+      run: 1
+      shows: true
+      note: About 100 words, and no tips. It offers to send the note.
+    - variant: step 3
+      maker: B
+      run: 1
+      shows: true
+      note: About 100 words, and no tips.
+      falseText: I have attached a doctor’s note for your records
+      reason: The prompt only said the learner has a note. Nothing was attached.
+    - variant: B
+      maker: A
+      run: 1
+      shows: false
+      note: It offers to send the note in the second paragraph. The email ends with thanks, not the offer.
+    - variant: B
+      maker: B
+      run: 1
+      shows: false
+      note: It offers to send the note in the first paragraph. The email ends with thanks.
+    - variant: B
+      maker: B
+      run: 2
+      shows: false
+      note: It has no offer to send the note.
+      falseText: I’ve attached a doctor’s note for your records
+      reason: The prompt only said the learner has a note. Nothing was attached.
+    - variant: B
+      maker: B
+      run: 3
+      shows: true
+      note: It ends on the offer to send the note. It also says a note is attached.
+      falseText: I’ve attached a doctor’s note for your records
+      reason: The prompt only said the learner has a note. Nothing was attached.

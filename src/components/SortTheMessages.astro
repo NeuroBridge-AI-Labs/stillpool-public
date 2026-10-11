@@ -1,0 +1,127 @@
+---
+// Lesson 1.2's "Sort the messages" (its brief, Interactive) on the shared shell (p6 D2). Every group is worked out here
+// at build time by src/lib/sort-messages.ts from data/interactive/sort-the-messages.json; no model runs in the browser.
+// Each message is its own step: predict what the rule does with each, then see the rule, the model, and both side by side.
+import { readFileSync } from 'node:fs';
+import { sortData, sortMessages } from '../lib/sort-messages.ts';
+import Shell from './Shell.astro';
+
+const data = sortData.parse(JSON.parse(readFileSync('data/interactive/sort-the-messages.json', 'utf8')));
+const sorted = sortMessages(data).map((m, i) => ({ ...m, n: i + 1 }));
+const PICKS = [
+  ['The rule catches it', 'catches it'],
+  ['The rule lets it through', 'lets it through'],
+];
+const groups = (by: 'rule' | 'model') =>
+  ([
+    [true, true, `Junk the ${by} caught`],
+    [true, false, `Junk the ${by} let through`],
+    [false, true, `Not junk, but the ${by} caught it`],
+    [false, false, `Not junk, and the ${by} let it through`],
+  ] as const).map(([junk, caught, title]) => ({ title, messages: sorted.filter((m) => m.junk === junk && m[by] === caught) }));
+const pages = [0, 5, 10, 15].map((i) => data.examples.slice(i, i + 5)).filter((p) => p.length);
+// The brief's one sentence; true while C1 to C3 in src/lib/sort-messages.test.ts pass.
+const SENTENCE = 'Both made mistakes: the rule checks only for its one word, and the model learned only from our examples.';
+---
+
+<Shell title="Sort the messages" reveal="Show what the rule did" class="sort-messages">
+  <p>Some messages are junk: adverts, prizes and offers you did not ask for. The rest are not junk.</p>
+  <p>These messages are made up for this lesson.</p>
+  <p class="rule">Rule: if a message has the word "{data.rule}" in it, it goes in junk.</p>
+  <p>Which of these messages will the rule catch? There is no wrong guess here.</p>
+  {
+    sorted.map((m) => (
+      <fieldset data-step>
+        <legend>Message {m.n}: {m.text}</legend>
+        {PICKS.map(([label, said]) => (
+          <label>
+            <input
+              type="radio"
+              name={`m${m.n}`}
+              data-said={`Message ${m.n}: you said the rule ${said}. The rule ${m.rule ? 'caught it' : 'let it through'}.`}
+              data-pick={`You said the rule ${said}.`}
+            />
+            {label}
+          </label>
+        ))}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    {
+      (['rule', 'model'] as const).map((by) => (
+        <Fragment>
+          <h3>What the {by} did</h3>
+          {by === 'model' && (
+            <p>
+              Now a small model sorts the same five messages. It learned from example messages we wrote and marked junk or not
+              junk. It is a word-counting model, called naive Bayes.
+            </p>
+          )}
+          {groups(by).map((g) => (
+            <Fragment>
+              <h4>{g.title}</h4>
+              {g.messages.length ? (
+                <ul data-group={g.title}>
+                  {g.messages.map((m) => (
+                    <li>
+                      Message {m.n}: {m.text}
+                      {by === 'rule' && <span data-pick={`m${m.n}`} />}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p data-group={g.title}>None</p>
+              )}
+            </Fragment>
+          ))}
+          {by === 'rule' && <p>The rule checks for one word, and nothing else.</p>}
+        </Fragment>
+      ))
+    }
+    <div class="examples">
+      <button type="button" data-open aria-expanded="false" aria-controls="sort-examples">See the examples it learned from</button>
+      <div id="sort-examples">
+        {pages.map((p, i) => <ul class:list={[{ shown: i === 0 }]}>{p.map((e) => <li>{e.text} (we marked it {e.junk ? 'junk' : 'not junk'})</li>)}</ul>)}
+        <button type="button" data-turn="-1">Back</button>
+        <button type="button" data-turn="1">Next</button>
+      </div>
+    </div>
+    <h3>Side by side</h3>
+    <ul class="side">
+      {
+        sorted.map((m) => (
+          <li>
+            <strong>Message {m.n}: {m.text}.</strong> <span>We marked it {m.junk ? 'junk' : 'not junk'}.</span> <span>The rule {m.rule ? 'caught it' : 'let it through'}.</span> <span>The
+            model {m.model ? 'put it in junk' : 'did not put it in junk'}.</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p>{SENTENCE}</p>
+    <p>We wrote these messages to show where each way goes wrong.</p>
+    <p>Lesson 1.4 shows how a chatbot writes one likely word at a time.</p>
+  </Fragment>
+</Shell>
+
+<script>
+  // Beside each message in the rule's groups, the reader's own pick in words; and the examples five at a time.
+  for (const box of document.querySelectorAll<HTMLElement>('.sort-messages')) {
+    box.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      for (const pick of box.querySelectorAll(`span[data-pick="${input.name}"]`)) pick.textContent = input.dataset.pick ?? '';
+    });
+    const examples = box.querySelector('.examples');
+    box.querySelector('[data-open]')?.addEventListener('click', (e) => {
+      (e.target as HTMLElement).setAttribute('aria-expanded', String(examples?.classList.toggle('open')));
+    });
+    const pages = [...box.querySelectorAll('.examples ul')];
+    let shown = 0;
+    for (const turn of box.querySelectorAll<HTMLElement>('[data-turn]'))
+      turn.addEventListener('click', () => {
+        pages[shown].classList.remove('shown');
+        shown = (shown + Number(turn.dataset.turn) + pages.length) % pages.length;
+        pages[shown].classList.add('shown');
+      });
+  }
+</script>

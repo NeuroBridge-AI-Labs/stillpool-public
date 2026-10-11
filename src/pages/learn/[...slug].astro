@@ -1,0 +1,190 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import BodyTable from '../../components/BodyTable.astro';
+import Badge from '../../components/Badge.astro';
+import CheckIn from '../../components/CheckIn.astro';
+import Deep from '../../components/Deep.astro';
+import Glyph from '../../components/Glyph.astro';
+import Icon from '../../components/Icon.astro';
+import Outline from '../../components/Outline.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import NextWord from '../../components/NextWord.astro';
+import StillKnowName from '../../components/StillKnowName.astro';
+import SortTheMessages from '../../components/SortTheMessages.astro';
+import SearchOnOff from '../../components/SearchOnOff.astro';
+import TokenSplitter from '../../components/TokenSplitter.astro';
+import WatchItLearn from '../../components/WatchItLearn.astro';
+import FeedSimulator from '../../components/FeedSimulator.astro';
+import DoodleGuesser from '../../components/DoodleGuesser.astro';
+import WhichReply from '../../components/WhichReply.astro';
+import MadeUpAnswer from '../../components/MadeUpAnswer.astro';
+import FixTheBadPrompt from '../../components/FixTheBadPrompt.astro';
+import WithOrWithoutAnExample from '../../components/WithOrWithoutAnExample.astro';
+import WhichRuleWins from '../../components/WhichRuleWins.astro';
+import DraftChangeCheck from '../../components/DraftChangeCheck.astro';
+import ShapeTheAnswer from '../../components/ShapeTheAnswer.astro';
+import SkillCardBuilder from '../../components/SkillCardBuilder.astro';
+import HiddenCharacters from '../../components/HiddenCharacters.astro';
+import StoryCheck from '../../components/StoryCheck.astro';
+import AllowedHighRiskOrBanned from '../../components/AllowedHighRiskOrBanned.astro';
+import WhatsAtStake from '../../components/WhatsAtStake.astro';
+import WhoMadeThis from '../../components/WhoMadeThis.astro';
+import IncidentCasebook from '../../components/IncidentCasebook.astro';
+import EnergyAndWater from '../../components/EnergyAndWater.astro';
+import WhatLeavesYourDevice from '../../components/WhatLeavesYourDevice.astro';
+import SortTheDataset from '../../components/SortTheDataset.astro';
+import SourceChecker from '../../components/SourceChecker.astro';
+import HelpOrHandIn from '../../components/HelpOrHandIn.astro';
+import WillTheDetectorFlagIt from '../../components/WillTheDetectorFlagIt.astro';
+import ReadTheSmallPrint from '../../components/ReadTheSmallPrint.astro';
+import StopAndCheck from '../../components/StopAndCheck.astro';
+import InjectionSpotter from '../../components/InjectionSpotter.astro';
+import SplitTheTask from '../../components/SplitTheTask.astro';
+import SameTextYourWay from '../../components/SameTextYourWay.astro';
+import GoodFitOrNot from '../../components/GoodFitOrNot.astro';
+import PipelineStepper from '../../components/PipelineStepper.astro';
+import KeepFixOrSwitchOff from '../../components/KeepFixOrSwitchOff.astro';
+import AgentStepper from '../../components/AgentStepper.astro';
+import SkillFileChecker from '../../components/SkillFileChecker.astro';
+import FindThenAnswer from '../../components/FindThenAnswer.astro';
+import WhichToolForTheJob from '../../components/WhichToolForTheJob.astro';
+import LocalOrCloud from '../../components/LocalOrCloud.astro';
+import Simple from '../../components/Simple.astro';
+import Take from '../../components/Take.astro';
+import { numbers } from '../../contents.ts';
+import { final } from '../../factcheck.ts';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((lesson) => ({ params: { slug: lesson.id }, props: { lesson } }));
+}
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+// D4's order is built in: title, promise, time, In short, Core, Check-in, Sources, Glossary, Where next, the badge
+// (once earned) and the finish link. Try it shows when the lesson has an interactive; the take sits after the Check-in, or after In short when its frontmatter says so. The page's own ids start part-, so a Core heading's slug
+// (a Core heading called "Sources" is "sources") never takes one (R6 SHOULD-FIX 1). The site's ids (main, settings, checkin-<n>)
+// are not prefixed: a Core heading named like one of them fails lesson test 2, which catches any repeated id (pr6-review NICE 1).
+const { lesson } = Astro.props;
+const { Content, headings } = await render(lesson);
+const { title, promise, minutes, tldr, sources, glossary, whereNext, badge, take } = lesson.data;
+const takeLink = take && { id: 'part-take', label: take.heading ?? "Emanuel's take" };
+const takeFirst = take?.position === 'after-in-short';
+const pillar = await getEntry('map', lesson.id.split('/')[0]);
+if (!pillar) throw new Error(`${lesson.id}: its pillar is not in content/map.yaml`); // R6 NICE 1
+const lessonUrl = new URL(Astro.url.pathname, Astro.site).href;
+const image = new URL(`/share/${lesson.id}.png`, Astro.site).href;
+const description = `After this lesson you can ${promise.slice('Can '.length).replace(/\.$/, '')}.`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LearningResource', '@id': `${lessonUrl}#lesson`, name: title, description, url: lessonUrl, inLanguage: 'en', isAccessibleForFree: true,
+      license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/', timeRequired: `PT${minutes.simple}M`, dateModified: lesson.data.provenance.date.toISOString().slice(0, 10),
+      isPartOf: { '@id': 'https://learn.neurobridgeedu.eu/#course' }, publisher: { '@type': 'Organization', '@id': 'https://www.neurobridgeedu.eu/#organization', name: 'NeuroBridgeEDU' },
+    },
+    { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Stillpool', item: 'https://learn.neurobridgeedu.eu/' }, { '@type': 'ListItem', position: 2, name: title }] },
+  ],
+};
+const USE = { cite: 'cited with credit', link: 'linked, not reused', adapt: 'adapted' }; // l11-lesson-review N8: cited, mostly in our words
+// CC-BY-SA-4.0 reads as CC BY-SA 4.0; any other licence is already in words (p5-pr10-review NICE 3).
+const words = (licence: string) => licence.replace(/^CC-(BY(?:-[A-Z]{2})*)-(\d\.\d)$/, 'CC $1 $2');
+// D10 and p6 D5: the notice shows until the lesson is final, decided by the same function as check:content (critic S4).
+const done = final('content', lesson.id);
+// p6-2-review S1: a lesson whose brief puts text straight after its interactive places <TryIt /> in its Core; any other
+// lesson gets its Try it after Core. A lesson with no interactive yet renders nothing there.
+const Interactive = { 'which-reply': WhichReply, 'sort-the-messages': SortTheMessages, 'token-splitter': TokenSplitter, 'next-word': NextWord, 'watch-it-learn': WatchItLearn, 'still-know-name': StillKnowName, 'search-on-off': SearchOnOff, 'made-up-answer': MadeUpAnswer, 'feed-simulator': FeedSimulator, 'doodle-guesser': DoodleGuesser, 'fix-the-bad-prompt': FixTheBadPrompt, 'with-or-without-an-example': WithOrWithoutAnExample, 'which-rule-wins': WhichRuleWins, 'draft-change-check': DraftChangeCheck, 'shape-the-answer': ShapeTheAnswer, 'skill-card-builder': SkillCardBuilder, 'hidden-characters': HiddenCharacters, 'story-check': StoryCheck, 'allowed-high-risk-or-banned': AllowedHighRiskOrBanned, 'whats-at-stake': WhatsAtStake, 'who-made-this': WhoMadeThis, 'incident-casebook': IncidentCasebook, 'energy-and-water': EnergyAndWater, 'what-leaves-your-device': WhatLeavesYourDevice, 'sort-the-dataset': SortTheDataset, 'source-checker': SourceChecker, 'help-or-hand-in': HelpOrHandIn, 'will-the-detector-flag-it': WillTheDetectorFlagIt, 'read-the-small-print': ReadTheSmallPrint, 'stop-and-check': StopAndCheck, 'injection-spotter': InjectionSpotter, 'split-the-task': SplitTheTask, 'same-text-your-way': SameTextYourWay, 'good-fit-or-not': GoodFitOrNot, 'pipeline-stepper': PipelineStepper, 'keep-fix-or-switch-off': KeepFixOrSwitchOff, 'agent-stepper': AgentStepper, 'skill-file-checker': SkillFileChecker, 'find-then-answer': FindThenAnswer, 'which-tool-for-the-job': WhichToolForTheJob, 'local-or-cloud': LocalOrCloud }[lesson.data.interactive ?? ''];
+const placed = lesson.body?.includes('<TryIt />');
+const number = numbers(await getCollection('lessons')).get(lesson.id);
+// The rail's links, in the page's own order: In short, each Core heading, the activity (after the heading its <TryIt />
+// follows, or after the last), then the parts that always follow. The activity's name is filled in by src/rail.ts.
+const heads = headings.filter((h) => h.depth === 2).map((h) => ({ id: h.slug, label: h.text }));
+const tryAt = Interactive ? (placed ? [...(lesson.body ?? '').split('<TryIt />')[0].matchAll(/^## (.+)$/gm)].length : heads.length) : -1;
+const sections = [
+  { id: 'part-in-short', label: 'In short' },
+  ...(takeLink && takeFirst ? [takeLink] : []),
+  ...heads.flatMap((h, i) => (i + 1 === tryAt ? [h, { id: 'part-try-it', label: 'Try it', sub: true }] : [h])),
+  { id: 'part-checkin', label: 'Check-in' },
+  ...(takeLink && !takeFirst ? [takeLink] : []),
+  { id: 'part-sources', label: 'Sources' },
+  ...(glossary.length ? [{ id: 'part-glossary', label: 'Glossary' }] : []),
+  { id: 'part-where-next', label: 'Where next' },
+];
+---
+
+<Base title={title} description={description} article ld={ld} search wide activity={lesson.data.interactive} image={image} imageAlt={`Stillpool lesson: ${title}`}>
+  <Outline slot="aside" current={lesson.id} sections={sections} />
+  <div class="band lesson-head">
+    <div class="frame">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Map</a></li>
+          <li>{pillar.data.title}</li>
+          <li aria-current="page">{title}</li>
+        </ol>
+      </nav>
+      <div class="lesson-title">
+        <span class="lesson-tile"><Glyph lesson={lesson.id} /></span>
+        <div>
+          {number && <p class="lesson-no">Lesson {number}</p>}
+          <h1 data-part="title">{title}</h1>
+          {!done && <p class="notice">This lesson is waiting for its independent fact-check. It is here for testing.</p>}
+          <p class="promise" data-part="promise">After this lesson you can {promise.slice('Can '.length).replace(/\.$/, '')}.</p>
+          <div class="meta">
+            <p class="time" data-part="time">About {minutes.simple} minutes, or {minutes.deep} with the Deep layers</p>
+            <div class="depth" role="group" aria-labelledby="part-depth-all" data-pagefind-ignore>
+              <span id="part-depth-all">Reading depth for every section</span>
+              <button type="button" data-depth="simple" aria-pressed="true">Simple only</button>
+              <button type="button" data-depth="deep" aria-pressed="false">Add Deep</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="article">
+    <section data-part="tldr" class="in-short" aria-labelledby="part-in-short">
+      <h2 id="part-in-short" tabindex="-1">In short</h2>
+      <ul>{tldr.map((line) => <li>{line}</li>)}</ul>
+    </section>
+    {take && takeFirst && <Take take={take} open />}
+    <div data-part="core">
+      <span id="part-depth-for" hidden data-pagefind-ignore>Reading depth for</span>
+      <span id="part-read-for" hidden data-pagefind-ignore>Listen to</span>
+      <Content components={{ Simple, Deep, h2: SectionHeading, table: BodyTable, TryIt: Interactive ?? Fragment }} />
+    </div>
+    {Interactive && !placed && <Interactive />}
+    <CheckIn lesson={lesson} />
+    {take && !takeFirst && <Take take={take} />}
+    {/* Design run 33 D2: closed until opened, so the Glossary is near; the summary keeps the heading and its id. */}
+    <section data-part="sources" aria-labelledby="part-sources">
+      <details>
+        <summary><Icon name="caret-right" /><h2 id="part-sources" tabindex="-1">Sources ({sources.length})</h2></summary>
+        <ul>{sources.map((s) => <li>{s.url ? <a href={s.url}>{s.title}</a> : `${s.title} (not published)`} ({words(s.licence)}, {USE[s.use]}){s.note && `. ${s.note}`}</li>)}</ul>
+      </details>
+    </section>
+    {
+      glossary.length > 0 && (
+        <section data-part="glossary" aria-labelledby="part-glossary">
+          <h2 id="part-glossary" tabindex="-1">Glossary</h2>
+          <dl>{glossary.map((g) => <Fragment><dt>{g.term}</dt><dd>{g.meaning}</dd></Fragment>)}</dl>
+        </section>
+      )
+    }
+    <section data-part="wherenext" aria-labelledby="part-where-next">
+      <h2 id="part-where-next" tabindex="-1">Where next</h2>
+      <div class="next">
+        <p>{whereNext.text}</p>
+        <p>{whereNext.url ? <a href={whereNext.url}>{whereNext.title}</a> : <strong>{whereNext.title}</strong>}</p>
+      </div>
+    </section>
+    <Badge id={lesson.id} promise={promise} celebration={badge.celebration} />
+    <p data-part="finish"><a href={`/done/${lesson.id}/`}>I have finished this lesson</a></p>
+  </div>
+</Base>
+
+<script>
+  import '../../depth.ts';
+  import '../../rail.ts';
+</script>

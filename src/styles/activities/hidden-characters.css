@@ -1,0 +1,9 @@
+/* A long spoken-only name must not widen the page (2.2's flagged pieces). */
+.hidden-characters .sr {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+/* 2.2's token view: a piece that holds a hidden character has a thick dashed border and says which, so shape carries it. */
+.hidden-characters .hit { border: var(--border-width-strong) dashed var(--border); }
+.hidden-characters .flag { font-weight: 700; }

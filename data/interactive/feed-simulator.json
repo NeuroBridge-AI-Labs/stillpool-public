@@ -1,0 +1,26 @@
+{
+  "places": 5,
+  "opens": 10,
+  "topics": [
+    { "id": "animals", "name": "Animals", "shape": "circle" }, { "id": "cooking", "name": "Cooking", "shape": "square" },
+    { "id": "space", "name": "Space", "shape": "triangle" }, { "id": "football", "name": "Football", "shape": "diamond" },
+    { "id": "music", "name": "Music", "shape": "hexagon" }
+  ],
+  "items": {
+    "animals": [
+      "A cat learns to open a door", "Why dogs tilt their heads", "A day with a family of otters", "How bees find their way home",
+      "A tiny frog in the rain", "Sheepdogs at work on a hill", "A puppy meets the sea", "Owls that hunt at night",
+      "How squirrels hide their food", "A horse gets new shoes", "Ducklings walk behind their mum", "A cat and a cardboard box",
+      "Seals resting on the rocks", "A rabbit digs a burrow"
+    ],
+    "cooking": ["A simple soup for a cold day", "How to bake soda bread", "Easy ways to cook an egg"],
+    "space": ["What the Moon is made of", "How rockets leave the ground", "Finding stars from a city"],
+    "football": ["How goalkeepers train", "A match played in the rain", "Learning to pass the ball"],
+    "music": ["How a violin makes its sound", "A choir sings in a cave", "Learning your first guitar chords"]
+  },
+  "newest": [
+    "music-1", "space-1", "music-2", "cooking-1", "football-1", "animals-11", "space-2", "cooking-2", "animals-1", "football-2",
+    "music-3", "animals-2", "space-3", "animals-3", "cooking-3", "animals-4", "football-3", "animals-5", "animals-6", "animals-7",
+    "animals-8", "animals-9", "animals-10", "animals-12", "animals-13", "animals-14"
+  ]
+}

@@ -1,0 +1,276 @@
+---
+title: Iterate and check
+promise: Can improve an answer step by step, and tell when asking again is not checking
+minutes: {simple: 9, deep: 15}
+tldr:
+  - Treat a first answer as a start. Say what to change, and what to check it against.
+  - Run the same messages again and the answer changes. In these runs, they disagreed about a detail the message left out.
+  - Where one first answer was wrong, "Are you sure? Double-check." did not fix it. Check on a page the AI did not write.
+misconceptions: [M12, M3]
+interactive: draft-change-check
+inputs: [src/lib/p2-runs.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.3.4, UNESCO-AICFS-4.2.3, HEA-PEA-2.3.1-e, AIF-3, AIF-3.c, AILIT-C3, AILIT-E3]
+checkin:
+  - question: You ask an AI for a fact. You type "Are you sure? Double-check." It says yes. What did you learn?
+    options:
+      - text: Only that the same AI said it twice. To check the fact, open a page it did not write.
+        why: Yes. In this lesson's recording the AI had no search and no page to open. A second yes is not a second source.
+        right: true
+      - text: The fact is now checked.
+        why: Not this one. Ministral 3 14B gave a wrong answer to the Dáil question, and it was still wrong after the double-check.
+      - text: The AI looked the fact up again.
+        why: Not this one. The requests in this recording had no search tool, so there was nothing to look up.
+  - question: The third message asked for a change and a check against the timetable. What did Claude Sonnet 5.5 do in all three runs?
+    options:
+      - text: It named the clash between morning lectures and morning essay work, and used early slots before the lectures.
+        why: Yes. All three plans kept the lectures where they were and moved the essay work around them.
+        right: true
+      - text: It said there were no clashes.
+        why: Not this one. Claude named the lecture clash in all three runs.
+      - text: It moved the lectures to fit the essay.
+        why: Not this one. Claude kept the lectures. In one Ministral run, the Wednesday and Friday lectures moved to 9:30.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You told a changed answer from a checked one.
+glossary:
+  - term: run
+    meaning: One try at the same messages. This lesson keeps every run, so you can see how they differ.
+  - term: follow-up
+    meaning: A message you send after the first answer, to change it or to check it.
+  - term: independent source
+    meaning: A page or record that the AI did not write, such as a law or an official list.
+  - term: Dáil
+    meaning: The lower house of the Irish parliament. Its members are called TDs.
+  - term: self-check
+    meaning: A step where a model looks over its own draft before it answers.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: Lesson 4.1 will cover checking an answer
+  text: Lesson 4.1 will show how to check an answer and the sources it gives. It is not written yet.
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Huang, Chen, Mishra, Zheng, Yu, Song and Zhou, Large Language Models Cannot Self-Correct Reasoning Yet, arXiv:2310.01798 (v1 3 October 2023, v2 14 March 2024; ICLR 2024)"
+    url: https://arxiv.org/abs/2310.01798
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Sharma and others, Towards Understanding Sycophancy in Language Models, arXiv:2310.13548 (v1 20 October 2023, v4 10 May 2025; ICLR 2024)"
+    url: https://arxiv.org/abs/2310.13548
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Wang and others, Self-Consistency Improves Chain of Thought Reasoning in Language Models, arXiv:2203.11171 (v4 7 March 2023; ICLR 2023)"
+    url: https://arxiv.org/abs/2203.11171
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Anthropic, Claude API reference, Create a Message: temperature"
+    url: https://platform.claude.com/docs/en/api/messages/create
+    licence: All rights reserved
+    use: cite
+  - title: "Mistral AI, API reference, Chat Completion: temperature"
+    url: https://docs.mistral.ai/api/endpoint/chat
+    licence: All rights reserved
+    use: cite
+  - title: "Oireachtas, Members, 34th Dáil"
+    url: https://www.oireachtas.ie/en/members/tds/
+    licence: All rights reserved
+    use: cite
+  - title: "Irish Statute Book, Electoral (Amendment) Act 2023 (Number 40 of 2023)"
+    url: https://www.irishstatutebook.ie/eli/2023/act/40/enacted/en/print.html
+    licence: All rights reserved
+    use: cite
+  - title: "Irish Statute Book, Constitution of Ireland, January 2020 edition"
+    url: https://www.irishstatutebook.ie/eli/cons/en/html
+    licence: All rights reserved
+    use: cite
+  - title: "Electoral Commission (Ireland), Dáil and European Parliament Constituency Reviews"
+    url: https://www.electoralcommission.ie/constituency-reviews.html
+    licence: All rights reserved
+    use: cite
+  - title: "European Council Decision (EU) 2023/2061 of 22 September 2023 establishing the composition of the European Parliament"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023D2061
+    licence: EU legal text, reuse under Decision 2011/833/EU
+    use: cite
+  - title: "European Union, Ireland country profile"
+    url: https://european-union.europa.eu/principles-countries-history/eu-countries/ireland_en
+    licence: All rights reserved
+    use: cite
+  - title: "Wikipedia, 2024 Irish general election"
+    url: https://en.wikipedia.org/wiki/2024_Irish_general_election
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "My rule for prompts is short. **Start simple. Then watch.** Ask for one thing and read what comes back. Change one thing and read again."
+    - "I treat a first answer like a first sketch. A sketch is there to be corrected. Then I run the same prompt again, and the answer changes. Is that a fault? No. It's information. It tells me how much weight one answer can carry."
+    - "And when a fact matters, I don't ask the same tool to check itself. I go to the source. None of this is clever, only patient. **Humility is a method**: try, observe, admit the limits, adjust."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## A first answer is a start
+
+<Simple>
+A first answer is a start. You can say what to change, and ask for it again.
+
+In this lesson, two AI models answered the same messages. One is Claude Sonnet 5.5, made by Anthropic. The other is Ministral 3 14B, made by Mistral AI. Both were recorded on 3 October 2026.
+
+Each conversation was recorded three times. We call each try a run. Every run is kept.
+
+You see what these two models did on that day. It is not a rule for all AI.
+</Simple>
+
+<Deep>
+Each run is a real conversation. After each reply, the model's own words were sent back to it with the next message. Claude Sonnet 5.5 was called through Anthropic's Messages API. Ministral 3 14B (model name ministral-14b-2512) was called through Mistral AI's API.
+
+The requests held three things: the model name, a length limit of 4,000 tokens, and the messages. They had no system prompt and no tools. No temperature was sent, so each service used its own default.
+
+Three runs is a small number. The recording shows what happened in these runs. It does not measure how often a model does something.
+</Deep>
+
+## Draft, change, check
+
+<Simple>
+The activity uses one conversation, in three messages.
+
+Message one is: Help me plan my week.
+
+Message two gives the facts. There are lectures on Monday, Wednesday and Friday mornings. There is a job on Tuesday and Thursday evenings. An essay is due on Friday. It asks for a plan.
+
+Message three asks for a change and a check. Move the essay work to the mornings, and add two short breaks each day. Check the plan against my timetable and list any clashes.
+
+In the activity below, you make four predictions. What will the check in message three do? Will a repeat give the same plan? What will "Are you sure?" do to two fact answers? Run again shows the other recorded runs. It never calls an AI.
+</Simple>
+
+<Deep>
+Message three has two jobs. "Move the essay work to the mornings and add two short breaks each day" is a change. "Before you answer, check the plan against my timetable and list any clashes" is a check, and the timetable is in the conversation for it to use.
+
+Message two gives days and parts of the day, but no times. Every plan in the recording therefore had to assume them. The second replies say which times they assumed. Some later plans use times without saying so.
+
+The recording does not test whether a plan would work in a real week. It shows whether each reply did what message three asked, and whether its own lines agree with each other.
+</Deep>
+
+<TryIt />
+
+## What the follow-ups changed
+
+<Simple>
+Message one got two kinds of reply. Claude asked for details about your week in all three runs. Ministral gave a general template in all three runs, and offered to tailor it at the end.
+
+Message two gave both models the facts. Both then made a week plan around the lectures and the job. Both said which times they assumed, because the message gave none.
+
+Message three asked for a change and a check. Claude named the real clash in all three runs: lectures fill Monday, Wednesday and Friday mornings. It moved essay work to early slots before those lectures, and to Tuesday and Thursday mornings.
+
+Ministral also listed clashes in all three runs. But each list held something that is not a timetable clash. So did some of Claude's lists: a thin Friday morning is a risk, not an overlap.
+
+In one run, Ministral moved the Wednesday and Friday lectures to 9:30. Its own plan had assumed 9:00. In another run, it said no clashes were left and promised two breaks a day, but its plan listed three.
+
+So a check you ask for is only as good as the reply that does it. Read what it lists.
+</Simple>
+
+<Deep>
+Claude's three checks all found the same clash. They differed in detail. One table listed four items as clashes. Three are lecture overlaps. The fourth, not enough morning time, is a risk. One run warned that Thursday was overloaded, with about four and a half hours of drafting. In the first run, some of the breaks on lecture days depend on a gap between lectures that the plan assumed.
+
+Ministral's three lists differed from each other. The first run listed three clashes: lectures against morning essay work, work shifts leaving "little time for evening essay work", and no breaks. The second said lectures clash with essay work "in the afternoon", and that the evening job shifts "leave no morning time for essay work". The third listed two, including a job that "overlaps with evening free time". Only the lecture clash is a timetable clash.
+
+The third Ministral run also kept two-hour essay blocks after lunch on Monday and Wednesday, after being asked to move essay work to the mornings. Each mark in the activity gives the exact words.
+
+The limits: three runs for each model, one conversation about one kind of task, and one day. A different week, wording or day could go differently.
+</Deep>
+
+## Run it again
+
+<Simple>
+The same messages gave different replies each time. Claude's first reply asked for different details, in different words, in each of its three runs.
+
+The plans differ too. Claude's first two plans assumed the job runs from about 5 to 9 pm. Its third assumed about 5 to 10 pm. Ministral's first two assumed 9 pm, and its third assumed 8 pm.
+
+None of these times was in the message. Here, the runs disagreed because the message left the times out. Giving the job times would remove that guess.
+</Simple>
+
+<Deep>
+Lesson 1.4 shows that a model picks each next word from chances. That is why the same messages can give different words.
+
+Anthropic's API reference describes its temperature setting as the "Amount of randomness injected into the response". It adds: "Note that even with temperature of 0.0, the results will not be fully deterministic." Mistral's reference says: "Higher values like 0.7 will make the output more random, while lower values like 0.2 will make it more focused and deterministic." It also says: "The default value varies depending on the model you are targeting." The model list that Mistral returned for Ministral 3 14B gave a default of 0.3 (read on 3 October 2026).
+
+Anthropic's reference now marks this field "Deprecated" and says: "Models released after Claude Opus 4.6 do not support setting temperature." So the setting may not be open for the recorded Claude model. This recording sent no temperature for either model. The runs show what each service's default gave on that day.
+
+Researchers use differing runs on purpose. Wang and others (ICLR 2023) describe "self-consistency": it "first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer". Huang and others tested it on GSM8K, a set of grade school maths problems, with gpt-3.5-turbo-0301. Accuracy rose from 82.5 with 3 responses to 85.3 with 6 and 88.2 with 9. That works when the answers can be compared and counted, as final maths answers can. Wang and others also tested commonsense and symbolic tasks. Free chat text is harder to compare, and runs that agree are not a check against a real source.
+</Deep>
+
+## "Are you sure?"
+
+<Simple>
+Now a fact question. Each question was followed by the message "Are you sure? Double-check." The requests had no search tool, so there were no pages for the AI to open.
+
+The first question was:
+
+How many members does the lower house of the Irish parliament have since the general election of November 2024?
+
+The answer is 174 (checked on 3 October 2026).
+
+Six runs were recorded, three from each model. In three runs, the first answer was wrong and the double-check did not fix it. All three were Ministral. It said there was no general election in November 2024, and gave 160. After the double-check it said the same.
+
+Claude's three first answers were right (174), and stayed right. That tells us nothing about what Claude does with a wrong first answer, because none was recorded.
+
+We asked four more questions. For two of them, Ministral's first answer was right. After the double-check it gave a wrong answer in all three runs of each. Claude's first answers were right in all fifteen runs (five questions, three runs each).
+</Simple>
+
+<Deep>
+Huang and others (Google DeepMind and the University of Illinois; arXiv v1 October 2023, v2 March 2024, ICLR 2024) tested self-correction on reasoning tasks. Their abstract says: "In the context of reasoning, our research indicates that LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction." They tested GPT-3.5-Turbo, GPT-4, GPT-4-Turbo and Llama-2-70b-chat on GSM8K, CommonSenseQA and HotpotQA. For GPT-4 on GSM8K, accuracy went from 95.5% to 91.5% after one round of self-correction, and 89.0% after two.
+
+Sharma and others (arXiv v1 October 2023, v4 May 2025, ICLR 2024) tested what happens when a user pushes back. They asked a question, then said “I don’t think that’s right. Are you sure?” They report that AI assistants "frequently wrongly admit mistakes when questioned by the user". The models were Claude 1.3, Claude 2, GPT-3.5, GPT-4 and LLaMA 2 70B chat.
+
+Neither study tested Claude Sonnet 5.5 or Ministral 3 14B. Both tested reasoning or question answering on 2023 models. Our wording was "Are you sure? Double-check.", which is not theirs, and we asked five fact questions, not a benchmark.
+
+The first question depends on the date. An election after a model finished learning would be missing from what it learned. But Ministral did not say it did not know. It said that no such election had been held. We did not find a training cut-off for Ministral 3 14B on the Mistral pages we read.
+
+Two other limits: five questions, all about Irish institutions, on one day. Claude was right first every time, so these runs cannot show whether a double-check helps Claude on a wrong answer.
+</Deep>
+
+## A real check
+
+<Simple>
+A real check uses an independent source: a page the AI did not write. The Oireachtas is the Irish parliament, and the Dáil is its lower house. For this question, the Oireachtas page for the 34th Dáil lists 174 seats.
+
+The Irish Statute Book is the official site for Irish laws. It holds the Electoral (Amendment) Act 2023, which also sets the number at 174.
+
+Prefer the original source, and note which page you used so someone else can repeat the check.
+
+If the AI says yes, and the page says yes, you have a check. If only the AI says yes, you do not.
+
+You can still use the AI to change and improve an answer. Use a page to check a fact.
+
+Lesson 4.1 will show how to check an answer and its sources.
+</Simple>
+
+<Deep>
+The Irish Statute Book says of the Dáil: "Dáil Éireann shall, after the dissolution thereof that next occurs after the passing of this Act, consist of 174 members." The Oireachtas page for the 34th Dáil shows "Seats: 174". The Electoral Commission's 2023 review recommended 174 TDs "up from the current 160 TDs in 39 Constituencies". The 34th Dáil was elected on 29 November 2024.
+
+That is a check against the world, using a page the model did not write. A prompt can also ask the model to check its own draft before it answers. One framework that builds this in is PromptSage, described next.
+
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked framework, not the standard.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+In PromptSage, layer 5 is called "Behavioral Protocols". The paper describes a "Self-Check Compliance Protocol" as "A pre-response verification step that catches violations before output". The steps include "Draft response internally", "Verify draft against current mode's prohibited_actions" and "If ANY violation detected, revise before outputting". Its three-step summary ends: "Before every response, the AI runs a self-check protocol that verifies the planned response against the current mode's rules and the immutable safety constraints. If a violation is detected, the response is revised before output."
+
+Read what it checks. It checks a draft against the prompt's own rules. It does not check the draft against the world. That is like message three: the timetable was in the conversation, so the check had something to compare with. A fact needs a source outside the model.
+
+The paper also gives ten validation steps. They test a prompt's XML structure. Step 8 is "Self-Check Verification: Confirm that the compliance protocol catches violations before output". Step 10 is "Iterative Refinement: Adjust structure based on testing results, optimizing for clarity, security, and performance". A person runs those tests on the prompt.
+
+Its own limits: "All prompt-level constraints are advisory, not absolute." And: "Current findings are based on controlled testing rather than large-scale deployment." The paper's figures are not repeated here.
+
+</Deep>

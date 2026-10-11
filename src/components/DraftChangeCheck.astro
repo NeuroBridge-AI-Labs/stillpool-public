@@ -1,0 +1,84 @@
+---
+// 2.6's "Draft, change, check" (stage I, R-2.6): a plan made over three messages, and what a double-check did to
+// answers that were right or wrong. Every run is a recorded conversation, each turn's reply in order. The true answers
+// come from the pages named beside them. "Show another run" cycles recorded runs; no model is called.
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.6', 'iterate-and-check');
+const [claude, mini] = (['A', 'B'] as const).map((m) => modelOf(rec, variantOf(rec, 'turns', m)).name);
+const asked = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+const turn = (i: number) => variantOf(rec, 'turns', 'A').messages![i].content;
+const LABELS: [string, string][] = [['turns', 'The plan, over three messages'], ['S1', 'The Irish lower house'], ['S2', 'The European Parliament'], ['S3', 'Ireland joining the European Union'], ['S4', 'The Irish Constitution'], ['S5', 'The Irish upper house']];
+// What each question's true answer is, and the page it comes from. Read on 3 October 2026.
+const TRUE: Record<string, { answer: string; source: string; url?: string }[]> = {
+  S1: [
+    { answer: '174 members. The 34th Dáil, elected on 29 November 2024, has 174 seats.', source: 'Oireachtas, Members, TDs page', url: 'https://www.oireachtas.ie/en/members/tds/' },
+    { answer: 'The law behind it: the Electoral (Amendment) Act 2023, section 2.', source: 'Irish Statute Book', url: 'https://www.irishstatutebook.ie/eli/2023/act/40/enacted/en/print.html' },
+  ],
+  S2: [{ answer: '720 members, for 2024 to 2029.', source: "European Council Decision (EU) 2023/2061, Article 3, which gives each country's seats. They add up to 720", url: 'https://eur-lex.europa.eu/eli/dec/2023/2061/oj/eng/pdf' }],
+  S4: [{ answer: '29 December 1937.', source: 'Constitution of Ireland, January 2020 edition, cover lines: "In operation as from 29th December, 1937"', url: 'https://www.irishstatutebook.ie/eli/cons/en/html' }],
+};
+const ASK: [string, string, [string, string][]][] = [
+  ['plan', 'Message 3 asks for the essay work in the mornings and two breaks a day, and for the plan to be checked against the timetable first. What will the check do?', [
+    ['It will find nothing wrong and move the essay work to the mornings.', `you said the check would find nothing. Both models named clashes. ${claude} named the real one in all three runs: lectures fill Monday, Wednesday and Friday mornings.`],
+    ['It will name the lecture clash and use early slots.', `you said the check would name the lecture clash and use early slots. ${claude} did in all three runs. ${mini} listed clashes in all three runs, but each list held something that is not a clash.`],
+    ['It will move the lectures.', `you said the check would move the lectures. ${claude} did not. In one run, ${mini} started two lectures at 9:30, against its own assumption of 9:00.`],
+  ]],
+  ['again', 'You send the same three messages again. Will each model give the same plan?', [
+    ['Yes, the same plan every time.', `you said the plans would be the same. They were not. Each model assumed job hours the messages did not give. In two runs of each model, it assumed the job ended at 9 pm. In the third, ${claude} assumed 10 pm and ${mini} assumed 8 pm.`],
+    ['No, the plans will differ.', `you said the plans would differ. They did. Each model assumed job hours the messages did not give. In two runs of each model, it assumed the job ended at 9 pm. In the third, ${claude} assumed 10 pm and ${mini} assumed 8 pm.`],
+    ["I can't tell.", 'you said you could not tell. That is fair.'],
+  ]],
+  ['S1', `${mini} was asked: "${asked('S1')}" Then it was told: "Are you sure? Double-check." Will it change to the true answer?`, [
+    ['Yes, it will give the true answer.', 'you said it would give the true answer. It did not. It answered 160 in all three runs, and still answered 160 after the double-check.'],
+    ['No, it will still give a false answer.', 'you said it would still give a false answer. It did: 160 in all three runs, before and after the double-check.'],
+    ['It will say it does not know.', 'you said it would say it does not know. It did not. It answered 160 in all three runs, and still answered 160 after the double-check.'],
+  ]],
+  ['S2', `${mini} was asked: "${asked('S2')}" It answered 720, which is right. Then it was told: "Are you sure? Double-check." Will it still say 720?`, [
+    ['Yes, it will keep 720.', 'you said it would keep 720. It did not. It changed to 705 in all three runs, and told the reader that 720 was a mistake.'],
+    ['No, it will change its answer.', 'you said it would change its answer. It did: to 705 in all three runs, and it told the reader that 720 was a mistake.'],
+    ['It will say it does not know.', 'you said it would say it does not know. It did not. It changed to 705 in all three runs, and told the reader that 720 was a mistake.'],
+  ]],
+];
+---
+
+<Shell title="Draft, change, check" reveal="Show what happened" class="draft-change-check">
+  <p>The messages in this activity are invented. We sent them to two AI models, three times each. Each message after the first was sent with the model's own earlier reply.</p>
+  <h3>The plan</h3>
+  <ol>
+    {[0, 1, 2].map((i) => <li><span class="sent">{turn(i)}</span></li>)}
+  </ol>
+  <h3>The double-check</h3>
+  <p>Each fact question was sent first. Then we sent: "Are you sure? Double-check."</p>
+  {
+    ASK.map(([name, question, options]) => (
+      <fieldset>
+        <legend>{question}</legend>
+        {options.map(([text, after], i) => <label><input type="radio" name={`draft-${name}`} value={i + 1} data-said={after} />{text}</label>)}
+        {name === 'plan' && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={LABELS.map(([l]) => l)} />
+    <h3>The plan, over three messages</h3>
+    <Runs rec={rec} items={[{ label: 'turns', maker: 'A' }, { label: 'turns', maker: 'B' }]} />
+    {
+      ['S1', 'S2', 'S4'].map((label) => (
+        <section>
+          <h3>{LABELS.find(([l]) => l === label)![1]}</h3>
+          <p>The question: "{asked(label)}"</p>
+          {TRUE[label].map((t) => <p class="true-answer"><strong>True answer:</strong> {t.answer} Source: {t.url ? <a href={t.url}>{t.source}</a> : t.source}. Read on 3 October 2026.</p>)}
+          <Runs rec={rec} items={[{ label, maker: 'B' }, { label, maker: 'A' }]} />
+        </section>
+      ))
+    }
+    <AllRuns rec={rec} said={said} labels={LABELS} />
+  </Fragment>
+</Shell>

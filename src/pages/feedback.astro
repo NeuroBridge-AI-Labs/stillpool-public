@@ -1,0 +1,51 @@
+---
+import '../styles/feedback.css';
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { load } from 'js-yaml';
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+import { MAX_MESSAGE } from '../../api/feedback.ts';
+// Feedback (FB1). The lesson list is read at build time from what the teachers page reads: content/map.yaml and each lesson's
+// title. The page requests nothing on load. Its CSP gains connect-src 'self' here and nowhere else, as the lab's does
+// (e2e/analytics.spec.ts pins both). The one POST goes to api/feedback.ts, after Send.
+Astro.csp?.insertDirective("connect-src 'self'");
+const order = (load(readFileSync('content/map.yaml', 'utf8')) as { id: string }[]).map((p) => p.id);
+const pillars = (await getCollection('map')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id)).map((p) => p.data);
+const titles = new Map((await getCollection('lessons')).map((l) => [l.id, l.data.title]));
+const groups = pillars.map((p) => ({
+  title: p.title,
+  lessons: p.topics.flatMap((t) => t.lessons).map((slug) => ({ id: `${p.id}/${slug}`, title: titles.get(`${p.id}/${slug}`)! })),
+}));
+---
+
+<Base title="Feedback" description="Tell Stillpool, the free AI lessons by NeuroBridgeEDU, what you think: write a short message about the site, the practice lab or a lesson." wide>
+  <InfoPage title="Feedback">
+    <p slot="intro" class="lede">
+      This page is for your thoughts on Stillpool. Write a short message and we save it. We read every message. We cannot reply, because we do not ask who you are.
+    </p>
+
+    <div class="feedback" data-feedback data-state="ready">
+      <p class="warn">Do not write your name, your email or anything private.</p>
+      <noscript><p>The feedback form needs JavaScript. You can write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>.</p></noscript>
+      <form novalidate>
+        <label class="field" for="feedback-about">What is it about?</label>
+        <select id="feedback-about" name="about">
+          <option value="site" selected>The whole site</option>
+          <option value="lab">The practice lab</option>
+          {groups.map((g) => <optgroup label={g.title}>{g.lessons.map((l) => <option value={l.id}>{l.title}</option>)}</optgroup>)}
+        </select>
+        <label class="field" for="feedback-message">Your message</label>
+        <textarea id="feedback-message" name="message" rows="6" maxlength={MAX_MESSAGE} required aria-describedby="feedback-limit"></textarea>
+        <p class="hint" id="feedback-limit">Up to {MAX_MESSAGE.toLocaleString('en-IE')} characters.</p>
+        <button type="button" data-send disabled>Send feedback</button>
+        <p class="hint">Pressing Send feedback sends your message and what it is about to this site's server, which passes it to our own tool in the EU to be saved. Nothing else is sent.</p>
+        <p role="status" data-result tabindex="-1"></p>
+      </form>
+    </div>
+  </InfoPage>
+</Base>
+
+<script>
+  import '../feedback-page.ts';
+</script>

@@ -1,0 +1,200 @@
+---
+title: Rules or examples?
+promise: Can explain the difference between written rules and learning from examples
+minutes: {simple: 8, deep: 13}
+tldr:
+  - A computer can sort things by rules that people write, or by patterns it learns from examples.
+  - To learn from examples, it gets examples with the answer marked. People choose those examples and answers.
+  - A rule does exactly what it says. A model learns only from its examples. So both can get things wrong.
+misconceptions: [M9]
+interactive: sort-the-messages
+inputs: [src/lib/sort-messages.ts]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-ALT-1, AILIT-M2, AILIT-E2]
+checkin:
+  - question: Which of these is an example of technology that follows set rules?
+    options:
+      - text: A calculator.
+        why: Yes. A calculator follows set rules that people wrote. Traffic lights and thermostats are other examples.
+        right: true
+      - text: An app that translates what you say.
+        why: Not this one. Translation is an example of technology that was trained on examples.
+      - text: An app that recognises what is in a photo.
+        why: Not this one. Image recognition is an example of technology that was trained on examples.
+  - question: This lesson's spam sorter learned from labelled examples. A new message arrives that it never saw. What does this sorter do?
+    options:
+      - text: It looks the message up among its examples.
+        why: Not this one. This sorter keeps word counts from its examples, not a copy of each message. So there is nothing to look up.
+      - text: It uses the patterns it found in its examples to make a guess about the new message.
+        why: Yes. The point of learning from examples is to work on new cases the model never saw.
+        right: true
+      - text: It follows a rule that a person wrote for that exact message.
+        why: Not this one. That is the other way, written rules. A filter that learned from examples uses the patterns it found.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You told written rules from learning by example.
+glossary:
+  - term: rule
+    meaning: An instruction that people write for a computer to follow exactly. One example is "if a message has this word, it goes in junk".
+  - term: example
+    meaning: One item a computer learns from, such as one message.
+  - term: label
+    meaning: The answer marked on an example, such as "junk" or "not junk".
+  - term: feature
+    meaning: A thing a model looks at in an example to make its guess, such as the words in a message.
+  - term: model
+    meaning: What a computer builds from its examples. It is often a set of numbers, not a copy of the examples.
+  - term: machine learning
+    meaning: Getting a computer to find patterns in examples, instead of writing every rule by hand.
+  - term: training data
+    meaning: The examples an AI system learned from.
+whereNext:
+  title: What is Machine Learning?, from Google for Developers
+  text: One public web page of about 1,500 words, about 7 minutes to read. It is written for new developers, so it goes further than this lesson. It opens another website, and no login is needed.
+  url: https://developers.google.com/machine-learning/intro-to-ml/what-is-ml
+sources:
+  - title: "OECD and European Union (2026), Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education, pages 6, 19, 20, 38 and 54"
+    url: https://doi.org/10.1787/65cd27d4-en
+    licence: CC-BY-4.0
+    use: adapt
+    note: "Check-in 1 adapts its sort into \"follows set rules\" and \"trained on examples\". This is an adaptation of an original work by the OECD and the European Union. The opinions expressed and arguments employed in this adaptation should not be reported as representing the official views of the OECD, its Member countries or the European Union."
+  - title: "O'Sullivan, Lowry, Woods and Conlon (2025), Generative AI in Higher Education Teaching and Learning: AI Literacy Training, HEA, page 5"
+    url: https://doi.org/10.82110/3sxr-z770
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Regulation (EU) 2024/1689, the Artificial Intelligence Act, recital 12"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689
+    licence: EU legal text, reuse under Decision 2011/833/EU
+    use: cite
+  - title: "Google for Developers, Intro to Machine Learning: What is Machine Learning?"
+    url: https://developers.google.com/machine-learning/intro-to-ml/what-is-ml
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Intro to Machine Learning: Supervised Learning"
+    url: https://developers.google.com/machine-learning/intro-to-ml/supervised
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Introduction to Machine Learning Problem Framing: Understand the problem"
+    url: https://developers.google.com/machine-learning/problem-framing/problem
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Zinkevich, Rules of Machine Learning: Best Practices for ML Engineering, Google for Developers, rules 1 and 3"
+    url: https://developers.google.com/machine-learning/guides/rules-of-ml
+    licence: CC-BY-4.0
+    use: cite
+  - title: "scikit-learn developers, User Guide 1.9: Naive Bayes"
+    url: https://scikit-learn.org/stable/modules/naive_bayes.html
+    licence: BSD License
+    use: cite
+  - title: "Searchlight Institute (16 December 2025), Americans Have Mixed Views of AI, and an Appetite for Regulation"
+    url: https://www.searchlightinstitute.org/research/americans-have-mixed-views-of-ai-and-an-appetite-for-regulation/
+    licence: All rights reserved
+    use: cite
+  - title: "Searchlight Institute, Searchlight AI Survey: Toplines, questions 90 and 91, page 31"
+    url: https://www.searchlightinstitute.org/wp-content/uploads/2025/12/Searchlight-AI-Survey-Toplines.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "OpenAI (30 November 2022), Introducing ChatGPT"
+    url: https://openai.com/index/chatgpt/
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-27
+signed: false
+---
+
+## Two ways to sort things
+
+<Simple>
+In August 2025, US adults surveyed online were asked: "How does AI like chatGPT learn to write?"
+
+About 1 in 3 (33%) of the 2,299 who answered picked "Programmers wrote down rules for how to write". That is not how a chatbot like ChatGPT learned. It was trained on huge amounts of text.
+
+There are two ways to get a computer to sort things. People can write the rules it follows. Or it can learn patterns from examples.
+
+Some everyday things follow set rules, such as calculators, traffic lights and thermostats. Others were trained on examples, such as apps that translate or recognise pictures.
+
+Spam filters show both. Spam is junk mail, the messages you do not want. A person can write a spam rule by hand. A spam filter can also learn from examples of spam.
+</Simple>
+
+<Deep>
+The survey ran online from 1 to 6 August 2025, with 2,301 US adults, and was published in December 2025. Its question 90 was "How does AI like chatGPT learn to write?", with four printed answers. Of the 2,299 adults who answered it, about 4 in 10 (39%) chose "It read huge amounts of text from books, websites, and articles". About 1 in 3 (33%) chose "Programmers wrote down rules for how to write". Just under 1 in 4 (23%) chose "People typed in answers to millions of questions", and 1 in 20 (5%) chose "Scientists wrote down every possible response by hand".
+
+The same survey asked what a chatbot like ChatGPT is doing when it answers a question. Of the 2,296 who answered, almost half (45%) chose "Looking up the exact answer in a database", and about 1 in 5 (21%) chose "Following a script of prewritten responses".
+
+Chatbots like ChatGPT run on large language models, which are trained on massive amounts of text. So rules written for how to write do not describe how such a chatbot learned. Generative models (models that make new text, pictures or sound) first learn by copying the patterns of the data they are trained on. They are sometimes trained further on examples for particular tasks.
+
+The answer about people typing is partly true. When ChatGPT launched in November 2022, OpenAI said it fine-tuned (trained further) an already trained model with conversations written by people, who played both the user and the assistant. That was the 2022 version. That is learning from examples, the subject of this lesson. OpenAI's page adds that ChatGPT "has evolved substantially since then".
+
+The limits: this is one online survey, from the US only. It printed four answers and no "not sure" option, and the publisher's article does not discuss this question. We found nothing like it for Ireland or for neurodivergent learners.
+</Deep>
+
+## How learning from examples works
+
+<Simple>
+To learn from examples, a computer is given examples with the right answer marked. An example is one item, such as one message. The answer marked on it is its label, such as "junk".
+
+The computer finds links between the examples and their labels. What it builds is called a model. Finding patterns in examples like this is called machine learning.
+
+"Learn" here means finding patterns in data. It is not learning the way a person does.
+
+People make the choices in both ways. A person writes the rule. People also choose the examples and mark their labels.
+</Simple>
+
+<Deep>
+Learning from labelled examples is called supervised learning. Each example has features and a label. Features are the things a model looks at to make its guess, and the label is the answer. For a message, the features can be the words in it, and the label is "junk" or "not junk".
+
+The sorter in this lesson does not keep a copy of its messages. It stores word counts. Google's course describes a model in supervised learning as a collection of numbers that link patterns in the features to the labels. Training is how the model finds those numbers.
+
+The point of training is to work on new cases: examples the model never saw. Using a trained model on new examples with no labels is called inference.
+
+To check a model, people give it examples whose labels it cannot see. Then they compare its guesses with the real labels.
+
+A model can do badly on new cases unlike its examples. Google's example: 100 years of weather data from July alone would give poor predictions of rain in January.
+
+One classic spam filter is a word-counting model called naive Bayes. It counts how often each word appears in the junk examples and in the not-junk examples. Then it puts a new message in the group whose word counts fit it better. It needs only a small amount of training data. It can also give chance figures, but these are known to be unreliable, so this lesson never shows them.
+</Deep>
+
+<TryIt />
+
+## A rule does exactly what it says
+
+<Simple>
+A written rule does exactly what it says, and nothing more.
+
+Say the rule is: if a message has the word "free" in it, it goes in junk. It would catch "Free bike checks at the sports centre", which is not junk.
+
+It would also let "Win a prize, just click the link" through. That message is junk, but it does not have the word "free".
+
+A written rule can be read. That is one strength of rules. Anyone can see exactly what the rule shown here checks.
+</Simple>
+
+<Deep>
+A rule-based system follows logic that people programmed, exactly as written. It catches every match, even one its writers did not mean, and lets through anything that does not match.
+
+AILit, the OECD and European Union's framework for AI literacy, lists transparency, how easy it is to see how something works, among the things to weigh when choosing between the two ways.
+
+Whether a written rule counts as AI depends on whose definition you use. Ireland's Higher Education Authority (HEA) names rule-based systems as one of the main families of AI. The definition in the EU AI Act, the EU's main AI law, leaves out programs that only carry out rules written by people, and names machine learning as one way an AI system can work things out. Lesson 1.1 has more on this.
+</Deep>
+
+## Each way has its uses
+
+<Simple>
+A model can get things wrong too. It learned only from the examples people gave it. A new message unlike them can end up in the wrong group.
+
+So neither way always wins. Learning from examples needs examples. With only a few, a written rule can do better.
+
+But rules have limits too. A few simple rules are quick to write. A big, complicated set of rules gets too hard to keep working.
+</Simple>
+
+<Deep>
+Machine learning needs data. Google's guide for engineers says that if machine learning is not absolutely required for your product, do not use it until you have data. With a small set of examples, or one without much variety, you may not gain anything from machine learning.
+
+If a simpler way without machine learning already works, use it. Machine learning can cost much more to build, and it often needs looking after for a long time. The simple way is the one a learning system has to beat.
+
+Learning from examples suits tasks that cannot be done in clear, separate steps, such as working with language or recognising faces. So a task that can be written as clear steps may suit a rule.
+
+Choosing between the two means weighing several things: the setting, how much good data there is, speed and cost, how easy it is to see how it works, what you want, and what could go wrong.
+
+Rules lose too. Google's guide for engineers says a simple rule of thumb can get a product started, but a complex one cannot be kept working. Once there is data and a basic idea of the goal, it says to move to machine learning.
+</Deep>

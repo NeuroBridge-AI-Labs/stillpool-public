@@ -1,0 +1,125 @@
+---
+// 2.2's "Find the hidden characters" (stage I, R-2.2). Part 1 is recorded: two answers to a request to summarise a
+// reading, one written with the reading pasted in and one without. Part 2 is not recorded: two pasted texts that read
+// the same, and a token view (src/lib/tokenizer.ts) that marks every invisible code point by name. It never calls a model.
+import { SECRET, TEXT_A, TEXT_B, spelled, view } from '../lib/hidden-characters.ts';
+import { spoken } from '../lib/tokenizer.ts';
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import { compact, replyHtml } from '../lib/reply-html.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.2', 'context');
+const claude = modelOf(rec, variantOf(rec, 'A', 'A')).name;
+const [none, reading] = [variantOf(rec, 'A', 'B').runs[1].reply, variantOf(rec, 'B', 'B').runs[0].reply]; // answer 1 and answer 2
+const asked = variantOf(rec, 'A', 'A').messages![0].content;
+const [a, b] = [view(TEXT_A), view(TEXT_B)];
+const spells = spelled(TEXT_B);
+if (spells !== SECRET || a.hidden.length || TEXT_B.replace(/\p{Cf}/gu, '') !== TEXT_A) throw new Error('2.2: the two texts are not as the lesson says');
+const n = b.hidden.length;
+const INVISIBLE = /^\p{Cf}+$/u;
+const byteHex = (bytes: number[]) => bytes.map((x) => x.toString(16).padStart(2, '0')).join(' ');
+const mark = (h: { name: string; whole: boolean }) => `${h.whole ? '' : 'part of '}hidden: ${h.name}`;
+const LINE =
+  "Tokeniser: o200k_base (gpt-tokenizer 4.0.0). OpenAI's tiktoken library lists it for GPT-4o, GPT-4.1, GPT-5 and its o-series models. Other tokenisers split the same text differently.";
+const UNSURE = ["I can't tell."];
+const YES_NO = (text: string) => [`Yes, ${text} hides something.`, 'No, nothing is hidden.', ...UNSURE];
+const ASK: [string, string, string[], string[]][] = [
+  ['hidden-1', 'Both answers are to a request to summarise a reading. Which answer had the reading pasted in with it?', ['Answer 1', 'Answer 2'], [
+    'you said answer 1 had the reading pasted in. It did not. Answer 1 was written with no reading, and it is guesses with blanks in square brackets. Answer 2 had the reading.',
+    'you said answer 2 had the reading pasted in. It did. Answer 1 had none, and it is guesses with blanks in square brackets.',
+  ]],
+  ['hidden-a', 'Does text A hide anything?', YES_NO('text A'), [
+    'Text A: you said it hides something. It does not: it has no hidden characters.',
+    'Text A: you said nothing is hidden. That is right: it has no hidden characters.',
+    'Text A: you said you could not tell. That is fair: you cannot see hidden characters. It has none.',
+  ]],
+  ['hidden-b', 'Does text B hide anything?', YES_NO('text B'), [
+    `Text B: you said it hides something. It does: ${n} hidden characters.`,
+    `Text B: you said nothing is hidden. It holds ${n} hidden characters you cannot see.`,
+    `Text B: you said you could not tell. That is fair: you cannot see hidden characters. It holds ${n}.`,
+  ]],
+  ['hidden-spell', 'What do the hidden characters in text B spell?', ['A message in plain English.', 'Nothing readable. They are only spacing marks.', ...UNSURE], [
+    `you said they spell a message in plain English. ${spells.length} of them do: they spell "${SECRET}" The other ${n - spells.length} spell nothing.`,
+    `you said they spell nothing readable. ${spells.length} of them do: they spell "${SECRET}" The other ${n - spells.length} spell nothing.`,
+    `you said you could not tell. That is fair. ${spells.length} of them spell "${SECRET}" The other ${n - spells.length} spell nothing.`,
+  ]],
+];
+const views = [['Text A', a], ['Text B', b]] as const;
+---
+
+<Shell title="Find the hidden characters" reveal="Show what happened" class="hidden-characters">
+  <h3>Part 1: two answers</h3>
+  <p>We sent a request to summarise a reading to an AI model twice. It is the same AI, with the same settings. One time the reading was pasted in with the request. The other time it was not. The request and the reading are invented.</p>
+  <blockquote class="sent">{asked}</blockquote>
+  <div class="runs-pair">
+    {[['Answer 1', none], ['Answer 2', reading]].map(([title, text]) => <article class="run"><h4>{title}</h4><div class="reply" set:html={compact(replyHtml(text))} /></article>)}
+  </div>
+  <fieldset>
+    <legend>{ASK[0][1]}</legend>
+    {ASK[0][2].map((text, i) => <label><input type="radio" name={ASK[0][0]} value={i + 1} data-said={ASK[0][3][i]} />{text}</label>)}
+    <p>There is no wrong guess here.</p>
+  </fieldset>
+  <h3>Part 2: two pasted texts</h3>
+  <p>This part was not recorded. No AI answered it. The two texts are invented. Imagine you paste each one into a chat. Their visible words are the same.</p>
+  <h4>Text A</h4>
+  <blockquote class="sent">{TEXT_A}</blockquote>
+  <h4>Text B</h4>
+  <blockquote class="sent">{TEXT_B}</blockquote>
+  {
+    ASK.slice(1).map(([name, question, options, after]) => (
+      <fieldset>
+        <legend>{question}</legend>
+        {options.map((text, i) => <label><input type="radio" name={name} value={i + 1} data-said={after[i]} />{text}</label>)}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>Part 1: what all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={['A', 'B']} />
+    <h3>The two answers you read</h3>
+    <Runs rec={rec} items={[{ label: 'A', maker: 'B', start: 2, caption: 'The request with no reading' }, { label: 'B', maker: 'B', caption: 'The request with the reading pasted in' }]} />
+    <h3>The same request to {claude}</h3>
+    <Runs rec={rec} items={[{ label: 'A', maker: 'A', caption: 'The request with no reading' }, { label: 'B', maker: 'A', caption: 'The request with the reading pasted in' }]} />
+    <h3>Part 2: what is hidden</h3>
+    <p>Text A and text B show the same visible characters. Lines may wrap in different places. Text B holds {n} hidden characters, and text A holds none.</p>
+    <p>{spells.length} of the hidden characters in text B are tag characters. They spell "{SECRET}" The other {n - spells.length} spell nothing. This activity does not test what an AI does with hidden text.</p>
+    <p>{LINE}</p>
+    {
+      views.map(([name, v]) => (
+        <section>
+          <h4>{name} in pieces: {v.tokens.length} pieces</h4>
+          <ol class="pieces" data-pagefind-ignore>
+            {
+              v.tokens.map((t) => {
+                const [words, quoted] = spoken(t.piece);
+                const p = t.piece;
+                const flags = t.holds.map(mark);
+                return (
+                  <li class:list={{ hit: flags.length }}>
+                    <span class="sr">{words}{quoted && <Fragment>"{quoted}"</Fragment>}, number {p.id}{flags.length > 0 && `, ${flags.join(', ')}`}</span>
+                    <span class:list={['box', { part: 'bytes' in p }]} aria-hidden="true">
+                      {'bytes' in p ? `part of a character, bytes ${byteHex(p.bytes)}` : INVISIBLE.test(p.text) ? words : <Fragment>{p.text.startsWith(' ') && <span class="space">·</span>}{p.text.startsWith(' ') ? p.text.slice(1) : p.text}</Fragment>}
+                    </span>
+                    <span class="id" aria-hidden="true">ID {p.id}</span>
+                    {flags.length > 0 && <span class="flag" aria-hidden="true">{flags.join(', ')}</span>}
+                  </li>
+                );
+              })
+            }
+          </ol>
+        </section>
+      ))
+    }
+    <details class="zoom">
+      <summary>Zoom in on the hidden characters in text B</summary>
+      <ol>
+        {b.hidden.map((h) => <li><strong>{h.cp}</strong>, {h.name}. After "{h.after}". Held in piece {h.ids.join(', ')}.</li>)}
+      </ol>
+    </details>
+    <AllRuns rec={rec} said={said} labels={[['A', 'The request with no reading'], ['B', 'The request with the reading pasted in']]} />
+  </Fragment>
+</Shell>

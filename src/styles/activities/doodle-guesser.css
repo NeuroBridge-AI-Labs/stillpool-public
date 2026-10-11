@@ -1,0 +1,35 @@
+/* 1.9's interactive: doodles, ink and bars in the text colour; the guess's bar solid, the others outlined. */
+.doodle-guesser svg {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.doodle-guesser label svg {
+  width: 4rem;
+  stroke-width: 12;
+}
+.doodle-guesser .pad svg {
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  aspect-ratio: 1;
+  border: 2px solid currentColor;
+  touch-action: none;
+  stroke-width: 4;
+  user-select: none; /* drawing must not select the pad: a selected pad shows as a blue fill that stays until a click elsewhere */
+  -webkit-user-select: none;
+}
+.doodle-guesser .bar {
+  display: block;
+  width: 100%;
+  max-width: 12rem;
+  height: 0.75rem;
+}
+.doodle-guesser .bar rect {
+  vector-effect: non-scaling-stroke;
+}
+.doodle-guesser .bar .solid {
+  fill: currentColor;
+}

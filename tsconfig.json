@@ -1,0 +1,7 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "exclude": ["dist", "dist-fixture", "fixtures", "scripts/voice-tool"],
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}

@@ -1,0 +1,87 @@
+/* The search page: the field and button on one row, the title list under the field, and results as a plain list. */
+.search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--s2);
+  margin-top: var(--s1);
+}
+@media (max-width: 479px) {
+  .search-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.combo {
+  position: relative;
+}
+.combo #q {
+  width: 100%;
+}
+#suggestions:not([hidden]) {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 4px);
+  z-index: 1;
+  max-height: min(22rem, 45dvh);
+  margin: 0;
+  padding: var(--s1) 0;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.25rem 12px;
+  cursor: pointer;
+}
+.suggestion small {
+  color: var(--text-muted);
+}
+/* Selected is a bar and a heavier outline as well as a fill, so it never rests on colour alone. */
+.suggestion[aria-selected="true"] {
+  font-weight: 700;
+  background: var(--tint);
+  outline: var(--border-width-strong) solid var(--accent);
+  outline-offset: -2px;
+}
+#results {
+  padding: 0;
+  list-style: none;
+}
+#results li {
+  padding-block: var(--s2);
+  border-top: var(--border-width) solid var(--border);
+}
+#results li a {
+  font-weight: 700;
+}
+#results li p {
+  margin: var(--s1) 0 0;
+  color: var(--text-muted);
+}
+
+/* Search (T9.2): the label and the field are 44 px tall, and the button wraps under the field on a narrow screen. */
+#search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+#search label {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  min-height: 44px;
+}
+#search-status {
+  margin-top: 1rem; /* pr9-review NICE 4: not against the field row */
+}
+#q {
+  flex: 1 1 12rem;
+  min-width: 0;
+}

@@ -1,0 +1,27 @@
+---
+// A lesson's badge emblem (Pool Band v2): a hexagon plate, the lesson's drawing, a bridge and a spark. The strokes carry
+// .t and pathLength="1", so the earning moment can draw them once (global.css); at rest they are the finished picture.
+// Named, when it has a label; decorative when the words beside it already say what it is.
+import { lessonGlyph, symbolId } from '../lib/glyphs.ts';
+
+const { lesson, label, sprite, class: extra } = Astro.props as { lesson: string; label?: string; sprite?: boolean; class?: string };
+const { view, kit, inner } = lessonGlyph(lesson);
+const HEX = 'M48 7 83.5 27.5v41L48 89 12.5 68.5v-41z';
+---
+
+{
+  sprite ? (
+    <svg class:list={['emblem', extra]} viewBox="0 0 96 96" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
+      <use href="#emblem-art" />
+      <use class={kit ? 'kit' : 'ph'} href={`#${symbolId(lesson)}`} x="27" y="19" width="42" height="42" />
+    </svg>
+  ) : (
+    <svg class:list={['emblem', extra]} viewBox="0 0 96 96" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
+      <path class="plate t" pathLength="1" d={HEX} />
+      <path class="rim-in t" pathLength="1" d="M48 14.5 77 31.25v33.5L48 81.5 19 64.75v-33.5z" />
+      <svg class:list={['pop', kit ? 'kit' : 'ph']} x="27" y="19" width="42" height="42" viewBox={`0 0 ${view} ${view}`} set:html={inner} />
+      <path class="bridge t" pathLength="1" d="M31 71Q48 63 65 71" />
+      <circle class="spark pop" cx="48" cy="7" r="4.5" />
+    </svg>
+  )
+}

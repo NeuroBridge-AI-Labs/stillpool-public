@@ -1,0 +1,18 @@
+# p6 D4: what people write about a recording is lesson text. Each entry fails one rule.
+R-9.5:
+  summary: by rule
+R-9.6:
+  summary: All 6 of 6 runs said sorry.
+R-9.4:
+  summary: The warm runs said sorry. Then 40% ended with an emoji.
+R-9.7: {}
+# 1.6: a note on a study named inside a line is shown on the page, so the game-word ban reads it too (p6-15-review S6).
+R-9.3:
+  summary: Fine words.
+  answers:
+    - {maker: A, run: 1, lines: [{line: 1, kind: other, verdict: no-claim, related: [{result: not-found, note: "It tops the leaderboard."}]}]}
+# Pillar 2: a falseText with no reason fails the schema.
+R-9.0:
+  summary: Fine words.
+  marks:
+    - {variant: A, maker: A, run: 1, shows: true, note: Fine words., falseText: The sky is green.}

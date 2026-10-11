@@ -1,0 +1,30 @@
+/* 1.7's interactive: every shape, line and word in the text colour, told apart by shape and dash, never by colour. */
+.watch-it-learn svg {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  fill: none;
+  stroke: currentColor;
+}
+.watch-it-learn svg text {
+  fill: currentColor;
+  stroke: none;
+}
+/* Each choice's own picture beside its words (design run 33 D4), small, so the words keep their room on a phone. */
+.watch-it-learn :is(svg.pick, input) {
+  flex: none;
+}
+.watch-it-learn svg.pick {
+  width: 6rem;
+}
+/* With large text on a narrow phone the words go under the picture, so the page never scrolls sideways. */
+.watch-it-learn label:has(.pick) {
+  flex-wrap: wrap;
+}
+/* 1.7's "Watch it learn": with JavaScript, only the current round shows, in the words and in both charts; as text or
+   without JavaScript, every round's words show, each chart draws only the last round, and the three lines are in words. */
+html[data-js]:not([data-textversion]) .watch-it-learn :is([data-round]:not(.now), .as-text),
+html:is(:not([data-js]), [data-textversion]) .watch-it-learn :is(svg [data-round]:not([data-last]), fieldset.pictures) {
+  display: none;
+}

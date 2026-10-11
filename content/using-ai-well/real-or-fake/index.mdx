@@ -1,0 +1,209 @@
+---
+title: Real or fake?
+promise: Can name the checks to make before trusting or sharing a photo, voice message or video
+minutes: {simple: 8, deep: 14}
+tldr:
+  - Looking or listening closely does not reliably show whether a photo, voice or video is AI-made.
+  - So the first honest answer is "can't tell yet". Check who posted it, look for it elsewhere, and call back on a number you already have.
+  - A label, such as a content credential, or a watermark in a file is one more piece of evidence. It does not settle the question alone.
+misconceptions: [M3]
+interactive: stop-and-check
+inputs: [src/lib/stop-and-check.ts, src/lib/cases.ts, src/components/Cases.astro, src/components/StopAndCheck.astro]
+competencies: [UNESCO-AICFS-4.2.2, UNESCO-AICFS-CG4.2.2.3, UNESCO-AICFS-CG4.3.1.1, HEA-P3, HEA-PEA-2.3.1-c, AILIT-C4, AILIT-E3]
+checkin:
+  - question: A voice message comes from a number you do not know. It sounds like your cousin and asks for money. What is the best first step?
+    options:
+      - text: Call your cousin on a number you already have.
+        why: Yes. ComReg is Ireland's communications regulator. It says to look up official contact details. It says never to use a number given by the caller. The FBI, the US Federal Bureau of Investigation, says to call the number directly.
+        right: true
+      - text: Reply to the message and ask if it is really them.
+        why: Not this one. Your reply goes to the same unknown sender. ComReg says "Never use a number given to you by the caller."
+      - text: Trust it, because the voice sounds just like your cousin.
+        why: Not this one. In one study, listeners spotted fake clips 73% of the time, about 7 in 10. A voice that sounds right is not proof.
+      - text: Send a small amount first and ask questions later.
+        why: Not this one. The FBI says to check who is calling by hanging up and calling a number you found yourself.
+  - question: A photo has no content credential. What does that show?
+    options:
+      - text: Nothing by itself. A credential can be removed, so a missing one does not show if the photo is real or fake.
+        why: Yes. The C2PA explainer asks "Can the provenance metadata be removed?" and answers "Yes it can."
+        right: true
+      - text: That the photo is fake.
+        why: Not this one. A credential can be removed, so a photo without one may still be real.
+      - text: That the photo is real.
+        why: Not this one. A credential can be removed, and a photo may never have had one. A missing credential does not show a photo is real.
+      - text: That an AI tool made it.
+        why: Not this one. Nothing in the C2PA explainer says a missing credential means AI made the file.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can name the checks to make before you trust or share a photo, voice or video.
+glossary:
+  - term: fake
+    meaning: In this lesson, a photo, voice or video made by AI that looks or sounds real.
+  - term: voice cloning
+    meaning: Using AI to make audio that sounds like a real person's voice.
+  - term: provenance
+    meaning: The facts about the history of a file, such as where it was made and what was done to it.
+  - term: content credential
+    meaning: A signed record of a file's provenance, attached to the file.
+  - term: watermark
+    meaning: A mark put into a file. A visible one is a name or logo on top. An invisible one is hidden, and a tool can later look for it.
+whereNext:
+  title: C2PA and Content Credentials Explainer
+  text: A 16-page PDF from the group that wrote the credential standard. It is one file. When we opened it on 9 October 2026, it made one request, to spec.c2pa.org only, and set no cookies. It is technical, so start with its question and answer section.
+  url: https://spec.c2pa.org/specifications/specifications/2.2/explainer/_attachments/Explainer.pdf
+sources:
+  - title: "Nightingale and Farid, AI-synthesized faces are indistinguishable from real faces and more trustworthy, PNAS, 14 February 2022"
+    url: https://doi.org/10.1073/pnas.2120481119
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Mai and others, Warning: Humans cannot reliably detect speech deepfakes, PLOS ONE, 2 August 2023"
+    url: https://doi.org/10.1371/journal.pone.0285333
+    licence: CC-BY-4.0
+    use: cite
+  - title: "ComReg, Scam Calls (page read on 9 October 2026; it shows no date)"
+    url: https://www.comreg.ie/ga/comhairle-eolas/scam-calls-4/
+    licence: "The site's Copyright page, linked in the page footer (read in Irish): the sites may be copied for viewing only, not for distribution"
+    use: cite
+  - title: "FBI Internet Crime Complaint Center, Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud, alert I-120324-PSA, 3 December 2024"
+    url: https://www.ic3.gov/PSA/2024/PSA241203
+    licence: No licence stated
+    use: cite
+  - title: "Mike Caulfield, SIFT (The Four Moves), 19 June 2019"
+    url: https://hapgood.us/2019/06/19/sift-the-four-moves/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "C2PA, C2PA and Content Credentials Explainer, version 2.2, 22 April 2025"
+    url: https://spec.c2pa.org/specifications/specifications/2.2/explainer/_attachments/Explainer.pdf
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google DeepMind, Identifying AI-generated images with SynthID, 29 August 2023"
+    url: https://deepmind.google/blog/identifying-ai-generated-images-with-synthid/
+    licence: No licence stated
+    use: cite
+  - title: "Google DeepMind, Watermarking AI-generated text and video with SynthID, 14 May 2024"
+    url: https://deepmind.google/blog/watermarking-ai-generated-text-and-video-with-synthid/
+    licence: No licence stated
+    use: cite
+  - title: "Zhao and others, Invisible Image Watermarks Are Provably Removable Using Generative AI, NeurIPS 2024 (arXiv 2306.01953, version 3, 31 October 2024)"
+    url: https://arxiv.org/abs/2306.01953
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Regulation (EU) 2024/1689 (AI Act), consolidated text of 27 July 2026, Articles 50 and 111"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727
+    licence: EU legal text, Decision 2011/833/EU
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## Looking is not a check
+
+<Simple>
+AI is technology that lets computer systems imitate human learning and problem solving. It can make photos, voices and videos that look and sound real. In this lesson, we call these fakes. This lesson is about what to do before you trust or share one.
+
+Two studies tested how well people can tell.
+
+A paper published in 2022 reports a test with 315 people. They saw faces, each real or made by a computer. People were right 48.2% of the time, about half. That is close to chance, the score you would expect from guessing between two answers.
+
+A paper published in 2023 reports a test with 529 people. Some heard one short speech clip at a time. They correctly spotted the fake clips 73% of the time, about 7 in 10. So they missed about 3 in 10 fake clips.
+
+These studies tested faces and speech clips, not video. They show that looking or listening hard is not a safe check.
+</Simple>
+
+<Deep>
+Nightingale and Farid (published 14 February 2022) used 800 faces, some real and some made by a computer. Each person judged 128 of them. A second group of 219 people got training and feedback after each answer. They scored 59.0% on average. Their score did not rise over the test: 59.3% on the first 64 faces and 58.8% on the second 64. The paper calls the first group's score "close to chance performance of 50%". The people were paid workers from an online platform, so they are not a sample of everyone. The text we read does not give the dates of the testing.
+
+Mai and others (published 2 August 2023) used clips of one speaker in each language reading sentences, in English and in Mandarin. When a person heard one clip at a time, they were right 70.35% of the time overall. They called 67.78% of the real clips real. A speech deepfake is a voice made by a machine learning model. Machine learning means a computer finds patterns in examples. The paper says that "providing examples of speech deepfakes only improves results slightly", and that detection should get harder as speech tools improve.
+
+The notice of 3 December 2024 from the US Federal Bureau of Investigation (FBI) lists signs to look for, such as "distorted hands or feet, unrealistic teeth or eyes". The two studies above found that people's own judgement was not reliable. Lesson 1.9, Images and sound, shows how AI handles pictures and sounds.
+</Deep>
+
+## Three checks that do not depend on the file
+
+<Simple>
+The file itself cannot settle it. So check things outside the file.
+
+First, stop. Do not share it until you know what it is. Mike Caulfield wrote SIFT, a set of four moves for checking online media. SIFT says the same.
+
+Then try these three checks. Each one points outside the file.
+
+**Who posted it?** Find out who is behind the post before you trust it.
+
+**Is it somewhere else?** Look for the same photo, clip or story in other places you trust. Trace the photo or clip back to where it first appeared.
+
+**Can you reach the person another way?** If a call or message asks for money, end it. Look up the official contact details and call back. Never use a number given by the caller.
+
+A call that pushes you to act fast is a warning sign. If your family made a secret word, ask for it.
+</Simple>
+
+<Deep>
+SIFT is four moves written by Mike Caulfield (post dated 19 June 2019): "Stop", "Investigate the source", "Find better coverage", and "Trace claims, quotes, and media back to the original context". Our first two checks follow its last three moves. Calling back comes from ComReg and the FBI, below. The page says of the first move: "Don't read it or share media until you know what it is."
+
+ComReg, Ireland's communications regulator, says: "Instead, end the call, look up their official contact details and contact them back to verify if the call is legitimate." It also says: "Never use a number given to you by the caller." It says to "Hang up if a caller pressures you, claims that urgent action is needed or threatens negative consequences." We read the page on 9 October 2026. It shows no date.
+
+The FBI's notice of 3 December 2024 says criminals can use AI-made audio "to impersonate well-known, public figures or personal relations to elicit payments". It advises: "Create a secret word or phrase with your family to verify their identity." It also advises hanging up, "researching the contact of the bank or organization purporting to call you, and call the phone number directly."
+</Deep>
+
+## What labels and hidden marks can show
+
+<Simple>
+Some files carry a label. A content credential is a record of a file's history, attached to the file. It can say where the file was made, what was done to it and whether AI was used.
+
+The Coalition for Content Provenance and Authenticity (C2PA) is a group. It was formed to build an open standard for checking where digital content came from. A standard is a set of rules that many groups agree to follow.
+
+It wrote the standard for credentials, which are digitally signed. A digital signature is a code added to a record. It helps show who signed the record and that it has not changed.
+
+The signer is whoever signed the record. A trust list is a list of who a tool will trust, like the lists a web browser keeps.
+
+C2PA says a tool can check three things about a credential. Its record has not been tampered with. The record belongs to this file. The signer is linked to a known trust list. Checks like these do not say that the record is "true".
+
+A credential can be removed. C2PA's own list of common questions asks if the record can be removed. It answers "Yes it can." So a missing credential does not show if a file is real or fake.
+
+A watermark is a mark put into a file. Some are visible, like a logo across a picture. An invisible watermark is hidden, and a tool can look for it.
+
+Google's tool for this is SynthID. Google says its mark can survive filters and colour changes. Google also says it is not foolproof against extreme changes.
+
+Treat a label or mark as one more piece of evidence.
+</Simple>
+
+<Deep>
+The C2PA explainer (version 2.2, 22 April 2025) says a Content Credential is "a cryptographically bound structure that records an asset's provenance". Cryptographically bound means tied to the file by a mathematical code, so a change to the file or the record no longer matches. It holds statements about an asset, such as its origin, what was done to it with which tools, and "use of AI". It says credentials show "whether the provenance information is well-formed and free from tampering, valid and trusted". It also says "It is not a cure-all for misinformation". To help when metadata (data about a file, such as when and where it was made) is removed, it describes "durable Content Credentials", which add a watermark or fingerprint (a way to recognise a file by its content) so the credential can be found again in cloud storage (files kept online by a company).
+
+Google DeepMind (29 August 2023) calls SynthID "a tool for watermarking and identifying AI-generated images". It says the mark remains detectable "even after modifications like adding filters, changing colours" and after lossy compression, and that "SynthID isn't foolproof against extreme image manipulations". For text, Google DeepMind (14 May 2024) says SynthID's "confidence scores can be greatly reduced when an AI-generated text is thoroughly rewritten or translated". These are Google's own statements about its own tool.
+
+Zhao and others (NeurIPS 2024) report a "regeneration attack": add random noise to an image to destroy the watermark, then rebuild the image. They found that "pixel-level invisible watermarks are vulnerable" to it, across four methods. A pixel is one dot of an image. Their abstract does not name SynthID. They add that watermarks that keep the image meaning could be a defence.
+</Deep>
+
+## What the EU law says
+
+<Simple>
+The European Union (EU) has a law on AI, called the AI Act.
+
+It has a rule for certain AI systems that create images, audio, video or text. Their providers must mark what the systems make, so a machine can detect it.
+
+A provider makes an AI system, or has one made. It then offers the system under its own name.
+
+There are exceptions. One is for systems that only help with standard editing. Systems already on the market before 2 August 2026 have until 2 December 2026. Lesson 3.7, The law: AI rules in Ireland and the EU, covers the law.
+</Simple>
+
+<Deep>
+Article 50(2) says providers of AI systems "generating synthetic audio, image, video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable format and detectable as artificially generated or manipulated." Article 3(3) says a provider is a natural or legal person, public authority, agency or other body that develops an AI system, or has one developed, and places it on the market or puts it into service "under its own name or trademark". The duty is on the provider, not on a person who makes a picture. The duty "shall not apply to the extent the AI systems perform an assistive function for standard editing or do not substantially alter the input data provided by the deployer or the semantics thereof, or where authorised by law to detect, prevent, investigate or prosecute criminal offences." Article 111(4) says providers whose systems were on the market before 2 August 2026 "shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026." We read the consolidated text of 27 July 2026 on 9 October 2026. A mark does not show that a file is true, as the section above says.
+</Deep>
+
+## Stop and check
+
+<Simple>
+Stop and check shows three invented scenarios, one at a time. They are a photo in a group chat, a voice message and a video. For each, you pick real, fake or can't tell yet.
+
+Then you see our reading and the checks to make before you trust or share it.
+
+Looking or listening did not settle it in the studies above. So "can't tell yet" comes first, and the checks come before any answer. Nothing is scored.
+</Simple>
+
+<Deep>
+Each scenario is text, with the picture or sound described in words. No real person, voice or face is used. The outcome shown for each is invented, and the page says so. It shows how the checks work. It does not show how often a check works.
+</Deep>
+
+<TryIt />

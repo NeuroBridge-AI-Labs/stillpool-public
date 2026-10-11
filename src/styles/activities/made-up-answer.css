@@ -1,0 +1,7 @@
+.made-up-answer [data-answer], .made-up-runs [data-answer] { overflow-x: auto; }
+.study-line { display: flex; flex-wrap: wrap; column-gap: 0.5rem; }
+.study-line > .reply { flex: 1 1 12rem; min-width: 0; }
+.made-up-answer [data-answer-line], .made-up-runs [data-answer-line] { white-space: pre-wrap; overflow-wrap: normal; word-break: normal; font: inherit; }
+.made-up-runs summary { min-height: 44px; display: flex; align-items: center; }
+.answer-token, .doi-part { white-space: nowrap; }
+html[data-js]:not([data-textversion]) .made-up-answer:not(.revealed) ~ .made-up-runs { display: none; }

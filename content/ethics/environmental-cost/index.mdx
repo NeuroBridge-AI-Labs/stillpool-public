@@ -1,0 +1,300 @@
+---
+title: "Environmental cost"
+promise: Can compare AI's energy and water use with everyday things, using honest ranges
+minutes: {simple: 8, deep: 14}
+tldr:
+  - AI runs on large computers in data centres. They use electricity, and some use water to cool the machines.
+  - Published figures for one text answer differ. Each one is for one product, one way of counting and one date.
+  - In Ireland, data centres used about 23% of metered electricity in 2025, nearly 1 in 4. They run many services, not only AI.
+misconceptions: [M8]
+interactive: energy-and-water
+inputs: [src/lib/energy-and-water.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.1.2, UNESCO-AICFS-CG4.1.2.2, UNESCO-AICFS-CG4.1.4.3, HEA-P5, AILIT-E5]
+checkin:
+  - question: Google said a median text prompt to its Gemini Apps used 0.24 watt-hours in May 2025. How should you read that figure?
+    options:
+      - text: As one company's figure for one product, one kind of prompt and one month.
+        why: Yes. Google counted its own system, including idle machines and data centre overhead. Other sources count in other ways.
+        right: true
+      - text: As the energy of every AI answer.
+        why: Not this one. Google's own paper gives 0.10 for a narrower count. Epoch AI and OpenAI's chief executive give 0.3 and 0.34 for another product.
+      - text: As proof that AI uses no real electricity.
+        why: Not this one. One answer is small. But data centres together used about 1.5% of the world's electricity in 2024, says the IEA.
+      - text: As the energy of an image or a video.
+        why: Not this one. Google's figure is for text prompts. We found no dated figure for images or video.
+  - question: The CSO says data centres used nearly 1 in 4 units of Ireland's metered electricity in 2025 (23%). What does that show?
+    options:
+      - text: The share used by data centres for all their services, not AI alone.
+        why: Yes. The CSO finds data centres by name and counts all the electricity they use. It does not split out AI.
+        right: true
+      - text: The share of Irish electricity used by AI.
+        why: Not this one. Data centres also run storage, websites, video and business systems. The CSO gives no AI share.
+      - text: The share of each home's electricity bill.
+        why: Not this one. It is a share of all metered electricity in the country. Homes used about 28% in 2025.
+      - text: A forecast for 2030.
+        why: Not this one. It is a measured figure for 2025, from meter data.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You compared AI's energy and water use with everyday things, using ranges from named sources.
+glossary:
+  - term: data centre
+    meaning: A building full of computers that store data and run online services, including AI.
+  - term: watt-hour
+    meaning: A small unit of electricity. A 10 watt lamp left on for one hour uses 10 watt-hours.
+  - term: median
+    meaning: The middle value. At least half the prompts used this much or less. At least half used this much or more.
+  - term: water consumed
+    meaning: Water taken from a source and not returned soon, for example because it evaporates.
+  - term: training
+    meaning: The stage where a model learns from examples. It happens before people use the model.
+  - term: boundary
+    meaning: What a figure counts. Chips only, or the whole building, or the making of the machines.
+whereNext:
+  title: Lesson 3.8 and Lesson 4.9
+  text: Lesson 3.8 asks what trustworthy AI needs. Lesson 4.9 will cover when a person, a book or your own thinking is the better tool.
+sources:
+  - title: "Vahdat and Dean (Google), How much energy does Google's AI use? We did the math, Google Cloud blog, 21 August 2025"
+    url: https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference
+    licence: All rights reserved
+    use: cite
+  - title: "Elsworth and others (Google), Measuring the environmental impact of delivering AI at Google Scale, arXiv 2508.15734"
+    url: https://arxiv.org/abs/2508.15734
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Josh You (Epoch AI), How much energy does ChatGPT use?, 7 February 2025"
+    url: https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use
+    licence: Creative Commons Attribution, version not stated
+    use: cite
+  - title: "Sam Altman, The Gentle Singularity, June 2025"
+    url: https://blog.samaltman.com/the-gentle-singularity
+    licence: No licence stated
+    use: cite
+  - title: "International Energy Agency, Energy and AI, 10 April 2025"
+    url: https://www.iea.org/reports/energy-and-ai
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Mistral AI, Our contribution to a global environmental standard for AI, 22 July 2025"
+    url: https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai
+    licence: No licence stated
+    use: cite
+  - title: "Li, Yang, Islam and Ren, Making AI Less Thirsty, arXiv 2304.03271"
+    url: https://arxiv.org/abs/2304.03271
+    licence: arXiv non-exclusive licence
+    use: cite
+  - title: "Luccioni, Viguier and Ligozat, Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model, arXiv 2211.02001"
+    url: https://arxiv.org/abs/2211.02001
+    licence: CC BY-NC-SA 4.0
+    use: cite
+  - title: "Patterson and others, Carbon Emissions and Large Neural Network Training, arXiv 2104.10350"
+    url: https://arxiv.org/abs/2104.10350
+    licence: arXiv non-exclusive licence
+    use: cite
+  - title: "Central Statistics Office, Data Centres Metered Electricity Consumption 2025, 7 July 2026"
+    url: https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/
+    licence: CSO Copyright and Re-use Policy
+    use: cite
+  - title: "Carbon Trust, Carbon impact of video streaming, 2021"
+    url: https://www.carbontrust.com/our-work-and-impact/guides-reports-and-tools/carbon-impact-of-video-streaming
+    licence: All rights reserved
+    use: cite
+  - title: "Urs Hölzle (Google), Powering a Google search, Official Google Blog, 11 January 2009"
+    url: https://googleblog.blogspot.com/2009/01/powering-google-search.html
+    licence: No licence stated
+    use: cite
+  - title: "Uisce Éireann, Water Shortages and Restrictions, checked 3 October 2026"
+    url: https://www.water.ie/help/supply/water-shortages
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+signed: false
+---
+
+## What AI runs on
+
+<Simple>
+You ask a chatbot a question. The work happens on large computers. They sit in buildings called data centres.
+
+Those computers use electricity. Some data centres also use water to cool the machines.
+
+A data centre holds computers for many services, not only AI. So a count of data centre electricity is not a count of AI. The International Energy Agency (IEA) says data centres used about 1.5% of the world's electricity in 2024.
+</Simple>
+
+<Deep>
+The International Energy Agency (IEA) said in its report "Energy and AI", published 10 April 2025: "Training and deploying AI models takes place in large and power-hungry data centres." It estimated that data centres used "around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh)". Its Base Case for 2030 is "around 945 TWh". It adds: "Uncertainties widen further after 2030". It calls AI "the most important driver of this growth, alongside growing demand for other digital services", and gives no figure for AI's own share of the 415.
+
+The IEA also says: "A typical AI-focused data centre consumes as much electricity as 100 000 households, but the largest ones under construction today will consume 20 times as much." This is the IEA's estimate as at its 2025 report.
+</Deep>
+
+## One answer: a range, not one number
+
+<Simple>
+How much electricity does one chat answer use? There is no single number. Each source gives a figure for one product, one way of counting and one date.
+
+Gemini Apps is Google's chatbot. In August 2025 Google said a median text prompt to it used 0.24 watt-hours in May 2025. A prompt is the text you send. A watt-hour is a small amount of electricity. Google says this is less than nine seconds of TV.
+
+Epoch AI is an independent research group. In February 2025 it estimated about 0.3 watt-hours for a typical ChatGPT query. OpenAI's chief executive wrote in June 2025 that the average query uses about 0.34 watt-hours. No method was given.
+
+So for an ordinary text answer, these three figures sit close together. But they are for different products and different ways of counting.
+
+A long article sent with your question can cost more. Epoch's estimate for that is about 2.5 watt-hours.
+</Simple>
+
+<Deep>
+Google's figure is a measurement in its own production system, not a test we ran. Google's paper (21 August 2025) counts four parts of the 0.24 watt-hours: active AI chips 0.14, the host computer's processor and memory 0.06, idle machines 0.02 and data centre overhead 0.02. It also gives a narrower count of "only 0.10 Wh per prompt", which uses a sample of more highly used machines in the most efficient data centres, and leaves out the host, idle machines and overhead. The paper says the full count "is 2.4 times greater than the estimate from the existing approach". The figure is for the median text prompt in Gemini Apps. The paper does not give that prompt's length.
+
+Epoch's page (7 February 2025, by Josh You) says: "We find that typical ChatGPT queries using GPT-4o likely consume roughly 0.3 watt-hours". It assumes 500 output tokens, a mixture-of-experts model with 100 billion active parameters, and H100 chips. It is an estimate from public facts, not a measurement of OpenAI's systems. It says that "queries with long input lengths or with longer outputs (e.g. using reasoning models) may be substantially more energy-intensive". For input it estimates "a long input of 10k tokens (similar to a short paper or long magazine article)" at "around 2.5 watt-hours", and 100k tokens at "almost 40 watt-hours". Epoch calls an older figure of 3 watt-hours per query "likely an overestimate".
+
+OpenAI's chief executive wrote in "The Gentle Singularity" (the page shows no date; it was posted on 10 June 2025): "the average query uses about 0.34 watt-hours, about what an oven would use in a little over one second". This is that company's statement, with no published method.
+
+Google reports that the energy of its median text prompt fell 33 times in a year, from May 2024 to May 2025. That is one company's per-prompt claim. It does not say that Google's total electricity use fell. We found no dated figure for images, video or reasoning models, so none is stated here.
+</Deep>
+
+## Compare it with everyday things
+
+<Simple>
+Here are three comparisons. They are our own arithmetic, from the figures above. We used 0.24 to 0.34 watt-hours for one text answer.
+
+- An LED lamp on for one hour uses as much as about 25 to 35 text answers.
+- One two-minute kettle boil uses as much as about 175 to 250 text answers.
+- One hour of video streaming in Europe in 2020 uses as much as about 550 to 780 text answers.
+
+The streaming count is wide. It includes the screen you watch on and your home router. A count of only the data centre would be much smaller.
+
+So the way a comparison is drawn can make AI look small or large.
+</Simple>
+
+<Deep>
+The lamp and kettle rows are from the Carbon Trust's white paper "Carbon impact of video streaming" (2021), Table 7: an LED lamp for one hour at 8.5 watts is 8.5 watt-hours, and an electric kettle boil of two minutes at 1,800 watts is 60 watt-hours. Those are the white paper's own assumptions, from 2021 sources. Our arithmetic: 8.5 divided by 0.34 is 25, and 8.5 divided by 0.24 is 35. 60 divided by 0.34 is 176, and 60 divided by 0.24 is 250.
+
+The white paper gives one hour of video-on-demand streaming in Europe as "188Wh per hour of video streaming using the conventional approach", with network figures for 2020. Viewing devices and their peripherals make up 96 watt-hours, "the remaining 51%", and home routers 71 watt-hours (38%). The data centre is about 1 watt-hour. The paper warns that its figures "are not designed to be used as representative figures for any given scenario". Our arithmetic: 188 divided by 0.34 is 553, and 188 divided by 0.24 is 783.
+
+Google's own comparison, in its blog and paper, is "less than nine seconds" of TV at about 100 watts. Epoch's: 0.3 watt-hours "is less than the amount of electricity that an LED lightbulb or a laptop consumes in a few minutes". In 2009, Google said one web search took "0.0003 kWh of energy per search, or 1 kJ". That is 0.3 watt-hours, one company's claim, 17 years old, and not a current measure.
+</Deep>
+
+## Water
+
+<Simple>
+Some data centres use water to cool the machines. Water is "consumed" when it does not go back soon, for example because it evaporates.
+
+Water figures differ even more than energy figures. Google said a median text prompt used 0.26 millilitres in May 2025. That is about five drops. Google counted water used to cool machines in data centres.
+
+In July 2025 Mistral AI published a study of its own model. For one answer from its chat assistant, it gave 45 millilitres. It counted more than Google did, including impacts from before the answer is made.
+
+A computer-model study looked at an older model, GPT-3. It found one 500 millilitre bottle is used up for about 10 to 50 answers. It also counted water used to make the electricity.
+
+A person in Ireland uses about 133 litres of water a day, says Uisce Éireann, the national water company. A 500 millilitre bottle is far smaller than that.
+
+The bottle holds enough for about 1,900 prompts at Google's estimated water use. It holds enough for only about 11 of Mistral's answers.
+
+That is a gap of more than 100 times. The sources count different things.
+</Simple>
+
+<Deep>
+Google's boundary, in its paper: "the water consumed for cooling machines and associated infrastructure in data centers". Its narrower count is 0.12 millilitres in the paper's table and in Google's blog. One sentence in the paper's text says 0.15, so the paper disagrees with itself, and we do not treat either as settled. The paper compares its 0.26 millilitres, "five drops of water (based on a standard 0.05 mL drop)", with earlier estimates of 45 and 50 millilitres.
+
+Mistral's lifecycle assessment was done with the consultancy Carbone 4 and France's ecological transition agency ADEME, and Mistral says it was reviewed by Resilio and Hubblo. Mistral states "the marginal impacts of inference, more precisely the use of our AI assistant Le Chat for a 400-token response - excluding users' terminals: 1.14 gCO₂e, 45 mL of water". Mistral says the figures "also include 'upstream emissions'". This is Mistral's own account of its own study, for its Mistral Large 2 model. The 45 millilitres counts upstream impacts for one answer under that method. It does not give the model's whole life to one answer.
+
+Li, Yang, Islam and Ren (arXiv, first version 6 April 2023, current version 26 March 2025) modelled GPT-3 in Microsoft's data centres: "GPT-3 needs to 'drink' (i.e., consume) a 500ml bottle of water for roughly 10 – 50 medium-length responses, depending on when and where it is deployed." Their count adds water used on site to water used to produce the electricity. It is a model of a 2020 system, not a measurement of any product today. They also model that training GPT-3 in Microsoft's US data centres "can directly evaporate 700,000 liters of clean freshwater", on site.
+
+Our arithmetic for the bottle: 500 divided by 0.26 is about 1,923, and 500 divided by 45 is about 11. Uisce Éireann's page (checked 3 October 2026) says: "The average person in Ireland uses about 133 litres of water a day."
+</Deep>
+
+## Training and everyday use
+
+<Simple>
+Training is when a model learns from examples. Lesson 1.7 explains how. Training takes a lot of electricity. The final training run is only part of the work that goes into a model.
+
+After that, every answer is a separate, smaller cost. It repeats each time someone asks.
+
+One model, BLOOM, was trained in 2022 in France. The chips alone used about as much electricity as 40 US homes use in a year.
+
+The sources give training and answer figures in different units. So we do not add them up.
+</Simple>
+
+<Deep>
+Luccioni, Viguier and Ligozat (arXiv, 3 November 2022) report for BLOOM: "Total training time 118 days, 5 hours, 41 min", "Total number of GPU hours 1,082,990 hours" on Nvidia A100 chips, and "Total energy used 433,196 kWh". That count leaves out the computers' processors: they "do not consider the power usage of CPUs". Their emissions are 24.7 tonnes of CO₂ equivalent from the chips' dynamic energy, and 50.5 tonnes when idle machines and the making of the equipment are added.
+
+Their Table 4 compares four models: GPT-3 1,287 megawatt-hours, Gopher 1,066, BLOOM 433 and OPT 324. The authors say that accounting is not standardised, that some numbers were inferred from other papers, and that "an exact comparison is difficult". The 1,287 is from Patterson and others, 2021: "its energy consumption is 1287 MWh".
+
+The paper also reports about 1.16 million kWh for all the experiments of the wider BigScience workshop (its text gives 1,163,032 kWh, and its Table 5 prints a total of 1,163,088 kWh, though the table's eight rows sum to 1,162,976), so BLOOM's final run is only part of its development.
+
+Our arithmetic for the homes: Epoch gives the average US household as 10,500 kilowatt-hours a year. 433,196 divided by 10,500 is 41. That is a US figure, and it counts only the chips.
+
+We found no source that says when the electricity for answers passes the electricity for training, so none is stated.
+</Deep>
+
+## The Energy and water estimator
+
+<Simple>
+This lesson has a toy, the Energy and water estimator. We made it for this lesson. It holds only the sourced figures on this page.
+
+First you pick where a task sits next to an everyday thing. For example: one text answer next to a kettle boil. Then it shows the sourced range in words.
+
+Nothing is scored. Each range shows its source and its date.
+</Simple>
+
+<Deep>
+The estimator's data is the figures above, each tied to its source: text answers, a long article, streaming, a kettle, a lamp, a water bottle and BLOOM's training. The toy is not a model of any named product. It shows no count or percentage as a score.
+</Deep>
+
+<TryIt />
+
+## Why the numbers differ
+
+<Simple>
+Six things can change a figure:
+
+- What is counted: chips only, or the whole building, or the making of the machines.
+- Which model it is, and how big.
+- How long the question and the answer are.
+- Who measured it: the company itself, or someone outside.
+- The year. Machines and software change fast.
+- The place. Cooling, power and water supply differ.
+
+Check these before you trust one number or compare two.
+</Simple>
+
+<Deep>
+Google's paper gives three reasons its figures are below many earlier ones: it measured in place, other measurements use "open-source models that are likely not at the Pareto frontier of performance efficiencies", and production serving uses "efficient batching of prompts at scale". It also says: "Without it, reported figures can vary by orders of magnitude for similar tasks." Those are the authors' own explanations, not tests we ran.
+
+Every company figure in this lesson is that company's claim, on its date. Outside estimates rest on assumptions, and say so.
+</Deep>
+
+## Ireland's data centres
+
+<Simple>
+The Central Statistics Office (CSO) counts the electricity that meters record in Ireland. It finds data centres by name and by other clues.
+
+In 2015, data centres used about 5% of it. In 2025 they used 23%, nearly 1 in 4.
+
+Homes used about 28% in 2025. Data centre use rose 10% from 2024 to 2025, which is 1 in 10 more.
+
+These figures are for all data centre services. They are not an AI count.
+</Simple>
+
+<Deep>
+The CSO's release "Data Centres Metered Electricity Consumption 2025" says data centres' share of total metered electricity "rose to 23% in 2025 from 5% in 2015". The page's heading line reads 7 July 2025, and its Statistician's Comment reads 7 July 2026. The data is for 2025, so this lesson uses 7 July 2026. The release says data centre use rose "from 6,973 Gigawatt hours (GWh) in 2024 to 7,663 GWh in 2025", and "Consumption by all other users, including residential and other business customers, went up by 2% over the same period". In 2015 it was 1,240 GWh, and in 2022 it was 5,273 GWh. The shares by year in its Table 1 were 18% in 2022, 21% in 2023 and 22% in 2024. It adds that "Data centre consumption has grown every single year without exception". Households took 28% in 2025, "compared with 23% by data centres".
+
+The CSO explains: "As data centres are not separately classified in the source data the CSO uses various approaches to identify them including name searches for known data centre operators, information from industry reports and internet searches, and examination of high consumption customers to determine the business sector they are in." The release gives no AI share. We found no dated source for water use by Irish data centres, so none is stated.
+</Deep>
+
+## What to ask about any figure
+
+<Simple>
+When you see a figure about AI and energy or water, ask:
+
+- Which product, and which date?
+- What was counted?
+- Who measured it, and how?
+- Is it one answer, a model's training, or a whole country?
+
+The site's own line applies here: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values."
+
+Lesson 4.9 will cover when to use AI and when not to.
+</Simple>
+
+<Deep>
+Mixed evidence stays mixed. A low per-answer figure and a rising national total can both be true: Google's figure is per prompt, and the CSO's is the total for a country. Neither shows whether AI is the cause of the national rise. Lesson 5.1 will cover how a chatbot is made.
+</Deep>

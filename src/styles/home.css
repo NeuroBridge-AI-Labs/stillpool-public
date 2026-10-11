@@ -1,0 +1,412 @@
+/* The home page (Pool Band v2, approved by Emanuel 04-10-26; .ops/design/mockups/pool-band-v2): NeuroBridgeEDU's blue band
+   with the welcome, the Start button and the video poster, then the map on the page's own ground. The band is the same
+   blue as the header and the lesson head (global.css .band); in dark it is never lighter than the ground. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1fr) minmax(0, 600px);
+  column-gap: calc(var(--s6) + var(--s1));
+  align-items: center;
+  padding: var(--s6) var(--s5) calc(var(--s6) + var(--s1)) 0;
+}
+.hero h1 {
+  margin: 0;
+  font-size: max(1rem, min(2.45rem, 9vw));
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.hero h1 span {
+  display: block;
+  color: var(--glow);
+}
+.intro {
+  max-width: 26rem;
+  margin: var(--s2) 0 0;
+  font-size: 1.05rem;
+  color: var(--pool-muted);
+}
+/* The one call to action. Its text stays dark navy on the yellow in every theme. */
+.start {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--s3) / 2);
+  min-height: 56px;
+  margin-top: var(--s4);
+  padding: var(--s1) var(--s1) var(--s1) 28px;
+  font-weight: 700;
+  color: var(--pool-a);
+  text-decoration: none;
+  background: var(--signal);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px -16px color-mix(in srgb, var(--signal) 55%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent);
+  transition: transform 160ms var(--ease-out);
+}
+.start:active {
+  transform: scale(0.98);
+}
+.start:focus-visible {
+  outline-offset: 10px;
+  border-radius: var(--radius-pill);
+}
+.start-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--pool-a) 12%, transparent);
+  transition: transform 160ms var(--ease-out);
+}
+.start:is(:hover, :focus-visible) .start-icon {
+  transform: translateX(2px);
+}
+/* A comet of light with a fading tail runs round the button's edge, lap after lap, about 6 s a lap. It starts by itself, so
+   it needs no hover and works on a touch screen. Three layers share one animation: the group animates the dash offset and
+   the rects inherit it, each layer ending where the comet's head is. The group is invisible at rest: with Reduce motion
+   (the device's or the site's, settings.css) the lap ends at once and with Focus mode it never runs, so both show only the
+   static edge. The Settings motion switch is the way to stop it (WCAG 2.2.2). */
+.orbit {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  overflow: visible;
+  fill: none;
+  pointer-events: none;
+}
+.orbit rect {
+  x: 2px;
+  y: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  ry: calc(50% - 2px);
+}
+.orbit-edge {
+  stroke: var(--glow);
+  stroke-width: 1.5;
+  opacity: 0.4;
+}
+.orbit-light {
+  stroke: var(--glow);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--glow) 60%, transparent));
+  opacity: 0;
+  animation: orbit 6s linear infinite;
+}
+.orbit-light .tail {
+  stroke-dasharray: 20 80;
+  stroke-opacity: 0.2;
+}
+.orbit-light .mid {
+  stroke-dasharray: 0 12 8 80;
+  stroke-opacity: 0.45;
+}
+.orbit-light .head {
+  stroke-dasharray: 0 17 3 80;
+  stroke-opacity: 0.9;
+}
+@keyframes orbit {
+  from,
+  to {
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+html[data-focus] .orbit-light {
+  animation: none;
+}
+.hero-switch {
+  justify-content: flex-start;
+  width: fit-content;
+  margin-top: var(--s3);
+  font-size: 0.85rem;
+  color: var(--pool-muted);
+}
+.band .switch input {
+  background: transparent;
+  border-color: var(--pool-muted);
+}
+.band .switch input::before {
+  background: var(--pool-muted);
+}
+.band .switch input:checked {
+  background: var(--glow);
+  border-color: var(--glow);
+}
+.band .switch input:checked::before {
+  background: var(--pool-a);
+}
+.device-note {
+  display: none;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--pool-muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .device-note {
+    display: block;
+  }
+}
+
+/* The video slot: one 16:9 surface, one border, one shadow. Until the video exists it holds a poster. */
+.media {
+  position: relative;
+  margin: 0;
+}
+.surface {
+  position: relative;
+}
+.poster {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 16 / 9;
+  background: var(--pool-a);
+  border: 1px solid color-mix(in srgb, #fff 28%, transparent);
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-raised);
+}
+.poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: inherit;
+}
+[data-theme="dark"] .poster img {
+  filter: brightness(0.6);
+}
+.poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--pool-mid) 42%, transparent);
+}
+.poster-copy {
+  position: absolute;
+  z-index: 2;
+  inset: auto 1px 1px;
+  padding: var(--s6) var(--s3) var(--s3);
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--pool-a) 90%, transparent) 40px, var(--pool-a) var(--s6));
+  border-radius: 0 0 15px 15px;
+}
+/* With a tour video (src/pages/index.astro TOUR_SRC) the player fills the surface at 16:9, its own controls are not covered, and the
+   words sit below it. */
+.tour-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: inherit;
+}
+.media.tour .poster {
+  aspect-ratio: 16 / 9;
+}
+.media.tour .poster::after {
+  display: none;
+}
+.media.tour .poster-copy {
+  position: static;
+  /* 72px, as in the larger-text rule below: the lower-left arcs reach 40px under the frame, so the label clears them. */
+  margin-top: 72px;
+  padding: 0;
+  background: none;
+}
+.tour-tools,
+.tour-error {
+  margin: var(--s1) 0 0;
+  font-size: 0.85rem;
+  color: var(--pool-muted);
+}
+.tour-enlarge,
+.tour-transcript summary {
+  min-height: 44px;
+}
+.tour-transcript summary {
+  padding-block: 10px;
+}
+.tour-dialog {
+  width: min(1100px, 100% - 32px);
+  max-width: none;
+  max-height: min(85dvh, 100dvh - 32px);
+  padding: var(--s2);
+  overflow: auto;
+}
+.tour-dialog .tour-video {
+  max-height: calc(85dvh - 7rem);
+  aspect-ratio: 16 / 9;
+}
+.tour-dialog form {
+  margin-top: var(--s1);
+}
+/* The surface stays 16:9 whatever the reader chooses. When a larger size, wider spacing, more line spacing or
+   OpenDyslexic makes the words too tall for it, they move below the frame, clear of the lower arcs. */
+html:is([data-size="4"], [data-size="5"], [data-spacing], [data-lines], [data-font="opendyslexic"]) .poster-copy {
+  position: static;
+  margin-top: 72px;
+  padding: 0;
+  background: none;
+}
+.poster-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: var(--s1);
+  padding: 2px 12px;
+  font-size: 0.8rem;
+  border: 1px solid var(--pool-muted);
+  border-radius: var(--radius-pill);
+}
+.poster-text {
+  margin: 0;
+}
+.poster-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.poster-text span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--pool-muted);
+}
+/* The only drawing in the band: four arcs that echo the video's corners, in their own ring around it. Each arc keeps
+   20 px or 40 px away from the frame, so no line or point can sit on the video or reach the text column. Near the
+   pointer a point brightens with a short tip of its arc (src/home.ts); the arcs themselves stay at their quiet strength. */
+.deco {
+  position: absolute;
+  width: 248px;
+  height: 188px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--glow);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dashoffset: 150;
+  pointer-events: none;
+}
+.deco.tr {
+  top: -48px;
+  right: -48px;
+  animation: drift 9s linear infinite;
+}
+.deco.bl {
+  bottom: -48px;
+  left: -48px;
+  animation: drift 11s linear infinite;
+}
+/* A light slides along each arc's main line, then rests, in the family of the Start button's comet. The svg animates the dash
+   offset and the pulse layers inherit it; the pattern repeats every 300 units, three times the line, so the light crosses
+   the line in the middle third of each lap and is out of sight the rest. At rest (Reduce motion) it is out of sight too. */
+@keyframes drift {
+  from {
+    stroke-dashoffset: 150;
+  }
+  to {
+    stroke-dashoffset: -150;
+  }
+}
+.deco .tip {
+  stroke-dashoffset: 0;
+}
+.deco .pulse {
+  stroke-linecap: butt;
+  stroke-width: 2;
+  fill: none;
+}
+.deco .pulse.tail {
+  stroke-dasharray: 18 282;
+  opacity: 0.18;
+}
+.deco .pulse.mid {
+  stroke-dasharray: 0 10 8 282;
+  opacity: 0.4;
+}
+.deco .pulse.head {
+  stroke-dasharray: 0 15 3 282;
+  opacity: 0.85;
+}
+.deco path {
+  opacity: 0.4;
+  transition: opacity 200ms var(--ease-out);
+}
+.deco .outer {
+  opacity: 0.22;
+}
+.deco .core {
+  fill: var(--glow);
+  stroke: none;
+  opacity: 0.8;
+  transition: opacity 200ms var(--ease-out);
+}
+.deco .halo {
+  fill: var(--glow);
+  stroke: none;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+.deco .amber :is(.core, .halo) {
+  fill: var(--signal);
+}
+.deco .tip {
+  opacity: 0;
+}
+.deco .tip.lit {
+  opacity: 0.95;
+}
+.deco .lit .core {
+  opacity: 1;
+}
+.deco .lit .halo {
+  opacity: 0.32;
+}
+html[data-focus] .deco {
+  display: none;
+}
+#restore-status:empty {
+  margin: 0;
+}
+
+/* When the window is too narrow for two columns (a small window, or a page zoomed in), the parts stack. */
+@media (max-width: 1040px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: calc(var(--s6) + var(--s1));
+    padding: var(--s5) 0 var(--s6);
+  }
+  .media {
+    max-width: 600px;
+    margin-inline: 48px;
+  }
+}
+@media (max-width: 700px) {
+  .media {
+    margin-inline: 0;
+  }
+  /* The still is one wide picture; on a phone the poster is wider than 16:9, so it shows the top, where the cards are. */
+  .poster {
+    aspect-ratio: 2 / 1;
+  }
+  .media.tour .poster {
+    aspect-ratio: 16 / 9;
+  }
+  .deco {
+    display: none;
+  }
+  .hero {
+    row-gap: var(--s5);
+  }
+  .poster-copy {
+    position: static;
+    margin-top: var(--s3);
+    padding: 0;
+    background: none;
+  }
+}

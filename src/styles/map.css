@@ -1,0 +1,431 @@
+/* The map on / and /done (Pool Band v2): each pillar a row of the tree, each lesson a white card on its branch, framed by
+   a border and a shadow tinted to the page. In dark a card is the ground itself, so nothing is lighter than the ground.
+   The map is its own container: three cards to a row where the map is wide (in the text's own em), one column of
+   cards where it is not, so /done, which has the reading column, uses the same rules. */
+.map {
+  container-type: inline-size;
+  padding-top: var(--s5);
+}
+.map-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1) var(--s3);
+}
+.map-head h2 {
+  margin-block: 0;
+}
+.map-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;
+  color: var(--text-muted);
+}
+.pillar-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin-top: var(--s3);
+}
+.pillar-head h3 {
+  margin: 0;
+}
+.pillar-glyph {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+}
+/* The trunk the topics hang from, fading out at the bottom. */
+.tree {
+  margin-left: 23px;
+  padding: var(--s1) 0 var(--s4) 31px;
+  border-left: 2px solid;
+  border-image: linear-gradient(var(--branch) 70%, transparent) 1;
+}
+/* A topic is a native disclosure, closed until opened; its heading reads as a heading, with its lesson count beside it
+   (design-review N3). The caret turns as it opens; with reduced motion it simply points the new way. */
+.map-topic > summary {
+  min-height: 44px;
+  padding-block: 0.55rem;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.map-topic > summary::-webkit-details-marker {
+  display: none;
+}
+.map-topic > summary > .icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: -0.25em;
+  transition: transform var(--motion-duration) var(--motion-ease);
+}
+.map-topic[open] > summary > .icon {
+  transform: rotate(90deg);
+}
+.map h4 {
+  display: inline;
+  margin-block: 0;
+  font-weight: 600;
+}
+.map-topic .count {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* A lesson card: its drawing (its badge emblem once earned) and number, its title as the link that covers the card, its
+   promise, its time and its state. One column by default. */
+.topic {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: var(--s3);
+  margin: var(--s2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.topic > li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  padding: var(--s2);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease);
+}
+.topic > li:is(:hover, :focus-within) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-card);
+}
+.topic p {
+  margin: 0;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  color: var(--text-muted);
+}
+.num {
+  font-size: 0.85rem;
+}
+.tile {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  background: var(--tint);
+  border-radius: var(--radius-large);
+  box-shadow: inset 0 0 0 var(--border-width) var(--tint-line);
+}
+.tile :is(.kit, .ph) {
+  width: 32px;
+  height: 32px;
+}
+.topic .emblem {
+  display: none;
+  width: 48px;
+  height: 48px;
+}
+.topic li[data-earned] .emblem {
+  display: block;
+}
+.topic li[data-earned] .tile {
+  display: none;
+}
+.topic a {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.topic a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-large);
+}
+.topic a:focus-visible {
+  outline: none;
+}
+.topic li:has(a:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.time,
+.state {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+/* The clock sits on the time's first line when it wraps. */
+.time {
+  align-items: flex-start;
+}
+.time > .icon {
+  margin-top: 0.15em;
+}
+/* The sprite's paths carry no fill of their own, so without this they inherit black and vanish on the dark ground. */
+.map .time > .icon,
+.map .state > .icon {
+  fill: currentColor;
+}
+/* A map state is a tag: an icon, a colour and a word (spec P20); the icon is hidden from screen readers, the word is
+   read. */
+.state {
+  align-self: flex-start;
+  justify-self: start;
+  padding: 0.1rem 0.6rem 0.1rem 0.4rem;
+  color: var(--text);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-pill);
+}
+.state > .icon {
+  display: none;
+}
+/* The state tag, and under it, once the lesson is finished but its badge is not earned, why (badges are earned by doing the
+   check-in, not by finishing). Both sit in the card's last grid row. */
+.card-status {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+}
+.badge-note {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.topic li:is([data-state="done"], [data-state="here"]):not([data-earned]) .badge-note {
+  display: block;
+}
+html[data-progress="hide"] .badge-note {
+  display: none !important;
+}
+[data-state="todo"] .todo {
+  display: block;
+  color: var(--state-todo);
+}
+[data-state="done"] .done {
+  display: block;
+  color: var(--state-done);
+}
+[data-state="here"] .here {
+  display: block;
+  color: var(--state-here);
+}
+
+/* Where the map is wide: three cards to a row on one grid, so each row (picture, title, promise, time, state) lines up
+   across the cards, and each card hangs on a branch: a rail from the trunk, a stem and a point for each lesson. */
+@container (min-width: 56em) {
+  .topic {
+    --map-row-gap: var(--s5);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: auto auto 1fr auto auto;
+    gap: 0 var(--s3);
+    margin-top: calc(var(--s3) + var(--s3) / 2);
+  }
+  .topic > li {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: var(--s1);
+    margin-bottom: var(--map-row-gap);
+  }
+  .topic > li::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--map-row-gap) / -2);
+    left: calc(40px - 100% - var(--s3) - 1px);
+    width: calc(100% + var(--s3) + 3px);
+    height: calc(var(--map-row-gap) / 2 - 1px);
+    border-top: 2px solid var(--branch);
+    border-right: 2px solid var(--branch);
+  }
+  .topic > li:nth-child(3n + 1)::before {
+    left: -31px;
+    width: 72px;
+  }
+  .topic > li::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--map-row-gap) / -2 - 7px);
+    left: 33px;
+    width: 14px;
+    height: 14px;
+    background: var(--ground);
+    border: 2px solid var(--branch);
+    border-radius: 50%;
+  }
+  .topic > li:is([data-state="done"], [data-state="here"])::before {
+    border-color: var(--accent);
+  }
+  .topic > li:is([data-state="done"], [data-state="here"])::after {
+    background: var(--glow);
+    border-color: var(--accent);
+  }
+  html[data-progress="hide"] .topic > li::before {
+    border-color: var(--branch);
+  }
+  html[data-progress="hide"] .topic > li::after {
+    background: var(--ground);
+    border-color: var(--branch);
+  }
+}
+html[data-progress="hide"] .topic .emblem {
+  display: none;
+}
+html[data-progress="hide"] .topic li[data-earned] .tile {
+  display: grid;
+}
+[data-theme="dark"] main .switch input:checked {
+  background: var(--ground);
+}
+[data-theme="dark"] main .switch input:checked::before {
+  background: var(--accent);
+}
+
+/* What you can do: a blue frame like the band, one branch per pillar holding only its earned badges' emblems. Shown only
+   once a badge is earned: no count, no empty slot. The first and last badge carry the ends of the branch (src/components/Map.astro). */
+.can-do {
+  margin-top: var(--s6);
+  padding: var(--s5);
+  color: #fff;
+  background-color: var(--pool-a);
+  background-image: var(--band);
+  border-radius: var(--radius-frame);
+  box-shadow: var(--shadow-card);
+  --focus: #fff;
+}
+.can-do h3 {
+  margin: 0 0 var(--s3);
+}
+.nets,
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.net {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 96px;
+  align-items: center;
+  padding: 0 0 var(--s4) var(--s3);
+}
+.net:last-child {
+  padding-bottom: 0;
+}
+.hub {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  color: var(--glow);
+}
+.hub .kit {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.hub span {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  width: 7rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--pool-muted);
+  transform: translateX(-50%);
+}
+.hub::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  left: calc(100% + 8px);
+  width: 32px;
+  border-top: 2px solid var(--glow);
+}
+.items {
+  display: grid;
+  gap: var(--s3);
+}
+.item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s2);
+}
+.item p {
+  flex: 1 1 9rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.item small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--pool-muted);
+}
+.item .emblem {
+  width: 84px;
+  height: 84px;
+}
+/* Each badge has a branch from the spine to its emblem, with a point at the emblem: ::after is the branch and its point,
+   ::before the part of the spine at this badge. */
+.item::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 4px);
+  left: -56px;
+  width: 52px;
+  height: 8px;
+  background: linear-gradient(var(--glow), var(--glow)) left center / 44px 2px no-repeat, radial-gradient(circle at 48px 50%, var(--glow) 4px, transparent 4.5px);
+}
+.item::before {
+  content: "";
+  position: absolute;
+  left: -56px;
+  top: calc(var(--s3) / -2);
+  bottom: calc(var(--s3) / -2);
+  border-left: 2px solid var(--glow);
+}
+.item[data-edge="only"]::before {
+  display: none;
+}
+.item[data-edge="first"]::before {
+  top: calc(50% - 1px);
+}
+.item[data-edge="last"]::before {
+  bottom: calc(50% - 1px);
+}
+@container (max-width: 40em) {
+  .net {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--s5);
+    padding-left: 0;
+  }
+  .hub {
+    margin-left: var(--s3);
+  }
+  .hub::after,
+  .item::before,
+  .item::after {
+    display: none;
+  }
+  .can-do {
+    padding: var(--s4) var(--s3);
+  }
+}

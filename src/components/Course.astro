@@ -1,0 +1,41 @@
+---
+// The five pillars of the signed list, each a native disclosure of its lessons (read from src/contents.ts at build time).
+// A lesson with a folder is a link; the rest carry a "coming later" tag. With `current` (a lesson's rail), only that
+// lesson's pillar is listed, open, the lesson marked as the current page, and a link leads to the whole course on / : the
+// 60 KB page budget has no room for all 41 lessons on every lesson page.
+import { getCollection } from 'astro:content';
+import { readContents } from '../contents.ts';
+import Icon from './Icon.astro';
+
+const { current } = Astro.props as { current?: string };
+const built = await getCollection('lessons');
+// check:contents fails a folder whose title is not a signed lesson of its pillar, so a built lesson is never missed here.
+const idOf = (slug: string | undefined, title: string) => built.find((l) => l.id.split('/')[0] === slug && l.data.title === title)?.id;
+const pillars = readContents();
+const open = current ? pillars.findIndex((p) => p.slug === current.split('/')[0]) : 0;
+const shown = pillars.flatMap((pillar, i) => (!current || i === open ? [{ pillar, i }] : []));
+---
+
+{
+  shown.map(({ pillar, i }) => (
+    <details class="pillar" open={i === open}>
+      <summary>
+        <Icon name="caret-right" />
+        {i + 1} {pillar.title}
+      </summary>
+      <ol>
+        {pillar.lessons.map(({ n, title }) => {
+          const id = idOf(pillar.slug, title);
+          return (
+            <li>
+              {id ? <a href={`/learn/${id}/`} aria-current={id === current ? 'page' : undefined}>{n} {title}</a> : <span>{n} {title}</span>}
+              {!id && ' '}
+              {!id && <span class="later">coming later</span>}
+            </li>
+          );
+        })}
+      </ol>
+    </details>
+  ))
+}
+{current && <p class="whole"><a href="/#contents">The whole course</a></p>}

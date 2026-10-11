@@ -1,0 +1,17 @@
+---
+// What the two licences let anyone do, in plain words (grade 7), with the official text one click away. Used on /about/
+// and /licences/. Decision of 04-10-26: lessons CC BY-NC-SA 4.0, code all rights reserved.
+const { level = 'h3' } = Astro.props as { level?: 'h2' | 'h3' };
+const Heading = level;
+---
+
+<Heading id={level === 'h2' ? 'what-licences-allow' : undefined}>What the licences let you do</Heading>
+<p>
+  The lessons are under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>. You may copy them,
+  share them, remix them and build on them, if you give credit, link to the licence and say if you changed anything. You may not use them to
+  make money. If you share your own version, it must carry the same licence, so it stays free too. You may not suggest that the authors back you.
+</p>
+<p>
+  The site's code is all rights reserved. It is not open source, and its working repository is private. A read-only copy of the source of each release is
+  <a href="https://github.com/NeuroBridge-AI-Labs/stillpool-public" rel="noopener">public on GitHub</a>. The lessons are free to use; the code that shows them is not.
+</p>

@@ -1,0 +1,317 @@
+---
+title: Images and sound
+promise: Can explain how AI recognises pictures and sounds, and why it fails outside what it was trained on
+minutes: {simple: 9, deep: 15}
+tldr:
+  - To a computer, a picture or a recording is numbers. A model learns from many labelled examples that people chose.
+  - A classifier gives each kind it learned a chance, and names the kind with the biggest chance.
+  - It can only name the kinds it learned, so it is always wrong about anything else. It can also go wrong on examples unlike its own.
+misconceptions: [M10, M8]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-ALT-1, AILIT-C2, AILIT-S3, AILIT-M2]
+checkin:
+  - question: A model learned from doodles of apples, houses and umbrellas. You show it a cat. What does it name?
+    options:
+      - text: An apple, a house or an umbrella.
+        why: Yes. Its only answers are the kinds it learned, so it names one of them.
+        right: true
+      - text: A cat.
+        why: Not this one. It never learned from a doodle of a cat, so "cat" is not one of its answers.
+      - text: Nothing. It says it does not know.
+        why: Not this one. A model like this has no "I don't know" answer. It gives each of its kinds a chance.
+  - question: The six-kind model named the right kind for most new doodles. What does that tell you?
+    options:
+      - text: It does well on new doodles of its six kinds.
+        why: Yes. It was tested on doodles like its own. That test says nothing about other kinds of picture.
+        right: true
+      - text: It can name any picture well.
+        why: Not this one. It can only name six kinds. A photo of a dog would get one of those names.
+      - text: It never makes a mistake.
+        why: Not this one. It got some of the new doodles wrong.
+  - question: A speech system learned mostly from voices unlike yours. What might happen?
+    options:
+      - text: It may make more errors with my voice.
+        why: Yes. In the study in this lesson, five speech systems made more errors for Black speakers. The authors said the likely cause was too little audio from Black speakers in training.
+        right: true
+      - text: It works the same for every voice.
+        why: Not this one. How well it works depends on the recordings it learned from.
+      - text: My accent is the mistake.
+        why: Not this one. An accent is a way of speaking. The errors are the system's.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You explained how a classifier names pictured kinds. You explored how speech systems write words from recordings.
+glossary:
+  - term: recognise
+    meaning: In this lesson, to name what a picture shows, or write out the words in a recording, from examples.
+  - term: pixel
+    meaning: One small square of a picture. Its number says how dark it is.
+  - term: label
+    meaning: The answer attached to an example for a model to learn. It may not describe what is there.
+  - term: classifier
+    meaning: A model that names which kind something is, from the kinds it learned.
+  - term: chance
+    meaning: A number a classifier gives each kind it learned. All the chances add up to 1 (100 in 100).
+  - term: training data
+    meaning: The examples a model learns from.
+  - term: transcript
+    meaning: The words of a recording, written out.
+  - term: weight
+    meaning: One of a model's numbers. It says how much one square counts for one kind.
+  - term: spectrogram
+    meaning: A chart of how loud each pitch is, moment by moment.
+  - term: diffusion model
+    meaning: A kind of model that makes pictures. In the 2020 design, it starts from random noise and removes some at each step.
+  - term: vocoder
+    meaning: The part of a voice maker that turns a chart of sound into a sound wave.
+  - term: word error rate
+    meaning: A measure of how far a machine's transcript is from a person's transcript of the same speech.
+  - term: acoustic model
+    meaning: The part of a speech system that handles the sound of speech, not the words and grammar.
+whereNext:
+  title: Teachable Machine, from Google
+  text: A free Google tool that trains a model on your own pictures or sounds, in your browser. It needs no account or login. Picture files work instead of the camera. Sounds need the microphone. Use only your own face, voice and pictures. It is Google's website, not ours. It uses Google Analytics and cookies. It also loads from other Google servers, YouTube and Google's ad servers among them. Google says your samples are not sent anywhere unless you save to Google Drive. We checked this in September 2026.
+  url: https://teachablemachine.withgoogle.com/
+sources:
+  - title: "Google Research, Exploring and Visualizing an Open Global Dataset"
+    url: https://research.google/blog/exploring-and-visualizing-an-open-global-dataset/
+    licence: No licence stated
+    use: cite
+  - title: "Google Research, Introducing the Kaggle Quick, Draw! Doodle Recognition Challenge"
+    url: https://research.google/blog/introducing-the-kaggle-quick-draw-doodle-recognition-challenge/
+    licence: No licence stated
+    use: cite
+  - title: "Google Creative Lab, The Quick, Draw! Dataset"
+    url: https://github.com/googlecreativelab/quickdraw-dataset
+    licence: CC-BY-4.0
+    use: adapt
+    note: "Doodles from the Quick, Draw! dataset, made available by Google, Inc.; drawings contributed by players. CC BY 4.0. We kept 2,000 of each of six kinds, drew them on a 28 by 28 grid and trained two small models on them."
+  - title: "Google, Quick, Draw! The Data"
+    url: https://quickdraw.withgoogle.com/data
+    licence: No licence stated
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary: Generative AI"
+    url: https://developers.google.com/machine-learning/glossary/generative
+    licence: CC-BY-4.0
+    use: cite
+  - title: "OECD and European Union, Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education"
+    url: https://doi.org/10.1787/65cd27d4-en
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Radford and others (OpenAI), Robust Speech Recognition via Large-Scale Weak Supervision, arXiv 2212.04356"
+    url: https://arxiv.org/abs/2212.04356
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Geirhos and others, Shortcut Learning in Deep Neural Networks, arXiv 2004.07780"
+    url: https://arxiv.org/abs/2004.07780
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Beery, Van Horn and Perona, Recognition in Terra Incognita, arXiv 1807.04975"
+    url: https://arxiv.org/abs/1807.04975
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Ho, Jain and Abbeel, Denoising Diffusion Probabilistic Models, arXiv 2006.11239"
+    url: https://arxiv.org/abs/2006.11239
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Saharia and others (Google), Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding, arXiv 2205.11487"
+    url: https://arxiv.org/abs/2205.11487
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Shen and others (Google), Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions, arXiv 1712.05884"
+    url: https://arxiv.org/abs/1712.05884
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Wang and others (Microsoft), Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers, arXiv 2301.02111"
+    url: https://arxiv.org/abs/2301.02111
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Koenecke and others, Racial disparities in automated speech recognition, PNAS"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7149386/
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Duke CARADITE, AI Student Survey"
+    url: https://ctl.duke.edu/caradite/ai-student-survey/
+    licence: All rights reserved
+    use: cite
+  - title: "Duke CARADITE, AI Accuracy and Limitations"
+    url: https://ctl.duke.edu/caradite/ai-student-survey/ai-accuracy-and-limitations/
+    licence: All rights reserved
+    use: cite
+  - title: "Ipsos, The Ipsos AI Monitor 2026"
+    url: https://resources.ipsos.com/rs/297-CXJ-795/images/Ipsos-AI-Monitor-2026.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Google, Teachable Machine"
+    url: https://teachablemachine.withgoogle.com/
+    licence: No licence stated
+    use: link
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-28
+signed: false
+interactive: doodle-guesser
+inputs: [src/lib/doodle.ts, data/interactive/doodle-guesser.json, data/doodle/six-kinds.weights.json, data/doodle/three-kinds.weights.json]
+---
+
+## Pictures and sounds are numbers
+
+<Simple>
+A person can name a doodle of a cat. How does a computer put a name to it?
+
+In this lesson, to recognise means this. A model is a program that has learned patterns from examples. A model names what a picture shows, or writes out the words in a recording. It does this from patterns learned from examples.
+
+To a computer, a picture is a grid of numbers. Each small square is a pixel, and its number says how dark it is. In this lesson each doodle is drawn on a grid of 28 by 28 squares.
+
+Sound becomes numbers too. OpenAI's Whisper (paper, December 2022) is a program that writes out speech. It first turns every recording into 16,000 numbers for each second of sound.
+</Simple>
+
+<Deep>
+This lesson looks at these beliefs: "It is equally capable at everything" and "It is neutral and unbiased". Each is set against dated evidence below.
+
+Each doodle becomes 784 numbers, from 0 for a blank square to 1 for a full one. Google also publishes every doodle drawn on a grid of the same size. Its README says: "All the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format." Our drawing rule follows the settings Google gave for that version.
+
+Lesson 1.2 compares written rules with learning from examples. Lesson 1.7 shows how training works. Neither is needed first.
+</Deep>
+
+## Learning from labelled examples
+
+<Simple>
+A model learns from examples that people have labelled. Each example is a picture or a recording, with its label. The label is the answer the model should learn to give.
+
+Google released the Quick, Draw! dataset in August 2017. A dataset is a collection of examples, here drawings. Its README, checked in September 2026, lists 50 million drawings of 345 kinds. A README is the page that describes a dataset.
+
+Players of its online game Quick, Draw! drew them. Each drawing's label is the word the player was asked to draw. Some drawings are incomplete or do not match the prompt.
+
+People choose the examples and the labels, and so what a model can learn. For this lesson, we chose six kinds and 2,000 doodles of each for training. We kept only doodles the game had recognised.
+</Simple>
+
+<Deep>
+Google's glossary defines a label as "the "answer" or "result" portion of an example", and a labeled example as "An example that contains one or more features and a label."
+
+Google says over 15 million players took part (its data page, checked in September 2026). Its README says the dataset was "contributed by players of the game Quick, Draw!". Each drawing is "tagged with metadata including what the player was asked to draw".
+
+The OECD and European Union's framework for AI literacy, the skills and knowledge to use AI in an informed way, says AI systems are "trained to identify patterns among data elements that humans have selected, categorised and prioritised".
+</Deep>
+
+## A chance for each kind
+
+<Simple>
+A model that names the kind of thing it sees is called a classifier. It gives each kind it learned a chance.
+
+The chances add up to 1 (100 in 100). Its guess is the kind with the biggest chance. In this lesson the chances are shown as words, like "N in 100".
+</Simple>
+
+<Deep>
+Naming what is in a picture is called image recognition, or image classification. The model in this lesson is one of the simplest kinds, multinomial logistic regression.
+
+For each of its kinds, it keeps one number, a weight, for each of the 784 squares, plus one more number. To guess, it multiplies each square's darkness by that kind's weight for the square. It adds them up with the extra number, and turns the six totals into chances.
+
+The model has 4,710 numbers (6 kinds times 785). The copy has 2,355 numbers. Google's glossary says convolutional neural networks, a kind of neural network (a model built from layers of numbers), "have had great success in certain kinds of problems, such as image recognition."
+
+Our training used 300 rounds of gradient descent on the labelled doodles. Each round changed the numbers a little so the guesses got less wrong. Lesson 1.7 covers training.
+</Deep>
+
+## The Doodle guesser
+
+<Simple>
+Pick a doodle, or draw your own. First, guess what the model will name. The model's numbers do not change while you draw.
+
+Then switch to a copy of the model. It was trained the same way on the same doodles, but on three kinds only: apple, house and umbrella. This shows what happens when a model meets a kind it never learned.
+</Simple>
+
+<Deep>
+The model learned from 12,000 doodles, 2,000 of each of six kinds: apple, car, cat, fish, house and umbrella. We took each kind's doodles from the start of its file on Google's servers.
+
+A model is tested on examples it did not learn from. We kept back 500 doodles of each kind, 3,000 in all. The model named the right kind for most of them, and got some wrong. A test like this says how the model does on new doodles like its own, and nothing about anything else.
+
+The copy was tested on held-back cars, cats and fish too. Its only possible labels are apple, house and umbrella. It named one of them for every car, cat and fish, so it was wrong about all of them.
+</Deep>
+
+<TryIt />
+
+## Only the kinds it learned
+
+<Simple>
+A model like this can only name the kinds it learned. Shown anything else, it still names one of them. It has no other answer, not even "none of these". So it is always wrong about a kind it never learned.
+
+It can also go wrong on new examples of a kind it did learn, when they are unlike its examples.
+
+In 2020, researchers wrote that a cow on a beach, instead of on grass, is not named correctly.
+
+The six-kind model named the right kind for most new doodles of its six kinds. It got some wrong. A good test result is not being good at everything. A test on new doodles of six kinds says nothing about other pictures.
+</Simple>
+
+<Deep>
+Google's glossary gives an example of something out of distribution: "an image of the planet Saturn would be considered out of distribution for a dataset consisting of cat images."
+
+The cow comes from a 2020 review of image models: "a familiar background can be as important for recognition as the object itself, and sometimes even more important". In a 2018 study of photos from camera traps, image classifiers did very well at the places they were trained on, and poorly at new places.
+
+A good score on one test is not a good score everywhere. OpenAI's Whisper researchers wrote in December 2022 that machine learning methods "are exceedingly adept at finding patterns within a training dataset which boost performance on held-out data from the same dataset." They added: "However, some of these patterns are brittle and spurious and don’t generalize to other datasets and distributions."
+
+The evidence for the belief. In a survey of 104 Duke University students (data collected in April 2025), almost all (94%) agreed that AI is not equally accurate in all areas of study. So few of those students can have held the belief. It is one small US survey. Lesson 4.9 will cover when not to use AI.
+</Deep>
+
+## Sound, and whose voice
+
+<Simple>
+A model can also do worse on people unlike those it learned from. Here is a study of voices.
+
+A speech system writes out the words in a recording. The written words are a transcript.
+
+In a study published in 2020, five speech systems made more errors for Black speakers than for white speakers. It was almost twice as many on average. The systems were tested before October 2019.
+
+The authors said the likely cause was too little audio from Black speakers in training.
+
+An accent is a way of speaking. The errors are the system's. Lesson 3.2 will go further.
+</Simple>
+
+<Deep>
+How one speech recogniser takes sound in. Whisper turns each second of a recording into 16,000 numbers, then into a spectrogram made of slices 25 milliseconds long. A spectrogram is a chart of how loud each pitch is, moment by moment. Whisper then predicts the transcript. Its models learned from 680,000 hours of recorded speech paired with transcripts, collected from the internet.
+
+The study, published 23 March 2020, tested five speech recognition systems, by Amazon, Apple, Google, IBM and Microsoft. They wrote out interviews with 42 white speakers and 73 Black speakers in five US cities (19.8 hours of audio). All five made more errors for the Black speakers: on average, about 35 errors for every 100 words (a word error rate of 0.35) against about 19 (0.19) for the white speakers, almost twice as many.
+
+A word error rate measures how far a machine's transcript is from a person's transcript of the same speech. It counts errors per word, not people.
+
+The authors traced the gap to the part of each system that handles the sound of speech, the acoustic model. It was not the part that handles words and grammar: the gap was just as large for the same phrases said by Black and white speakers. They wrote: "The likely cause of this shortcoming is insufficient audio data from black speakers when training the models." They proposed training with more varied recordings, including African American Vernacular English.
+
+The limits. It is one US study of five systems tested before October 2019, on interviews in US English.
+</Deep>
+
+## Making pictures and voices
+
+<Simple>
+Some AI makes pictures and sounds instead of naming them. The Deep layer shows how, in outline.
+
+Lesson 4.5 will cover telling real pictures and voices from fake ones.
+</Simple>
+
+<Deep>
+Google's glossary lists image generation models and audio generation models among generative AI, which is AI that makes new content such as pictures and sound.
+
+One design for making pictures is a diffusion model, as Ho, Jain and Abbeel described theirs in June 2020. In their design, noise is added to pictures a little at a time in training until nothing of the picture is left. The model learns to undo each step. To make a new picture, it starts from pure random noise and removes some at each step. Not every diffusion model works this way.
+
+A picture from a written prompt: Google's Imagen (May 2022) paired a large language model, which turns the prompt's words into numbers, with diffusion models that make the picture. Its paper says it starts from pure random noise and makes it a little less noisy at each step.
+
+A voice from written text: Google's Tacotron 2 (posted December 2017) turns text into a spectrogram. A second network, a vocoder, turns that chart into a sound wave.
+
+Copying a voice: Microsoft researchers reported in January 2023 that their research system, VALL-E, could make speech in the voice of a person it had not trained on. It needed a recording of that person only 3 seconds long. That is their claim about their own system. Lesson 4.5 will cover telling real voices from fake ones, and lesson 3.6 who owns AI-made work.
+</Deep>
+
+## Is it neutral?
+
+<Simple>
+People choose the examples, and the examples shape what a model can do. The copy in this lesson shows it.
+
+Bias means a system works worse for some groups of people than for others. Bias can come from training data. Lesson 3.2 will cover bias.
+</Simple>
+
+<Deep>
+The OECD and European Union's framework says: "Bias inherently exists in AI systems, which can also reflect societal biases embedded in training data or algorithm design."
+
+The belief, measured directly. In an online survey by Ipsos in 32 countries (fieldwork 20 March to 3 April 2026, published June 2026), more than half (55%), on average across the 32 countries, agreed with "I trust artificial intelligence to not discriminate or show bias towards any group of people". Just under half (47%) agreed with the same statement about people.
+
+The limits. The figure is an average of the 32 countries' results, not of all their people. In 15 of the countries, Ireland among them, Ipsos says its samples are more urban, more educated or more affluent than the population. It is one 2026 survey.
+</Deep>

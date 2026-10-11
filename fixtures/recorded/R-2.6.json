@@ -1,0 +1,571 @@
+{
+ "id": "R-2.6",
+ "model": {
+  "id": "test-fixture-model-a",
+  "name": "Test fixture model A",
+  "host": "Test fixture host A"
+ },
+ "date": "2000-01-01",
+ "settings": {
+  "max_tokens": 4000,
+  "temperature": "not set, so the model's default",
+  "tools": "no tools",
+  "system prompt": "in each variant that has one"
+ },
+ "variants": [
+  {
+   "label": "turns",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 2"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 3"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply turns A run 1 turn 3",
+     "replies": [
+      "Test fixture reply turns A run 1 turn 1",
+      "Test fixture reply turns A run 1 turn 2",
+      "Test fixture reply turns A run 1 turn 3"
+     ]
+    },
+    {
+     "reply": "Test fixture reply turns A run 2 turn 3",
+     "replies": [
+      "Test fixture reply turns A run 2 turn 1",
+      "Test fixture reply turns A run 2 turn 2",
+      "Test fixture reply turns A run 2 turn 3"
+     ]
+    },
+    {
+     "reply": "Test fixture reply turns A run 3 turn 3",
+     "replies": [
+      "Test fixture reply turns A run 3 turn 1",
+      "Test fixture reply turns A run 3 turn 2",
+      "Test fixture reply turns A run 3 turn 3"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "turns",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 2"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent turns message 3"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply turns B run 1 turn 3",
+     "replies": [
+      "Test fixture reply turns B run 1 turn 1",
+      "Test fixture reply turns B run 1 turn 2",
+      "Test fixture reply turns B run 1 turn 3"
+     ]
+    },
+    {
+     "reply": "Test fixture reply turns B run 2 turn 3",
+     "replies": [
+      "Test fixture reply turns B run 2 turn 1",
+      "Test fixture reply turns B run 2 turn 2",
+      "Test fixture reply turns B run 2 turn 3"
+     ]
+    },
+    {
+     "reply": "Test fixture reply turns B run 3 turn 3",
+     "replies": [
+      "Test fixture reply turns B run 3 turn 1",
+      "Test fixture reply turns B run 3 turn 2",
+      "Test fixture reply turns B run 3 turn 3"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S1",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S1 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S1 message 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply S1 A run 1 turn 2",
+     "replies": [
+      "Test fixture reply S1 A run 1 turn 1",
+      "Test fixture reply S1 A run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S1 A run 2 turn 2",
+     "replies": [
+      "Test fixture reply S1 A run 2 turn 1",
+      "Test fixture reply S1 A run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S1 A run 3 turn 2",
+     "replies": [
+      "Test fixture reply S1 A run 3 turn 1",
+      "Test fixture reply S1 A run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S1",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S1 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S1 message 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply S1 B run 1 turn 2 Test fixture false claim",
+     "replies": [
+      "Test fixture reply S1 B run 1 turn 1",
+      "Test fixture reply S1 B run 1 turn 2 Test fixture false claim"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S1 B run 2 turn 2",
+     "replies": [
+      "Test fixture reply S1 B run 2 turn 1",
+      "Test fixture reply S1 B run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S1 B run 3 turn 2",
+     "replies": [
+      "Test fixture reply S1 B run 3 turn 1",
+      "Test fixture reply S1 B run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S2",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S2 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S2 message 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply S2 A run 1 turn 2",
+     "replies": [
+      "Test fixture reply S2 A run 1 turn 1",
+      "Test fixture reply S2 A run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S2 A run 2 turn 2",
+     "replies": [
+      "Test fixture reply S2 A run 2 turn 1",
+      "Test fixture reply S2 A run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S2 A run 3 turn 2",
+     "replies": [
+      "Test fixture reply S2 A run 3 turn 1",
+      "Test fixture reply S2 A run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S2",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S2 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S2 message 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply S2 B run 1 turn 2",
+     "replies": [
+      "Test fixture reply S2 B run 1 turn 1",
+      "Test fixture reply S2 B run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S2 B run 2 turn 2",
+     "replies": [
+      "Test fixture reply S2 B run 2 turn 1",
+      "Test fixture reply S2 B run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S2 B run 3 turn 2",
+     "replies": [
+      "Test fixture reply S2 B run 3 turn 1",
+      "Test fixture reply S2 B run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S3",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S3 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S3 message 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply S3 A run 1 turn 2",
+     "replies": [
+      "Test fixture reply S3 A run 1 turn 1",
+      "Test fixture reply S3 A run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S3 A run 2 turn 2",
+     "replies": [
+      "Test fixture reply S3 A run 2 turn 1",
+      "Test fixture reply S3 A run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S3 A run 3 turn 2",
+     "replies": [
+      "Test fixture reply S3 A run 3 turn 1",
+      "Test fixture reply S3 A run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S3",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S3 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S3 message 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply S3 B run 1 turn 2",
+     "replies": [
+      "Test fixture reply S3 B run 1 turn 1",
+      "Test fixture reply S3 B run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S3 B run 2 turn 2",
+     "replies": [
+      "Test fixture reply S3 B run 2 turn 1",
+      "Test fixture reply S3 B run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S3 B run 3 turn 2",
+     "replies": [
+      "Test fixture reply S3 B run 3 turn 1",
+      "Test fixture reply S3 B run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S4",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S4 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S4 message 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply S4 A run 1 turn 2",
+     "replies": [
+      "Test fixture reply S4 A run 1 turn 1",
+      "Test fixture reply S4 A run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S4 A run 2 turn 2",
+     "replies": [
+      "Test fixture reply S4 A run 2 turn 1",
+      "Test fixture reply S4 A run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S4 A run 3 turn 2",
+     "replies": [
+      "Test fixture reply S4 A run 3 turn 1",
+      "Test fixture reply S4 A run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S4",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S4 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S4 message 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply S4 B run 1 turn 2",
+     "replies": [
+      "Test fixture reply S4 B run 1 turn 1",
+      "Test fixture reply S4 B run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S4 B run 2 turn 2",
+     "replies": [
+      "Test fixture reply S4 B run 2 turn 1",
+      "Test fixture reply S4 B run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S4 B run 3 turn 2",
+     "replies": [
+      "Test fixture reply S4 B run 3 turn 1",
+      "Test fixture reply S4 B run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S5",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S5 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S5 message 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply S5 A run 1 turn 2",
+     "replies": [
+      "Test fixture reply S5 A run 1 turn 1",
+      "Test fixture reply S5 A run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S5 A run 2 turn 2",
+     "replies": [
+      "Test fixture reply S5 A run 2 turn 1",
+      "Test fixture reply S5 A run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S5 A run 3 turn 2",
+     "replies": [
+      "Test fixture reply S5 A run 3 turn 1",
+      "Test fixture reply S5 A run 3 turn 2"
+     ]
+    }
+   ]
+  },
+  {
+   "label": "S5",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent S5 message 1"
+    },
+    {
+     "role": "user",
+     "content": "Test fixture sent S5 message 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply S5 B run 1 turn 2",
+     "replies": [
+      "Test fixture reply S5 B run 1 turn 1",
+      "Test fixture reply S5 B run 1 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S5 B run 2 turn 2",
+     "replies": [
+      "Test fixture reply S5 B run 2 turn 1",
+      "Test fixture reply S5 B run 2 turn 2"
+     ]
+    },
+    {
+     "reply": "Test fixture reply S5 B run 3 turn 2",
+     "replies": [
+      "Test fixture reply S5 B run 3 turn 1",
+      "Test fixture reply S5 B run 3 turn 2"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,305 @@
+---
+title: Anatomy of a skill file
+promise: Can read a skill file and spot what makes it reliable or vague
+minutes: {simple: 9, deep: 16}
+tldr:
+  - A skill file is a written procedure that an AI tool opens when a task matches its description.
+  - A file can look complete and still be vague. If the description does not say when to use it, the tool may never open it.
+  - A skill file is a request, not a lock. Test it on real tasks and read the results.
+misconceptions: [M12]
+interactive: skill-file-checker
+inputs: [src/lib/skill-file-checker.ts, src/components/SkillFileChecker.astro]
+competencies: [UNESCO-AICFS-4.3.3, UNESCO-AICFS-CG4.3.3.1, UNESCO-AICFS-CG4.3.3.3, HEA-PEA-2.3.1-e, AIF-2.b, AILIT-S2, AILIT-M3]
+checkin:
+  - question: What does the Agent Skills specification say a skill's description should do?
+    options:
+      - text: It should say what the skill does and when to use it.
+        why: Yes. The specification says the description "Describes what the skill does and when to use it."
+        right: true
+      - text: It should be as long as possible, so nothing is left out.
+        why: Not this one. The specification sets a limit of 1024 characters. The Agent Skills guide says a few sentences to a short paragraph is usually right.
+      - text: It should only repeat the skill's name.
+        why: Not this one. The name is a separate field. The description is where the file says what it does and when to use it.
+      - text: It does not matter, because the tool always reads the whole file.
+        why: Not this one. At the start the tool loads only the name and description of each skill. It reads the whole file when a task matches.
+  - question: A skill file has clear steps, rules with reasons and an example. Its description is "Checks a recipe for missing steps." Why might it still go unused?
+    options:
+      - text: The description does not say when to use the file, and the tool decides from the description.
+        why: Yes. The Agent Skills guide says the description "carries the entire burden of triggering". It says the tool "won't know to reach for it" without a when.
+        right: true
+      - text: Skill files with examples are never opened.
+        why: Not this one. Both guides we read recommend examples. Whether the file is opened depends on the description.
+      - text: The steps are numbered, and numbered steps are ignored.
+        why: Not this one. The specification recommends step-by-step instructions.
+      - text: A skill file only works once the tool has been restarted twice.
+        why: Not this one. Neither source we read says that.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You read a skill file part by part and spotted what makes it reliable or vague.
+glossary:
+  - term: skill file
+    meaning: A written procedure for a repeated task that an AI tool can open when a task matches it.
+  - term: description
+    meaning: The short note at the top of a skill file. The AI tool reads it first to decide whether the file fits the task.
+  - term: specification
+    meaning: A written page that sets out exactly how a file format is built.
+  - term: Markdown
+    meaning: A way to write headings and lists in plain text.
+  - term: context window
+    meaning: All the text a language model can look at when it writes a response, including the response itself.
+  - term: README
+    meaning: A file that tells people about a project, such as how to start and how to help.
+  - term: nondeterministic
+    meaning: Not the same every time. The same request can give a different result on another run.
+whereNext:
+  title: Agent Skills, Best practices for skill creators
+  text: A free page of advice on writing skills, with examples. It is written for people who build skills and is in English only. No login is needed. A cookie is a small piece of data that a site sends to your web browser. On 9 October 2026 we opened the page in a test browser and made no choice. It requested files from three hosts. They were agentskills.io, api.github.com and d3gk2c5xim1je2.cloudfront.net. It set no cookies.
+  url: https://agentskills.io/skill-creation/best-practices
+sources:
+  - title: "Agent Skills, Overview (What are Agent Skills?), read 9 October 2026"
+    url: https://agentskills.io/home
+    licence: Documentation CC-BY-4.0 (the project's CONTRIBUTING file)
+    use: cite
+  - title: "Agent Skills, Specification, read 9 October 2026"
+    url: https://agentskills.io/specification
+    licence: Apache-2.0 for specification files (the project's CONTRIBUTING file)
+    use: cite
+  - title: "Agent Skills, Best practices for skill creators, read 9 October 2026"
+    url: https://agentskills.io/skill-creation/best-practices
+    licence: Documentation CC-BY-4.0 (the project's CONTRIBUTING file)
+    use: link
+  - title: "Agent Skills, Optimizing skill descriptions, read 9 October 2026"
+    url: https://agentskills.io/skill-creation/optimizing-descriptions
+    licence: Documentation CC-BY-4.0 (the project's CONTRIBUTING file)
+    use: cite
+  - title: "Agent Skills project on GitHub, README and CONTRIBUTING, read 9 October 2026"
+    url: https://github.com/agentskills/agentskills
+    licence: Apache-2.0 (code and specification), CC-BY-4.0 (documentation)
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Skill authoring best practices, read 9 October 2026"
+    url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Claude Code Docs, How Claude remembers your project (CLAUDE.md files), read 9 October 2026"
+    url: https://code.claude.com/docs/en/memory
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Context windows, read 9 October 2026"
+    url: https://platform.claude.com/docs/en/build-with-claude/context-windows
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, System prompts (release notes), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/release-notes/system-prompts/overview
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Company, read 9 October 2026"
+    url: https://www.anthropic.com/company
+    licence: No licence stated
+    use: cite
+  - title: "AGENTS.md, home page, read 9 October 2026"
+    url: https://agents.md/
+    licence: "CC BY 4.0 (LF Projects web site terms, which the page footer points to)"
+    use: cite
+  - title: "Gruber, Markdown, Daring Fireball, read 9 October 2026"
+    url: https://daringfireball.net/projects/markdown/
+    licence: "No licence for the page text (copyright notice; the BSD-style licence on the page covers the Markdown software)"
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+  - title: "Linux Foundation, About, read 9 October 2026"
+    url: https://www.linuxfoundation.org/about
+    licence: "CC BY 3.0 (the site's Terms of Use, reached from the Policies page linked in the footer)"
+    use: cite
+  - title: "YAML, YAML Ain't Markup Language, read 9 October 2026"
+    url: https://yaml.org/
+    licence: No licence stated (copyright notice only)
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## What a skill file is
+
+<Simple>
+Some AI tools can read skill files. A skill file is a written procedure for a task you repeat. Lesson 2.7, A skill is a written procedure (SOP), explains the idea. SOP means standard operating procedure, a set of written instructions for a routine task.
+
+This lesson looks inside the file. At the start, a tool reads only a short note about each file. When a task matches a note, the tool reads that whole file.
+
+In a published format called Agent Skills, the file is named SKILL.md.
+</Simple>
+
+<Deep>
+The Agent Skills site calls its format "a lightweight, open format for extending AI agent capabilities with specialized knowledge and workflows". It says the format "was originally developed by Anthropic, released as an open standard, and has been adopted by a growing number of agent products." Anthropic is an AI company. In these pages, "agent" means the AI tool that reads the skill. Lesson 5.3, Agents and tools, covers agents.
+
+That is the format's account of itself, read on 9 October 2026. Its specification page shows no version number and no date. It is one maker's format on one day, and formats change.
+
+The specification says skills load "progressively", in three stages. Stage one: the name and description "are loaded at startup for all skills". Stage two: "The full SKILL.md body is loaded when the skill is activated". Stage three: files in the skill's other folders "are loaded only when required".
+</Deep>
+
+## Six parts of a skill file
+
+<Simple>
+We sort a skill file into six parts. This sorting is ours.
+
+- **Name:** a short name for the skill. It must match the name of the folder it sits in.
+- **Description:** a short note that says what the file does and when to use it.
+- **Steps:** the actions, in order.
+- **Rules:** what to always or never do, and why.
+- **Examples:** a sample request and the answer you want.
+- **Reference files:** extra pages the file points to, and when to read each.
+
+A file can have all six and still be vague. The next sections show where.
+</Simple>
+
+<Deep>
+The Agent Skills specification asks for fewer parts than ours. Two fields are required: `name` and `description`. They sit at the top of the file, in a block the specification calls "YAML frontmatter". YAML's own site calls it "a human-friendly data serialization language". It is a way to write data as plain text. Frontmatter is the fields that come before the body. Below it comes the body, written in Markdown. Markdown is "a plain text formatting syntax", so a heading or a list is typed as plain characters.
+
+For the body, the specification says "There are no format restrictions." It lists recommended sections: "Step-by-step instructions", "Examples of inputs and outputs" and "Common edge cases". It allows an optional `references/` folder for "additional documentation that agents can read when needed".
+
+So steps, examples and reference files appear in the specification. "Rules with reasons" is our own part. We added it from the advice in the sections below, not from a requirement.
+</Deep>
+
+## The description decides when it loads
+
+<Simple>
+The description is the short note the tool reads first. It decides whether the tool opens the file. So it must say what the file does and when to use it.
+
+The Agent Skills specification is the written page that sets out how the format is built. It gives a poor example: "Helps with PDFs." A PDF is a common file type for documents. That description does not say when to use the file.
+
+Its good example says what the file does. It then adds: "Use when working with PDF documents or when the user mentions PDFs, forms, or document extraction."
+
+The Agent Skills project also publishes pages of advice. We call them the guide. A description may hold up to 1024 characters, says the specification. The guide says a few sentences to a short paragraph is usually right.
+
+The guide on descriptions says the description "carries the entire burden of triggering". Triggering here means the tool deciding to open the file. If a description does not say when the file is useful, the tool "won't know to reach for it".
+</Simple>
+
+<Deep>
+The specification limits a description to 1024 characters. Its full good example reads: "Extracts text and tables from PDF files, fills PDF forms, and merges multiple PDFs. Use when working with PDF documents or when the user mentions PDFs, forms, or document extraction."
+
+Anthropic's own advice names three more vague descriptions to avoid: "Helps with documents", "Processes data" and "Does stuff with files". It says its Claude models use the description to choose among "potentially 100+ available Skills".
+
+The two pages differ on wording. The Agent Skills guide says to use imperative phrasing, which means framing the description as an instruction to the agent, such as "Use this skill when...". Anthropic's page says "Always write in third person" and gives "Processes Excel files and generates reports" as good. Its examples to avoid, "I can help you process Excel files" and "You can use this to process Excel files", speak as "I" or "you". Both say the description should hold the what and the when. Our checker does not look at the style. It looks only for the word "when" and counts the words, so that short example alone would be marked vague.
+
+The guide adds a limit. It says agents "typically only consult skills for tasks that require knowledge or capabilities beyond what they can handle alone". A one-step request such as "read this PDF" may not open a PDF skill even when the description matches.
+</Deep>
+
+## Steps, rules, examples and reference files
+
+<Simple>
+**Steps.** The specification lists "Step-by-step instructions" first among its recommended sections. Write the actions in order.
+
+**Rules.** Say what to always or never do, and give the reason. Some tasks allow more than one good approach. For those, the Agent Skills guide says "explaining why can be more effective than rigid directives".
+
+**Examples.** Show a sample request and the answer you want. Anthropic is an AI company, and Claude is its AI model. Its skill advice says examples "convey the desired style and level of detail to Claude more clearly than descriptions alone".
+
+**Reference files.** A long file can point to other files. The guide says a pointer should say when to read the file. A pointer that only says "see references/ for details" is weaker.
+</Simple>
+
+<Deep>
+The guide warns that a skill made without real knowledge of the job tends toward "vague, generic procedures", and gives "handle errors appropriately" and "follow best practices for authentication" as examples. It also says "Concise, stepwise guidance with a working example tends to outperform exhaustive documentation."
+
+Reasons do not suit every rule. The same guide says to "Be prescriptive when operations are fragile, consistency matters, or a specific sequence must be followed." Its example for a database migration says "Do not modify the command or add additional flags."
+
+On reference files, the guide says that "Read `references/api-errors.md` if the API returns a non-200 status code" is more useful than a generic "see references/ for details." The specification says to keep the main file "under 500 lines" and to keep file references "one level deep".
+
+A related page is about a different kind of file. Claude Code, an Anthropic product, reads files called CLAUDE.md, which hold "instructions you write to give Claude persistent context". Its page says to write instructions "concrete enough to verify", for example "Use 2-space indentation" instead of "Format code properly". That advice is for CLAUDE.md files, not skill files, and Anthropic wrote it for its own tool.
+</Deep>
+
+## The Skill-file checker
+
+<Simple>
+The Skill-file checker shows three invented skill files: A, B and C. For each one, you predict whether it passes or fails. Then you run the checker and read its findings, part by part.
+
+The checker is a short list of rules we wrote. It looks for patterns in the text.
+
+A description needs the word "when" and at least eight words, on the description line itself. Steps need at least two numbered lines. Each always or never rule needs a reason. Examples need an Example heading or a request and answer pair.
+
+The checker cannot tell whether a skill works. A pass means the patterns are there, nothing more.
+
+</Simple>
+
+<Deep>
+The rules are ours. The specification requires only a name and a description. The "reason" rule comes from the guide's advice on flexible instructions, and the guide itself says fragile tasks may need plain orders. So the checker is a prompt to look closely. It is not a test of the specification.
+
+In this part you can also paste your own skill text, up to 2,000 characters, and press "Check this text". The text stays in your browser. Nothing is sent or saved, and a reload clears it.
+</Deep>
+
+<TryIt />
+
+## Two published formats
+
+<Simple>
+Agent Skills is one published format. AGENTS.md is another. Both are text files that give instructions to AI tools. They are built differently.
+
+AGENTS.md is a file for AI coding tools. An AI coding tool is a program that uses AI to work on software code.
+
+Its site calls it "a README for agents". A README is a file that tells people about a project. AGENTS.md holds the extra detail a coding tool needs.
+
+AGENTS.md has no required fields, so it has no required description.
+</Simple>
+
+<Deep>
+We read both on 9 October 2026. Each is that maker's format on that date.
+
+- **Who made it.** Agent Skills: developed first by Anthropic, then released as an open standard. AGENTS.md: "Now stewarded by the Agentic AI Foundation under the Linux Foundation".
+- **What it is.** Agent Skills: a folder with a `SKILL.md` file. AGENTS.md: a file named AGENTS.md.
+- **Required fields.** Agent Skills: `name` and `description`. AGENTS.md: "No. AGENTS.md is just standard Markdown. Use any headings you like".
+- **How a tool finds it.** Agent Skills: by matching a task to the description. AGENTS.md: "Agents automatically read the nearest file in the directory tree".
+- **If two clash.** Agent Skills: the specification does not say. AGENTS.md: "The closest AGENTS.md to the edited file wins; explicit user chat prompts override everything."
+
+Stewarded means looked after. The Linux Foundation says it is a non-profit that "has provided a neutral home and unmatched support for cutting-edge projects".
+
+The AGENTS.md site says README.md files "are for humans" and that AGENTS.md holds "the extra, sometimes detailed context coding agents need". It suggests sections such as "Setup commands" and "Code style" in its own example.
+</Deep>
+
+## Test it, version it, expect it to bend
+
+<Simple>
+A skill file is a request, not a lock. The Agent Skills guide says "Model behavior is nondeterministic". Nondeterministic means the result can differ from run to run.
+
+The guide says "the same query might trigger the skill on one run but not the next". So even a well-written file can be opened on one run and skipped on the next.
+
+So test the file on real tasks. The guide suggests about twenty sample requests. Some should open the file and some should not. Run each more than once and read the results.
+
+The language model is the program that writes the tool's replies. The file's text is added to the model's context window. That is all the text the model can look at when it writes. It sits next to your conversation.
+
+Lesson 5.6, Prompt, RAG or fine-tune?, compares this with other ways to shape an AI.
+
+To track changes, write a version number in the file. The specification has no version field of its own. Its example puts one under "metadata", a free-form field.
+</Simple>
+
+<Deep>
+The guide on descriptions says "Run each query multiple times (3 is a reasonable starting point)". It says to count the share of runs in which the skill opened. It suggests about 8 to 10 queries that should open the skill and 8 to 10 that should not, and it says the best "should not" cases are near-misses that share words with the skill.
+
+The best-practices guide says to run a skill against real tasks and ask "what triggered false positives? What was missed? What could be cut?" It also says to read "execution traces, not just final outputs". Here a trace means the record of the steps the agent took. The guide goes on: "If the agent wastes time on unproductive steps, common causes include instructions that are too vague".
+
+The specification describes `metadata` as "A map from string keys to string values" and shows `version: "1.0"` under it. It does not say what a version number means.
+
+On rules that bend, Claude Code's page about CLAUDE.md says: "Claude treats CLAUDE.md files as context, not enforced configuration". It also says "there's no guarantee of strict compliance, especially for vague or conflicting instructions." That page is about CLAUDE.md files, not skill files. We read it on 9 October 2026.
+</Deep>
+
+## Rules that always apply
+
+<Simple>
+One more part of the file needs care: the rules. Some rules should hold every time the file is used. Put them in the rules part, and give a reason for each.
+
+In the checker, these are the lines with always or never in them. A rule with no reason is flagged as vague. We ask for a reason because of the guide's advice on rules, in the section on steps.
+</Simple>
+
+<Deep>
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. A prompt framework is a way to organise the instructions you give a model. The paper splits a prompt into seven labelled layers. Its third layer is called "Core Directives".
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked framework, not the standard.
+
+In the paper's own sample prompt, Core Directives holds three things. First, ethical guidelines, such as "Maintain academic integrity at all times". Second, an instruction hierarchy that orders rules from "immutable" to "customizable". Third, a conflict rule: "When instructions conflict, follow the priority order above." The paper's summary adds that "Higher layers always override lower layers."
+
+The paper places its layers "inside an AI model's system prompt". Anthropic says its Claude web and mobile apps use a system prompt "to provide up-to-date information, such as the current date, to Claude at the start of every conversation". That page describes only Anthropic's own apps. Here, "system prompt" means that kind of text.
+
+A skill file's always and never rules play a similar part for one task: standing rules the model should keep. The two differ in where they sit. The specification loads a skill file's body only "when the skill is activated". In Anthropic's apps, the system prompt is there from the start of every conversation.
+
+The paper also says: "All prompt-level constraints are advisory, not absolute." and "Current findings are based on controlled testing rather than large-scale deployment." That matches the earlier section: a written rule is a request.
+</Deep>

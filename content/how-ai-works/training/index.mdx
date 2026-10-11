@@ -1,0 +1,338 @@
+---
+title: Training
+promise: Can explain how a model learns by reducing its mistakes on examples
+minutes: {simple: 9, deep: 16}
+tldr:
+  - Training shows a model examples. It guesses, the loss says how wrong it was, and its numbers change a little.
+  - People choose the examples, how big each change is and how many rounds it runs.
+  - The mistakes fall, but not always to none. Training is usually a separate job from using a chatbot.
+misconceptions: [M7, M8]
+interactive: watch-it-learn
+inputs: [src/lib/watch-it-learn.ts]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-ALT-2, HEA-PEA-2.3.1-a, AILIT-S3, AILIT-E2]
+checkin:
+  - question: What changes in a model during training?
+    options:
+      - text: Its numbers change a little, round after round.
+        why: Yes. After each round, training changes the model's numbers a little, so its guesses get less wrong.
+        right: true
+      - text: It stores a copy of every example to look up later.
+        why: Not this one. The model in this lesson keeps three numbers, not the dots it learned from.
+      - text: A person rewrites its rules each round.
+        why: Not this one. People choose the examples and the settings. Training works out the changes.
+  - question: Who chose the examples the model in this lesson learned from?
+    options:
+      - text: "People did: we made the dots up for this lesson."
+        why: Yes. People choose the examples a model learns from, and how it is trained.
+        right: true
+      - text: The model chose them itself.
+        why: Not this one. People choose the examples a model learns from.
+      - text: "Nobody chose them: examples are neutral facts."
+        why: Not this one. People choose the examples. A model learns the patterns in them, including unfair ones.
+  - question: You tell a chatbot its answer was wrong. What happens to its model?
+    options:
+      - text: Usually nothing changes in it straight away. Training is a separate job. A company may use chats later to train a new model, if its settings allow.
+        why: Yes. In the usual way of working, a model is trained first and then used. What people type can go into a later round of training, for a new model.
+        right: true
+      - text: It learns from you at once.
+        why: Not in the usual way of working. Training is a separate job. Some people in one small study believed this.
+      - text: Nothing can ever come of it.
+        why: Not this one. Anthropic says it will train new models with data from Free, Pro and Max accounts. A setting has to be on. It said so in August 2025.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You explained how training changes a model, and who chooses its examples.
+glossary:
+  - term: training
+    meaning: Changing a model's numbers, round after round, so its guesses on the examples get less wrong.
+  - term: example
+    meaning: One case a model learns from. In this lesson, each dot is an example.
+  - term: model
+    meaning: A set of numbers, and the code that uses them to make guesses.
+  - term: loss
+    meaning: One number for how wrong a model's guesses are. Training tries to make it smaller.
+  - term: round
+    meaning: One pass over all the examples. After each round, training changes the model's numbers a little.
+  - term: weight
+    meaning: One of a model's numbers. Training changes the weights so its guesses get less wrong.
+  - term: gradient descent
+    meaning: The way training finds each change. It works out which way the loss goes down fastest, and steps that way.
+  - term: learning rate
+    meaning: A number people choose. It sets how big each step of training is.
+  - term: epoch
+    meaning: Google's word for one round, one pass over all the examples.
+  - term: batch
+    meaning: How many examples a model looks at before its numbers change.
+  - term: log loss
+    meaning: The loss for a yes or no model. It is small when a guess is close to right. It grows when the model is confused.
+  - term: overfitting
+    meaning: When a model fits its examples so closely that it does badly on new ones.
+  - term: pretraining
+    meaning: The first stage of training a language model, on huge amounts of text.
+whereNext:
+  title: Overfitting, in Google's Machine Learning Crash Course
+  text: One page, written for new developers, so it suits the Deep layer. It takes 10 minutes by Google's own estimate. Free, with no login. It is on a different website.
+  url: https://developers.google.com/machine-learning/crash-course/overfitting/overfitting
+sources:
+  - title: "Google for Developers, Machine Learning Crash Course: Linear regression, Loss"
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course: Linear regression, Gradient descent"
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course: Linear regression, Hyperparameters"
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course: Logistic regression, Loss and regularization"
+    url: https://developers.google.com/machine-learning/crash-course/logistic-regression/loss-regularization
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course: Overfitting"
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/overfitting
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course: Overfitting, Model complexity"
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Jurafsky and Martin, Speech and Language Processing, 3rd edition draft"
+    url: https://web.stanford.edu/~jurafsky/slp3/
+    licence: All rights reserved
+    use: cite
+  - title: "Soudry and others, The Implicit Bias of Gradient Descent on Separable Data, Journal of Machine Learning Research 19(70)"
+    url: https://www.jmlr.org/papers/v19/18-188.html
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Brown and others (OpenAI), Language Models are Few-Shot Learners, arXiv 2005.14165"
+    url: https://arxiv.org/abs/2005.14165
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "OpenAI, GPT-4 Technical Report, arXiv 2303.08774"
+    url: https://arxiv.org/abs/2303.08774
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Soldaini and others (Allen Institute for AI), Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research, arXiv 2402.00159"
+    url: https://arxiv.org/abs/2402.00159
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Carlini and others, Extracting Training Data from Large Language Models, arXiv 2012.07805"
+    url: https://arxiv.org/abs/2012.07805
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Baack, Mozilla Insights, Training Data for the Price of a Sandwich: Common Crawl's Impact on Generative AI"
+    url: https://www.mozillafoundation.org/en/research/library/generative-ai-training-data/common-crawl/
+    licence: No licence named for this report
+    use: cite
+  - title: "Anthropic, Transparency Hub, Claude Sonnet 5 Summary Table"
+    url: https://www.anthropic.com/transparency
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Updates to Consumer Terms and Privacy Policy"
+    url: https://www.anthropic.com/news/updates-to-our-consumer-terms
+    licence: All rights reserved
+    use: cite
+  - title: "OpenAI Help Center, How ChatGPT and our foundation models are developed"
+    url: https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed
+    licence: All rights reserved
+    use: cite
+  - title: "OECD and European Union, Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education"
+    url: https://doi.org/10.1787/65cd27d4-en
+    licence: CC-BY-4.0
+    use: cite
+  - title: "EDPS and AEPD, 10 Misunderstandings about Machine Learning"
+    url: https://www.edps.europa.eu/system/files/2022-09/22-09-20_10-misunderstandings-on-machine-learning_en.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Schneller, Seier, Huber, Loi and Albert, Behind the screen: laypersons' mental models about ChatGPT, Frontiers in Computer Science"
+    url: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1915035/full
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Marx, Witt and Leonhardt, Identifying Secondary School Students' Misconceptions about Machine Learning: An Interview Study"
+    url: https://doi.org/10.1145/3677619.3678114
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Regulation (EU) 2024/1689 (Artificial Intelligence Act), EUR-Lex consolidated text"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727
+    licence: EU legal text
+    use: cite
+  - title: "Smilkov and Carter, TensorFlow Playground"
+    url: https://playground.tensorflow.org/
+    licence: Apache-2.0
+    use: link
+    note: "The idea for this interactive (dots, a dividing line and a button that moves training on by one round) comes from TensorFlow Playground by Daniel Smilkov and Shan Carter. No code was copied."
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-28
+signed: false
+---
+
+## Bad at first
+
+<Simple>
+A new model makes poor guesses. Training makes them less poor, one small change at a time.
+
+A model holds what it learns in numbers. The model in this lesson has three numbers. Together they set where a line runs across a chart of dots. The model guesses which side of the line each dot is on.
+
+When we say a model learns, we mean this: training changes the model's numbers so its guesses get less wrong.
+</Simple>
+
+<Deep>
+This lesson looks at these beliefs: "It remembers everything, or learns live" and "It is neutral and unbiased". Each is set against dated evidence below.
+
+Google calls a model's numbers parameters: "The weights and biases that a model learns during training." Here "biases" are just more of the model's numbers. They are not about unfairness. The textbook says large language models come in families "from under a billion to many trillions of parameters".
+
+Real training usually starts from random numbers near zero, or from zero for a model like the one in this lesson. OpenAI says of the models that power ChatGPT: "Early in training, its responses are largely random." That is its help page, checked in September 2026.
+
+Lesson 1.2 compares written rules with learning from examples. Lesson 1.4 shows how a chatbot writes the next piece of text. Neither is needed first.
+</Deep>
+
+## Guess, measure, change
+
+<Simple>
+Training works in a loop, and it uses examples. An example is one case the model learns from, like one dot on a chart.
+
+First, the model makes a guess for each example. Then a measure called the loss says how wrong the guesses are.
+
+Then training changes the model's numbers a small amount. It changes them in the direction that makes the loss smaller. Then it goes round again.
+
+Each pass over all the examples is one round. Training usually takes many rounds. After each round, training changes the model's numbers a little, so its guesses get less wrong.
+</Simple>
+
+<Deep>
+The loss is one number for how wrong the guesses are, averaged over the examples. Google's course puts the aim this way: "The goal of training a model is to minimize the loss, reducing it to its lowest possible value."
+
+For a yes-or-no model like the one in this lesson, the loss used is log loss. The textbook calls it cross-entropy loss. It is small when a guess is close to right, and it grows when the model is confused. It grows without limit as the model's guess for the right answer nears zero.
+
+So the loss is not the number of mistakes. It can fall while the number of dots on the wrong side stays the same. When that happens in this lesson's run, the model grows surer about the dots it puts on the right side, and its guesses about the dots still on the wrong side get less wrong too.
+
+Gradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level.
+</Deep>
+
+## People choose
+
+<Simple>
+People choose the examples a model learns from. They also choose how it is trained: how big each change is, and how many rounds it runs.
+
+In this lesson, we chose the dots, where the line starts, the step size and the number of rounds.
+</Simple>
+
+<Deep>
+Google's course draws the line this way: "hyperparameters are values that you control; parameters are values that the model calculates during training." The learning rate is one. So is the batch size: how many examples the model looks at before its numbers change.
+
+Google's word for a round is an epoch: "A full training pass over the entire training set such that each example has been processed once." In this lesson, every round looks at all 24 example dots and then changes the three numbers once, so one round is one epoch. Large models change their numbers after each batch of text instead.
+
+The OECD and European Union's framework for AI literacy, the skills and knowledge to use AI in an informed way, says AI systems are "trained to identify patterns among data elements that humans have selected, categorised and prioritised".
+
+We started this lesson's line in a clearly wrong place on purpose, so its movement is easy to see.
+</Deep>
+
+<TryIt />
+
+## What the dots show
+
+<Simple>
+The mistakes fell. But some dots stayed on the wrong side. No straight line can split these dots perfectly.
+
+Training can leave a model still wrong. What counts is how it does on new examples it did not learn from.
+
+We made these dots up, and we chose where the line starts, so you can see it move.
+</Simple>
+
+<Deep>
+Overfitting is when a model fits its training examples so closely that it does badly on new ones. Google's course defines it as "creating a model that matches (memorizes) the training set so closely that the model fails to make correct predictions on new data."
+
+To catch it, people keep some examples aside and check the model on them. They watch the loss on both sets, round by round. If the loss on the kept-aside examples starts to rise while the training loss keeps falling, that suggests overfitting. People can then stop training early.
+
+In this lesson's Deep view, the hollow dots are new dots the model never learns from, and the dashed line is the loss on them. In this lesson's run, the loss on the 8 new dots falls in every round along with the loss on the example dots. The two lines have similar shapes, as Google's course says they do for a well-fit model.
+
+Simpler models usually overfit less. Google's course gives a straight line as its example of a simple model: "Complex models typically outperform simple models on the training set. However, simple models typically outperform complex models on the test set (which is more important)." This lesson's model is a straight line with three numbers.
+
+More rounds are not always better. For GPT-3, OpenAI chose to show some sources to the model more than once. It wrote in 2020 that this "accepts a small amount of overfitting in exchange for higher quality training data".
+</Deep>
+
+## Chatbots learn this way too
+
+<Simple>
+A language model is a program that works out a likely next piece of text. Large ones, like the ones behind the chatbots ChatGPT and Claude, learn in the same basic way. They learn from huge amounts of text.
+
+The model guesses the next piece of text, one piece at a time. Wrong and unsure guesses are corrected. Its numbers change so the right piece becomes more likely.
+</Simple>
+
+<Deep>
+The textbook describes it: "in the pretraining stage, the model is trained to predict the next word, one by one, in enormous text corpora of billions of tokens drawn from the web." Pretraining is the first stage of training a language model. Later stages turn it into a chatbot, and lesson 5.1 will cover them. Anthropic's page for Claude Sonnet 5 names the two stages: "After the pretraining process, Sonnet 5 underwent substantial post-training" (checked in September 2026).
+
+A language model's loss is about the next piece of text, called a token. At each place in the training text, the loss is how little chance the model gave the token that really came next. Gradient descent changes all its weights to lower it. No one has to label the text. In the textbook's words, "the natural sequence of words is its own supervision!"
+
+What the makers say, each in its own words. OpenAI says GPT-4 was "pre-trained to predict the next token in a document" (March 2023). Anthropic says only that Claude Sonnet 5 "was pretrained on large, diverse datasets" (checked in September 2026). Its entry for Claude Sonnet 5 names no method.
+
+Rounds for one large model, dated. OpenAI trained GPT-3 (175 billion parameters, 2020) for 300 billion tokens. Its sources were not seen equally often: English Wikipedia about 3.4 times, and the filtered Common Crawl web text less than half a time. Lesson 1.3 covers tokens.
+</Deep>
+
+## Whose text?
+
+<Simple>
+People choose that text too: which sources to use and what to filter out.
+
+Lesson 3.6 will ask who owns that text, and whether it is all right to use it.
+</Simple>
+
+<Deep>
+OpenAI says it applies filters "to remove material we do not want our models to learn from, such as hate speech, adult content, sites that aggregate personal information, and spam" (its help page, checked in September 2026).
+
+Much of the text comes from the web. Common Crawl, a nonprofit, makes a series of snapshots of the web, each of billions of web pages. The textbook says open models are mainly trained on it. A Mozilla review of 47 text models published from 2019 to October 2023 found at least 30 of them (64%) used a filtered version of Common Crawl. For 10 of the 47, the makers did not say enough to tell.
+
+One model's mix, published by its maker in 2020. GPT-3's training mix: filtered Common Crawl 410 billion tokens (3 in 5 of the mix, 60%), WebText2 19 billion (22%), two book collections, Books1 12 billion (8%) and Books2 55 billion (8%), and English Wikipedia 3 billion (3%). People chose how often each source was used: OpenAI wrote that "datasets we view as higher-quality are sampled more frequently". The Common Crawl part came from "41 shards of monthly CommonCrawl" covering 2016 to 2019, filtered from 45 TB of compressed text to 570 GB.
+
+One open corpus, with its version and date. Researchers at the Allen Institute for AI (AI2) and several universities released Dolma. Their 2024 paper describes version 1.6: about 3 trillion tokens of English text. About 4 in 5 of those tokens (81%) are web pages from Common Crawl. The rest is code from GitHub, posts from Reddit, research papers, public-domain books from Project Gutenberg, and Wikipedia and Wikibooks.
+
+Many makers say little about their data now. OpenAI's GPT-4 report (March 2023) gave "no further details" of its dataset. Anthropic describes Claude Sonnet 5's training data only by kind: "a proprietary mix of publicly available information from the Internet, public and private datasets, and synthetic data generated by other models" (checked in September 2026). OpenAI's help page lists three kinds of source for ChatGPT's models (checked in September 2026). The Dolma researchers wrote in 2024 that commercial models "rarely detail their data". No page this lesson uses says how the maker of a chatbot weights its sources today.
+
+People also filter the text, and filters make mistakes. Anthropic says it used "several data cleaning and filtering methods" for Claude Sonnet 5 (checked in September 2026). The textbook says filters for quality and safety are important, and that safety filters often wrongly flag harmless text, such as text in minority dialects.
+
+Whose voice? The people who wrote the web pages, books, code and posts wrote the training text. The textbook says training data is "disproportionately generated by authors from the US and other developed countries", which pushes a model's writing toward their views and topics. Disproportionately means more than their share. The textbook gives no figure, and it does not say they wrote most of it. Dolma is English only, and its makers say this reinforces English as the default.
+
+The textbook tells builders to ask where the data comes from, who wrote it, whether they are paid fairly, and whether it is all right to use. It says payment for creators "is not resolved". Lesson 3.6 will cover copyright, consent and payment.
+
+The EU asks for a summary. Under Article 53(1)(d) of the AI Act, providers of general-purpose AI models must publish a "sufficiently detailed summary" of the content used to train them, on a template from the AI Office. The exception for free and open-source models does not cover this point. The rule has applied since 2 August 2025; providers of models placed on the market before that date have until 2 August 2027. The summary is meant to be broad, not technically detailed.
+
+A model can sometimes repeat parts of its training text word for word. Researchers pulled hundreds of exact passages out of a language model called GPT-2 (posted December 2020, revised June 2021). OpenAI says of its own models that they "do not store or retain copies" of their training data (its help page, checked in September 2026). That is OpenAI's claim, not a rule for all models.
+</Deep>
+
+## Does it learn from your chat?
+
+<Simple>
+Training is a separate job from using the model. In the usual way of working, a model is trained first and then used.
+
+What people type can go into a later round of training, for a new model. Anthropic makes Claude. On 28 August 2025 it said it will use Free, Pro and Max account data to train new models. It said it will use that account data when a setting is on.
+
+Some systems do change as you use them. A feed can be one: what you open can change what it shows next. Lesson 1.10 covers feeds. Lesson 1.8 shows how a chatbot uses the earlier words in a chat. Lesson 3.3 will cover saved memory.
+</Simple>
+
+<Deep>
+Researchers who interviewed school students put the usual way of working like this: "After training, the model is deployed for use but does not adapt or “learn” further on its own." And: "While data collected during use can improve the model, this requires a separate training phase." An EU data protection paper lists "ML models automatically improve over time" as a misunderstanding: a model in use gets better only if it is trained again (2022).
+
+Anthropic's change covers its Free, Pro and Max plans, and only new or resumed chats and coding sessions. It says that if you turn the setting off, it will not use new chats and coding sessions for future model training. Lesson 4.4 will cover settings like this one.
+
+Some systems do change as you use them. The OECD and European Union framework says AI systems can gather data during use that changes what they show "in real time". Google defines a dynamic model as one that is "retrained frequently or continuously". The researchers above say learning during use exists but is rare.
+
+The evidence for the belief. In an interview study of 21 adults with no computing background (interviewed from 27 November to 19 December 2024, published 7 September 2026), a group of 4 believed ChatGPT learns straight away from their corrections and keeps what it learned for later, even for other users. In March 2023, researchers in Germany interviewed five secondary school students about face recognition on phones and about ChatGPT (published September 2024). One misconception they named is "Continuous Learning". One student said: "I would say it learns all the time."
+
+The limits. Both are small interview studies, not surveys of how common the belief is. Most of the adults' interviews were in German. The five German school students were recruited through an internship at the faculty or an extracurricular programme, so they were already interested in the subject. None of the studies is from Ireland, and none is about neurodivergent learners.
+</Deep>
+
+## Is it neutral?
+
+<Simple>
+A model learns the patterns in the examples people chose, including unfair ones. Lesson 3.2 will show how.
+</Simple>
+
+<Deep>
+OpenAI found GPT-3 reflected stereotypes in its training text (2020). Its paper says: "internet-trained models have internet-scale biases; models tend to reflect stereotypes present in their training data." An EU data protection paper lists "ML systems are less subject to human biases" as a misunderstanding (2022). It adds that ML systems are "selected, designed, tuned, and trained with data, which, in most cases, was selected by humans."
+
+</Deep>

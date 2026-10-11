@@ -1,0 +1,76 @@
+---
+// 2.4's "With or without an example" (stage I, R-2.4): the same notes sent with no example and with two example cards,
+// to two models. Two predictions about the shape, one about matching; the matched quirk comes last, beside the cards.
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import RunCard from './RunCard.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.4', 'examples');
+const [claude, mini] = (['A', 'B'] as const).map((m) => modelOf(rec, variantOf(rec, 'A', m)).name);
+const sent = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+// The two example cards are in the recorded message itself, as "Q: ...", then "A: ...".
+const cards = [...sent('B').matchAll(/^Q: (.*)\nA: (.*)$/gm)].map(([, q, a]) => ({ q, a }));
+if (cards.length !== 2) throw new Error('R-2.4: request B should hold two example cards');
+const ask = (name: string, said: [string, string, string]) => ['Request A, with no example cards.', 'Request B, with two example cards.', 'Neither of them.'].map((text, i) => [text, `${name}: ${said[i]}`]);
+const SHAPE = [
+  [claude, ask(claude, [
+    'you said request A would give plain Q and A lines. It did not: it gave titles and bold labels in all three runs.',
+    'you said request B would give plain Q and A lines. It did, in all three runs.',
+    'you said neither would give plain lines. Request B did, in all three runs.',
+  ])],
+  [mini, ask(mini, [
+    'you said request A would give plain Q and A lines. It did not: it used Front and Back in all three runs.',
+    'you said request B would give plain Q and A lines. It came nearer, with Q and A labels, but it added a line before, bold labels and dashes in all three runs.',
+    'you said neither would give plain lines. That is what the runs showed. Request B came nearer, with Q and A labels, but it added a line before, bold labels and dashes.',
+  ])],
+] as const;
+const COPY = [
+  ['They will all match card 1: a small letter first, and no full stop.', 'you said every run would match card 1. Only run 1 did: five of its answers began with a small letter, and none ended with a full stop.'],
+  ['They will all match card 2: a capital letter first, and a full stop.', 'you said every run would match card 2. Two runs matched card 2. Run 1 matched card 1 instead.'],
+  ['They will differ from run to run.', 'you said the runs would differ. They did: run 1 matched card 1, and runs 2 and 3 matched card 2.'],
+  ["I can't tell.", 'you said you could not tell. That is fair.'],
+];
+---
+
+<Shell title="With or without an example" reveal="Show what happened" class="with-or-without-an-example">
+  <p>We sent the same notes, turned into flashcards, to two AI models. The notes are invented. We sent two different requests. Each went to each model three times.</p>
+  <h3>Request A</h3>
+  <blockquote class="sent">{sent('A')}</blockquote>
+  <h3>Request B</h3>
+  <blockquote class="sent">{sent('B')}</blockquote>
+  <p>Request A has no words about the format. So these runs cannot tell an example from a description of the format.</p>
+  {
+    SHAPE.map(([name, options], q) => (
+      <fieldset>
+        <legend>{name}: which request will give plain Q and A lines, with nothing added?</legend>
+        {options.map(([text, after], i) => <label><input type="radio" name={`example-${q + 1}`} value={i + 1} data-said={after} />{text}</label>)}
+        {q === 0 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <fieldset>
+    <legend>The two cards differ. Card 1's answer begins with a small letter and has no full stop. Card 2's answer begins with a capital and has a full stop. What will {claude}'s three answers to request B do?</legend>
+    {COPY.map(([text, after], i) => <label><input type="radio" name="example-3" value={i + 1} data-said={`${claude}: ${after}`} />{text}</label>)}
+  </fieldset>
+  <Fragment slot="after">
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={['A', 'B']} />
+    <h3>{claude}</h3>
+    <Runs rec={rec} items={[{ label: 'A', maker: 'A' }, { label: 'B', maker: 'A', start: 2 }]} again={false} />
+    <h3>{mini}</h3>
+    <Runs rec={rec} items={[{ label: 'A', maker: 'B' }, { label: 'B', maker: 'B' }]} again={false} />
+    <h3>The quirk that matched</h3>
+    <p>This run matched card 1's quirks. Here are the two cards, then the run.</p>
+    <div class="runs-pair">
+      <div>
+        {cards.map((c, i) => <article class="run"><h4>Example card {i + 1}</h4><p>Q: {c.q}</p><p>A: {c.a}</p></article>)}
+      </div>
+      <RunCard rec={rec} said={said} label="B" maker="A" n={1} />
+    </div>
+    <AllRuns rec={rec} said={said} labels={[['A', 'Request A, no example cards'], ['B', 'Request B, two example cards']]} />
+  </Fragment>
+</Shell>

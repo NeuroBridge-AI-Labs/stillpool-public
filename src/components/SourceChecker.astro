@@ -1,0 +1,25 @@
+---
+// 4.1's "Source checker" (stage I, R-4.1): four citations from one recorded answer, one at a time (Cases), then what all ten
+// recorded answers showed. The citations come from Ministral 3 14B, run 1; none is real and relevant, so no row has a link.
+// Nothing is scored, stored or sent, and no model is called.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/source-checker.ts';
+import { loadRecorded, paragraphs } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Cases from './Cases.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-4.1', 'check-it-before-you-use-it', 'using-ai-well');
+---
+
+<Cases title="Source checker" name="source-checker" noun="Citation" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />
+
+<section data-after-cases="source-checker" aria-labelledby="source-checker-runs">
+  <h3 id="source-checker-runs">What all ten answers showed</h3>
+  {paragraphs(said).map((p) => <p>{p}</p>)}
+  <TheAIs rec={rec} labels={['P']} />
+  <AllRuns rec={rec} said={said} sent labels={[['P', 'The same question, five answers from each AI']]} />
+</section>
+
+<script>
+  import '../lib/after-cases.ts';
+</script>

@@ -1,0 +1,7 @@
+---
+// 3.7's "Allowed, high-risk or banned?" (stage I, static): eight uses, one at a time, the category and the article quoted.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/allowed-high-risk-or-banned.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Allowed, high-risk or banned?" name="the-law" noun="Use" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

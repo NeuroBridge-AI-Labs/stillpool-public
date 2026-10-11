@@ -1,0 +1,55 @@
+---
+// One recorded run, as every Pillar 2 activity shows it (stage I): who answered, on what day and which run, what a person
+// noticed, what was sent, the reply as the model wrote it (formatted, never run as HTML), and what is not true. Every
+// piece marked as not true is highlighted in the reply, with its reason under it. A long reply shows an excerpt that ends
+// between whole blocks; the rest is a native disclosure, so it is in the page without JavaScript and as text.
+import { day, marksOf, modelOf, turns, variantOf, type Rec, type Said } from '../lib/p2-runs.ts';
+import { compact, replyParts } from '../lib/reply-html.ts';
+interface Props { rec: Rec; said: Said; label: string; maker: 'A' | 'B'; n: number; sent?: boolean; note?: boolean }
+const { rec, said, label, maker, n, sent = false, note = true } = Astro.props;
+const v = variantOf(rec, label, maker);
+const run = v.runs[n - 1];
+if (!run) throw new Error(`${rec.id}: ${label} ${maker} has no run ${n}`);
+const model = modelOf(rec, v);
+const marks = marksOf(said, label, maker, n);
+const all = turns(v, run);
+// A table's name is its run's heading (model, variant, run) and its place, so a page of runs has no two regions called the same.
+const exchange = all.map((t, k) => ({ ...t, parts: replyParts(t.reply, marks.map((m) => m.falseText), (i) => `${model.name}, ${label}, run ${n}${all.length > 1 ? `, reply ${k + 1}` : ''}, table ${i}`).map(compact) }));
+---
+
+<article class="run" data-key={`${label}|${maker}|${n}`}>
+  <h4>{model.name} <span>Run {n}</span> <small>Recorded {day(rec)}</small></h4>
+  {v.system && <p class="note sys">An instruction we put behind the message: "{v.system}"</p>}
+  {note && marks.map((m) => <p class="note">{m.note}</p>)}
+  {
+    exchange.map((t) => (
+      <Fragment>
+        {(sent || exchange.length > 1) && <p class="sent"><strong>You sent:</strong> <span>{t.sent}</span></p>}
+        <div class:list={['reply', { cut: t.parts[1] }]} data-reply set:html={t.parts[0]} />
+        {
+          t.parts[1] && (
+            <details class="rest">
+              <summary><span>Read the full recorded answer</span><span class="sr">, {model.name}, run {n}</span></summary>
+              <div class="reply" data-reply set:html={t.parts[1]} />
+            </details>
+          )
+        }
+      </Fragment>
+    ))
+  }
+  {note && marks.filter((m) => m.falseText).map((m) => <p class="note bad"><strong>Not true:</strong> {m.reason} <span>The part marked: "{m.falseText!.replace(/\*+/g, '')}"</span></p>)}
+</article>
+
+<script>
+  // The button follows the whole answer, so opening it from the keyboard would leave focus below the screen. Focus goes to
+  // the start of what was just shown (under the header, by the page's scroll-padding), and closing brings the button back.
+  document.addEventListener('toggle', ({ target }) => {
+    if (!(target instanceof HTMLDetailsElement) || !target.matches('.rest')) return;
+    const summary = target.querySelector('summary')!;
+    if (document.activeElement !== summary) return;
+    if (!target.open) return summary.scrollIntoView({ block: 'nearest' });
+    const first = target.querySelector<HTMLElement>('.reply > *');
+    first?.setAttribute('tabindex', '-1');
+    first?.focus();
+  }, true);
+</script>

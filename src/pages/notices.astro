@@ -1,0 +1,24 @@
+---
+import { readFileSync } from 'node:fs';
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// The MIT duty (plan P6.5): each licence read from the installed package at build time, so the page always holds the
+// notice of the version the site bundles, word for word.
+const licence = (name: string) => readFileSync(`node_modules/${name}/LICENSE`, 'utf8').trim().split(/\n\s*\n/);
+---
+
+<Base title="Notices" description="Notices for Stillpool, the free AI lessons by NeuroBridgeEDU." wide>
+  <InfoPage title="Notices" toc={[{ id: 'gpt-tokenizer', title: 'gpt-tokenizer' }, { id: 'phosphor', title: 'Phosphor Icons' }, { id: 'rest', title: 'Everything else' }]}>
+  <h2 id="gpt-tokenizer">gpt-tokenizer</h2>
+  <p>
+    Lesson 1.3 splits text into tokens with gpt-tokenizer 4.0.0, a package by Bazyli Brzoska that is part of this site.
+    Its licence asks that this notice goes with it:
+  </p>
+  {licence('gpt-tokenizer').map((paragraph) => <p>{paragraph}</p>)}
+  <h2 id="phosphor">Phosphor Icons</h2>
+  <p>The site's icons are from Phosphor Icons 2.1.1 (@phosphor-icons/core), drawn into each page when the site is built. Its licence asks that this notice goes with it:</p>
+  {licence('@phosphor-icons/core').map((paragraph) => <p>{paragraph}</p>)}
+  <h2 id="rest">Everything else</h2>
+  <p>Every other part of the site, with its licence: <a href="/licences/">Licences and credits</a>.</p>
+  </InfoPage>
+</Base>

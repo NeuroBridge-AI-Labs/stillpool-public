@@ -1,0 +1,7 @@
+---
+// 4.4's "Read the small print" (stage I, static): three questions about one invented terms text, which sits in case 1's scene as Cases has no slot for a shared text. The quoted clause is the highlight. Nothing is scored, stored or sent.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/read-the-small-print.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Read the small print" name="read-the-small-print" noun="Case" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

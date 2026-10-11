@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>stillness two orbits</title>
+<style>
+.start { position: relative; display: inline-block; width: 120px; height: 40px; }
+.orbit { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; }
+.orbit-light { stroke: #000; stroke-dasharray: 9 91; animation: orbit 6s linear infinite; }
+@keyframes orbit { to { stroke-dashoffset: -100; } }
+@media (prefers-reduced-motion: reduce) { .orbit-light { animation: none; } }
+</style>
+</head>
+<body>
+<a class="start" href="#">Start<svg class="orbit"><rect class="orbit-light" width="120" height="40" pathLength="100"/></svg></a>
+<a class="start" href="#">Again<svg class="orbit"><rect class="orbit-light" width="120" height="40" pathLength="100"/></svg></a>
+</body>
+</html>

@@ -1,0 +1,143 @@
+---
+// The shared stepper (stage I, lessons 5.1 and 5.3): one stage at a time, each with its own pick or picks, then its answer.
+// Stage 1 is the shell's own step and reveal; each later stage shows once the one before has its answer, and its answer waits
+// for its own pick (the rules are src/lib/steps.ts). Nothing is scored, stored or sent, and no model is called. As text, or
+// without JavaScript, data-off shows again and every stage and answer is written out (src/styles/settings.css).
+// A caller's slot "after-<k>" renders inside stage k's answer; its default slot renders in the closing part, with the notes.
+import type { Props } from '../lib/steps.ts';
+import Shell from './Shell.astro';
+const { title, name, intro, stages, stageListLabel, notes = [] } = Astro.props as Props;
+const id = (k: number) => `${name}-stage-${k + 1}`;
+---
+
+<Shell title={title} reveal="Show the answer" class={`steps ${name}`}>
+  {intro.map((p) => <p>{p}</p>)}
+  <ol class="stages" aria-label={stageListLabel}>
+    {stages.map((s, k) => <li aria-current={k === 0 ? 'step' : undefined}><a href={`#${id(k)}`}>{s.heading}</a></li>)}
+  </ol>
+  <div data-stage1>
+    <h3 id={id(0)} tabindex="-1">1. {stages[0].heading}</h3>
+    {stages[0].scene.map((p) => <p>{p}</p>)}
+    {
+      stages[0].questions.map((q, i) => (
+        <fieldset>
+          <legend>{q.legend}</legend>
+          {q.options.map((o, j) => <label><input type="radio" name={`${name}-1-${i + 1}`} value={j + 1} data-said={q.said![j]} />{o}</label>)}
+          <p>Nothing is counted or saved.</p>
+        </fieldset>
+      ))
+    }
+  </div>
+  <div slot="after" data-steps>
+    {
+      stages.map((s, k) => (
+        <section data-stage>
+          {
+            k ? (
+              <Fragment>
+                <h3 id={id(k)} tabindex="-1">{k + 1}. {s.heading}</h3>
+                {s.scene.map((p) => <p>{p}</p>)}
+                {
+                  s.questions.map((q, i) => (
+                    <fieldset>
+                      <legend>{q.legend}</legend>
+                      {q.options.map((o, j) => <label><input type="radio" name={`${name}-${k + 1}-${i + 1}`} value={j + 1} />{o}</label>)}
+                    </fieldset>
+                  ))
+                }
+                <button type="button" data-show disabled>Show the answer</button>
+              </Fragment>
+            ) : (
+              <h3>{s.heading}: the answer</h3>
+            )
+          }
+          <div class="case-answer" data-answer={k ? '' : undefined} tabindex="-1" aria-label={`${s.heading}, the answer`}>
+            {s.answer.map((r) => (r.quote ? <Fragment><p><strong>{r.label}:</strong></p><blockquote class="sent">{r.text}</blockquote></Fragment> : <p><strong>{r.label}:</strong> {r.href ? <a href={r.href}>{r.text}</a> : r.text}</p>))}
+            <slot name={`after-${k + 1}`} />
+          </div>
+        </section>
+      ))
+    }
+    <button type="button" data-restart hidden>Start again</button>
+    <div data-end>
+      <slot />
+      {notes.map((n) => <p>{n}</p>)}
+    </div>
+  </div>
+</Shell>
+
+<script>
+  import { answer, current, finished, initial, ready } from '../lib/steps.ts';
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-steps]')) {
+    const shell = root.closest<HTMLElement>('[data-shell]')!;
+    const first = shell.querySelector<HTMLElement>('[data-stage1]')!;
+    const sections = [...root.querySelectorAll<HTMLElement>('[data-stage]')];
+    const items = [...shell.querySelectorAll<HTMLLIElement>('.stages li')];
+    const reveal = shell.querySelector<HTMLButtonElement>('[data-reveal]')!;
+    const restart = root.querySelector<HTMLButtonElement>('[data-restart]')!;
+    const end = root.querySelector<HTMLElement>('[data-end]')!;
+    const fieldsets = (k: number) => [...(k ? sections[k] : first).querySelectorAll('fieldset')];
+    const part = (k: number) => ({
+      show: sections[k].querySelector<HTMLButtonElement>('[data-show]')!,
+      box: sections[k].querySelector<HTMLElement>('[data-answer]')!,
+      link: items[k].querySelector('a')!,
+    });
+    const href = items.map((li) => li.querySelector('a')!.getAttribute('href')!);
+    let states = initial(sections.length);
+    const render = () => {
+      sections.forEach((sec, k) => {
+        const done = states[k] === 'answered';
+        sec.toggleAttribute('data-off', states[k] === 'hidden');
+        for (const f of fieldsets(k)) f.disabled = done;
+        const { show, box, link } = part(k);
+        if (k) {
+          show.hidden = done;
+          box.toggleAttribute('data-off', !done);
+        }
+        // a stage's name is a link once its answer is shown, plain text before
+        if (done) link.setAttribute('href', href[k]);
+        else link.removeAttribute('href');
+        if (current(states) === k) items[k].setAttribute('aria-current', 'step');
+        else items[k].removeAttribute('aria-current');
+      });
+      restart.hidden = !finished(states);
+      end.toggleAttribute('data-off', !finished(states));
+    };
+    const picked = (k: number) => fieldsets(k).map((f) => f.querySelector<HTMLInputElement>(':checked'));
+    sections.forEach((sec, k) => {
+      if (!k) return;
+      const { show, box } = part(k);
+      sec.addEventListener('input', () => (show.disabled = !ready(picked(k).map(Boolean))));
+      show.addEventListener('click', () => {
+        const many = fieldsets(k).length > 1;
+        const lines = fieldsets(k).map((f) => {
+          const p = document.createElement('p');
+          p.className = 'you';
+          p.textContent = `${many ? `${f.querySelector('legend')!.textContent} ` : ''}You picked: ${f.querySelector(':checked')!.closest('label')!.textContent}`;
+          return p;
+        });
+        box.prepend(...lines);
+        states = answer(states, k);
+        render();
+        box.focus(); // the button just went
+      });
+    });
+    reveal.addEventListener('click', () => {
+      states = answer(states, 0);
+      render();
+    });
+    restart.addEventListener('click', () => {
+      for (const r of shell.querySelectorAll<HTMLInputElement>('input[type="radio"]')) r.checked = false;
+      for (const e of shell.querySelectorAll('.you, .feedback')) e.remove();
+      shell.classList.remove('revealed');
+      shell.querySelector('.picked')!.textContent = '';
+      reveal.disabled = true;
+      for (let k = 1; k < sections.length; k++) part(k).show.disabled = true;
+      states = initial(sections.length);
+      render();
+      shell.querySelector<HTMLElement>('#part-try-it')!.focus();
+    });
+    render();
+  }
+</script>

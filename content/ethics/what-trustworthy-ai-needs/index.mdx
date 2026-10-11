@@ -1,0 +1,246 @@
+---
+title: What trustworthy AI needs
+promise: Can use the EU's seven requirements to judge an AI system
+minutes: {simple: 9, deep: 15}
+tldr:
+  - In 2019 an expert group set up by the European Commission listed seven things trustworthy AI needs. They are guidelines, not law.
+  - The seven cover oversight, safety, privacy, transparency, fairness, well-being and accountability. The group ranks none of them above the others.
+  - The seven can pull against each other. The group says to weigh them openly and write down why.
+misconceptions: [M8]
+interactive: whats-at-stake
+inputs: [src/lib/whats-at-stake.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.3.2, UNESCO-AICFS-CG4.3.2.1, UNESCO-AICFS-CG4.1.2.2, UNESCO-AICFS-CG4.1.2.3, HEA-P3, HEA-PEA-2.3.1-d, AILIT-E7, AILIT-S4]
+checkin:
+  - question: What are the 2019 Ethics Guidelines for Trustworthy AI, from the EU's expert group?
+    options:
+      - text: Guidance from an independent expert group. It is not a law.
+        why: Yes. The group wrote that nothing in the guidelines creates legal rights or legal duties. Lesson 3.7 covers the law.
+        right: true
+      - text: A law that every company in the EU must follow.
+        why: Not this one. The group wrote that nothing in the guidelines creates legal rights or imposes legal duties.
+      - text: The official view of the European Commission.
+        why: Not this one. The guidelines say they may not be read as an official Commission position. The Commission set up the group, and the group wrote them.
+      - text: A test that an AI product passes or fails.
+        why: Not this one. The guidelines are a framework of principles and requirements, with a checklist for people to adapt. They are not a pass or fail test.
+  - question: Two of the seven requirements pull against each other in one AI system. What do the guidelines say to do?
+    options:
+      - text: Name the trade-off, weigh it with reasons, and write the decision down.
+        why: Yes. The guidelines say trade-offs should be openly acknowledged, reasoned and documented. The decision-maker stays accountable.
+        right: true
+      - text: Always put first the requirement that costs the least.
+        why: Not this one. The guidelines say all seven requirements are of equal importance. They do not rank them.
+      - text: Drop the weaker requirement.
+        why: Not this one. The guidelines name no weaker requirement. If no acceptable trade-off exists, they say the system should not go ahead in that form.
+      - text: Let the AI system decide which one wins.
+        why: Not this one. The guidelines say the decision-maker must answer for the choice. A person or an organisation does that, not the system.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You used the EU expert group's seven requirements to ask what an AI system needs.
+glossary:
+  - term: guidelines
+    meaning: Advice that people may choose to follow. A law is a rule that people must follow.
+  - term: requirement
+    meaning: In these guidelines, something the expert group says an AI system should meet.
+  - term: human oversight
+    meaning: A person can watch over an AI system, step in, and overrule it.
+  - term: trade-off
+    meaning: Giving up some of one good thing to get more of another.
+  - term: explainability
+    meaning: How well a system's decisions can be explained to the people they affect.
+  - term: redress
+    meaning: A way to put things right when someone was treated unfairly or harmed.
+whereNext:
+  title: The law, and when not to use AI
+  text: Lesson 3.7 covers the AI rules in Ireland and the EU. Lesson 4.9 will cover when not to use AI.
+sources:
+  - title: "High-Level Expert Group on Artificial Intelligence, Ethics Guidelines for Trustworthy AI, 8 April 2019 (European Commission)"
+    url: https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=60419
+    licence: EU document, reuse under Decision 2011/833/EU
+    use: cite
+  - title: "European Commission, Ethics guidelines for trustworthy AI, library page"
+    url: https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai
+    licence: CC-BY-4.0
+    use: cite
+  - title: "UNESCO, Recommendation on the Ethics of Artificial Intelligence, 23 November 2021, text on UNESCO Legal Affairs"
+    url: https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence
+    licence: UNESCO, terms not stated on the page
+    use: cite
+  - title: "Regulation (EU) 2024/1689, the AI Act, as published in the Official Journal on 12 July 2024, recital 27, on EUR-Lex (amended by Regulation (EU) 2026/1744, consolidated 27 July 2026)"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689
+    licence: EU legal text
+    use: cite
+  - title: "Regulation (EU) 2026/1744, amending Regulation (EU) 2024/1689, as published in the Official Journal on 24 July 2026, on EUR-Lex"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601744
+    licence: EU legal text
+    use: cite
+  - title: "Regulation (EU) 2024/1689, the AI Act, current record with its consolidated text of 27 July 2026, on EUR-Lex"
+    url: https://eur-lex.europa.eu/eli/reg/2024/1689
+    licence: EU legal text
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "This lesson gave you seven requirements from the EU's expert group. They're guidelines, and good ones. Here is the lens I look through. **I hold four of them closest.**"
+    - "Transparency: if you can't see why a system said something, that's a problem. Fairness: a tool should close gaps, not widen them. Privacy: collect what's needed and nothing extra. Accountability: a named person answers. I call them pillars because pillars carry weight. Take one away and the roof sags."
+    - "I've added a fifth, sustainability, because all of this runs on a living planet. Are mine the right ones? That's for you to judge. They're where I stand. **Choose yours on purpose.**"
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## Guidelines, not law
+
+<Simple>
+Who decides what makes AI trustworthy? No one person does. This lesson looks at one well-known answer from Europe.
+
+In 2018 the European Commission set up an independent group of experts. In April 2019 the group published the Ethics Guidelines for Trustworthy AI. People call the group the HLEG, from its long name: the High-Level Expert Group on AI.
+
+These are guidelines, not law. The group says they create no legal rights and no legal duties. They are not the Commission's official view either.
+</Simple>
+
+<Deep>
+The document says on its first pages: "The AI HLEG is an independent expert group that was set up by the European Commission in June 2018." and "Document made public on 8 April 2019." It adds that its views "may not in any circumstances be regarded as reflecting an official position of the European Commission."
+
+On its status: "Nothing in this document shall create legal rights nor impose legal obligations towards third parties." And: "Stakeholders committed towards achieving Trustworthy AI can voluntarily opt to use these Guidelines as a method to operationalise their commitment". The authors also write: "These Guidelines do not intend to substitute any form of current or future policymaking or regulation, nor do they aim to deter the introduction thereof."
+
+The EU's AI Act is a separate text, and it is law. Its recital 27, as published in the Official Journal on 12 July 2024, recalls the guidelines and says the group "developed seven non-binding ethical principles for AI". The Act has been amended since: Regulation (EU) 2026/1744 was published on 24 July 2026, and a consolidated version is dated 27 July 2026, the current one we found on 3 October 2026. We quote recital 27 as originally published, which is the authentic text of that date. An independent reviewer read the full amending act on 4 October 2026 and found no change to recital 27, so the quotation is also what the amended Act says there. Lesson 3.7 covers what the law itself requires.
+</Deep>
+
+## Three parts of trustworthy AI
+
+<Simple>
+The HLEG says trustworthy AI has three parts. It should be lawful, ethical and robust.
+
+Lawful means it follows the laws that apply. Ethical means it follows ethical principles and values. Robust means it is safe and reliable, in the technology and in the world around it.
+
+Each part is needed, and none is enough alone. The guidelines cover the ethical and robust parts. They leave the law to the law.
+</Simple>
+
+<Deep>
+The HLEG writes that trustworthy AI "should be lawful, complying with all applicable laws and regulations", "should be ethical, ensuring adherence to ethical principles and values" and "should be robust, both from a technical and social perspective, since, even with good intentions, AI systems can cause unintentional harm." It adds: "Each of these three components is necessary but not sufficient in itself to achieve Trustworthy AI." It also notes that tensions can arise between them, for example "at times the scope and content of existing law might be out of step with ethical norms".
+
+The guidelines look beyond the machine. They say that trust "concerns not only the technology's inherent properties, but also the qualities of the socio-technical systems involving AI applications", and that "it is not simply components of the AI system but the system in its overall context that may or may not engender trust." So a system's trustworthiness depends on people, rules and the setting, not on the software alone.
+
+This site's own line on it: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values."
+</Deep>
+
+## Four principles
+
+<Simple>
+The guidelines start from four ethical principles.
+
+- **Respect for human autonomy.** People keep control over their own choices. AI should not trick, push or herd them.
+- **Prevention of harm.** AI should not cause harm or make it worse.
+- **Fairness.** Benefits and costs are shared fairly. People can challenge a decision and ask for it to be put right.
+- **Explicability.** The guidelines' word for being explainable. What a system is for and how it decides can be explained, as far as possible.
+</Simple>
+
+<Deep>
+The HLEG lists the four, "Without imposing a hierarchy", as respect for human autonomy, prevention of harm, fairness and explicability. Its words on each:
+
+Autonomy: "AI systems should not unjustifiably subordinate, coerce, deceive, manipulate, condition or herd humans. Instead, they should be designed to augment, complement and empower human cognitive, social and cultural skills."
+
+Harm: "AI systems should neither cause nor exacerbate harm or otherwise adversely affect human beings." It adds that "Preventing harm also entails consideration of the natural environment and all living beings."
+
+Fairness has two sides. The substantive side includes "ensuring that individuals and groups are free from unfair bias, discrimination and stigmatisation". The procedural side "entails the ability to contest and seek effective redress against decisions made by AI systems and by the humans operating them."
+
+Explicability: "processes need to be transparent, the capabilities and purpose of AI systems openly communicated, and decisions – to the extent possible – explainable to those directly and indirectly affected." The HLEG adds that how much explanation is needed "is highly dependent on the context and the severity of the consequences if that output is erroneous or otherwise inaccurate."
+</Deep>
+
+## Seven requirements
+
+<Simple>
+From the four principles, the guidelines draw seven requirements. The expert group says AI systems should meet them. In plain words:
+
+- **Human agency and oversight.** People stay in charge. A person can step in, overrule, or decide not to use the system.
+- **Technical robustness and safety.** The system is secure and reliable. It has a back-up plan for when something goes wrong.
+- **Privacy and data governance.** People's data is protected. Only people who need it can open it.
+- **Transparency.** People are told when they deal with an AI. Its limits are explained. Its decisions can be traced.
+- **Diversity, non-discrimination and fairness.** Unfair bias is avoided. People of every ability can use it. People it affects have a say.
+- **Societal and environmental well-being.** It should benefit society and the environment. Its energy use and wider effects are looked at.
+- **Accountability.** Someone answers for the system and its results. It can be audited. People can get redress.
+
+Other lessons go deeper. Lesson 3.2 covers bias and Lesson 3.3 covers privacy. Lesson 3.4 covers environmental cost. Lesson 3.5 covers harm, and who answers for it.
+</Simple>
+
+<Deep>
+The HLEG's list, in its order, with its own sub-headings: (1) human agency and oversight, "Including fundamental rights, human agency and human oversight"; (2) technical robustness and safety, "Including resilience to attack and security, fall back plan and general safety, accuracy, reliability and reproducibility"; (3) privacy and data governance, "Including respect for privacy, quality and integrity of data, and access to data"; (4) transparency, "Including traceability, explainability and communication"; (5) diversity, non-discrimination and fairness, "Including the avoidance of unfair bias, accessibility and universal design, and stakeholder participation"; (6) societal and environmental wellbeing, "Including sustainability and environmental friendliness, social impact, society and democracy"; (7) accountability, "Including auditability, minimisation and reporting of negative impact, trade-offs and redress."
+
+The list "is non-exhaustive". The HLEG also says: "While all requirements are of equal importance, context and potential tensions between them will need to be taken into account when applying them across different domains and industries." It assigns roles. Developers: "should implement and apply the requirements to design and development processes". Deployers: "should ensure that the systems they use and the products and services they offer meet the requirements". End-users and the broader society: "should be informed about these requirements and able to request that they are upheld."
+
+Some of its sentences behind the plain words above. On oversight: it names "human-in-the-loop (HITL), human-on-the-loop (HOTL), or human-in-command (HIC)", says that oversight in every decision cycle "is neither possible nor desirable" in many cases, and says human command can include "the decision not to use an AI system in a particular situation" or "the ability to override a decision made by a system". On safety: "AI systems should have safeguards that enable a fallback plan in case of problems." On privacy: "Only duly qualified personnel with the competence and need to access individual's data should be allowed to do so." On transparency: "AI systems should not represent themselves as humans to users; humans have the right to be informed that they are interacting with an AI system." On fairness: "it is advisable to consult stakeholders who may directly or indirectly be affected by the system throughout its life cycle." On well-being: "a critical examination of the resource usage and energy consumption during training, opting for less harmful choices." On accountability: "When unjust adverse impact occurs, accessible mechanisms should be foreseen that ensure adequate redress."
+</Deep>
+
+## When requirements pull against each other
+
+<Simple>
+The seven can pull against each other. The guidelines say a trade-off may be needed between explaining a system and how accurate it is.
+
+The HLEG gives another example. Software that predicts crime may help reduce crime. But it can mean watching people, and that limits their freedom and privacy.
+
+The guidelines rank none of the seven. They ask for three things: name the conflict, weigh the risks, and write down the reasons. The person who decides must answer for the choice.
+
+If no acceptable trade-off can be found, the system should not go ahead in that form.
+</Simple>
+
+<Deep>
+On the requirements, the HLEG writes: "When implementing the above requirements, tensions may arise between them, which may lead to inevitable trade-offs. Such trade-offs should be addressed in a rational and methodological manner within the state of the art. This entails that relevant interests and values implicated by the AI system should be identified and that, if conflict arises, trade-offs should be explicitly acknowledged and evaluated in terms of their risk to ethical principles, including fundamental rights. In situations in which no ethically acceptable trade-offs can be identified, the development, deployment and use of the AI system should not proceed in that form. Any decision about which trade-off to make should be reasoned and properly documented. The decision-maker must be accountable for the manner in which the appropriate trade-off is being made, and should continually review the appropriateness of the resulting decision to ensure that necessary changes can be made to the system where needed."
+
+Its own examples: on explainability, "trade-offs might have to be made between enhancing a system's explainability (which may reduce its accuracy) or increasing its accuracy (at the cost of explainability)". On the principles: "in various application domains, the principle of prevention of harm and the principle of human autonomy may be in conflict. Consider as an example the use of AI systems for ‘predictive policing’, which may help to reduce crime, but in ways that entail surveillance activities that impinge on individual liberty and privacy." It also says "Certain fundamental rights and correlated principles are absolute and cannot be subject to a balancing exercise (e.g. human dignity)."
+
+It asks for "reasoned, evidence-based reflection rather than intuition or random discretion", and for "methods of accountable deliberation to deal with such tensions". A footnote suggests that "an internal and/or external ethical (and sector specific) expert or board might be useful" and that "Meaningful consultation and discussion with stakeholders, including those at risk of being adversely affected by an AI system is useful too."
+</Deep>
+
+## UNESCO's principles
+
+<Simple>
+UNESCO is the United Nations agency for education, science and culture. In November 2021 its General Conference adopted a Recommendation on the Ethics of Artificial Intelligence.
+
+It names ten principles. Several are close to the EU's seven, such as transparency and explainability, and human oversight and determination. UNESCO's list also has proportionality and do no harm, and awareness and literacy.
+
+States are asked to apply it "on a voluntary basis". So it is not binding law either.
+</Simple>
+
+<Deep>
+UNESCO's General Conference adopted the Recommendation in Paris on 23 November 2021, at its 41st session. Its text recommends "that Member States apply on a voluntary basis the provisions of this Recommendation". Its ten principles, in its order: proportionality and do no harm; safety and security; fairness and non-discrimination; sustainability; right to privacy and data protection; human oversight and determination; transparency and explainability; responsibility and accountability; awareness and literacy; multi-stakeholder and adaptive governance and collaboration. Whether each name matches one of the HLEG's seven is a judgement, and this lesson does not map them one to one.
+
+UNESCO also expects tensions. Paragraph 11: "there may be tensions between these values and principles. In any given situation, a contextual assessment will be necessary to manage potential tensions". On transparency, paragraph 38: "the level of transparency and explainability should always be appropriate to the context and impact, as there may be a need to balance between transparency and explainability and other principles such as privacy, safety and security."
+
+Some of its sentences set firmer limits. Paragraph 26: "In particular, AI systems should not be used for social scoring or mass surveillance purposes." Paragraph 36: "As a rule, life and death decisions should not be ceded to AI systems."
+</Deep>
+
+## What's at stake?
+
+<Simple>
+This lesson has an activity, What's at stake? We made up five short cases. Nothing in them is real: no company and no person.
+
+For each case, you first pick the requirement you think is most at stake. Then you see which one the HLEG's words point to, and why.
+
+Next you change one design choice, and see which requirement it moves. At the end you pick the requirement that matters most to you. That pick is never scored and never sent anywhere.
+
+The HLEG says all seven count equally. So a case can have more than one good answer. We show one reading, with the HLEG's words. You may see it differently.
+</Simple>
+
+<Deep>
+The cases and their answers are our own reading, built from the HLEG's text on each requirement. They are not rulings by the HLEG, a court or a regulator, and no real system is said to work this way. Each design choice in the activity is a measure the HLEG itself names under one of the seven, such as a person checking a decision, a label that says the system is an AI, or limits on who can open data.
+</Deep>
+
+<TryIt />
+
+## What the seven are, and are not
+
+<Simple>
+The seven requirements are questions to ask about a system. They are not a score and not a test.
+
+The HLEG says trustworthy AI is not about ticking boxes. It is about asking again and again, over the whole life of the system.
+
+The guidelines date from 2019, and this lesson does not say that any named product meets them.
+</Simple>
+
+<Deep>
+The HLEG writes: "Ensuring Trustworthy AI is not about ticking boxes, but about continuously identifying and implementing requirements, evaluating solutions, ensuring improved outcomes throughout the AI system's lifecycle, and involving stakeholders in this." Context decides how much each requirement matters: "AI music recommendation systems do not raise the same ethical concerns as AI systems proposing critical medical treatments." And a code of ethics is not enough by itself: it "can never function as a substitute for ethical reasoning itself".
+
+The guidelines came with an assessment list in Chapter III, which the HLEG said would be piloted and revised. The Commission's library page says a final self-assessment list followed in July 2020. Whether a particular AI system meets the seven is a question about that system, on a stated date, and needs evidence about it. This lesson tests no product.
+</Deep>

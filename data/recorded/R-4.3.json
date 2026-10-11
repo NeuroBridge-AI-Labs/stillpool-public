@@ -1,0 +1,387 @@
+{
+  "id": "R-4.3",
+  "model": {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-10-08",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "street",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write about 80 words describing a walk home along a quiet street on a wet evening."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "The rain had softened to a mist by the time I turned onto Alder Street. Streetlamps pooled amber light on the glistening pavement, and each step sent ripples across the shallow puddles. Somewhere a gutter gurgled. Windows glowed behind half-drawn curtains, hinting at warm kitchens and quiet suppers. The air smelled of wet leaves and chimney smoke. My coat hung heavy on my shoulders, but I walked slowly, savoring the hush, the tapping of drops from branches, and the promise of home.",
+          "usage": {
+            "input_tokens": 34,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 180,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:10:51.774Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Write about 80 words describing a walk home along a quiet street on a wet evening."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqccA73pQG4hPVRjawHo",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "The rain had softened to a mist by the time I turned onto Alder Street. Streetlamps pooled amber light on the glistening pavement, and each step sent ripples across the shallow puddles. Somewhere a gutter gurgled. Windows glowed behind half-drawn curtains, hinting at warm kitchens and quiet suppers. The air smelled of wet leaves and chimney smoke. My coat hung heavy on my shoulders, but I walked slowly, savoring the hush, the tapping of drops from branches, and the promise of home."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 34,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 180,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "street",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write about 80 words describing a walk home along a quiet street on a wet evening."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501051,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The rain fell softly, turning the pavement into a mirror of flickering streetlights. Each step sent tiny ripples across the glistening asphalt, the air thick with the scent of damp earth and distant petrichor. The quiet street hummed with the occasional distant car or a dog’s bark, swallowed by the hush of the evening. My breath curled in the cool air as I passed shadowed houses, their windows glowing warmly behind lace curtains. The wet leaves clung to branches like secrets, and the world felt still, as if time itself had paused to listen to the rain.",
+          "usage": {
+            "prompt_tokens": 22,
+            "total_tokens": 143,
+            "completion_tokens": 121,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:10:54.548Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Write about 80 words describing a walk home along a quiet street on a wet evening."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "2a23848d111f4ee183d77fead1ce31ff",
+                "created": 1791501054,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 22,
+                  "total_tokens": 143,
+                  "completion_tokens": 121,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The rain fell softly, turning the pavement into a mirror of flickering streetlights. Each step sent tiny ripples across the glistening asphalt, the air thick with the scent of damp earth and distant petrichor. The quiet street hummed with the occasional distant car or a dog’s bark, swallowed by the hush of the evening. My breath curled in the cool air as I passed shadowed houses, their windows glowing warmly behind lace curtains. The wet leaves clung to branches like secrets, and the world felt still, as if time itself had paused to listen to the rain."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "tea",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write about 80 words explaining how to make a cup of tea."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Start by boiling fresh water in a kettle. While it heats, place a tea bag in your favorite mug. Once the water boils, pour it over the tea bag, filling the mug about three-quarters full. Let it steep for three to five minutes, depending on how strong you like it. Remove the tea bag, gently squeezing out excess liquid if desired. Add milk, sugar, honey, or lemon to taste, then stir. Let it cool briefly, then sit down and enjoy your warm, comforting cup.",
+          "usage": {
+            "input_tokens": 28,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 167,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:11:00.268Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Write about 80 words explaining how to make a cup of tea."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqccmfDEstqUu8sTUkg8",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Start by boiling fresh water in a kettle. While it heats, place a tea bag in your favorite mug. Once the water boils, pour it over the tea bag, filling the mug about three-quarters full. Let it steep for three to five minutes, depending on how strong you like it. Remove the tea bag, gently squeezing out excess liquid if desired. Add milk, sugar, honey, or lemon to taste, then stir. Let it cool briefly, then sit down and enjoy your warm, comforting cup."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 28,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 167,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "tea",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write about 80 words explaining how to make a cup of tea."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501051,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "**How to Make a Perfect Cup of Tea**\n\nBoil fresh water in a kettle, then pour it over **one teaspoon of loose-leaf tea** (or a tea bag) in a cup. Let it steep for **3–5 minutes**—longer for black tea, shorter for green or white. Avoid boiling water for delicate teas to prevent bitterness. Add **lemon, honey, or milk** if desired. Strain (if using loose leaves) and enjoy while warm. For extra flavor, use filtered water and preheat your cup. Simple, refreshing, and customizable! ☕",
+          "usage": {
+            "prompt_tokens": 18,
+            "total_tokens": 146,
+            "completion_tokens": 128,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:11:02.786Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Write about 80 words explaining how to make a cup of tea."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "97409e562ff24a7682e10b3001ee3cf8",
+                "created": 1791501062,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 18,
+                  "total_tokens": 146,
+                  "completion_tokens": 128,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "**How to Make a Perfect Cup of Tea**\n\nBoil fresh water in a kettle, then pour it over **one teaspoon of loose-leaf tea** (or a tea bag) in a cup. Let it steep for **3–5 minutes**—longer for black tea, shorter for green or white. Avoid boiling water for delicate teas to prevent bitterness. Add **lemon, honey, or milk** if desired. Strain (if using loose leaves) and enjoy while warm. For extra flavor, use filtered water and preheat your cup. Simple, refreshing, and customizable! ☕"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

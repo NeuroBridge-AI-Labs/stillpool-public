@@ -1,0 +1,23 @@
+/* 1.8's interactive: cut messages dashed, the window solid and thick, so shape carries the difference, not colour alone. */
+.still-know-name .run > p:not(.reply) {
+  margin: 0;
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+}
+.still-know-name .cut {
+  border-style: dashed;
+}
+.still-know-name .reply {
+  white-space: pre-line;
+}
+/* 1.8 as text: every message and run written out, no closed disclosure; the box holds every message, so no shape above. */
+html[data-js]:not([data-textversion]) .still-know-name .as-text,
+html:is(:not([data-js]), [data-textversion]) .still-know-name :is(.shape details, details > summary) {
+  display: none;
+}
+html:is(:not([data-js]), [data-textversion]) .still-know-name details::details-content {
+  content-visibility: visible;
+}
+.msg { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+.msg > strong:not(.name-here) { flex: none; padding: 0 0.625rem; background: var(--tint); border: var(--border-width) solid var(--border); border-radius: var(--radius-pill); }
+.msg > span { flex: 1 1 14rem; min-width: 0; }

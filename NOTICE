@@ -1,0 +1,77 @@
+NBEDU AI Literacy (working title)
+Copyright 2026 Emanuel Covasa
+
+The NeuroBridgeEDU name and logo belong to Emanuel Covasa and are not covered by the CC BY-NC-SA 4.0 licence.
+The logo files are public/brand/, public/favicon.ico and public/apple-touch-icon.png.
+
+Vendored fonts in public/fonts/, each copied byte for byte from its source and licensed under the SIL Open
+Font License 1.1, whose full text sits next to it. The site lists them at /licences.txt.
+
+- lexend-latin-wght-normal.woff2, 39,680 bytes, from the npm package @fontsource-variable/lexend 5.3.0
+  (files/lexend-latin-wght-normal.woff2). Copyright 2019 The Lexend Project Authors.
+  SHA-256 b7e7538f59bff1812841d7627f8e49e70fe86438f9f7b397a028c0d05301c874
+- public-sans-latin-wght-normal.woff2, 26,832 bytes, from the npm package @fontsource-variable/public-sans
+  5.3.0 (files/public-sans-latin-wght-normal.woff2). Copyright 2015 The Public Sans Project Authors.
+  SHA-256 5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68
+- OpenDyslexic-Regular.woff2, 103,336 bytes, from https://github.com/antijingoist/opendyslexic at commit
+  1824da5c0e41dc3e13ffc7f3a636dcaf695d61b7 (compiled/OpenDyslexic-Regular.woff2). Copyright (c) 2019-07-29,
+  Abbie Gonzalez, with Reserved Font Name OpenDyslexic, so it ships unmodified and under that name.
+  SHA-256 0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695
+
+docs/curriculum/competencies.yaml quotes the titles of four frameworks word for word. Quoting with credit is
+citing, so each keeps its own licence, and none is relicensed as CC BY-NC-SA 4.0 by this repository:
+- UNESCO, AI competency framework for students (Miao, Shiohira, Lao), 2024. CC BY-SA 3.0 IGO.
+- O'Sullivan, Lowry, Woods and Conlon, Generative AI in Higher Education Teaching & Learning: Policy Framework,
+  Version 1.0, HEA, December 2025, DOI 10.82110/073e-hg66, and its companion documents. CC BY-SA 4.0.
+- The AI Fluency Framework, copyright 2025 Rick Dakan, Joseph Feller and Anthropic. CC BY-NC-SA 4.0.
+- OECD and European Commission, AILit Framework, 2026. CC BY 4.0.
+
+gpt-tokenizer 4.0.0, from npm, pinned exactly, is bundled with the site: lesson 1.3 splits text with its
+o200k_base encoding. The site also shows this notice at /notices and /licences.txt. Its MIT licence, word for word:
+
+Copyright (c) 2023-2024 Bazyli Brzoska
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+@phosphor-icons/core 2.1.1, from npm, pinned exactly: its icons are drawn into the site's pages when the site is
+built. The site also shows this notice at /notices and /licences.txt. Its MIT licence is the text above, word for
+word, with its own copyright line:
+
+Copyright (c) 2023 Phosphor Icons
+
+Emma's audio files, in /voice/, are made with Kokoro-82M v1.0 (https://huggingface.co/hexgrad/Kokoro-82M) and its
+Emma voice (bf_emma), both under the Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0), through the
+ONNX export onnx-community/Kokoro-82M-v1.0-ONNX (https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX) at
+revision 1939ad2a8e416c0acfeecc08a694d14ef25f2231. Neither repository has a NOTICE file to copy. The model runs only
+on the machine that makes the files: the site serves the audio, not the model. So do the tools that run it,
+kokoro-js 1.2.1 (Apache 2.0) and eSpeak NG (GPL-3.0, inside phonemizer 1.2.1); no part of either is sent to browsers.
+
+Dubliners by James Joyce (1914), Project Gutenberg eBook 2814 (https://www.gutenberg.org/ebooks/2814). Public domain in
+Ireland and the USA. Its full text is in data/training/dubliners.txt, used by the lessons "The next word" and "AI detectors:
+what a flag proves". What changed: the Project Gutenberg header and footer were removed.
+
+Quick, Draw! dataset made available by Google, Inc.; drawings contributed by players. CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+https://github.com/googlecreativelab/quickdraw-dataset. The licence's disclaimer of warranties applies. Lesson 1.9
+adapts it: data/interactive/doodle-guesser.json holds three of its drawings, shown as examples, and, kept for a test
+that checks how they were chosen, the recognised test drawings that come before each one in its file;
+data/doodle/six-kinds.weights.json and data/doodle/three-kinds.weights.json are numbers trained on 12,000 of them.
+What changed: from the first 4 MiB of six of its simplified files (apple, car, cat, fish, house, umbrella) we took the
+first 2,500 drawings of each kind that the game had recognised, kept only their strokes, drew each on a 28 by 28 grid,
+trained two small models on the first 2,000 of each kind (the three-kinds model on apple, house and umbrella only) and
+tested them on the other 500.

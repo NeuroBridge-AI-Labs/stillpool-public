@@ -1,0 +1,113 @@
+---
+// 2.7's "Skill card builder" (stage I, R-2.7): pick a strong or a weak wording for each field of a procedure card.
+// Four strong picks are the card we ran, word for word, and its runs show beside the runs with no card. Any weak pick is
+// a card we did not run: the activity says so and shows only the no-card runs, as "no card". Nothing here calls a model.
+import { cardText, FIELDS } from '../lib/skill-card.ts';
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+import Transcript from './Transcript.astro';
+
+const { rec, said } = loadRecorded('R-2.7', 'a-skill-is-a-written-procedure');
+const sent = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+// The card is the first paragraph of the message that carried it, so the words here can never drift from the recording.
+const card = sent('T1 B').split('\n\n')[0];
+if (card !== cardText(FIELDS.map(() => 'strong'))) throw new Error('R-2.7: the strong picks are not the recorded card');
+const transcript = (n: number) => sent(`T${n} A`).split('\n\n').slice(1).join('\n\n');
+const makers = (['A', 'B'] as const).map((m) => [m, modelOf(rec, variantOf(rec, 'T1 A', m)).name] as const);
+const SAME: [string, string][] = [
+  ['Yes, the same three headings.', 'you said the notes would have the same three headings.'],
+  ['No, the headings will differ.', 'you said the headings would differ.'],
+  ["I can't tell.", 'you said you could not tell. That is fair.'],
+];
+---
+
+<Shell title="Skill card builder" reveal="Show what happened" class="skill-card-builder" local>
+  <p>A skill card is a short written procedure for a job you repeat. This one is for turning a meeting transcript into notes. The transcript is invented.</p>
+  <h3>Transcript 1</h3>
+  <Transcript text={transcript(1)} label="Transcript 1" />
+  <p>Build the card: for each field, pick a wording.</p>
+  {
+    FIELDS.map((f, i) => (
+      <fieldset class="build">
+        <legend>{f.name}</legend>
+        {(['strong', 'weak'] as const).map((kind) => (
+          <label>
+            <input type="radio" name={`card-${i + 1}`} value={kind} data-said={`${f.name}: you picked the ${kind} wording, "${f[kind]}".`} />
+            <span><strong>{kind === 'strong' ? 'Strong' : 'Weak'}:</strong> {f[kind]}</span>
+          </label>
+        ))}
+        {i === 0 && <p>There is no wrong pick here.</p>}
+      </fieldset>
+    ))
+  }
+  <fieldset>
+    <legend>Will the notes for transcript 2 have the same three headings as the notes for transcript 1?</legend>
+    {SAME.map(([text, after], i) => <label><input type="radio" name="card-same" value={i + 1} data-said={after} />{text}</label>)}
+  </fieldset>
+  <Fragment slot="after">
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={['T1 A', 'T1 B', 'T2 A', 'T2 B']} />
+    <section class="your-card" data-off aria-labelledby="your-card-h">
+      <h3 id="your-card-h">Your card</h3>
+      <dl class="card-rows">{FIELDS.map((f) => <Fragment><dt>{f.name}</dt><dd></dd></Fragment>)}</dl>
+      <p class="match"></p>
+      <details>
+        <summary>See your card as one prompt</summary>
+        <p class="sent"><span></span></p>
+      </details>
+    </section>
+    <section class="card-ran" aria-labelledby="card-ran-h">
+      <h3 id="card-ran-h">If all four picks are strong: the card we ran</h3>
+      <blockquote class="sent">{card}</blockquote>
+      <p>These four strong wordings are the card we sent to both models, before each transcript. Each pair shows the notes with the card, and the notes with no card.</p>
+      {
+        makers.flatMap(([maker, name]) => [1, 2].map((t) => (
+          <Fragment>
+            <h4>{name}, transcript {t}</h4>
+            <Runs rec={rec} items={[{ label: `T${t} B`, maker, caption: 'With the card' }, { label: `T${t} A`, maker, caption: 'No card' }]} />
+          </Fragment>
+        )))
+      }
+    </section>
+    <section class="card-not-run" aria-labelledby="card-not-run-h">
+      <h3 id="card-not-run-h">If any pick is weak: a card we did not run</h3>
+      <p>We did not run this card. No AI answered it. These are the runs with no card at all.</p>
+      {
+        makers.map(([maker, name]) => (
+          <Fragment>
+            <h4>{name}, no card</h4>
+            <Runs rec={rec} items={[1, 2].map((t) => ({ label: `T${t} A`, maker, caption: `No card, transcript ${t}` }))} />
+          </Fragment>
+        ))
+      }
+    </section>
+    <h3>Transcript 2</h3>
+    <Transcript text={transcript(2)} label="Transcript 2" />
+    <AllRuns rec={rec} said={said} labels={[['T1 A', 'Transcript 1, no card'], ['T1 B', 'Transcript 1, the card we ran'], ['T2 A', 'Transcript 2, no card'], ['T2 B', 'Transcript 2, the card we ran']]} />
+  </Fragment>
+</Shell>
+
+<script>
+  import { cardText, FIELDS, isPick, wasRun } from '../lib/skill-card.ts';
+  for (const shell of document.querySelectorAll<HTMLElement>('.skill-card-builder')) {
+    const [ran, notRun, yours] = ['.card-ran', '.card-not-run', '.your-card'].map((s) => shell.querySelector<HTMLElement>(s)!);
+    const sync = () => {
+      const picks = FIELDS.map((_, i) => shell.querySelector<HTMLInputElement>(`input[name="card-${i + 1}"]:checked`)?.value);
+      const done = picks.every(isPick);
+      yours.toggleAttribute('data-off', !done);
+      if (done) {
+        yours.querySelectorAll('dd').forEach((dd, i) => (dd.textContent = FIELDS[i][picks[i]]));
+        yours.querySelector('.sent span')!.textContent = cardText(picks);
+        yours.querySelector('.match')!.textContent = wasRun(picks) ? 'This is the card we ran, word for word.' : 'This is not the card we ran.';
+      }
+      ran.toggleAttribute('data-off', !(done && wasRun(picks)));
+      notRun.toggleAttribute('data-off', !(done && !wasRun(picks)));
+    };
+    shell.addEventListener('input', sync);
+    sync();
+  }
+</script>

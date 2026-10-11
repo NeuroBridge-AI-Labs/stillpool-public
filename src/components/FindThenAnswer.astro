@@ -1,0 +1,110 @@
+---
+// 5.5's "Find, then answer" (stage I, an engine and a recording, R-5.5): pick one of eight questions, predict what the
+// search will find and whether the answer stays inside it, then see the five closest glossary entries and the answers
+// two models wrote from the top three. Similarity is ranked at build from vectors made once (scripts/glossary-vectors.ts)
+// and never reaches the browser; the eight results are all in the page, and the script only shows the picked one.
+// Nothing is scored, stored or sent, and no model is called.
+import { readFileSync } from 'node:fs';
+import { inWords, rank } from '../lib/find-then-answer.ts';
+import { ABOUT, firstMatch, snapshot } from '../lib/find-then-answer-words.ts';
+import { loadRecorded, marksOf, modelOf, paragraphs, variantOf, day } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+type Data = { model: string; date: string; entries: { term: string; lesson: string; title: string; vector: number[] }[]; questions: { id: string; text: string; vector: number[] }[] };
+const data = JSON.parse(readFileSync('data/interactive/glossary-vectors.json', 'utf8')) as Data;
+const { rec, said } = loadRecorded('R-5.5', 'answers-from-your-documents', 'going-deeper');
+if (ABOUT.length !== data.questions.length) throw new Error('find-then-answer: one thing asked about per question');
+const made = new Date(data.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const models = (['A', 'B'] as const).map((m) => modelOf(rec, variantOf(rec, 'Q1', m)).name);
+const QS = data.questions.map((q, i) => {
+  const matches = rank(q.vector, data.entries).map((m) => ({ ...m, title: data.entries.find((e) => e.term === m.term && e.lesson === m.lesson)!.title, words: inWords(m.similarity) }));
+  return { ...q, matches, first: firstMatch(q.vector, data.entries, ABOUT[i], matches[0]) };
+});
+const LEGEND2 = 'Will the first match be the entry for a term the question asks about?';
+const LEGEND3 = 'Will both answers stay inside what the found passages say?';
+const Q2: [string, string][] = [['Yes', 'yes'], ['No', 'no'], ['The snapshot has no entry for it', 'the snapshot has no entry for it']];
+const Q3: [string, string][] = [['Yes', 'yes'], ['No', 'no'], ["Can't tell", "can't tell"]];
+---
+
+<Shell title="Find, then answer" reveal="Show what it found" class="cases find-then-answer">
+  <p>This system first finds the passages most like your question. The store is a snapshot of this site's glossary. Then a model answers from them.</p>
+  <fieldset>
+    <legend>Pick a question</legend>
+    <label tabindex="-1" data-first>Your question
+      <select name="fta-q" data-pick="">
+        <option value="">Choose a question</option>
+        {QS.map((q) => <option value={q.id} data-said={`You picked: ${q.text}`}>{q.text}</option>)}
+      </select>
+    </label>
+  </fieldset>
+  <fieldset>
+    <legend>{LEGEND2}</legend>
+    {Q2.map(([text, said], i) => <label><input type="radio" name="fta-first" value={i + 1} data-said={`You predicted the first match: ${said}.`} />{text}</label>)}
+    <p>There is no wrong guess here.</p>
+  </fieldset>
+  <fieldset>
+    <legend>{LEGEND3}</legend>
+    {Q3.map(([text, said], i) => <label><input type="radio" name="fta-stay" value={i + 1} data-said={`You predicted both answers will stay inside the passages: ${said}.`} />{text}</label>)}
+    <p>Yes means both answers do. No means at least one does not.</p>
+  </fieldset>
+  <Fragment slot="after">
+    <h3>What the recorded answers showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    {
+      QS.map((q, i) => (
+        <section data-q={q.id} aria-labelledby={`fta-${q.id}`}>
+          <h3 id={`fta-${q.id}`}>{q.text}</h3>
+          <h4>The five closest entries</h4>
+          <ol>{q.matches.map((m) => <li>{m.term}, from the lesson "{m.title}": {m.words}</li>)}</ol>
+          <details data-layer="deep">
+            <summary>Raw cosine</summary>
+            <p>The raw number behind each word, to two places. It compares two lists of numbers. It does not say the passage answers the question.</p>
+            <ol>{q.matches.map((m) => <li>{m.term}: {m.similarity.toFixed(2)}</li>)}</ol>
+          </details>
+          <p><strong>First match.</strong> Our reading: {q.first}</p>
+          <h4>The answer built from the top three entries</h4>
+          <p>{models.join(' and ')}, recorded {day(rec)}. Told: use only the passages, number each sentence, quote at least once, say so if the passages do not answer.</p>
+          <Runs rec={rec} items={[{ label: q.id, maker: 'A' }, { label: q.id, maker: 'B' }]} />
+          <p><strong>Stays inside the passages.</strong></p>
+          <ul>
+            {(['A', 'B'] as const).map((m, k) => <li>Our reading, {models[k]}: {marksOf(said, q.id, m, 1).some((x) => x.shows) ? 'No' : 'Yes'}.</li>)}
+          </ul>
+        </section>
+      ))
+    }
+    <TheAIs rec={rec} labels={data.questions.map((q) => q.id)} />
+    <AllRuns rec={rec} said={said} sent labels={data.questions.map((q, i) => [q.id, `Question ${i + 1}: ${q.text}`])} />
+    <p>A close match is not a right answer. Check the answer against the passage it points to.</p>
+    <p>Lists made {made} with {data.model}, for a snapshot of the glossary: {snapshot(data.entries)}. Nothing is counted or saved.</p>
+    <button type="button" data-another>Try another question</button>
+  </Fragment>
+</Shell>
+
+<script>
+  const shell = document.querySelector<HTMLElement>('.find-then-answer')!;
+  const select = shell.querySelector('select')!;
+  const blocks = [...shell.querySelectorAll<HTMLElement>('[data-q]')];
+  const fieldsets = [...shell.querySelectorAll('fieldset')];
+  const hide = () => blocks.forEach((b) => b.setAttribute('data-off', ''));
+  hide(); // set here, so without JavaScript and as text every result is written out
+  shell.querySelector('[data-reveal]')!.addEventListener('click', () => {
+    blocks.find((b) => b.dataset.q === select.value)?.removeAttribute('data-off');
+    fieldsets.forEach((f) => (f.disabled = true)); // one question at a time: "Try another question" clears them
+  });
+  shell.querySelector('[data-another]')!.addEventListener('click', () => {
+    hide();
+    for (const f of fieldsets) {
+      f.disabled = false;
+      f.querySelector(':scope > .feedback')?.remove();
+    }
+    select.value = '';
+    shell.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach((r) => (r.checked = false));
+    shell.classList.remove('revealed');
+    shell.querySelector('.picked')!.textContent = '';
+    select.dispatchEvent(new Event('input', { bubbles: true })); // the shell turns "Show what it found" off again
+    shell.querySelector<HTMLElement>('[data-first]')!.focus();
+  });
+</script>

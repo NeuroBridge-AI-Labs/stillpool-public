@@ -1,0 +1,78 @@
+---
+// 2.1's "Fix the bad prompt" (stage I, R-2.1): the bad prompt and its answers from both models, one prediction for each
+// piece added (the request, the reader and the reason, the length and tone, the ending), then every step's recorded
+// answers. Nothing here calls a model; "Show another run" cycles the recorded ones.
+import { loadRecorded, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import RunCard from './RunCard.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.1', 'bad-and-good-prompts');
+const sentBy = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+const LABELS = ['A', 'step 1', 'step 2', 'step 3', 'B'];
+// One question per added piece: [what was added, the choices as [text, what we say of it after the reveal]].
+const ASK: [string, string, [string, string][]][] = [
+  ['step 1', 'Step 1 adds the request: "asking for a one-week extension on my essay". What will change?', [
+    ['The email will be about an extension.', 'Step 1: you said the email would be about an extension. Both emails were, and both were still long, with tips.'],
+    ['The email will be much shorter.', 'Step 1: you said the email would be much shorter. Both emails were still long, with tips.'],
+    ['The email will name Dr Byrne.', 'Step 1: you said the email would name Dr Byrne. The name came in at step 2.'],
+    ["I can't tell.", 'Step 1: you said you could not tell. That is fair.'],
+  ]],
+  ['step 2', 'Step 2 adds the reader and the reason: "Dr Byrne", "because I was ill last week", "I have a doctor\'s note". What will change?', [
+    ['The email will name Dr Byrne and the illness.', 'Step 2: you said the email would name Dr Byrne and the illness. Both emails did.'],
+    ['The email will get short, under 120 words.', 'Step 2: you said the email would get short. Both emails were still long, with tips or notes.'],
+    ['Nothing will change.', 'Step 2: you said nothing would change. Both emails now named Dr Byrne and the illness.'],
+    ["I can't tell.", 'Step 2: you said you could not tell. That is fair.'],
+  ]],
+  ['step 3', 'Step 3 adds the length and tone: "short", "under 120 words", "polite and a little formal". What will change?', [
+    ['The email will be about 100 words, with no tips.', 'Step 3: you said the email would be about 100 words, with no tips. Both emails were.'],
+    ['The email will still be over 200 words, with tips.', 'Step 3: you said the email would still be long. Both emails were about 100 words, and the tips were gone.'],
+    ['The email will have no blanks left to fill.', 'Step 3: you said there would be no blanks left. Every recorded reply still had blanks, such as [Your Name].'],
+    ["I can't tell.", 'Step 3: you said you could not tell. That is fair.'],
+  ]],
+  ['B', 'Prompt B adds the ending: "and end by offering to send the note". What will change?', [
+    ['The email will end on the offer to send the note.', 'Prompt B: you said the email would end on the offer. Only one of the six runs did.'],
+    ['The offer will be in the email, but not at the end.', 'Prompt B: you said the offer would not be at the end. In four runs it was in the body but not last, in one it was missing, and in one it came last.'],
+    ['The email will get much longer.', 'Prompt B: you said the email would get much longer. It stayed close to its length at step 3.'],
+    ["I can't tell.", 'Prompt B: you said you could not tell. That is fair.'],
+  ]],
+];
+const TITLES: Record<string, string> = { A: 'The bad prompt', 'step 1': 'Step 1: add the request', 'step 2': 'Step 2: add the reader and the reason', 'step 3': 'Step 3: add the length and tone', B: 'Prompt B: add the ending' };
+---
+
+<Shell title="Fix the bad prompt" reveal="Show what happened" class="fix-the-bad-prompt">
+  <h3>The bad prompt</h3>
+  <p>This prompt is invented. We sent it to two AI models.</p>
+  <blockquote>{sentBy('A')}</blockquote>
+  <div class="runs-pair">
+    {(['A', 'B'] as const).map((maker) => <RunCard rec={rec} said={said} label="A" maker={maker} n={1} />)}
+  </div>
+  <p>Now we add one piece at a time. Before each step, predict what it changes.</p>
+  {
+    ASK.map(([, question, options], q) => (
+      <fieldset>
+        <legend>{question}</legend>
+        {options.map(([text, after], i) => <label><input type="radio" name={`fix-${q + 1}`} value={i + 1} data-said={after} />{text}</label>)}
+        {q === 0 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <p>Here is what the two models wrote at each step.</p>
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={LABELS} />
+    {
+      LABELS.slice(1).map((label) => (
+        <section>
+          <h3>{TITLES[label]}</h3>
+          <blockquote>{sentBy(label)}</blockquote>
+          <Runs rec={rec} items={[{ label, maker: 'A' }, { label, maker: 'B' }]} />
+        </section>
+      ))
+    }
+    <AllRuns rec={rec} said={said} labels={LABELS.map((l) => [l, TITLES[l]])} />
+  </Fragment>
+</Shell>

@@ -1,0 +1,97 @@
+---
+// Lesson 1.10's Feed simulator uses build-time states on the shared shell; the script only shows the chosen state.
+import { readFileSync } from 'node:fs';
+import { feedData, feedSimulator } from '../lib/feed-simulator.ts';
+import Shell from './Shell.astro';
+
+const data = feedData.parse(JSON.parse(readFileSync('data/interactive/feed-simulator.json', 'utf8')));
+const { states, controls, cards, mostly } = feedSimulator(data);
+const SHAPE: Record<string, string> = { circle: 'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z', square: 'M3 3h18v18H3z', triangle: 'M12 3l9 17H3z',
+  diamond: 'M12 2l10 10-10 10L2 12z', hexagon: 'M7 3h10l5 9-5 9H7l-5-9z' };
+const CHOICES = [['Mostly one topic.', 'You said mostly one topic.'], ['About the same mix as now.', 'You said about the same mix as now.'],
+  ['More topics than now.', 'You said more topics than now.'], ["I can't tell.", 'You said you could not tell.']];
+const SENTENCE = 'The more you opened one topic, the more places it got, so the feed narrowed to mostly that topic.';
+const feed = (ids: string[]) => ids.map((id) => ({ id, ...cards[id], d: SHAPE[cards[id].shape] }));
+---
+
+<Shell title="Feed simulator" reveal="Start opening" class="feed-simulator">
+  <p>This is a toy feed we made for this lesson. Every item and topic is invented.</p>
+  <p>It has five places, shared between five topics. It uses what you open to decide what comes next.</p>
+  <ol role="list" aria-label="The feed, top item first">{feed(states[0].ids).map((c) => <li data-item={c.id} data-topic={c.topic}><svg data-shape={c.shape} aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path d={c.d} fill="none" stroke="currentColor" stroke-width="2" /></svg> {c.name}: {c.title}</li>)}</ol>
+  <p>The top item is the first one in the list.</p>
+  <p class="as-text">The toy feed will open its top item ten times. The answer is below, so decide first if you want to guess.</p>
+  <fieldset>
+    <legend>You will open the top item ten times. What will the feed show then?</legend>
+    {CHOICES.map(([label, said]) => <label><input type="radio" name="fs-pick" value={label} data-said={said} />{label}</label>)}
+  </fieldset>
+  <p>There is no wrong guess here.</p>
+  <Fragment slot="after">
+    <p>Our toy's rule: each time you open an item, its topic counts for more when the places are shared. An item you opened is not shown again.</p>
+    {
+      states.map((s, k) => (
+        <div data-state={k} class:list={[{ now: !k }]}>
+          <ol role="list" aria-label="The feed, top item first">{feed(s.ids).map((c) => <li data-item={c.id} data-topic={c.topic}><svg data-shape={c.shape} aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path d={c.d} fill="none" stroke="currentColor" stroke-width="2" /></svg> {c.name}: {c.title}</li>)}</ol>
+          {s.words.map((w) => <p>{w}</p>)}
+          {k === states.length - 1 && (
+            <Fragment>
+              <p>That was the tenth open. The feed stops here.</p>
+              <p>{mostly} <span data-picked></span></p>
+              <p>{SENTENCE}</p>
+              <p>Now try a control below.</p>
+            </Fragment>
+          )}
+        </div>
+      ))
+    }
+    <p class="sr" aria-live="polite" data-live></p>
+    <button type="button" data-turn="-1" aria-disabled="true">Back</button>
+    <button type="button" data-turn="1">Open the top item</button>
+    <div data-end>
+      <fieldset>
+        <legend>Try a control</legend>
+        {controls.map((c) => <label><input type="radio" name="fs-control" value={c.control} checked={c.control === 'none'} />{c.label}</label>)}
+      </fieldset>
+      {controls.map((c) => (
+        <div data-control={c.control} class:list={[{ now: c.control === 'none' }]}>
+          <p class="as-text">{c.label}</p>
+          <ol role="list" aria-label="The feed, top item first">{feed(c.ids).map((f) => <li data-item={f.id} data-topic={f.topic}><svg data-shape={f.shape} aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path d={f.d} fill="none" stroke="currentColor" stroke-width="2" /></svg> {f.name}: {f.title}</li>)}</ol>
+          {c.words.map((w) => <p>{w}</p>)}
+        </div>
+      ))}
+      <p>We built this toy to show a loop. Real apps use many more signals, and each app works in its own way.</p>
+      <p>Lesson 3.2 will show how feedback loops can be unfair to whole groups of people.</p>
+    </div>
+  </Fragment>
+</Shell>
+
+<script>
+  // One state at a time, by button or control only; its words go to the live region. Focus stays on what was pressed.
+  for (const box of document.querySelectorAll<HTMLElement>('.feed-simulator')) {
+    const [states, said] = [[...box.querySelectorAll<HTMLElement>('[data-state]')], box.querySelector('[data-live]')!];
+    const end = states.length - 1;
+    const [back, next] = box.querySelectorAll<HTMLElement>('[data-turn]');
+    const words = (el: Element) => [...el.children].filter((p) => p.matches('p:not(.as-text)')).map((p) => p.textContent).join(' ');
+    let at = 0;
+    const show = () => {
+      states.forEach((s, i) => s.classList.toggle('now', i === at));
+      box.querySelector('[data-end]')?.classList.toggle('now', at === end);
+      [back, next].forEach((b, i) => b.setAttribute('aria-disabled', String(at === (i ? end : 0))));
+      return words(states[at]);
+    };
+    for (const turn of [back, next])
+      turn.addEventListener('click', () => {
+        const to = at + Number(turn.dataset.turn);
+        if (to >= 0 && to <= end) at = to;
+        said.textContent = to < 0 ? 'This is the start.' : to > end ? 'That was the tenth open. The feed stops here.' : show();
+      });
+    box.querySelector('[data-reveal]')?.addEventListener('click', () => (said.textContent = show()));
+    box.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      if (input.name === 'fs-pick') box.querySelector('[data-picked]')!.textContent = input.dataset.said ?? '';
+      if (input.name !== 'fs-control') return;
+      for (const c of box.querySelectorAll<HTMLElement>('[data-control]')) c.classList.toggle('now', c.dataset.control === input.value);
+      said.textContent = words(box.querySelector(`[data-control="${input.value}"]`)!);
+    });
+    show();
+  }
+</script>

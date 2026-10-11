@@ -1,0 +1,21 @@
+---
+// "Emanuel's take" (design sheet 4): one signed opinion piece in a native <details>, the same shape as Sources. Closed
+// unless `open`. A paragraph's **bold** becomes <strong>; Astro escapes every other character, and an unbalanced ** stays text.
+import Icon from './Icon.astro';
+import type { lesson } from '../lesson-schema.ts';
+import type { z } from 'astro/zod';
+
+type Take = NonNullable<z.infer<typeof lesson>['take']>;
+const { take, open = false } = Astro.props as { take: Take; open?: boolean };
+---
+
+<section data-part="take" aria-labelledby="part-take">
+  <details open={open}>
+    <summary>
+      <Icon name="caret-right" /><h2 id="part-take" tabindex="-1">{take.heading ?? "Emanuel's take"}</h2>
+      <span class="kicker">Opinion. The rest of this lesson is sourced fact; this part is one person's view.</span>
+    </summary>
+    {take.paragraphs.map((p) => <p>{p.split(/\*\*(.+?)\*\*/).map((t, i) => (i % 2 ? <strong>{t}</strong> : t))}</p>)}
+    <p class="byline">{take.by}</p>
+  </details>
+</section>

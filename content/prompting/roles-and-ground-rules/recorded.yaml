@@ -1,0 +1,29 @@
+R-2.3:
+  summary: |
+    The difference first: the same rule was in the system prompt, with the same message. Claude Sonnet 5.5 kept the rule in every run. Ministral 3 14B broke it in every run.
+
+    Three runs were recorded for each model and each request. With no role, both models wrote a long review with a new introduction in every run. With a role and a rule in the message, both gave two problems and a main question. Ministral also added example questions or angles.
+
+    Neither wrote a new introduction, though one Ministral run wrote two sample sentences. In the clash, Claude Sonnet 5.5 said it would not rewrite the paragraph in all three runs. Ministral 3 14B rewrote it in all three runs.
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: 80fdf0887388c87bd7521d505c0dc2767530b3c49682c8a8b8d0444b47cd28e5
+  marks:
+    - {variant: A, maker: A, run: 1, shows: false, note: "No role. Five areas to fix, the missing thesis called the biggest, and a new introduction as an example."}
+    - {variant: A, maker: A, run: 2, shows: false, note: "No role. Five areas to fix, the missing thesis called the biggest, and a new introduction as an example."}
+    - {variant: A, maker: A, run: 3, shows: false, note: "No role. Five areas to fix, the missing thesis called the biggest, and a new introduction as an example."}
+    - {variant: A, maker: B, run: 1, shows: false, note: "No role. Strengths, fixes, and a new introduction. Its text names figures and sources that this lesson did not check."}
+    - {variant: A, maker: B, run: 2, shows: false, note: "No role. Strengths, fixes, example sentences for each fix, and a new introduction."}
+    - {variant: A, maker: B, run: 3, shows: false, note: "No role. Strengths, fixes, and a new introduction."}
+    - {variant: B, maker: A, run: 1, shows: true, note: "Two problems, the missing thesis first, and one question. No new introduction."}
+    - {variant: B, maker: A, run: 2, shows: true, note: "Two problems, the missing thesis first, and one question. No new introduction."}
+    - {variant: B, maker: A, run: 3, shows: true, note: "Two problems, the missing thesis first, and one question. No new introduction."}
+    - {variant: B, maker: B, run: 1, shows: true, note: "Two problems and a main question, with three example questions and an offer to brainstorm. It wrote two sample sentences, not a full rewrite."}
+    - {variant: B, maker: B, run: 2, shows: true, note: "Two problems and a main question, with some example angles. No new introduction."}
+    - {variant: B, maker: B, run: 3, shows: true, note: "Two problems and a main question, with three example questions and an offer to brainstorm. No new introduction."}
+    - {variant: C, maker: A, run: 1, shows: true, note: "Said it would not rewrite it. Gave notes and steps, and offered feedback on a new draft. No new paragraph."}
+    - {variant: C, maker: A, run: 2, shows: true, note: "Said it would not rewrite it. Gave notes, and asked the student to answer two questions and send a new draft. No new paragraph."}
+    - {variant: C, maker: A, run: 3, shows: true, note: "Said it would not rewrite it. Gave notes and three questions, and offered feedback on a new version. No new paragraph."}
+    - {variant: C, maker: B, run: 1, shows: false, note: "Rewrote the paragraph and listed the changes. Then told the student to try rewriting it themselves."}
+    - {variant: C, maker: B, run: 2, shows: false, note: "Rewrote the paragraph in two short paragraphs. It did not mention the rule."}
+    - {variant: C, maker: B, run: 3, shows: false, note: "Rewrote the paragraph and listed the changes. Then told the student to try rewriting it themselves."}

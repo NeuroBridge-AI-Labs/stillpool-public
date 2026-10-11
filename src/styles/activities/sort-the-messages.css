@@ -1,0 +1,23 @@
+/* 1.2's interactive: the rule set apart by a border, and each message's question with space around it. */
+.sort-messages .rule {
+  padding: 0.75rem 1rem;
+  background: var(--tint);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.sort-messages fieldset {
+  margin-bottom: 1rem;
+}
+.sort-messages h4 {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+.sort-messages :is([data-pick], .side strong) {
+  display: block;
+}
+.sort-messages .side { padding: 0; list-style: none; }
+.sort-messages .side li { margin-bottom: 0.75rem; padding: 0.625rem var(--ap); background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.sort-messages .side strong { display: block; margin-bottom: 0.375rem; }
+.sort-messages .side span { display: inline-block; margin: 0 0.375rem 0.25rem 0; padding: 0 0.625rem; font-size: 0.9rem; background: var(--tint); border-radius: var(--radius-pill); }
+.sort-messages ul[data-group], .sort-messages p[data-group] { padding: 0.5rem var(--ap) 0.5rem calc(var(--ap) + 1.25rem); background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.sort-messages p[data-group] { padding-left: var(--ap); }

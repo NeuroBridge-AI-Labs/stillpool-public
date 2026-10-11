@@ -1,0 +1,326 @@
+---
+title: "Feeds: how apps choose what you see"
+promise: Can explain how a feed picks what you see next, and change it
+minutes: {simple: 9, deep: 14}
+tldr:
+  - A feed is a list of posts or videos an app puts in order. A personalised feed may use what you do to guess what to show.
+  - People choose how a feed is ordered. In a recommender that uses your opens, what you open can change what you see next.
+  - Each app has its own controls. In the EU, some very large platforms and search engines must offer an option not based on profiling.
+misconceptions: [M8]
+competencies: [UNESCO-AICFS-4.1.1, UNESCO-AICFS-CG4.1.1.3, UNESCO-AICFS-CG4.3.1.1, HEA-PEA-2.3.4-a, HEA-PEA-2.3.3-a, AILIT-E4, AILIT-E1]
+interactive: feed-simulator
+inputs: [src/lib/feed-simulator.ts]
+checkin:
+  - question: What did TikTok say in 2020 its For You feed used to choose videos?
+    options:
+      - text: Videos you liked or shared, and accounts you followed.
+        why: Yes. Those were among the signals TikTok listed. A recommender may guess from what people do, and each system uses its own signals.
+        right: true
+      - text: Only what you type in the search box.
+        why: Not this one. TikTok listed likes, shares and the accounts you follow.
+      - text: Nothing. Everyone sees the same posts.
+        why: Not this one. TikTok said its For You feed uses each person's activity, so two people see different things.
+      - text: It knows what you really want.
+        why: Not this one. TikTok described signals, such as likes and follows. Its For You picks are guesses from what people do.
+  - question: In our toy, you open the top item ten times. What happens to its feed?
+    options:
+      - text: It shows more of that topic and less of others.
+        why: Yes. In our toy, the more you opened one topic, the more places it got. Other topics got fewer.
+        right: true
+      - text: It keeps a fair mix of every topic.
+        why: Not this one. In our toy, each open counted for that topic when the places were shared.
+      - text: It stops changing.
+        why: Not this one. Each open changes what our toy shows next.
+      - text: It shows only that topic from now on.
+        why: Not this one. Our toy can widen again when you use a control.
+  - question: "A friend says: \"My feed is neutral. It just shows what is there.\" What is more accurate?"
+    options:
+      - text: People chose what the feed is built to increase, so its order is not neutral.
+        why: Yes. Its builders choose what it tries to predict and increase, such as clicks or watch time.
+        right: true
+      - text: It is neutral, because a computer made the order.
+        why: Not this one. People chose the goal and the rules the computer follows.
+      - text: Only a feed in time order is neutral.
+        why: Not this one. Time order is a choice too. In one study, it changed what people saw.
+      - text: Nobody can change what a feed shows.
+        why: Not this one. Apps offer controls. And in the EU, some very large platforms must offer an option not based on profiling.
+badge:
+  earnedBy: [checkin-1, checkin-3]
+  celebration: You explained how a feed picks what you see next, and how people can change it.
+glossary:
+  - term: feed
+    meaning: A list of posts or videos an app shows in an order. Some feeds recommend items for each person; others show the newest first.
+  - term: recommender system
+    meaning: A computer system that picks a few things for each person from a huge collection.
+  - term: feedback loop
+    meaning: What a system shows changes what people do, and what they do changes what it shows next.
+  - term: profiling
+    meaning: In EU law, automated processing of personal data to evaluate things about a person, such as their interests.
+whereNext:
+  title: The Digital Services Act, from the European Commission
+  text: The European Commission's page on the EU law behind the feed option in this lesson. It is free, with no login needed, and it is one web page. Its "Feed options" line says people can choose non-personalised feeds on the largest platforms. It is an EU page, and it shows a cookie notice. It uses the Commission's own web analytics, Europa Analytics, which set cookies before any choice in our test. It downloads about 1 MB. We checked this in September 2026.
+  url: https://digital-strategy.ec.europa.eu/en/policies/digital-services-act
+sources:
+  - title: "Google for Developers, Recommendation Systems course"
+    url: https://developers.google.com/machine-learning/recommendation
+    licence: CC-BY-4.0
+    use: link
+  - title: "Google for Developers, Machine Learning Glossary, entries recommendation system, collaborative filtering and feedback loop"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Covington, Adams and Sargin (Google), Deep Neural Networks for YouTube Recommendations, RecSys ’16"
+    url: https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf
+    licence: Copyright held by the authors
+    use: cite
+  - title: "Cristos Goodrow, On YouTube's recommendation system, YouTube Official Blog"
+    url: https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/
+    licence: All rights reserved
+    use: cite
+  - title: "YouTube Help, How YouTube recommendations work"
+    url: https://support.google.com/youtube/answer/16089387?hl=en
+    licence: All rights reserved
+    use: cite
+  - title: "YouTube Help, Manage your recommendations and search results"
+    url: https://support.google.com/youtube/answer/6342839
+    licence: All rights reserved
+    use: cite
+  - title: "YouTube Help, View, delete, or turn on or off watch history"
+    url: https://support.google.com/youtube/answer/95725
+    licence: All rights reserved
+    use: cite
+  - title: "TikTok Newsroom, How TikTok recommends videos #ForYou"
+    url: https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you
+    licence: All rights reserved
+    use: cite
+  - title: "TikTok Help Center, For You"
+    url: https://support.tiktok.com/en/getting-started/for-you
+    licence: All rights reserved
+    use: cite
+  - title: "TikTok Newsroom, An update on fulfilling our commitments under the Digital Services Act"
+    url: https://newsroom.tiktok.com/fulfilling-commitments-dsa-update?lang=en-150
+    licence: All rights reserved
+    use: cite
+  - title: "Lada, Wang and Yan (Meta), How machine learning powers Facebook's News Feed ranking algorithm, Engineering at Meta"
+    url: https://engineering.fb.com/2021/01/26/ml-applications/news-feed-ranking/
+    licence: All rights reserved
+    use: cite
+  - title: "Nick Clegg (Meta), New Features and Additional Transparency Measures as the Digital Services Act Comes Into Effect"
+    url: https://about.fb.com/news/2023/08/new-features-and-additional-transparency-measures-as-the-digital-services-act-comes-into-effect/
+    licence: All rights reserved
+    use: cite
+  - title: "Sinha, Gleich and Ramani, Deconvolving Feedback Loops in Recommender Systems, NIPS 2016"
+    url: https://papers.nips.cc/paper/6283-deconvolving-feedback-loops-in-recommender-systems
+    licence: No licence stated
+    use: cite
+  - title: "Chaney, Stewart and Engelhardt, How Algorithmic Confounding in Recommendation Systems Increases Homogeneity and Decreases Utility, arXiv 1710.11214"
+    url: https://arxiv.org/abs/1710.11214
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Brown, Nagler, Bisbee, Lai and Tucker, Echo Chambers, Rabbit Holes, and Ideological Bias: How YouTube Recommends Content to Real Users, NYU Center for Social Media and Politics"
+    url: https://csmapnyu.org/research/reports-analysis/echo-chambers-rabbit-holes-and-ideological-bias-how-youtube-recommends-content-to-real-users
+    licence: No licence stated
+    use: cite
+  - title: "Guess and others, How do social media feed algorithms affect attitudes and behavior in an election campaign?, Science"
+    url: https://www.science.org/doi/10.1126/science.abp9364
+    licence: Copyright the authors, exclusive licensee AAAS
+    use: cite
+  - title: "Thorp and Vinson, Context matters in social media, Science"
+    url: https://www.science.org/doi/10.1126/science.adt2983
+    licence: Publisher's copyright
+    use: cite
+  - title: "Nyhan and others, Like-minded sources on Facebook are prevalent but not polarizing, Nature"
+    url: https://www.nature.com/articles/s41586-023-06297-w
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Liu and others, Short-term exposure to filter-bubble recommendation systems has limited polarization effects, PNAS"
+    url: https://doi.org/10.1073/pnas.2318127122
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Gauthier, Hodler, Widmer and Zhuravskaya, The political effects of X's feed algorithm, Nature"
+    url: https://www.nature.com/articles/s41586-026-10098-2
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Regulation (EU) 2022/2065, the Digital Services Act, on EUR-Lex"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022R2065
+    licence: EU legal text
+    use: cite
+  - title: "Regulation (EU) 2016/679, the General Data Protection Regulation, on EUR-Lex"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679
+    licence: EU legal text
+    use: cite
+  - title: "European Commission, Supervision of the designated very large online platforms and search engines under DSA"
+    url: https://digital-strategy.ec.europa.eu/en/policies/list-designated-vlops-and-vloses
+    licence: CC-BY-4.0
+    use: cite
+  - title: "European Commission, The Digital Services Act"
+    url: https://digital-strategy.ec.europa.eu/en/policies/digital-services-act
+    licence: CC-BY-4.0
+    use: link
+  - title: "Coimisiún na Meán, Digital Services Act"
+    url: https://www.cnam.ie/industry-and-professionals/online-safety-framework/digital-services-act/
+    licence: No licence stated
+    use: cite
+  - title: "Pew Research Center, Public Attitudes Toward Computer Algorithms"
+    url: https://www.pewresearch.org/internet/2018/11/16/public-attitudes-toward-computer-algorithms/
+    licence: Pew's terms, copyright reserved
+    use: cite
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-28
+signed: false
+---
+
+## What a feed is
+
+<Simple>
+You watch two cute cat videos. Soon your feed shows other animal videos. Why?
+
+A feed is a list of posts or videos an app puts in order. Some feeds show the newest posts first. Others recommend items for each person. A system that picks a few items from a huge collection is called a recommender system.
+
+On a personalised home page, the picks are made for each person. So two people see different things.
+</Simple>
+
+<Deep>
+Google's glossary defines a recommendation system as "A system that selects for each user a relatively small set of desirable items from a large corpus." Google's course says: "Homepage recommendations are personalized to a user based on their known interests. Every user sees different recommendations." TikTok's help page, checked in September 2026, says: "For You is a personalized feed of content based on your interests and engagement."
+</Deep>
+
+## What a feed uses
+
+<Simple>
+A recommender may guess what you like from what you do. But each system uses its own signals.
+
+TikTok said in June 2020 that its For You feed used likes, shares and the accounts you follow. It also used whether someone finished a longer video. And it looked at content a person would rather skip.
+
+So a pick is a guess. YouTube said in 2021 that it had learned a click does not mean you watched.
+</Simple>
+
+<Deep>
+Google's course gives watching as an example of interest a model infers: "if a user watches a movie, the system infers that the user is interested."
+
+TikTok said in June 2020 that its For You feed used "User interactions such as the videos you like or share, accounts you follow, comments you post, and content you create." It said a strong sign of interest counts for more than a weak one: "A strong indicator of interest, such as whether a user finishes watching a longer video from beginning to end, would receive greater weight than a weak indicator, such as whether the video's viewer and creator are both in the same country." YouTube's words, from 15 September 2021: "But we learned back in 2011 that clicking on a video doesn't mean you actually watched it."
+</Deep>
+
+## Similar items, similar people
+
+<Simple>
+One way shows things like the ones you chose. In Google's course example, if you watch two cute cat videos, a system can recommend cute animal videos. Another way uses what similar people did. If you and another person liked the same things, you may see other things they liked.
+
+YouTube describes its own system this way (2021). If people who like the same tennis videos as you also enjoy jazz, you may be shown jazz. That can happen even if you have never watched any jazz.
+</Simple>
+
+<Deep>
+Google's course calls the first way content-based filtering. It "Uses similarity between items to recommend items similar to what the user likes." In a separate, hand-built Google Play example, Google says its model did not use information about other users. The second way is called collaborative filtering. Google's glossary defines it as "Making predictions about the interests of one user based on the interests of many other users." YouTube's Cristos Goodrow wrote on 15 September 2021: "Our system then compares your viewing habits with those that are similar to you and uses that information to suggest other content you may want to watch."
+
+Google's Recommendation Systems course, last updated 25 August 2025, describes one common design in three stages. Its YouTube example says candidate generation reduces "billions of videos" to "hundreds or thousands". Scoring ranks those with another model, to choose the few shown, "on the order of 10". Re-ranking is a last pass that can remove items you said you disliked, lift newer items and add variety. This is the course's example, not a check of YouTube's current system.
+
+YouTube's system as its engineers described it in 2016 used two neural networks, one to pick a few hundred candidate videos from the user's activity history and one to rank them. It ranked mainly by the watch time it expected, not by the chance of a click. The paper says ranking by clicks often promotes "deceptive videos that the user does not complete". It also says: "We rarely obtain the ground truth of user satisfaction and instead model noisy implicit feedback signals." This is a 2016 paper about YouTube in 2016, not a description of YouTube today.
+
+YouTube's own account, in 2021: clicks came first; it added watch time in 2012, and "When we first incorporated watchtime into recommendations, we saw an immediate 20% drop in views." It later measured "valued watchtime" with surveys that ask viewers to rate a video from one to five stars. It lists "clicks, watchtime, survey responses, sharing, likes, and dislikes." These are YouTube's statements, dated 15 September 2021, not a test of its system.
+
+Facebook's News Feed as three Meta staff described it on 26 January 2021: "We use ML to predict which content will matter most to each person to support a more engaging and positive experience." Several predictions, for likes, comments and shares, are combined for what Meta calls "long-term value", which it checks with surveys. A light model first picks about 500 of the most relevant posts, and a last pass adds rules for a mix of content types. This is Meta's statement, not a test.
+</Deep>
+
+## People choose what a feed is for
+
+<Simple>
+People decide what a feed is built for. Its builders choose what it tries to predict and increase, such as clicks or watch time. Google's course shows that each choice leads to different recommendations. So a feed's order is not neutral. It follows choices people made.
+
+A feed in time order, newest first, is a choice too. In one 2020 experiment, people moved to time order saw more political content and more from untrustworthy sources. It ran on Facebook and Instagram in the US.
+</Simple>
+
+<Deep>
+Google's course says: "The choice of scoring function can dramatically affect the ranking of items, and ultimately the quality of the recommendations." It gives examples of what each choice costs. "If the scoring function optimizes for clicks, the systems may recommend click-bait videos." And: "If the scoring function optimizes for watch time, the system might recommend very long videos, which might lead to a poor user experience." One option it lists is to "Recommend shorter videos, but ones that are more likely to keep the user engaged."
+
+In a US survey of 4,594 adults (Pew Research Center, 29 May to 11 June 2018), asked which of two statements came closer to their view, 40% chose "It is possible for computer programs to make decisions without human bias" and 58% "Computer programs will always reflect the biases of the people who designed them" (2% gave no answer). That is about 4 in 10 people holding this view of programs in 2018; the survey did not ask about feeds. This site's own line on it: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values." Lesson 3.1 will say more about who shapes what AI shows.
+</Deep>
+
+## The Feed simulator
+
+<Simple>
+This lesson has a toy feed, the Feed simulator. We made it for this lesson. Every item and topic in it is invented.
+
+First you answer a question: "You will open the top item ten times. What will the feed show then?" Then you open items, one at a time. After that, you try a control.
+
+The toy uses only what you open. It does not use other people's choices, watch time or likes. Real apps use many more signals, and each app works in its own way.
+</Simple>
+
+<Deep>
+The toy's rule is ours, written for this lesson. It is one rule, where real systems have many stages and models. It is not a model of any named app.
+</Deep>
+
+<TryIt />
+
+## A loop
+
+<Simple>
+In a recommender that uses your opens, what you open can change what you see next. What you see can then change what you open. That is a feedback loop.
+
+Google's course notes that items higher on the screen are more likely to be clicked. If a recommender uses those clicks for later picks, the loop continues.
+
+A feed can narrow. If a system always shows the items most like what you chose, they end up very like each other. Google's course calls that a "bad or boring" experience.
+
+TikTok said in 2020 that personalising its For You feed risks "an increasingly homogenous stream of videos". Homogenous means all alike.
+
+A feed can also widen. Similar people can bring you things you would never have searched for. TikTok said in 2020 that its feed mixes in "diverse types of content".
+</Simple>
+
+<Deep>
+Google's glossary defines a feedback loop in machine learning as "a situation in which a model's predictions influence the training data for the same model or another model." Its example: "a model that recommends movies will influence the movies that people see, which will then influence subsequent movie recommendation models." A 2016 paper put it this way: "When users accept these recommendations it creates a feedback loop in the recommender system, and these loops iteratively influence the collaborative filtering algorithm's predictions over time."
+
+A 2018 **simulation** used made-up users in a computer model, not real people or a real app. Training a system on data from people who were already shown its recommendations made the simulated users' behaviour more alike, without making them better off. Lesson 3.2 will show how feedback loops can be unfair to whole groups of people. Google's course lists a fix for narrowing: "Re-rank items based on genre or other metadata to ensure diversity." TikTok said in June 2020: "For example, your For You feed generally won't show two videos in a row made with the same sound or by the same creator."
+
+The research on narrowing is mixed. Each study below is one platform, one method, one period and one group of people, and each concerns politics in the US. They ask two questions: does a feed change what people see or choose, and does it change what people think? A 2025 paper sums up the claim it tests: that recommendation systems drive political division by creating "filter bubbles" and "rabbit holes".
+
+YouTube, real users, a fixed click rule (autumn 2020). NYU researchers recruited 527 YouTube users, who installed a browser plug-in, started from one of 25 videos and then always clicked the same place in the recommendations for 20 steps. The recommendations narrowed only a little: the authors call it "(very) mild". By their own definition, 14 out of 527 (~3%) ended up in rabbit holes. The users did not choose what to click, so this shows what YouTube recommended, not what people would have picked. The toy in this lesson takes away the choice in the same way.
+
+Facebook and Instagram, a feed in time order (US, 24 September to 23 December 2020). US adults who agreed to take part (Facebook: 23,391; Instagram: 21,373) were randomly given either the normal feed or a feed with the newest posts first. With the time-order feed they spent less time on the apps and did less there. They saw more political content and more from untrustworthy sources on both apps. On Facebook, they saw less uncivil content, and more from moderate friends and mixed-audience sources. Their political attitudes and knowledge did not change significantly over the three months. The authors were academics and Meta staff. In September 2024, Science's editors noted that Facebook had made 63 "emergency measures" during the study, so "the default algorithm was in flux during the experiment". The authors say their conclusions stand.
+
+Facebook, fewer posts from like-minded sources (US, 24 September to 23 December 2020). For 23,377 consenting US adult Facebook users, the researchers cut the share of posts from sources that share the user's political leaning by about a third. They then saw more from other viewpoints and less uncivil language, but eight measured attitudes, such as how extreme their views were and how they felt about the other party, did not measurably change.
+
+A YouTube-like site, more one-sided recommendations (US, studies started June 2021, April 2022 and May 2024). In four experiments with 8,883 US participants, researchers built a video site that looked like YouTube and showed real YouTube videos and recommendations, then gave some people more one-sided recommendations. That changed which videos people chose and how long they stayed, but it did not change their views on the policy questions in a substantial way, in the short term. The authors say they cannot rule out long-term effects or effects on small groups.
+
+X, a randomized test of its two feed settings in the US (July to September 2023). Independent researchers assigned active X users to the algorithmic or chronological feed for about seven weeks; 4,965 completed the post-treatment survey. Among those who had previously used the chronological feed, assignment to the algorithmic feed increased engagement and shifted some measured political opinions toward more conservative positions. Switching from the algorithmic feed to chronological did not measurably reverse those views in the study period. Neither switch measurably changed self-reported partisanship or affective polarization. Adherence was self-reported.
+
+The limits. These methods and periods differ, and each result is limited to its measured outcomes, participants, platform and date. The Facebook and Instagram tests ran for three months in 2020, with Meta staff among the co-authors. The video-site tests used short sessions. The X test lasted about seven weeks. The YouTube study tested fixed clicks, not freely chosen viewing. Every platform description in this lesson is that company's statement on its date, not a test we ran. We found no survey of neurodivergent learners' beliefs about AI, feeds included.
+
+Google's Recommendation Systems course is free, and Google estimates about 4 hours. It assumes some machine learning and maths. It is a Google page about recommender systems in general, not about Google's own products' feeds. It loads Google Tag Manager and Google Fonts, tries to send Google Analytics requests and sets Google Analytics cookies before any choice. It downloads about 1.7 MB. We checked this in September 2026: [Recommendation Systems](https://developers.google.com/machine-learning/recommendation).
+</Deep>
+
+## You have controls
+
+<Simple>
+You have controls, and each app has its own. Here are some, as each company describes its own app. We checked them in September 2026.
+
+- **YouTube:** you can mark a video "Not interested". You can delete your watch history, so those videos stop shaping future recommendations. You can also turn watch history off, so new videos are not added to it.
+- **YouTube Home:** YouTube says Home shows only the search bar and the menu. That is when watch history is off and there is no significant prior watch history.
+- **TikTok:** you can say "Not interested", refresh your For You feed, filter keywords and manage topics.
+- **TikTok in the EEA, the UK or Switzerland:** you can turn off personalised recommendations. The EEA is the European Economic Area.
+- **Instagram and Facebook (both Meta):** Meta said in August 2023 that people in Europe would get a new choice. They could see Stories and Reels (kinds of post) only from people they follow, newest first.
+
+Lesson 3.3 will show what data is collected about you, and lesson 4.4 will cover privacy settings.
+</Simple>
+
+<Deep>
+YouTube's help pages say: "If you delete some or all of your watch history, YouTube won't base future video recommendations on that content." And: "If your YouTube watch history is off and you have no significant prior watch history, the homepage will continue to show the search bar and the left-side menu."
+
+TikTok's help page says: "Not interested: If you don't care for a specific post, you can share feedback that you're not interested, and we'll show you fewer posts like that." Each of these is that company's description of its own app, not a test we ran.
+</Deep>
+
+## A rule in the EU
+
+<Simple>
+In the EU, some very large online platforms and search engines must offer an option not based on profiling. If they use recommender systems, each system needs one. That means an option not built from a profile of you.
+
+The rule covers services with 45 million or more average monthly active recipients in the EU. It covers them once the European Commission names them. Recipients are the people who use a service. The Commission's list, updated 31 August 2026, included YouTube, TikTok, Instagram and Facebook.
+</Simple>
+
+<Deep>
+The rule is Article 38 of the Digital Services Act (Regulation (EU) 2022/2065). It says that "providers of very large online platforms and of very large online search engines that use recommender systems shall provide at least one option for each of their recommender systems which is not based on profiling". The text is in force in September 2026, with no amending act. "Profiling" has the meaning in the GDPR, the EU's data protection law. It is automated processing of personal data to evaluate a person, for example to predict their preferences, interests, behaviour, location or movements. So the option may not be built from a profile of you.
+
+Article 38 is in the section of extra duties for very large online platforms and very large online search engines. That section applies to a platform or search engine with 45 million or more average monthly active recipients in the EU and a Commission decision designating it. Its duties start four months after the provider is notified. The Commission's list also names Snapchat, Pinterest, LinkedIn and X, among others. A smaller app does not have this duty, whatever its feed does. The regulation applies in full from 17 February 2024. For platforms designated before that, the duties began four months after notification. TikTok and Meta each said, in August 2023, that the rules would apply to them from the end of that month.
+
+Article 27 applies to online platforms that use recommender systems. Their terms must explain, in plain and intelligible language, the main things the recommender system uses, and any options people have to change them. Where there are several options, people must be able to pick and change their preferred one at any time, from the part of the app where the feed is shown. Micro and small providers are exempt, and so are providers in the 12 months after losing that status, unless they are designated very large. The law's own definition: a recommender system is a fully or partially automated system an online platform uses to suggest information to people, or to put it in order.
+
+What the law does not fix: Article 38 asks for at least one option not based on profiling; its text does not say that option must be the default, that it must be in time order, or what it may use instead. The Commission's own page calls these "non-personalised feeds", and gives "the chronological order" as one example of other criteria. Here is how two companies say they offer it. TikTok, 4 August 2023: people in Europe would be able to turn off personalisation. For You and LIVE would then show popular videos from where they live and around the world. Following and Friends would show the accounts they follow in time order. Meta wrote on 22 August 2023 that people in Europe would be able to view Stories and Reels only from people they follow, newest first, and Search results based only on the words they type. Neither statement is a test we ran. To complain about a breach of the Digital Services Act, the Commission points people to their country's Digital Services Coordinator. In Ireland that is Coimisiún na Meán.
+</Deep>

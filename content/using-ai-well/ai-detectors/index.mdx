@@ -1,0 +1,266 @@
+---
+title: "AI detectors: what a flag proves"
+promise: Can explain why a detector's flag is not proof
+minutes: {simple: 8, deep: 14}
+tldr:
+  - An AI detector gives a guess about who wrote a text. A flag is a guess, not proof.
+  - In one 2023 study, seven detectors wrongly flagged many essays by people whose first language is not English.
+  - A flag needs other evidence. If you are flagged, ask what other evidence there is.
+misconceptions: [M4, M8]
+interactive: will-the-detector-flag-it
+inputs: [src/lib/pretend-detector.ts, src/lib/will-the-detector-flag-it.ts, src/lib/next-word.ts, data/training/dubliners.txt, data/recorded/R-4.3.json, src/lib/cases.ts, src/components/Cases.astro, src/lib/p2-runs.ts, src/components/RunCard.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.1, UNESCO-AICFS-CG4.2.1.2, UNESCO-AICFS-CG4.1.2.1, HEA-P1, HEA-P2, HEA-PEA-2.3.3-b, AILIT-E6, AILIT-E3]
+checkin:
+  - question: In the 2023 Stanford study, seven detectors read 91 essays by non-native English writers. What did the paper report?
+    options:
+      - text: On average, the detectors wrongly flagged 61.3% of them as AI-written, about 6 in 10.
+        why: Yes. The paper says the essays were human-written. It gives 61.3%, about 6 in 10, as the average false-positive rate over the seven detectors.
+        right: true
+      - text: The detectors flagged almost none of them.
+        why: Not this one. The paper reports that the detectors flagged more than half of these essays.
+      - text: The detectors were right because the writers had used AI.
+        why: Not this one. The paper says all 91 essays were written by people.
+      - text: The detectors flagged the US students' essays more often than the other essays.
+        why: Not this one. The paper says the detectors classified the US students' essays accurately.
+  - question: A detector flags an essay that you wrote yourself. What does the flag prove on its own?
+    options:
+      - text: Nothing on its own. It is a guess, so ask what other evidence there is.
+        why: Yes. Ireland's NAIN tells teachers not to rely on detection systems. Turnitin says to use its results to start a conversation, not to draw a conclusion.
+        right: true
+      - text: That you used AI.
+        why: Not this one. A detector can flag text that a person wrote. That is a false positive.
+      - text: That the detector is sure.
+        why: Not this one. OpenAI said its own detector was "not fully reliable". A flag is a guess.
+      - text: That a not-flagged essay is safe.
+        why: Not this one. The 2023 test of 14 tools found that tools often missed AI text.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can explain why a detector's flag is a guess and not proof.
+glossary:
+  - term: AI detector
+    meaning: A tool that claims to tell whether a text was written by AI.
+  - term: flag
+    meaning: In this lesson, the tool marks a text as likely AI-written.
+  - term: false positive
+    meaning: A tool wrongly marks a text that a person wrote as AI-written.
+  - term: language model
+    meaning: A program that guesses which word comes next in a sentence.
+  - term: piece
+    meaning: One word or punctuation mark, as the pretend detector counts them.
+  - term: non-native English writer
+    meaning: A person whose first language is not English.
+  - term: perplexity
+    meaning: A measure of how easy it is to guess the next word of a text. Easy to guess means low perplexity.
+whereNext:
+  title: Generative Artificial Intelligence, Guidelines for Educators, from Ireland's National Academic Integrity Network
+  text: A free PDF of 28 pages, published by Quality and Qualifications Ireland (QQI) in August 2023. No login is needed. It is on a different website and is written for teachers. Recommendation 11 is about detection systems.
+  url: https://www.qqi.ie/sites/default/files/2023-09/NAIN%20Generative%20AI%20Guidelines%20for%20Educators%202023.pdf
+sources:
+  - title: "Liang, Yuksekgonul, Mao, Wu and Zou, GPT detectors are biased against non-native English writers, Patterns, 10 July 2023 (open copy on PubMed Central)"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10382961/
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Liang and others, GPT detectors are biased against non-native English writers, arXiv preprint 2304.02819 (version 3, 10 July 2023), for the detector list and test date"
+    url: https://arxiv.org/abs/2304.02819
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Weber-Wulff and others, Testing of detection tools for AI-generated text, International Journal for Educational Integrity 19, article 26, published 25 December 2023"
+    url: https://doi.org/10.1007/s40979-023-00146-z
+    licence: CC-BY-4.0
+    use: cite
+  - title: "OpenAI, New AI classifier for indicating AI-written text, 31 January 2023, with its note of 20 July 2023"
+    url: https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/
+    licence: No licence stated
+    use: cite
+    note: OpenAI's server refused our automated request, so we read an Internet Archive copy of this page on 9 October 2026.
+  - title: "Turnitin, AI writing detection update from Turnitin's Chief Product Officer, 23 May 2023"
+    url: https://www.turnitin.co.uk/blog/ai-writing-detection-update-from-turnitins-chief-product-officer
+    licence: "Turnitin Website Terms of Use, linked in the page footer: you have no right to reproduce the website materials"
+    use: cite
+  - title: "Turnitin, Understanding the false positive rate for sentences of our AI writing detection capability, 14 June 2023"
+    url: https://www.turnitin.co.uk/blog/understanding-the-false-positive-rate-for-sentences-of-our-ai-writing-detection-capability
+    licence: "Turnitin Website Terms of Use, linked in the page footer: you have no right to reproduce the website materials"
+    use: cite
+  - title: "Turnitin, New research: Turnitin's AI detector shows no statistically significant bias against English language learners, 26 October 2023"
+    url: https://www.turnitin.ca/blog/new-research-turnitin-s-ai-detector-shows-no-statistically-significant-bias-against-english-language-learners
+    licence: "Turnitin Website Terms of Use, linked in the page footer: you have no right to reproduce the website materials"
+    use: cite
+  - title: "Vanderbilt University, Guidance on AI Detection and Why We're Disabling Turnitin's AI Detector, 16 August 2023"
+    url: https://www.vanderbilt.edu/brightspace/2023/08/16/guidance-on-ai-detection-and-why-were-disabling-turnitins-ai-detector/
+    licence: No licence stated
+    use: cite
+  - title: "National Academic Integrity Network, Generative Artificial Intelligence: Guidelines for Educators, published by QQI, August 2023"
+    url: https://www.qqi.ie/sites/default/files/2023-09/NAIN%20Generative%20AI%20Guidelines%20for%20Educators%202023.pdf
+    licence: No licence stated
+    use: cite
+  - title: "J. M. Synge, The Aran Islands (1907), Project Gutenberg eBook 4381"
+    url: https://www.gutenberg.org/ebooks/4381
+    licence: public-domain
+    use: adapt
+  - title: "Beatrix Potter, The Tale of Peter Rabbit, Project Gutenberg eBook 14838"
+    url: https://www.gutenberg.org/ebooks/14838
+    licence: public-domain
+    use: adapt
+  - title: "James Joyce, Dubliners (1914), Project Gutenberg eBook 2814"
+    url: https://www.gutenberg.org/ebooks/2814
+    licence: public-domain
+    use: adapt
+  - title: "Copyright and Related Rights Act 2000, section 24, revised text, Law Reform Commission"
+    url: https://revisedacts.lawreform.ie/eli/2000/act/28/section/24/revised/en/html
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## A flag is a guess
+
+<Simple>
+An AI detector is a tool that claims to tell whether a text was written by AI. Some show a score. Some show a label, such as "likely AI-written". Here, AI is technology that lets computer systems imitate human learning and problem solving.
+
+In this lesson, a flag means the tool marks a text as likely AI-written.
+
+OpenAI is a company that makes language models. A language model is a program that guesses which word comes next in a sentence.
+
+In January 2023 OpenAI released its own detector. It said the tool was "not fully reliable". On 20 July 2023 it took the tool down, for "its low rate of accuracy".
+
+So a flag is a guess. The rest of this lesson shows why.
+</Simple>
+
+<Deep>
+OpenAI's page is dated 31 January 2023, and it carries a note added on 20 July 2023. It gave two numbers from its own "challenge set" of English texts. The classifier "correctly identifies 26% of AI-written text (true positives) as "likely AI-written," while incorrectly labeling human-written text as AI-written 9% of the time (false positives)". A true positive is AI text that the tool marks as AI. A false positive is human text that the tool marks as AI. These are the company's claims about one tool on its own test set.
+
+The page lists limits. The classifier "should not be used as a primary decision-making tool". It is "very unreliable on short texts (below 1,000 characters)". "Sometimes human-written text will be incorrectly but confidently labeled as AI-written." "AI-written text can be edited to evade the classifier." It also says "Text that is very predictable cannot be reliably identified", and gives the first 1,000 prime numbers as an example. We read an Internet Archive copy of the page on 9 October 2026, because OpenAI's own server refused our request.
+</Deep>
+
+## A pretend detector
+
+<Simple>
+Here is a pretend detector. It is our own toy, not a real detector. It shows one idea: what a tool flags depends on how the tool works.
+
+The pretend detector uses a word-counting model. That is a program that counts the words of one book. The book is Dubliners, short stories by James Joyce, published in 1914.
+
+The model cuts a text into pieces. A piece is one word or one punctuation mark. For each piece, it asks: did this piece ever follow the same two pieces in the book?
+
+If many did, the text is rated predictable, and it is flagged. If few did, it is not flagged.
+
+You will see six texts, one at a time. You predict, then you see the rating, in words.
+
+Four texts were written by people in 1914 or earlier. Two were written by AI models on 8 October 2026. Two more AI texts, on making tea, are under "Show all runs". The page names every author.
+</Simple>
+
+<Deep>
+The pretend detector is the model from Lesson 1.4, The next word. It counts which piece follows each pair of pieces in Dubliners. It does not guess about pieces it never saw, so a piece that never followed those two pieces in the book counts as not seen. The first two pieces of a text have no pair before them, so they are not rated. The rating comes from how many pieces were seen, and it is shown in words and in the form "3 pieces in 93".
+
+Real detectors differ from each other and from this toy. The 2023 Stanford paper says "Most GPT detectors use text perplexity", a measure of how easy it is to guess the next word. OpenAI's detector was "a language model fine-tuned on a dataset of pairs of human-written text and AI-written text on the same topic". This toy makes no claim to behave like either one.
+
+The four human texts, with their sources. All four come from Project Gutenberg, an online library of free eBooks. J. M. Synge, The Aran Islands (1907), two passages, from Project Gutenberg eBook 4381. James Joyce, Dubliners (1914), the opening of "Eveline", from Project Gutenberg eBook 2814 and from the book file the model learned from. Beatrix Potter, The Tale of Peter Rabbit, from Project Gutenberg eBook 14838. Irish law says copyright "shall expire 70 years after the death of the author" (Copyright and Related Rights Act 2000, section 24(1), revised text read on 9 October 2026). Synge died in 1909, Joyce in 1941 and Potter in 1943, all more than 70 years ago. Project Gutenberg also lists each book as public domain in the USA.
+
+The two model-written texts came from one run each. The prompt was: "Write about 80 words describing a walk home along a quiet street on a wet evening." Maker A is Claude Sonnet 5.5, reached through Anthropic's API (a way for one program to send a request to another). Maker B is Ministral 3 14B, reached through Mistral AI's API. No system prompt (instructions placed behind your message) was sent. The temperature (a setting that changes how even the chances are before each piece of text is picked) was not set, so each model used its own default. For Claude the value used was not recorded. Mistral's model list gave 0.3 as its default when we recorded. The longest answer was set to 4000 tokens (a token is a small piece of text, often a whole word). Both models also wrote a text on how to make a cup of tea. All four model-written texts are under "Show all runs". The four human texts are in the activity.
+</Deep>
+
+<TryIt />
+
+## What the pretend detector said
+
+<Simple>
+The pretend detector flagged the text by James Joyce. It did not flag the others.
+
+Why? The Joyce passage comes from Dubliners, the book the model learned from. Every piece the model rated also followed the same two pieces in the book.
+
+The AI texts had few matches. We asked each AI model for about 80 words on a walk home on a wet evening. Take the text by Claude Sonnet 5.5. Of the 93 pieces the model rated, only 3 had followed the same two pieces in the book.
+
+So the flag fell on a text that a person wrote. None of the AI texts were flagged. This toy flagged Joyce because that passage is in its book. A flag does not show who wrote the text.
+
+This is a toy with one old book. We do not claim that real detectors flag the same texts.
+</Simple>
+
+<Deep>
+Here is each text's count of pieces seen after the same two pieces in Dubliners. The page computes these from the book when it is built.
+
+Synge, first passage: 12 pieces in 112. Joyce, "Eveline": 72 pieces in 72. Potter: 21 pieces in 95. Synge, second passage: 5 pieces in 75. Claude Sonnet 5.5, walk home: 3 pieces in 93. Ministral 3 14B, walk home: 9 pieces in 106. Claude Sonnet 5.5, cup of tea: 1 piece in 101. Ministral 3 14B, cup of tea: 1 piece in 96.
+
+The AI texts are two models, one run each, on one day. They show nothing about how all AI writes. The page shows each reply as the model wrote it, so Ministral's tea text has bold marks and an emoji. We did not test why the model texts matched so little. The counts say only how many pieces were seen. They are not a claim about how real detectors work.
+</Deep>
+
+## What testers and companies found
+
+<Simple>
+In 2023, university researchers tested 14 AI detectors. They wrote that the tools "are neither accurate nor reliable".
+
+They also changed some AI texts. When a program reworded an AI text, the tools missed most of them.
+
+Turnitin is a company whose software many universities use to check student work for matching text. It added an AI detector in April 2023.
+
+Later in 2023 it gave a figure for its own tool. It said a sentence it marks as AI-written may be human-written about 4 in 100 times. That is Turnitin's own claim.
+
+Turnitin told teachers to "use the information to initiate a conversation, not to draw a conclusion".
+
+In August 2023, Vanderbilt University in the US turned that detector off. It wrote: "we do not believe that AI detection software is an effective tool that should be used."
+</Simple>
+
+<Deep>
+The test is Weber-Wulff and others, in the International Journal for Educational Integrity, published 25 December 2023. It covers 12 publicly available tools and two company systems, Turnitin and PlagiarismCheck. Nine researchers wrote 54 test documents of known origin: human-written, human-written in another language and machine-translated, AI-written, AI-written then edited by a person, and AI-written then reworded by a program (Quillbot). The AI text came from ChatGPT, using its model of 13 February 2023. Tests ran from 7 to 28 March 2023. Turnitin was tested from 14 to 20 April 2023, and PlagiarismCheck from 2 May 2023. The authors say the results are for English text only.
+
+They write: "Detection tools for AI-generated text do fail, they are neither accurate nor reliable (all scored below 80% of accuracy and only 5 over 70%)." They scored accuracy in four ways and averaged them. For AI text that a person had edited, the average accuracy was 42%, against 74% for unedited AI text. For AI text that a program had reworded, it was 26%: "most AI-generated texts remain undetected when machine-paraphrased." These are averages over all the tools. Individual tools differed.
+
+Turnitin's figures come from two of its own blog pages, dated 23 May and 14 June 2023. It said its document-level false-positive rate is "less than 1% for documents with 20% or more AI writing", and its sentence-level rate is "around 4%". On 23 May 2023 it raised its minimum from 150 to 300 words, and it put an asterisk on scores under 20%, because "the score is less reliable". Turnitin may have changed these since. We did not check its current pages.
+
+Vanderbilt gave a reason in numbers. It had submitted 75,000 papers to Turnitin in 2022. At a 1% false-positive rate, "around 750 student papers could have been incorrectly labeled".
+</Deep>
+
+## Second-language writers
+
+<Simple>
+A false positive is when a tool flags a text that a person wrote.
+
+In 2023, researchers at Stanford University tested seven detectors. They used 91 essays from a test called TOEFL, short for Test of English as a Foreign Language. TOEFL measures English skills used in lectures, research and class discussions.
+
+The essays came from a Chinese forum. Non-native English writers wrote them. The paper says all 91 were written by people.
+
+On average, the seven detectors wrongly flagged about 6 in 10 of these essays, or 61.3%, as AI-written.
+
+The same detectors classified 88 essays by US eighth-grade students accurately.
+
+The researchers wrote that most detectors use how easy the next word is to guess. They said this might be unfair to writers who use fewer different words in English.
+
+This is one study of seven detectors in March 2023. Turnitin was not one of the seven.
+
+Turnitin ran its own test later. It said it found no significant bias for texts of 300 words or more. That is Turnitin's claim about its own tool.
+
+Lesson 3.2, Bias, shows how unfair patterns get into AI.
+</Simple>
+
+<Deep>
+The paper is Liang and others, published in Patterns on 10 July 2023. The seven detectors were Originality.AI, Quil.org, Sapling, OpenAI's detector, Crossplag, GPTZero and ZeroGPT, accessed on 15 March 2023. The 61.3% is an average over the seven. The paper also says "All detectors unanimously identified 19.8% of the human-written TOEFL essays as AI authored, and at least one detector flagged 97.8% of TOEFL essays as AI generated." An earlier preprint of the same paper gives 61.22%. We use the published figure.
+
+The authors define perplexity: "a measure of how "surprised" or "confused" a generative language model is when trying to guess the next word in a sentence. If a generative language model can predict the next word easily, the text perplexity is low." They found the essays that all seven detectors flagged "exhibited significantly lower text perplexity". They write that detectors "might inadvertently penalize non-native writers who use a more limited range of linguistic expressions". That is the authors' account of a possible cause.
+
+They then asked ChatGPT to enhance the word choices of the TOEFL essays. The paper reports "the average false-positive rate dropping by 49.7% (from 61.3% to 11.6%)". The two rates differ by 49.7 percentage points. They also asked it to simplify word choices in the US essays, which led to "a substantial increase in misclassification". In a separate test, college application essays written by ChatGPT were detected, then ChatGPT was asked to "Elevate the provided text by employing literary language", and detection "plummeted to near zero".
+
+Turnitin's page of 26 October 2023 says: "the difference in the false positive rate (FPR) between L2 English writers (ELL writers) and L1 English writers (native English writers) is small, and not statistically significant". That is for documents of at least 300 words. For shorter documents it found a bigger gap. Evidence on bias is mixed, so we report both.
+</Deep>
+
+## What a flag proves
+
+<Simple>
+A flag alone does not prove who wrote a text. The evidence in this lesson shows why.
+
+- **A flag can be wrong.** Detectors flagged human essays in the Stanford study.
+- **A clean result can be wrong too.** The 2023 test found that tools often missed AI text.
+- **Irish guidance says not to rely on one.** Ireland's National Academic Integrity Network (NAIN) tells teachers: "Do not rely on GenAI 'detection systems'." GenAI means generative AI, which makes new content such as text or images.
+
+Turnitin suggests teachers ask a student to explain the ideas and the steps they took. That is other evidence.
+
+So if you are flagged, ask what other evidence there is. Your college's own rules on AI come first. Lesson 4.2, Study honestly with AI, covers those.
+</Simple>
+
+<Deep>
+NAIN wrote its guidelines for educators in 2023, and QQI published them in August 2023. Recommendation 11 reads: "None of the tools which are currently available are fully capable of detecting the use of GenAI (except in the most obvious cases which may also have been identified by expert reading and scrutiny) and may also lead to 'false positives' (incorrectly concluding that human-written text was AI-generated) and difficult-to-interpret scoring. Detection systems cannot be relied upon to detect use of GenAI accurately or consistently." It adds that "there may be serious data protection, privacy, and intellectual property concerns in the use of any such tool". Here GenAI means generative AI, AI that makes new text or images.
+
+Weber-Wulff and others write that tool results "can vary when the same material is tested at a different time". They say this "provides another strong reason against the use of these tools as a single source of an accusation of misconduct".
+
+Turnitin's page of 14 June 2023 says: "Ask them to explain what the essay is about, the process they followed, their ideas and key takeaways, among other things." Its page of 23 May 2023 says its metrics "may change". This lesson does not tell anyone to run their own work through a detector site. NAIN names the privacy risk.
+</Deep>

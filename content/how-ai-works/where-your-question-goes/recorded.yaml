@@ -1,0 +1,27 @@
+R-1.5:
+  summary: |
+    Three runs with search off and three with search on were recorded. With search off, no run gave the 2026 final.
+
+    With search on, a search ran in every run. No run gave the 2026 final with a matching score. No checked cited page failed to back up its attached claim.
+  recordingSha256: 0865dc094c8a4dd17a51ab75bc075fd8201de0389144e8d5ad987af3fcf402ed
+  checked: '2026-09-28'
+  checkedBy: Codex
+  cutoff: January 2026
+  truth:
+    winner: Limerick beat Galway
+    score: 1-29 to 1-18
+    date: 19 July 2026
+    weekday: Sunday
+    place: Croke Park
+    source: https://www.gaa.ie/article/all-ireland-shc-final-limerick-triumph-again
+    previous: Tipperary beat Cork, 3-27 to 1-18, on 20 July 2025.
+  checks:
+    - - {year: 2024, searchRan: false, winnerMatch: false, scoreMatch: false, citations: []}
+      - {year: 2024, searchRan: false, winnerMatch: false, scoreMatch: false, citations: []}
+      - {year: null, searchRan: false, winnerMatch: false, scoreMatch: false, citations: []}
+    - - {year: 2026, searchRan: true, winnerMatch: true, scoreMatch: false, falseText: '1–29 to 1–11',
+         reason: 'GAA.ie gives 1-29 to 1-18. The first cited page gives the wrong score. Its match box gives 1-29 to 1-18.', citations: [{loads: true, supports: true}, {loads: true, supports: true}, {loads: true, supports: true}]}
+      - {year: 2026, searchRan: true, winnerMatch: true, scoreMatch: false, falseText: '1–29 to 1–11',
+         reason: 'GAA.ie gives 1-29 to 1-18. The answer also names the right score as an alternative.', citations: [{loads: true, supports: true}, {loads: true, supports: true}, {loads: true, supports: true}]}
+      - {year: 2026, searchRan: true, winnerMatch: true, scoreMatch: false, falseText: '1–29 to 1–11',
+         reason: 'GAA.ie gives 1-29 to 1-18. The first cited page gives the wrong score. Its match box gives 1-29 to 1-18.', citations: [{loads: true, supports: true}, {loads: true, supports: true}]}

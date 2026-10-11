@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>stillness carousel</title>
+</head>
+<body>
+<p id="slide">One</p>
+<script>
+setInterval(function () {
+  var el = document.getElementById('slide');
+  el.textContent = el.textContent === 'One' ? 'Two' : 'One';
+}, 2000);
+</script>
+</body>
+</html>

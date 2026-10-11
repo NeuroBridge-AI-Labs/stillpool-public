@@ -1,0 +1,210 @@
+---
+// Lesson 1.9's "Doodle guesser" (its brief, Interactive) on the shared shell (p6 D2). Every guess, chance and rule line
+// for the three example doodles is worked out here at build time by src/lib/doodle.ts from the committed weights and
+// data/interactive/doodle-guesser.json, so the page ships words. The browser runs the models only on the learner's own
+// drawing, with the weights loaded on the first touch of the pad through a dynamic import(). Nothing moves by itself.
+import { readFileSync } from 'node:fs';
+import { chances, copyNamed, highChance, named, render, rows, words, type Drawing, type Model } from '../lib/doodle.ts';
+import Shell from './Shell.astro';
+
+const json = (f: string) => JSON.parse(readFileSync(f, 'utf8'));
+const [six, three]: Model[] = [json('data/doodle/six-kinds.weights.json'), json('data/doodle/three-kinds.weights.json')];
+const { examples }: { examples: { kind: string; drawing: Drawing }[] } = json('data/interactive/doodle-guesser.json');
+// Written at P6.22 by a person looking at each committed drawing: what it shows, nothing more.
+const SAYS: Record<string, string> = {
+  car: 'A car from the side, with a raised roof and two wheels.',
+  cat: "A cat's face, with two pointed ears, two dots for eyes and a line across it.",
+  fish: 'A fish facing right, with its tail on the left and a dot for an eye.',
+};
+const part = (m: Model, d: Drawing) => rows(m, chances(m, render(d)));
+const items = examples.map(({ kind, drawing }) => {
+  const [model, copy] = [part(six, drawing), part(three, drawing)];
+  return { kind, drawing, parts: [
+    { name: 'model', guess: `The model's guess: ${model[0].kind}.`, rows: model, lines: [`The player was asked to draw a ${kind}.`, named(kind, model[0].kind)] },
+    { name: 'copy', guess: `The copy's guess: ${copy[0].kind}.`, rows: copy, lines: [copyNamed(kind, copy[0].kind), highChance(copy[0].kind, copy[0].chance)].filter(Boolean) },
+  ] };
+});
+const OWN = [
+  { name: 'model', guess: '', rows: [], lines: ['Only you can say whether that fits what you drew.'] },
+  { name: 'copy', guess: '', rows: [], lines: ['The copy\'s only answers are apple, house and umbrella. If you drew anything else, it could not name it.'] },
+];
+const lines = (d: Drawing) => d.map(([xs, ys]) => xs.map((x, i) => `${x},${ys[i]}`).join(' '));
+const GUESS = [
+  ['What the doodle shows', 'You said it would guess what the doodle shows.'],
+  ['Something else', 'You said it would guess something else.'],
+  ['I am not sure', 'You were not sure.'],
+];
+const COPY = [
+  ['That none of its kinds fits', 'You said the copy would say none of its kinds fits.'],
+  ['One of its three kinds', 'You said the copy would name one of its three kinds.'],
+  ['I am not sure', 'You were not sure.'],
+];
+---
+
+<Shell title="Doodle guesser" reveal="Show the model's guess" class="doodle-guesser">
+  <p>This model learned from 12,000 doodles: 2,000 each of six kinds. The kinds are apple, car, cat, fish, house and umbrella.</p>
+  <p>People drew them in Google's game Quick, Draw!.</p>
+  <fieldset>
+    <legend>Pick a doodle</legend>
+    {
+      items.map((it) => (
+        <label>
+          <input type="radio" name="doodle" value={it.kind} data-said={`You picked the ${it.kind} doodle.`} />
+          The {it.kind} doodle
+          <svg role="img" aria-label={SAYS[it.kind]} viewBox="-12 -12 280 280">{lines(it.drawing).map((p) => <polyline points={p} />)}</svg>
+        </label>
+      ))
+    }
+    <label><input type="radio" name="doodle" value="own" disabled data-said="You picked your own drawing." />My own drawing</label>
+  </fieldset>
+  <div class="pad">
+    <p id="pad-how">Draw here with a mouse, a finger or a pen. You do not have to draw: you can pick a doodle instead.</p>
+    <svg role="img" aria-label="Drawing pad" aria-describedby="pad-how"></svg>
+    <button type="button">Clear the pad</button>
+    <p>Your drawing stays on this page. Nothing is sent or saved.</p>
+    <p class="pad-state" aria-live="polite"></p>
+  </div>
+  <fieldset>
+    <legend>What will the model guess?</legend>
+    {GUESS.map(([text, said]) => <label><input type="radio" name="guess" data-said={said} />{text}</label>)}
+  </fieldset>
+  <p>There is no wrong guess here.</p>
+  <Fragment slot="after">
+    {
+      [...items, { kind: 'own', drawing: [], parts: OWN }].map((it) => (
+        <div data-for={it.kind}>
+          {it.kind !== 'own' && <p class="as-text">The {it.kind} doodle: {SAYS[it.kind]}</p>}
+          {it.parts.map((p) => (
+            <div class={p.name}>
+              <p>{p.guess}</p>
+              <ul class="chances">
+                {p.rows.map((r, i) => (
+                  <li data-chance={r.chance}>{r.kind}, {words(r.chance)}<svg class="bar" aria-hidden="true" viewBox="0 0 100 10" preserveAspectRatio="none"><rect width={100 * r.chance} height="10" class={i ? '' : 'solid'} /></svg></li>
+                ))}
+              </ul>
+              {p.lines.map((l) => <p>{l}</p>)}
+            </div>
+          ))}
+        </div>
+      ))
+    }
+    <h3>Now switch to the copy</h3>
+    <p>We trained a copy of this model the same way, on the same doodles. The copy learned three kinds only: apple, house and umbrella.</p>
+    <fieldset>
+      <legend>What will the copy say for this doodle?</legend>
+      {COPY.map(([text, said]) => <label><input type="radio" name="copy" data-copy-said={said} />{text}</label>)}
+    </fieldset>
+    <button type="button" class="switch" disabled>Switch to the copy</button>
+    <div class="copy-said" aria-live="polite"></div>
+    <p>A model like this can only name the kinds it learned. Shown anything else, it still names one of them.</p>
+    <p>Lesson 3.2 will show how the examples people choose can make a model unfair to some people.</p>
+    <p class="as-text">The drawing pad is not part of the text version: drawing needs a pointer.</p>
+  </Fragment>
+</Shell>
+<p class="credit">
+  Doodles from the <a href="https://github.com/googlecreativelab/quickdraw-dataset">Quick, Draw! dataset</a>, made
+  available by Google, Inc.; drawings contributed by players. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  We kept 2,000 of each of six kinds, drew them on a 28 by 28 grid and trained two small models on them.
+</p>
+
+<script>
+  import { chances, prepare, render, rows, words, type Drawing, type Model } from '../lib/doodle.ts';
+
+  const SVG = 'http://www.w3.org/2000/svg';
+  // A row as the build writes it: the kind and its chance in words, then a bar only the eye reads.
+  const row = (kind: string, chance: number, solid: boolean) => {
+    const [li, bar, rect] = [document.createElement('li'), document.createElementNS(SVG, 'svg'), document.createElementNS(SVG, 'rect')];
+    Object.entries({ class: 'bar', 'aria-hidden': 'true', viewBox: '0 0 100 10', preserveAspectRatio: 'none' }).forEach(([k, v]) => bar.setAttribute(k, v));
+    Object.entries({ width: String(100 * chance), height: '10', class: solid ? 'solid' : '' }).forEach(([k, v]) => rect.setAttribute(k, v));
+    bar.append(rect);
+    li.dataset.chance = String(chance);
+    li.append(`${kind}, ${words(chance)}`, bar);
+    return li;
+  };
+
+  for (const box of document.querySelectorAll<HTMLElement>('.doodle-guesser')) {
+    const [pad, clear, state, own, live, flip] = ['.pad svg', '.pad button', '.pad-state', 'input[value=own]', '.copy-said', '.switch'].map((q) => box.querySelector(q));
+    if (!(pad instanceof SVGSVGElement && clear && state && own instanceof HTMLInputElement && live && flip instanceof HTMLButtonElement)) continue;
+    const strokes: Drawing = [];
+    let line: SVGPolylineElement | undefined;
+    let models: Promise<Model[]> | undefined;
+    // Bumped on clear and on every new pick: a guess that was waiting for the weights then stands down (review p6-22 S1).
+    let gen = 0;
+    const picked = () => box.querySelector<HTMLInputElement>('input[name=doodle]:checked')?.value;
+    // A new pick, or a changed drawing, shows its own results at once and hides the copy's until the switch is pressed.
+    const show = () => {
+      for (const b of box.querySelectorAll<HTMLElement>('[data-for]')) b.classList.toggle('shown', b.dataset.for === picked());
+      live.replaceChildren();
+    };
+    const choose = (on: boolean) => {
+      Object.assign(own, { disabled: !on, checked: on });
+      own.dispatchEvent(new Event('input', { bubbles: true }));
+    };
+    box.addEventListener('input', (e) => {
+      const name = (e.target as HTMLInputElement).name;
+      if (name === 'doodle') {
+        if (e.target !== own) {
+          gen++; // own is ticked by choose(), which is the guess itself
+          state.textContent = '';
+        }
+        show();
+      }
+      if (name === 'copy') flip.disabled = false;
+    });
+    flip.addEventListener('click', () => {
+      const said = box.querySelector<HTMLInputElement>('input[name=copy]:checked')?.dataset.copySaid ?? '';
+      const copy = box.querySelector(`[data-for="${picked()}"] .copy`);
+      live.replaceChildren(Object.assign(document.createElement('p'), { textContent: said }), ...[...(copy?.children ?? [])].map((c) => c.cloneNode(true)));
+    });
+
+    // Every point the pointer passed, coalesced ones too, in CSS pixels from the pad's corner; prepare() scales them.
+    const add = (e: PointerEvent) => {
+      const [r, [xs, ys]] = [pad.getBoundingClientRect(), strokes[strokes.length - 1]];
+      for (const c of e.getCoalescedEvents?.().length ? e.getCoalescedEvents() : [e]) {
+        xs.push(c.clientX - r.left);
+        ys.push(c.clientY - r.top);
+      }
+      line?.setAttribute('points', xs.map((x, i) => `${x},${ys[i]}`).join(' '));
+    };
+    pad.addEventListener('pointerdown', (e) => {
+      if (!models) state.textContent = 'Getting the models ready.';
+      models ??= Promise.all([import('../../data/doodle/six-kinds.weights.json'), import('../../data/doodle/three-kinds.weights.json')]).then((ms) => ms.map((m) => m.default as Model));
+      pad.setPointerCapture(e.pointerId);
+      line = pad.appendChild(document.createElementNS(SVG, 'polyline'));
+      strokes.push([[], []]);
+      add(e);
+    });
+    pad.addEventListener('pointermove', (e) => line && add(e));
+    const end = async () => {
+      if (!line) return;
+      line = undefined;
+      const mine = gen;
+      let ms: Model[];
+      try {
+        ms = await models!;
+      } catch {
+        state.textContent = 'The models could not load, so the pad cannot guess right now. The three doodles above still work.';
+        return;
+      }
+      if (mine !== gen) return;
+      state.textContent = '';
+      const pixels = render(prepare(strokes));
+      for (const [i, m] of ms.entries()) {
+        const p = rows(m, chances(m, pixels));
+        const part = box.querySelectorAll('[data-for="own"] > div')[i];
+        part.querySelector('p')!.textContent = `The ${i ? "copy's" : "model's"} guess: ${p[0].kind}.`;
+        part.querySelector('ul')!.replaceChildren(...p.map((r, j) => row(r.kind, r.chance, !j)));
+      }
+      choose(true);
+    };
+    pad.addEventListener('pointerup', end);
+    pad.addEventListener('pointercancel', end);
+    clear.addEventListener('click', () => {
+      gen++;
+      state.textContent = '';
+      strokes.length = 0;
+      pad.replaceChildren();
+      choose(false);
+    });
+  }
+</script>

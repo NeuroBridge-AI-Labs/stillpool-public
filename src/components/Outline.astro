@@ -1,0 +1,59 @@
+---
+// The course outline (Emanuel, 27-09-26): every signed lesson under its five pillars, like the contents page of a book,
+// read from the signed list (src/contents.ts; check:contents holds it to the list). Each pillar is a native disclosure.
+// A lesson with a folder is a link and becomes one by itself when its folder lands; the rest carry a "coming later"
+// tag. Pool Band v2: on / it is one closed "Course contents" disclosure under the map. On a lesson it is the rail: where
+// you are in the lesson (a link to each of its sections), then the course contents closed beneath it, the lesson marked
+// as the current page when they are opened. With room the rail is a sidebar that stays in view; narrower, or with large
+// text, it folds into one closed Contents disclosure (outline.css). The links are plain anchors (src/rail.ts only
+// names the activity's).
+import Course from './Course.astro';
+import Icon from './Icon.astro';
+
+const { current, sections = [] } = Astro.props as { current?: string; sections?: { id: string; label: string; sub?: boolean }[] };
+---
+
+
+{/* The sidebar scrolls by itself, so it takes focus: the keyboard can scroll it, and axe, which cannot see links inside the
+    disclosure CSS holds open, finds a focusable region (scrollable-region-focusable). tabindex cannot follow a media query
+    without script, so narrower it is one extra Tab stop (design-review N1). On a lesson, Hide contents and Contents flip the
+    "Contents sidebar in lessons" setting (src/settings.ts), and show only where it is a sidebar (outline.css). */}
+{
+  current && (
+    <button type="button" class="sidebar-toggle" aria-expanded="false" aria-controls="contents">
+      Contents
+    </button>
+  )
+}
+<nav class:list={['toc', { rail: current }]} id="contents" aria-label="Contents" data-pagefind-ignore="all" tabindex={current ? 0 : undefined}>
+  {
+    current && (
+      <button type="button" class="sidebar-toggle" aria-expanded="true" aria-controls="contents">
+        Hide contents
+      </button>
+    )
+  }
+  <details class="toc-all">
+    <summary><Icon name="caret-right" />{current ? 'Contents' : 'Course contents'}</summary>
+    {
+      current && (
+        <>
+          <h2 id="contents-title">In this lesson</h2>
+          <ol class="here">
+            {sections.map(({ id, label, sub }) => <li class={sub ? 'sub' : undefined}><a href={`#${id}`}>{label}</a></li>)}
+          </ol>
+        </>
+      )
+    }
+    {
+      current ? (
+        <details class="course">
+          <summary><Icon name="caret-right" />Course contents</summary>
+          <Course current={current} />
+        </details>
+      ) : (
+        <Course />
+      )
+    }
+  </details>
+</nav>

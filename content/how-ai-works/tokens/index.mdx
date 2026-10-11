@@ -1,0 +1,220 @@
+---
+title: Tokens
+promise: Can show how AI splits text into tokens, and why it matters
+minutes: {simple: 7, deep: 12}
+tldr:
+  - Chatbots like ChatGPT take in text as small pieces called tokens, and each piece gets a number.
+  - A tool called a tokeniser cuts the text, and different tokenisers cut the same text in different ways.
+  - The pieces matter for questions about letters, for other languages, and for how much text fits.
+misconceptions: [M2]
+interactive: token-splitter
+inputs: [src/lib/tokenizer.ts]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-PEA-2.3.1-a, AILIT-E2]
+checkin:
+  - question: In a study published in December 2024, why did models like GPT-4o get some letter counts wrong?
+    options:
+      - text: Tokens were the whole reason.
+        why: Not this one. In that study, tokens were not the main reason. The models could pick out which letters were in a word, and went wrong at counting them.
+      - text: They take in pieces, not letters, and the counting itself was hard for them.
+        why: Yes. The models got pieces, not letters. The researchers found the counting itself was the harder part, most of all when a letter came more than once.
+        right: true
+      - text: It shows that no AI model can count letters.
+        why: Not this one. The study, published in December 2024, tested only the eight models it names. Newer models were not tested.
+badge:
+  earnedBy: [checkin-1]
+  celebration: You showed how a tokeniser cuts text into tokens, and why it matters.
+glossary:
+  - term: token
+    meaning: One piece of text that a language model works with. It can be a whole word, part of a word, or a single letter or mark.
+  - term: tokeniser
+    meaning: The tool that cuts text into tokens and gives each one a number. Different tokenisers cut the same text in different ways.
+  - term: token ID
+    meaning: The number a tokeniser gives a piece. It is only the piece's place in the tokeniser's list, and says nothing about meaning or size.
+  - term: vocabulary
+    meaning: Here, the fixed list of pieces a tokeniser can cut text into.
+  - term: language model
+    meaning: A program trained on a large amount of text that works out a likely next piece of text. Chatbots like ChatGPT run on large ones.
+whereNext:
+  title: Tiktokenizer, opened with o200k_base
+  text: A free web page that cuts any text with several tokenisers, with no login. It is a tool for developers, on a different website with its own code and server. Type nothing private there. If you pick a chat model such as gpt-4o, its count is higher than this lesson's. It adds chat markers and a default message.
+  url: https://tiktokenizer.vercel.app/?model=o200k_base
+sources:
+  - title: "OpenAI, tiktoken README, What is BPE anyway?"
+    url: https://github.com/openai/tiktoken/blob/bb5805d0a3eec476e2571bb40651790d83612983/README.md
+    licence: MIT
+    use: cite
+  - title: "OpenAI, tiktoken, model.py: which models use which encoding"
+    url: https://github.com/openai/tiktoken/blob/212b893ba940cba53476851103d2e5c1d0020c6e/tiktoken/model.py
+    licence: MIT
+    use: cite
+  - title: "OpenAI, tiktoken, openai_public.py: the o200k_base and cl100k_base encodings and their special tokens"
+    url: https://github.com/openai/tiktoken/blob/212b893ba940cba53476851103d2e5c1d0020c6e/tiktoken_ext/openai_public.py
+    licence: MIT
+    use: cite
+  - title: "Bazyli Brzoska, gpt-tokenizer 4.0.0, the tokeniser library that measured every split in this lesson"
+    url: https://github.com/niieani/gpt-tokenizer/blob/e6c94042279934edfba0dd34515b079a812483f3/README.md
+    licence: MIT
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course, Introduction to Large Language Models"
+    url: https://developers.google.com/machine-learning/crash-course/llm
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course, What's a Large Language Model?"
+    url: https://developers.google.com/machine-learning/crash-course/llm/transformers
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary, entries token and tokenizer"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Fu, Ferrando, Conde, Arriaga and Reviriego (December 2024), Why Do Large Language Models (LLMs) Struggle to Count Letters?"
+    url: https://arxiv.org/abs/2412.18626
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Uzan and Pinter (2025, revised April 2026), CharBench: Evaluating the Role of Tokenization in Character-Level Tasks"
+    url: https://arxiv.org/abs/2508.02591
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Petrov, La Malfa, Torr and Bibi (2023), Language Model Tokenizers Introduce Unfairness Between Languages, NeurIPS 2023"
+    url: https://arxiv.org/abs/2305.15425
+    licence: CC-BY-NC-SA-4.0
+    use: cite
+  - title: "OECD and European Union (2026), Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education, pages 7 and 19"
+    url: https://doi.org/10.1787/65cd27d4-en
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Higher Education Authority (2025), Generative AI in Higher Education Teaching & Learning: Policy Framework, page 14"
+    url: https://doi.org/10.82110/073e-hg66
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "OECD and European Union (2026), Foghlaimeoirí a Chumhachtú don Ré IS, the Irish edition of the same framework, pages 7 and 19. Its text is used as published; only the English original is valid if they differ"
+    url: https://ailiteracyframework.org/pdfs/framework_pdf/AILF_ga.pdf
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Lin (2026), Six misconceptions about large language models: A minimal model and diagnostic taxonomy, PNAS Nexus"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13378163/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Colombatto and Fleming (2024), Folk psychological attributions of consciousness to large language models, Neuroscience of Consciousness"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11008499/
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "Elon University (12 March 2025), Survey: 52% of U.S. adults now use AI large language models like ChatGPT"
+    url: https://www.elon.edu/u/news/2025/03/12/survey-52-of-u-s-adults-now-use-ai-large-language-models-like-chatgpt/
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-27
+signed: false
+---
+
+## How many pieces?
+
+<Simple>
+How many pieces is the word "strawberry"? Keep your guess in mind.
+
+A chatbot like ChatGPT does not take in text letter by letter. First, the text is cut into small pieces called tokens. A piece can be a whole word, part of a word, or a single letter.
+</Simple>
+
+<Deep>
+Chatbots like ChatGPT run on language models. A language model is a program trained on a huge amount of text. It works out a likely next piece of text.
+
+OpenAI's tiktoken library puts it this way: "Language models don't see text like you and I, instead they see a sequence of numbers (known as tokens)." Google's course on language models says a token "could be a word, a subword (a subset of a word), or even a single character." It adds that "Most modern language models tokenize by subwords".
+</Deep>
+
+## Each piece gets a number
+
+<Simple>
+Each piece has its own number, called its token ID. The language model works with the list of numbers, not the letters.
+
+A tool called a tokeniser does the cutting. This lesson uses one called o200k_base. OpenAI, the company behind ChatGPT, publishes a free tool called tiktoken. It lists o200k_base for several OpenAI models, such as GPT-4o.
+
+The o200k_base tokeniser cuts "strawberry" into 3 pieces: "st", "raw" and "berry". Their numbers are 302, 1618 and 19772.
+</Simple>
+
+<Deep>
+A tokeniser has a fixed list of pieces, called its vocabulary. The o200k_base vocabulary has 199,998 pieces for text, about 200,000. Beside them, OpenAI defines 2 special tokens that mark where text ends or where a prompt ends.
+
+A token ID is only the piece's place in that list. It says nothing about meaning or size. In o200k_base, ID 0 is the exclamation mark "!", ID 1 is a double quote mark, and ID 2 is "#".
+
+A space or a capital letter makes a different piece. In o200k_base, "cat" is 8837, " cat" with a space before it is 9059, and "Cat" is 23546.
+
+Every split in this lesson was measured on 26 and 27 September 2026: the numbers with gpt-tokenizer 4.0.0, a library that runs o200k_base, and each piece from OpenAI's own vocabulary files.
+</Deep>
+
+## Tokenisers differ
+
+<Simple>
+Different tokenisers can cut the same word in different ways, even two from one company.
+
+An older tokeniser, cl100k_base, is listed for GPT-4. It cuts "strawberry" into "str", "aw" and "berry", with other numbers. So every split in this lesson names its tokeniser.
+</Simple>
+
+<Deep>
+OpenAI's tiktoken library lists cl100k_base for GPT-4 and GPT-3.5-turbo. Its vocabulary has 100,256 pieces for text, about 100,000. The same piece gets a different number in each tokeniser: "berry" is 19772 in o200k_base and 15717 in cl100k_base.
+
+People made these tokenisers with a method called byte pair encoding. It picks its pieces from data, not from grammar. It gives common runs of characters their own piece, so common parts of words often get one. The tiktoken README says the method "works on arbitrary text, even text that is not in the tokeniser's training data". It is also "reversible and lossless": the pieces always join back into the exact text.
+
+So the pieces do not always match the parts of a word a person would see. The o200k_base tokeniser cuts "unbelievable" into "un", "bel" and "ievable". The cl100k_base tokeniser cuts it into "un", "belie" and "vable". Google's course says a tokeniser "might" cut "cats" into "cat" and "s". The o200k_base tokeniser keeps "cats" as one piece.
+
+A piece can even be part of one character. A tokeniser works on the bytes a computer stores for the text, and one character can take more than one byte. The emoji of a student is 6 pieces in o200k_base. Five of them are only part of a character. The sixth is a whole character, an invisible joining mark.
+
+For English only, Google's course gives a rough rule: one token is about 4 characters, or about three quarters of a word. It says the number of characters per token differs across languages.
+</Deep>
+
+<TryIt />
+
+## Why the pieces matter
+
+<Simple>
+The pieces matter in three ways: letters, languages, and how much text fits.
+
+The o200k_base tokeniser puts the three r's in "strawberry" into two pieces. One is in "raw" and two are in "berry". The model gets the pieces' numbers, not the letters.
+
+In a study published in December 2024, eight models counted the letters in 10,000 words. Most got more than half of the words wrong. The best, GPT-4o, got about 1 in 6 (17%) wrong. The researchers found the counting itself was the harder part, more than the pieces.
+
+The OECD (Organisation for Economic Co-operation and Development) and the European Union wrote an AI framework. One sentence from it is 16 pieces in English with o200k_base.
+
+The same sentence in its Irish-language edition is 30 pieces, 14 more. So the same text can take more pieces in another language. That is this sentence with this tokeniser, not a rule.
+
+More pieces take longer to process and can cost more. They also fill up the room a model has for text. Lesson 1.8 shows how much text fits.
+</Simple>
+
+<Deep>
+The study (Fu and others, published December 2024) tested GPT-4o, GPT-4o-mini, Llama 3.1 8B and 70B, Llama 3.2 11B, Mistral-7B, Mixtral-8x7B and Gemma-2-9B. It reported the same split of "strawberry" for GPT-4o's tokeniser. It found that "models are capable of recognizing the letters but not counting them". Errors rose sharply when a letter came more than once in a word. The authors concluded that "tokenization does not play a fundamental role" in counting.
+
+A larger benchmark, CharBench (first posted in August 2025, revised in April 2026), tested seven models in English only: GPT-4o, GPT-4o-mini, GPT-3.5-turbo, DeepSeek-V3, Llama-3.3-70B, Llama-3.1-405B and Mistral-7B. For counting, it found that tokenization properties are "weakly correlated with correctness". For saying where a letter sits in a word, models did worse when the letter was inside a longer piece.
+
+Each study tested only the models it names. The first was published in December 2024. The second was first posted in August 2025 and revised in April 2026. Newer models may do better at counting letters.
+
+The two sentences come from printed page 7 of the framework and of its official Irish edition. The English is "While AI can generate outputs that resemble human interactions, AI itself is not human." With the older cl100k_base tokeniser, they are 16 and 44 pieces.
+
+The framework's short sentence "AI is not human." and its Irish translation, "Ní duine é IS.", are 5 pieces each in o200k_base. In cl100k_base they are 5 and 7. So the difference depends on the sentence and on the tokeniser.
+
+A study of 2023's tokenisers (Petrov and others, NeurIPS 2023) found that the same text, translated, can take very different numbers of tokens in different languages, "with differences up to 15 times in some cases". The authors say this can make "commercial language services" cost more for some language communities, make them slower, and let less text fit.
+
+Why Irish: the Higher Education Authority (HEA) asks colleges to check how AI tools work in Irish. Lesson 3.2 will look at that.
+</Deep>
+
+## Not the way a person reads
+
+<Simple>
+A language model does not take in text the way a person reads it. A tokeniser cuts the text into pieces, and the model gets a list of numbers.
+
+That is one difference, and only one. It does not show that a model understands nothing. Lesson 1.1 covers two mistakes: treating a chatbot as a mind with feelings, and saying it understands nothing.
+
+Lesson 1.4 shows how a chatbot picks a likely next piece.
+</Simple>
+
+<Deep>
+The English sentence in this lesson is the framework's own words: "While AI can generate outputs that resemble human interactions, AI itself is not human."
+
+Some people think a chatbot may have a mind. In July 2023 (published April 2024), 2 in 3 (67%) of 300 US adults did not rule out that ChatGPT has experiences such as feelings; 1 in 3 (33%) said it definitely does not. In a survey of 500 US adults who use large language models, asked 21 to 23 January 2025 (Elon University and SSRS), 4 in 10 (40%) said the one they use most acts like it understands them, at least some of the time. That question asks how it seems, not what people believe.
+
+The opposite mistake is to say that it only takes in numbers, so it understands nothing. A 2026 paper calls that "the mirror-image error".
+
+Both surveys used US participants. They do not report results for people in Ireland or for neurodivergent learners.
+
+A language model works out a likely next token, again and again. Lesson 1.4 shows how.
+</Deep>

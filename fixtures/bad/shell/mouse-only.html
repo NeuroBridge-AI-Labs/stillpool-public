@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- fixtures/bad/shell/mouse-only: the prediction is a div with a click handler, so no key reaches it. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shell fixture</title>
+    <style>
+      html[data-js]:not([data-textversion]) .shell:not(.revealed) .after-pick,
+      html[data-js]:not([data-textversion]) .shell.revealed [data-reveal],
+      html[data-textversion] .shell :is([data-step] :is(label, button), [data-reveal]) {
+        display: none;
+      }
+      @keyframes turn {
+        to {
+          rotate: 1turn;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="shell" data-shell>
+      <h2>Try it: Sort the messages</h2>
+      <label class="shell-text"><input type="checkbox" />Read it as text instead</label>
+      <div data-step>
+        <p>Rule: if a message has the word "free" in it, it goes in junk.</p>
+      <div class="choice">The rule catches message 1</div>
+      </div>
+      <button type="button" data-reveal disabled>Show what the rule did</button>
+      <p class="picked" aria-live="polite" tabindex="-1"></p>
+      <div data-step class="after-pick">
+        <p>The rule caught message 1 and let message 2 through.</p>
+      </div>
+    </section>
+    <script>
+      document.documentElement.dataset.js = '';
+      const shell = document.querySelector('[data-shell]');
+      const reveal = shell.querySelector('[data-reveal]');
+      const said = shell.querySelector('.picked');
+      const choices = [...shell.querySelectorAll('[data-step] input[data-said]')];
+      const say = () => {
+        const picked = choices.filter((c) => c.checked);
+        reveal.disabled = picked.length < new Set(choices.map((c) => c.name)).size;
+        if (shell.classList.contains('revealed')) said.textContent = picked.map((c) => c.dataset.said).join(' ');
+      };
+      shell.addEventListener('change', say);
+      reveal.addEventListener('click', () => {
+        shell.classList.add('revealed');
+        say();
+        said.focus();
+      });
+      shell.querySelector('.shell-text input').addEventListener('change', (e) => document.documentElement.toggleAttribute('data-textversion', e.target.checked));
+      shell.querySelector('.choice').addEventListener('click', () => (reveal.disabled = false));
+    </script>
+  </body>
+</html>

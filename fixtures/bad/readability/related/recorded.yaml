@@ -1,0 +1,5 @@
+# 1.6: a note on a study named inside a line is Simple text, so one sentence of 31 words fails (p6-15-review S6).
+R-9.3:
+  summary: by rule
+  answers:
+    - {maker: A, run: 1, lines: [{line: 1, kind: other, verdict: no-claim, related: [{result: not-found, note: "The line names a new study that it says came out a year later, by the same two people, in a new journal, with a new name and a new result."}]}]}

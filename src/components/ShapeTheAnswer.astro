@@ -1,0 +1,115 @@
+---
+// 2.5's "Shape the answer" (stage I, R-2.5): predict what a request that names no shape, and one that does, give from
+// two models; then whether saying a rule twice changes a count. Recorded. The layer explorer after it is for the Deep
+// layer only: invented, not a model answer, and nothing in it is scored.
+import { LAYERS, RULES, built, named } from '../lib/layer-explorer.ts';
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.5', 'format');
+const [claude, mini] = (['A', 'B'] as const).map((m) => modelOf(rec, variantOf(rec, 'A', m)).name);
+const sent = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+const RULE = sent('D1').match(/^Answer in exactly .*$/m)?.[0] ?? ''; // the rule's own line in the recorded message
+if (!RULE) throw new Error('R-2.5: no rule line in the long message');
+const ASK: [string, string, [string, string][]][] = [
+  ['table', 'Request A names no shape. Will the answers have a table?', [
+    ['Yes, a table.', 'you said the answers would have a table. They did, in all six runs, from both models. Each was a long answer with headings, lists and a table.'],
+    ['No, there will be no table.', 'you said there would be no table. There was one in all six runs, from both models, although we did not ask for it.'],
+    ['It will depend on the model.', 'you said it would depend on the model. It did not: both models gave a table in all six runs, although we did not ask for it.'],
+  ]],
+  ['named', 'Request B names the shape: a table with four columns, plain words and short sentences. What will change?', [
+    ['A table only, with the four columns, and a much shorter answer.', `you said a table with the four columns and a much shorter answer. All six runs gave a table with the four named columns, and the answers were much shorter. ${mini} added one line before its table in all three runs.`],
+    ['The same long answer, with a table added.', 'you said the long answer would stay. It did not: all six runs gave a table with the four named columns, and the answers were much shorter.'],
+    ['Nothing will change.', 'you said nothing would change. All six runs gave a table with the four named columns, and the answers were much shorter.'],
+  ]],
+  ['twice', `One long message says "${RULE}" once, in the middle. A second copy says it again as the last line. Will saying it twice change how many top-level bullets the answers have?`, [
+    ['Yes, three bullets more often.', 'you said saying it twice would change the count. It did not: all twelve runs gave three top-level bullets.'],
+    ['No, three bullets either way.', 'you said the count would not change. It did not: all twelve runs gave three top-level bullets.'],
+    ["I can't tell.", 'you said you could not tell. That is fair. All twelve runs gave three top-level bullets.'],
+  ]],
+];
+---
+
+<Shell title="Shape the answer" reveal="Show what happened" class="shape-the-answer">
+  <p>We sent two requests to two AI models, three times each. The requests are invented.</p>
+  <h3>Request A</h3>
+  <blockquote class="sent">{sent('A')}</blockquote>
+  <h3>Request B</h3>
+  <blockquote class="sent">{sent('B')}</blockquote>
+  {
+    ASK.map(([name, question, options], q) => (
+      <fieldset>
+        <legend>{question}</legend>
+        {options.map(([text, after], i) => <label><input type="radio" name={`shape-${name}`} value={i + 1} data-said={after} />{text}</label>)}
+        {q === 0 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={['A', 'B', 'D1', 'D2']} />
+    <h3>Request A: no shape asked for</h3>
+    <Runs rec={rec} items={[{ label: 'A', maker: 'A' }, { label: 'A', maker: 'B' }]} />
+    <h3>Request B: the shape asked for</h3>
+    <Runs rec={rec} items={[{ label: 'B', maker: 'A' }, { label: 'B', maker: 'B' }]} />
+    <h3>The rule once, and the rule twice</h3>
+    <p>These are {claude}'s answers to two long messages. One has the rule once. The other also has it as the last line. They start with two answers that have smaller bullets inside the three.</p>
+    <blockquote class="sent">{sent('D1')}</blockquote>
+    <Runs rec={rec} items={[{ label: 'D1', maker: 'A', start: 2 }, { label: 'D2', maker: 'A' }]} />
+    <AllRuns rec={rec} said={said} labels={[['A', 'Request A: no shape asked for'], ['B', 'Request B: the shape asked for'], ['D1', 'The long message, the rule once'], ['D2', 'The long message, the rule twice']]} />
+  </Fragment>
+</Shell>
+
+<section class="layer-explorer" data-layer="deep" aria-labelledby="explorer-h">
+  <h3 id="explorer-h">Layer explorer</h3>
+  <p><strong>Invented, not a model answer.</strong> We wrote this prompt for this lesson. No AI answered it. It has eight rules for an invented study helper.</p>
+  <div class="explorer-play">
+    <p id="explorer-how">PromptSage has seven layers. For each rule, choose the layer you think it belongs in.</p>
+    <ol class="layer-names" aria-label="The seven layers">{LAYERS.map((_, i) => <li>{named(i + 1)}</li>)}</ol>
+    <ol class="explorer-rules" aria-describedby="explorer-how">
+      {
+        RULES.map((r, i) => (
+          <li>
+            <span>{r.rule}</span>
+            <label>Layer for this rule
+              <select data-rule={i}>
+                <option value="">Choose a layer</option>
+                {LAYERS.map((_, l) => <option value={l + 1}>{named(l + 1)}</option>)}
+              </select>
+            </label>
+          </li>
+        ))
+      }
+    </ol>
+    <button type="button" data-build disabled>Show the layers</button>
+  </div>
+  <div class="layer-answer" tabindex="-1" aria-labelledby="explorer-answer-h">
+    <h4 id="explorer-answer-h">Each rule's layer</h4>
+    <ul>
+      {RULES.map((r, i) => <li data-rule={i}><strong>{r.rule}</strong> {named(r.layer)}. {r.reason} <span class="yours"></span></li>)}
+    </ul>
+    <h4>The same prompt, built layer by layer</h4>
+    <blockquote class="sent">{built()}</blockquote>
+  </div>
+</section>
+
+<script>
+  import { check, ready } from '../lib/layer-explorer.ts';
+  for (const part of document.querySelectorAll<HTMLElement>('.layer-explorer')) {
+    const selects = [...part.querySelectorAll<HTMLSelectElement>('select')];
+    const build = part.querySelector<HTMLButtonElement>('[data-build]')!;
+    const answer = part.querySelector<HTMLElement>('.layer-answer')!;
+    const picks = () => selects.map((s) => s.value);
+    answer.setAttribute('data-off', '');
+    part.addEventListener('change', () => (build.disabled = !ready(picks())));
+    build.addEventListener('click', () => {
+      for (const [i, row] of check(picks()).entries()) answer.querySelector(`[data-rule="${i}"] .yours`)!.textContent = row.yours;
+      answer.removeAttribute('data-off');
+      answer.focus();
+    });
+  }
+</script>

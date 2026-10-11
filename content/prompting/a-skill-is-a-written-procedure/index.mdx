@@ -1,0 +1,231 @@
+---
+title: A skill is a written procedure (SOP)
+promise: Can write a procedure card for a repeated task, and check what it changed
+minutes: {simple: 10, deep: 16}
+tldr:
+  - A skill card is a written procedure for an AI. It holds a purpose, steps, rules and a format, written once.
+  - In this lesson's recording, the card gave every run the same three headings. It did not make the notes correct.
+  - A written rule is a request, not a guarantee. Read the notes against the transcript.
+misconceptions: [M12]
+interactive: skill-card-builder
+inputs: [src/lib/p2-runs.ts, src/lib/skill-card.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.3.3, UNESCO-AICFS-CG4.3.3.1, UNESCO-AICFS-CG4.3.3.3, HEA-PEA-2.3.1-e, AIF-2.b, AIF-1.c, AILIT-M3]
+checkin:
+  - question: In this lesson's recording, what did every card run have in common?
+    options:
+      - text: Three lists headed Decisions, Actions and Open questions.
+        why: Yes. All twelve card runs had them, for both models and both transcripts.
+        right: true
+      - text: The same words, run after run.
+        why: Not this one. The card runs used different words from run to run. Only the headings matched.
+      - text: Notes that were correct.
+        why: Not this one. On the second transcript, some card runs put an unsettled item under Decisions.
+      - text: Notes shorter than any run without the card.
+        why: Not this one. Some card runs were longer than some runs without the card.
+  - question: A card says "never invent a name or a date". What does that rule do?
+    options:
+      - text: It asks the model to follow it. The model can still get it wrong, so check the notes.
+        why: Yes. A written rule is a request. Anthropic says instructions give flexible guidance, not reliability.
+        right: true
+      - text: It stops the model from ever inventing one.
+        why: Not this one. In our twelve card runs none broke it, but that is a small test. A written rule is a request.
+      - text: It changes the model's own numbers.
+        why: Not this one. Training does that (lesson 1.7). A card is only text that goes in with the request.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You worked out what a written card can and cannot do.
+glossary:
+  - term: skill card
+    meaning: Our name for a short written procedure for an AI. It has a purpose, steps, rules and a format.
+  - term: transcript
+    meaning: A written record of what people said in a meeting.
+  - term: run
+    meaning: One recorded answer to one request.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: A US EPA guide to writing SOPs
+  text: A free guide from April 2007, as a PDF. No login is needed. It is on a different website. It is a guide to quality systems, so some of its examples are technical. Section 1.1 explains what an SOP is.
+  url: https://www.epa.gov/sites/default/files/2015-06/documents/g6-final.pdf
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Emanuel Covasa, the creator of this site, answer of 3 October 2026"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+  - title: "US Environmental Protection Agency, Guidance for Preparing Standard Operating Procedures (SOPs), EPA QA/G-6, April 2007"
+    url: https://www.epa.gov/sites/default/files/2015-06/documents/g6-final.pdf
+    licence: Not stated (US government publication)
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Agent Skills"
+    url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+    licence: All rights reserved
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "I say **\"a skill is an SOP for an AI\"**. SOP means standard operating procedure: written steps for doing a job the same way every time. Workplaces run on them."
+    - "Good ones hold more than steps. They say what must never happen, and why. That part matters most to me. When do the rules go in? At the start."
+    - "Ethics added at the end is paint on a cracked wall. It looks fine and it holds nothing. So when I write a skill, the limits go in first. What it may do. What it must not do. Who checks the result. **Ethics is the foundation.** The steps are built on top of it."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## The same job, every month
+
+<Simple>
+Say you take the notes at a club meeting each month. You paste the transcript into a chatbot and ask: "Summarise this meeting transcript."
+
+Each month the notes may come back in a new layout. You have to read them, and fix them, every time.
+
+A job you repeat is a good one to write down once.
+</Simple>
+
+<Deep>
+This lesson uses a recording made on 3 October 2026. We sent two invented meeting transcripts to two models: Claude Sonnet 5.5 through Anthropic's API, and Ministral 3 14B through Mistral AI's API. An API is a way for one program to send a request to another.
+
+Each transcript went in two ways. Request A was only "Summarise this meeting transcript:" and the transcript. Request B was a procedure card, then the transcript. Each request ran three times on each model, so there are 24 runs.
+
+The requests had no tools and no system prompt. We did not set the temperature, so each model used its own default. All names and details are invented. Lesson 1.4 shows why the same request can give different answers.
+</Deep>
+
+## A skill is an SOP for an AI
+
+<Simple>
+Emanuel Covasa, who created this site, puts it like this: "a skill is an SOP for an AI".
+
+SOP stands for standard operating procedure. It is a set of written steps for doing a job the same way every time.
+
+An organization can write one for a job it does again and again. A skill card is the same idea for an AI. You write the steps and rules down once, and use them each time.
+</Simple>
+
+<Deep>
+The US Environmental Protection Agency's guidance on writing these (April 2007, for its own quality system) says an SOP is "a set of written instructions that document a routine or repetitive activity followed by an organization". It adds that using SOPs "facilitates consistency in the quality and integrity of a product or end-result".
+
+On how to write one, the EPA says SOPs should be "concise, step-by-step, easy-to-read". They should have enough detail that "someone with limited experience with or knowledge of the procedure, but with a basic understanding, can successfully reproduce the procedure when unsupervised".
+
+Some products save written procedures for an AI and call them "skills". Anthropic does. On its Agent Skills page (read on 3 October 2026) it lists a benefit: "Reduce repetition: Create once, use automatically". That is Anthropic's claim about its own product.
+
+The page describes a Skill as a folder with a file called SKILL.md. The file has a name, a description and instructions. Anthropic says Skills are "organized like an onboarding guide you'd create for a new team member". Lesson 5.4 will cover the anatomy of a skill file.
+</Deep>
+
+## What goes on a card
+
+<Simple>
+The card in this lesson has four parts:
+
+- **Purpose:** what the notes are for.
+- **Steps:** what to do, in order.
+- **Rules:** what never to do, and what to do when unsure.
+- **Format:** the shape of the answer.
+
+We tried this card on a chatbot and saved every answer. We call that the recording.
+
+The recorded card's purpose is notes a busy team can read in one minute. Its steps are decisions, then actions with an owner and a date, then open questions.
+
+One rule is: never invent a name or a date. Another is: if something is unclear, write "unclear". That gives the model, the program behind the chatbot, something to write when it is not sure. The format is three headed lists, nothing else.
+
+A card is a draft. Try it on a sample transcript, check the notes, then change the card.
+
+Lesson 2.3 shows how rules change what an AI does. Lesson 2.5 shows how to ask for a shape.
+</Simple>
+
+<Deep>
+Here is the exact card. Each request B began with it, then a blank line, then the transcript.
+
+> Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.
+
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. This lesson gives a task a purpose, steps and rules; PromptSage uses modes to set a job and its boundaries. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked example of a prompt framework, not the standard. Its limits are in the last section.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+Lesson 2.1 maps PromptSage's seven layers. Layer 4 is called "Mode Control", and the paper adds "State Machine". In the paper, each mode has a purpose, permitted actions, prohibited actions that each carry a reason, and available tools.
+
+The paper's example is an examiner mode for education. Its purpose is "Assess student knowledge through questions and evaluation". One prohibited action is "Do not explain concepts during assessment", with the reason "examiner role boundary". One tool, `provide_hint`, is denied with the reason "Examiner must not assist".
+
+Our card is a smaller example of the same idea: a purpose, steps and rules. Its rules give no reasons, which the paper's prohibited actions do. It has no tools part, because the recorded requests had no tools. Lesson 5.3 will cover agents and tools.
+</Deep>
+
+## Build a card
+
+<Simple>
+In the activity below, you build a card. For each of the four parts, you pick one of two options. One is stronger, one is weaker.
+
+Then you predict what your card does with two new meeting transcripts. After that, you see recorded runs.
+
+We recorded only two requests: the task alone, and the full card. We did not run a card with weaker parts. For those, the activity shows no run.
+</Simple>
+
+<Deep>
+Both transcripts are invented. The first, from a walking society, settles most items: a date, who pays, who books, who sends what. The second has gaps on purpose. The transcript does not say who has the banner. It gives the table fee no deadline. It leaves open whether the shop or the cafe gave the prizes. The film society's answer is unclear.
+
+The activity shows the recorded runs of both models on both transcripts, with and without the card. Every run was kept. A run with a false statement is marked on screen.
+</Deep>
+
+<TryIt />
+
+## What the runs showed
+
+<Simple>
+We ran each request three times on each of two models, Claude Sonnet 5.5 and Ministral 3 14B. That is 24 runs, recorded on 3 October 2026.
+
+With the card, every run gave three lists. They were headed Decisions, Actions and Open questions. That held for both models and both transcripts. Without the card, no run had all three headings. The layouts varied.
+
+The card did not make the notes correct. The second transcript has gaps on purpose. Some items in it were never decided. On the second transcript, four of the six card runs put an unsettled item under Decisions.
+
+Without the card, three of the six Ministral 3 14B runs added things the transcript did not say. For example, one said a coach was booked. It was not yet booked. In the twelve card runs, we found no invented name or date.
+
+These are 24 runs of two models on one day. They show what these runs did, not what every model does.
+</Simple>
+
+<Deep>
+**Shape.** Claude Sonnet 5.5 without the card used one layout on the first transcript in all three runs: Decisions, Open item, then an Action items table. On the second transcript it used different headings. Ministral 3 14B without the card changed layout between runs on the first transcript: bold topics in run 1, numbered topics in runs 2 and 3.
+
+**Things added.** The three Ministral 3 14B runs without the card are these. On the first transcript, run 3 wrote "Coach booked by the society". Jonah is to book it by Friday 28 February. On the second, run 1 listed "Lena: Pay table fee (ASAP)", and Sam had said "please do it when you can". Run 2 listed "Omar: Confirm room booking and prize details". Omar said he would book the room, and nobody gave him the prizes.
+
+**Sorting.** On the second transcript, all three Ministral 3 14B card runs put the prizes under Decisions, and one Claude Sonnet 5.5 card run put the film society's "unclear" answer there. Neither is a decision in the transcript.
+
+**The "unclear" rule.** On the second transcript, which has gaps on purpose, all six card runs wrote "unclear". On the first transcript, each Claude Sonnet 5.5 card run used it once, for the date to decide the April event. The Ministral 3 14B card runs did not use it there.
+
+**Dates and names.** A script compared every weekday, month and date in the 12 card runs with their transcripts, and found none that the transcript lacks. The amounts, 240 and 400 euro, are in the transcript, and so is every name.
+
+**A small addition.** All six runs without the card on the first transcript wrote the closing time as "7:10 pm" or "7:10 PM". The transcript says "ten past seven", with no am or pm. The card runs left the closing time out, as the card says "nothing else".
+
+**The limits.** The card runs differ in wording from each other. Each count is of three runs, and only two models were tried. We did not run a card with weaker parts.
+</Deep>
+
+## A written rule is a request
+
+<Simple>
+A card is text. The model reads it and tries to follow it. Nothing forces it to.
+
+Anthropic says instructions give "flexible guidance", and code gives "reliability" (its Agent Skills page, read on 3 October 2026). So read the notes against the transcript, every time. Lesson 4.1 will cover checking an answer.
+
+A card is also not training. Training changes a model's own numbers, and lesson 1.7 shows how. A card is text that goes in with your request. The model itself does not change.
+
+Lesson 5.6 will cover when to use a prompt, added documents or training.
+</Simple>
+
+<Deep>
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked example of a prompt framework, and its paper is not yet published.
+
+The paper states its own limits. "All prompt-level constraints are advisory, not absolute." On tools: "Tool access denial via system prompt is a soft constraint." And: "No system prompt provides absolute security guarantees against all possible attacks". It also says: "Current findings are based on controlled testing rather than large-scale deployment."
+
+So the paper pairs its prompt rules with checks outside the prompt, such as "API-level tool filtering". Lesson 5.3 will cover agents and tools.
+
+The same caution applies to a card you did not write. Anthropic's page says "a malicious Skill can direct Claude to invoke tools or execute code in ways that don't match the Skill's stated purpose". That is Anthropic's claim about its own product. Lesson 4.6 will cover when text tricks the AI.
+
+Lesson 5.4 will cover the anatomy of a skill file. Lesson 5.6 will cover prompt, RAG or fine-tune.
+</Deep>

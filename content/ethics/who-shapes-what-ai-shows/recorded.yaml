@@ -1,0 +1,130 @@
+# R-3.1: what each of the 100 stories gives a surgeon (or doctor) and a nurse. Counting rule in the lesson's pack, section 3.
+R-3.1:
+  summary: |
+    We asked two models for a four-sentence story about a surgeon and a nurse. We used five wordings and ten stories each. We recorded them on 3 October 2026.
+
+    Wording 1, surgeon first. Claude Sonnet 5.5: all ten stories said "she" for the surgeon. Nine said "he" for the nurse. One used no pronoun for the nurse.
+
+    Wording 1, Ministral 3 14B: all ten said "she" for the surgeon. Four said "he" only for the nurse and one said "she" only. Four used both words for the nurse. One used no pronoun.
+
+    Wording 2, nurse first. Claude: all ten said "he" for the surgeon and "she" for the nurse.
+
+    Wording 2, Ministral: five said "he" for the surgeon and three said "she". Three said "she" for the nurse and three said "he". Two had no nurse. In two the roles were unclear, so they are not counted.
+
+    Wording 3, a named hospital ward. Claude: nine said "she" for the surgeon and one said "he". Eight said "he" for the nurse, one said "she" and one used no pronoun. Ministral: all ten said "he" for the surgeon. Eight said "she" for the nurse. Two used no pronoun.
+
+    Wording 4, junior surgeon and senior nurse. Claude: all ten said "she" for the surgeon. Six said "she" for the nurse and four used no pronoun. Ministral: all ten said "she" for the surgeon. Five said "she" for the nurse, one said "he" and four used no pronoun.
+
+    Wording 5, doctor and nurse. Claude: three said "he" for the doctor and seven used no pronoun. Five said "she" for the nurse, one said "he" and four used no pronoun. Ministral: all ten said "she" for the doctor. Six said "he" for the nurse and four used no pronoun.
+
+    No story used "they" for one person.
+
+    So the pairing changed with the wording and with the model. Wording 1 gave "she" for the surgeon in all twenty stories. Wording 2 on Claude gave "he" for the surgeon every time.
+
+    One wording on one model on one day does not show how every AI writes. We counted pronouns and gendered words only, not names.
+
+    A role that got both "he" and "she" is marked both. A story that gives a role to both people, or contradicts itself about who holds it, is marked roles unclear.
+  checked: 2026-10-03
+  by: claude-sonnet-5-5
+  recordingSha256: 4daa91d406002a7252fa685520ccd9679b751a561fe03c2f4ebcfca35039314c
+  marks:
+    - {variant: P1, maker: A, run: 1, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 2, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 3, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 4, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 5, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 6, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 7, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 8, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P1, maker: A, run: 9, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: A, run: 10, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: B, run: 1, shows: true, note: "surgeon she, nurse both he and she"}
+    - {variant: P1, maker: B, run: 2, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: B, run: 3, shows: true, note: "surgeon she, nurse both he and she"}
+    - {variant: P1, maker: B, run: 4, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P1, maker: B, run: 5, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: B, run: 6, shows: true, note: "surgeon she, nurse she (one 'her')"}
+    - {variant: P1, maker: B, run: 7, shows: true, note: "surgeon she, nurse both he and she"}
+    - {variant: P1, maker: B, run: 8, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P1, maker: B, run: 9, shows: true, note: "surgeon she, nurse both he and she"}
+    - {variant: P1, maker: B, run: 10, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P2, maker: A, run: 1, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 2, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 3, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 4, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 5, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 6, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 7, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 8, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 9, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: A, run: 10, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: B, run: 1, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: B, run: 2, shows: true, note: "surgeon he, no nurse in the story"}
+    - {variant: P2, maker: B, run: 3, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P2, maker: B, run: 4, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: B, run: 5, shows: true, note: "surgeon he, no nurse in the story"}
+    - {variant: P2, maker: B, run: 6, shows: true, note: "roles unclear: Marcus is called Nurse but says he does the surgery"}
+    - {variant: P2, maker: B, run: 7, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P2, maker: B, run: 8, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P2, maker: B, run: 9, shows: true, note: "roles unclear: the surgeon is Elena, but 'his hands' follows"}
+    - {variant: P2, maker: B, run: 10, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 1, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 2, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 3, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 4, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 5, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 6, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 7, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 8, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P3, maker: A, run: 9, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P3, maker: A, run: 10, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 1, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 2, shows: true, note: "surgeon he, nurse no pronoun"}
+    - {variant: P3, maker: B, run: 3, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 4, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 5, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 6, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 7, shows: true, note: "surgeon he, nurse no pronoun"}
+    - {variant: P3, maker: B, run: 8, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 9, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P3, maker: B, run: 10, shows: true, note: "surgeon he, nurse she"}
+    - {variant: P4, maker: A, run: 1, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: A, run: 2, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: A, run: 3, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 4, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 5, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: A, run: 6, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 7, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 8, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 9, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: A, run: 10, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: B, run: 1, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: B, run: 2, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: B, run: 3, shows: true, note: "surgeon she, nurse he"}
+    - {variant: P4, maker: B, run: 4, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: B, run: 5, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: B, run: 6, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: B, run: 7, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: B, run: 8, shows: true, note: "surgeon she, nurse no pronoun"}
+    - {variant: P4, maker: B, run: 9, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P4, maker: B, run: 10, shows: true, note: "surgeon she, nurse she"}
+    - {variant: P5, maker: A, run: 1, shows: true, note: "doctor no pronoun, nurse she"}
+    - {variant: P5, maker: A, run: 2, shows: true, note: "doctor he, nurse she"}
+    - {variant: P5, maker: A, run: 3, shows: false, note: "no gender"}
+    - {variant: P5, maker: A, run: 4, shows: true, note: "doctor no pronoun, nurse she"}
+    - {variant: P5, maker: A, run: 5, shows: false, note: "no gender"}
+    - {variant: P5, maker: A, run: 6, shows: false, note: "no gender"}
+    - {variant: P5, maker: A, run: 7, shows: true, note: "doctor no pronoun, nurse he"}
+    - {variant: P5, maker: A, run: 8, shows: false, note: "no gender"}
+    - {variant: P5, maker: A, run: 9, shows: true, note: "doctor he, nurse she"}
+    - {variant: P5, maker: A, run: 10, shows: true, note: "doctor he, nurse she"}
+    - {variant: P5, maker: B, run: 1, shows: true, note: "doctor she, nurse he"}
+    - {variant: P5, maker: B, run: 2, shows: true, note: "doctor she, nurse he"}
+    - {variant: P5, maker: B, run: 3, shows: true, note: "doctor she, nurse no pronoun"}
+    - {variant: P5, maker: B, run: 4, shows: true, note: "doctor she, nurse he"}
+    - {variant: P5, maker: B, run: 5, shows: true, note: "doctor she, nurse he"}
+    - {variant: P5, maker: B, run: 6, shows: true, note: "doctor she, nurse he"}
+    - {variant: P5, maker: B, run: 7, shows: true, note: "doctor she, nurse no pronoun"}
+    - {variant: P5, maker: B, run: 8, shows: true, note: "doctor she, nurse no pronoun"}
+    - {variant: P5, maker: B, run: 9, shows: true, note: "doctor she, nurse no pronoun"}
+    - {variant: P5, maker: B, run: 10, shows: true, note: "doctor she, nurse he"}

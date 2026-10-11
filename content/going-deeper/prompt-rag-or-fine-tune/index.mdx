@@ -1,0 +1,229 @@
+---
+title: Prompt, RAG or fine-tune?
+promise: Can choose between prompting, RAG and fine-tuning for a task
+minutes: {simple: 9, deep: 16}
+tldr:
+  - "Three ways to shape an AI for a job: tell it, give it documents, or train it more."
+  - Missing or old facts call for documents. A wrong style or format calls for better instructions and examples, then training.
+  - OpenAI's guide says to start with a prompt and test it. The test, not a feeling, shows if the simple way is enough.
+misconceptions: [M12, M7]
+interactive: which-tool-for-the-job
+inputs: [src/lib/which-tool-for-the-job.ts, src/lib/cases.ts, src/components/Cases.astro, src/components/WhichToolForTheJob.astro]
+competencies: [UNESCO-AICFS-4.2.4, UNESCO-AICFS-4.3.3, UNESCO-AICFS-CG4.3.3.2, HEA-ALT-2, AILIT-M2, AIF-1.b]
+checkin:
+  - question: A shop's chatbot gives last year's opening hours. The hours changed. What kind of problem is this, in OpenAI's guide?
+    options:
+      - text: Facts are old or missing. This needs better context, such as documents.
+        why: Yes. OpenAI's guide lists out-of-date knowledge as a reason to improve the context the model gets.
+        right: true
+      - text: The tone is wrong. This needs fine-tuning.
+        why: Not this one. The tone is fine here. The guide ties tone and style to the model's behaviour, not to old facts.
+      - text: The prompt is not clever enough. A cleverer prompt will always fix it.
+        why: Not this one. Better wording alone does not give the model the new hours. Put the new hours in the prompt, or let the system find them. The guide says to test, not to assume.
+      - text: Nothing is wrong. Models always know the latest facts.
+        why: Not this one. OpenAI's guide names out-of-date knowledge as a reason to improve the context.
+  - question: A chatbot's answers are right, but its format is not steady. What does OpenAI's guide say to try first?
+    options:
+      - text: A prompt with clear instructions and examples, tested on questions where you know the right answer.
+        why: Yes. The guide says prompting is typically the best place to start. It adds examples to make results more consistent.
+        right: true
+      - text: Fine-tune straight away, because training is the strongest tool.
+        why: Not this one. The guide says to get as much as you can from the basic methods first.
+      - text: Add a pile of documents, because RAG fixes everything.
+        why: Not this one. The facts are right here. The problem is the format, which is the model's behaviour, not missing facts.
+      - text: Skip testing, because the format looks fine to you.
+        why: Not this one. The guides we read judge each way by a test, not by a feeling.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can tell a missing-facts problem from a behaviour problem, and you know to start simple and test.
+glossary:
+  - term: model
+    meaning: The AI program that writes the replies. It is trained on a lot of text.
+  - term: prompt
+    meaning: The text you send a model. It can hold instructions, background and examples.
+  - term: RAG
+    meaning: Short for retrieval-augmented generation. The system finds documents when a question comes in and sends them with the question.
+  - term: fine-tuning
+    meaning: Training an already trained model further, on extra examples.
+  - term: few-shot examples
+    meaning: A few examples of a good answer, put in the prompt to show the model what you want.
+  - term: test questions
+    meaning: Questions where you already know the right answer, used to check how well a setup works.
+whereNext:
+  title: Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs (PDF)
+  text: A 14-page research paper as a PDF file, 788 KB, with no login. We checked it on 9 October 2026. It opens from arXiv's own server. It is written for researchers, so it is dense.
+  url: https://arxiv.org/pdf/2312.05934
+sources:
+  - title: "OpenAI, Optimizing LLM Accuracy (developer guide, no date shown on the page), read 9 October 2026"
+    url: https://developers.openai.com/api/docs/guides/optimizing-llm-accuracy
+    licence: No licence stated
+    use: cite
+  - title: "OpenAI, Model optimization (developer guide, no date shown on the page), read 9 October 2026"
+    url: https://developers.openai.com/api/docs/guides/model-optimization
+    licence: No licence stated
+    use: cite
+  - title: "OpenAI, Supervised fine-tuning (developer guide, no date shown on the page), read 9 October 2026"
+    url: https://developers.openai.com/api/docs/guides/supervised-fine-tuning
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Glossary (Claude Platform docs), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/about-claude/glossary
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Prompt engineering overview (Claude Platform docs), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
+    licence: No licence stated
+    use: cite
+  - title: "Ovadia, Brief, Mishaeli and Elisha, Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs, arXiv:2312.05934, 10 December 2023"
+    url: https://arxiv.org/abs/2312.05934
+    licence: CC BY 4.0 (arXiv)
+    use: cite
+  - title: "Gekhman, Yona, Aharoni, Eyal, Feder, Reichart and Herzig, Does Fine-Tuning LLMs on New Knowledge Encourage Hallucinations?, EMNLP 2024 (arXiv:2405.05904, 9 May 2024)"
+    url: https://aclanthology.org/2024.emnlp-main.444/
+    licence: CC BY 4.0 (the ACL Anthology page)
+    use: cite
+  - title: "Mistral AI, Model card for Mistral-7B-v0.1 (Hugging Face), read 9 October 2026"
+    url: https://huggingface.co/mistralai/Mistral-7B-v0.1
+    licence: Apache-2.0 (the model page)
+    use: cite
+  - title: "Google, Machine Learning Glossary, entry parameter, read 9 October 2026"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: Creative Commons Attribution 4.0 (the page footer)
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## Three ways to shape an AI for a job
+
+<Simple>
+A model is the AI program that writes the replies. There are three main ways to shape one for a job. We use guides from OpenAI and Anthropic, two companies that make AI models.
+
+**Prompt it.** A prompt is the text you send the model. It can hold instructions, background and a few examples of a good answer.
+
+**Give it documents.** This is called RAG, short for retrieval-augmented generation. When a question comes in, the system finds the right documents. It sends them with the question.
+
+**Fine-tune it.** Fine-tuning means training the model a bit more, on examples of the job done well.
+</Simple>
+
+<Deep>
+The names come from the makers' own pages. OpenAI's guide calls the first one prompt engineering. It lists three parts: relevant context, clear instructions and example outputs. Giving a few examples is called few-shot learning.
+
+RAG is short for retrieval-augmented generation. Anthropic's glossary says the documents are passed into the context window, which it calls the amount of text a model can look back on when it writes new text. It says the data is retrieved at runtime, which means when the question is sent.
+
+Anthropic's glossary describes fine-tuning as further training of a pretrained model. Pretrained means it was first trained on a large amount of text. Fine-tuning then uses additional data.
+</Deep>
+
+## What each one changes
+
+<Simple>
+Prompting and RAG change what the model is given for one request. Fine-tuning changes the model itself, because it trains it more.
+
+Fine-tuning is its own job. You prepare examples, run the training, and then test the new model.
+
+OpenAI's guide splits a model's problems in two. A facts problem is when the model lacks facts, or they are out of date or private. A behaviour problem is when the format, tone or style is wrong.
+
+Lesson 5.5, Answers from your documents, shows how finding documents works. Lesson 5.1, How a chatbot is made, shows how a model is trained in the first place.
+</Simple>
+
+<Deep>
+Anthropic's glossary says fine-tuning "causes the model to start representing and mimicking the patterns and characteristics of the fine-tuning dataset". The same glossary says RAG data is retrieved when the query is sent.
+
+OpenAI's fine-tuning page lists four parts: build the examples, upload them, run the training job, and evaluate the result. Evaluate means test. OpenAI's guide says a model's problems fall into two kinds. In the first, the model lacks facts because they were not in its training, are out of date, or are private. In the second, the format is inconsistent, the tone or style is wrong, or the reasoning is not followed steadily.
+</Deep>
+
+## Start with the lightest that works
+
+<Simple>
+By the lightest way, we mean the one that changes the least. A prompt changes only what you send.
+
+OpenAI's guide calls prompting "prompt engineering". It says this is "typically the best place to start". It says prompting is often the only method needed for summaries, translation and code.
+
+The guide also says the three are not a ladder. They solve different problems, so pick the one that fits the problem.
+
+So start with a prompt and test. If the test shows missing facts or the wrong style, move to the tool that fits.
+
+Combining tools is not always better. In one OpenAI example, adding documents to a model that was already fine-tuned made its test score go down.
+</Simple>
+
+<Deep>
+The guide's closing advice is to get as much accuracy as you can from the basic methods before reaching for RAG or fine-tuning. It says to let the accuracy target be the goal, not to jump for RAG and fine-tuning because they seem the most sophisticated.
+
+The guide also says prompting often does not scale. A prompt may need more material than fits, or steadier behaviour than a few examples give. That is when the other two come in.
+
+It says the methods can be combined: they are "additive, not exclusive". Combining is not always better. In OpenAI's own example, fixing Icelandic sentences, adding RAG to a model that was already fine-tuned made the test score go down. OpenAI says the extra material added noise. That is one task and one model.
+</Deep>
+
+## Which tool for the job?
+
+<Simple>
+Which tool for the job? shows six made-up jobs, one at a time. For each one, you pick from four choices. They are: prompt it, give it documents, fine-tune it, or start with a prompt and test.
+
+The fourth choice is for a job that does not clearly point to one tool. You try a prompt first and let a test decide.
+
+Then you read our reading and the reasons. Nothing is counted or saved.
+
+Our readings are ours. They are built from the guides in this lesson. They are not rules from any maker.
+</Simple>
+
+<Deep>
+Every job is invented. Each answer lists what the choice changes, what it costs in data and effort, and how we would test it. We give no prices, because makers change them.
+
+A different team, with different test results, could choose differently. That is the point of the last option. It means: try the simplest thing, and let the test decide.
+</Deep>
+
+<TryIt />
+
+## What each one needs
+
+<Simple>
+**A prompt** needs a clear idea of a good answer, and a way to check it.
+
+**RAG** needs good documents. It also needs the right ones to be found. A RAG system can fail in two places: it finds the wrong pages, or the model misuses the right ones.
+
+**Fine-tuning** needs a set of examples that match the real job. Start small and test. OpenAI's fine-tuning page says to set up your tests first.
+</Simple>
+
+<Deep>
+Anthropic's prompt guide expects a clear definition of success and some way to test against it before you improve a prompt.
+
+For RAG, Anthropic's glossary says its effectiveness depends on the quality and relevance of the knowledge base and of what is retrieved. OpenAI's guide says that retrieval is a second thing to tune. It says supplying too much irrelevant material can drown out the real information.
+
+For fine-tuning, OpenAI's guide says quality matters more than quantity and recommends starting with 50 or more examples, then testing. That number is that guide's advice on 9 October 2026, not a rule. OpenAI's pages list classification, nuanced translation, content in a fixed format and fixing instruction-following failures as uses of supervised fine-tuning. A shorter prompt can save cost at scale. The page also says fine-tuning can be time-consuming.
+
+What a maker offers changes. On 9 October 2026, OpenAI's page said it was winding down its fine-tuning platform for new users. Anthropic's glossary said its API did not currently offer fine-tuning. Check the maker's page on the day.
+</Deep>
+
+## What two studies found
+
+<Simple>
+Two research papers tested what happens when you add new facts by fine-tuning. One tested three models and the other tested one, on set tasks. Neither covers all AI.
+
+One paper found that RAG did better than training a model on plain text to add facts. The other found that models learn new facts slowly from examples. Once a model had learned them, wrong answers became more likely.
+</Simple>
+
+<Deep>
+Ovadia and colleagues put their paper on arXiv on 10 December 2023. They compared RAG with unsupervised fine-tuning, which is further training on plain text with no question-and-answer labels. They tested three models of the size called 7B (B is short for billion parameters, which are what a model learns in training) on school-subject question sets and on a set about current events. They report that RAG did better, for facts the model had seen and for new ones.
+
+Gekhman and colleagues posted theirs on 9 May 2024, and it appeared at the EMNLP 2024 conference, short for Empirical Methods in Natural Language Processing. They fine-tuned one model, PaLM 2-S, on questions about facts. They changed how many of the training examples held facts that the paper labels Unknown. The model never gave the right answer to those questions in the paper's tests. Those examples were learned much more slowly. Once learned, they raised the model's tendency to hallucinate, which the paper uses for giving wrong answers.
+
+The authors conclude that models mostly get their facts in pretraining, and fine-tuning teaches them to use those facts better. That is their reading of their setup.
+</Deep>
+
+## Test, then decide
+
+<Simple>
+A cleverer prompt does not guarantee a true answer. In the guides we read, every way is judged by a test, not by how clever it looks.
+
+First write test questions where you know the right answer. Try the simplest way. Look at what went wrong. Facts missing? Try documents. Wrong style or format? Try better instructions and examples, then training.
+
+Then test again.
+</Simple>
+
+<Deep>
+OpenAI's guide says the best output of the prompt stage is a good prompt plus a set of questions with known right answers. It calls that a baseline: the result you compare later changes against. Its fine-tuning page says "Only invest in fine-tuning after setting up evals", and evals are those tests.
+
+The same guide says to look at why each wrong answer happened, then choose the lever that fits. The notes under each job in the activity follow that order.
+</Deep>

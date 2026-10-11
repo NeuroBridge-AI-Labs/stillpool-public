@@ -1,0 +1,251 @@
+---
+title: "Privacy: where your words go"
+promise: Can explain where what you type into AI can end up, and check it on this site
+minutes: {simple: 10, deep: 16}
+tldr:
+  - A company may keep what you type, save notes as memory, or use it to train later models. Each company says how in its own policy.
+  - Four things get mixed up. They are what the model learned before, this chat, saved memory and company logs.
+  - On this site, pages ask only this site's own server for files. A finished lesson may add one anonymous count.
+misconceptions: [M7]
+interactive: what-leaves-your-device
+inputs: [src/lib/what-leaves-your-device.ts]
+competencies: [UNESCO-AICFS-4.2.2, UNESCO-AICFS-CG4.2.2.3, UNESCO-AICFS-4.1.2, HEA-P4, HEA-PEA-2.3.4-a, AILIT-E7]
+checkin:
+  - question: What does Anthropic's help page for Claude Free, Pro and Max say about a chat you delete?
+    options:
+      - text: It leaves your history at once. Normally it leaves Anthropic's storage systems within 30 days, with exceptions.
+        why: Yes. This is Anthropic's claim, read on 3 October 2026. The exceptions include legal duties and flagged chats, and policies change.
+        right: true
+      - text: It is erased from every computer at the same moment.
+        why: Not this one. Anthropic says removal from its storage systems can take up to 30 days.
+      - text: Nothing changes. A deleted chat stays in your history.
+        why: Not this one. Anthropic says a deleted chat leaves your history at once.
+      - text: It is kept for ever, so deleting changes nothing.
+        why: Not this one. Anthropic gives a time limit for a deleted chat, with exceptions such as legal duties.
+  - question: "A friend says: \"I told it once, so it will always remember me.\" What is more accurate?"
+    options:
+      - text: It depends where the words went. They may be in this chat, in saved memory or in company logs.
+        why: Yes. A chat, a memory feature and a company's stored copies are three different things.
+        right: true
+      - text: The model changes itself while you chat, so it always remembers.
+        why: Not this one. Lesson 1.8 says the model's own numbers do not change while you chat.
+      - text: A new chat always holds every old word you typed.
+        why: Not this one. A new chat is a separate chat. An app may add saved notes, but that is a feature.
+      - text: Deleting a chat always deletes its saved memory too.
+        why: Not this one. Saved memory has its own controls. Anthropic and Google each say where to delete it.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You explained where your words can end up, and how to check what a site sends.
+glossary:
+  - term: personal data
+    meaning: In EU law, any information about a person who is named or can be identified.
+  - term: company logs
+    meaning: Copies of what you typed that a company keeps on its own computers.
+  - term: saved memory
+    meaning: A chatbot feature that saves notes about you and adds them to later chats.
+  - term: request
+    meaning: A message your browser sends to a computer to ask for a page or a file.
+  - term: GDPR
+    meaning: The General Data Protection Regulation, the EU's data protection law.
+  - term: cookie
+    meaning: A small piece of data a website asks your browser to keep.
+whereNext:
+  title: Lesson 4.4 will cover privacy habits
+  text: Lesson 4.4 will cover what is safe to type into an AI tool. It will also show how to read a policy page for three answers.
+sources:
+  - title: "Anthropic Privacy Center, Is my data used for model training? (page dated March 16, 2026)"
+    url: https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic Privacy Center, How long do you store my data? (page dated July 1, 2026)"
+    url: https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic Privacy Center, How do I change my model improvement privacy settings? (page dated August 3, 2026)"
+    url: https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings
+    licence: No licence stated
+    use: cite
+  - title: "Claude Help Center, Use Claude's chat search and memory to build on previous context"
+    url: https://support.claude.com/en/articles/11817273
+    licence: No licence stated
+    use: cite
+  - title: "Google, Gemini Apps Privacy Hub (last updated September 24, 2026)"
+    url: https://support.google.com/gemini/answer/13594961
+    licence: No licence stated
+    use: cite
+  - title: "Google, Save info and reference past chats in Gemini Apps"
+    url: https://support.google.com/gemini/answer/16413516
+    licence: No licence stated
+    use: cite
+  - title: "Regulation (EU) 2016/679, the General Data Protection Regulation, on EUR-Lex"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679
+    licence: EU legal text
+    use: cite
+  - title: "Data Protection Commission (Ireland), The DPC's Engagement with Meta on AI, 14 June 2024"
+    url: https://www.dataprotection.ie/news-media/latest-news/dpcs-engagement-meta-ai
+    licence: No licence stated
+    use: cite
+  - title: "Vercel Docs, Web Analytics Privacy and Compliance"
+    url: https://vercel.com/docs/analytics/privacy-policy
+    licence: No licence stated
+    use: cite
+  - title: "MDN Web Docs, PerformanceResourceTiming and Performance.getEntriesByType()"
+    url: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming
+    licence: CC-BY-SA-2.5
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+signed: false
+---
+
+## What you type, and where it goes
+
+<Simple>
+You type a question into a chatbot. The words do not stay on your phone or laptop. They travel over the internet to the company's computers. Lesson 1.5 shows that path.
+
+A company may keep copies of what you type. It may also use some of it later, to train new models. Each company says what it does in its own policy. Policies change, so every date in this lesson matters.
+</Simple>
+
+<Deep>
+Lesson 1.5 follows a question to a data centre. This lesson asks what happens to the words after they arrive. A company's page about its own product is that company's claim. So we quote it, name the product and give the day we read it. We read every company page in this lesson on 3 October 2026.
+
+The pages we read are about Anthropic's consumer products (Claude Free, Pro and Max) and Google's Gemini Apps. Terms for work, college or developer accounts can differ, and this lesson does not cover them. It does not say which tool to use. This site's own line applies: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values."
+</Deep>
+
+## Four things people mix up
+
+<Simple>
+People say "it remembers me". That can mean four different things.
+
+- **What the model learned before.** It learned this before you arrived. It does not change while you chat (lessons 1.7 and 1.8).
+- **This chat.** The messages in the chat you have open. The model reads them to write its answer.
+- **Saved memory.** A feature some chatbots have. It saves notes about you and adds them to later chats.
+- **Company logs.** Copies of what you typed, kept on the company's computers. They may be used to train later models.
+
+Deleting one of these does not always delete the others.
+</Simple>
+
+<Deep>
+Lesson 1.8 says the model's own numbers do not change while you chat. Training is what changes them (lesson 1.7). Lesson 1.8 also says that some apps keep notes outside the model and add them back into the chat. That is what this lesson calls saved memory.
+
+The two companies we read give these separate switches. Anthropic's memory page says: "Claude saves memory as a set of individual topics as you chat". It says memory is in Settings, under Memory. Its setting for model training is in Settings, under Privacy: "Under Help Improve our AI models, click the button to toggle it off/on". For Gemini Apps, Google puts saved information under Personal context ("You can save info about your life, work, or preferences, to get more helpful responses in Gemini Apps, or ask Gemini to look at past chats before responding"). Its Keep Activity setting is on a different page and controls the saved activity.
+
+Anthropic also says: "Memory is on by default for Free, Pro, and Max plans on the web, Claude Desktop, and Claude Mobile". This is Anthropic's statement, read on 3 October 2026, and its help page for memory shows no date of its own.
+</Deep>
+
+## What two companies say about their own products
+
+<Simple>
+Here is what two companies say about their own products. We read their pages on 3 October 2026. Each one is that company's claim.
+
+- **Claude, a chatbot from Anthropic (its Free, Pro and Max plans).** Anthropic says it uses your chats to improve its models if you choose to allow it.
+
+  It says a deleted chat leaves your history at once. Normally it leaves its storage systems within 30 days. The law can require it to keep some.
+- **Gemini Apps, from Google.** Keep Activity is a Gemini Apps setting. It decides whether your chats are saved to your Activity. Google says that with Keep Activity on, your activity is deleted after 18 months, unless you change that. With Keep Activity off, chats are still saved for 72 hours.
+
+Both have a memory feature with its own switch. Keeping a chat is not the same as a person reading it. Google says a subset of chats is reviewed by human reviewers.
+</Simple>
+
+<Deep>
+Anthropic, "Is my data used for model training?" (page dated March 16, 2026), about its consumer products: "We will use your chats and coding sessions (including to improve our models) if" one of three things is true. The first is: "You choose to allow us to use your chats and coding sessions to improve Claude". The second is that "Your conversations are flagged for safety review". The third is that you explicitly opt in to training in another way. It adds: "Your Incognito chats are not used to improve Claude, even if you have enabled Model Improvement in your Privacy Settings." We did not find a page stating what the training switch is set to on a new account, so this lesson states no default for it.
+
+Anthropic, "How long do you store my data?" (page dated July 1, 2026): a deleted conversation is "Removed from your chat history immediately" and "Deleted from our back-end storage systems within 30 days". It also says: "In all cases, we may retain chats and coding sessions as required by law, to resolve disputes, or as necessary to combat violations of our Usage Policy." If you allow your chats to improve Claude, "we may retain your data in a de-identified format for up to 5 years in our model training pipelines". A chat flagged as breaking its Usage Policy is kept "for up to 2 years". Feedback you send with the thumbs up or down button is kept for 5 years.
+
+Google, "Gemini Apps Privacy Hub" (last updated September 24, 2026), on what happens with Keep Activity on: "Your activity is auto-deleted after 18 months. You can change this to 3 or 36 months, or choose not to auto-delete." With Keep Activity on, "Google uses your activity to provide, develop, and improve its services (including training generative AI models)". If Keep Activity is off, "Future chats are still saved for 72 hours so Gemini can respond to you, process your feedback, and protect Google, its users, and the public." The page also says: "A subset of chats are reviewed by human reviewers (including Google’s trained service providers) to help improve Google services." And: "Temporary chats are not used to train Google’s AI models."
+
+These are the companies' statements, not tests we ran. They cover one product each on one day, and they will change. The memory switches are in the section above.
+</Deep>
+
+## Deleting is not the same as erasing
+
+<Simple>
+Deleting a chat removes it from your list. A copy may stay on the company's computers for a while. Anthropic says normally up to 30 days, with exceptions such as legal duties. Google says chats that people reviewed can stay up to three years, even after you delete your activity.
+
+Anthropic says data already used in training stays in those models. A saved memory is a separate item. Anthropic and Google each say you can delete saved memories.
+</Simple>
+
+<Deep>
+Anthropic, "How long do you store my data?": "If you decide to turn off the model improvement setting, we will not use your previous or new chats or coding sessions for future model training. Additionally, if you delete a chat from your chat history, it will not be used to train future models. Your data will still be included in model training runs that are already in progress, or in models that have been trained." Its settings page adds that chats flagged by its safety classifiers "may still be used to improve our internal trust and safety models".
+
+Google, "Gemini Apps Privacy Hub": "If you delete your activity, past chats already reviewed by service providers aren’t deleted because they aren’t connected to your Google Account. Instead, they’re retained for up to 3 years."
+
+Saved memory has its own controls. Anthropic's memory page says: "you can delete individual memories at any time". Its Reset memory option "Permanently deletes all memories including project memories." That page also has two passages about what happens to a memory when its source chat is deleted, and they read differently, so this lesson states nothing about it. Google's page says to find saved info under Personal context and "click Delete".
+</Deep>
+
+## Your data rights in the EU
+
+<Simple>
+In the EU, a law called the GDPR gives you rights over your personal data. Personal data is any information about a person who can be identified.
+
+Three rights matter here. You can ask a company what data it holds about you. You can ask it to delete data. You can object to some uses of your data.
+
+A company must normally answer within one month. It can have legal reasons to refuse. If it does not act, you can complain to a regulator. Lesson 3.7 covers the EU's AI Act, a separate law about AI.
+</Simple>
+
+<Deep>
+The law is Regulation (EU) 2016/679. We read its text on EUR-Lex on 3 October 2026, as published in the Official Journal on 4 May 2016. EUR-Lex's page for it listed corrections and a proposed amendment, and no act that amends it. Article 4(1): "‘personal data’ means any information relating to an identified or identifiable natural person". Details you type that point to you can fall inside that definition. Invented details can still point to a real person, by chance or from context, so it depends on the case.
+
+Article 15(1), access: "The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed, and, where that is the case, access to the personal data and the following information". The list includes "the purposes of the processing" and "the recipients or categories of recipient".
+
+Article 17(1), erasure: "The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay" where one of its grounds applies, such as "the personal data are no longer necessary in relation to the purposes for which they were collected or otherwise processed". Article 17(3) lists cases where it does not apply, such as "for exercising the right of freedom of expression and information".
+
+Article 21(1), objection: "The data subject shall have the right to object, on grounds relating to his or her particular situation, at any time to processing of personal data concerning him or her which is based on point (e) or (f) of Article 6(1)". The controller "shall no longer process the personal data unless the controller demonstrates compelling legitimate grounds".
+
+Article 12(3), time: the controller must act "without undue delay and in any event within one month of receipt of the request". That "may be extended by two further months where necessary", with reasons given within the first month. Article 77(1) lets a person "lodge a complaint with a supervisory authority". Articles 16, 18 and 20 give rights to correction, to restriction of processing and to take your data in a machine-readable form.
+
+A right to ask is not a promise of a result, and the text does not say how it applies to the numbers inside a trained model. Which of these articles a request should cite depends on the case. Ireland's Data Protection Commission (DPC) published this on its site on 14 June 2024: "The DPC welcomes the decision by Meta to pause its plans to train its large language model using public content shared by adults on Facebook and Instagram across the EU/EEA. This decision followed intensive engagement between the DPC and Meta." That is the DPC's statement about one company, one plan and one date. It does not say that Meta broke a law.
+</Deep>
+
+## This site is a worked example
+
+<Simple>
+This site is built to send as little as possible. Here is what its code does.
+
+- **Files.** Your browser asks this site's own server for pages, styles, scripts, fonts and sound.
+- **Your address.** As with any website, the server sees your IP address and browser details when you ask for a page.
+- **Other companies.** The site's own test visits every page. It stops any request to another address and counts cookies.
+- **One count.** Some versions of the site switch it on. There, a finished-lesson page runs one script from this site's own address. It counts that visit. It does not run if the address has a save code on the end. A save code restores your progress.
+
+The site has no accounts and sets no cookies. It makes no calls to an AI.
+</Simple>
+
+<Deep>
+This describes the site's code and tests as they stood on 3 October 2026, not every deployment.
+
+The site's content policy is set in `astro.config.mjs`: "default-src 'none'", with "img-src 'self'", "font-src 'self'" and "media-src 'self'". So a page cannot load a script, image, font or sound from any other address. A script's own requests (connect-src) are allowed to this site only in a build with the count switched on. The test `checks/privacy.ts` serves the built site and visits every page in one browser. It counts a request to any other address, aborts it and fails. Then it counts the cookies left behind. The site's Help page lists what leaves your device: requests to this site's server, your IP address and browser details to its host, and the one count.
+
+The count lives in `src/analytics.ts`. Its script address is returned only when the build has `PUBLIC_ANALYTICS=1`, the path starts with /done/, and the address has no query and no fragment. It is Vercel's Web Analytics, and Vercel is this site's host. Vercel's page says it works "without using any third-party cookies, instead end users are identified by a hash created from the incoming request", and that "The lifespan of a visitor session is not stored permanently, it is automatically discarded after 24 hours." Vercel lists what may be stored with each data point, including the page address, referrer, country and region, device system, browser and device type. That is Vercel's claim, read on 3 October 2026. We did not read what the host keeps in its own request logs, so this lesson states nothing about it.
+
+The site's headers, in `vercel.json`, also set Referrer-Policy to no-referrer and turn off camera, microphone and location for its pages.
+</Deep>
+
+## What leaves your device
+
+<Simple>
+This lesson has a toy, What leaves your device. We made it for this lesson. Every line in it is invented.
+
+First you read a mock chat with a made-up bot. Then you predict what three places will still hold next week. They are this chat, saved memory and company logs. After that you see what each place holds, and why.
+
+Last, you predict about how many things the browser's record of this page will list, and who the page asks. Then you see the live list of addresses. The toy follows our own rules. It does not show how any real product works.
+</Simple>
+
+<Deep>
+The toy's rules are ours, written for this lesson. In it, the chat ends when you close it. Saved memory keeps only what the mock user asked the bot to remember, until it is deleted. Company logs keep every line for a set time after the chat is deleted. The toy company picks that time. Real companies pick their own times, and the two we read are quoted above.
+
+The live list comes from the browser's own record of what this page loaded, read when you press the button. It lists the page itself and each file the page asked for. It can include files the browser already had saved, and it keeps a limited number of entries. For each entry it gives an address and a size, and never what the request carried. A size is the reply's size after the browser unpacked it. For another address's reply the browser shows a size only if that address allows it.
+</Deep>
+
+<TryIt />
+
+## What this lesson does not tell you
+
+<Simple>
+This lesson does not say which chatbot to use. It says to read each company's own page, and to check its date. A page can change next month.
+
+Lesson 4.4 will cover privacy habits.
+</Simple>
+
+<Deep>
+A policy page is one company's account of one product on one day. The GDPR is the same for every company that it covers. The companies' pages are not the same.
+</Deep>

@@ -1,0 +1,136 @@
+/* The theme contract (docs/adr/0002-themes.md). Every [data-theme] block defines the same 14 colours, the scroll cue
+   and 2 border widths, and a look fills them; components use only these names. Each also sets its color-scheme, so
+   native controls and scrollbars match it. check:contrast enforces the pairs and check:axe runs every theme.
+   "Match my device" is not a block: src/boot.js resolves it to one of these before the first paint.
+   The look is Warm neural, Emanuel's pick of 26-09-26 (.ops/p4-hybrid.html; the mapping is in the ADR), with the Pool Band
+   v2 band he approved on 04-10-26: the --pool-*, --glow, --signal, --plate and --branch tokens, and a white card, a
+   tint and a shadow ink. A theme fills them all; in dark the band is never lighter than the ground. */
+:root {
+  --font-display: "Public Sans", system-ui, sans-serif;
+  --frame: 1200px; /* header, footer, home page and a lesson's band; a plain page keeps its 70ch reading column */
+  --gutter: clamp(12px, 5vw, 40px);
+  /* The one radius rule (design polish D4): buttons, tags and switches are full pills; cards, panels and the groups
+     of choices in Settings are 12 px; inputs and the boxes inside the reading column are 8 px. */
+  --radius: 8px;
+  --radius-large: 12px;
+  --radius-media: 16px;
+  --radius-frame: 24px;
+  --radius-pill: 999px;
+  /* The spacing scale of Pool Band v2: components use these, so the rhythm is one. */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s5: 48px;
+  --s6: 64px;
+  /* A shadow is the page's own ground, darkened: tinted to the page in every theme, never pure black. */
+  --shadow: color-mix(in srgb, var(--ground) 80%, #000);
+  --shadow-raised: 0 32px 64px -32px rgb(5 8 25 / 0.75);
+  /* The band: the blue of the header, the hero, the lesson head and the badge frame. */
+  --band: linear-gradient(135deg, var(--pool-a) 0%, var(--pool-mid) 55%, var(--pool-b) 100%);
+  --motion-duration: 150ms;
+  --motion-ease: ease;
+  --ease-out: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --ground: #FAF4EA;
+  --surface: #FFFFFF;
+  --surface-raised: #F1E8D8;
+  --text: #1A1D2E;
+  --text-muted: #4A5170;
+  --accent-2-ink: #0B6577;
+  --link: #3E52CC;
+  --focus: #3E52CC;
+  --accent: #3E52CC;
+  --on-accent: #FFFFFF;
+  --border: #6B7290;
+  --state-todo: #6B7290;
+  --state-done: #096659;
+  --state-here: #3E52CC;
+  --scroll-cue: var(--shadow);
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --pool-a: #12162B;
+  --pool-mid: #172463;
+  --pool-b: #1E3A8A;
+  --pool-muted: #C9D2F5;
+  --glow: #6BC9DE;
+  --signal: #FFC857;
+  --plate: #1B2044;
+  --branch: #B4BAD2;
+  --card: #FFFFFF;
+  --tint: #EEF0FB;
+  --tint-soft: #F4F5FD;
+  --tint-line: transparent;
+  --shadow-card: 0 1px 2px rgb(26 29 46 / 0.06), 0 12px 32px -16px rgb(26 29 46 / 0.28);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #12162B;
+  --surface: #1B2044;
+  --surface-raised: #1F2550;
+  --text: #EDEFFA;
+  --text-muted: #AEB4D9;
+  --accent-2-ink: #6BC9DE;
+  --link: #98A6FF;
+  --focus: #98A6FF;
+  --accent: #98A6FF;
+  --on-accent: #12162B;
+  --border: #6870BE;
+  --state-todo: #6870BE;
+  --state-done: #3FCBAF;
+  --state-here: #98A6FF;
+  --scroll-cue: color-mix(in srgb, var(--ground) 80%, #fff); /* a darker shade cannot show on this ground */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --pool-a: #0A0D1C;
+  --pool-mid: #0E1226;
+  --pool-b: #12162B;
+  --pool-muted: #B9C2EE;
+  --glow: #6BC9DE;
+  --signal: #FFC857;
+  --plate: #0A0D1C;
+  --branch: #3B437F;
+  --card: #12162B;
+  --tint: #12162B;
+  --tint-soft: #12162B;
+  --tint-line: var(--border);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06), 0 12px 32px -16px rgb(0 0 0 / 0.28);
+}
+
+[data-theme="contrast"] {
+  color-scheme: light;
+  --ground: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-raised: #F2F4FA;
+  --text: #000000;
+  --text-muted: #202542;
+  --accent-2-ink: #004D5E;
+  --link: #16238F;
+  --focus: #16238F;
+  --accent: #16238F;
+  --on-accent: #FFFFFF;
+  --border: #000000;
+  --state-todo: #000000;
+  --state-done: #004E44;
+  --state-here: #16238F;
+  --scroll-cue: color-mix(in srgb, var(--ground) 70%, #000);
+  --border-width: 2px;
+  --border-width-strong: 3px;
+  --pool-a: #000000;
+  --pool-mid: #050A33;
+  --pool-b: #0B1458;
+  --pool-muted: #E4E8FF;
+  --glow: #7FD7EB;
+  --signal: #FFD166;
+  --plate: #000000;
+  --branch: #000000;
+  --card: #FFFFFF;
+  --tint: #F2F4FA;
+  --tint-soft: #F2F4FA;
+  --tint-line: var(--border);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06), 0 12px 32px -16px rgb(0 0 0 / 0.28);
+}

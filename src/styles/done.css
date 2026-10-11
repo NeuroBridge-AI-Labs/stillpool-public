@@ -1,0 +1,64 @@
+/* /done: what this page is first (Lesson finished), then the save code and where next, then the map. The frame is the
+   site's own width; the prose inside it keeps a reading width. */
+.done-page {
+  padding-block: 32px;
+}
+.done-summary {
+  margin-bottom: 24px;
+}
+.done-summary > p {
+  max-width: 70ch;
+}
+.done-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+/* The note is chosen by script. Until then the longer one stays laid out but unseen, so the save code below does not
+   move when it is shown. */
+.done-badge[data-pending] {
+  visibility: hidden;
+}
+.done-badge .earned-note {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 600;
+}
+.done-badge .emblem {
+  flex: none;
+  width: 64px;
+  height: 64px;
+}
+html[data-progress="hide"] .done-badge {
+  display: none;
+}
+.done-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* else the one track grows to the widest unbreakable text */
+  gap: 24px;
+}
+.done-save {
+  min-width: 0;
+  padding: 24px;
+  background: var(--card); /* in dark the card is the ground itself: nothing is lighter than it */
+  border: var(--border-width) solid var(--border);
+  border-radius: 12px;
+}
+.done-save > h2,
+.done-next > h2 {
+  margin-top: 0;
+}
+.done-next {
+  max-width: 40ch;
+}
+.done-page .map {
+  margin-top: 48px;
+  padding-top: 0;
+}
+@media (min-width: 1024px) {
+  .done-actions {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+}

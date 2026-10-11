@@ -1,0 +1,67 @@
+---
+import { existsSync, readFileSync } from 'node:fs';
+import { load } from 'js-yaml';
+import { recorded, recording } from '../lesson-schema.ts';
+import { featured, inWords, summary, verdictText } from '../lib/made-up-answer.ts';
+import Shell from './Shell.astro';
+import CheckedAnswer from './CheckedAnswer.astro';
+const fixture = process.env.RECORDED_FIXTURE === '1';
+const file = `${fixture ? 'fixtures' : 'data'}/recorded/R-1.6.json`;
+const rec = existsSync(file) ? recording.parse(JSON.parse(readFileSync(file, 'utf8'))) : undefined;
+const path = fixture ? 'fixtures/recorded/recorded.yaml' : 'content/how-ai-works/why-they-make-things-up/recorded.yaml';
+const checks = rec ? recorded.parse(load(readFileSync(path, 'utf8')))['R-1.6'] : undefined;
+if (rec && !checks?.answers) throw new Error(`${path}: no checks for R-1.6`);
+const runs = checks?.answers ?? []; const picked = featured(runs);
+const names = rec?.variants.map((v) => (v.model ?? rec.model).name) ?? [];
+const dates = (at: string) => new Date(at).toLocaleString('en-IE', { dateStyle: 'long', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC';
+const day = rec && inWords(rec.date);
+const falsePart = (v: string) => v === 'made-up-detail' || v === 'made-up-study';
+const all = rec?.variants.flatMap((variant, maker) => variant.runs.map((r, i) => ({ run: runs.find((x) => x.maker === (maker ? 'B' : 'A') && x.run === i + 1), reply: r.reply, at: r.calls?.at(-1)?.at ?? '', model: variant.model ?? rec.model, settings: variant.settings ?? rec.settings }))) ?? [];
+const shown = picked && all.find((x) => x.run === picked); const studies = picked?.lines.filter((l) => l.kind === 'study') ?? [];
+const labels = [...new Set(studies.map((l) => l.study))];
+const whyShown = studies.length === 3 && studies.some((l) => l.verdict === 'checked') ? 'It is the first answer in recording order with a checked study and a made-up detail.' : 'It is the first answer in recording order with one-line studies and a made-up detail.';
+const explain = (choice: string, sure = false) => {
+  if (choice === 'same') return "You said they sound the same. Each study's check is under it below.";
+  if (choice === 'none' || choice === 'unsure') {
+    const lead = choice === 'none' ? 'You said none of them.' : 'You said you could not tell. That is fair: made-up details can look like real ones.';
+    return `${lead} ${studies.filter((l) => falsePart(l.verdict)).map(verdictText).join(' ') || 'The check found nothing made up in any study.'}`;
+  }
+  const line = studies.find((l) => l.study === Number(choice));
+  const others = studies.filter((l) => l.study !== Number(choice) && falsePart(l.verdict));
+  return `${sure ? `You said Study ${choice} sounded surest.` : `You picked Study ${choice}.`} ${line ? verdictText(line) : ''} ${sure ? '' : others.map(verdictText).join(' ') || 'The check found nothing made up in the other studies.'}`;
+};
+const settingsText = (item: (typeof all)[number]) => item.run?.maker === 'A'
+  ? `No search tool. Effort: ${(item.settings as any).output_config.effort}. Thinking: ${(item.settings as any).thinking.type}. Up to ${(item.settings as any).max_tokens.toLocaleString()} tokens. Default sampling settings. No instructions from us besides the question. Anthropic says it adds its own instruction when thinking is on.`
+  : `No search tool. Temperature: the model's default (${(item.settings as any).default_model_temperature}, read from Mistral on ${day}). Mistral's safety prompt: off. Up to ${(item.settings as any).max_tokens.toLocaleString()} tokens. No instructions from us besides the question.`;
+---
+{!rec || !picked || !shown ? <section data-part="tryit"><h2>Try it: Spot the made-up answer</h2><p>The recorded answers are pending.</p></section> :
+  <>
+    <Shell title="Spot the made-up answer" reveal="Show the checks" class="made-up-answer">
+      <p>The same question went to two AI models, ten times each. They were {names[0]} by Anthropic, and {names[1]} by Mistral AI. Neither had a search tool. Recorded on {day}.</p>
+      <blockquote>{rec.message}</blockquote>
+      <p>Here is one answer. {whyShown} Every answer is below.</p>
+      <article aria-label={`The answer, from ${shown.model.name}`}>
+        <h3>The answer, from {shown.model.name}</h3><p>{shown.model.id} on {shown.model.host}. Recorded {dates(shown.at)}.</p>
+        <p>{settingsText(shown)}</p><CheckedAnswer reply={shown.reply} lines={picked.lines} afterPick />
+      </article>
+      <fieldset><legend>Which study do you think has something made up?</legend>
+        {labels.map((n) => <label><input type="radio" name="made-up" value={n} data-said={explain(String(n))} />Study {n}</label>)}
+        <label><input type="radio" name="made-up" value="none" data-said={explain('none')} />None of them</label><label><input type="radio" name="made-up" value="unsure" data-said={explain('unsure')} />I can't tell</label>
+        <p>There is no wrong guess here.</p>
+      </fieldset>
+      <fieldset><legend>Which study sounds surest to you?</legend>
+        {labels.map((n) => <label><input type="radio" name="surest" value={n} data-said={explain(String(n), true)} />Study {n}</label>)}<label><input type="radio" name="surest" value="same" data-said={explain('same', true)} />They sound the same</label>
+      </fieldset>
+      <Fragment slot="after">
+        <p>The checks are below, so decide first if you want to guess.</p><h3>What all the runs showed</h3>
+        {summary(runs, names[0], names[1]).map((s) => <p>{s}</p>)}
+      </Fragment>
+    </Shell>
+    <details class="made-up-runs"><summary>Show all runs</summary>
+      {all.map((item) => <article>
+        <h3>{item.model.name}, Run {item.run?.run}</h3><p>{item.model.id} on {item.model.host}. Recorded {dates(item.at)}.</p>
+        <p>{settingsText(item)}</p><CheckedAnswer reply={item.reply} lines={item.run?.lines ?? []} />
+      </article>)}
+    </details>
+    <p>A line can sound sure and still be made up, so check what matters against a source.</p>
+  </>}

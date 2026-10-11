@@ -1,0 +1,2 @@
+/* 4.8's interactive. Nothing to choose without JavaScript or as text: every copy is written out in "Show all runs". */
+html:is(:not([data-js]), [data-textversion]) .same-text-your-way .show-me { display: none; }

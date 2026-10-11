@@ -1,0 +1,956 @@
+{
+  "id": "R-1.5",
+  "message": "Who won the most recent All-Ireland senior hurling final, and what was the score?",
+  "model": {
+    "id": "claude-sonnet-5",
+    "name": "Claude Sonnet 5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-09-28",
+  "settings": {
+    "max_tokens": 16000,
+    "output_config": {
+      "effort": "high"
+    },
+    "thinking": {
+      "type": "adaptive",
+      "display": "summarized"
+    }
+  },
+  "variants": [
+    {
+      "settings": {
+        "search": "off"
+      },
+      "runs": [
+        {
+          "reply": "I don't have fully certain or up-to-date information on this, as All-Ireland Senior Hurling Championship finals happen annually (usually in July), and my knowledge has a cutoff date that may predate the most recent final.\n\nBased on my last training data, I believe Clare won the 2024 All-Ireland Senior Hurling Championship, defeating Cork, but I'm not confident about the exact score or details, and there may have been a more recent final since then that I'm not aware of.\n\nFor accurate, current information, I'd recommend checking:\n- GAA.ie (official website)\n- RTÉ Sport\n- A recent news search\n\nWould you like me to help with anything else related to hurling history that might be less time-sensitive?",
+          "searches": [],
+          "citations": [],
+          "usage": {
+            "input_tokens": 32,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 576,
+            "output_tokens_details": {
+              "thinking_tokens": 347
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:43:27.755Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                }
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWAyb8g3Cu61H5Ba5Tvm",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "Since this final is played annually and my training data has a cutoff, I likely don't have reliable info on the most recent one—I should be upfront about that and suggest the user verify with a current source.\n\n",
+                    "signature": "EvUKCpABCBIYAipAu5kMsRfHvGPifyyyAjj4vshzSM1IqXfKfZT48TGwYfdc7t2DyZZcTeIMZzU+75ZjNzwJP+o9TCfzXEUFL6w3QTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjaoAbiy6tUGEgyAble2m5MGhz2ZL5MaDCjjQdUXEHVMZwZFtCIwP9UUxViHNv/Dbm2oH71KzDlhCP/6ij/BUPqyaL7dqtRd7nfZ59wmfPBOryZmYTnhKpEJGuw1uw0XZroKkIZ45t+lTk+UJNbrGNiZoQ4rhrxePMieROfUpCskEI4IUouZuqNIRVzSGrWNdwOaSFOHVnTNroSQj+JoII+v1aYUMZL1hSL+gYqtUU4v1EaOlecaeVVnRqk7Osq75NHl5+C+ckYjltFNYbZKv2u2i2Ykmw1bFc+B4InEJ+LQM6T6d2O74aTZ6YnzDr2mEvARFLsJVct6tEYZjVRhuWZZeVRCQKfDkYbdtCrmqmgxNIglMGpGq1+ECIuX9R3Q8Kt5Rf/VzZ1EhARiCwR/gmvcuPg4bT15znsX6X8GHskp6Nzw/W1/OiVZcPMvUCsKsY1hhe3Yq1jhqpd7V8wkaLfshtQy8Ef1AWjwPw0m/L7FrX8xNqroDD6r8JI20pZh0U8MnlsBo/2QSS/2CriS3FRKUO2rXJBQgedQnCcdBtvZnfvXubSgayM+3SK7WfjmQWPVcg5ZqYpG44qq8w9x6b2Nh/1RYJeiHwrTlYMhOxZtI0ZOiVGo+HCgJcKJ1kDI9ozRiV5sp8QIv9y304ngFaq5+OrhQJBwlv0lGaI7D8IRrWEypd8T+ivvFjorRpEmW652NGRQkhOuHoE5ihe51auEBh1SGm7Uottiu4Lfyd1VF8sp3AbDjGRJ+xZPBa6VLHMBc7nA2/MHfIE8m1cA7amGQr8Mpyesvw/RdinxL4dbW0LwuBa837q574fpfsTgXQY+dCi3zlLgVtk7da9trgQAqHoV2l4LrA/ATdUJAB7GcaHKhASG6VQ7LsZkiHCR76WU8mSZMYrKf4603URqtIrKMqUbfRkugLiXXE3fyaFUs3kguPi158LUAqu92lA0Q3JiEHiA5V8/EEIHmum4gyaiE6w4zVXamCNBmHS54WewQLTDA1ykXkDV+q73BTeAPzcs69xcqm1vnkwdWYnz0ED5hnOnkMzd+1wqroP6Pk0L2AO5hHeKwWXlEhKz+ueRd2SzlbG84dl2OdFMGl6eti6q2wqpi1NTKIEUz6Sf66jZkZOR5+TuzsLAY+v7DAIJfg48gXSUUPsQV5lxUWOQVgCanFQOtIonS33a+DCANUBGZvIrhkL4wIJCPSRQIO2Op8vlwwSkhHKjqvFE2fxR3MHW8+DbwF3pn0vc3/JFPpb0jpqmGC581KvuLhLyCMJdDg0UmA4eSP2itxQLfy7qCpttdYIcu+usuwyd87MJE9Zgm+0zgkIqVkOgAbuKT3UDLncjUxc10AUJdQbB2tSHF8C7d/eZUlapNlL3EMMYwcmGG87xhxWlVQJAIzAlJSG0WQxG3W+/vx9XluyrynUSFhGggVF9zVtGEynrG1VEHISq5Vaw+6veTwgOBVOe/8t/H/ZCO4GCJKmPfxuR3VcLbVk7OsWd6V8/fLedUyT/jUU1RpGRCN95j6SDdQVXwcztPGBgBYWpB+yAC3lmO4EP0mtGTiN8lovjOu3E/JOYdK5DJHjjQZ+OLQXITfJHzCHn+3qzJDnXFrjIUd+/vAPkE3d3RKFlFjJEm4FoRxiO5W1lKPdx79C3upzGoXCY/yDyS8V9VK/n/K6VRy8YAQ=="
+                  },
+                  {
+                    "type": "text",
+                    "text": "I don't have fully certain or up-to-date information on this, as All-Ireland Senior Hurling Championship finals happen annually (usually in July), and my knowledge has a cutoff date that may predate the most recent final.\n\nBased on my last training data, I believe Clare won the 2024 All-Ireland Senior Hurling Championship, defeating Cork, but I'm not confident about the exact score or details, and there may have been a more recent final since then that I'm not aware of.\n\nFor accurate, current information, I'd recommend checking:\n- GAA.ie (official website)\n- RTÉ Sport\n- A recent news search\n\nWould you like me to help with anything else related to hurling history that might be less time-sensitive?"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 32,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 576,
+                  "output_tokens_details": {
+                    "thinking_tokens": 347
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "I recall that Clare won the 2024 All-Ireland Senior Hurling Championship final, defeating Cork in a very close, high-scoring match at Croke Park.\n\nHowever, I want to flag some uncertainty here: my knowledge has a cutoff date, so I may not have information about finals that occurred after that point, and I'm not fully confident I have the exact score correct from memory. Sporting results are exactly the kind of specific factual detail where I could misremember.\n\nFor the accurate, up-to-date result (winner, final score, and match details), I'd recommend checking a current source like the GAA's official website, RTÉ Sport, or a recent news search, especially if you're asking about the very latest final rather than 2024.",
+          "searches": [],
+          "citations": [],
+          "usage": {
+            "input_tokens": 32,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 579,
+            "output_tokens_details": {
+              "thinking_tokens": 349
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:43:37.100Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                }
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWAzFpMHRbY2VYZNvAPy",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "I need to recall what I know about recent All-Ireland Senior Hurling Championship finals, while being mindful of my knowledge cutoff. I remember Clare defeating Cork to win the 2024 title.\n\n",
+                    "signature": "ErAKCpABCBIYAipAHjKBPxFbartNgpIZQtL0qK2FFBVEx3EA5+9bYTnOqC3neCQ6EGd/wM04TuQx0ly3hU5vqIbz3vVfJfBwxeHJHzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjaoAb6y6tUGEgxWQ+ly2KLqiaXAQAAaDL6bDRfmmzVwQeWCNyIwAO6a4SECV6Sve2bzgASFp5kc6RhVbVsSqUuU/1bkZrTXUKS1Lbv0cc105/Y7zGcVKswI333+QjC8XQ2NuvTZC+FA6NEs6R67JftZcbUqeqlRl+MxkOawVuD8vTGBU3AQGs3QbS0eNFzPUEs3s3f1omV/1s/jnu/KW/TMgjCQikva3Lyjm94A1wPeVnP3YsLGjSiUa6Jz9oC65fwg7ftupDcal1gblWLijq9KW4PVUdIs+qEk7MrtXg/Lm6eMksLdyiQ7gmSdO8k4Z+uzvTTe0qHipPORzD7L2Z06PM6R3be7c3DYdni03VpknVBITl9Xwjml1AFKEF4jlLcLYHRjAanswdH/tm6PaXEG8VSkM/yt9zs0bn9n4P6llEtatYnZ4nvjcrcLnfvR5u73UYi/ifgc9hGFmRh737F/n3YSWI/bY6WIw3wM8dP717oDQEPQWMG72/JdQKzN8SiSJmo330g7DNAlFF+CNS99UQy76ygUIB5OKPtJZQqd/LeH2pB+Myll7iK7VuR6YtW2+Y1qH5oL7kQS2Mb11hs5Tg7yViNPXYfvQujoq7N3WjYiapnYiKR3BBunQQHyzZVnJ1amZDnWYLTeOIO56MQgdef9jjJUZm8t1Urb3xyJeP2Q9kCEWNOv2bVOvkdbpUt8P8qeO22j8PJism/gRHg5EjOfQAuNZq2TjG46lqwDtmEHztfe7tzzjbWp/T1OKl6FlWJ0ziDx9mLZKkNM+Rxy2I+QOvj+7nkFuBKjH0Jbhbd1GpThgCFRetInCBJCTgg48dHuARPdrlNXV6zxSiKM/2dZp78cqvEREbGTjsmmqKjTV2e2pTNPTYJVzjC9cZRhDl/YK5KpF8ZIGIWARGQwNrzhdpdNLTgT2gVYcrgKDMIXLZOsAhP/oUHYWLjYb14bN7kuBAOT+WVjeuTahtw9Etq5wrYW/MLbd4cFmztmMdvu8EcJ8z9f+GZ0/RpBZj6pLdSndQ+IzMLNGJnZGen6VCReFvJ+KLw4RRUOV+Ead2SFMEhu/rNZJsOyHRLktHFuFHZQSHd/+o+/Nx5U4u5KmpUJWe1bebOyKGRmzHiXFGyMHsBsKvbteZBZcNrDLf0kG+RpMvM1wD0/aD6YPo6RKSrbyMY4bdIyMEr5svKkyMqvWHBfNaJM6+HmcP8DzO/EAXvK3bPQmWjTJiY4cw1Lf70uFzoEVj16J419GvjOzXf8PJzdSglhK5mpuoMScS8W4oAq10WrGMS27PnwfUbnv0tcDukDiBv9BkY6NkH7PvVMwU75JAWMF3qBmr+5U1n1G926V5FRgBi81MQMWG0Lk6d9YE2b2k8ucCk4d0GD8NHfgHGoGbADdOizS0Bm2fN42LUt0lFbNKBVYvYafoQmb9jBJn3fTIX278+Fp0/oPWAb0QtrDdlyGSlsEIjKlT58gyGF15RAjzl4t4i3PM2Kiv8/mh4pxbexT+w3eSCXYeCttLUQYktoe/ZpN/jI1zIRoj7zVVkzcYTl9K09aNcJcrH42bRUSxgENg4ERxDE45L7AlwYAQ=="
+                  },
+                  {
+                    "type": "text",
+                    "text": "I recall that Clare won the 2024 All-Ireland Senior Hurling Championship final, defeating Cork in a very close, high-scoring match at Croke Park.\n\nHowever, I want to flag some uncertainty here: my knowledge has a cutoff date, so I may not have information about finals that occurred after that point, and I'm not fully confident I have the exact score correct from memory. Sporting results are exactly the kind of specific factual detail where I could misremember.\n\nFor the accurate, up-to-date result (winner, final score, and match details), I'd recommend checking a current source like the GAA's official website, RTÉ Sport, or a recent news search, especially if you're asking about the very latest final rather than 2024."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 32,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 579,
+                  "output_tokens_details": {
+                    "thinking_tokens": 349
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "I don't have reliable, up-to-date information about the most recent All-Ireland Senior Hurling Championship final, as my knowledge has a cutoff date and I can't confirm results from recent competitions with certainty.\n\nFor the most accurate and current information, I'd recommend checking:\n- The official GAA website (gaa.ie)\n- RTÉ Sport or other Irish sports news outlets\n- A quick web search for \"All-Ireland Senior Hurling Final result [current year]\"\n\nIf you let me know roughly what year or timeframe you're interested in, I can try to share what I do know, while being clear about my confidence level in that information.",
+          "searches": [],
+          "citations": [],
+          "usage": {
+            "input_tokens": 32,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 580,
+            "output_tokens_details": {
+              "thinking_tokens": 376
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:43:44.520Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                }
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWAzohW2sLfDoErCT639",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "I should note my knowledge has a cutoff and be careful about recency here. I recall Limerick won the 2023 All-Ireland final over Kilkenny, and I'm trying to recall the specific score.\n\n",
+                    "signature": "EqMKCpABCBIYAipAkMXz4l9RXwPgBokLWsq7PaY83FEEenThYDOqb8tVRf91bpbUr+ZjIWjEpkV208QeK/x25Y1be/0Y0lg1qzypATIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjaoAcay6tUGEgyA4/JhG8l5rFwy2zIaDGLLYjch0HfG/N/bAyIwaJPxXykMXoktwmlAanXfw0zi9taDwVzmV4oRKn1GEdCfBfDIrRZ6TZLf8qp4242XKr8IBoppysR5AFWIcDCLvxkKPalcQ1N9nTWGngYO4uIBeNQFwyisbGiJtP0GU12sT6qpsgpC1bEFLGNDjhf0XR4qPpm/OOfMAHfubVlOWWztmRDEirxfuhFNqoGNYvmeucO6VFfsv24wuwnmdxONCTqBd73vR5sPlfvGpa7SdUlwZ6QuO2X5bNRhmYo3uH82N9+4Z+OkrsceOomOZMFFmHRxCK3zZESKVsqnhlQtDutsy+w/QH9Ec31R4lpx4Evl9R96l6N4sx4r489LlIMq1Cq/ZpktcF89ag3wra7OiZQhwmQxyrAAfPSHmWVxjR2HzXrFTBkLKMDRMfW0x2a30RfKw7wvz8MZ/Gg8W4e6/+CMd2PPMelBqIwo9no6WFh2caE+wyevpJzZ4GVcI9nrsohGfmyuxdUcAOgGVaYfIH75iEL2zCDTtS+bu5/7sgjBUo+V+ou8FnPhZ8EztAg1drh+KDoDHsfFtu7octoJQ4db6fW/mSMRRoEr/4rn/XXCySA2D1Gp/bBEfGcZ6wiI8JMhiR/tto1KfBLwSthMLwDwUKYvhn87NVh4OMeSZn2rMqohMNPCF+44N2AiyEuEXi1tOXf6bmIyeYqf/GZOkfHTBotmoUvi+QYlI5jQaCbReJyeUC8C8fUTftTLhek7ICdr3tKcGwxH7BT3DWitqOr/DDM+06GzfY+24NdvYHd7Ou+rYiShXVDDPK2zjSxuhR/sX6pDNtKEsA68gBeqSwQjuPUw31JV0Wv0NtuC8e0H2TjQMIkQFnyYZJV2t6I7R/X7OgJIMfPcx+bSnp1b5m71Wg9IKirG2ffPDxwA+vefS1O/M9W6havj1K4nglJRiGas/LFfwN8BlHREwxXxjgpGADwmtGDHzJyaDCjsO+SbfBnYHcn5o7cC77uDpTd5UbC7fmrm5iQWy2ZHu9iCC4XfnkLxpPUS80A/1sKCrQ6TA9o7oh1+taIC2ylytXN1GpZa+R5SY26KKQXjvu0aMapVYEKskS+8ObLk6ASizj0+DZO9ytuifMm6a4PkxR9G1igVysfdi7kCiiOyEldW50MCoG2kL1yuOte7mwQinDkYvGgTJG3hP7N0S28SLkd4j1wrV2ocZm4grIAzNxLOGLe+PXsCypJGw/D4UebHMDmOXPRFMSq6joimiL3vmUcBoRTjOrgVL3VDFvMeYq4Nof8B/QxW6AhFOPSla0pCtehIfkCiy+lX6ud7jcGNRZ8Wu2gr6UAqWZH6Cza54zVvQ7Mg/4B2UfcpBzfyYGfrtOMqCXwzeIN17pXaA8bhuCwTy+SguXm44jj2kzF2EuQzXwXPS9xJk/qtqiBOg27QBqmBCPmQrOQutZjNo5l/FYqIbLoUYFrfrtCHsLqvDiMbp5OT63ojyPqlLwz+Y5jbM457KbRe1sWj3mG6/uk8AxrSJz0M1uG/aj+9WwI5XBhLxD66HxgB"
+                  },
+                  {
+                    "type": "text",
+                    "text": "I don't have reliable, up-to-date information about the most recent All-Ireland Senior Hurling Championship final, as my knowledge has a cutoff date and I can't confirm results from recent competitions with certainty.\n\nFor the most accurate and current information, I'd recommend checking:\n- The official GAA website (gaa.ie)\n- RTÉ Sport or other Irish sports news outlets\n- A quick web search for \"All-Ireland Senior Hurling Final result [current year]\"\n\nIf you let me know roughly what year or timeframe you're interested in, I can try to share what I do know, while being clear about my confidence level in that information."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 32,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 580,
+                  "output_tokens_details": {
+                    "thinking_tokens": 376
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "settings": {
+        "search": "on",
+        "tools": [
+          {
+            "type": "web_search_20250305",
+            "name": "web_search",
+            "max_uses": 5
+          }
+        ]
+      },
+      "runs": [
+        {
+          "reply": "Limerick won the most recent All-Ireland Senior Hurling Championship final, defeating Galway. Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018.\n\nThe match was played at Croke Park in Dublin on 19 July 2026. Limerick defeated Galway in the final in Croke Park. This was their last title being in 2023, when they completed a four-in-a-row, making this their latest crown in an era of dominance.",
+          "searches": [
+            "All-Ireland senior hurling final 2026 result"
+          ],
+          "citations": [
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+              "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+              "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. "
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+              "title": "2026 All-Ireland Senior Hurling Championship",
+              "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel..."
+            },
+            {
+              "url": "https://www.irishtimes.com/sport/gaelic-games/2026/07/19/galway-v-limerick-live-all-ireland-hurling-final-updates-western-forces-clash-at-croke-park/",
+              "title": "All-Ireland hurling final: Limerick beat Galway by 11 points – as it happened",
+              "cited_text": "Their last title was in 2023, when they completed a four-in-a-row. "
+            }
+          ],
+          "usage": {
+            "input_tokens": 13782,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 283,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "server_tool_use": {
+              "web_search_requests": 1,
+              "web_fetch_requests": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:43:52.009Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                },
+                "tools": [
+                  {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                    "max_uses": 5
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWB1MmKanWLiqmQtnNxr",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "server_tool_use",
+                    "id": "srvtoolu_013MPWAP4fEnGgE4QVx2HgXK",
+                    "name": "web_search",
+                    "input": {
+                      "query": "All-Ireland senior hurling final 2026 result"
+                    }
+                  },
+                  {
+                    "type": "web_search_tool_result",
+                    "tool_use_id": "srvtoolu_013MPWAP4fEnGgE4QVx2HgXK",
+                    "content": [
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "encrypted_content": "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",
+                        "page_age": "July 30, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship Final – Limerick 1-29 Galway 1-18 - Munster GAA",
+                        "url": "https://munster.gaa.ie/event/2026-all-ireland-senior-hurling-championship-final-limerick-v-galway/",
+                        "encrypted_content": "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",
+                        "page_age": "July 19, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Club Hurling Championship Final",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Club_Hurling_Championship_Final",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Leinster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Leinster_Senior_Hurling_Championship",
+                        "encrypted_content": "EtUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDGvi142OtARgon6nPhoMpTkj89mNj2n7szXPIjDFQ9F/DU9T8yaDoJ9f5MFaH9AtzA508OtWVeAHz/V2ExFCq1hpsgAqsOYVjknMrjYq2Af7K69BOg5yafwFUpWcqktWP4oeCYx47BLNPsUF7RGCAKjgowpvO4myvaqrI7GD4hpAhiUwZ1Mgf4jy8mkLMWZ67ZSRXdRAuqNOScU07b9VgMKxT7nR/C8Lgp/Kkvrwa+I7wvHc+1siTNc2/SxozYRBEFhIhGYtkNs5V3mURlh5Bn+tABLK1IwjaGk9TDX4fRZLR9ur63e1mxiLvqBCZXQRZexifRnY1XquMSuFJYYUHaoTSXSPyq3PT9tux4agSXHzjJ48dJa1jKMHSE3LvgKLTE5/vUkEtVS/BXr/3d/aKp9oQbeA+s/l06+dLuAtskztOJJEmz0LZPHFWEfZzBHowv0nQBt++nT4G2KbcQz6A/7Q6sPeeF5YOthXlbFaTPTLGxCm95ocwHe68VRet6+nflubKWCr70OiAblOGAicSr2mDeij5D0mjomiKUQidSKUzqHKfgFIlROfwlXCPIglPXHY3ztndA9X7A1a+whmhtyo+lxVZFpTMjcP850who3wXLQvOla3vXoLdq5vnyUzFXAH9uoFDoQtJd5WUcGFDXR4G8ZFJK9J0aGppEIGonGlTMTiXvu08NYl9dlrgfWEWSxmLR4B0jQvesWe7lve9Th8QYqaB6sUPOoU24i1RJ6YYptfB8tHl0kkeQMzN/IuzKfEuLOB3DZ9DywThBRItqLk1xh14AvzID11P8zBSIwQ8jWMa7bIZeOwh0qs9EbWNQF+8tPXTEIEBqTsmX9AWsXPdujyud7piHKsSDDLA/sInDZ+Yp1gAtaxW2/PJ0hI3a2V65MnBLBmE0QLlOiqiCG0ZJkwBvdpY2sgEfZBoj3xMT4cVlamj12YkW6obGE1IjSk+40nM0x4yQEpJvuapYn2Jux+m0w4OBvfDIW8ocesqof4GyScuBDYg2m4T4KUxN++GxABnFJqpwVdy21SyC0l3rIGCaRdV31q526KswmI3Ulb0br2jjdzS+PT7PIAJj6HXWKBU2eCuJPdGdlmm9E2ZNUuLyHbZu0/DaJwIuBFF0/Wrtnj11WiI98mG6watr8/AzoKn1UvHze8dBeJu7IWf075uCD3pmwWidBccco/Oi5uznuLJTjXCmB+WDKZGW2ZWC7kXFrBp3O3s2Hjguy8RlA9tNgFEjuhSc7ie+7N8hWk+thwGSHU3Siqo0p8VXyFOvZ5rosLFaSdCBmgCDClKYcLUN8KIkhohwkSVFndbY6sNEoIzJWZA4FFdRCUQMIasuvUhEa96KbMJJhd0vyyQ08ukY4FnyGhxp3wODeE91gxh1Fuqx5MOvTdTEn7is2wTfBj5LAYAw==",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Munster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Munster_Senior_Hurling_Championship",
+                        "encrypted_content": "EvUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDFn6vDewX6OSXn5cvxoM4H7+DeUlxqr2+KVOIjBChEKRI1ektErlHnFYUJZi6McRV3H6neitGWvmiE1TyxrFI/NCqpJwEHV+MHCJTy0q+AfSpEpKpA0XpFAsXX67W6BOk0TMkDan+D2HAZwp+s56cvl1swSmKHg9PTSbGjqZrdtuYgCvJBgCYmm0qYZ/WY3f2glQUe/EdA4lMHfN66S11a63UfbZeEYHI0uvAv+DdW6NcZSio6rU9RDyyXXycWfn0b3ojR9hvIgwsukWFqfeg8OhB13d7rbcQ2wM1JFFDVETW6XuN4O7hjFCfUSKDjBkLfkVUvw6NG1SaSxfGeYRUf+Kfo8pSDwAY0lxbN4tQbTAURToqCZdf2dglGSKykZCup9oFPIXi3EMoxM0IUVAspcYhQWutX3i8sBcUYchYbSFoCqKEAiFHCkRKhS/hNLdx15Vw6AY3/nvHhB5z2k6/Pfx9Ri+QT3TAqHqlJs3yA1K7Kqn3yDcUDuvytW6h8qYFKBbn1rXo0F/iWji/LVJrG1ngiqV+fJb9B0DFkhOakFWkAWfr/NiVp3O7QVXgHsqKjisd0lTLeRc2eoeYsVQs15lYvto10DAwjg+6MWt1vpO3nYJAlVF9vZa4haP5IBTmwYCeBj8KvYTmQavWUd4FPcVjAWFpdB+4qmBk06kCC1TwRhhWykjtRX14umu77mB1AVmZGyurI3jexj+lZSgojt9I9l7qrPEhhOa8sC1lzvfIhb7HFH9lzVdHGpX6o+1v45D9kfLFLStEqsxHRF9F+kMJi/zQ1CISS+agS8q12mlC6o0UxSPxkoAtwYpKI4vpTOuunPU4m2+k6Ro+B2Gy4C2zEwJ/OhjLC0R8uD4LmVtsyuCYkFz7F0NuntEuOyxaVx/ageQjM/u/vxnUt+HJ7CxHdNLCLdZHG0VKfaXa2ZUrPOwq1V3naTReyPAuB5qN2kq/mebPPydKEyzcwwdYWQwCVDLdPKL3jG4GdGRFQjs70uCBwBt37amsNL60sLKQcWMBPlanEE1EYKqiIauv1Ge7seZ55JBaOGBG3AdIctOS/zUMe9P8H9Gr0coLTBT+p9Fmc4QkBC0PAUOvUW/rk2+OrnQZyMFRRsE+qZoduD3HDjqo9zHzHxQTfrgNPUHxUTwIIGVn1BVv+6iLoC7TAXmoOiY7wlGu/utOwIqhtloqe29+wqFVGEnox4tHsF9o6guedgO5FkQVpgnoXfPhhA+xG+/lnv1AOdufvxzzze9sgcMckSFRE5PbuK8RauezinTX2A2jVPtUcQT+xn5MhPZ6hu6zNWf80f7AcZLZ1mrpr/D3u3KSc9QeSe0K9h3sbZorGVAkjSk2XnZCPe7O1Dc0cz3A9A9LAbsbDA855zr0/Tx0Uyaf8tqfJ0xJdAqyG+sb78u4mMmIMwBuQAnEZ7xOSzCcVTj5URUYlaHuleywdeFtqLjGxgD",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship - Liquipedia Lab Wiki",
+                        "url": "https://liquipedia.net/lab/GAA/Hurling/2026/All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "EqUHCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDD9RB4vZ85fZb1HaAhoMrYHERR85cg6CVSKIIjBQ/cKyseRH6PAsiuX3iheKrdPZzZwg/9/tCymSFp3FKC3jQqgqHzErxx/hLzKYDkMqqAbjjGVhVtpAw6ZLv0AkkssBI2uAlK/yDf4kvr+Tw0Fn92AzxU6aNhrk8mH1nP8m6ltnob9W+at3SM+iqGq4/DccL7Jaf5beDXvTjDZ/yfvgjo4N0LgB8V4qK8e4cb202Y4AP439laSQ6wDQaem3nmyCW9yZM1rD55acqwxOWbqFx13icdC8N4tLgthCeEcTdkKW/sm8yZxNhzl5dSfl4kPkIDHAzR09TAMjrLHN3KXA9NZ/EKOTM6WGyEXXGshxyyHwd/d2a7WBOqI7+p0RC2mufxxx+/Yn917v1dVyfwWiRVC4J8a0r1I5W7eOng1X7uxshwDLJP5NMRd54u8GyGfo58ktKj8VqcHaZdJDyQ/Z/5eTUvwzNgcD42cz1d7MmJSItoeCWbyKJ0UcAyWqpbherRXGrZ+U9bvSt8tcoZewr0xV1x4PGwRFCbkWOZwJl7QvAn7j3Erep9OKSOi6ugga2KS6O6YV3izerMvUH3eWkbYGDKNecgkb75AJeWpQdJh3dihhQdRhsjaQ3bWcIKQbyBNAIPcbulsaPM9Ivl9Q528yV2l6KJTzoLqBna/TCCdk7M7cNX0hyWyMm75Xrqqsfh+nbF/Tf8RCdCfP3tQfMDR2qLD9SE4zSlsP+X+5F25SeF+aQzEsuhcQRKM6PZf3WvPynrBpNg1ijkvN51Cod+Iu+Bu/oNp8T4+fEgWpeTEvVeVq9Gft3IJ8RwKcyIY+J84lAaNsapGjYzvb3IANRgqKqclKW97LDleL+Snt5eEtQk2/mKb3OFKZV3H8jT6LneKYYuB5ffMzZjaiIkG2Sun8sepGo9nOF4PiNskr1vV87NMRVdLm9ByO8pB2y/BDpYvhhkMp5+Aup25Eu4623WKiGV5zOF0t9g40Y2Z7jZOo+S0Gi7AZr/m/grlHe5wuSvwcbhgLq6IJfh0GJstXKj2gIPWujUVBQ+KYW1BIUMgr8M3FUpJrdX7HlptOgoJPAoIJSNtrQZfdcmS8zRAuRpFjmvUs6k/DgN4yrJBNe+1fVcRmb2gej8XdsIzM5DV4R16oblQL5MWYDZbuiJgafXnHt29NqyimGAM=",
+                        "page_age": "July 28, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Football Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Football_Championship",
+                        "encrypted_content": "Eo4ICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDDiQZfJkTdvvvqZW4xoMY7nnT1TKi1s1nakzIjDnvvdONoZDIugHZhtXRmA7ceKIMmDe4BNDy80EbrKD3jyiZisZtE7Og5NtnK2MpzIqkQcWGrEMn4NAteQxqcjNyT/z7MYQd5kZT0DdXYx1bitV2Hh8H1Ym9SmbS/SNMuNcu+QI/5k5mEafO1jrOkFouAHUfD+KgulL8g5i/a+ABv8le01S3Hqcsv5l58/sIZ21WgsV3oSn4e6eXHH1uoArktcGVVNIP1josgYgoq48nbJ1d0ehm9JJvVYfrt9cQkDR2VKl31yZ3/JuIysrIctUFUXx4v1xG00fpMy1pCXITT1wxOsZO1IXxy/Azx3b+WwSWI77W07WVNTO4leY9zCZSxpDOb+aBBRLAup1zOggrSOhQgeeommPsGuhE82Cmf1im92xUoZq9/S/BPLMn/wgLgce2Q4bMlQcIz09i+ztl6gxQqXkDE/aNakxUAWrPkVqkp+S+vFfi3NhJprlyJeGCut+2FncOc2PaGwVcsEnyrK2SrSg7wKE3kazlUo50BsJzxXhYpHEFJjFQHWWj6RXfKiuxmG0qF+3Zn+jv2rhGYgGVfIjS0vsnV0zMMoHD1CKvRVsOjDLmcKgMHmTQ02bVC9XTc46AOwBcoaBqCGQ4QrmlVToXi0etlhFwh3h9+8moW4KpmpYZvecz6l04xgpoaubVcFguf78HVtRsJxvss1Fx5JryFUYNP/35aMahLwsN2tGVNT1Adh/AordB7ez+g6FbSsBsGT1kNHpcRHj7BMkKdGtlj79r2XJxab236dPKlIEWbRkYti3U4hHIvAUreSnqbgqhdcx0Ii6KGnVBBrsulq0rtBpSk+jIXdjAlRmCR3U8A5VYKxKpVAE7R+WTpL+8E/wbMf7BGFboBLJVlrcsu8XF5NM/aVJpHiI7Sm67z+0ibWSkgZ6rY0JSUUuM+ZAgsA9/ormDGVaH/LqUuxSqDxLPklBnSc4eW9ZG+COJrcEl+8ahB5UNIf/SlAsg627ZxT2YsPPkEYzev2MBj98lBq4XyA7WNXVtMu2cQGAiJcBwi/8m5l3bhrWH7x7UA17KScl+fMMOkFOcnUiGAO8Jz4zQYVx4iIYDkLOZOhn14ZvxmPNlPpfvAju4/b9tJJ2LQbeiGSG2kzAarSpMd0ot8ARcDMAu4HLWUd8knBhHoLNhzwl9uPLVxiRiPowHS1FOKbPEkUZ1BMytkbB2htrSuyez3z+K/PkfZL7d1qMh+N64s6FGen7bBvaWcM8RxTNeDadpAdE0Qvkiicubc7E3Hv8hJSgNNvWI4XXMqNfAK5yGAM=",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "All-Ireland hurling final: Limerick beat Galway by 11 points – as it happened",
+                        "url": "https://www.irishtimes.com/sport/gaelic-games/2026/07/19/galway-v-limerick-live-all-ireland-hurling-final-updates-western-forces-clash-at-croke-park/",
+                        "encrypted_content": "EskICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDNrczZ69LX+szPf92hoMB6o7dd5hxzuTKGs/IjBTo6ARznOF2Fa5+XENlGX9hRrbh2jqt4OM2TJjz7lxV//D7g3sp+iu8uA8kKQEjuwqzAcqv84BnyM6zppPzY0ZGHHj1lxedFArHEiYWShUI70tU6RImXm8i5ddTklRyhsTc0V0Rv0ZGbDAjWsasMJM2mZNM6IRdbCJElxPWrhbLMIc//FdHJvMyqdAgT7hnRMu1JLxyWUgb9PEXCrk7tuBeQowrMmtJ/eQfnYHilobyR8XnRLy+UC92zqkj47NUUbGJB2WY1sPlbhUqraaKJz0XDPvr7PmG9jXICtxkvUBQiJc1vKk85DLw6nldk+ItrTeXtzLUH95DSn9VZVNfBQO7wQhtp0/ppxZmvcL4T06BQkYo5kXG0vZhwfDUI48jk+3N85Mov4wgXkqZXAPWQq2DEBlQ0j9GWVo36r5KNxvgwxJGuCYelxvqxB1llbZzRcN5ClnjQqXt/Td2TyGCET7KwiuhLxUP1TljSBItJ6PbZVy8dmaUqaduNiKQXGNnI5tmiBJ//aRDzMzeE5Ay5pKMPWcid9XegFBtj9MSM4qedNV9bgCujpMEqvOxNuVurHFIMYNlGYeZVCpyoy8fnyAu+IE3/IpZqPP31Cl7XVHqaBu3a/ct5uetnoRv+a237dvUGfJj+ESJYJov8vERFccZe+KnA28bIJWR5ocfpdx4tLJYZlwFDf6zFbXPOjqGVXuP4wksIay01grOld9luHTn+Nc6cvEABtvXtF8H/mazXIt9fV22ZDUhb5fq8/GKsg59vlshrCSaTXPIJgUC2jGpBd6I2l2Hk8ZYe+21Ce4hnxof0/awnGT3MxGvvKFkC6N/14nCHrv9pBDEwEUw4Wgb8KOIWwNIDOUSj4GYthmC6YApWi2GUX9T3DukRqJZiAO44/FlkV4diLbW3rlzeZw5MF5etyc86Mw+Su01gvJBFZiF2pRIoJe+6seV0TEIK4Vw0s1NQ/ziY3+fDGly5f7vTldjeaP1xUak9RKtJ7xFoQZoDqp5/rwqnK/hTAujIu0feo+dZDe819t7XWhaqsXJ8bE465UbpEGaV6bsMiHgwDDauIgQOdgf4KnK1Gasq4Es+rlnfsPcCsg70CSIPedt3OhI9kklNp3FAa/QvnIGCjPxi4P2ZuWHmuuTalGSlgAF2psYEx1kMdWfX7RVFXlxVcQOJZ0M2baRiFjHN8WJ/vYsCsAHaj3h3HzrhpV930Etvm4jJFjXRhB5i/T0PXaDuZXA+k/ga3uwTJF3O8zJM6KeEiwl7u0KzdPZXr4vmhfBmzqtofiydDkpuzmwyNxNkD72pTwCT+yMY3MxwVCYI6KG1tgRUjUPS3uTKQIGv6thzfRXsdxqrgIWOfhlQgYAw==",
+                        "page_age": "July 20, 2026"
+                      }
+                    ],
+                    "caller": {
+                      "type": "direct"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": "Limerick won the most recent All-Ireland Senior Hurling Championship final, defeating Galway. "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. ",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDNGtPRye66UAdEw1ExoMyL/NgKPg+Ug+KyUzIjDRI6lVP+TiCKaqxKJtKALH2B7yZtwUKdyDmW/nbzGUH8cCk4OrRJ7MrSsxNBljjWkqE5QNVaEdwjicied7mCP2hDC6svUYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018."
+                  },
+                  {
+                    "type": "text",
+                    "text": "\n\nThe match was played at Croke Park in Dublin on 19 July 2026. "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel...",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDF5dnmAaTMfdNPXl6RoMtWL5wEhznISb5BS7IjAt48CBKkfg4fcHmR3SQQvmlHljEIU4HhZJi8t8+j6S9ZscQwH2AIn8umzkBC9NzR0qE5lcmB66Vl7tATd8mVeJsM56F9QYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "Limerick defeated Galway in the final in Croke Park."
+                  },
+                  {
+                    "type": "text",
+                    "text": " This was "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "Their last title was in 2023, when they completed a four-in-a-row. ",
+                        "url": "https://www.irishtimes.com/sport/gaelic-games/2026/07/19/galway-v-limerick-live-all-ireland-hurling-final-updates-western-forces-clash-at-croke-park/",
+                        "title": "All-Ireland hurling final: Limerick beat Galway by 11 points – as it happened",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDOhAihOiRz8NjQU1VBoMijO+de7fBW0yDSdBIjDDxHjGa9rqTApBU61QvQjeVmKDXOVuxIZnaPQbiaxW6i0pKHiyohQrDfvEB6XhnZYqE1XbqXxCM7cFiWCZ/Ndew9ZCY1wYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "their last title being in 2023, when they completed a four-in-a-row"
+                  },
+                  {
+                    "type": "text",
+                    "text": ", making this their latest crown in an era of dominance."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 13782,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 283,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global",
+                  "server_tool_use": {
+                    "web_search_requests": 1,
+                    "web_fetch_requests": 0
+                  }
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "The most recent All-Ireland senior hurling final was played on **19 July 2026** at Croke Park, between **Limerick** and **Galway**.\n\nLimerick won the match on a scoreline of 1–29 to 1–11, marking their sixth All-Ireland title since 2018. (Note: some sources, including Munster GAA's report, list the final score slightly differently — as Limerick defeating Galway by 1-29 to 1-18 — but all confirm Limerick's decisive victory.)\n\nThis win gave Limerick their **13th All-Ireland title overall**, with Cian Lynch as captain and John Kiely as manager, extending their dominant run in modern hurling.",
+          "searches": [
+            "All-Ireland senior hurling final 2026 result"
+          ],
+          "citations": [
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+              "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+              "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. "
+            },
+            {
+              "url": "https://munster.gaa.ie/event/2026-all-ireland-senior-hurling-championship-final-limerick-v-galway/",
+              "title": "2026 All-Ireland Senior Hurling Championship Final – Limerick 1-29 Galway 1-18 - Munster GAA",
+              "cited_text": "Limerick defeated Galway by 1-29 to 1-18 in the All-Ireland Senior Hurling Championship Final on Sunday July 19th at Croke Park. "
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+              "title": "2026 All-Ireland Senior Hurling Championship",
+              "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel..."
+            }
+          ],
+          "usage": {
+            "input_tokens": 13782,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 341,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "server_tool_use": {
+              "web_search_requests": 1,
+              "web_fetch_requests": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:43:58.287Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                },
+                "tools": [
+                  {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                    "max_uses": 5
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWB1poFhqK2dkoExmGDy",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "server_tool_use",
+                    "id": "srvtoolu_01UFGn9xWc24wHT7urPU2LHz",
+                    "name": "web_search",
+                    "input": {
+                      "query": "All-Ireland senior hurling final 2026 result"
+                    }
+                  },
+                  {
+                    "type": "web_search_tool_result",
+                    "tool_use_id": "srvtoolu_01UFGn9xWc24wHT7urPU2LHz",
+                    "content": [
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "encrypted_content": "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",
+                        "page_age": "July 30, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship Final – Limerick 1-29 Galway 1-18 - Munster GAA",
+                        "url": "https://munster.gaa.ie/event/2026-all-ireland-senior-hurling-championship-final-limerick-v-galway/",
+                        "encrypted_content": "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",
+                        "page_age": "July 19, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Club Hurling Championship Final",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Club_Hurling_Championship_Final",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Leinster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Leinster_Senior_Hurling_Championship",
+                        "encrypted_content": "EtUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDHPZfldyKaFyXEYfKBoMEyeC+DwkLMg2DlZzIjA1bapPOKx/7erKb32fJTPy0uB5OU12/sN+UMJk321yYhZEqbvUbhU5yt/jh+OdSYsq2AeAg0hWBfMjytQ8vgXKk3o75k1xDKYDDPnc7+zQXMXUkj/U03MJ9oC/Lv6WVYnU4RmcfG7ymYCyDKdKQjtT3N4Zq3/jqQgkAma1x/EaDRDkUCiA+Wxz2m83DTKF9af/ahJAS8fBuk2JOlzT2hTLtO5BEuNqWZpzfeylwHQV/M0oks0h5chk4lWAcYaYv24q44a8RZdCIC7dw/CxMr/S4PxECT4LT0/WMY789yNSogOeamRWPxOU7ifBFahpKDmW2ev0DWi41EOJSmhq6qfHgc2TOwuLGPyGwdETr6/+nt/bOOM3pY/fHX2yt9PGo1u84jTlXAi3P8JXOQlk3CX/kjToitmBFs92yWzTzeAE3shy1hsBCwhvd/ywpJpcrk8KFVJdTepbLHf20icaLR5ySa76tztEtUliV5xwjhDHlJ4GCLrqlg7CNPN3nfZWG2/OoqtpFSZmytF+Dx01cEmlCt/soPYExh18i9/mgw3rWgt5VdQwf0z6hcvEt3ler9WgI0Riphe40AMdtAuOQAOZxbqWchHPJvclVsnY6/QG14m2XeSkbk3HEjDWOeyoaZjDhfm5WFVKdwpN+dwnhrGPP+6gar7ueDKe0s9eEtniHbzQF7G/RSc3VehEECBWPokzxYS6ley3CgUFhmD/07PFv71EnItl96TwrcW/vFMFkLnA+bv7LotWZImp+o7kvuXm6MHlx4cCB2SS4sDqVSD65qfQgVStnBqy0DoYc9aH3RW8hojbVOTAFQ6xgQplzWacxH31m+fOfslw0S642p+UT+7kcPZYodfg4MNzs6S11oqU2RHMF5lT2g1UIlJOSMlffRkz0RjY5/MHu0UP1ovCjElvcj3EDu4GBBdRNYnRozhIDnHBAP5Dii5f7bKfbWLYv49H+VfI5sLsdJpeL9VddB90BYOLAqYFpSRD9i5qYdC8sDzKU7flcYSXMLVVVzoUmSs5OA+kThwmQVrJvKUXt2Z9hsFjxsinJ0FrYeBhXdOyierWjXdG4onDqtRfnIz9amIWVebR6aSHqo5Nf70oJ7KlBKgOHatIe9mShdJdb1kNTxlXXszHCQ2sUQBEiOK9DOEnQ0mSxUkOz56wBoLPdeXPf2WjWhdG2h5qF9Nr1bZUcOplfJvL8Gq17Rt8rUkhlN3X6PG9FSwfZGiu2YUpRUnh+8HZfHzUNpntmpZ4QzbPn1bi4O7VQPbRjRPNOCakNSEVUD/e3YDpcwMqMwOjizyfjZU1pL18zqHbZR0Q0NtR/SL7CUlOPtwkx6i6gfRlg26FVOauALhJZ5NNFXOsqgbVELVvpLavJ9YYAw==",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Munster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Munster_Senior_Hurling_Championship",
+                        "encrypted_content": "EvUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDDvwb1DFzFPshUURpRoMlqi1J5+E7yV1aZmbIjAoo28NxXRZDTJs5iRMFfjReFFSZIMMd5EsZfJcCrGYIuafonZVS0y19jw47qntvy0q+Ac5iCmR0tiXEK3GKTC1WyCFIeQNOtmT01TfScIlKic0mIdHQ3xftu1UEG5yKT4RCmvvmTWtNYzpDgHigUjWMoxLzmISv1/RVROqT8FXR5SKM/O0l8jQeaZSkkr0Hzhk8mMCrs1Cmwk1kc7d7R4x9GpKrWC+/CQ0YuedMJHktAB3+kUse7ZOxR78R6MoDrxokbNH51xrHgcHJo5FYmtj3w7zvK7pwT9cRaRUXHPEhojzt4QJECL2JVKWl7ZIYIYoEby7BS08JpJA63W07VR21Ev+EPp2s14wqbtLexGsXD50Ok8OSULT7+Na6gRW2r60zeC2eRbaEcJQp3Ls2BT/CTysuFE5mATKG/DIWHMNrmrc/S3HRz2W3XbmelHL7oiNdUjMLjzlgjE2C0Km7Op6MjBF05ZfHNelN0awYxpKT/W51tfwkDzhDTCenQ7AYbzEvvp3ywmiUN+3Prjw8F/I4kX8FT7f7I4vdim0Ri0w7xMwgi4E01AnGsNiyxVglgtXOEDdZKKkrbKMStDOpPKyZnke76u4YdOX/nXaoxN97hRP68maMhxmpijqQZaDhAf4Ji4aWyEah0lxFhOz6inbSCD1WTtsvFgAfEP1UMEYxwSsmfOf2YxMyQw1iDSdRXWJQ7HLqudH4wM5awwOWBeEdFRZK6aT2Ub2WAFswU+Z7XLDeDBQXys7A3Up9QvfqBpcDRoSmYhMfp6j5IZpsQ9RrzwgV261JKXZd9WsO7B4WCjdpr4zddcVb8Byu1iKNtuQJdH03w9BCAkkW0xAa6VM5wb+DUpzLotbiIX6jb6MmIltF3y5dQeGN8AyufZv07aMpVJk+4CJyzdsMC7qnRrpU1NicN6IHPbw5LiBZj7R6MSqCbh1aPzHD3LR0LoLqBst5kWL29h0/PRtFWaObYI3DIiQzmt+rWL9n4xVf0RqcNLlf95yuTLSJeho4dEzs7/FgPficqmZCEnuXrp81decC5QsVf3uEVcA0eMa61Nr1MJKc0FRu0P/GZ7PVeCJ9BfHuqm9DSnYSqY6BWuxBgpTNi4Cf8Dci2PpvnO3zbrYr2lCG9qnTlawQGY/D7kE3FKL2y9gIW0SIZWt6j+9s0wuCPSgzmP9CQldSOxWcsXtyJ3HuC0rvBnRg9BNY87trT2gCktYmM2qlxenpNYgTf+6xEbItJguLX3K0Cilahk9rL573X37j3vRCxTZuuMuo/8zOzYs6ABi7qgtSuJ6mV2t0vqxWGuFgjs3KcyKxa8GrVcuBoAqvHRcyNZXSfuFk9gtnbwA8T42q/CLV/7Dbt7kAYt7cBbHOXMHjIiXrD7t44Lq39xU34P8re2IpiAbAF9gCS5TlujTsRMASRgD",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship - Liquipedia Lab Wiki",
+                        "url": "https://liquipedia.net/lab/GAA/Hurling/2026/All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "EqUHCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDK3gRQ4HrZvItAI6RBoM0ep5IEwZp4TRl6FtIjAaELCTmbEX7M0PKlaJXesnTeAsQAm8pPCsg1NnZR7jb9L8Mq0d1OcmjzxP1RPH63YqqAbr2P5CsU8Wo3W1rTcxHmzgB6xbK7Ym+MgfMQGUavwmNv8lUGEjPbJpeQR5/wHnlDwMqNKs3BcJmUcnrtU95tPaMiqRw3JwEys6FiI8YODrgYmkapevrTynCqoFuc2tw96/c54PfMWG0FkrsFHpXfKaRMd8rJPu2+KZS/cBLIlHbWyPScWuuKVTSjqeYUgVsXUsnTZscQN1y8PDYXC+56RlU9gLzLTC9rmYnMEbtuYtP0jViJBtHyHwlKRPEsAHqv095qhKrDSKIFPX814tj6MejJOUlkIYD2h53PgW1qDhgN4fIqgKoVce9W4kcphxoTG6Yhoe/WFkpmCzlgxijeKlcKO7+6DavYThB6NGKpoDiMv2XLfQcJlKeEazsm1rkB4hh2PUmdXnJVsMyjYAe8vakLeBP8DanF3VakF6VTwaj9LYVacnxk0DCYge/3vpdAR+l7Gd9HsdOTuHs3ejBYUWaMZj+O30sIcPetkP6KdgsxXLnxLajecr11HpxY2AYlAdXCJ6A4EoKHQdjMULOH7hfMseCfEu7TVoQKqwpBrhz58E6SO8XvH838uxoxl3hVgmo3Bv8RjlSVMi+XSHlfo1wR/Dmsm3+Z+5n/gsO9KIdb6qE/VUOeJjpsFyVsmcD5ajnd1cUTGvRqBz1xJo39DWQ/tda8LY9gdz5lCQuFKfdgRUD1pMOz3NkytsXb3aHPBd3gb2va8r9r0PU1BVrkK6tHfpo3edL1SvK0l1fgG1Sea6G9XOFWRTuqhW0gBnWAq+PSjoKodt9BPV3NGI/ztp8KgOrpLDEh7Rg6PgGS1j9eOW/Zh0l5PxZ1ZP1StbcZadx3CMmM17W7MZVqXJu0eUZsOi2JMaf+InjbmU43bw2obpoaYEhgyX73IiYJyt/UGEx8VoMvK/epj6KwOuTw7jS88cXFiauvFO3Ju4HD5j9r9Mvmi7wV53sf9D3Fatif6WSmAiE7D9cQgRlUbnhhDL49hNJdJleRhcsEmaiCOW82nAAq1MUYZSLlmLIeJxFsGKkjyE4LsFyUwqgcJEmyU4BBoKxcMvQlpqaWWSErfvZ+w40kC3LMjUGAM=",
+                        "page_age": "July 28, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Football Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Football_Championship",
+                        "encrypted_content": "Eo4ICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDIs1zoPV+CCUD5ue7xoM7uP6sPYmfuRxJefRIjAvsbGzCnOG2KlcZkW4F3hiP8kCcx7O2i1cB5ZoDrlygPbMxDRiKMzRoGZX7rZvsoYqkQfYzbwkyZs+7n1wAG7480xouPeVohXFUgjqIAujme/agt6bBUhxOUDk6O5K6F24lcTh0jpGQvqk/JSMp4CyvKkzvc5Hwy0EqaGl/tUZsQsRxCwFcBuz7zK301H/Niw3RwK4QTKwMEVr0bqsBGpW9YV+6kg1OHTxo08TVWOquOd4o+JGZQBFvaSA3ENAtpfbqxyGLxKk/pNqxjwfE6RbCYr4+GtF2S0YWZHc0laGs4J6kM7utROHMZJxftpHgvvdGROj+89+vUoarjbD9Gj0haYo4TgU9HLdvBIyuWuQOyjlL7kR/TBGwg/AZh81a01aQoDCrS0NwT+yOgwipz0u8n6eduvCH/cpj5hqVm4CDQXlNBT4ENMQativfe6ypFpPmx4xLXeWsZv0vvOp4lO4tNXwD4dCy6w7Mwmyly84ThD4XtbyjU5kqYAre4VEppVZYOB4YETpwZkCvBxkVLwemgNKtYXFxYVlnJ1VJAKA2oOElKTR2sRXwhsVAzhVlDint+aslPmfNp6FHT3aPoKEBVs4JMTm8OhIWIM9JCGJAZS/djWQ56oA69Ffhp7qO+fp8Iw4kMnRE2t+ZvFi/xj/cdqhb7XwZeLinDyCLCSVXwR8WmaodJoMrnkGAHbTmpYnHIGPuEIlwVuNJYJTdqTutyWiPzbryqTU/hqokCLIDEC+6B1nl/KqCDOQA1Mf985YWlGXxHguDQ+yw8MWLoJMW1IM/Z82Wcj+o44+/MvUn5NFQT/8TdK8sYhW0iiENGklvzw8sjSSaQ99Yj7/eUgDiYZ2WZt7b9hNPJFrA3Xxh3cXhp2NKCqUbAsChUPVNZE57IxqBWubCn3O02g66S7G7SQqIw/9G4kAyris9pcDQtjhjcjV35yQ3LZaNg7joQzkeVjKUFOsC8P8854LG0As46Vw+eyTB3+lW1/kUjFDaGJDFN2nM0/SncA2W4Uk+eFkRNTWp2yXaGh/ZZVKZtT3ZZGIInQA0Dvprey+KqFmBAiK93X6Ysn0KTJD1YIQbPqIv+zns14UDJsEhD2uVINPj1n83azwQLM1zE1HzwzJFsCl2JpxM8lxTUs+boCa/YUnj7K1Qtv3gEmC3Ci4EkXGTrKZVUGxkI7yupyMTth7N+Bh5zxxbQwxNyj/SrRJIA4jfBjqPSPKj4fFdiYQPlHJ+ATT7V8CX5EDEajm+g13xbbIBKFjvw6Kd2CR95xw6WCgbCVlGAM=",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "All-Ireland hurling final: Limerick beat Galway by 11 points – as it happened",
+                        "url": "https://www.irishtimes.com/sport/gaelic-games/2026/07/19/galway-v-limerick-live-all-ireland-hurling-final-updates-western-forces-clash-at-croke-park/",
+                        "encrypted_content": "EskICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDKcY2w2NHgiEwfwKeRoMVSKQCeYhe4wTxx5DIjDlCSeak45GQ75HdtJbW0Ez93m3dZAkFMWJlWD4npwbNNQUb67uFSKM8yqcY/LHguAqzAerZFoUCiG3dRTwmEsWm1FW0s4d4dqYXF0ML6g3XIugJdblaBcX3+ARIrohbbT1vTxHUCazj0//1Q/MyRnp/PAE1IXtgDUuiR2WdL3ULoshY82qWiDlOrI7NrTu4aWo1eKlZAHSnzNW+Zlw6ZUBIuR+LFI4xUAYxDjFMTYGKUrbXCutTbN753PhZKQuoeAoZCLNbt0sZuh5qgLS7NpmAGTwoyf1H0xTzV+xbuktU1h2fmugXtyWmcpUGS5NIBynIkKz+yV96k1huzHz99jEoQwzWnork+NrzVcjLFLVpAcl1xYn9J/8hkKXH0Y21vEH+J8mW4e6pAghtZG3DYtfpmWOU52H1nSr+KsWTWaCH8tJ0hDRFfGgWW2LHNwGFbsCyVdEbYUSC9NO6EgVg5MHmN1HhrqTIoMq+pIjDEANrJF35l5h5ibzfWwbHmG2bYTERmtz9XwA1c9syd5b6s0ePE+3/1429THTB2ifZLfhpnM6yFTkKzr83zvC1svfxRjvNKXb9P4gZVU9GmhQofJy8xK4zZuj1IPVJaa72mrTiwKwta57ZZZ5rRqkkl8bQesuVxM2aMdC/4B1lWjpW7etKIFokY5b7NEX6/KwyyDJi8YzG1LUtqTEmCB3dYt455se3JmWA9BqhJCXhMbFnBETUZWqn8qu8tcI12K9Ab7hviQTciBRz9nFHQjs+nvGk4tbrvOFk88vpMUWkJdAMpwV9iI+QaXxll15WYJ87GjCyTg0001kOqgc7Vj1LhL23DiWCpOHbfTN7jo2TyEY5/cJ9ndwBAFVh6TIFuUEEPocHDMMn1eCVGOwbOPWY9HOZhmIJa354JnLFK5idU8CninCxW5sA6PjttuBnckKIM64wOYXq0e3petgcrf/zxJcOqCXmiwxmJRG4wH0RBcyeKdQHO80X5rUSuFtXVznnMVy9TkJNRzFO38mAujWg83mbpdfTZllNMyW9AwJ52X0dCz7wTpr6GmWRE1neOm08S1TLdwSFaJnYuSxN1wILPH+cOhBF0aYxBlOwN8/yaciCFwvG6IRlCFTsuTWQWAKjVFjqP11jCFUk3/Ulg4r2ZUMrc4LII5aoDGMV2KXcgjOQ0+J1wvg+eqVt8bbKjCI6UboDxaAY/KpsY/G6ot/MN7wBIWHR7U5xXINQmULoRtMbY5TRROZwUK3h4chH5tfPeOh0aqhlxA2MvFGLxsoJnfZ2KGIGW7JEGN1m2ikLCpa6g4ir817DCUAGdKB1L4UeAJH5or/1fFXrEN1opfZhbBst3xlLAFNu8yX8U4CZWZ+XdgYAw==",
+                        "page_age": "July 20, 2026"
+                      }
+                    ],
+                    "caller": {
+                      "type": "direct"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": "The most recent All-Ireland senior hurling final was played on **19 July 2026** at Croke Park, between **Limerick** and **Galway**.\n\n"
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. ",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDJ6gI/Bo/rwOmQN+bBoMjthxaB6Aox3BaZ/rIjCXupwuqlQaG1tL5OxS3YT1iRJjTg0BTB9bsD8uCQtmc9J9wKDkqvU36TrrmVBSL5kqEwScYKYvugQ1kIuDqwieurKDbWEYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "Limerick won the match on a scoreline of 1–29 to 1–11, marking their sixth All-Ireland title since 2018."
+                  },
+                  {
+                    "type": "text",
+                    "text": " (Note: some sources, including Munster GAA's report, list the final score slightly differently — as "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "Limerick defeated Galway by 1-29 to 1-18 in the All-Ireland Senior Hurling Championship Final on Sunday July 19th at Croke Park. ",
+                        "url": "https://munster.gaa.ie/event/2026-all-ireland-senior-hurling-championship-final-limerick-v-galway/",
+                        "title": "2026 All-Ireland Senior Hurling Championship Final – Limerick 1-29 Galway 1-18 - Munster GAA",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDL8ZZ21ovIWh/5GACBoM6KkenR/pu7Q/MIdsIjATPHEvbwwYAPouI6VI0F63vR/9aLzwT/19gi5i6hyTsQXtKD1ea1wEQk9jBXMW9DYqEwHTNw0YhQVV75H74RijluTqmwsYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "Limerick defeating Galway by 1-29 to 1-18"
+                  },
+                  {
+                    "type": "text",
+                    "text": " — but all confirm Limerick's decisive victory.)\n\nThis win gave Limerick their **13th All-Ireland title overall**, "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel...",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDLxKoBUA2d46fd+V1RoM1Yq1DtjPfy/jd4rjIjCIfJbIf8bXOGqRzAylkx1+5A8A+GPcS/TDmFJ5pIh/+oAnUyOJ5tunF1TWW70kCIgqE61xHMfKdymTopu1BHBHywJV0/gYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "with Cian Lynch as captain and John Kiely as manager"
+                  },
+                  {
+                    "type": "text",
+                    "text": ", extending their dominant run in modern hurling."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 13782,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 341,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global",
+                  "server_tool_use": {
+                    "web_search_requests": 1,
+                    "web_fetch_requests": 0
+                  }
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "The most recent All-Ireland Senior Hurling Championship final was played on 19 July 2026 at Croke Park, and **Limerick** defeated **Galway**.\n\nLimerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. This victory gave Limerick their 13th win as All-Ireland champions, with Cian Lynch as captain and John Kiely as manager.",
+          "searches": [
+            "All-Ireland senior hurling final 2026 result"
+          ],
+          "citations": [
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+              "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+              "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. "
+            },
+            {
+              "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+              "title": "2026 All-Ireland Senior Hurling Championship",
+              "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel..."
+            }
+          ],
+          "usage": {
+            "input_tokens": 13782,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 247,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "server_tool_use": {
+              "web_search_requests": 1,
+              "web_fetch_requests": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-09-28T16:44:05.620Z",
+              "request": {
+                "model": "claude-sonnet-5",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Who won the most recent All-Ireland senior hurling final, and what was the score?"
+                  }
+                ],
+                "max_tokens": 16000,
+                "output_config": {
+                  "effort": "high"
+                },
+                "thinking": {
+                  "type": "adaptive",
+                  "display": "summarized"
+                },
+                "tools": [
+                  {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                    "max_uses": 5
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5",
+                "id": "msg_011CfWB2N3TXnyBQ4s2znXbv",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "server_tool_use",
+                    "id": "srvtoolu_013UmVyXejEGU2RW9wwGeqHf",
+                    "name": "web_search",
+                    "input": {
+                      "query": "All-Ireland senior hurling final 2026 result"
+                    }
+                  },
+                  {
+                    "type": "web_search_tool_result",
+                    "tool_use_id": "srvtoolu_013UmVyXejEGU2RW9wwGeqHf",
+                    "content": [
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "encrypted_content": "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",
+                        "page_age": "July 30, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship Final – Limerick 1-29 Galway 1-18 - Munster GAA",
+                        "url": "https://munster.gaa.ie/event/2026-all-ireland-senior-hurling-championship-final-limerick-v-galway/",
+                        "encrypted_content": "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",
+                        "page_age": "July 19, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Club Hurling Championship Final",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Club_Hurling_Championship_Final",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Leinster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Leinster_Senior_Hurling_Championship",
+                        "encrypted_content": "EtUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDPP8VSoiZqRrWPhzHhoM4OcBumqNkO48giS7IjAOersN0VQyQUWIdtC4mAcgiYGm2u6MDEKUcTzz9CXVuS5Vvlkf79wRp13MjiVEbT4q2AevuBO+rv1TjhA+Z+vS318YRwaJwIPUjSoGkqYc1qIoRAjtcZkDMXQ/tG9/bc6/Tr8ZS5oBgTTPQaARkdY0fgJHQDVMG4OaRy+BXWTcn6q1KDxbJCIllYIzqkBSrQ2AIqEsyyxK3kr4X4MMAd61qFmgu4AN2mEi7b27tsnH2YkyxnKj7OBdX1zqyWLehf9BROP0RpcSErGzvfycihrPLUwwStIMjav7STkdH63CLWvEyFBX+aXc3zrnLkE2SVjQ/giKJZ46VbgDTexI+3vWy2rUJbP3zlfFJhqs4jZFbjsy6596ribVqVVk+MMFH8dLjVJgjs0DGXsI3CxdJkJf88CxiSmv0jpA0iW6865eOmQSxBnMLYd2GodlM7Fa5kvpqTpg36e0AFBCiM70Y8n1h6852qvzVCpMtfqcDJvIKO1kzCSh3yR8cgOZbrYScr8nYsP7XLjmeszGDnwt5k1WXSwvlzOsN0oPUwSImarDlDAeHZ18LVPxsDu/2NktKzae/PXdwMTCTEkLcPEtXzL4TUQvM5H+3lYOH5Ax5VX/S2XrgksZ7A3l3kdQ4ya/5TGk8qmHJbOejJW0pPuWsZQkm4ZltUh2K7vKZ712mH8BQIJZrewyJ6zEDs9xeBsknEqEmsowsIxeYGZfMmjcuhvixYLuQ8st2OqDtPJ+ANlOD6alBCk15S5LVRBeO9zfusluYqIJfHMVCFNk/+MgFpl3xCgZaq3Kq4gQ1XV95SolhhlFJGYkODEdN74PPQxBDBFf+Z5dYacZrOhG6FLmbGbDOHcJqINpJwAlU8XIyydgGOypvqm9ke5ZZNJfukrTm6PXkUcAYDOEvhRqKfDwTDSOhb3eJflVhg/tMVG49ikC4FXPmv4Hk3H4gmLzNVur2RUlogRc4RIKw/jN3oVrpI1cOi84XWA05WSOSO9cbaZFtHwBECH9j7Q4IeujSBnk6fpqn5nM+UHMC0aGDihvR9zmn+zkRS2u5fRaIIK4PMT2pUBqZ6DWPXcpxRieN4z47AU1F0/2uCY3y0dtY7qPk2Dmodt8SO4GxsCyxdl7gKjZAKxAG6AapGb0WEeMofI4/qrWE6sna+YJuJuR5UKkuh+qSKgip3yN+DMnhcHZkkWezSMor3ZAAJIXQ/fPm14T6f6VSBs3JwnFkkW4svhRQFFxe7o2GES3kuhu75hhaS60THfUDKDOdvGPgvm9y10GpK4XsjiX0x7Hbe0WeYa/PVIO7BOn4RTqD7sWFZ0abMu5fEklDpYTwmuCoOO22lYkYHF+kASOozmH+gk/1SKXF7IkY2PSnBYH9e8LEisYAw==",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "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",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 Munster Senior Hurling Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_Munster_Senior_Hurling_Championship",
+                        "encrypted_content": "EvUICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDMO7XS7/HYDYCKO/5xoMY/dcr+aJOVjOShnSIjD8BD7xxUMar0b8WvuXZGjGXOPaXbD0kE2F/ZpR83IhA7QwbpNIZDeHxx9nGDsWrkUq+AchzPodF8MxO7pVqEUMO2ap+NVdcmzQWzGEF8LAaolLjVw9eC0zGo7YfMMdbbpUJMdRwP1bXblZvjlx3/SptGLPkXilWMNxNwMmQvFt3oupXbxl25Lm0FYsrt+9lt7WeP3ip6n+zSq6bayP7MGk0bEiiIgJaFC/+I7Xnoeb2+ZFVrBbOa+UByropYvYtxapqrp/09qu6xCmlzctPoqZZDQf1yQ6ykrM/PdhjRkd1mFcXDr45DqBcRsGMnnxvr1eJoigeDNehoCSwxcgv8Ism+9bbH7Czn6TkKKny3cp5L0KX39mhO4MO9zVLUd4v3WpWiGYs9WCzWtFO9VFlTiiNcI7eKiSHGoQJc+ZmDSdbUCjeblmrUn72QUPUXzzfsmYpk1IeNlRUSsSxjVmGZ4OwHMOu20EIfNu+jLq46qUgWkLle2awyn+I+BZJkq6OiWvFuzaXXaWa0PzxpsbC6w4BwGTH41hOn82HGYyU7CSmujwNsKefmuZfRalhKHNAf9uq0+LXFAAF4ZMFx605YlZqa3ajk2B6aVUCvqo9VAMpXWwjxdkXKJmXDk2mdGpG6sBjWfo7UrH/+3cSeuvhqb7spBMymp3qKW5qCAl3x+EbAF3e6368l0bDwmtj8mffpP2m+T4yThaKk+OBOA2UfO4a55WjZv0VnFq6CBuFmc8zUEN17khbH1Yy1pheyYnKgl7J37k+KhqZUQAgJAOOFnQaN+ZnJ9yTyZBiijWriT/3LxjFsK4S2O4tV+mX3Dtz37JdPXuywUqPWb+KMY4t9e3r7erwuenT9a0LnnGUnqOh4pzSBMtZVdEJ+s6rjoBsCteVtUePvAot4ijpcVrgdYhoVxg+gu7akljj7uTJfNOJoPqSsMyPa950ohJb0BRE7ga9oWFOTcTxJgnDuJzhpCCs3iKTD7nu4Y+3VSDqXVxXJBjCgNceInKpGq4/uDSQX7glKzexRQwcEL0miQ5R/+0B28O5my0oZUprR3XuJIvhzZwbEqWuIzbQ75spTui+TKsM+RzMjARtzEYpx69I1BR1JqWeZlcX10s7WCwfcM2Awq37Lq/tc00VJVHihJS4T/bg8micmKelQ24LZ43MWtF2maUE7LZwcmfa810EKdOqNLRRi1k0ZjgjpBYG8xALHY7Pm2YMAiJ7oEtWJCd28yvRHp5Hj8oZwujq3veaEL/SfSidONzXAwh1d6NGR5MnS2OgcTSBudyM8fapTfON6mwDr63JWi2Q0VkmNooVHCIcGIE9IBUZp4MjkIdc5x1kcDZ07Ch394aaANxtTzZqQcxi1zcPrctcHYjZPU819tvA1j6N86CdhgGBgiLI5ZokqIH6CpO6bJ6B9E2mBgD",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Hurling Championship - Liquipedia Lab Wiki",
+                        "url": "https://liquipedia.net/lab/GAA/Hurling/2026/All-Ireland_Senior_Hurling_Championship",
+                        "encrypted_content": "EqUHCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDDM2IHEJH1KizuZ08RoMJ4P5oTMQIifUfYShIjALuJbwdAukiZp1i100jDljw9BAdjTemGOczXcHIOr0449P3c3z3NPpp2hhMWehVCAqqAamnMhG+G6o45R0+Pr0pYUA4TddELlsUCxIvw0APXwbbP5Xz1ackO7bgxEsBsoLHoPebWhi30U9wNonhB0H8ygtE6DS734KgpaW/267RLocNKE/W9Rrb4A08LlmNXCAY0+B98aZQW1cRV0iBZSMHSiDThAYa6XHR+ykN0ViYxq6enjnQnuEPG45y7Q3e4YZFWXW3/M7uru+13ijzgX4I8+OoVLEAAPf9kYvoBVXic5Jd1j85YL2JSZOSJUTwDpVh5uU+AWtwzGI+YHqyb1pOmIR72t140rnJhCkad5HoPSOYaZhNKs5t2gRAF4Qur2ph9pbOhV76Qx8/vUiM1Y42DJZ1C/4HYsDabUo8VLPWqfjaWDuc6ZHN/vRGSgZwzsA95MqhlaIpz89RrCUGmeEY4W8BeJS+hUAn25O1gBY/d5KYDpmQ8FTl6cI7a081EraRk2zg6cOEZBao6I+KBARM4gEoQsxiw2prfKlZXN1ogkdatnVo9sJ3x8RG8ss4arbPGXthr2EHqchtWjfHdAh1KBA/AIvaHeemvMZwktb2KQV0YQfZrKeV+3eP57/0EQvRCphAzBU9Mek8qEvdN2cHiE+dq+ONYHpsVdXVPw1PHqMDiTvB30g9Ca25bILcjkcc3N+h2+qXkWNp1Plpk+OmwmoqoOSiqq0LPRjMoofF9qQj4BLEJFa91vsVfovbtsdTSrEDaHxdSwzscpIpQ3OOFQvz4LgmZbRYaSmhwmUwkvfdUmflwcgdgCY3mlPilGrEIywt0zwzeze8eFv1jPcFLrdmu66W+Fv5ad6I6g5uKh8w/5Rng2eOO2/JFP3tJ/ZB7hX30RSxOr/DBd3iKRcgbi8dySQwaTwAAB+b+GUt2U1HYfo3wG8gkZpuCyOdBRy/7zfK5xJG/yJNL+VeBD4EAslXty2IoVGfEeXL099YYT3IG+P86CDAv+IRgZqZcEWzVGVuFZtiodM/cvNXTOynyAFJC7TnYniOT4pBQ6oINjeK1uVjTk2riK/L2fCNIdM77kzHM/5YjVG/Tge74vxWd/ixoIZpCEaLYf+IsIhSgBFGfFCHIyqE/S6GAM=",
+                        "page_age": "July 28, 2026"
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "2026 All-Ireland Senior Football Championship",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Football_Championship",
+                        "encrypted_content": "Eo4ICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDAtZJEbhr9OHta0PwxoMRoJp+yYrUIYapExmIjAMwshxl0ncY28FHwTHLTiiy0/dE9BjF+Rr8OGEhMk+oWTG6MS4z5KjA1mqPYJs0xMqkQc+2jnKPKZOUb8g39Rb/3UiLwRj1EDbkK4sRzJQ4BbeawNjqR+62oow5PxhuJ+l90fT/rSQhM4KczKHtT/DPhKg+3IsjjO4ydYj2xbdWBiv/4YZtyCUHG/o3sMv1hVDyspwpwyzt76mzJfmCaTsoYJu4B4PYD48xooe62vLhE8A7e3zRDbTsU5OsNO61bM0r7NbVIarVGww4yUXgiE5jBAP49quvJJmwmwrHqRi3QS2yEr1+dYuvYhLz2VGSb5+S5VqwOAR+4oZZrWKWV4NNqM47zrJeXwz/3yk+VJUN63lZRP3i9MTs4ToSlJdC3JIQUkY7na9mysfEQ8OKOvWCnVxaqwV6/QBClNSDg+BpHX2j24/mKqkmXSCkJSYGZu6MVtUnzUUGMLDD3ofzTANQ9Eob/LFN1SVzvc3QmeKaSlMtZ0LTdfQwSVNvcNiIewWTe/RbBecIE4yMz5gyRMXI62jh2eCVNM0BGOJ7lQyhDhCtBUi+xyhcd9hX0ISmWmrLNWHdXkJa/TpXaHsmO/m7rr2pEndbgrkS9glK7DbR0wrI8XGZonCdgbLdUI9RZzX8yA6rS6u2IrlsGrcja0HCauWGXWVp2bUupIqCtrVcqlR78ILWXNwIgJ3FNFuQHxZxemovor0d0YxkRzvNLvEM/a4LK3ADxhs9sXAIOXTltBe0RiNH0vW1TYbIBDzecowFBX5SvMCsKERFZ8OwK8H9s9RJbDB6aeWpW1C8i/On1aROUSDoZq9EAzev0rpjNO/J+edJR719UKII1UCITzMr6C394Xs3WIZN/c0kcyxM4q1ydfwzzFtNlCo5Xc6d6+oylQZ14sI75JySEDIWCgKJxguqvksTOXu4aSh0Hc1k19T8+m2eVDvNOEz3mZfzOf7/4zic43N0oaBcsYc9pXF1LMo7qCJPSmBie266Yc3nPp/TlASbuN5L0RYDYHIKF2QeXpvqbHNApYK9PIy/7AD/1gif5oQAGc5oa4KfmE+9VMhc0jNVgFu1kJCff3ygy4ml46Vbjs2xmGXda7hN5BXIvbyR/LSw940k1gbN/OEJcuY+XVqzcQWPa2h0KoFY/OYQkvKYtXhk6qMehz9gwXp+5Afv72bf/B/DX7DiuX9piuBUH/bDVhNiSlFmbGAi6hDmzKL8ZB1NX5xExZrQOMT/ahHrwAmmeH4jxJSJ5y4hySLe2rvanMbNO1XyUd0XuV4ohihGAM=",
+                        "page_age": null
+                      },
+                      {
+                        "type": "web_search_result",
+                        "title": "All-Ireland hurling final: Limerick beat Galway by 11 points – as it happened",
+                        "url": "https://www.irishtimes.com/sport/gaelic-games/2026/07/19/galway-v-limerick-live-all-ireland-hurling-final-updates-western-forces-clash-at-croke-park/",
+                        "encrypted_content": "EskICioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDEvytXG/vfdFvbv5sRoMR7PssT9g/ljTvBzZIjDfyHO9YdHHNtBA7eCsG0Y28wn8fTF+XLJxL2nmqaq6A0x7CqEy81Du2ty4fohKwhcqzAfKIe6A2BsOf9OEhkhs1DEhKVmrcM0DsHh6MPDIAgCli3/LDHGRPeSZNZlYM32nir4JNRIXLp3ig5G0p9+vu7BYS/hPttXl/1fO2XFh2N/ZRMGyAMPfmmnlYnm2MgwBEIq/fOL4kD/DYJDRbyY9jSzHi5dGu/Kn2OwrKm3UGzZMSyWehwrgM2tbocg6kBCOrKJiPuXWM/OZYBgvUdc5bJb7dVkssdb1Itnd5I5CefkLDrEEqOSLYDJGImvy2x4FMnxtjxhSbtMZT6zINWw03c6DMN03iVjf9lsJV86AGLvH+Y5HUpx4BPJs4ZXm0n6HCpjzdI+fs3m0edHmfYHmZn1P/QRgk9F3x+pZFrEyILX0L8VRUkEPJJtxFgwDi5l+TYXidUzp2KyqbewgPSjhBr8gCHzzUQsEKkj0FkvzF7k84Y+9LJEufWrfdSEIgCRvSMce5yWOuwzIKA+/aoobRVJlr2FdisSsElobMEhvps9eGDLlRTLl69IYIu4oSFQ7rwdiTKwDXAKgYwkN4x9nfmHm57Auq+XLPdCPaTWQ4VdO+59mMJCEMg72EIDTwp6eig+MM8OkaP+Pl+T9RqNWIwEWXkDXYHbNh/vUKhmxe97aik8pTVDtpuBHwya5WxUE/s1IfwZMdsQ1N2SUC5Y2NiRL2L4UY5fMwI2JMgflxkZqospaeUeYa3Uwu6zBpa3fu9+/qZmEhrNsCAEbeZtNMhXO1Hq1vMM+4mP+2ljB6WS397Q4fQHL+0lGAeLIvYUiGMoqyRcYLXmwuFZpJnZnSbN4C0+EI9o1ocbdJuYepOFV0uUjzL0EaarWBiy1O2L+cHrXGtXnfyG5N7v86ZO0bnrjOjxjfAi/PsZhrmhVsAcCnJh5sBW+Q6m0UV2cAqSkP+bs2493/JVPMQQ05DMq3lN04pJ1QZxfSzI7gTovAEfYvZMB/ZHtiDMoAdnx1TowoaTUUuoF6WZOn866JinIa3HIsNfFgGGzfg9G9ZePzbOOXtYG1UgBnwJ09c4NT9ahxcyCtcBXyw+Peif6vF935uCtjOL94PK9ZreS6iJt/WEDDH4b/vDruBKUjMraruEnEuCUJiqgGuyhbkqoTUi0UgXHbEgfNW0nr6M+1ga4jeZxA+JpHRDTzPcDlV74HacgAHkm+Kj7PZUzaWgpaMOGjX9CUrx6bJqhytRj1bOu9wvOBr1BLn6lZv0kOY7ydmFjDEwULxPfNLBNcN/56o/WhhLZBeSv9N2NWZrVyTMBNvRH2YwYQZGOvWgu+9Vu2+ik41Y+H+2n9mqL/bJGPLwYAw==",
+                        "page_age": "July 20, 2026"
+                      }
+                    ],
+                    "caller": {
+                      "type": "direct"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": "The most recent All-Ireland Senior Hurling Championship final was played on 19 July 2026 at Croke Park, and **Limerick** defeated **Galway**.\n\n"
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018. ",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship_final",
+                        "title": "2026 All-Ireland Senior Hurling Championship final - Wikipedia",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDHHZw1/iaxGgBNjvVhoMhRULfbD9ylZbY4PWIjABycLBuR33mVR/m8+AlvRCpKxfxlYeENN7Tms6OrgsMXvdlCG3lMxGu2agqN28xfcqEzAwEX0ERiDhQfjRFX/onJ7g0ekYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "Limerick won the match on a scoreline of 1–29 to 1–11, it was their sixth All-Ireland title since 2018."
+                  },
+                  {
+                    "type": "text",
+                    "text": " This victory gave Limerick "
+                  },
+                  {
+                    "citations": [
+                      {
+                        "type": "web_search_result_location",
+                        "cited_text": "2026 All-Ireland Senior Hurling Championship\n\nChampionship details\n- Dates: 18 April — 19 July 2026\n- Teams: 11 (Liam McCarthy) 36 (overall)\n\nAll-Irel...",
+                        "url": "https://en.wikipedia.org/wiki/2026_All-Ireland_Senior_Hurling_Championship",
+                        "title": "2026 All-Ireland Senior Hurling Championship",
+                        "encrypted_index": "Eo8BCioIFBgCIiRmMjAxNTM1MC0wNzFjLTRiZTEtOWEwYy05ZDU1ZjhhN2VjMjYSDGrUoKCPl2XX+71yTBoMep/PUev3AqoHnadlIjAekzc/tDSF6DN/fyHQEtPgjCh1Z7VAYM79l8VQc2rXP1rYHYOlRo9/jYuivTYqf/AqE8f50+PpD3liH5n/c/HNIEwZblMYBA=="
+                      }
+                    ],
+                    "type": "text",
+                    "text": "their 13th win as All-Ireland champions, with Cian Lynch as captain and John Kiely as manager."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 13782,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 247,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global",
+                  "server_tool_use": {
+                    "web_search_requests": 1,
+                    "web_fetch_requests": 0
+                  }
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+/* 2.3's ordering part: a list of rules, each with its own two buttons, shown once the recorded part has been revealed. */
+.rule-order li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.rule-order li > span, .rule-order li > strong { flex: 1 1 14rem; min-width: 0; }
+.rule-order [aria-disabled="true"] { border-style: dashed; }
+/* 2.3's ordering part: with JavaScript it waits for the reveal; as text or without JavaScript, the lesson's order is
+   written out and there is nothing to press. */
+html[data-js]:not([data-textversion]) .which-rule-wins:not(.revealed) ~ .rule-order,
+html:is(:not([data-js]), [data-textversion]) .rule-order .order-play {
+  display: none;
+}

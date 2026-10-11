@@ -1,0 +1,19 @@
+# R-5.1: one small open model, OLMo 2 1B, in two published versions, each sent the same text three times. Counting rule in the lesson's pack, section 4.
+R-5.1:
+  summary: |
+    We sent one small open model, OLMo 2 1B, the text "What is the capital of Ireland?". We sent it three times to each of two published versions. We recorded them on 8 October 2026.
+
+    Base version: all three replies began with "Dublin". None stopped by itself. We stopped all three at the 80-token limit we set. One added more facts. Two added questions, and one of those repeated our question again and again.
+
+    Tuned version: all three replies began with "The capital of Ireland is Dublin." All three stopped by themselves. Two were that one sentence. One added two more sentences about Dublin. None added a safety or politeness line.
+
+    So the base version continued our text, and the tuned version answered it. One base reply said "it's not the capital of the Republic of Ireland". That is false.
+
+    Four more claims in the base replies are false: the size of Ireland, its population and two river ranks.
+
+    This is one small model, one question and three runs of each version. It is not how any large chatbot looked before tuning.
+
+    We checked the facts in the base replies that we could check against a source. We marked five false statements in all. We did not check every claim, so a claim without a mark is not proof that it is true.
+  checked: 2026-10-09
+  by: claude-sonnet-5-5
+  recordingSha256: c378c380b774971ff6e7c7145fb8cb0689b54a818a69b821651e25c5907d1dda

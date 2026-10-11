@@ -1,0 +1,101 @@
+---
+// 5.4's "Skill-file checker" (stage I, an engine): predict what a rule checker will say about three invented skill files,
+// then run it in the browser. The findings are also drawn here at build, with the same function, for the text version
+// and for no JavaScript. The Deep layer checks text the learner pastes. It stays in the page: nothing is scored, stored or sent.
+import { PARTS, SAMPLES, check, html, verdict } from '../lib/skill-file-checker.ts';
+import Shell from './Shell.astro';
+
+const RULES = [
+  'Name: lowercase letters, numbers and single hyphens.',
+  'Description: on the description line itself, at least eight words and the word "when".',
+  'Steps: at least two numbered lines.',
+  'Rules: every always or never line gives a reason.',
+  'Examples: an Example heading, or an Input line and an Output line.',
+  'Reference files: any pointer to another file says when to read it.',
+];
+if (RULES.length !== PARTS.length) throw new Error('skill-file-checker: a rule line for every part');
+const GUESS: [string, string][] = [['Passes', 'passes'], ['Fails', 'fails'], ["Can't tell", "can't tell"]];
+---
+
+<Shell title="Skill-file checker" reveal="Run the checker" class="skill-file-checker">
+  <p>Below are three invented skill files. Read each one, then predict what the checker will say about it. Nothing is counted or saved.</p>
+  <h3>The checker looks at six parts of a skill file. Every rule is ours.</h3>
+  <ul>{RULES.map((r) => <li>{r}</li>)}</ul>
+  {
+    SAMPLES.map(({ id, text }) => (
+      <Fragment>
+        <h3 id={`sfc-file-${id}`}>File {id}</h3>
+        <pre data-file={id}>{text}</pre>
+        <fieldset aria-describedby={`sfc-file-${id}`}>
+          <legend>What will the checker say about this file?</legend>
+          {GUESS.map(([label, said], i) => <label><input type="radio" name={`skill-${id}`} value={i + 1} data-said={`File ${id}: you predicted ${said}.`} />{label}</label>)}
+        </fieldset>
+      </Fragment>
+    ))
+  }
+  <Fragment slot="after">
+    {
+      SAMPLES.map(({ id, text }) => {
+        const found = check(text);
+        return (
+          <section data-file={id} aria-labelledby={`sfc-found-${id}`}>
+            <h3 id={`sfc-found-${id}`}>File {id}</h3>
+            <p data-verdict>{verdict(found)}</p>
+            <dl aria-labelledby={`sfc-found-${id}`} set:html={html(found)} />
+          </section>
+        );
+      })
+    }
+    <p>B looked complete and failed on one part: its description does not use the word "when". A pass only means the patterns are there. It does not mean the skill works.</p>
+  </Fragment>
+</Shell>
+
+<section class="skill-own" data-layer="deep" aria-labelledby="sfc-own-h" hidden>
+  <h3 id="sfc-own-h">Check your own skill text</h3>
+  <label for="sfc-own">Paste a skill file, up to 2,000 characters</label>
+  <textarea id="sfc-own" rows="10" maxlength="2000" autocomplete="off" spellcheck="false" aria-describedby="sfc-own-note"></textarea>
+  <p id="sfc-own-note">Your text stays in this page. Nothing is sent or saved. A reload clears it.</p>
+  <button type="button" data-check disabled>Check this text</button>
+  <p data-stale hidden>These findings are for the text as it was when you last pressed Check.</p>
+  <div class="own-found" tabindex="-1" aria-labelledby="sfc-own-found-h" hidden>
+    <h4 id="sfc-own-found-h">Findings for your text</h4>
+    <p data-verdict></p>
+    <dl aria-labelledby="sfc-own-found-h"></dl>
+  </div>
+</section>
+
+<script>
+  import { check, html, verdict } from '../lib/skill-file-checker.ts';
+
+  const show = (box: ParentNode, text: string) => {
+    const found = check(text);
+    box.querySelector('[data-verdict]')!.textContent = verdict(found);
+    box.querySelector('dl')!.innerHTML = html(found);
+  };
+  // "Run the checker" runs the engine in the browser on the files as shown, and draws what the build drew.
+  document.querySelector('.skill-file-checker [data-reveal]')?.addEventListener('click', () => {
+    for (const box of document.querySelectorAll<HTMLElement>('.skill-file-checker section[data-file]')) {
+      show(box, document.querySelector(`.skill-file-checker pre[data-file="${box.dataset.file}"]`)!.textContent!);
+    }
+  });
+
+  const own = document.querySelector<HTMLElement>('.skill-own')!;
+  own.hidden = false; // it needs JavaScript, so without it the box is not offered
+  const area = own.querySelector('textarea')!;
+  const button = own.querySelector<HTMLButtonElement>('[data-check]')!;
+  const stale = own.querySelector<HTMLElement>('[data-stale]')!;
+  const found = own.querySelector<HTMLElement>('.own-found')!;
+  let checked = '';
+  area.addEventListener('input', () => {
+    button.disabled = !area.value.trim();
+    if (button.disabled) found.hidden = true; // empty: the findings go
+    stale.hidden = found.hidden || area.value === checked;
+  });
+  button.addEventListener('click', () => {
+    checked = area.value;
+    show(found, checked);
+    stale.hidden = true;
+    found.hidden = false;
+    found.focus();
+  });
+</script>

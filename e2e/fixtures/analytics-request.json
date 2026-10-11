@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://stillpool.vercel.app/_vercel/insights/script.js",
+    "method": "GET",
+    "body": null
+  },
+  {
+    "url": "https://stillpool.vercel.app/_vercel/insights/view",
+    "method": "POST",
+    "body": "{\"o\":\"https://stillpool.vercel.app/done/how-ai-works/what-ai-is-and-is-not/\",\"sv\":\"0.1.3\",\"ts\":1790498454016,\"r\":\"\"}"
+  }
+]

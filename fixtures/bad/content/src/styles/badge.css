@@ -1,0 +1,3 @@
+.badge::after {
+  content: "Level up!";
+}

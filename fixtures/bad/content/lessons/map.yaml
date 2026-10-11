@@ -1,0 +1,44 @@
+- id: p
+  title: A pillar
+  topics:
+    - title: A topic of six
+      lessons: [bad-competency, badge-praise, capitals, checkin-no-why, checkin-score, em-dash]
+    - title: Topic 2
+      locked: true
+      lessons: [italic, italic-bold, learning-styles, mdx-export, mdx-expression]
+    - title: Topic 3
+      lessons: [missing-deep, nc-adapted, no-alt, no-alt-ref, no-hea]
+    - title: Topic 4
+      lessons: [no-sections, no-sources, no-unesco-block, no-verdict, percent-no-words]
+    - title: Topic 5
+      lessons: [product-names, promise-not-can, promptsage-wrong-pillar, raw-link, raw-script]
+    - title: Topic 6
+      lessons: [signed-unapproved, term-no-gloss, tldr-two, unsure, verdict-fail]
+    - title: Topic 7
+      lessons: [verdict-provisional, verdict-typo, verdict-yml, ghost, bad-inputs]
+    - title: Topic 8
+      lessons: [promise-too-long, checkin-two-right, earned-by-never, verdict-no-by, pass-with-by]
+    - title: Topic 9
+      lessons: [recorded-text, unlisted-lib, dynamic-lib, marks-bad, tryit-between]
+    - title: Topic 9b
+      lessons: [code-between, inline-between, h3-between, hash-between]
+    - title: Topic 11
+      lessons: [take-no-approval, take-short, take-79-spaced]
+    - title: Topic 10
+      lessons: [source-no-url, unpublished-with-url, unpublished-adapt, unpublished-link]
+- id: prompting
+  title: Prompting
+  topics:
+    - title: Topic one
+      lessons: [promptsage-in-simple, promptsage-no-disclosure, promptsage-in-glossary]
+- id: using-ai-well
+  title: Using AI well
+  topics:
+    - title: Topic one
+      lessons: [promptsage-wrong-lesson]
+# pr5-review NICE 1: a second pillar with the same id, and a lesson on the map twice.
+- id: prompting
+  title: Prompting again
+  topics:
+    - title: Topic one
+      lessons: [promptsage-in-simple]

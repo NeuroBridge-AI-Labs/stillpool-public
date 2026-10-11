@@ -1,0 +1,268 @@
+---
+title: Attention and the context window
+promise: Can explain how a chatbot uses earlier words, and why it loses track in a long chat
+minutes: {simple: 8, deep: 16}
+tldr:
+  - For each new piece it writes, a language model weighs which earlier pieces matter most. This is called attention.
+  - A model can take in only so much text at once. This limit is its context window, counted in tokens.
+  - When a chat grows longer than the window, the app has to stop, leave messages out or summarise them.
+misconceptions: [M7, M2]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-PEA-2.3.1-a, AILIT-E2]
+interactive: still-know-name
+inputs: [src/lib/still-know-name.ts]
+checkin:
+  - question: A chat is longer than the AI's context window. What does that mean?
+    options:
+      - text: Not all of the chat can be sent to the AI at once.
+        why: Yes. The window is the most text the model can take in at once. So the app has to stop, cut or summarise.
+        right: true
+      - text: The AI reads all of it anyway.
+        why: Not this one. The window is the most text the model can take in at once.
+      - text: The AI learns the chat for next time.
+        why: Not this one. The model's own numbers do not change while you chat.
+      - text: The window grows to fit the chat.
+        why: Not this one. Each model's window is set by its maker. When a chat is longer, the app has to stop, cut or summarise.
+  - question: In this lesson's recording, which messages was the AI sent for its answer?
+    options:
+      - text: Only the newest messages that fit in 2,048 tokens. The message with the name was cut.
+        why: Yes. We cut the oldest messages first, before sending the chat.
+        right: true
+      - text: The whole chat.
+        why: Not this one. We cut the oldest messages first, so the whole chat was never sent.
+      - text: Only the first message and the question.
+        why: Not this one. The first message, with the name, is cut.
+      - text: Only the question.
+        why: Not this one. The newest messages that fit are sent too.
+  - question: "A friend says: \"It forgot my name because it stopped paying attention.\" What is a more accurate way to say it?"
+    options:
+      - text: The message with the name was not in the text the model was sent.
+        why: Yes. A model can use only the text inside its window.
+        right: true
+      - text: It chose to ignore the name.
+        why: Not this one. The model never had the name. And its attention is weighing with numbers, not a choice.
+      - text: Its memory filled up, so it deleted the name.
+        why: Not this one. In this lesson's recording, we cut that message before sending. And the model's own numbers do not change in a chat.
+      - text: It remembers everything, so it is hiding the name.
+        why: Not this one. It can use only what is inside its window.
+badge:
+  earnedBy: [checkin-1, checkin-3]
+  celebration: You explained how a chatbot uses earlier words, and why it can lose track in a long chat.
+glossary:
+  - term: token
+    meaning: A small piece of text, often part of a word, that a language model works with (lesson 1.3).
+  - term: context window
+    meaning: The most text a model can take in at once, counted in tokens; it includes the model's answer.
+  - term: attention
+    meaning: In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.
+whereNext:
+  title: AnimatedLLM, from Charles University
+  text: A free animation of a language model at work, with no login needed. You pick an input, then start, pause and step through it. It covers tokens, attention and picking the next piece. You type nothing into it. It is a different website. It downloads about 0.6 MB when it opens. Each English example you pick downloads up to about 0.02 MB more. Its "How to" page plays a YouTube video, from Google. We checked this in September 2026.
+  url: https://animatedllm.github.io/
+sources:
+  - title: "Google for Developers, Machine Learning Crash Course, LLMs: What's a large language model? (Transformers and self-attention)"
+    url: https://developers.google.com/machine-learning/crash-course/llm/transformers
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary, entries attention, auto-regressive model, context window, self-attention and Transformer"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Vaswani and others, Attention Is All You Need, arXiv 1706.03762"
+    url: https://arxiv.org/abs/1706.03762
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Radford and others (OpenAI), Language Models are Unsupervised Multitask Learners"
+    url: https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Liu and others, Lost in the Middle: How Language Models Use Long Contexts, Transactions of the Association for Computational Linguistics"
+    url: https://aclanthology.org/2024.tacl-1.9/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Cho and others, Transformer Explainer: Learning LLM Transformers with Interactive Visual Explanation and Experimentation, CHI 2026"
+    url: https://poloclub.github.io/papers/26-chi-transformer-explainer.pdf
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Polo Club of Data Science, Georgia Tech, Transformer Explainer"
+    url: https://poloclub.github.io/transformer-explainer/
+    licence: MIT
+    use: link
+  - title: "Brendan Bycroft, LLM Visualization"
+    url: https://bbycroft.net/llm
+    licence: MIT, except the personal homepage and third-party assets
+    use: link
+  - title: "Cloudflare Docs, Web Analytics, FAQ"
+    url: https://developers.cloudflare.com/web-analytics/faq/
+    licence: No licence stated
+    use: cite
+  - title: "Kasner and Dušek, AnimatedLLM: Explaining LLMs with Interactive Visualizations, arXiv 2601.04213"
+    url: https://arxiv.org/abs/2601.04213
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Context windows"
+    url: https://platform.claude.com/docs/en/build-with-claude/context-windows
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Claude Sonnet 5"
+    url: https://platform.claude.com/docs/en/models/sonnet-5/overview
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Help Center, How large is the context window on paid Claude plans?"
+    url: https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans
+    licence: All rights reserved
+    use: cite
+  - title: "Mistral AI docs, Known limitations: Context window"
+    url: https://docs.mistral.ai/resources/known-limitations
+    licence: No licence stated
+    use: cite
+  - title: "Mistral AI, API reference, Chat Completion: max_tokens"
+    url: https://docs.mistral.ai/api/endpoint/chat
+    licence: No licence stated
+    use: cite
+  - title: "Mistral AI, the OpenAPI description of its API"
+    url: https://docs.mistral.ai/openapi.yaml
+    licence: No licence stated
+    use: cite
+  - title: "Lin, Six misconceptions about large language models: A minimal model and diagnostic taxonomy, PNAS Nexus"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13378163/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Schneller, Seier, Huber, Loi and Albert, Behind the screen: laypersons' mental models about ChatGPT, Frontiers in Computer Science"
+    url: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1915035/full
+    licence: CC-BY-4.0
+    use: cite
+  - title: "O'Brien and others, User Misconceptions of LLM-Based Conversational Programming Assistants, arXiv 2510.25662"
+    url: https://arxiv.org/abs/2510.25662
+    licence: CC-BY-4.0
+    use: cite
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-28
+signed: false
+---
+
+## Will it still know your name?
+
+<Simple>
+You tell a chatbot your name at the start of a long chat. Near the end, you ask for it. Will it still know?
+
+A chatbot like ChatGPT runs on a language model. A language model is a program that writes text one small piece at a time.
+
+The model takes in the chat as tokens, small pieces of text (lesson 1.3). It writes its answer one token at a time, and each new piece joins the text so far (lesson 1.4).
+
+In this lesson, "words" is short for these pieces.
+</Simple>
+
+<Deep>
+Google's glossary describes this kind of model: "auto-regressive language models predict the next token based on the previously predicted tokens." Auto-regressive means each new piece depends on the pieces already written.
+</Deep>
+
+## Weighing the earlier words
+
+<Simple>
+Each time it picks the next piece, the model weighs how much each earlier piece matters for it. This weighing, done with numbers, is called attention. The word is borrowed from people.
+
+Google uses this example: "The animal didn't cross the street because it was too tired." In the pattern Google shows for it, from one model, the word "it" gives the most weight to "animal".
+
+Google's pattern is from a model that looks at the words before and after "it". A model that writes one piece at a time only looks back. It weighs the pieces up to and including the one it is working on, never the pieces after it.
+</Simple>
+
+<Deep>
+Google's course puts the question attention answers like this: "How much does each other token of input affect the interpretation of this token?"
+
+For every piece, the model makes three lists of numbers: a query, a key and a value. The query of the piece being worked on is compared with the key of each earlier piece and of itself. A closer match gives a bigger weight, the attention score. The values are then added up with those weights. The names come from looking something up: a query looks for matching keys, and each key has a value.
+
+The design is from a 2017 paper by researchers working at Google, which named it the Transformer. The Transformer Explainer paper (2026) says this design "underpins modern large language models".
+
+The weighing runs several times side by side, in "heads", each with its own numbers. A transformer stacks many layers. Each has attention and a second part that works on each piece on its own, and the output of one layer is the input of the next. The 2017 design used 8 heads and stacks of 6 layers.
+
+Google adds that if the sentence ended "too wide", self-attention "would hopefully" rate "street" as more relevant instead. Google calls its own example bidirectional self-attention: words on both sides of "it" are examined. A model that only looks back cannot weigh "wide" when it works on "it", because "wide" comes later. This is one illustration from one model, not a rule for every model.
+
+Transformer Explainer, from Georgia Tech's Polo Club, runs GPT-2 (small), a 2019 model, in your browser on text you type. It draws its attention scores as a grid of coloured squares, and pointing at a square shows its number. It shows one layer, which it calls a block, and one head at a time. Its code sets GPT-2 small at 12 layers, 12 heads in each and 768 numbers for each piece.
+
+Transformer Explainer is a different website. The first time, it downloads about 600 MB before it runs. It sends your clicks there to Google Analytics. It also loads files from Google (fonts and a YouTube video), jsDelivr and Hugging Face. Type nothing private there. We checked this in September 2026: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/).
+
+LLM Visualization, by Brendan Bycroft, shows a tiny working model of the GPT kind in 3D, with a walkthrough of each step, attention included. Its model has about 85,000 numbers, called parameters, and sorts six letters into order. It is a different website. It downloads about 1 MB. It loads fonts from Google and uses Cloudflare's web analytics. We checked this in September 2026: [LLM Visualization](https://bbycroft.net/llm).
+</Deep>
+
+## A limited window
+
+<Simple>
+A model can take in only a limited amount of text at once. That limit is its context window, counted in tokens. It covers everything sent to the model, and the answer it is writing.
+
+Each model has its own window, set by its maker. Mistral is a company that makes language models. It lists 256k tokens (about 256 thousand) for its model Ministral 3 14B. We checked this in September 2026.
+</Simple>
+
+<Deep>
+Windows have grown, and each size belongs to one model and one date. A 2024 paper says earlier transformer models were often trained with windows of 512 to 2,048 tokens. It gives a reason: a transformer needs memory and computing that grow with the square of the text's length (twice the text, about four times the work). It is a reason from 2024, not a claim about how any 2026 product sets its window.
+
+GPT-2 can take in at most 1,024 tokens: OpenAI's 2019 paper says it raised the context size from 512 to 1,024. So the model in Transformer Explainer can look back over at most 1,024 tokens. In September 2026, Mistral lists 256k for both Ministral 3 14B and Mistral Small 4, and Anthropic lists 1M tokens (a million) for Claude Sonnet 5 in its API (the way one program sends a request to another).
+
+The window counts everything sent to the model, any instructions and every earlier message included, and the answer it writes. Anthropic says: "Everything in the request counts toward the context window". Anthropic also says its API counts generated extended thinking in the window. We checked this in September 2026. Mistral says: "The token count of your prompt plus max_tokens cannot exceed the model's context length." Here, max_tokens is the most the answer may use.
+</Deep>
+
+## When a chat is too long
+
+<Simple>
+When a chat grows longer than the window, the app or service has to do something. They differ. Some stop with an error. Some can leave out the oldest messages. Some replace older messages with a short summary.
+
+Which one happens is a choice made by the people who built that product.
+
+Next is an activity. It shows a chat that was cut to fit a small limit. The answers in it were saved from a real model.
+</Simple>
+
+<Deep>
+Here is what some makers say about their own products, checked in September 2026. These are their statements, not tests we ran.
+
+Mistral says of its API: "Requests exceeding the model's context window return a 400 Bad Request error." Anthropic says its API returns an error when what is sent is already longer than the window: "prompt is too long". An optional feature in beta, compaction, summarises earlier parts of a chat so it can go on.
+
+Anthropic says chat apps such as claude.ai can manage the window "first in, first out": the oldest parts go first. For its paid plans with code execution on, Anthropic's help centre says that near the limit, "Claude summarizes earlier messages to make room for new content". It adds: "Your full chat history is preserved so Claude can reference it, even after earlier portions have been summarized."
+
+One model can differ between products. Anthropic lists Claude Sonnet 5 at 1M tokens in its API and when chatting with Claude on paid plans. For its Cowork product, it notes that "Sonnet 5 automatically compacts the conversation at 500K tokens". That page covers paid plans only. We found no statement from Mistral on its own chat app's window.
+
+Inside the window, not every part is used equally well. A study published in February 2024 (first posted in July 2023) ran its main tests on six language models from 2023: GPT-3.5-Turbo and Claude-1.3 (each in a standard and a longer-window version), MPT-30B-Instruct and LongChat-13B (16K). Answering a question from a set of 10, 20 or 30 documents, they often did best when the document they needed came first or last, and worse when it was in the middle. In a simpler look-up task, the two Claude-1.3 versions did nearly perfectly at every length tested. In the document task, when the same input fit both windows, the longer-window versions performed nearly the same as the standard ones.
+
+Parts of the tests also ran on other models, such as GPT-4 and, from the November 2023 version on, Llama-2. These are 2022 and 2023 models; newer ones were not tested there. Anthropic's context window page also says: "As token count grows, accuracy and recall degrade". Lesson 2.5 will show where to put a rule in a long prompt.
+</Deep>
+
+<TryIt />
+
+## The recorded chat
+
+<Simple>
+The recorded version of this activity uses a chat we cut to 2,048 tokens, as Mistral counted them. The message with the name is left out.
+
+The activity shows the messages we sent, each answer and a summary of the answers.
+
+The model could use only the messages inside the box in the activity. No request we made ever sent it the message with the name.
+</Simple>
+
+<Deep>
+The recording used Ministral 3 14B, one Mistral model, on Mistral's own API. Its chat API reference lists no setting to make that model's window smaller, checked in September 2026. Mistral says its API returns an error for a request longer than the window. For this recording, we cut the chat before sending it to show a smaller limit.
+
+The 2,048 tokens we cut to is the top of the range of earlier windows above. It is not the window of any model named here.
+
+The chat has 17 exchanges, each a user message and an assistant reply, then the question. We wrote all of it. Mistral's API offers no way to count tokens without a call. So to count, we sent the newest messages in growing batches, each asking for a one-token reply. The last batch was one exchange over the limit, so that exchange was sent once, to be counted, and then cut.
+</Deep>
+
+## What a chatbot can use
+
+<Simple>
+So what a chatbot seems to "remember" during a chat is the text still inside its window. Some apps also keep notes outside the model and add them back into the chat. Lesson 3.3 will cover that.
+
+A model is made of many numbers. The model's own numbers do not change while you chat. Training is what changes them (lesson 1.7).
+
+"Attention" and "memory" are words borrowed from people. In a model, attention means numbers: weights that set how much each earlier piece counts. What the model can use from a chat is the text in its window.
+</Simple>
+
+<Deep>
+A 2026 paper that sorts common beliefs about language models separates three kinds of "memory": the model's own numbers, its weights, fixed during ordinary use; the chat and other material sent in the current prompt, usable only while it is inside the window; and a product's own storage outside the model, which the product can add back into prompts. The paper warns against both extremes: "LLMs learn from my chats and remember me" and "LLMs are stateless and remember nothing".
+
+It says: "Common confusions about LLM “recall,” “forgetting,” and “learning from chats” arise from conflating these three layers." Google's glossary puts attention in plain terms: "A typical attention mechanism might consist of a weighted sum over a set of inputs, where the weight for each input is computed by another part of the neural network."
+
+The same paper warns against treating a model as "a unified subject with stable beliefs, goals, and feelings". It also warns against "the mirror-image error": saying it understands nothing. This lesson makes neither claim.
+
+The evidence that people believe a chatbot learns from a chat is thin. In an interview study of 21 laypeople in Austria (interviewed in person from 27 November to 19 December 2024, most in German; published 7 September 2026), a group of 4 assumed that ChatGPT learns straight away from corrections and keeps what it learned for later, even for other users. In a 2026 study of programming chats with a free chatbot (the WildChat collection, chats from April 2023 to May 2024, through OpenAI's GPT-3.5-Turbo and GPT-4), the researchers saw one clear case of a user referring to an earlier, separate chat, which that chatbot could not see. They found no strong evidence of confusion about context windows in the chats, and add that such errors may be less likely to show in what people type. Neither study says how common this belief is.
+
+The limits: that evidence is two small studies. Every window size and product behaviour here is the maker's own statement in September 2026, not a test we ran. Nothing was found on how neurodivergent learners understand context windows.
+</Deep>

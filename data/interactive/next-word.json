@@ -1,0 +1,7 @@
+{
+  "starts": [
+    { "text": "On the way home, I said hello to the old", "guesses": ["country", "gentleman", "man", "priest", "woman"] },
+    { "text": "When I opened the door, there was", "guesses": ["a", "no", "nothing", "one", "something"] },
+    { "text": "I put the kettle on and made a cup of", "guesses": ["beef", "cocoa", "coffee", "soup", "tea"] }
+  ]
+}

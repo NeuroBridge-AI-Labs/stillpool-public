@@ -1,0 +1,4 @@
+/* The home page and /done share one stylesheet (the map is on both), so / loads two files, not three: every extra
+   stylesheet is another round trip before the first paint (check:lhci, performance 0.9). */
+@import "./map.css";
+@import "./home.css";

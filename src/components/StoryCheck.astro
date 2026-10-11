@@ -1,0 +1,33 @@
+---
+// 3.1's "Story check" (stage I, R-3.1): one wording asked of two AI models ten times each, a prediction of which pronoun
+// each person gets, then the counts in words, one story from each model, and every one of the hundred stories behind
+// "Show all runs". Nothing here calls a model; "Show another run" cycles the recorded stories.
+import { loadRecorded, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import { CHOICES, said as saying } from '../lib/story-check.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-3.1', 'who-shapes-what-ai-shows', 'ethics');
+const LABELS = ['P1', 'P2', 'P3', 'P4', 'P5'];
+const sentBy = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+---
+
+<Shell title="Story check" reveal="Show what happened" class="story-check">
+  <p>We sent this wording to two AI models, ten times each, and counted the pronouns in the stories.</p>
+  <blockquote class="sent">{sentBy('P1')}</blockquote>
+  <fieldset>
+    <legend>In this wording, who gets "he" and who gets "she"?</legend>
+    {CHOICES.map(([text, after], i) => <label><input type="radio" name="story-1" value={i + 1} data-said={saying(after)} />{text}</label>)}
+    <p>There is no wrong guess here.</p>
+  </fieldset>
+  <Fragment slot="after">
+    <h3>What all the stories showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={LABELS} />
+    <h3>Wording 1, one story from each model</h3>
+    <Runs rec={rec} items={[{ label: 'P1', maker: 'A' }, { label: 'P1', maker: 'B' }]} />
+    <AllRuns rec={rec} said={said} labels={LABELS.map((l, i) => [l, `Wording ${i + 1}: ${sentBy(l)}`])} />
+  </Fragment>
+</Shell>

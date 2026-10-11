@@ -1,0 +1,142 @@
+---
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { load } from 'js-yaml';
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// For teachers. Every number is read at build time from what the lesson map is built from (content/map.yaml and each
+// lesson's minutes), so it cannot drift. The other facts are the About, Help, Privacy, Terms and Licences pages' and the
+// Settings dialog's own; the finish page and save code facts are src/pages/done/[...slug].astro and src/progress/code.ts.
+const order = (load(readFileSync('content/map.yaml', 'utf8')) as { id: string }[]).map((p) => p.id);
+const pillars = (await getCollection('map')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id)).map((p) => p.data);
+const minutes = new Map((await getCollection('lessons')).map((l) => [l.id, l.data.minutes]));
+const counts = pillars.map((p) => p.topics.flatMap((t) => t.lessons.map((slug) => minutes.get(`${p.id}/${slug}`)!)));
+const range = (key: 'simple' | 'deep') => {
+  const all = counts.flat().map((m) => m[key]);
+  return `from ${Math.min(...all)} to ${Math.max(...all)} minutes`;
+};
+const lessons = (n: number) => `${n} ${n === 1 ? 'lesson' : 'lessons'}`;
+const toc = [
+  { id: 'what', title: 'What Stillpool is' },
+  { id: 'needs', title: 'What a class needs' },
+  { id: 'pillars', title: 'The pillars' },
+  { id: 'shape', title: 'How a lesson is shaped' },
+  { id: 'ways', title: 'Ways to use it with a group' },
+  { id: 'badge', title: 'What the badge means' },
+  { id: 'access', title: 'Access' },
+  { id: 'licence', title: 'Licence' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+
+<Base title="For teachers" description="How to use Stillpool, the free AI lessons by NeuroBridgeEDU, with a class or a group: what it needs, how a lesson runs and what a badge means." wide>
+  <InfoPage title="For teachers" {toc}>
+    <p slot="intro" class="lede">This page is for teachers and trainers who want to use Stillpool with a group.</p>
+
+    <h2 id="what">What Stillpool is</h2>
+    <p>
+      Stillpool is a free site for learning about AI, with no adverts, no account and no cookies. It puts neurodivergent learners first, with
+      short lessons on calm pages. No lesson is timed or scored.
+    </p>
+
+    <h2 id="needs">What a class needs</h2>
+    <p>
+      A class needs a web browser. There is nothing to install and no sign-up. Stillpool asks for no name, email or account. Progress and
+      Settings need JavaScript to be turned on.
+    </p>
+    <p>
+      Each learner's progress and settings stay in their own browser and are not sent anywhere. The host, Vercel, receives ordinary request
+      details such as an IP address, as for any web page. The <a href="/privacy/">Privacy notice</a> has the full list.
+    </p>
+
+    <h2 id="pillars">The pillars</h2>
+    <p>The lessons sit in {pillars.length} pillars. There are {lessons(counts.flat().length)} in all. Choose a pillar to see it on the lesson map.</p>
+    <ul>
+      {
+        pillars.map((p, i) => (
+          <li>
+            <a href={`/#pillar-${p.id}`}>{p.title}</a>: {lessons(counts[i].length)}. Topics: {p.topics.map((t) => t.title).join('; ')}.
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2 id="shape">How a lesson is shaped</h2>
+    <p>
+      Each part of a lesson is written twice. Simple says the idea in short, plain words. Deep adds the detail and the examples. Simple always
+      shows, and a switch adds Deep.
+    </p>
+    <p>
+      Near the end is a check-in, a few short questions. Every answer comes with an explanation. A learner can try again as often as they like,
+      and nothing is scored. Every lesson lists its sources.
+    </p>
+    <p>
+      Each lesson states an approximate time. Across all lessons, it runs {range('simple')} with Simple only. With the Deep layers it runs {range('deep')}.
+    </p>
+
+    <h2 id="ways">Ways to use it with a group</h2>
+    <p>These are suggestions. Change them to fit your group.</p>
+    <ul>
+      <li><strong>One lesson as homework, then a discussion.</strong> Learners read a lesson and do its check-in on their own. The group then talks about it in class.</li>
+      <li>
+        <strong>One lesson together on a projector.</strong> Read the lesson as a group and do the check-in together. Text size goes up to Largest.
+        Focus mode hides the header navigation links, the breadcrumb, the contents list and the footer. Settings stays. A badge earned on the projector stays in
+        that browser only.
+      </li>
+      <li><strong>Learners choose a lesson from one pillar.</strong> Every lesson is open and none has to come first. Each learner picks one that interests them.</li>
+    </ul>
+
+    <h2 id="badge">What the badge means</h2>
+    <p>
+      A badge is earned by doing a lesson's activity: the check-in questions near the end. Finishing a lesson on its own does not earn one. A
+      badge is not a score, and Stillpool does not lead to a qualification.
+    </p>
+    <p>
+      A badge is kept in the learner's own browser. There is no account, so a teacher cannot look up a learner's badges. There is no teacher view.
+    </p>
+    <p>
+      A learner can show you the finish page on their own device. It says "Badge earned" when that device holds the badge. A learner can also show
+      their save code. It holds the lessons they finished and the badges they earned, and nothing else.
+    </p>
+    <p>
+      To read a code, restore it in a browser. The lesson map then shows what it holds. Restore adds to the progress already in that browser.
+    </p>
+
+    <h2 id="access">Access</h2>
+    <p>The Settings button is in the header on every page. Changes apply as you make them and stay in the browser.</p>
+    <ul>
+      <li><strong>Read aloud:</strong> a recorded voice or a voice on the device, at Normal speed or up to 1.5 times faster.</li>
+      <li><strong>Text size:</strong> five steps, from Small to Largest.</li>
+      <li><strong>Spacing:</strong> letter and word spacing, and line spacing.</li>
+      <li><strong>Fonts:</strong> Lexend, Public Sans, the system font and OpenDyslexic.</li>
+      <li><strong>Themes:</strong> Light, Dark, High contrast, or the same as the device.</li>
+      <li><strong>Movement:</strong> a Reduce motion switch.</li>
+      <li><strong>Focus:</strong> a Reading ruler, and Focus mode. Focus mode hides the Lesson map, Search and Help links, the breadcrumb, the contents list and the footer. Settings stays.</li>
+      <li><strong>Text versions:</strong> a switch to show interactives as text.</li>
+    </ul>
+    <p>The <a href="/accessibility/">Accessibility statement</a> has the detail and the known limits.</p>
+
+    <h2 id="licence">Licence</h2>
+    <p>
+      The lessons are under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>. You may copy, share,
+      remix and build on them. You must give credit, link to the licence and say if you changed anything.
+    </p>
+    <p>
+      You may not use them to make money. If you share your own version, it must carry the same licence. You may not suggest that the authors
+      back you.
+    </p>
+    <p>
+      The credit to give is: "&lt;lesson title&gt;" by Emanuel Covasa, from Stillpool, licensed under CC BY-NC-SA 4.0. Add a link to the lesson and a
+      note of any changes you made.
+    </p>
+    <p>
+      The site's code is all rights reserved. The NeuroBridgeEDU name and logo are not covered by the lesson licence. The <a href="/licences/">Licences and credits</a> page has the detail.
+    </p>
+
+    <h2 id="contact">Contact</h2>
+    <p>
+      To report a mistake in a lesson or a barrier in the site, write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>.
+      Please do not email a save code.
+    </p>
+  </InfoPage>
+</Base>

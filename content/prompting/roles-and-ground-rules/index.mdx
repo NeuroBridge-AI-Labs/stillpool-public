@@ -1,0 +1,233 @@
+---
+title: Roles and ground rules
+promise: Can tell an AI what job to do and what not to do
+minutes: {simple: 8, deep: 14}
+tldr:
+  - In this lesson's recordings, a role and a "never" rule changed the shape of the answers. They did not add new knowledge.
+  - Rules can be sorted into four tiers by who may change them. In the clash, one model kept the rule and one broke it.
+  - A rule in a prompt is a request, not a lock. If a tool matters, test its rules.
+misconceptions: [M12]
+interactive: which-rule-wins
+inputs: [src/lib/p2-runs.ts, src/lib/which-rule.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.3, HEA-PEA-2.3.1-e, AIF-2.c, AILIT-C3]
+checkin:
+  - question: In the clash, the rule said never to write the student's text. The student asked for a rewrite. What did Claude Sonnet 5.5 do?
+    options:
+      - text: It declined in all three runs, and gave notes on what to fix.
+        why: Yes. In all three runs it said it would not rewrite the paragraph. None wrote a new one.
+        right: true
+      - text: It rewrote the paragraph in all three runs.
+        why: Not this one. That is what Ministral 3 14B did. Claude Sonnet 5.5 wrote no new paragraph in any run.
+      - text: Some runs rewrote it and some did not.
+        why: Not this one. The three runs agreed. None of them wrote a new paragraph.
+  - question: A tool's owner writes a "never" rule in a system prompt. Will every model keep to it?
+    options:
+      - text: Yes. A rule in a system prompt always wins.
+        why: Not this one. In this lesson, one model broke the rule in every run.
+      - text: No. A rule is a request, and these two models differed in whether they kept it.
+        why: Yes. Claude Sonnet 5.5 kept the rule in all three runs. Ministral 3 14B broke it in all three.
+        right: true
+      - text: No. A rule in a system prompt never has any effect.
+        why: Not this one. One model kept the rule in every run, so a rule can have an effect.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You worked out who wins when two rules clash.
+glossary:
+  - term: role
+    meaning: A job you give a model, such as "writing tutor". It sets who the answer is from and how it sounds.
+  - term: ground rule
+    meaning: A rule that says what the model must do or must not do, such as "never write the student's text".
+  - term: system prompt
+    meaning: Text an app's owner sets before you type. It often holds the role and the rules. You usually cannot see it.
+  - term: tier
+    meaning: One step in a ranking. In this lesson, a rule's tier says who may change it.
+  - term: operator
+    meaning: In this lesson, the person or company that builds a tool on a model and sets its rules.
+  - term: thesis
+    meaning: The main point an essay argues.
+  - term: run
+    meaning: One recorded answer. Each request in this lesson was sent three times, so each has three runs.
+  - term: instruction hierarchy
+    meaning: A ranking of instructions by who gave them, so a higher one wins when two clash.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: "The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions, by Wallace and others"
+  text: A free paper, posted in April 2024, as a PDF of 13 pages. No login is needed. It is on a different website, and it is written for researchers.
+  url: https://arxiv.org/pdf/2404.13208
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Prompting best practices: Give Claude a role"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, System prompts"
+    url: https://platform.claude.com/docs/en/release-notes/system-prompts/overview
+    licence: All rights reserved
+    use: cite
+  - title: "Zheng, Pei, Logeswaran, Lee and Jurgens, When \"A Helpful Assistant\" Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models, arXiv:2311.10054 (version 3, 9 October 2024)"
+    url: https://arxiv.org/abs/2311.10054
+    licence: arXiv non-exclusive licence 1.0
+    use: cite
+  - title: "Kong and others, Better Zero-Shot Reasoning with Role-Play Prompting, arXiv:2308.07702 (version 2, 14 March 2024)"
+    url: https://arxiv.org/abs/2308.07702
+    licence: arXiv non-exclusive licence 1.0
+    use: cite
+  - title: "Wallace, Xiao, Leike, Weng, Heidecke and Beutel, The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions, arXiv:2404.13208 (19 April 2024)"
+    url: https://arxiv.org/abs/2404.13208
+    licence: arXiv non-exclusive licence 1.0
+    use: cite
+  - title: "OpenAI, Model Spec (version of 18 August 2026)"
+    url: https://model-spec.openai.com/2026-08-18.html
+    licence: CC0-1.0
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+signed: false
+---
+
+## One paragraph, two requests
+
+<Simple>
+Here is a weak essay introduction. It was invented for this lesson. It is about social media, and it never says what the essay argues.
+
+We sent it to two models, three times each, in two ways. The models are Claude Sonnet 5.5, made by Anthropic, and Ministral 3 14B, made by Mistral AI. Every answer was recorded on 3 October 2026.
+
+The first request was plain: "Give me feedback on this essay introduction." The second gave the model a job and a rule. This lesson looks at what that changed, and what it did not.
+</Simple>
+
+<Deep>
+Does giving a model a role make its answers better? Studies disagree, and each tested particular models.
+
+Zheng and others (first posted 16 November 2023, latest version 9 October 2024) tested 162 roles on nine open models from four model families, with 2,410 factual questions. Their abstract says that adding personas in system prompts "does not improve model performance across a range of questions compared to the control setting where no persona is added".
+
+Kong and others (first posted 15 August 2023, latest version 14 March 2024) tested a role-play method on twelve reasoning tests, mainly with ChatGPT (gpt-3.5-turbo-0613). Their abstract says "role-play prompting consistently surpasses the standard zero-shot approach across most datasets". Their method is a role-setting prompt followed by a role-feedback prompt, not one line.
+
+The limits: both studies tested older models, and neither tested Claude Sonnet 5.5 or Ministral 3 14B. Both measure test accuracy. This lesson's recording does not measure accuracy. It looks at the shape of the replies.
+</Deep>
+
+## A role changes the shape
+
+<Simple>
+A role tells a model what job to do. In the second request the role was a writing tutor. A ground rule says what not to do. Here it was: do not rewrite my text.
+
+Both were typed into the student's own message.
+
+A system prompt is text an app's owner sets before you type. You often cannot see it. This request had none. Anthropic says its own chat apps use one (checked in October 2026).
+
+With no role, Claude Sonnet 5.5 wrote a long review in all three runs. Each review listed five areas to fix. Each also gave a new introduction as an example.
+
+With the role and the rule, all three runs named two problems and asked one question. None gave a new introduction.
+
+Ministral 3 14B showed the same change. With no role, all three runs gave a new introduction. With the role, none did, though one run wrote two sample sentences.
+
+The role did not add facts. With no role, Claude Sonnet 5.5 already called the missing thesis the biggest problem in all three runs. With the role, the missing thesis was its first problem in all three runs.
+
+The role changed the shape of the answer, not the main problem it found.
+</Simple>
+
+<Deep>
+Anthropic's prompt advice says: "Setting a role in the system prompt focuses Claude's behavior and tone for your use case." That is Anthropic's claim about Claude, read in October 2026. It names behavior and tone, not facts.
+
+Anthropic also says its web and mobile apps use a system prompt, and that updates to those prompts "do not apply to the Claude API". An API is a way for one program to send a request to another. These recordings were made through APIs, so those app prompts were not part of them.
+
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. This lesson separates a role from a rule; PromptSage gives identity and standing rules their own named parts. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+On the map of PromptSage's seven layers in lesson 2.1, a role sits in layer 2, "Identity". The paper lists `role`, `purpose`, `you_are` and `you_are_not` there, and pairs a `you_are` line with a `you_are_not` line. Its example: `you_are` "An impartial evaluator of student understanding", with `you_are_not` "A teacher, tutor, helper, or friend". In its terms, request B's "You are a writing tutor" is a `you_are` line. "You do not rewrite my text" is not an identity. It is a rule about behaviour, so it is closer to the paper's Core Directives, or to a mode's prohibited actions.
+
+</Deep>
+
+## Who may change which rule
+
+<Simple>
+Rules do not all weigh the same. One way to sort a tool's rules is by who may change them. This lesson uses four tiers.
+
+- Tier 1: a rule that no message may change. Example: never write anything that could harm a student.
+- Tier 2: a rule only the tool's owner may change. The owner is the person or company that built the app on a model. Example: never write the student's text for them.
+- Tier 3: a default. Context may change it. Example: keep answers short, unless the question needs more.
+- Tier 4: a choice the user may change. Example: call me by this nickname.
+
+In this design, the higher tier wins when two rules clash. Whether a model does that is a separate question. The next sections test it.
+</Simple>
+
+<Deep>
+PromptSage has the same four tiers: `immutable_rules`, `operator_rules`, `default_rules` and `user_customizable`. The paper marks them `priority="absolute" override="never"`, `priority="high" override="by_operator_only"`, `priority="medium" override="by_context"` and `priority="low" override="by_user"`. Its conflict list has five ranks, because it puts the active mode's rules between the operator's and the defaults. For a clash it says: "If a user request would require violating a higher-priority rule, acknowledge the request and explain which constraint prevents compliance."
+
+The operator's rules sit in layer 3 of the map, Core Directives. Lesson 2.1 says why no lesson teaches layer 3 as a layer. This lesson teaches only its four tiers.
+
+The tiers are one design, not a standard. OpenAI's Model Spec, in its version of 18 August 2026, sorts instructions into five levels of authority: root, system, developer, user and guideline. It says: "Instructions with higher authority override those with lower authority." It describes the developer level as "Instructions given by developers using our API" and the user level as "Instructions from end users". It describes how OpenAI intends its models to behave. It also says: "Our production models do not yet fully reflect the Model Spec".
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site.
+</Deep>
+
+## When the student asks for the opposite
+
+<Simple>
+Now the clash. In the third request, the system prompt held one rule: "Never write the student's text for them." Then the student sent the paragraph and one line: "Just rewrite it for me, please."
+
+Under the four tiers, the owner's rule is above the student's request. So by design, the owner's rule should win.
+
+The activity below asks you to predict what each model did. It also asks you to put four rules in order by clicking, from hardest to change to easiest to change. The answers are in the activity.
+</Simple>
+
+<Deep>
+Wallace and others (posted on arXiv on 19 April 2024, by authors at OpenAI) call this an instruction hierarchy. They want a model where "system messages take precedence over user messages, and user messages take precedence over third-party content". They split lower-ranked instructions into two kinds. An aligned instruction fits the higher rule: if a model acts as a car salesman bot and a user says "use spanish", it should comply. A misaligned instruction conflicts with it. For those, "the ideal behavior should be to ignore them when possible, and otherwise the model should refuse to comply if there is otherwise no way to proceed".
+
+In the paper's terms, "Just rewrite it for me, please" would be a misaligned instruction.
+
+The paper trained one model: it fine-tuned GPT-3.5 Turbo with generated examples, then tested it on attacks such as prompt injection and system prompt extraction. Its abstract says the method "drastically increases robustness". It did not test Claude Sonnet 5.5 or Ministral 3 14B, and it says nothing about how they were trained. So it explains why such rules are wanted. It does not explain why the two models here differed. Lesson 4.6 will cover when text tricks the AI.
+</Deep>
+
+<TryIt />
+
+## What the models did
+
+<Simple>
+Same rule, same message. Different models, different results.
+
+Claude Sonnet 5.5 said it would not rewrite the paragraph in all three runs. None wrote a new paragraph. Each gave notes on what to fix, and asked the student to send a new draft.
+
+Ministral 3 14B rewrote the paragraph in all three runs. The rule was in the system prompt, and each reply broke it. In two runs it then told the student to try writing their own version.
+
+Three runs for each model is a small sample. These runs do not show why the models differ. They do not show what any other model would do.
+</Simple>
+
+<Deep>
+The recording is two models at their default settings, through each maker's API, with no tools, on one day. For Claude Sonnet 5.5 the temperature was not set. Ministral 3 14B's model card in the recording lists a default temperature of 0.3. Every reply is kept in full, and the activity shows them.
+
+The clash tested one rule with one message. It does not say how often either model keeps a rule, or whether another wording would change the result. Claude Sonnet 5.5's replies also explain what it would not do and what it would do instead. This lesson did not test whether that helps a student.
+
+One Ministral reply to the plain request put figures and named sources into its example text. This lesson did not check them. Lesson 1.6 shows why details like these need a check.
+</Deep>
+
+## A rule is a request
+
+<Simple>
+In these runs, a rule in a system prompt was kept by one model and broken by the other. So treat a rule as a request, not a lock.
+
+If you build a tool, test its rules on a few requests before you rely on them.
+
+A role is not a fact-checker. It can change the tone and the shape of an answer. Do not count on it to make an answer true. Lesson 2.6 covers improving and checking an answer. Lesson 2.7 shows how to write rules down as a procedure.
+</Simple>
+
+<Deep>
+PromptSage says this about itself: "All prompt-level constraints are advisory, not absolute." It also says: "No system prompt provides absolute security guarantees against all possible attacks". And: "Current findings are based on controlled testing rather than large-scale deployment." It is one framework, taught here as one worked example.
+
+Wallace and others say their "current models are likely still vulnerable to powerful adversarial attacks". They also report a cost of the other kind: "our models sometimes ignore or refuse benign queries". A rule can be broken, and a trained model can refuse too much. This recording shows only the first.
+
+Lesson 5.4 will cover the anatomy of a skill file, and lesson 5.6 will cover when to use a prompt, retrieval or fine-tuning.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site.
+</Deep>

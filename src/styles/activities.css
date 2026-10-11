@@ -1,0 +1,197 @@
+/* Every activity: the interactives of lessons 1.1 to 2.x and the pillars after them. Moved out of global.css unchanged; token names only. */
+/* 1.1's interactive (PR 11): the invented message set apart by a border. Its choices share the Settings rules. */
+.shell summary {
+  min-height: 44px;
+}
+/* The two replies side by side where the width allows, stacked on a phone (p5-pr11-review SHOULD-FIX 1). Under "Show
+   all runs", each run in its own box under its instruction, so a reader sees where one ends (EMMI, 27-09-26). */
+.which-reply :is(.replies, .runs ol) {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 40rem) {
+  .which-reply .replies {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.which-reply .runs h4 {
+  margin: 1.5rem 0 0.5rem;
+}
+.which-reply .runs h5 {
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+.which-reply :is(.replies, .runs ol) > li {
+  min-width: 0;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+.which-reply :is(.replies, .runs ol) > li > :is(h3, h5) { margin: 0; padding: 0.625rem var(--ap); font-size: 1rem; background: var(--tint); border-bottom: var(--border-width) solid var(--border); border-radius: calc(var(--radius-large) - 1px) calc(var(--radius-large) - 1px) 0 0; }
+.which-reply :is(.replies, .runs ol) > li > p { margin: 0; padding: 0.75rem var(--ap); }
+:is(.token-splitter, .hidden-characters) .pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+:is(.token-splitter, .hidden-characters) .pieces li,
+.next-word .reply li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+:is(.token-splitter, .next-word, .hidden-characters) .box {
+  padding: 0 0.25rem;
+  border-bottom: var(--border-width) solid var(--border);
+  white-space: pre-wrap;
+}
+:is(.token-splitter, .next-word, .hidden-characters) .part {
+  border: var(--border-width) dotted var(--border);
+  border-radius: var(--radius);
+}
+:is(.token-splitter, .hidden-characters) :is(.space, .id) {
+  color: var(--text-muted);
+}
+:is(.token-splitter, .watch-it-learn, .feed-simulator, .hidden-characters) .sr {
+  position: absolute;
+  clip-path: inset(50%);
+}
+html:is(:not([data-js]), [data-textversion]) :is(.token-splitter :is(.box, .id, .own), .hidden-characters :is(.box, .id, .flag)) {
+  display: none;
+}
+html:is(:not([data-js]), [data-textversion]) :is(.token-splitter, .hidden-characters) .sr {
+  position: static;
+  clip-path: none;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+/* Recorded answers as cards (stage I, W2): who answered and which run, what we noticed, the answer as written, then what
+   is not true. Each run is in its own box, side by side where the width allows, stacked on a phone. A piece marked as
+   not true has a tint, a dashed underline and the words "Not true", so shape and words carry it, not colour alone. The
+   warning and the speaker colours are the only ones the theme tokens do not hold; white and --warn text on them is 4.5:1
+   or more in every theme (src/lib/activity-colours.test.ts). */
+:root { --ap: min(1rem, 4vw); --card: var(--surface); --tint: color-mix(in srgb, var(--accent) 9%, var(--surface)); --warn: #6B4500; --warn-tint: #FFE3A3; --sp-1: #3E52CC; --sp-2: #0B6577; --sp-3: #8A2F7A; --sp-4: #8A5A00; --sp-5: #4A5170; }
+/* The dark theme paints nothing lighter than its ground (e2e/layout.spec.ts): cards take the ground, tints are the ground
+   darkened, and a colour that filled a chip becomes a ring around a dark chip with the same white initial. */
+[data-theme="dark"] { --card: var(--ground); --tint: var(--shadow); --warn: #FFD98A; --warn-tint: #1A1305; --sp-1: #98A6FF; --sp-2: #6BC9DE; --sp-3: #E39AD6; --sp-4: #E8B35C; --sp-5: #AEB4D9; }
+[data-theme="contrast"] { --warn: #000; --warn-tint: #fff; }
+.runs-pair { display: grid; gap: 1rem; margin: 1rem 0; }
+.runs-pair > * { min-width: 0; }
+.runs-pair > :not(.slot) { grid-column: 1 / -1; }
+@media (min-width: 40rem) {
+  .runs-pair { grid-template-columns: 1fr 1fr; }
+  .runs-pair > button { justify-self: start; }
+}
+.run { margin: 0 0 1rem; background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.run > :is(h3, h4) { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.625rem; margin: 0; padding: 0.625rem 1rem; font-size: 1rem; background: var(--tint); border-bottom: var(--border-width) solid var(--border); border-radius: calc(var(--radius-large) - 1px) calc(var(--radius-large) - 1px) 0 0; }
+.run > h4 { font-weight: 700; border-left: 6px solid var(--accent); }
+.run[data-key*="|B|"] > h4 { border-left-color: var(--accent-2-ink); }
+.run > h4 span { padding: 0 0.625rem; font-size: 0.8rem; font-weight: 400; background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-pill); }
+.run > h4 small { margin-left: auto; font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
+.run > :is(.note, .sent) { margin: 0; padding: 0.625rem 1rem; font-size: 0.9rem; }
+.run .note:not(.bad, .sys)::before { content: "What we noticed. "; font-weight: 700; }
+.run .note { background: var(--ground); border-bottom: var(--border-width) solid var(--border); }
+.run .note.bad { color: var(--text); background: var(--warn-tint); border: 0; border-top: var(--border-width-strong) dashed var(--warn); }
+.run .note.bad span { display: block; margin-top: 0.25rem; font-size: 0.85rem; }
+.run .sent { font-size: 1rem; border-left: 4px solid var(--accent); background: var(--tint); }
+.run .sent span, blockquote.sent { white-space: pre-wrap; overflow-wrap: anywhere; }
+.shell blockquote, blockquote.sent { margin: 0 0 1rem; padding: 0.75rem 1rem; background: var(--tint); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+:is(.run, .search-on-off, .made-up-answer, .made-up-runs) .reply { overflow-wrap: anywhere; }
+:is(.run, .search-on-off, .made-up-answer, .made-up-runs) .reply > * { margin: 0 0 0.75rem; }
+:is(.run, .search-on-off, .made-up-answer, .made-up-runs) .reply :is(h5, h6) { font-size: 1em; }
+:is(.run, .search-on-off, .made-up-answer, .made-up-runs) .reply blockquote { padding-left: 0.75rem; border-left: var(--border-width-strong) solid var(--border); }
+:is(.run, .search-on-off, .made-up-answer, .made-up-runs) .reply :is(pre, code) { white-space: pre-wrap; }
+.run .reply { padding: 1rem 1rem 0.25rem; }
+.run mark, .search-on-off.revealed mark, html[data-textversion] .search-on-off mark { padding: 1px 3px; color: var(--text); background: var(--warn-tint); border-radius: 4px; text-decoration: underline dashed var(--warn) 2px; text-underline-offset: 3px; }
+.run mark::after { content: "Not true"; display: inline-block; margin-left: 0.375rem; padding: 0 0.375rem; font-size: 0.7rem; font-weight: 700; color: var(--warn-tint); background: var(--warn); border-radius: var(--radius-pill); text-decoration: none; vertical-align: middle; }
+/* A long reply: an excerpt, then the rest in a native disclosure that is open in the page without JavaScript and as text.
+   Open, the button follows the whole answer instead of cutting into it. */
+html[data-js]:not([data-textversion]) .run:has(.rest:not([open])) .cut::before { content: "Excerpt: the first part of this recorded answer."; display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 700; color: var(--text-muted); }
+.rest { display: flex; flex-direction: column; }
+.shell .rest > summary { order: 2; align-self: start; margin: 0 1rem 1rem; }
+.rest[open] > summary span:first-child { display: none; }
+.rest[open] > summary::before { content: "Show only the excerpt"; }
+.rest > summary .sr { position: absolute; clip-path: inset(50%); }
+html:is(:not([data-js]), [data-textversion]) .rest > summary { display: none; }
+html:is(:not([data-js]), [data-textversion]) .rest::details-content { content-visibility: visible; }
+/* "Show all runs" and the two AIs: a disclosure that looks like the other buttons, and a card for each AI. */
+.shell details > summary, .made-up-runs > summary { display: flex; align-items: center; width: fit-content; min-height: 44px; padding: 0 1rem; background: var(--ground); border: var(--border-width) solid var(--border); border-radius: var(--radius-pill); cursor: pointer; }
+.shell details > summary:hover, .made-up-runs > summary:hover { border-color: var(--accent); }
+.shell details[open] > summary { margin-bottom: 1rem; }
+.all-runs section { margin-top: 1.5rem; }
+.the-ais { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.the-ais > h3 { grid-column: 1 / -1; margin-bottom: 0; }
+.the-ais > div { min-width: 0; padding: 0.75rem 1rem 0.25rem; background: var(--card); border: var(--border-width) solid var(--border); border-top: 4px solid var(--accent); border-radius: var(--radius-large); }
+.the-ais > div[data-maker="B"] { border-top-color: var(--accent-2-ink); }
+.the-ais h4 { margin: 0 0 0.25rem; }
+.the-ais ul { font-size: 0.9rem; }
+
+/* A narrow phone at the largest text leaves an answer box about 270 px of line: the side borders and insets go (the top and
+   bottom borders still frame it) so an ordinary long word (Commonwealth, contravention) gets the whole text column and stays
+   whole. A media query counts in CSS pixels, not in the reader's text size. */
+/* 2.5's layer explorer: each rule beside its own layer choice, and the answer in a thick box. */
+.layer-explorer li { margin-bottom: 0.5rem; }
+.layer-explorer label { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.layer-explorer select, .cases select { min-height: 44px; max-width: 100%; padding: 0.25rem 0.5rem; color: var(--text); background: var(--ground); border: var(--border-width) solid var(--border); border-radius: var(--radius); }
+.cases label:has(> select) { flex-wrap: wrap; }
+.cases fieldset { min-width: 0; }
+.runs-pair .caption { display: inline-block; margin: 0 0 0.5rem; padding: 0 0.75rem; font-size: 0.85rem; color: var(--on-accent); background: var(--accent); border-radius: var(--radius-pill); }
+.runs-pair .as-text { display: none; }
+
+
+/* Choices, feedback and answers: the same cards in every activity. A question is a card; each choice is a row you can press
+   anywhere, with a radio drawn here (native again in forced colours), and the chosen row has a thicker ring as well as a tint, so shape marks it. Under
+   the question, once revealed, "Your prediction" and "What happened" (src/shell.ts). The answer is a card with a green top. */
+.shell fieldset { min-width: 0; margin: 1.5rem 0 0; padding: 1rem var(--ap); background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.shell legend { float: left; width: 100%; margin: 0 0 0.75rem; padding: 0; font-weight: 700; }
+.shell legend + * { clear: both; }
+.shell fieldset > p { margin: 0.75rem 0 0; font-size: 0.9rem; color: var(--text-muted); }
+.shell fieldset label:has(> input:is([type="radio"], [type="checkbox"])) { align-items: flex-start; margin-top: 0.5rem; padding: 0.5rem var(--ap); background: var(--ground); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); cursor: pointer; }
+.shell fieldset label:has(> input:is([type="radio"], [type="checkbox"])):hover { border-color: var(--accent); }
+.shell fieldset label:has(> input:checked) { background: var(--tint); border-color: var(--accent); box-shadow: inset 0 0 0 var(--border-width-strong) var(--accent); }
+.shell fieldset label:has(> input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.shell fieldset label > input:is([type="radio"], [type="checkbox"]) { flex: none; margin-top: 0.15rem; }
+/* A radio is drawn as the check-in draws its choices (lesson.css): a hollow ring, a filled dot when chosen. A native radio in the
+   dark theme is a filled grey disc, which reads as already chosen. */
+.shell fieldset label > input[type="radio"] { appearance: none; width: 1.1rem; height: 1.1rem; background: none; border: 2px solid var(--border); border-radius: 50%; }
+.shell fieldset label > input[type="radio"]:checked { border-color: var(--accent); box-shadow: inset 0 0 0 2px var(--tint), inset 0 0 0 1rem var(--accent); } /* the dot is a shadow: no light background in the dark theme */
+.shell fieldset label > input[type="radio"]:disabled { opacity: 0.5; }
+@media (forced-colors: active) { .shell fieldset label > input[type="radio"] { appearance: auto; } } /* forced colours drop the shadow and one-colour the border: the native dot shows the choice */
+html:is(:not([data-js]), [data-textversion]) .shell fieldset { padding: 0; background: none; border: 0; }
+.feedback { margin-top: 0.75rem; padding: 0.625rem var(--ap); background: var(--tint); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+.feedback p { margin: 0; }
+.feedback p + p { margin-top: 0.25rem; }
+.shell .picked { margin-top: 1.5rem; padding: 0.625rem var(--ap); font-size: 0.9rem; color: var(--text-muted); white-space: pre-line; border-left: 4px solid var(--state-done); }
+.shell .picked:empty { display: none; }
+.shell .picked::before { content: "Your picks, in words"; display: block; font-weight: 700; color: var(--text); }
+.shell[data-local] .picked::before { content: "Where to look"; }
+:is(.order-answer, .case-answer, .layer-answer, .result, .still-know-name .cut, .still-know-name .window) { margin: 1rem 0; padding: 0.75rem var(--ap) 0.25rem; background: var(--card); border: var(--border-width) solid var(--border); border-top: 4px solid var(--state-done); border-radius: var(--radius-large); }
+.still-know-name .cut { border-style: dashed; }
+
+/* The rest of the activities, in the same cards: inputs, pieces, chats, lists of results. */
+.shell input:is([type="number"], [type="text"]), .shell select { min-height: 44px; padding: 0 0.75rem; color: var(--text); background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius); }
+.chat { margin: 0.75rem 0; padding: 0; list-style: none; background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.chat > li { padding: 0.5rem var(--ap); }
+.chat > li + li { border-top: var(--border-width) solid color-mix(in srgb, var(--border) 40%, var(--surface)); }
+.shell fieldset + button, .shell .result + button { margin-top: 1rem; }
+.case-answer .result { margin: 0; padding: 0; background: none; border: 0; }
+[data-theme="dark"] :is(.who b, .runs-pair .caption) { color: var(--text); background: color-mix(in srgb, var(--sp, var(--accent)) 10%, #000); box-shadow: inset 0 0 0 2px var(--sp, var(--accent)); }
+[data-theme="dark"] .run mark::after { color: var(--warn); background: var(--warn-tint); box-shadow: inset 0 0 0 1px var(--warn); }
+@media (max-width: 360px) {
+  :is(.order-answer, .case-answer, .layer-answer, .still-know-name .cut, .still-know-name .window), .run, .shell fieldset { padding-inline: 0; border-inline: 0; border-radius: 0; }
+  .run > :is(h3, h4), .run > :is(.note, .sent), .run .reply, .rest > summary { padding-inline: 0.5rem; }
+  .rest > summary { margin-inline: 0.5rem; }
+  .shell blockquote, blockquote.sent { padding-inline: 0.125rem 0; border-left-width: var(--border-width-strong); }
+}

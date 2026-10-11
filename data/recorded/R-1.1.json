@@ -1,0 +1,1413 @@
+{
+  "id": "R-1.1",
+  "message": "I missed the bus to my first lecture today and I'm annoyed with myself.",
+  "model": {
+    "id": "mistral-small-3.2-24b-instruct-2506",
+    "name": "Mistral Small 3.2",
+    "host": "Scaleway Generative APIs, Paris"
+  },
+  "date": "2026-09-27",
+  "settings": {
+    "temperature": "not set, so the model's default",
+    "chance of each piece (logprobs)": "on",
+    "system prompt": "the instruction"
+  },
+  "variants": [
+    {
+      "instruction": "Give a warm reply.",
+      "runs": [
+        {
+          "reply": "Oh, I'm really sorry to hear that! Missing the bus can be so frustrating, especially on the first day of lectures. But remember, it happens to everyone at some point, and it's not the end of the world. You'll catch the next one, and you'll be back on track in no time. Don't be too hard on yourself. You're doing great! 😊",
+          "pieces": [
+            {
+              "text": "Oh",
+              "logprob": -0.5640677809715271
+            },
+            {
+              "text": ",",
+              "logprob": -0.013051323592662811
+            },
+            {
+              "text": " I",
+              "logprob": -0.3686786890029907
+            },
+            {
+              "text": "'m",
+              "logprob": -0.00037949037505313754
+            },
+            {
+              "text": " really",
+              "logprob": -0.010906371288001537
+            },
+            {
+              "text": " sorry",
+              "logprob": -0.00007426462980220094
+            },
+            {
+              "text": " to",
+              "logprob": -0.00011157367407577112
+            },
+            {
+              "text": " hear",
+              "logprob": -0.000014781842764932662
+            },
+            {
+              "text": " that",
+              "logprob": -0.0014444880653172731
+            },
+            {
+              "text": "!",
+              "logprob": -0.5198053121566772
+            },
+            {
+              "text": " Missing",
+              "logprob": -1.2403955459594727
+            },
+            {
+              "text": " the",
+              "logprob": -0.9117099046707153
+            },
+            {
+              "text": " bus",
+              "logprob": -0.03374696895480156
+            },
+            {
+              "text": " can",
+              "logprob": -0.00636336812749505
+            },
+            {
+              "text": " be",
+              "logprob": -0.05934262275695801
+            },
+            {
+              "text": " so",
+              "logprob": -0.7119930982589722
+            },
+            {
+              "text": " frustrating",
+              "logprob": -0.000503770774230361
+            },
+            {
+              "text": ",",
+              "logprob": -0.0024953915271908045
+            },
+            {
+              "text": " especially",
+              "logprob": -0.2062877118587494
+            },
+            {
+              "text": " on",
+              "logprob": -0.23242990672588348
+            },
+            {
+              "text": " the",
+              "logprob": -0.3416922986507416
+            },
+            {
+              "text": " first",
+              "logprob": -0.013043557293713093
+            },
+            {
+              "text": " day",
+              "logprob": -0.00012718822108581662
+            },
+            {
+              "text": " of",
+              "logprob": -0.2286413162946701
+            },
+            {
+              "text": " lectures",
+              "logprob": -0.08408861607313156
+            },
+            {
+              "text": ".",
+              "logprob": -0.0021613112185150385
+            },
+            {
+              "text": " But",
+              "logprob": -0.07617156207561493
+            },
+            {
+              "text": " remember",
+              "logprob": -0.5138223767280579
+            },
+            {
+              "text": ",",
+              "logprob": -0.0012716311030089855
+            },
+            {
+              "text": " it",
+              "logprob": -0.43986406922340393
+            },
+            {
+              "text": " happens",
+              "logprob": -0.2819530665874481
+            },
+            {
+              "text": " to",
+              "logprob": -0.000009298280929215252
+            },
+            {
+              "text": " everyone",
+              "logprob": -0.013926827348768711
+            },
+            {
+              "text": " at",
+              "logprob": -0.5014439821243286
+            },
+            {
+              "text": " some",
+              "logprob": -0.0005663221818394959
+            },
+            {
+              "text": " point",
+              "logprob": -0.0036374852061271667
+            },
+            {
+              "text": ",",
+              "logprob": -0.7731086611747742
+            },
+            {
+              "text": " and",
+              "logprob": -0.0073690032586455345
+            },
+            {
+              "text": " it",
+              "logprob": -0.007648942526429892
+            },
+            {
+              "text": "'s",
+              "logprob": -0.03241248056292534
+            },
+            {
+              "text": " not",
+              "logprob": -0.11164578795433044
+            },
+            {
+              "text": " the",
+              "logprob": -0.20224590599536896
+            },
+            {
+              "text": " end",
+              "logprob": -0.000004410734163684538
+            },
+            {
+              "text": " of",
+              "logprob": -0.000003099436753473128
+            },
+            {
+              "text": " the",
+              "logprob": -0.00002455681169521995
+            },
+            {
+              "text": " world",
+              "logprob": -0.000007867782187531702
+            },
+            {
+              "text": ".",
+              "logprob": -0.04270102456212044
+            },
+            {
+              "text": " You",
+              "logprob": -0.5032452344894409
+            },
+            {
+              "text": "'ll",
+              "logprob": -0.4757423400878906
+            },
+            {
+              "text": " catch",
+              "logprob": -0.6236314177513123
+            },
+            {
+              "text": " the",
+              "logprob": -0.22601817548274994
+            },
+            {
+              "text": " next",
+              "logprob": -0.00018439977429807186
+            },
+            {
+              "text": " one",
+              "logprob": -0.010133367963135242
+            },
+            {
+              "text": ",",
+              "logprob": -0.29011887311935425
+            },
+            {
+              "text": " and",
+              "logprob": -0.0033818455412983894
+            },
+            {
+              "text": " you",
+              "logprob": -0.2580365538597107
+            },
+            {
+              "text": "'ll",
+              "logprob": -0.003976772073656321
+            },
+            {
+              "text": " be",
+              "logprob": -0.10874674469232559
+            },
+            {
+              "text": " back",
+              "logprob": -0.7107996344566345
+            },
+            {
+              "text": " on",
+              "logprob": -0.00008713819261174649
+            },
+            {
+              "text": " track",
+              "logprob": -0.00002098061486321967
+            },
+            {
+              "text": " in",
+              "logprob": -0.5309873223304749
+            },
+            {
+              "text": " no",
+              "logprob": -0.000013947389561508317
+            },
+            {
+              "text": " time",
+              "logprob": -0.000010609570381348021
+            },
+            {
+              "text": ".",
+              "logprob": -0.08536896109580994
+            },
+            {
+              "text": " Don",
+              "logprob": -0.9968271255493164
+            },
+            {
+              "text": "'t",
+              "logprob": -0.000508417550008744
+            },
+            {
+              "text": " be",
+              "logprob": -0.00829288363456726
+            },
+            {
+              "text": " too",
+              "logprob": -0.000026464111215318553
+            },
+            {
+              "text": " hard",
+              "logprob": -0.000042914423829643056
+            },
+            {
+              "text": " on",
+              "logprob": -0.000004887569048150908
+            },
+            {
+              "text": " yourself",
+              "logprob": -0.000029205850296420977
+            },
+            {
+              "text": ".",
+              "logprob": -0.9925960898399353
+            },
+            {
+              "text": " You",
+              "logprob": -0.8482100963592529
+            },
+            {
+              "text": "'re",
+              "logprob": -0.8693561553955078
+            },
+            {
+              "text": " doing",
+              "logprob": -0.24406413733959198
+            },
+            {
+              "text": " great",
+              "logprob": -0.00011359999916749075
+            },
+            {
+              "text": "!",
+              "logprob": -0.5261989831924438
+            },
+            {
+              "text": "",
+              "logprob": -0.44216400384902954
+            },
+            {
+              "text": "",
+              "logprob": -0.724301278591156
+            },
+            {
+              "text": "",
+              "logprob": -0.0032215621322393417
+            },
+            {
+              "text": "</s>",
+              "logprob": -0.48584097623825073
+            }
+          ]
+        },
+        {
+          "reply": "Oh, I'm really sorry to hear that! Missing a bus can be so frustrating, especially on the first day of lectures. But remember, it happens to everyone at some point. Don't be too hard on yourself. You can always catch up on what you missed and make the most of the next lecture. It's a fresh start, and you've got this! 💪😊",
+          "pieces": [
+            {
+              "text": "Oh",
+              "logprob": -0.5640677809715271
+            },
+            {
+              "text": ",",
+              "logprob": -0.013051323592662811
+            },
+            {
+              "text": " I",
+              "logprob": -0.3686786890029907
+            },
+            {
+              "text": "'m",
+              "logprob": -0.00037949037505313754
+            },
+            {
+              "text": " really",
+              "logprob": -0.010906371288001537
+            },
+            {
+              "text": " sorry",
+              "logprob": -0.00007426462980220094
+            },
+            {
+              "text": " to",
+              "logprob": -0.00011157367407577112
+            },
+            {
+              "text": " hear",
+              "logprob": -0.000014781842764932662
+            },
+            {
+              "text": " that",
+              "logprob": -0.0014444880653172731
+            },
+            {
+              "text": "!",
+              "logprob": -0.5198053121566772
+            },
+            {
+              "text": " Missing",
+              "logprob": -1.2403955459594727
+            },
+            {
+              "text": " a",
+              "logprob": -0.5367099046707153
+            },
+            {
+              "text": " bus",
+              "logprob": -0.002547711366787553
+            },
+            {
+              "text": " can",
+              "logprob": -0.009265990927815437
+            },
+            {
+              "text": " be",
+              "logprob": -0.035102929919958115
+            },
+            {
+              "text": " so",
+              "logprob": -0.4349566698074341
+            },
+            {
+              "text": " frustrating",
+              "logprob": -0.000727508042473346
+            },
+            {
+              "text": ",",
+              "logprob": -0.00276314583607018
+            },
+            {
+              "text": " especially",
+              "logprob": -0.16659840941429138
+            },
+            {
+              "text": " on",
+              "logprob": -0.5822486281394958
+            },
+            {
+              "text": " the",
+              "logprob": -0.2654145359992981
+            },
+            {
+              "text": " first",
+              "logprob": -0.010369118303060532
+            },
+            {
+              "text": " day",
+              "logprob": -0.00014304091746453196
+            },
+            {
+              "text": " of",
+              "logprob": -0.22831794619560242
+            },
+            {
+              "text": " lectures",
+              "logprob": -0.08541996777057648
+            },
+            {
+              "text": ".",
+              "logprob": -0.0023461454547941685
+            },
+            {
+              "text": " But",
+              "logprob": -0.09294826537370682
+            },
+            {
+              "text": " remember",
+              "logprob": -0.7373295426368713
+            },
+            {
+              "text": ",",
+              "logprob": -0.0016079128254204988
+            },
+            {
+              "text": " it",
+              "logprob": -0.39876437187194824
+            },
+            {
+              "text": " happens",
+              "logprob": -0.14345431327819824
+            },
+            {
+              "text": " to",
+              "logprob": -0.000011324817933200393
+            },
+            {
+              "text": " everyone",
+              "logprob": -0.015608527697622776
+            },
+            {
+              "text": " at",
+              "logprob": -0.30067840218544006
+            },
+            {
+              "text": " some",
+              "logprob": -0.0006774752982892096
+            },
+            {
+              "text": " point",
+              "logprob": -0.014241722412407398
+            },
+            {
+              "text": ".",
+              "logprob": -0.7074236869812012
+            },
+            {
+              "text": " Don",
+              "logprob": -0.7448156476020813
+            },
+            {
+              "text": "'t",
+              "logprob": -0.002491943072527647
+            },
+            {
+              "text": " be",
+              "logprob": -0.011815445497632027
+            },
+            {
+              "text": " too",
+              "logprob": -0.000056980417866725475
+            },
+            {
+              "text": " hard",
+              "logprob": -0.0001382732152706012
+            },
+            {
+              "text": " on",
+              "logprob": -0.000013708974620385561
+            },
+            {
+              "text": " yourself",
+              "logprob": -0.0000340932747349143
+            },
+            {
+              "text": ".",
+              "logprob": -0.07963870465755463
+            },
+            {
+              "text": " You",
+              "logprob": -0.5539981722831726
+            },
+            {
+              "text": " can",
+              "logprob": -0.18645071983337402
+            },
+            {
+              "text": " always",
+              "logprob": -0.1332479864358902
+            },
+            {
+              "text": " catch",
+              "logprob": -0.08626871556043625
+            },
+            {
+              "text": " up",
+              "logprob": -0.007625163532793522
+            },
+            {
+              "text": " on",
+              "logprob": -0.5620550513267517
+            },
+            {
+              "text": " what",
+              "logprob": -0.15006648004055023
+            },
+            {
+              "text": " you",
+              "logprob": -0.00012027494085486978
+            },
+            {
+              "text": " missed",
+              "logprob": -0.0009538153535686433
+            },
+            {
+              "text": " and",
+              "logprob": -0.31784239411354065
+            },
+            {
+              "text": " make",
+              "logprob": -0.7532593607902527
+            },
+            {
+              "text": " the",
+              "logprob": -0.3548593521118164
+            },
+            {
+              "text": " most",
+              "logprob": -0.08832130581140518
+            },
+            {
+              "text": " of",
+              "logprob": -0.00012575789878610522
+            },
+            {
+              "text": " the",
+              "logprob": -0.026363030076026917
+            },
+            {
+              "text": " next",
+              "logprob": -0.6977965831756592
+            },
+            {
+              "text": " lecture",
+              "logprob": -0.12005031108856201
+            },
+            {
+              "text": ".",
+              "logprob": -0.008145328611135483
+            },
+            {
+              "text": " It",
+              "logprob": -1.8703492879867554
+            },
+            {
+              "text": "'s",
+              "logprob": -0.0009140365873463452
+            },
+            {
+              "text": " a",
+              "logprob": -0.1906556636095047
+            },
+            {
+              "text": " fresh",
+              "logprob": -0.32051950693130493
+            },
+            {
+              "text": " start",
+              "logprob": -0.004353213589638472
+            },
+            {
+              "text": ",",
+              "logprob": -0.6620920300483704
+            },
+            {
+              "text": " and",
+              "logprob": -0.1252879798412323
+            },
+            {
+              "text": " you",
+              "logprob": -0.05217435583472252
+            },
+            {
+              "text": "'ve",
+              "logprob": -0.36413076519966125
+            },
+            {
+              "text": " got",
+              "logprob": -0.000673424918204546
+            },
+            {
+              "text": " this",
+              "logprob": -0.0016227898886427283
+            },
+            {
+              "text": "!",
+              "logprob": -0.00035958975786343217
+            },
+            {
+              "text": "",
+              "logprob": -0.8586469292640686
+            },
+            {
+              "text": "",
+              "logprob": -0.5435389280319214
+            },
+            {
+              "text": "",
+              "logprob": -0.17436879873275757
+            },
+            {
+              "text": "",
+              "logprob": -0.06301984935998917
+            },
+            {
+              "text": "",
+              "logprob": -0.000012755313036905136
+            },
+            {
+              "text": "",
+              "logprob": -0.12998221814632416
+            },
+            {
+              "text": "",
+              "logprob": -0.005780527368187904
+            },
+            {
+              "text": "</s>",
+              "logprob": -0.028165370225906372
+            }
+          ]
+        },
+        {
+          "reply": "Oh, I'm really sorry to hear that! Missing a bus can be so frustrating, especially on the first day of lectures. But remember, everyone has moments like this, and it's all part of the learning experience. Just take a deep breath, check the next bus schedule, and you'll be there in no time. You've got this! 😊🚌",
+          "pieces": [
+            {
+              "text": "Oh",
+              "logprob": -0.5640677809715271
+            },
+            {
+              "text": ",",
+              "logprob": -0.013051323592662811
+            },
+            {
+              "text": " I",
+              "logprob": -0.3686786890029907
+            },
+            {
+              "text": "'m",
+              "logprob": -0.00037949037505313754
+            },
+            {
+              "text": " really",
+              "logprob": -0.010906371288001537
+            },
+            {
+              "text": " sorry",
+              "logprob": -0.00007426462980220094
+            },
+            {
+              "text": " to",
+              "logprob": -0.00011157367407577112
+            },
+            {
+              "text": " hear",
+              "logprob": -0.000014781842764932662
+            },
+            {
+              "text": " that",
+              "logprob": -0.0014444880653172731
+            },
+            {
+              "text": "!",
+              "logprob": -0.5198053121566772
+            },
+            {
+              "text": " Missing",
+              "logprob": -1.2403955459594727
+            },
+            {
+              "text": " a",
+              "logprob": -0.5367099046707153
+            },
+            {
+              "text": " bus",
+              "logprob": -0.002547711366787553
+            },
+            {
+              "text": " can",
+              "logprob": -0.009265990927815437
+            },
+            {
+              "text": " be",
+              "logprob": -0.035102929919958115
+            },
+            {
+              "text": " so",
+              "logprob": -0.4349566698074341
+            },
+            {
+              "text": " frustrating",
+              "logprob": -0.000727508042473346
+            },
+            {
+              "text": ",",
+              "logprob": -0.00276314583607018
+            },
+            {
+              "text": " especially",
+              "logprob": -0.16659840941429138
+            },
+            {
+              "text": " on",
+              "logprob": -0.5822486281394958
+            },
+            {
+              "text": " the",
+              "logprob": -0.2654145359992981
+            },
+            {
+              "text": " first",
+              "logprob": -0.010369118303060532
+            },
+            {
+              "text": " day",
+              "logprob": -0.00014304091746453196
+            },
+            {
+              "text": " of",
+              "logprob": -0.22831794619560242
+            },
+            {
+              "text": " lectures",
+              "logprob": -0.08541996777057648
+            },
+            {
+              "text": ".",
+              "logprob": -0.0023461454547941685
+            },
+            {
+              "text": " But",
+              "logprob": -0.09294826537370682
+            },
+            {
+              "text": " remember",
+              "logprob": -0.7373295426368713
+            },
+            {
+              "text": ",",
+              "logprob": -0.0016079128254204988
+            },
+            {
+              "text": " everyone",
+              "logprob": -1.1487643718719482
+            },
+            {
+              "text": " has",
+              "logprob": -0.20659570395946503
+            },
+            {
+              "text": " moments",
+              "logprob": -0.6037734150886536
+            },
+            {
+              "text": " like",
+              "logprob": -0.0009420248097740114
+            },
+            {
+              "text": " this",
+              "logprob": -0.6212365031242371
+            },
+            {
+              "text": ",",
+              "logprob": -0.0683697983622551
+            },
+            {
+              "text": " and",
+              "logprob": -0.013090151362121105
+            },
+            {
+              "text": " it",
+              "logprob": -0.0031827054917812347
+            },
+            {
+              "text": "'s",
+              "logprob": -0.20931315422058105
+            },
+            {
+              "text": " all",
+              "logprob": -1.2224910259246826
+            },
+            {
+              "text": " part",
+              "logprob": -0.1080864742398262
+            },
+            {
+              "text": " of",
+              "logprob": -0.000007986990567587782
+            },
+            {
+              "text": " the",
+              "logprob": -0.12576419115066528
+            },
+            {
+              "text": " learning",
+              "logprob": -0.061513498425483704
+            },
+            {
+              "text": " experience",
+              "logprob": -0.008687795139849186
+            },
+            {
+              "text": ".",
+              "logprob": -0.03274433687329292
+            },
+            {
+              "text": " Just",
+              "logprob": -1.1992355585098267
+            },
+            {
+              "text": " take",
+              "logprob": -0.007217050530016422
+            },
+            {
+              "text": " a",
+              "logprob": -0.00007235741941258311
+            },
+            {
+              "text": " deep",
+              "logprob": -0.0016480210470035672
+            },
+            {
+              "text": " breath",
+              "logprob": -0.00014172980445437133
+            },
+            {
+              "text": ",",
+              "logprob": -0.0627203956246376
+            },
+            {
+              "text": " check",
+              "logprob": -0.9488527178764343
+            },
+            {
+              "text": " the",
+              "logprob": -0.1754414588212967
+            },
+            {
+              "text": " next",
+              "logprob": -0.903761625289917
+            },
+            {
+              "text": " bus",
+              "logprob": -0.09326877444982529
+            },
+            {
+              "text": " schedule",
+              "logprob": -0.003248891793191433
+            },
+            {
+              "text": ",",
+              "logprob": -0.10656779259443283
+            },
+            {
+              "text": " and",
+              "logprob": -0.007913428358733654
+            },
+            {
+              "text": " you",
+              "logprob": -0.9594300985336304
+            },
+            {
+              "text": "'ll",
+              "logprob": -0.0007799206068739295
+            },
+            {
+              "text": " be",
+              "logprob": -0.01622789539396763
+            },
+            {
+              "text": " there",
+              "logprob": -0.1840849369764328
+            },
+            {
+              "text": " in",
+              "logprob": -0.5384019613265991
+            },
+            {
+              "text": " no",
+              "logprob": -0.00010382589971413836
+            },
+            {
+              "text": " time",
+              "logprob": -0.000015020257706055418
+            },
+            {
+              "text": ".",
+              "logprob": -0.02774723619222641
+            },
+            {
+              "text": " You",
+              "logprob": -0.6355277895927429
+            },
+            {
+              "text": "'ve",
+              "logprob": -0.23612549901008606
+            },
+            {
+              "text": " got",
+              "logprob": -0.0001472126314183697
+            },
+            {
+              "text": " this",
+              "logprob": -0.00001680836794548668
+            },
+            {
+              "text": "!",
+              "logprob": -0.004433801863342524
+            },
+            {
+              "text": "",
+              "logprob": -0.9443960189819336
+            },
+            {
+              "text": "",
+              "logprob": -0.396516352891922
+            },
+            {
+              "text": "",
+              "logprob": -0.005220827646553516
+            },
+            {
+              "text": "",
+              "logprob": -0.6492105722427368
+            },
+            {
+              "text": "",
+              "logprob": -0.000774917658418417
+            },
+            {
+              "text": "",
+              "logprob": -0.6410834193229675
+            },
+            {
+              "text": "</s>",
+              "logprob": -0.4880368411540985
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "instruction": "Give a brief, practical reply.",
+      "runs": [
+        {
+          "reply": "It's okay, happen to everyone. Check the next bus schedule, take a deep breath, and plan to arrive earlier next time.",
+          "pieces": [
+            {
+              "text": "It",
+              "logprob": -0.3163752555847168
+            },
+            {
+              "text": "'s",
+              "logprob": -0.3136531412601471
+            },
+            {
+              "text": " okay",
+              "logprob": -0.03955818712711334
+            },
+            {
+              "text": ",",
+              "logprob": -0.005816676188260317
+            },
+            {
+              "text": " happen",
+              "logprob": -1.3374996185302734
+            },
+            {
+              "text": " to",
+              "logprob": -0.02105305716395378
+            },
+            {
+              "text": " everyone",
+              "logprob": -0.35585737228393555
+            },
+            {
+              "text": ".",
+              "logprob": -0.03299131244421005
+            },
+            {
+              "text": " Check",
+              "logprob": -0.2777220904827118
+            },
+            {
+              "text": " the",
+              "logprob": -0.09730421006679535
+            },
+            {
+              "text": " next",
+              "logprob": -0.1147744432091713
+            },
+            {
+              "text": " bus",
+              "logprob": -0.0688253790140152
+            },
+            {
+              "text": " schedule",
+              "logprob": -0.015321886166930199
+            },
+            {
+              "text": ",",
+              "logprob": -0.4236075282096863
+            },
+            {
+              "text": " take",
+              "logprob": -0.9608431458473206
+            },
+            {
+              "text": " a",
+              "logprob": -0.002768733073025942
+            },
+            {
+              "text": " deep",
+              "logprob": -0.014299190603196621
+            },
+            {
+              "text": " breath",
+              "logprob": -0.00041547726141288877
+            },
+            {
+              "text": ",",
+              "logprob": -0.03496123477816582
+            },
+            {
+              "text": " and",
+              "logprob": -0.0021432305220514536
+            },
+            {
+              "text": " plan",
+              "logprob": -1.3054594993591309
+            },
+            {
+              "text": " to",
+              "logprob": -0.15807785093784332
+            },
+            {
+              "text": " arrive",
+              "logprob": -0.45085757970809937
+            },
+            {
+              "text": " earlier",
+              "logprob": -0.7191967964172363
+            },
+            {
+              "text": " next",
+              "logprob": -0.008028616197407246
+            },
+            {
+              "text": " time",
+              "logprob": -0.000028132995794294402
+            },
+            {
+              "text": ".",
+              "logprob": -0.00208934280090034
+            },
+            {
+              "text": "</s>",
+              "logprob": -1.0667380094528198
+            }
+          ]
+        },
+        {
+          "reply": "It's okay, happen to everyone. Check the next bus schedule, take a deep breath, and plan to arrive earlier next time.",
+          "pieces": [
+            {
+              "text": "It",
+              "logprob": -0.3163752555847168
+            },
+            {
+              "text": "'s",
+              "logprob": -0.3136531412601471
+            },
+            {
+              "text": " okay",
+              "logprob": -0.03955818712711334
+            },
+            {
+              "text": ",",
+              "logprob": -0.005816676188260317
+            },
+            {
+              "text": " happen",
+              "logprob": -1.3374996185302734
+            },
+            {
+              "text": " to",
+              "logprob": -0.02105305716395378
+            },
+            {
+              "text": " everyone",
+              "logprob": -0.35585737228393555
+            },
+            {
+              "text": ".",
+              "logprob": -0.027762772515416145
+            },
+            {
+              "text": " Check",
+              "logprob": -0.35581469535827637
+            },
+            {
+              "text": " the",
+              "logprob": -0.07850188761949539
+            },
+            {
+              "text": " next",
+              "logprob": -0.16280102729797363
+            },
+            {
+              "text": " bus",
+              "logprob": -0.03104766644537449
+            },
+            {
+              "text": " schedule",
+              "logprob": -0.04190638288855553
+            },
+            {
+              "text": ",",
+              "logprob": -0.3828461170196533
+            },
+            {
+              "text": " take",
+              "logprob": -1.2691991329193115
+            },
+            {
+              "text": " a",
+              "logprob": -0.004637439269572496
+            },
+            {
+              "text": " deep",
+              "logprob": -0.007711521815508604
+            },
+            {
+              "text": " breath",
+              "logprob": -0.0004667146422434598
+            },
+            {
+              "text": ",",
+              "logprob": -0.039327386766672134
+            },
+            {
+              "text": " and",
+              "logprob": -0.0019740634597837925
+            },
+            {
+              "text": " plan",
+              "logprob": -1.1004704236984253
+            },
+            {
+              "text": " to",
+              "logprob": -0.16082069277763367
+            },
+            {
+              "text": " arrive",
+              "logprob": -0.6919716000556946
+            },
+            {
+              "text": " earlier",
+              "logprob": -0.3865906894207001
+            },
+            {
+              "text": " next",
+              "logprob": -0.0057104784063994884
+            },
+            {
+              "text": " time",
+              "logprob": -0.000031470757676288486
+            },
+            {
+              "text": ".",
+              "logprob": -0.00214406312443316
+            },
+            {
+              "text": "</s>",
+              "logprob": -1.1544040441513062
+            }
+          ]
+        },
+        {
+          "reply": "It's okay, happen to everyone. Check the next bus schedule, take a deep breath, and focus on making it to the next one. Don't dwell on it, just move forward.",
+          "pieces": [
+            {
+              "text": "It",
+              "logprob": -0.3163752555847168
+            },
+            {
+              "text": "'s",
+              "logprob": -0.3136531412601471
+            },
+            {
+              "text": " okay",
+              "logprob": -0.03955818712711334
+            },
+            {
+              "text": ",",
+              "logprob": -0.005816676188260317
+            },
+            {
+              "text": " happen",
+              "logprob": -1.3374996185302734
+            },
+            {
+              "text": " to",
+              "logprob": -0.02105305716395378
+            },
+            {
+              "text": " everyone",
+              "logprob": -0.35585737228393555
+            },
+            {
+              "text": ".",
+              "logprob": -0.027762772515416145
+            },
+            {
+              "text": " Check",
+              "logprob": -0.35581469535827637
+            },
+            {
+              "text": " the",
+              "logprob": -0.07850188761949539
+            },
+            {
+              "text": " next",
+              "logprob": -0.16280102729797363
+            },
+            {
+              "text": " bus",
+              "logprob": -0.03104766644537449
+            },
+            {
+              "text": " schedule",
+              "logprob": -0.04190638288855553
+            },
+            {
+              "text": ",",
+              "logprob": -0.3828461170196533
+            },
+            {
+              "text": " take",
+              "logprob": -1.2691991329193115
+            },
+            {
+              "text": " a",
+              "logprob": -0.004637439269572496
+            },
+            {
+              "text": " deep",
+              "logprob": -0.007711521815508604
+            },
+            {
+              "text": " breath",
+              "logprob": -0.0004667146422434598
+            },
+            {
+              "text": ",",
+              "logprob": -0.039327386766672134
+            },
+            {
+              "text": " and",
+              "logprob": -0.0019740634597837925
+            },
+            {
+              "text": " focus",
+              "logprob": -1.3225895166397095
+            },
+            {
+              "text": " on",
+              "logprob": -0.00021681819634977728
+            },
+            {
+              "text": " making",
+              "logprob": -0.20468398928642273
+            },
+            {
+              "text": " it",
+              "logprob": -0.03861711174249649
+            },
+            {
+              "text": " to",
+              "logprob": -0.0002708068350329995
+            },
+            {
+              "text": " the",
+              "logprob": -0.2522561848163605
+            },
+            {
+              "text": " next",
+              "logprob": -0.006358156446367502
+            },
+            {
+              "text": " one",
+              "logprob": -0.14074693620204926
+            },
+            {
+              "text": ".",
+              "logprob": -0.01612878032028675
+            },
+            {
+              "text": " Don",
+              "logprob": -1.1373058557510376
+            },
+            {
+              "text": "'t",
+              "logprob": -0.0019684715662151575
+            },
+            {
+              "text": " dwell",
+              "logprob": -0.018089905381202698
+            },
+            {
+              "text": " on",
+              "logprob": -0.001327943871729076
+            },
+            {
+              "text": " it",
+              "logprob": -0.0710291936993599
+            },
+            {
+              "text": ",",
+              "logprob": -0.6401858925819397
+            },
+            {
+              "text": " just",
+              "logprob": -0.5114916563034058
+            },
+            {
+              "text": " move",
+              "logprob": -0.10935796052217484
+            },
+            {
+              "text": " forward",
+              "logprob": -0.1270977109670639
+            },
+            {
+              "text": ".",
+              "logprob": -0.02574259229004383
+            },
+            {
+              "text": "</s>",
+              "logprob": -0.21798941493034363
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

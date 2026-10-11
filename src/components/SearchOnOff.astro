@@ -1,0 +1,123 @@
+---
+import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { load } from 'js-yaml';
+import { recorded, recording } from '../lesson-schema.ts';
+import { checkLine, citationLine, searchOutcomes, searchSummary } from '../lib/search-lines.ts';
+import Shell from './Shell.astro';
+import { compact, replyHtml } from '../lib/reply-html.ts';
+const bytes = existsSync('data/recorded/R-1.5.json') ? readFileSync('data/recorded/R-1.5.json') : undefined;
+const rec = bytes && recording.parse(JSON.parse(bytes.toString()));
+const said = rec && recorded.parse(load(readFileSync('content/how-ai-works/where-your-question-goes/recorded.yaml', 'utf8')))['R-1.5'];
+const year = Number(said?.truth?.date.match(/\d{4}/)?.[0]);
+if (rec && (!said?.checks || !said.truth || !said.cutoff || !said.checked || !said.checkedBy || !Number.isInteger(year) || said.checked !== rec.date || said.recordingSha256 !== createHash('sha256').update(bytes!).digest('hex') || searchSummary(said.checks, year) !== said.summary.trim()))
+  throw new Error('R-1.5: summary and checks must match the recording');
+if (rec) for (const [i, variant] of rec.variants.entries()) for (const [n, run] of variant.runs.entries()) {
+  const check = said!.checks![i][n];
+  const outcomes = searchOutcomes(run.calls ?? []);
+  if (variant.settings?.search !== (i ? 'on' : 'off') || !run.calls?.[0]?.at || !run.calls[0].response || JSON.stringify(outcomes.map(x => x.query)) !== JSON.stringify(run.searches) || check.searchRan !== Boolean(outcomes.length) || check.citations.length !== run.citations?.length || (check.falseText && !run.reply.includes(check.falseText)))
+    throw new Error(`R-1.5: unsettled run ${i + 1}/${n + 1}`);
+  for (const citation of check.citations) citationLine(citation);
+}
+const day = (s: string) => new Date(s).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const time = (s: string) => new Date(s).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+---
+{!rec || !said?.checks || !said.truth ? (
+  <section data-part="tryit" aria-labelledby="part-try-it">
+    <h2 id="part-try-it">Try it: Search on, search off</h2>
+    <p>The recorded answers are not ready yet. This activity will show them when the recording is available.</p>
+  </section>
+) : (
+  <Shell title="Search on, search off" reveal="Show what happened" class="which-reply search-on-off">
+    <p>Two answers to the same question came from {rec.model.name} by Anthropic on {day(rec.date)}.</p>
+    <p>Model: {rec.model.id}. Host: {rec.model.host}.</p>
+    <p>Anthropic says this model's training data stops at {said.cutoff}. Checked {day(said.checked!)}.</p>
+    <blockquote>{rec.message}</blockquote>
+    <p>One kind of request had web search on. The other had it off.</p>
+    {rec.variants[0].runs.map((_, n) => (
+      <div data-pair class:list={{ current: n === 0 }}>
+        <h3 tabindex="-1">Run {n + 1}</h3>
+        <ol class="replies">
+          {rec.variants.map((variant, i) => {
+            const run = variant.runs[n];
+            const check = said.checks![i][n];
+            const outcomes = searchOutcomes(run.calls!);
+            return <li>
+              <article>
+                <h4>Answer {i + 1}</h4>
+                <div class="reply" data-reply set:html={compact(replyHtml(run.reply, [check.falseText]))} />
+                {check.reason && <p class="after-pick">Marked score: {check.reason}</p>}
+                {run.citations?.length ? <ol class="citations" aria-label="Cited pages">
+                  {run.citations.map((cite, c) => <li>
+                    <span>{cite.title ?? 'Untitled page'}</span>. {check.citations[c]?.loads && URL.canParse(cite.url) && new URL(cite.url).protocol === 'https:' ? <a href={cite.url}>{cite.url}</a> : <span>{cite.url}</span>}
+                    <details open><summary>Quoted words from this page</summary><blockquote class="reply" set:html={compact(replyHtml(cite.cited_text))} /></details>
+                    <p class="after-pick">Checked on {day(said.checked!)} against the cited page: {citationLine(check.citations[c])}</p>
+                  </li>)}
+                </ol> : null}
+                <div class="after-pick">
+                  <p>Search: {String(variant.settings?.search)}. {rec.model.name} ({(run.calls![0].response as { model?: string })?.model}), recorded {day(run.calls![0].at)} at {time(run.calls![0].at)} UTC.</p>
+                  <p>Effort: {String((run.calls![0].request as { output_config?: { effort?: string } }).output_config?.effort)}. Thinking: {String((run.calls![0].request as { thinking?: { type?: string } }).thinking?.type)}. Up to {Number((run.calls![0].request as { max_tokens?: number }).max_tokens).toLocaleString('en-IE')} tokens.</p>
+                  <p>Default sampling settings. We sent no instruction besides the question. Anthropic says it adds its own instruction when thinking is on.</p>
+                  {i ? <p>Anthropic says it also adds one when a tool is in the request.</p> : null}
+                  <h5>Searches that ran</h5>
+                  {outcomes.length ? <ul>{outcomes.map(({query, result}) => <li>{query}{result === 'error' ? ' (this search did not return results)' : result === 'empty' ? ' (this search found no pages)' : ''}</li>)}</ul> : <p>No search ran in this answer.</p>}
+                  <h5>What this answer had to go on</h5>
+                  <p>{i ? outcomes.some(x => x.result === 'pages') ? `The question, what the model learned, and pages its searches found on ${day(rec.date)}.` : 'The question and what the model learned. These searches gave it no pages.' : 'The question and what the model learned before its training data stopped.'}</p>
+                  <h5>What it could not have</h5>
+                  <p>{i ? 'A check that its pages or its answer were right.' : `Web pages about the final on ${said.truth!.date}.`}</p>
+                  <p>{checkLine(i === 1, check, year)}</p>
+                </div>
+              </article>
+            </li>;
+          })}
+        </ol>
+      </div>
+    ))}
+    <fieldset>
+      <legend>Which answer had the search tool switched on?</legend>
+      <label><input type="radio" name="search-answer" data-said="You picked Answer 1. Answer 1 had search off; Answer 2 had search on." />Answer 1</label>
+      <label><input type="radio" name="search-answer" data-said="You picked Answer 2. Answer 2 had search on." />Answer 2</label>
+      <label><input type="radio" name="search-answer" data-said="You said you could not tell. Answer 2 had search on." />I can't tell</label>
+      <label><input type="radio" name="search-answer" data-said="You chose to see the answer. Answer 2 had search on." />Show me without guessing</label>
+      <p>There is no wrong guess here.</p>
+    </fieldset>
+    <Fragment slot="after">
+      <p>Checked at GAA.ie on {day(said.checked!)}.</p>
+      <p>{said.truth.winner}, {said.truth.score}, on {said.truth.weekday} {said.truth.date} at {said.truth.place}.</p>
+      <p>The final before that: {said.truth.previous}</p>
+      <p>{searchSummary(said.checks, year).split('\n\n')[0]}</p>
+      <p>{searchSummary(said.checks, year).split('\n\n')[1]}</p>
+      <p>Quoted words and page titles belong to their sites. This lesson's licence does not cover them.</p>
+      <details data-all><summary>Show all runs</summary><div data-other></div></details>
+      <p>With search off, it had no live pages; any pages a search found came unchecked.</p>
+      <p>Lesson 1.6 shows why a chatbot can make things up.</p>
+      <button type="button" data-again>Show another run</button>
+    </Fragment>
+  </Shell>
+)}
+<style>
+  :global(.search-on-off .replies) { grid-template-columns: minmax(0, 1fr); }
+  :global(.search-on-off .replies > li), :global(.search-on-off .citations) { min-width: 0; overflow-wrap: anywhere; } :global(.search-on-off .citations a) { display: block; max-width: 100%; overflow-wrap: anywhere; }
+  @media (min-width: 40rem) { :global(.search-on-off .replies) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  :global(.search-on-off mark) { background: transparent; color: inherit; }
+  :global(.search-on-off.revealed mark), :global(html[data-textversion] .search-on-off mark) { text-decoration: underline; border: 2px solid currentColor; }
+  :global(html[data-js]:not([data-textversion]) .search-on-off [data-other] [data-pair]:not(.current)) { display: none; }
+  :global(html[data-js]:not([data-textversion]) .search-on-off.show-all [data-other] [data-pair]) { display: block; }
+</style>
+<script>
+  for (const area of document.querySelectorAll<HTMLElement>('.search-on-off')) {
+    const pairs = [...area.querySelectorAll<HTMLElement>('[data-pair]')]; const all = area.querySelector<HTMLDetailsElement>('[data-all]');
+    pairs.slice(1).forEach(pair => all?.querySelector('[data-other]')?.append(pair));
+    area.querySelector('[data-again]')?.addEventListener('click', () => {
+      const current = pairs.findIndex((p) => p.classList.contains('current'));
+      pairs[current]?.classList.remove('current'); const next = pairs[(current + 1) % pairs.length]; next?.classList.add('current');
+      if (all) all.open = true; area.classList.remove('show-all'); next?.querySelector('h3')?.focus();
+    });
+    all?.querySelector('summary')?.addEventListener('click', event => {
+      if (all.open && !area.classList.contains('show-all')) event.preventDefault(); area.classList.add('show-all');
+    });
+    const text = area.querySelector<HTMLInputElement>('[name="textversion"]');
+    const showText = () => { if (all && (text?.checked || document.documentElement.hasAttribute('data-textversion'))) { all.open = true; area.classList.add('show-all'); } };
+    showText(); text?.addEventListener('change', showText);
+  }
+</script>

@@ -1,0 +1,10 @@
+---
+// A Phosphor icon (MIT, see NOTICE), read from the installed package at build time and drawn into the page, so it
+// costs no request and no script and the CSP is unchanged. Always decorative: the words beside it name the control.
+import { readFileSync } from 'node:fs';
+
+const { name, class: extra } = Astro.props as { name: string; class?: string };
+const svg = readFileSync(`node_modules/@phosphor-icons/core/assets/regular/${name}.svg`, 'utf8');
+---
+
+<Fragment set:html={svg.replace(' xmlns="http://www.w3.org/2000/svg"', '').replace(' fill="currentColor"', '').replace('<svg ', `<svg class="icon${extra ? ` ${extra}` : ''}" aria-hidden="true" focusable="false" `)} />

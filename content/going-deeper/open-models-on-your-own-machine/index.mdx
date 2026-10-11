@@ -1,0 +1,356 @@
+---
+title: Open models on your own machine
+promise: Can decide when an open model on your own computer suits a task
+minutes: {simple: 9, deep: 16}
+tldr:
+  - Some AI models can be downloaded and run on your own computer. Where your words go then depends on the program you use.
+  - '"Open" has more than one meaning, and each model has its own licence. Read the licence of the exact model.'
+  - A model has to fit in your computer's memory. Compressing it makes it smaller and may cost some accuracy.
+misconceptions: [M7]
+interactive: local-or-cloud
+inputs: [src/lib/local-or-cloud.ts, src/lib/cases.ts, src/components/Cases.astro, src/components/LocalOrCloud.astro]
+competencies: [UNESCO-AICFS-4.1.4, UNESCO-AICFS-CG4.1.4.3, UNESCO-AICFS-CG4.2.3.3, HEA-P4, HEA-ALT-3, AILIT-M2, AILIT-S1, AIF-1.b]
+checkin:
+  - question: A page says a model is "open". What is the first thing to ask?
+    options:
+      - text: Which meaning of "open" the page uses.
+        why: Yes. Some sources mean only that you can download the weights. Others also ask for the code and information about the data.
+        right: true
+      - text: Whether the model is free of mistakes.
+        why: Not this one. None of the meanings of "open" in this lesson is about accuracy.
+      - text: How many people use the model.
+        why: Not this one. The meanings in this lesson are about what is shared, such as weights, code and data information.
+      - text: Whether the company that made it is large.
+        why: Not this one. The sources here define "open" by what is shared, not by who made the model.
+  - question: What does the llama.cpp page say about quantisation, which means compressing a model?
+    options:
+      - text: It reduces the precision of the weights. That shrinks the model and may cost some accuracy.
+        why: Yes. The page says it shrinks the size and can speed up the model. It says it may cause some accuracy loss.
+        right: true
+      - text: It always makes the model more accurate.
+        why: Not this one. The page warns of possible accuracy loss.
+      - text: It sends the model to a cloud service.
+        why: Not this one. The page describes a tool that converts a model file to a smaller form.
+      - text: It makes the model open source.
+        why: Not this one. The page is about size and accuracy, not licences.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can weigh a local model against a cloud service using sources.
+glossary:
+  - term: weights
+    meaning: The numbers a model has learned. The model uses them to turn what you type into an answer.
+  - term: open model
+    meaning: In this lesson, a model whose weights anyone can download from the internet.
+  - term: run locally
+    meaning: To run a model on your own device, not on a company's computers.
+  - term: cloud service
+    meaning: A service where your words are sent to a company's computers to be answered.
+  - term: licence
+    meaning: The terms that say what you may do with a model or a program.
+  - term: Apache 2.0
+    meaning: A licence that lets you copy, change and share the work free of charge, if you follow its conditions.
+  - term: MIT licence
+    meaning: A licence that lets you use, copy, change and share a program free of charge. You must keep its notice.
+  - term: quantisation
+    meaning: Compressing a model by storing its weights in a less exact form. This makes the file smaller.
+  - term: parameter
+    meaning: A number a model learns in training. The Open Source Initiative defines weights as "the set of learned parameters".
+  - term: RAM
+    meaning: The memory a computer uses to hold a model while it runs.
+whereNext:
+  title: The Open Source AI Definition, version 1.0
+  text: The Open Source Initiative's definition is one web page. It lists the freedoms and the parts a system must share to be called Open Source AI. In our test the page requested files from opensource.org and three other hosts, c0.wp.com, i0.wp.com and unpkg.com. It set one cookie, named cf_clearance, before any choice. It has a cookie consent control. We checked this on 9 October 2026.
+  url: https://opensource.org/ai/open-source-ai-definition
+sources:
+  - title: "Open Source Initiative, The Open Source AI Definition, version 1.0"
+    url: https://opensource.org/ai/open-source-ai-definition
+    licence: CC BY 4.0
+    use: link
+  - title: "Open Source Initiative, The Open Source Initiative Announces the Release of the Industry's First Open Source AI Definition, 28 October 2024"
+    url: https://opensource.org/blog/the-open-source-initiative-announces-the-release-of-the-industrys-first-open-source-ai-definition
+    licence: CC BY 4.0
+    use: cite
+  - title: "US National Telecommunications and Information Administration (NTIA), Dual-Use Foundation Models with Widely Available Model Weights Report, 30 July 2024"
+    url: https://www.ntia.gov/programs-and-initiatives/artificial-intelligence/open-model-weights-report
+    licence: No licence stated
+    use: cite
+  - title: "Kapoor and others, On the Societal Impact of Open Foundation Models, arXiv:2403.07918, submitted 27 February 2024 (abstract)"
+    url: https://arxiv.org/abs/2403.07918
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Ai2, OLMo 2 project page"
+    url: https://allenai.org/olmo2
+    licence: "All rights reserved (the page footer: © The Allen Institute for Artificial Intelligence)"
+    use: cite
+  - title: "Ai2, OLMo 2 1B Instruct model card"
+    url: https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct
+    licence: Apache-2.0
+    use: cite
+  - title: "Google, Gemma 4 model card, last updated 30 July 2026"
+    url: https://ai.google.dev/gemma/docs/core/model_card_4
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google, Gemma Terms of Use, last modified 1 April 2026"
+    url: https://ai.google.dev/gemma/terms
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Meta, Llama 4 Community License Agreement, effective 5 April 2025"
+    url: https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E/blob/main/LICENSE
+    licence: "The Llama 4 Community License Agreement (this page is its text; Copyright © Meta Platforms, Inc.)"
+    use: cite
+  - title: "Meta, Llama 4 Acceptable Use Policy"
+    url: https://www.llama.com/llama4/use-policy/
+    licence: No licence stated
+    use: cite
+  - title: "Apache Software Foundation, Apache License, Version 2.0, January 2004"
+    url: https://www.apache.org/licenses/LICENSE-2.0.txt
+    licence: Apache-2.0
+    use: cite
+  - title: "ggml-org, llama.cpp, MIT licence file"
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    licence: MIT
+    use: cite
+  - title: "Ollama, MIT licence file"
+    url: https://github.com/ollama/ollama/blob/main/LICENSE
+    licence: MIT
+    use: cite
+  - title: "ggml-org, llama.cpp, quantize tool README (last changed 5 June 2026)"
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md
+    licence: MIT
+    use: cite
+  - title: "LM Studio, Desktop App Privacy Policy, effective June 2026"
+    url: https://lmstudio.ai/app-privacy
+    licence: "Copyright notice only (© 2026 Element Labs, Inc.); no licence stated"
+    use: cite
+  - title: "LM Studio, Desktop App Terms of Service, version 23 August 2026"
+    url: https://lmstudio.ai/app-terms
+    licence: "Copyright notice only (© 2026 Element Labs, Inc.); no licence stated"
+    use: cite
+  - title: "Ollama, Frequently asked questions (docs/faq.mdx on GitHub, read 9 October 2026)"
+    url: https://github.com/ollama/ollama/blob/main/docs/faq.mdx
+    licence: MIT
+    use: cite
+  - title: "Ollama, Cloud models (blog), 19 September 2025"
+    url: https://ollama.com/blog/cloud-models
+    licence: No licence stated
+    use: cite
+  - title: "Open Source Initiative, About, read 9 October 2026"
+    url: https://opensource.org/about
+    licence: CC BY 4.0
+    use: cite
+  - title: "Epoch AI, About, read 9 October 2026"
+    url: https://epoch.ai/about
+    licence: CC BY 4.0
+    use: cite
+  - title: "Mitchell and others, Model Cards for Model Reporting, arXiv:1810.03993, submitted 5 October 2018"
+    url: https://arxiv.org/abs/1810.03993
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Epoch AI, Open models lag state-of-the-art closed models by 4 months, 29 May 2026"
+    url: https://epoch.ai/data-insights/open-closed-eci-gap
+    licence: CC BY 4.0
+    use: cite
+  - title: "Kannan and others, GreenBench, arXiv:2608.28667, preprint submitted 24 August 2026 (abstract and full text)"
+    url: https://arxiv.org/abs/2608.28667
+    licence: CC BY 4.0
+    use: cite
+  - title: "AndreasKunar, llama.cpp discussion 8273, Snapdragon X performance, post of 3 July 2024"
+    url: https://github.com/ggml-org/llama.cpp/discussions/8273
+    licence: No licence stated
+    use: cite
+  - title: "Meta, Llama 3.1 8B model page (Hugging Face), read 9 October 2026"
+    url: https://huggingface.co/meta-llama/Llama-3.1-8B
+    licence: Llama 3.1 Community License (the model page)
+    use: cite
+  - title: "Hugging Face, Hub documentation, read 9 October 2026"
+    url: https://huggingface.co/docs/hub/index
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+take:
+  paragraphs:
+    - "Some things I'd rather keep at home. A model that runs on my own computer lets me. My words stay on my machine. Think of a diary and a postcard. A postcard passes through other hands, while a diary stays in your drawer."
+    - "For private notes, I want the diary. Is local always better? No. It's often slower, and the answers can be weaker. My machine uses the power, and it has to be a capable one."
+    - "So I choose by task. Ordinary questions can travel. Private ones stay home. **Collect only what's needed. Send only what you must.** Privacy is a form of **respect**."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## What an open model is
+
+<Simple>
+An AI model works out its answers from numbers it has learned. Those numbers are the model's weights.
+
+Some companies let anyone download a model's weights from the internet. A 2024 US government report calls these weights "widely available". In this lesson, an open model is a model like that.
+
+A program can load a downloaded model and run it on your own computer. LM Studio is one such program. Its privacy policy says it can run entirely on your device.
+
+For models you run locally, LM Studio says none of your messages or documents are sent away. That is the company's own claim. We read it on 9 October 2026.
+</Simple>
+
+<Deep>
+The report is from the US National Telecommunications and Information Administration (NTIA), dated 30 July 2024. It defines the weights as "widely available (i.e., open to the public by allowing users to download these weights from the Internet or through other mechanisms)". Google's Gemma 4 model card, last updated 30 July 2026, calls Gemma "a family of open models" and says the release "includes open-weights models". The Open Source Initiative (OSI) defines weights as "the set of learned parameters that overlay the model architecture to produce an output from a given input".
+
+LM Studio's policy, effective June 2026, says: "If you download and run models locally, none of your messages, chat histories, and documents are ever transmitted from your system". The same policy lists two times the app does use the internet: when you "search for, or download an AI model", and when the app "checks for software updates". Ollama, another program for running models on your computer, says in its FAQ: "Ollama runs locally. We don't see your prompts or data when you run locally."
+
+Both are company statements. We did not watch either program's network traffic, so we cannot say they behave as described.
+</Deep>
+
+## Open can mean more than one thing
+
+<Simple>
+The word "open" does not always mean the same thing. Sometimes it only means you can download the weights.
+
+The Open Source Initiative is a non-profit group. It looks after a text called the Open Source Definition.
+
+In October 2024, the Initiative published a definition of "Open Source AI". It asks for more than a download. People must be free to use, study, change and share the system.
+
+The definition also lists what must be shared. That is the code used to train and run the system, the weights, and enough information about the data. Training is how a model learns its weights from data.
+
+Ai2 makes the OLMo 2 models. It says "Open weights alone aren't enough" and calls its own models "fully-open". That is Ai2's claim.
+
+So when you see the word "open", ask which meaning it uses.
+</Simple>
+
+<Deep>
+The OSI definition, version 1.0, says an Open Source AI is one made available under terms that grant the freedom to "Use the system for any purpose and without having to ask for permission", and to study, modify and share it. It names three parts that must come with the system. "Data Information" is "Sufficiently detailed information about the data used to train the system so that a skilled person can build a substantially equivalent system". "Code" is "The complete source code used to train and run the system". "Parameters" are "The model parameters, such as weights or other configuration settings". The OSI announced version 1.0 on 28 October 2024. We did not test any model against the definition.
+
+Ai2's OLMo 2 page says: "true openness requires models to be trained in the open with fully open access to data, models, and code." Kapoor and others (arXiv, submitted 27 February 2024) use a third wording. They define open foundation models as "those with broadly available model weights". So these sources use three meanings: downloadable weights, the OSI's list, and Ai2's full openness.
+</Deep>
+
+## Read two licences
+
+<Simple>
+A licence is a set of terms. It says what you may do with something. A model has a licence. The program that runs it has its own licence too.
+
+Model licences differ, even inside one family. Gemma is Google's family of open models. Its Gemma 4 information page, called a model card, says "Apache 2.0". That licence lets you copy, change and share the work free of charge, if you follow its conditions.
+
+Google's page of Gemma terms covers older Gemma models. It sends you to a separate licence for Gemma 4.
+
+Meta's Llama 4 licence has extra conditions. Llama 4 is Meta's set of language models. Use must follow Meta's acceptable use policy. That is a list of things you must not do with the model.
+
+A company with over 700 million monthly users when Llama 4 came out must ask Meta for a licence.
+
+The policy also has a rule about the European Union. For some Llama 4 models, certain rights are not given to people living in the EU or companies based there. It does not apply to end users of a product that uses such a model.
+
+Programs that run models have licences too. llama.cpp and Ollama are two programs for running models on your own computer. Both use the MIT licence. It lets you use, copy, change and share the program free of charge.
+
+LM Studio's terms allow personal or internal business use of the app. Models you download keep their own licences.
+
+So read the licence of the exact model you plan to use.
+</Simple>
+
+<Deep>
+Apache 2.0 (January 2004) grants "a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work", subject to its terms. The MIT licence grants permission "to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies". Ai2's OLMo 2 1B Instruct card says "License: Apache 2.0" and also says "OLMo 2 is intended for research and educational use."
+
+Google's Gemma terms page, last modified 1 April 2026, says: "The terms below apply to Gemma models listed in the Appendix at bottom of this page. For Gemma 4 terms, see the Gemma 4 license." Its appendix lists Gemma 1, 2 and 3 among others. The "Gemma 4 license" link goes to Google's page for the Apache 2.0 text. The terms bar "the restricted uses set forth in the Gemma Prohibited Use Policy".
+
+The Llama 4 Community License, effective 5 April 2025, says: "If, on the Llama 4 version release date, the monthly active users of the products or services made available by or for Licensee, or Licensee's affiliates, is greater than 700 million monthly active users in the preceding calendar month, you must request a license from Meta, which Meta may grant to you in its sole discretion". It also requires use to "adhere to the Acceptable Use Policy". That policy, on the page we read, says: "With respect to any multimodal models included in Llama 4, the rights granted under Section 1(a) of the Llama 4 Community License Agreement are not being granted to you if you are an individual domiciled in, or a company with a principal place of business in, the European Union. This restriction does not apply to end users of a product or service that incorporates any such multimodal models." Google's Gemma 4 card uses "multimodal" for models that take text and image input. We did not find Meta's own definition on the pages we read. The policy page shows no date.
+
+llama.cpp, whose page calls it "LLM inference in C/C++", and Ollama each carry an MIT licence file. LM Studio's terms, version 23 August 2026, grant "a non-exclusive, non-transferable license to use the Software solely for Your personal and / or internal business purposes". They say third-party AI models are "made available to you pursuant to a license agreement between you and the third party provider".
+</Deep>
+
+## What fits on your computer
+
+<Simple>
+A model is a file. To run it, your computer loads the model into its memory, called RAM. A program called llama.cpp runs models. Its page says a model needs as much memory as its file size, for now.
+
+Compressing a model is called quantisation. The page says it "reduces the precision of model weights", so each number is stored in a less exact form. That shrinks the model and can speed it up. The page also says it "may introduce some accuracy loss".
+
+Here is one example. For a model called Llama 3.1 8B, the page lists 32.1 GB for the original file.
+
+The 8B is a size label. It counts parameters, the learned numbers in a model. Hugging Face is a website that hosts models. It lists this model as "8B params", meaning eight billion.
+
+After one kind of compression, named Q4_K_M, it lists 4.9 GB. GB is short for gigabytes, a unit of file size.
+
+So compression made the file much smaller. The page says a model needs as much memory as its file size. A smaller file needs less memory.
+
+Memory is not the only limit. Speed can depend on the machine too. In a 2024 post, a tester wrote that one laptop "throttles quickly" when it is pushed hard. In that post, the throttled speeds were lower, so to throttle means to run slower.
+</Simple>
+
+<Deep>
+The llama.cpp quantize README (last changed 5 June 2026) says: "As the models are currently fully loaded into memory, you will need adequate disk space to save them and sufficient RAM to load them. At the moment, memory and disk requirements are the same." Its table lists the Llama 3.1 sizes: 8B, 32.1 GB original and 4.9 GB at Q4_K_M; 70B, 280.9 GB and 43.1 GB; 405B, 1,625.1 GB and 249.1 GB. The page does not name a machine for this table.
+
+The 2024 post is by one contributor, dated 3 July 2024 and updated later. The contributor tested a Surface Pro 11 with a 10-core Snapdragon X Plus and 16 GB of RAM, using llama.cpp. They wrote that the laptop "throttles quickly" when its processors are used fully and that the throttled numbers were 40% lower. One post on one laptop is not a speed for your laptop.
+
+A paper posted on arXiv on 24 August 2026 (GreenBench) tested five models of "3-9B parameters" on one Apple M4 Pro with 48 GB of unified memory, all at Q4_K_M. The paper says the processors in this Mac (CPU, GPU and Neural Engine) all read from the same 48 GB memory pool, which is what it calls unified memory. Its page says it was accepted at an IEEE conference in 2026. It reports that the smaller models (3 to 3.8B) gave higher throughput than the larger ones (7 to 9B). The abstract gives speeds in tokens per second, so throughput means tokens produced each second. It reports that this Mac used less energy per token than datacenter GPUs when serving one user. We state no energy figure. The paper says its power readings leave out memory, and it estimated whole-machine power from Apple's thermal specifications. It covers one machine.
+</Deep>
+
+## Where your words go
+
+<Simple>
+Running a model locally and using a cloud service are different. In a cloud service, your words are sent to a company's computers to be answered.
+
+Ollama says it processes what you send to its cloud models. It says it does not store or log it. It also says it does not see your prompts, the words you send, when you run models locally.
+
+One program can do both. LM Studio and Ollama each offer cloud features as well as local models. Using a cloud feature sends your words away.
+
+Downloading a model uses the internet too. Where your words go depends on the program and the settings you choose.
+
+Lesson 4.4, Privacy habits, covers what to share with any AI.
+</Simple>
+
+<Deep>
+Ollama's FAQ says: "When using cloud-hosted models, we process your prompts and responses to provide the service but do not store or log that content and never train on it." It describes a local-only mode: "By turning off Ollama's cloud features, you will lose the ability to use Ollama's cloud models and web search." LM Studio's policy says cloud features, such as "cloud models or web search", process your data "transiently" and that this applies "if and only if you purchase cloud features AND you choose to use the feature(s)".
+
+These are statements by the companies, read on 9 October 2026. A company's page says what the company claims. It does not show what a program does. A US report from 2024 lists a benefit of open weights: they "enable users to leverage models without sharing data with third parties, increasing confidentiality and data protection".
+</Deep>
+
+## How good are open models?
+
+<Simple>
+Two sources say something about size and quality. First, Ollama says its cloud service lets you run larger models "that wouldn't fit on a personal computer". That is the company's claim, dated 19 September 2025.
+
+Second, Epoch AI, a research non-profit that studies AI, compared open models with leading closed ones. The US report says some developers give "limited or no public access" to their weights. In this lesson, we call those models closed. Epoch's score combines results from many tests.
+
+Epoch published its analysis on 29 May 2026. It found that, since January 2026, the best open models trailed the leading closed models by about four months.
+
+Four months behind means this. On average, the leading closed models were last not clearly better than the best open model about four months earlier.
+
+Epoch compares the single best open model each day. That is not the same as a model small enough for your laptop.
+</Simple>
+
+<Deep>
+Epoch's page says: "Since January 2026, the most capable open-weight models have lagged frontier closed models by an average of four months in the Epoch Capabilities Index (ECI), our aggregate measure of model capability. The average ECI gap was 8 points". The window runs from 1 January to 28 May 2026. Epoch says its estimate "may tend to understate the true gap". One reason it gives: open-weight models "tend to perform worse on private benchmarks". Epoch also says the four months would grow to six if the open model's score had to be strictly higher. The NTIA report says many developers "provide limited or no public access to the inner workings of their advanced models, including their weights". That is how this lesson uses "closed".
+
+Epoch's figure is an average over the days in its window, on a combined score. It does not tell you how a small model will do on your task.
+</Deep>
+
+## Local or cloud?
+
+<Simple>
+The Local or cloud? activity gives you five invented tasks, one at a time. For each, you predict which fits: your own machine, a cloud service, or either.
+
+Then you see the trade-offs in privacy, speed and quality. Each answer has lines for privacy, speed and quality, and then our call. A line that gives a size links the page it comes from. Nothing is scored or saved.
+
+The tasks are made up for this lesson. The facts in the rows come from the sources in this lesson.
+</Simple>
+
+<Deep>
+The activity uses the claims above, and no others. Where it states a size, it links the page that lists it. It does not state a speed or an energy figure, because no source in this lesson gives one that fits a reader's own machine.
+</Deep>
+
+<TryIt />
+
+## Why releasing weights is debated
+
+<Simple>
+People disagree about whether weights should be released. This is a debate, not a settled finding.
+
+The 2024 US report says open weights bring benefits. More people can take part in AI work. Market control is less concentrated in a few large developers. Users can run models without sharing data with third parties.
+
+The same report says releasing weights could bring risks. It names national security, equity, safety, privacy and civil rights.
+
+The report's conclusion, dated July 2024, says current evidence is "not sufficient" to decide on limits. It could not say for sure that limits are needed. It also could not say that limits will never be needed.
+
+Lesson 3.7 covers the law in Ireland and the EU.
+</Simple>
+
+<Deep>
+The NTIA report says open foundation models "diversify and expand the array of actors, including less resourced actors, that participate in AI research and development" and "decentralize AI market control from a few large AI developers". It says making weights available "could also engender harms and risks to national security, equity, safety, privacy, or civil rights through affirmative misuse, failures of effective oversight, or lack of clear accountability mechanisms". It concludes "at the time of this Report, current evidence is not sufficient to definitively determine either that restrictions on such open weight models are warranted, or that restrictions will never be appropriate in the future". It suggests the US government monitor risks and be ready to act. It is a US agency report from July 2024. It is not a law, and it does not decide the question for later models.
+
+Kapoor and others (27 February 2024) study the "marginal risk" of open foundation models. The NTIA report uses the same term for risks "unique to the deployment" of open weights "relative to risks from other existing technologies". The Kapoor abstract says that, across several misuse vectors such as cyberattacks and bioweapons, "current research is insufficient to effectively characterize the marginal risk of open foundation models relative to pre-existing technologies". Both sources call the evidence insufficient.
+</Deep>

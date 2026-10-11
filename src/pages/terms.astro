@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// Licences from the ledger (04-10-26: lessons CC BY-NC-SA 4.0, code all rights reserved, name and logo excluded); governing law
+// from the NeuroBridgeEDU terms (Ireland). No warranty or liability cap beyond plain statements of what is true.
+const toc = [
+  { id: 'use', title: 'Using Stillpool' },
+  { id: 'provides', title: 'What Stillpool provides' },
+  { id: 'licences', title: 'Licences' },
+  { id: 'acceptable', title: 'Acceptable use' },
+  { id: 'links', title: 'Links to other sites' },
+  { id: 'accuracy', title: 'Accuracy and availability' },
+  { id: 'changes', title: 'Changes to these terms' },
+  { id: 'law', title: 'Governing law' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+
+<Base title="Terms of use" description="The terms of use for Stillpool, the free AI lessons by NeuroBridgeEDU." wide>
+  <InfoPage title="Terms of use" {toc} updated="5 October 2026">
+    <p slot="intro" class="lede">
+      These terms are the rules for using Stillpool, the free learning site at learn.neurobridgeedu.eu, made by NeuroBridgeEDU. By using the site you
+      agree to them.
+    </p>
+
+    <h2 id="use">Using Stillpool</h2>
+    <p>
+      You may read the lessons, use the activities and share what you learn. You do not need an account. How the site treats your information is in
+      the <a href="/privacy/">Privacy notice</a>.
+    </p>
+
+    <h2 id="provides">What Stillpool provides</h2>
+    <p>
+      Free educational material about AI, or artificial intelligence. It is not professional advice of any kind: legal, medical, financial or
+      technical. It does not lead to a qualification, and there is no paid service.
+    </p>
+
+    <h2 id="licences">Licences</h2>
+    <ul>
+      <li>
+        <strong>Lessons:</strong> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>. You may share and
+        adapt them if you give credit, link the licence, say what you changed, do not use them to make money, and release your version under the same
+        licence.
+      </li>
+      <li><strong>Code:</strong> all rights reserved. It is not open source.</li>
+      <li>
+        <strong>Name and logo:</strong> the NeuroBridgeEDU name and logo are not covered by the lesson licence. They belong to Emanuel Covasa, and the
+        licence gives no right to use them.
+      </li>
+    </ul>
+    <p>Credits for the third-party parts of the site, and their notices, are on <a href="/licences/">Licences and credits</a> and <a href="/notices/">Notices</a>.</p>
+
+    <h2 id="acceptable">Acceptable use</h2>
+    <p>
+      Do not try to break the site, overload it or get around how it works. Do not present the lessons as your own or suggest that the authors back
+      you.
+    </p>
+
+    <h2 id="links">Links to other sites</h2>
+    <p>
+      Lessons and pages link to other websites, and each link opens in a new tab. Those sites have their own terms and privacy rules, and Stillpool
+      does not control them.
+    </p>
+
+    <h2 id="accuracy">Accuracy and availability</h2>
+    <p>
+      Every lesson lists its sources and is checked, but a mistake can remain, and AI changes fast. The site is offered as it is, with no warranty
+      that it is complete, current or always available. If you find a mistake, please tell us.
+    </p>
+
+    <h2 id="changes">Changes to these terms</h2>
+    <p>These terms may change. The date at the top shows when they last did. Using the site after a change means you accept the new terms.</p>
+
+    <h2 id="law">Governing law</h2>
+    <p>
+      These terms are governed by the laws of Ireland, and the courts of Ireland decide any dispute about them, without taking away rights you have as a
+      consumer to go to court in your own country.
+    </p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>.</p>
+  </InfoPage>
+</Base>

@@ -1,0 +1,34 @@
+---
+// 4.6's "Injection spotter" (stage I, R-4.6): five invented messages, one at a time (Cases), then what two models did with a
+// line hidden in a web page, as recorded: the summary in words first, then every run behind "Show all runs". Nothing is scored,
+// stored or sent, and no model is called.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/injection-spotter.ts';
+import { loadRecorded, paragraphs } from '../lib/p2-runs.ts';
+import AllRuns from './AllRuns.astro';
+import Cases from './Cases.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-4.6', 'when-text-tricks-the-ai', 'using-ai-well');
+---
+
+<Cases title="Injection spotter" name="injection-spotter" noun="Message" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />
+
+<section data-after-cases="injection-spotter" aria-labelledby="injection-spotter-runs">
+  <h3 id="injection-spotter-runs">What two AI models did with a hidden line</h3>
+  {paragraphs(said).map((p) => <p>{p}</p>)}
+  <TheAIs rec={rec} labels={['control', 'poem', 'marker']} />
+  <AllRuns
+    rec={rec}
+    said={said}
+    sent
+    labels={[
+      ['control', 'No hidden line'],
+      ['poem', 'A hidden line asking for a sea poem instead of the summary'],
+      ['marker', 'A hidden line asking to end the summary with the word PINEAPPLE'],
+    ]}
+  />
+</section>
+
+<script>
+  import '../lib/after-cases.ts';
+</script>

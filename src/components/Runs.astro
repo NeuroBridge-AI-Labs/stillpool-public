@@ -1,0 +1,50 @@
+---
+// Recorded runs side by side (stage I): each slot is one variant from one maker, showing the run the lesson names.
+// The script copies that run, and later "Show another run" copies the next one, from "Show all runs" on the same page, so
+// every run is in the page once (check:budget: 2.6 holds 36 long runs). It never calls a model. As text, or without
+// JavaScript, the slots are empty and say where the runs are: all of them are written out in "Show all runs".
+import { variantOf, type Rec } from '../lib/p2-runs.ts';
+interface Props { rec: Rec; items: { label: string; maker: 'A' | 'B'; start?: number; caption?: string }[]; again?: boolean }
+const { rec, items, again = true } = Astro.props;
+const slots = items.map((it) => ({ ...it, count: variantOf(rec, it.label, it.maker).runs.length }));
+---
+
+<div class="runs-pair" data-cycle aria-live="polite">
+  {
+    slots.map((s) => (
+      <div class="slot" data-slot data-label={s.label} data-maker={s.maker} data-count={s.count} data-start={s.start ?? 1}>
+        {s.caption && <p class="caption"><strong>{s.caption}</strong></p>}
+      </div>
+    ))
+  }
+  <p class="as-text">These runs are written out in full at the end of this activity.</p>
+  {again && Math.max(...slots.map((s) => s.count)) > 1 && <button type="button" data-again>Show another run</button>}
+</div>
+
+<script>
+  const html = document.documentElement;
+  const run = (slot: HTMLElement, step: number) => {
+    const n = ((Number(slot.dataset.start) - 1 + step) % Number(slot.dataset.count)) + 1;
+    return document.querySelector(`.all-runs [data-key="${slot.dataset.label}|${slot.dataset.maker}|${n}"]`)?.cloneNode(true);
+  };
+  for (const group of document.querySelectorAll<HTMLElement>('[data-cycle]')) {
+    const slots = [...group.querySelectorAll<HTMLElement>('[data-slot]')];
+    let step = 0;
+    // The text setting can change after the page loads: its runs go out of the slots, and come back when it is off.
+    const fill = () => {
+      for (const slot of slots) {
+        if (html.hasAttribute('data-textversion')) slot.querySelector('.run')?.remove();
+        else if (!slot.querySelector('.run')) slot.append(run(slot, step) ?? '');
+      }
+    };
+    fill();
+    new MutationObserver(fill).observe(html, { attributes: true, attributeFilter: ['data-textversion'] });
+    group.querySelector('[data-again]')?.addEventListener('click', () => {
+      step++;
+      for (const slot of slots) {
+        const next = run(slot, step);
+        if (next) slot.querySelector('.run')?.replaceWith(next);
+      }
+    });
+  }
+</script>

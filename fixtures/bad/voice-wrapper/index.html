@@ -1,0 +1,8 @@
+<h2 id="a">A</h2><div class="read" data-voice="a"><button data-read="start">Read aloud</button><audio hidden data-simple="/voice/a-simple.mp3"></audio></div><div data-layer="simple">Short version.</div><section data-part="tryit"><p>The activity.</p></section><div data-layer="deep" hidden>Ordinary prose after a wrapper.</div>
+<script>
+addEventListener('click', (e) => {
+  if (!e.target.matches('[data-read=start]')) return;
+  const audio = e.target.parentElement.querySelector('audio');
+  for (const el of document.querySelectorAll('[data-layer]')) if (el.getClientRects().length) { audio.src = audio.dataset[el.dataset.layer]; audio.play(); }
+});
+</script>

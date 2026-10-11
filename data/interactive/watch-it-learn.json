@@ -1,0 +1,14 @@
+{
+  "seed": 2735,
+  "limit": 5,
+  "edge": 0.3,
+  "gap": 0.5,
+  "spread": 1.8,
+  "centres": { "circle": [-1.2, -1.0], "square": [1.2, 1.0] },
+  "examples": 12,
+  "new": 4,
+  "start": [0, 1, 2],
+  "rate": 0.8,
+  "rounds": 10,
+  "candidates": { "A": [1, 1, 0], "B": [0, 1, 0], "C": [1, 0, 0] }
+}

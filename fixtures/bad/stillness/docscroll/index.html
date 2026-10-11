@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>stillness docscroll</title>
+<style>
+.tall {
+  height: 4000px;
+}
+</style>
+</head>
+<body>
+<div class="tall">The page scrolls itself: nothing in the DOM changes and nothing animates.</div>
+<script>
+setInterval(function () {
+  scrollBy(0, 300);
+}, 1000);
+</script>
+</body>
+</html>

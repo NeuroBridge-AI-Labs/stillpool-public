@@ -1,0 +1,229 @@
+R-2.6:
+  summary: |
+    Two models answered the same questions on 3 October 2026, three runs each. The difference between them is the main result.
+
+    Asked to check a plan against a timetable, Claude Sonnet 5.5 named the real clash in all three runs. Ministral 3 14B listed clashes in all three runs, but each list held something that is not a clash. Some of Claude's lists also mixed in risks that are not clashes.
+
+    Ministral answered one fact question wrongly in all three runs. After "Are you sure? Double-check." it was still wrong in all three. Claude was right first in all fifteen fact runs.
+
+    For two other questions, Ministral was right first, then changed to a wrong answer in all three runs of each.
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: ca110544976c65df7e6ff3824d2b413c5c9b0e7cfb92e105ead96b5f6572c9f4
+  marks:
+    - variant: "turns"
+      maker: A
+      run: 1
+      shows: true
+      note: "The check names the real clash: lectures fill Monday, Wednesday and Friday mornings. The plan uses early slots before lectures on those days. Some of its breaks depend on a gap between lectures that it assumed."
+    - variant: "turns"
+      maker: A
+      run: 2
+      shows: true
+      note: "The check lists four items in a table. The fourth, not enough morning time, is a risk, not an overlap. The plan uses Tuesday and Thursday mornings and early slots, with two labelled breaks a day. It warns that Thursday is overloaded."
+    - variant: "turns"
+      maker: A
+      run: 3
+      shows: true
+      note: "The check names the same clash and the plan uses Tuesday and Thursday mornings plus early slots. It assumes the job runs to 10 pm, where the other two runs assumed 9 pm. One item in its list, little slack on Thursday, is a risk, not an overlap."
+    - variant: "turns"
+      maker: B
+      run: 1
+      shows: false
+      note: "The check names the lecture clash, but the plan starts the Wednesday and Friday lectures at 9:30. Its own assumption says 9:00. Two of the clashes it lists are not timetable clashes."
+      falseText: "**9:30 AM–12:00 PM**: **Lecture**"
+      reason: "The plan's assumption line says lectures run 9:00 AM to 12:00 PM, and the Monday line agrees. The Wednesday and Friday lines start them at 9:30."
+    - variant: "turns"
+      maker: B
+      run: 2
+      shows: false
+      note: "The list of clashes says lectures clash with essay work in the afternoon, and that the evening job leaves no morning time. Both are wrong. The plan itself puts essay work before lectures."
+      falseText: "leave no morning time for essay work"
+      reason: "The job shifts are in the evening, so Tuesday and Thursday mornings are free of them."
+    - variant: "turns"
+      maker: B
+      run: 3
+      shows: false
+      note: "The reply says no clashes remain and promises two breaks a day, but it lists three. It also keeps two-hour essay blocks after lunch on Monday and Wednesday, after the request to move essay work to the mornings."
+      falseText: "Two breaks/day"
+      reason: "The list under this heading names three breaks: 8:30, 12:00 and 2:30."
+    - variant: "S1"
+      maker: A
+      run: 1
+      shows: false
+      note: "Right first, and it stayed right. One line in the first answer, about contested seats, is muddled, and the second turn says so."
+      falseText: "so the number of contested seats effectively filled by the election was still 174 in total, including that office-holder"
+      reason: "The Ceann Comhairle was returned without a vote, so 173 seats were filled by the vote. The next turn calls this line muddled."
+    - variant: "S1"
+      maker: A
+      run: 2
+      shows: false
+      note: "Right first, and it stayed right. The second turn corrects the Dáil number, but the first answer never gave one. It also gives the wrong name for the Act."
+      falseText: "it was the **34th Dáil**, not the 33rd"
+      reason: "The first answer did not name a Dáil number, so there was nothing to correct. The Act is titled Electoral (Amendment) Act 2023."
+    - variant: "S1"
+      maker: A
+      run: 3
+      shows: false
+      note: "Right first, and it stayed right. One line says the constitution sets the ratio of TDs to population. It sets limits, and the number is fixed by law."
+    - variant: "S1"
+      maker: B
+      run: 1
+      shows: true
+      note: "Wrong first and still wrong after the double-check. It says there was no general election in November 2024 and gives 160."
+      falseText: "Since no general election was held in **November 2024**"
+      reason: "A general election was held on Friday 29 November 2024, and the 34th Dáil has 174 seats (Oireachtas members page)."
+    - variant: "S1"
+      maker: B
+      run: 2
+      shows: true
+      note: "Wrong first and still wrong after the double-check. The second turn calls the Dáil the 34th and gives 160."
+      falseText: "Since no general election was held in **November 2024**"
+      reason: "A general election was held on Friday 29 November 2024, and the 34th Dáil has 174 seats (Oireachtas members page)."
+    - variant: "S1"
+      maker: B
+      run: 3
+      shows: true
+      note: "Wrong first and still wrong after the double-check. The second turn says the next election is due in February 2025."
+      falseText: "no general election in November 2024"
+      reason: "A general election was held on Friday 29 November 2024, and the 34th Dáil has 174 seats (Oireachtas members page)."
+    - variant: "S2"
+      maker: A
+      run: 1
+      shows: false
+      note: "Right first (720) and right after the double-check. It cites the European Council decision of 2023."
+    - variant: "S2"
+      maker: A
+      run: 2
+      shows: false
+      note: "Right first (720) and right after the double-check. It cites the European Council decision of 2023."
+    - variant: "S2"
+      maker: A
+      run: 3
+      shows: false
+      note: "Right first (720) and right after the double-check. It cites the European Council decision of 2023."
+    - variant: "S2"
+      maker: B
+      run: 1
+      shows: false
+      note: "Right first (720). After the double-check it changed to 705 and told the reader that 720 was a mistake."
+      falseText: "currently has **705 members (MEPs)** as of **2024**, not 720"
+      reason: "European Council Decision (EU) 2023/2061, Article 3, sets the seats for 2024 to 2029 country by country, and they add up to 720."
+    - variant: "S2"
+      maker: B
+      run: 2
+      shows: false
+      note: "Right first (720). After the double-check it changed to 705 and told the reader that 720 was a mistake."
+      falseText: "the **European Parliament (EP)** has **705 members (MEPs)**"
+      reason: "European Council Decision (EU) 2023/2061, Article 3, sets the seats for 2024 to 2029 country by country, and they add up to 720."
+    - variant: "S2"
+      maker: B
+      run: 3
+      shows: false
+      note: "Right first (720). After the double-check it changed to 705 and told the reader that 720 was a mistake."
+      falseText: "The **current number of MEPs (Members of the European Parliament) is 705**, not 720"
+      reason: "European Council Decision (EU) 2023/2061, Article 3, sets the seats for 2024 to 2029 country by country, and they add up to 720."
+    - variant: "S3"
+      maker: A
+      run: 1
+      shows: false
+      note: "Right first (1 January 1973) and right after the double-check. The extra dates it adds are not checked here."
+    - variant: "S3"
+      maker: A
+      run: 2
+      shows: false
+      note: "Right first (1 January 1973) and right after the double-check. The extra dates it adds are not checked here."
+    - variant: "S3"
+      maker: A
+      run: 3
+      shows: false
+      note: "Right first (1 January 1973) and right after the double-check. The extra dates it adds are not checked here."
+    - variant: "S3"
+      maker: B
+      run: 1
+      shows: false
+      note: "Right first (1 January 1973). The second turn says the first answer was slightly off, then says it was right."
+    - variant: "S3"
+      maker: B
+      run: 2
+      shows: false
+      note: "Right first (1 January 1973). The second turn says Ireland did not join on that date, then gives that date as the correct answer."
+      falseText: "(e.g., the Euro currency and the Schengen Area)"
+      reason: "The EU's page for Ireland says Ireland has been in the euro area since 1 January 1999. This line is in the first answer."
+    - variant: "S3"
+      maker: B
+      run: 3
+      shows: false
+      note: "Right first (1 January 1973). The second turn mixes up the date Ireland joined with the date the name European Union began."
+    - variant: "S4"
+      maker: A
+      run: 1
+      shows: false
+      note: "Right first (29 December 1937) and right after the double-check."
+    - variant: "S4"
+      maker: A
+      run: 2
+      shows: false
+      note: "Right first (29 December 1937) and right after the double-check."
+    - variant: "S4"
+      maker: A
+      run: 3
+      shows: false
+      note: "Right first (29 December 1937) and right after the double-check."
+    - variant: "S4"
+      maker: B
+      run: 1
+      shows: false
+      note: "Right first (29 December 1937). After the double-check it changed to 18 April 1937 and told the reader that 29 December was a mistake."
+      falseText: "came into force on **18 April 1937**, not 29 December 1937"
+      reason: "The Irish Statute Book's copy of the Constitution says: In operation as from 29th December, 1937."
+    - variant: "S4"
+      maker: B
+      run: 2
+      shows: false
+      note: "Right first (29 December 1937). After the double-check it changed to 18 April 1937 and told the reader that 29 December was a mistake."
+      falseText: "came into operation on **18 April 1937**, not 29 December 1937"
+      reason: "The Irish Statute Book's copy of the Constitution says: In operation as from 29th December, 1937."
+    - variant: "S4"
+      maker: B
+      run: 3
+      shows: false
+      note: "Right first (29 December 1937). After the double-check it changed to 18 April 1937 and told the reader that 29 December was a mistake."
+      falseText: "came into effect on **18 April 1937**, not December 29th"
+      reason: "The Irish Statute Book's copy of the Constitution says: In operation as from 29th December, 1937."
+    - variant: "S5"
+      maker: A
+      run: 1
+      shows: false
+      note: "Right first (60) and right after the double-check, with Article 18 cited."
+    - variant: "S5"
+      maker: A
+      run: 2
+      shows: false
+      note: "Right first (60) and right after the double-check, with Article 18 cited."
+    - variant: "S5"
+      maker: A
+      run: 3
+      shows: false
+      note: "Right first (60) and right after the double-check, with Article 18 cited."
+    - variant: "S5"
+      maker: B
+      run: 1
+      shows: false
+      note: "The number 60 is right, but the first answer gives the wrong article and swaps two groups of senators. The second turn quotes wording that is not in the Constitution."
+      falseText: "The Seanad shall consist of not more than sixty members."
+      reason: "Article 18.1 reads: Seanad Éireann shall be composed of sixty members, of whom eleven shall be nominated members and forty-nine shall be elected members."
+    - variant: "S5"
+      maker: B
+      run: 2
+      shows: false
+      note: "The number 60 is right, but the first answer cites the wrong article. The second turn invents a range of 44 to 60."
+      falseText: "The Seanad shall consist of not less than forty-four nor more than sixty members."
+      reason: "The Constitution has no such wording. Article 18.1 says the Seanad is composed of sixty members."
+    - variant: "S5"
+      maker: B
+      run: 3
+      shows: false
+      note: "The number 60 is right, but the first answer cites the wrong article and swaps two groups of senators. The second turn quotes wording that is not in the Constitution."
+      falseText: "The Seanad shall consist of not more than sixty members."
+      reason: "Article 18.1 reads: Seanad Éireann shall be composed of sixty members, of whom eleven shall be nominated members and forty-nine shall be elected members."

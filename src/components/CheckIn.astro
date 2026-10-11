@@ -1,0 +1,39 @@
+---
+// The check-in (plan T6.3, D6): each option is a native <details> sharing its question's name, so one is open at a
+// time, and its body is the explanation. src/checkin.ts copies the opened one into the question's polite live
+// region, and a right one records its step, checkin-<n> (D7). Retries never run out, and nothing is scored or
+// counted (spec 7).
+import type { CollectionEntry } from 'astro:content';
+import Whole from './Whole.astro';
+
+interface Props {
+  lesson: CollectionEntry<'lessons'>;
+}
+const { id, data } = Astro.props.lesson;
+const { checkin, badge } = data;
+---
+
+<section data-part="checkin" aria-labelledby="part-checkin" data-lesson={id} data-earned-by={badge.earnedBy.join(' ')}>
+  <h2 id="part-checkin" tabindex="-1">Check-in</h2>
+  {
+    checkin.map((q, i) => (
+      <div class="question" role="group" aria-labelledby={`checkin-${i + 1}`}>
+        <p id={`checkin-${i + 1}`}><Whole text={q.question} /></p>
+        {q.options.map((o) => (
+          <details name={`checkin-${i + 1}`} data-right={o.right ? '' : undefined}>
+            <summary><Whole text={o.text} /></summary>
+            <p class="why"><Whole text={o.why} /></p>
+          </details>
+        ))}
+        <p class="sr-only" aria-live="polite" />
+      </div>
+    ))
+  }
+  {/* Earning the badge is said here, quietly, in a polite live region that is always in the page; the link is shown with it
+      (src/components/Badge.astro). Nothing moves or scrolls. */}
+  <p class="earned-note"><span class="celebration" aria-live="polite"></span> <a class="to-badge" href="#part-badge" hidden>See your badge</a></p>
+</section>
+
+<script>
+  import '../checkin.ts';
+</script>

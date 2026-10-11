@@ -1,0 +1,289 @@
+---
+title: Work, creativity and credit
+promise: Can credit work made with AI, and say what a licence controls
+minutes: {simple: 9, deep: 15}
+tldr:
+  - AI is changing some tasks at work. Studies differ, and each one has its own scope and date.
+  - Who owns AI-made work is unsettled. Laws differ by country, and courts and experts disagree.
+  - A licence says what others may do with a work. Credit the people, say what AI did, and read the licence.
+misconceptions: [M4]
+interactive: who-made-this
+inputs: [src/lib/who-made-this.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.3.1, UNESCO-AICFS-CG4.3.1.2, UNESCO-AICFS-CG4.3.4.3, HEA-PEA-2.3.4-b, HEA-PEA-2.3.1-d, AILIT-C4, AILIT-C1, AIF-4.a]
+checkin:
+  - question: A teacher who owns a study guide shares it under CC BY-NC-SA 4.0. A shop wants to print it and sell copies. What does the licence say?
+    options:
+      - text: Selling is not allowed under this licence. The shop needs separate permission.
+        why: Yes. This licence lets people reuse the guide "for NonCommercial purposes only". Selling copies is aimed at money, so the shop must ask the owner, the teacher, first.
+        right: true
+      - text: Selling is fine if the shop credits the teacher.
+        why: Not this one. Credit is one condition of this licence. The NonCommercial rule is a second condition, and credit does not remove it.
+      - text: Nothing stops the shop, because the guide is online.
+        why: Not this one. Putting a work online does not cancel its licence. The licence still sets the rules.
+      - text: The shop may sell it if it changes the wording.
+        why: Not this one. The licence limits changed versions to NonCommercial use too.
+  - question: Someone makes a picture with an AI tool. Who owns the copyright in it?
+    options:
+      - text: It depends on the country, and it is unsettled. Courts and experts disagree.
+        why: Yes. The US Copyright Office said in January 2025 that purely AI-generated material is not protected there. Irish law names a different author, and a lawyer said in February 2026 that no court had tested it.
+        right: true
+      - text: The AI tool owns it.
+        why: Not this one. In March 2025 a US appeals court said the Copyright Act requires a human author. A tool is not a person.
+      - text: Nobody owns it, in every country.
+        why: Not this one. Irish law names an author for a computer-generated work. It is the person who set up what was needed to make it. A lawyer said in February 2026 that no court had tested it.
+      - text: The person who typed the request always owns it, in every country.
+        why: Not this one. The US Copyright Office said in January 2025 that a request alone does not give enough control over the result.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can say what a licence controls, and why who owns AI-made work is still open.
+glossary:
+  - term: copyright
+    meaning: The legal right to say who may copy or share a work, such as a text or a song. The maker is its author. The owner can be someone else, such as an employer.
+  - term: licence
+    meaning: The owner's permission to reuse a work, with rules. Each licence has its own rules, so read it.
+  - term: attribution
+    meaning: Credit. Saying who made a work, where it came from and which licence it has.
+  - term: exposure
+    meaning: In one ILO study, how many of a job's tasks could in theory be done by generative AI. It is not the same as losing the job.
+  - term: training data
+    meaning: The text, pictures and sounds a model learns from before people use it.
+  - term: disclosure line
+    meaning: One short sentence that tells readers how AI helped make a piece of work.
+whereNext:
+  title: The law, and checking what is real
+  text: Lesson 3.7 covers AI rules in Ireland and the EU, including the transparency rules named here. Lesson 4.5 will cover how to tell real from fake, and Lesson 4.2 will cover studying honestly with AI.
+sources:
+  - title: "Gmyrek, Berg and others, Generative AI and Jobs: A Refined Global Index of Occupational Exposure, ILO Working Paper 140"
+    url: https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Humlum and Vestergaard, Still Waters, Rapid Currents: Early Labor Market Transformation under Generative AI (formerly Large Language Models, Small Labor Market Effects), NBER Working Paper 33777"
+    url: https://www.nber.org/papers/w33777
+    licence: Copyright held by the authors
+    use: cite
+  - title: "Brynjolfsson, Li and Raymond, Generative AI at Work, arXiv 2304.11771"
+    url: https://arxiv.org/abs/2304.11771
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Regulation (EU) 2024/1689, the AI Act, on EUR-Lex (Articles 2, 50, 53 and 113)"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689
+    licence: EU legal text
+    use: cite
+  - title: "Regulation (EU) 2026/1744, the Digital Omnibus on AI, on EUR-Lex"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601744
+    licence: EU legal text
+    use: cite
+  - title: "Directive (EU) 2019/790 on copyright in the Digital Single Market, on EUR-Lex (Article 4)"
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0790
+    licence: EU legal text
+    use: cite
+  - title: "Copyright and Related Rights Act 2000, sections 2, 17, 21, 23 and 30, on the Irish Statute Book"
+    url: https://www.irishstatutebook.ie/eli/2000/act/28/section/21/enacted/en/html
+    licence: Irish legal text
+    use: cite
+  - title: "Irish Statute Book, Copyright and Related Rights Act 2000, commencement and amendments table"
+    url: https://www.irishstatutebook.ie/eli/isbc/2000_28.html
+    licence: Irish legal text
+    use: cite
+  - title: "Irish Legal News, Ireland at odds with EU on copyright and AI, 24 February 2026"
+    url: https://www.irishlegal.com/articles/ireland-at-odds-with-eu-on-copyright-and-ai
+    licence: All rights reserved
+    use: cite
+  - title: "US Copyright Office, Copyright and Artificial Intelligence, Part 2: Copyrightability, January 2025"
+    url: https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf
+    licence: public-domain
+    use: cite
+  - title: "US Copyright Office, Copyright and Artificial Intelligence, Part 3: Generative AI Training, pre-publication version, May 2025"
+    url: https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-3-Generative-AI-Training-Report-Pre-Publication-Version.pdf
+    licence: public-domain
+    use: cite
+  - title: "Thaler v. Perlmutter, opinion of the US Court of Appeals for the District of Columbia Circuit, No. 23-5233, 18 March 2025"
+    url: https://media.cadc.uscourts.gov/opinions/docs/2025/03/23-5233.pdf
+    licence: public-domain
+    use: cite
+  - title: "Supreme Court of the United States, docket 25-449, Thaler v. Perlmutter"
+    url: https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/25-449.html
+    licence: public-domain
+    use: cite
+  - title: "Getty Images v Stability AI, [2025] EWHC 2863 (Ch), High Court of England and Wales, 4 November 2025"
+    url: https://www.judiciary.uk/judgments/getty-images-v-stability-ai/
+    licence: Open Justice Licence
+    use: cite
+  - title: "CMS, Getty Images v Stability AI: permission to appeal sought by Getty Images at consequentials hearing, 21 January 2026"
+    url: https://cms.law/en/gbr/legal-updates/getty-images-v-stability-ai-permission-to-appeal-sought-by-getty-images-at-consequentials-hearing
+    licence: All rights reserved
+    use: cite
+  - title: "Creative Commons, Attribution 4.0 International, legal code"
+    url: https://creativecommons.org/licenses/by/4.0/legalcode.en
+    licence: CC0-1.0
+    use: cite
+  - title: "Creative Commons, Attribution-NonCommercial-ShareAlike 4.0 International, legal code"
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+    licence: CC0-1.0
+    use: cite
+  - title: "Creative Commons, CC0 1.0 Universal, legal code"
+    url: https://creativecommons.org/publicdomain/zero/1.0/legalcode.en
+    licence: CC0-1.0
+    use: cite
+  - title: "Creative Commons wiki, Best practices for attribution"
+    url: https://wiki.creativecommons.org/wiki/Best_practices_for_attribution
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Creative Commons, Frequently asked questions"
+    url: https://creativecommons.org/faq/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "University of Helsinki, Ethics of AI, About the Contributors and Licensing"
+    url: https://ethics-of-ai.mooc.fi/about/
+    licence: All rights reserved
+    use: cite
+  - title: "MinnaLearn and University of Helsinki, Elements of AI, Frequently asked questions and Terms of Service"
+    url: https://www.elementsofai.com/faq
+    licence: All rights reserved
+    use: cite
+  - title: "Springer Nature, Artificial Intelligence (AI), editorial policy of the Nature Portfolio"
+    url: https://www.nature.com/nature-portfolio/editorial-policies/ai
+    licence: All rights reserved
+    use: cite
+  - title: "Liang and others, GPT detectors are biased against non-native English writers, arXiv 2304.02819"
+    url: https://arxiv.org/abs/2304.02819
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "What follows is hope. I can't promise it. Nobody knows how AI will change work. Some tasks are already changing, and that's frightening when the task is yours. I won't pretend otherwise."
+    - "But I keep asking one question. What is work for? I don't believe it's only for staying alive. We are not here merely to survive. We are here to evolve. Picture a tool that carries the heavy load. Your hands are free."
+    - "What you do with free hands is the real choice. I'd choose creativity, care and wisdom. And I'd give credit honestly, to people first. **Free hands are a gift.** What we build with them is up to us."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## Work is changing
+
+<Simple>
+AI is changing some tasks at work. Studies do not agree on how much. So here is each study with its place and date.
+
+In 2025 the International Labour Organization (ILO), a United Nations agency, scored the tasks in many jobs. It asked which tasks generative AI could do. Generative AI is AI that makes new text, pictures or sound.
+
+It found that one in four workers is in a job with some exposure. Exposure means some tasks could be done by AI. It does not mean the job goes.
+
+A Danish study followed pay and hours after ChatGPT came out. It found no clear change in either. A US study followed support agents at one company. Agents with an AI helper solved more issues per hour.
+
+Each study has its own scope and date. The ILO scored jobs worldwide. The other two each look at one place.
+</Simple>
+
+<Deep>
+The ILO's Working Paper 140 (20 May 2025) updates its 2023 index. It scored tasks from a Polish occupation list, using a survey of 1,640 employed people and expert discussions. Its abstract says: "Globally, one in four workers are in an occupation with some GenAI exposure. 3.3% of global employment falls into the highest exposure category". It adds: "As most occupations consist of tasks that require human input, transformation of jobs is the most likely impact of GenAI." Its highest gradient is defined as the "highest share of tasks exposed to potential GenAI-driven automation". This is a score of tasks, not a count of jobs lost.
+
+Humlum and Vestergaard linked adoption surveys to Danish administrative records (NBER Working Paper 33777, issued May 2025, revised March 2026). They estimate "precise null effects on earnings and recorded hours at both the worker and workplace levels, ruling out effects larger than 2% two years after the launch of ChatGPT". They add: "What moves is the structure of work". Brynjolfsson, Li and Raymond (arXiv, last revised 6 November 2024) studied 5,172 customer support agents and found that access to AI assistance "increases worker productivity, as measured by issues resolved per hour, by 15% on average". The "most experienced and highest-skilled workers see small gains in speed and small declines in quality". That is one firm and one job.
+
+The three results can all be true at once. They measure task scores, pay and hours, and output per hour, in different places and years. None of them describes all work, and none predicts what happens next. This site's line applies: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values."
+</Deep>
+
+## Creative work and training data
+
+<Simple>
+Many models learn from text, pictures and songs that people made. That is their training data (Lesson 1.7 shows how training works). The people who made those works did not always agree to it.
+
+Whether this is allowed under copyright law is still being decided. Different countries and courts are giving different answers.
+
+EU law gives two rules to know. Text and data mining means a program analyses digital text or data to find patterns. EU copyright law has an exception that allows it. A rights owner can reserve their rights in a way a machine can read. That limits the exception.
+
+Makers of big general AI models must have a policy to follow such reservations. They must also publish a summary of what they trained on.
+</Simple>
+
+<Deep>
+Directive (EU) 2019/790, Article 4, allows copying for "text and data mining" of lawfully accessible works. It applies "on condition that the use of works and other subject matter referred to in that paragraph has not been expressly reserved by their rightholders in an appropriate manner, such as machine-readable means in the case of content made publicly available online." Article 53(1) of the AI Act (Regulation (EU) 2024/1689) says providers of general-purpose AI models shall "put in place a policy to comply with Union law on copyright and related rights, and in particular to identify and comply with, including through state-of-the-art technologies, a reservation of rights expressed pursuant to Article 4(3) of Directive (EU) 2019/790". It adds that they shall "draw up and make publicly available a sufficiently detailed summary about the content used for training of the general-purpose AI model, according to a template provided by the AI Office." Chapter V of the AI Act applies from 2 August 2025, and Regulation (EU) 2026/1744 did not change that date. The Directive's text as published has only language corrections, no amending act.
+
+Courts outside the EU have not settled the question. The US Copyright Office's pre-publication Part 3 report (May 2025) says: "Various uses of copyrighted works in AI training are likely to be transformative. The extent to which they are fair, however, will depend on what works were used, from what source, for what purpose, and with what controls on the outputs". In Getty Images v Stability AI ([2025] EWHC 2863 (Ch), 4 November 2025) the English High Court recorded that Getty "acknowledged" there was "no evidence that the training and development of Stable Diffusion took place in the United Kingdom". It dismissed the secondary-infringement claim, holding that a model which "does not store or reproduce any Copyright Works (and has never done so) is not an 'infringing copy'". CMS reported on 21 January 2026 that the judge granted Getty permission to appeal that point. We found no appeal result by 3 October 2026. Each ruling is about one law, one product and one date.
+</Deep>
+
+## Who owns AI-made work
+
+<Simple>
+Copyright is a right over a work. Its first owner is usually the person who makes it. An employer can own work made at a job, and rights can be sold later.
+
+A person writes a poem, so the poem has an author. But who is the author of a picture an AI tool made? Countries answer in different ways. The answers are not settled.
+
+In Ireland, the Copyright and Related Rights Act 2000 has a rule for computer-generated work. Its author is the person who set up what was needed to make it. A lawyer said in February 2026 that no court had tested it.
+
+In the US, the Copyright Office said in January 2025 that copyright does not cover purely AI-generated material. A person's own work in the mix can still be covered.
+
+This is not legal advice.
+</Simple>
+
+<Deep>
+The Irish Act says copyright subsists in "original literary, dramatic, musical or artistic works" (section 17(2)(a)). Section 21 says "author" means the person who creates a work and includes "in the case of a work which is computer-generated, the person by whom the arrangements necessary for the creation of the work are undertaken". Section 2 defines computer-generated as "generated by computer in circumstances where the author of the work is not an individual". The author is the first owner unless an exception applies (section 23(1)). Copyright in a computer-generated work lasts for "70 years after the date on which the work is first lawfully made available to the public" (section 30). The Irish Statute Book table, updated to 17 September 2026, lists no amendment to these provisions.
+
+Irish Legal News reported on 24 February 2026 that Dr Barry Scannell, a partner at William Fry and a member of Ireland's AI Advisory Council, said: "The provision has never been tested in court." He added: "Whether section 21(f) [of the 2000 Act] can be reconciled with the CJEU's originality jurisprudence is a question policymakers should address before a court is forced to." The same report says Munich District Court that month dismissed a copyright claim over three logos made with generative AI. That is the news site's account of the ruling, not the ruling.
+
+The US Copyright Office's Part 2 report (January 2025) concludes: "Copyright does not extend to purely AI-generated material, or material where there is insufficient human control over the expressive elements." Also: "Based on the functioning of current generally available technology, prompts do not alone provide sufficient control." And: "The use of AI tools to assist rather than stand in for human creativity does not affect the availability of copyright protection for the output." In Thaler v. Perlmutter (18 March 2025) the D.C. Circuit held that "the Copyright Act requires all work to be authored in the first instance by a human being". The applicant had listed a machine as sole author. The US Supreme Court denied review on 2 March 2026 (docket 25-449). Each source is one country on one date.
+</Deep>
+
+## What a licence controls
+
+<Simple>
+A licence is the owner's permission to reuse a work, with rules. Each licence has its own rules.
+
+One university made two AI courses. Its Ethics of AI course says its material is under a Creative Commons licence called CC BY-NC-SA 4.0. You may share it and change it.
+
+You must credit the makers and share changes under the same licence. You must keep to non-commercial use. Non-commercial means the use is not mainly for business benefit or payment.
+
+Its Elements of AI course says "all rights reserved". Its page says the course may be cited as a reference. Same university, two licences.
+
+CC BY is simpler. You may reuse and change a work, even to sell. You must credit the maker and say if you changed it.
+
+CC0 is a waiver, a promise to give something up. The owner gives up their copyright and related rights as far as the law allows.
+
+A Creative Commons licence covers copyright and some similar rights. It does not grant other rights, such as privacy.
+</Simple>
+
+<Deep>
+The Ethics of AI page (read 3 October 2026) says: "The course material is licenced with Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License -licence, so you can freely use and distribute the material, as long as the original creators' names are not removed." It adds that a modified version "must be licenced with the same licence" and that use "for commercial purposes without separate permission is prohibited." The Elements of AI FAQ (read 3 October 2026) says: "All content (such as text, pictures, interactive elements and layout) (C) 2018 MinnaLearn and the University of Helsinki, all rights reserved." It continues: "The Elements of AI courses can be cited and used as reference material for academic research, studies, essays etc." Its terms of service, last updated 10 June 2022, say content is "provided only for personal, non-commercial use". Both are one site's statement on one date.
+
+The CC BY 4.0 legal code lets you "reproduce and Share the Licensed Material, in whole or in part" and "produce, reproduce, and Share Adapted Material". If you share, you must keep the creator's name, a copyright notice, a notice that refers to the licence, a link to the work "to the extent reasonably practicable", and "indicate if You modified the Licensed Material". It does not allow you to "assert or imply" that the creator "endorsed" your use. CC BY-NC-SA 4.0 grants the same rights "for NonCommercial purposes only". It defines NonCommercial as "not primarily intended for or directed towards commercial advantage or monetary compensation". Under ShareAlike, an adapter's licence "must be a Creative Commons license with the same License Elements, this version or later, or a BY-NC-SA Compatible License". The CC0 text says the person "waives, abandons, and surrenders all of Affirmer's Copyright and Related Rights" in the work "to the greatest extent permitted by, but not in contravention of, applicable law".
+
+Creative Commons recommends crediting with Title, Author, Source and License ("TASL"). Its FAQ says its licences "never limit uses that copyright doesn’t control", and that "CC’s copyright licenses are not universal policy tools". Moral rights, privacy and similar rights are not licensed (CC BY 4.0 legal code, section 2).
+</Deep>
+
+## Saying you used AI
+
+<Simple>
+Credit the people whose work you reused. Then say what AI did. A short disclosure line is one way to do it, such as "A chatbot helped shorten some sentences. I checked each one."
+
+Then check the rule of your course, workplace or publisher.
+
+Some places have rules. A science publisher, Springer Nature, says AI cannot be an author. It also says people stay accountable for the work.
+
+The EU AI Act has transparency duties too. They fall on providers and deployers of AI systems. These can be companies, public bodies or people acting in a job. They do not fall on a person using AI for private, non-work use.
+
+An AI-text detector is a tool that guesses whether a text was written by AI. It is not a credit line. In a 2023 study, such tools often wrongly flagged writing by non-native English speakers. Lesson 4.2 will cover studying honestly with AI.
+</Simple>
+
+<Deep>
+Springer Nature's policy (read 3 October 2026) says: "AI is treated as a supporting technology. Scholarly judgement, accountability, and responsibility always remain human." It lists "Assigning authorship or accountability to AI systems or tools" as "Not permitted". For low-risk uses such as "Using an LLM to polish or refine the language", it says: "Permitted. Disclosure enhances trust and transparency and clearly demonstrates human accountability." This is one publisher's rule for research papers.
+
+Article 50 of the AI Act (Regulation (EU) 2026/1744 changed only its paragraph 7, on codes of practice) says providers of AI systems "generating synthetic audio, image, video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable format and detectable as artificially generated or manipulated" (Article 50(2)). Deployers of a system that makes a deep fake "shall disclose that the content has been artificially generated or manipulated" (Article 50(4)). The second subparagraph of 50(4) covers AI-generated text "published with the purpose of informing the public on matters of public interest", with an exception where the text "has undergone a process of human review or editorial control" and someone "holds editorial responsibility". Article 2(10) says the Regulation "does not apply to obligations of deployers who are natural persons using AI systems in the course of a purely personal non-professional activity". Regulation (EU) 2026/1744 added that providers of systems placed on the market before 2 August 2026 "shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026". Lesson 3.7 covers the AI Act's structure.
+
+Liang and others tested seven GPT detectors in 2023 on 91 TOEFL essays by non-native English writers and 88 US eighth-grade essays. The detectors were "near-perfect" on the US essays. They flagged more than half of the TOEFL essays as "AI-generated" (average false positive rate: 61.3% in the published paper, 61.22% in an earlier preprint). The authors "caution against their use in evaluative or educational settings". That is one study of detectors available in early 2023.
+</Deep>
+
+## Who made this?
+
+<Simple>
+This lesson has an activity, Who made this? It shows five pieces of work. We invented every piece and every person.
+
+Some are made by a person, some with AI's help, and some by AI. For each one you first predict how to credit it. Then you see the reasons. You also see what its licence allows, and a one-line disclosure.
+
+The licences are real ones, and the pieces are not. Each piece has its own permissions, and one has no licence at all, so each answer differs.
+</Simple>
+
+<Deep>
+The five pieces use four real licence texts: CC BY 4.0, CC BY-NC-SA 4.0, CC0 and "all rights reserved". The activity reads each licence's own words, quoted above. For the AI-made pieces, the licence is the person's own choice. Whether any copyright exists in the AI-made part is a separate question, and the sources above show it is unsettled. A licence can govern only rights that exist and that the licensor holds, so a licence chosen for an AI-made piece may not bind anyone.
+</Deep>
+
+<TryIt />

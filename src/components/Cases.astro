@@ -1,0 +1,85 @@
+---
+// Static cases, one at a time (stage I, Pillar 3): a scene, a pick, then the answer with its source. The first case sits in
+// the shell's prediction step; each later case shows once the one before has its answer (src/lib/cases.ts). More than five
+// options are a select, as the shell allows five choices at most. Nothing here is scored, stored or sent, and no model is called.
+import type { Case } from '../lib/cases.ts';
+import Shell from './Shell.astro';
+interface Props { title: string; name: string; noun: string; intro: string[]; question: string; options: string[]; cases: Case[]; notes?: string[] }
+const { title, name, noun, intro, question, options, cases, notes = [] } = Astro.props;
+const [first] = cases;
+const long = options.length > 5;
+const head = (c: Case, i: number) => c.heading ?? `${noun} ${i + 1}`;
+---
+
+<Shell title={title} reveal="Show the answer" class={`cases ${name}`}>
+  {intro.map((p) => <p>{p}</p>)}
+  <h3>{head(first, 0)}</h3>
+  <p>{first.scene}</p>
+  <fieldset>
+    <legend>{first.question ?? question}</legend>
+    {
+      long ? (
+        <label>
+          Your pick
+          <select name={`${name}-${1}`} data-pick={''}>
+            <option value="">Choose one</option>
+            {options.map((o) => <option value={o} data-said={`You picked: ${o}`}>{o}</option>)}
+          </select>
+        </label>
+      ) : (
+        options.map((o, k) => <label><input type="radio" name={`${name}-${1}`} value={k + 1} data-said={`You picked: ${o}`} />{o}</label>)
+      )
+    }
+    <p>Nothing is counted or saved.</p>
+  </fieldset>
+  <div slot="after" data-cases>
+    {
+      cases.map((c, i) => (
+        <section data-case>
+          <h3>{i ? head(c, i) : `${head(c, i)}: the answer`}</h3>
+          {
+            i > 0 && (
+              <Fragment>
+                <p>{c.scene}</p>
+                <fieldset>
+                  <legend>{c.question ?? question}</legend>
+                  {
+      long ? (
+        <label>
+          Your pick
+          <select name={`${name}-${i + 1}`} data-pick={undefined}>
+            <option value="">Choose one</option>
+            {options.map((o) => <option value={o} data-said={undefined}>{o}</option>)}
+          </select>
+        </label>
+      ) : (
+        options.map((o, k) => <label><input type="radio" name={`${name}-${i + 1}`} value={k + 1} data-said={undefined} />{o}</label>)
+      )
+    }
+                </fieldset>
+                <button type="button" data-show disabled>Show the answer</button>
+              </Fragment>
+            )
+          }
+          <div class="case-answer" data-answer={i > 0 ? '' : undefined} tabindex="-1" aria-label={`${head(c, i)}, the answer`}>
+            {c.answer.map((r) => (r.quote ? <Fragment><p><strong>{r.label}:</strong></p><blockquote class="sent">{r.text}</blockquote></Fragment> : <p><strong>{r.label}:</strong> {r.href ? <a href={r.href}>{r.text}</a> : r.text}</p>))}
+            {
+              c.change && (
+                <Fragment>
+                  <p><strong>One design choice:</strong> {c.change.choice}</p>
+                  <button type="button" data-change>Make this change</button>
+                  <div data-moves tabindex="-1" aria-label="What the change moves">{c.change.moves.map((r) => (r.quote ? <Fragment><p><strong>{r.label}:</strong></p><blockquote class="sent">{r.text}</blockquote></Fragment> : <p><strong>{r.label}:</strong> {r.href ? <a href={r.href}>{r.text}</a> : r.text}</p>))}</div>
+                </Fragment>
+              )
+            }
+          </div>
+        </section>
+      ))
+    }
+    {notes.map((n) => <p>{n}</p>)}
+  </div>
+</Shell>
+
+<script>
+  import '../lib/cases.ts';
+</script>

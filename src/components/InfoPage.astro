@@ -1,0 +1,24 @@
+---
+import '../styles/info.css';
+// The shell of a text page. Pass `toc` (id and title of each h2 in the body) and the page gets "On this page".
+const { title, toc = [], updated } = Astro.props as { title: string; toc?: { id: string; title: string }[]; updated?: string };
+---
+
+<div class:list={['info-page', 'frame', { 'has-toc': toc.length > 0 }]}>
+  <header>
+    <h1>{title}</h1>
+    <slot name="intro" />
+    {updated && <p class="updated">Last updated {updated}.</p>}
+  </header>
+  {
+    toc.length > 0 && (
+      <nav aria-label="On this page">
+        <details class="info-toc">
+          <summary>On this page</summary>
+          <ul>{toc.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}</ul>
+        </details>
+      </nav>
+    )
+  }
+  <div class="info-body"><slot /></div>
+</div>

@@ -1,0 +1,5 @@
+<h2 id="a">A</h2><div class="read" data-voice="a"><button data-read="start">Read aloud</button><audio hidden data-simple="/voice/a-simple.mp3" data-deep="/voice/a-deep.mp3"></audio></div><div data-layer="simple">Short version.</div><div data-layer="deep" hidden>Long version.</div>
+<script>
+document.querySelector('[data-layer=deep]').hidden = !location.search.includes('depth=deep');
+addEventListener('click', (e) => { if (e.target.matches('[data-read=start]')) speechSynthesis.speak(new SpeechSynthesisUtterance('device')); });
+</script>

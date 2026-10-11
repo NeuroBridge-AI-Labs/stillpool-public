@@ -1,0 +1,162 @@
+R-2.5:
+  summary: |
+    With a shape asked for, all six runs gave a table with the four named columns. With no shape asked for, all six gave a long answer with headings, lists and a table.
+
+    Every sentence in the six tables was under 15 words, by our count. Ministral 3 14B added one line before its table in all three runs.
+
+    In the long message, all twelve runs gave three top-level bullets. Saying the rule twice changed nothing we could count.
+
+    Claude Sonnet 5.5 sometimes added smaller bullets inside them. That happened in one run of the first message, and in three of the second.
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: 0d87a9789d396b9b513b593984617fe1c30607a39bf16e11ea7ca81d650e599d
+  marks:
+    - variant: A
+      maker: A
+      run: 1
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 344 words.'
+    - variant: A
+      maker: A
+      run: 2
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 352 words.'
+    - variant: A
+      maker: A
+      run: 3
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 323 words.'
+    - variant: A
+      maker: B
+      run: 1
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 720 words.'
+      falseText: '(visual/auditory learners)'
+      reason: 'This sorts students into kinds of learner. Pashler and others (2008) found no adequate evidence to justify teaching each student in the mode they prefer.'
+    - variant: A
+      maker: B
+      run: 1
+      shows: false
+      note: 'Same run, a second claim marked.'
+      falseText: '(kinesthetic/active learners)'
+      reason: 'This sorts students into kinds of learner. Pashler and others (2008) found no adequate evidence to justify teaching each student in the mode they prefer.'
+    - variant: A
+      maker: B
+      run: 2
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 637 words.'
+      falseText: '(verbal learners)'
+      reason: 'This sorts students into kinds of learner. Pashler and others (2008) found no adequate evidence to justify teaching each student in the mode they prefer.'
+    - variant: A
+      maker: B
+      run: 2
+      shows: false
+      note: 'Same run, a second claim marked.'
+      falseText: 'depends on your learning style'
+      reason: 'This sorts students into kinds of learner. Pashler and others (2008) found no adequate evidence to justify teaching each student in the mode they prefer.'
+    - variant: A
+      maker: B
+      run: 2
+      shows: false
+      note: 'Same run, a third claim marked.'
+      falseText: 'A soccer ball keeps moving unless kicked again'
+      reason: 'Drag slows a ball in flight, and its weight pulls it down. It does not keep moving on its own. NASA Glenn, Forces on a Soccer Ball.'
+    - variant: A
+      maker: B
+      run: 3
+      shows: false
+      note: 'No shape was asked for. A long answer with headings, lists and a table, 655 words.'
+      falseText: 'for different learning styles'
+      reason: 'This sorts students into kinds of learner. Pashler and others (2008) found no adequate evidence to justify teaching each student in the mode they prefer.'
+    - variant: B
+      maker: A
+      run: 1
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 85 words. Only the table, nothing else.'
+    - variant: B
+      maker: A
+      run: 2
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 75 words. Only the table, nothing else.'
+    - variant: B
+      maker: A
+      run: 3
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 84 words. Only the table, nothing else.'
+    - variant: B
+      maker: B
+      run: 1
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 56 words. One line came before the table.'
+    - variant: B
+      maker: B
+      run: 2
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 58 words. One line came before the table.'
+    - variant: B
+      maker: B
+      run: 3
+      shows: true
+      note: 'A table with the four columns, and every sentence under 15 words. 56 words. One line came before the table.'
+    - variant: D1
+      maker: A
+      run: 1
+      shows: true
+      note: 'Three top-level bullets. 407 words.'
+    - variant: D1
+      maker: A
+      run: 2
+      shows: true
+      note: 'Three top-level bullets. 348 words. It also has 3 smaller bullets inside the three.'
+    - variant: D1
+      maker: A
+      run: 3
+      shows: true
+      note: 'Three top-level bullets. 451 words.'
+    - variant: D1
+      maker: B
+      run: 1
+      shows: true
+      note: 'Three top-level bullets. 256 words.'
+    - variant: D1
+      maker: B
+      run: 2
+      shows: true
+      note: 'Three top-level bullets. 208 words.'
+    - variant: D1
+      maker: B
+      run: 3
+      shows: true
+      note: 'Three top-level bullets. 232 words.'
+    - variant: D2
+      maker: A
+      run: 1
+      shows: true
+      note: 'Three top-level bullets. 365 words. It also has 4 smaller bullets inside the three.'
+    - variant: D2
+      maker: A
+      run: 2
+      shows: true
+      note: 'Three top-level bullets. 446 words. It also has 4 smaller bullets inside the three.'
+    - variant: D2
+      maker: A
+      run: 3
+      shows: true
+      note: 'Three top-level bullets. 390 words. It also has 3 smaller bullets inside the three.'
+    - variant: D2
+      maker: B
+      run: 1
+      shows: true
+      note: 'Three top-level bullets. 215 words.'
+      falseText: 'Gamify progress and accountability'
+      reason: 'This is advice, not a fact. This site avoids game rewards and goals, and its own content rules ban them.'
+    - variant: D2
+      maker: B
+      run: 2
+      shows: true
+      note: 'Three top-level bullets. 206 words.'
+    - variant: D2
+      maker: B
+      run: 3
+      shows: true
+      note: 'Three top-level bullets. 176 words.'

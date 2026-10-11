@@ -1,0 +1,1 @@
+{"id":"R-9.2","model":{"id":"m","name":"M","host":"H"},"date":"2026-10-03","settings":{"temperature":"not set"},"variants":[{"label":"A","maker":"A","messages":[{"role":"user","content":"What colour is the sky?"}],"runs":[{"reply":"The sky is green."}]}]}

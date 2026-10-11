@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>stillness instant then drift</title>
+<style>
+.media, .surface { position: relative; width: 200px; height: 100px; overflow: clip; }
+.deco { position: absolute; width: 40px; height: 40px; fill: none; stroke: transparent; }
+.deco.tr { top: 0; right: 0; }
+.deco.bl { bottom: 0; left: 0; }
+@keyframes instant { to { opacity: 1; } }
+@keyframes drift { 50% { transform: translate(20px, 20px); } }
+@media (prefers-reduced-motion: reduce) { .deco { animation: instant .001ms, drift 5s linear 1500ms; } }
+</style>
+</head>
+<body>
+<figure class="media"><div class="surface"><svg class="deco tr"><path d="M0 0h40v40"/></svg><svg class="deco bl"><path d="M0 0h40v40"/></svg></div></figure>
+</body>
+</html>

@@ -1,0 +1,7 @@
+---
+// 5.6's "Which tool for the job?" (stage I, static): six invented jobs, one at a time, and our reading of each.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/which-tool-for-the-job.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Which tool for the job?" name="which-tool-for-the-job" noun="Job" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

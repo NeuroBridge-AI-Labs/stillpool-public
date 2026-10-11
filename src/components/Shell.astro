@@ -1,0 +1,27 @@
+---
+// The shared shell every interactive sits in (p6 D2, T5.9), lifted from 1.1's WhichReply. The first step holds the
+// prediction; the reveal stays disabled until every question in it has a choice (src/shell.ts); the choices are then said
+// in words in a polite live region. "Read it as text instead" is the Settings switch "Show interactives as text", and
+// without JavaScript every step shows. With `local` each prediction is shown beside its question even with nothing
+// to add, and the live message only points to it. It has no place for a timer, a score, a count or lives.
+interface Props {
+  title: string;
+  reveal: string;
+  class?: string;
+  local?: boolean;
+}
+const { title, reveal, class: name, local } = Astro.props;
+---
+
+<section data-part="tryit" aria-labelledby="part-try-it" class:list={['shell', name]} data-shell data-local={local || undefined}>
+  <h2 id="part-try-it" tabindex="-1"><span class="kicker">Try it<span class="colon">:</span></span> {title}</h2>
+  <label class="shell-text"><input type="checkbox" form="settings-form" name="textversion" value="on" />Read it as text instead</label>
+  <div data-step><slot /></div>
+  <button type="button" data-reveal disabled>{reveal}</button>
+  <p class="picked" aria-live="polite" tabindex="-1"></p>
+  <div data-step class="after-pick"><slot name="after" /></div>
+</section>
+
+<script>
+  import '../shell.ts';
+</script>

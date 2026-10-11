@@ -1,0 +1,61 @@
+---
+// The save-code block (plan T8.3, D8), on /done and in Settings: this device's code, a Copy for the code and one for the
+// restore link, the QR code of the link on request, and the link as text. lean-qr loads only when asked, and its SVG is built with setAttribute, never
+// a data: URL, which the CSP would refuse (F15). One script serves every block on the page.
+---
+
+<div class="save-code">
+  <p class="code"></p>
+  <p>
+    <button type="button" data-copy="code">Copy code</button>
+    <button type="button" data-copy="link">Copy restore link</button>
+    <button type="button" data-qr>Show QR code</button>
+  </p>
+  <div class="qr" role="img" aria-label="QR code of your restore link" hidden></div>
+  <p>Or open this restore link on the other device: <span class="link"></span></p>
+  <p aria-live="polite" class="said"></p>
+</div>
+
+<script>
+  import { encode } from '../progress/code.ts';
+  import { localProgressChange, progress } from '../progress/store.ts';
+
+  const blocks = [...document.querySelectorAll('.save-code')];
+  const part = (block: Element, name: string) => block.querySelector(`.${name}`) as HTMLElement;
+  const show = () => {
+    const code = encode(progress.get());
+    for (const block of blocks) {
+      const shown = part(block, 'code');
+      if (shown.textContent === code) continue;
+      shown.textContent = code;
+      part(block, 'link').textContent = `${location.origin}/#p=${code}`;
+      part(block, 'qr').hidden = true; // an old QR code would restore old progress
+    }
+  };
+  progress.listen(() => { if (localProgressChange) show(); });
+  show();
+  document.querySelector('#settings')?.addEventListener('toggle', (e) => {
+    if ((e.target as HTMLDialogElement).open) show();
+  });
+  addEventListener('click', async (e) => {
+    const button = (e.target as Element).closest('.save-code button');
+    const block = button?.closest('.save-code');
+    if (!button || !block) return;
+    show();
+    const mode = button.getAttribute('data-copy');
+    if (mode === 'code' || mode === 'link') {
+      const [said, text] = mode === 'link' ? ['Restore link copied.', 'restore link'] : ['Save code copied.', 'save code'];
+      try {
+        await navigator.clipboard.writeText(part(block, mode).textContent ?? '');
+        part(block, 'said').textContent = said;
+      } catch {
+        part(block, 'said').textContent = `Copy did not work in this browser. Select the ${text} and copy it instead.`;
+      }
+    } else if (button.hasAttribute('data-qr')) {
+      const [{ generate }, { toSvg }] = await Promise.all([import('lean-qr'), import('lean-qr/extras/svg')]);
+      const qr = part(block, 'qr');
+      qr.replaceChildren(toSvg(generate(part(block, 'link').textContent ?? ''), document, { on: 'black', off: 'white', pad: 4, width: 240, height: 240 }));
+      qr.hidden = false;
+    }
+  });
+</script>

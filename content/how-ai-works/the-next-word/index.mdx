@@ -1,0 +1,248 @@
+---
+title: The next word
+promise: Can explain how a chatbot writes one likely word at a time
+minutes: {simple: 9, deep: 15}
+tldr:
+  - A chatbot like ChatGPT writes one likely piece at a time, often a whole word.
+  - Its language model gives each possible next piece a chance. One piece is picked at random, weighted by those chances.
+  - Likely is not the same as true, so check anything that matters.
+misconceptions: [M9, M3, M2]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-ALT-2, HEA-PEA-2.3.1-a, AILIT-E2]
+interactive: next-word
+inputs: [src/lib/next-word.ts, src/lib/tokenizer.ts, data/training/dubliners.txt, data/interactive/next-word.json]
+checkin:
+  - question: After "cup of", the toy in this lesson only ever gives "beef". Why?
+    options:
+      - text: In its one book, "cup of" came once, followed by "beef".
+        why: Yes. The toy counts which word came next in its one book. It saw "cup of" once, and "beef" came next.
+        right: true
+      - text: Beef is the most common drink.
+        why: Not this one. The toy has no idea what is common in the world, only what came next in its one book.
+      - text: It checked a recipe.
+        why: Not this one. Nothing is looked up or checked. The toy only counts which word came next.
+      - text: The temperature was too low.
+        why: Not this one. "Beef" stays at every temperature. The temperature changes the chances, but it cannot add a word the toy never saw.
+  - question: A reply sounds sure and clear. What does that tell you?
+    options:
+      - text: The reply is correct.
+        why: Not this one. How sure a reply sounds comes from which pieces were likely, not from a check.
+      - text: The chatbot checked its facts.
+        why: Not this one. Nothing in the steps that pick each piece checks the facts.
+      - text: Likely pieces were picked. Check anything that matters.
+        why: Yes. Likely is not the same as true. Likely pieces are often right, so check what matters rather than trust how it sounds.
+        right: true
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You explained how a chatbot writes one likely piece at a time.
+glossary:
+  - term: token
+    meaning: One piece of text that a language model works with. It is often a whole word, but can be part of a word or a single mark.
+  - term: chance
+    meaning: How likely something is. A big chance means it happens often; a small chance means it happens rarely.
+  - term: probability
+    meaning: A chance written as a number from 0 (never) to 1 (certain).
+  - term: language model
+    meaning: A program trained on a large amount of text that works out chances for the next piece of text. Chatbots like ChatGPT run on large ones.
+  - term: training data
+    meaning: The data an AI system learned from.
+  - term: temperature
+    meaning: A setting that changes how even the chances are before a piece is picked. It has nothing to do with heat.
+whereNext:
+  title: Transformer Explainer, from Georgia Tech's Polo Club
+  text: A free web page runs a small real language model (GPT-2) in your browser. It has its own temperature control. It is a different website. Before it runs, it downloads about 600 MB. It sends your clicks there to Google Analytics. It also loads files from Google (fonts and a YouTube video), jsDelivr and Hugging Face. We checked this in September 2026. Type nothing private there.
+  url: https://poloclub.github.io/transformer-explainer/
+sources:
+  - title: "Google for Developers, Machine Learning Glossary, entries chat, hallucination, large language model and temperature"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course, Introduction to Large Language Models"
+    url: https://developers.google.com/machine-learning/crash-course/llm
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Jurafsky and Martin, Speech and Language Processing, 3rd edition draft of 19 August 2026, chapter 3, N-gram Language Models"
+    url: https://web.stanford.edu/~jurafsky/slp3/3.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Jurafsky and Martin, Speech and Language Processing, 3rd edition draft of 19 August 2026, chapter 7, section 7.6, Decoding"
+    url: https://web.stanford.edu/~jurafsky/slp3/7.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Lin (2026), Six misconceptions about large language models: A minimal model and diagnostic taxonomy, PNAS Nexus"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13378163/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Steyvers and others (2025), What large language models know and what people think they know, Nature Machine Intelligence"
+    url: https://doi.org/10.1038/s42256-024-00976-7
+    licence: CC-BY-4.0
+    use: cite
+  - title: "He and Thinking Machines Lab (10 September 2025), Defeating Nondeterminism in LLM Inference"
+    url: https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/
+    licence: All rights reserved
+    use: cite
+  - title: "Mistral AI, API reference, Chat Completion: temperature and random_seed"
+    url: https://docs.mistral.ai/api/endpoint/chat
+    licence: All rights reserved
+    use: cite
+  - title: "Scaleway, Generative APIs, OpenAI API compatibility: supported parameters"
+    url: https://www.scaleway.com/en/docs/generative-apis/reference-content/openai-compatibility/
+    licence: All rights reserved
+    use: cite
+  - title: "Mistral AI, model card for Mistral-Small-3.2-24B-Instruct-2506"
+    url: https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506
+    licence: Apache-2.0
+    use: cite
+  - title: "Searchlight Institute, Searchlight AI Survey: Toplines, question 91, page 31"
+    url: https://www.searchlightinstitute.org/wp-content/uploads/2025/12/Searchlight-AI-Survey-Toplines.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Searchlight Institute, AI Survey Crosstabs, question 91"
+    url: https://www.searchlightinstitute.org/wp-content/uploads/2025/12/Crosstabs-AI-Polling-Survey-v2-20250730.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Colombatto and Fleming (2024), Folk psychological attributions of consciousness to large language models, Neuroscience of Consciousness"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11008499/
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "Elon University (12 March 2025), Survey: 52% of U.S. adults now use AI large language models like ChatGPT"
+    url: https://www.elon.edu/u/news/2025/03/12/survey-52-of-u-s-adults-now-use-ai-large-language-models-like-chatgpt/
+    licence: All rights reserved
+    use: cite
+  - title: "James Joyce (1914), Dubliners, Project Gutenberg ebook 2814"
+    url: https://www.gutenberg.org/ebooks/2814
+    licence: public-domain
+    use: adapt
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-27
+take:
+  paragraphs:
+    - "I believe much fear comes from not knowing. So look at what this lesson showed you. A chatbot picks a likely next piece of text. Then another, and another."
+    - "Does knowing that make the risks vanish? No. A likely sentence can still be false. People can still use these tools to deceive. I won't wave that away. But fear grows in a dark room. Knowing is the light switch."
+    - "With the light on, you see what's really there. Some of it needs real care. Some of it is only furniture. **Name the harm. Then build on what's possible.** That's a steadier place to stand than fear."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## What word comes next?
+
+<Simple>
+What word comes next? "I put the kettle on and made a cup of ..."
+
+Keep your guess in mind. A chatbot like ChatGPT meets this kind of question again and again, each time it writes. This lesson shows how it answers.
+</Simple>
+
+<Deep>
+Chatbots like ChatGPT run on large language models. Google's machine learning glossary puts it this way: "A chatbot is an application of a large language model." The chatbot is the app you type into. The language model inside it works out the answer. It is a program trained on a huge amount of text.
+</Deep>
+
+## One piece at a time
+
+<Simple>
+A chatbot like ChatGPT writes its answer one small piece at a time. A piece is called a token. It is often a whole word. It can also be part of a word, or a single mark.
+
+A chance says how likely something is. For each piece, the chatbot's language model works out a chance for every piece that could come next.
+
+Then one piece is picked and added. The same steps run again, and again. This goes on until an end marker is picked, or the answer reaches a length limit. An end marker is a special piece that means stop.
+</Simple>
+
+<Deep>
+A chance is a probability: a number from 0 (never) to 1 (certain). The chances for all the possible next pieces add up to 1.
+
+A textbook on language processing (Jurafsky and Martin, draft of 19 August 2026) describes the loop. The model gives each possible next token a probability. Then "we randomly select a token to generate according to its probability in context as defined by the model, generate it, and iterate". Generation stops at a set length, or when the end-of-sentence token is picked.
+
+Lesson 1.3 shows how text is cut into tokens.
+</Deep>
+
+## Where the chances come from
+
+<Simple>
+The chances come from training. A language model is trained on a very large amount of text. This text is its training data.
+
+From it, the model learns to give a big chance to pieces that fit what came before. It does not keep a list of answers to look up. It writes each answer piece by piece.
+
+Some chatbot apps also search a set of documents. Lesson 1.5 shows how to tell.
+</Simple>
+
+<Deep>
+A 2026 research paper describes what training produces: "not a table of canned completions but a high-dimensional approximation to the conditional distribution of language given context". Put simply, the model holds patterns of which pieces tend to follow which, not stored answers. Lesson 1.7 shows how training works.
+
+Many people picture something else. Question 91 in an August 2025 online survey asked what an AI like ChatGPT does when answering. The survey sampled 2,301 US adults; 2,296 answered this question. Almost half (45%) chose "looking up the exact answer in a database". About 1 in 5 (21%) chose "following a script of prewritten responses". Just over 1 in 4 (28%) chose "guessing what words should come next based on patterns it learned". The results were published in December 2025.
+</Deep>
+
+## Why the same question gets different answers
+
+<Simple>
+The pick is usually made at random, but not evenly. A piece with a big chance is picked often. A piece with a small chance is picked sometimes.
+
+So if you ask the same question twice, you can get two different answers.
+
+Many language models have a setting called temperature. It has nothing to do with heat. A low temperature means the most likely piece is picked more often. A high one evens out the chances.
+</Simple>
+
+<Deep>
+Always taking the most likely piece is called greedy decoding. The textbook says greedy decoding "is so predictable that it is deterministic": the same input gives the same text. That text tends to be "generic and often quite repetitive". So the most common method in large language models is sampling: a random pick, weighted by the chances.
+
+Temperature changes how even the chances are before the pick. Below 1, the likely pieces get likelier; close to 0, it becomes greedy decoding. Above 1, the chances are evened out, so unlikely pieces are picked more often. One way to do it: raise each chance to the power 1 over the temperature, then rescale them so they add up to 1. This gives the same result as the textbook's rule, which divides the model's raw scores by the temperature.
+
+This is a trade-off, not a truth switch. The textbook reports that ways of picking that favour the most probable words give text people rate as "more accurate, more coherent, and more factual, but also more boring and more repetitive". A low temperature makes the pick steadier. It checks nothing: if the most likely word is the wrong one, it is picked more often at a low setting too.
+
+People set the temperature, and services differ. Mistral is a company that makes language models. On the scale above, where 1 leaves the chances as they are, the documentation for its API (the way programs send it requests) recommends a temperature from 0 up to seven tenths. Scaleway's API uses seven tenths unless told otherwise. Mistral's page for its Mistral Small 3.2 model recommends a much lower one: fifteen hundredths. All three were checked in September 2026.
+
+Even at temperature 0, a post about language-model APIs (Thinking Machines, September 2025) found that "LLM APIs are still not deterministic in practice". Mistral's API documentation says that a fixed "seed" makes repeated calls give the same result (checked in September 2026).
+
+There are other ways to trim the unlikely pieces before the pick, such as top-p, which keeps only the most likely pieces that together hold a set share of the chance.
+</Deep>
+
+## A toy, not a chatbot
+
+<Simple>
+This lesson uses a small toy model. It counts which word came next after the last two words in one book. The book is Dubliners by James Joyce (1914).
+
+The toy's pieces are whole words and punctuation marks. A chatbot's language model learns from far more text, and works differently. It takes in the whole text so far, up to a limit.
+</Simple>
+
+<Deep>
+The toy is a trigram model: it looks only at the last two pieces. Google's course on language models puts the limit plainly: "the only context a 3-gram provides is the first two words." Language models like the ones behind chatbots are neural networks (models built from layers of numbers) that take in the whole text so far, up to a limit that lesson 1.8 explains.
+
+The toy's chances are counts. For each pair of pieces in the book, it counts which piece came next. A piece's chance is how often it came after that pair, divided by how often the pair appeared. In the book, "the old" appears 73 times, and the next word is "man" 35 of those times. The textbook calls this ratio a relative frequency.
+
+A word the toy never saw after a pair gets no chance at all, and most pairs are rare: about 3 in 4 of the pairs the toy saw appear only once. A setting like temperature changes chances. It cannot add a word the toy never saw.
+
+The toy's chances reflect its one book: stories set in Dublin and published in 1914. The textbook says such probabilities "often encode specific facts about a given training corpus".
+
+The toy learned from Dubliners by James Joyce (1914), public domain in Ireland and the US, from Project Gutenberg. It turns the book into lower case, and keeps runs of letters and six punctuation marks. It drops digits and every other mark.
+</Deep>
+
+<TryIt />
+
+## Likely is not the same as true
+
+<Simple>
+A likely piece fits the text so far. Nothing in these steps checks the facts. So a chatbot can write fluent text that sounds sure and is wrong.
+
+The toy shows this. In the whole book, "cup of" comes once, in "his cup of beef-tea". So after "cup of", only "beef" is ever picked, and "tea" never is.
+
+You may have guessed "tea". The toy's chances are counts from one book, and likely is not the same as true.
+
+In a study published in January 2025, people in the US read answers from three language models. They were GPT-3.5, PaLM2 and GPT-4o. The answers came with the models' usual explanations. People were only slightly better than guessing at telling right answers from wrong ones.
+
+How sure a reply sounds is not proof. Check anything that matters.
+</Simple>
+
+<Deep>
+Google's glossary calls wrong but fluent output a hallucination: "The production of plausible-seeming but factually incorrect output by a generative AI model that purports to be making an assertion about the real world." Lesson 1.6 shows why a chatbot can make things up.
+
+In the January 2025 study, 301 people living in the US read answers and explanations written by GPT-3.5, PaLM2 and GPT-4o, and judged how likely each answer was to be right. With the models' usual explanations, they were only slightly better than random guessing at telling right answers from wrong ones. The models' own chances did much better. Longer explanations made people more confident, without making them any better at it.
+
+The limits: one study, with people in the US, and three named models, the newest GPT-4o. Newer models were not tested.
+
+How sure a text sounds comes from which pieces were likely, not from a check. That is not a reason to distrust every reply: the textbook reports that favouring likely words gives text people rate as more accurate. It is a reason to check what matters.
+
+The same goes for tone. A caring reply is also written one likely piece at a time, and a caring tone is not proof of caring (lesson 1.1). In July 2023 (published April 2024), 2 in 3 (67%) of 300 US adults did not rule out that ChatGPT has experiences such as feelings; 1 in 3 (33%) said it definitely does not. In January 2025, 4 in 10 (40%) of 500 US language-model users said the one they use most acts like it understands them, at least some of the time. That question asks how it seems, not what people believe.
+
+The opposite mistake is to say that it only predicts words, so it understands nothing. A 2026 paper calls that "the mirror-image error".
+
+The surveys and study cited here used US participants. They do not report results for people in Ireland or for neurodivergent learners.
+</Deep>

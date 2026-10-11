@@ -1,0 +1,462 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./fonts.css";
+@import "./settings.css";
+@import "./activities.css";
+
+/* Contract names only (docs/adr/0002-themes.md), so a look is a token swap. */
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-wrap: break-word;
+}
+
+/* Tailwind's preflight flattens headings, paragraphs and lists; the prototype's sizes give the page its shape back. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+}
+/* A heading keeps whole words on a narrow phone with the largest text and widest spacing (fold review): its size
+   stops growing at a share of the screen width, never below the body text. */
+h1 {
+  margin: 0.5rem 0 1.5rem;
+  font-size: max(1rem, min(2rem, 9vw));
+}
+/* The lesson and finish headings carry the lesson's title, so its longest word sets the size: 7vw keeps "Environmental"
+   whole at 320 px with OpenDyslexic, wider spacing and the largest text (the floor is the body size). */
+h1[data-finish],
+h1[data-part="title"] {
+  font-size: max(1rem, min(2rem, 7vw));
+}
+h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: max(1rem, min(1.55rem, 8vw));
+  letter-spacing: -0.01em;
+}
+h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: max(1rem, min(1.15rem, 7vw));
+}
+p,
+ul,
+table {
+  margin-bottom: 1.25rem;
+}
+ul {
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+main {
+  max-width: 70ch;
+  margin: 0 auto;
+  /* At the largest text 1rem is 24px: on a 320 px phone the gutters stop at 5vw, so a long word still fits. */
+  padding: 1rem min(1rem, 5vw);
+}
+/* The home page and a lesson draw their own bands and frames, so their main is the whole width. */
+main.wide {
+  max-width: none;
+  padding: 0;
+}
+
+/* Tailwind's preflight removes link underlines; links must not rely on colour alone. */
+a {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Layers: the reading ruler 2, the header 3, the skip link 4 (the dialog is in the top layer). */
+/* The skip link waits above the page until it has focus: moved, not clipped, so no box hides its words. */
+.skip {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 4;
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  transform: translateY(-200%);
+}
+.skip:focus {
+  transform: none;
+}
+
+/* The frame: header, footer, home page and a lesson's band share one width, with a gutter that stops at 5vw on a phone. */
+.frame {
+  width: min(var(--frame), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+/* The header stays at the top as the page scrolls, on its own solid blue in every theme, so nothing shows through it.
+   An anchor or a focused control lands below its real height: src/header.ts writes it to --header-h (7d point 7). */
+html {
+  scroll-padding-top: calc(var(--header-h, 5rem) + var(--s3));
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  color: #fff;
+  background-color: var(--pool-a);
+  background-image: linear-gradient(90deg, var(--pool-a), var(--pool-mid) 73%, var(--pool-b));
+  border-bottom: var(--border-width) solid rgb(255 255 255 / 0.18);
+  --focus: #fff;
+}
+.site-header > .frame {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--s2);
+  min-height: 4rem;
+  container-type: inline-size;
+}
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--s1);
+}
+.home,
+.site-header nav a,
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.75rem;
+}
+.site-header :is(a, button) {
+  position: relative;
+  color: inherit;
+}
+.site-header nav a {
+  padding-inline: 0.6rem;
+  text-decoration: none;
+}
+.site-header nav a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+/* The page you are on has a bar under it, a shape, never colour alone; not bold, so no control moves (spec P14). */
+.site-header nav a[aria-current="page"] {
+  box-shadow: inset 0 -3px 0 var(--glow);
+}
+.site-header button {
+  background: transparent;
+  border-color: var(--pool-muted);
+}
+.site-header button:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+.icon {
+  flex: none;
+  fill: currentColor;
+  width: 1.25em;
+  height: 1.25em;
+}
+/* One row at every width and text size while it fits: the header's own width in em decides, so larger text hides
+   labels sooner. A hidden label is moved out of sight, not removed, so it stays the control's name; it grows
+   leftwards from the control's right edge, so it never widens the page. Map and Help show their icon only when their
+   words hide; past that the row wraps rather than clip. */
+.site-header nav :is([href="/"], [href="/help/"]) > .icon {
+  display: none;
+}
+@container (width < 43em) {
+  .site-header nav :is([href="/search/"], button) {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  .site-header nav :is([href="/search/"], button) > .label {
+    position: absolute;
+    right: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+@container (width < 30em) {
+  .home > .label,
+  .site-header nav [href="/"] > .label {
+    position: absolute;
+    right: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .site-header nav [href="/"] {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  .site-header nav [href="/"] > .icon {
+    display: block;
+  }
+}
+@container (width < 19em) {
+  .site-header nav a {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  .site-header nav a > .label {
+    position: absolute;
+    right: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .site-header nav :is([href="/"], [href="/help/"]) > .icon {
+    display: block;
+  }
+}
+.home {
+  gap: 0.6rem;
+  padding-inline: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+}
+button {
+  justify-content: center;
+  background: var(--surface);
+  color: var(--text);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+button:hover {
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+/* The filled button: Done, I have finished this lesson. */
+.primary {
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+dialog {
+  margin: auto;
+  max-width: min(40rem, calc(100% - 2rem));
+  padding: 1.5rem;
+  background: var(--ground);
+  color: var(--text);
+  border: var(--border-width-strong) solid var(--border);
+  border-radius: var(--radius-large);
+}
+/* The Pool Band's own dark, so the veil dims the page and never lights it: no flash in the dark theme (pr4-review). */
+dialog::backdrop {
+  background: color-mix(in srgb, var(--pool-a) 75%, transparent);
+}
+
+button + button {
+  margin-left: 0.5rem;
+}
+.qr {
+  margin-bottom: 1.25rem;
+}
+/* Black on white, shown only when asked: a camera needs the contrast, even in the dark theme. */
+.qr svg {
+  max-width: 100%;
+  height: auto;
+}
+
+#q,
+.token-splitter input:is([type="number"], [type="text"]) {
+  min-height: 44px;
+  padding: 0.25rem 0.5rem;
+  color: var(--text);
+  background: var(--ground);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+/* A button in the page sits on the card colour, and hover shows in its border, never a lighter fill (the dark theme). */
+main button,
+main button:hover {
+  background: var(--card);
+}
+main button:hover {
+  background: var(--tint);
+  border-color: var(--accent);
+}
+
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.5rem;
+  border: var(--border-width) solid var(--border);
+  text-align: left;
+}
+/* A wide table scrolls inside its own region, so words stay whole and the page never scrolls sideways (WCAG 1.4.10
+   exempts data tables). */
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* The footer's frame; its layout is footer.css. */
+.site-footer {
+  margin-top: 3rem;
+  border-top: var(--border-width) solid var(--border);
+}
+.site-footer p {
+  max-width: 60ch;
+}
+.site-footer ul {
+  padding: 0;
+  list-style: none;
+}
+.site-footer li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* The NBEDU logo, header and footer. Two files, one shown: the dark lockup only in the dark theme (boot.js resolves
+   "Match my device" into data-theme before the first paint), the light one everywhere else, high contrast included.
+   display: none keeps the other out of the accessibility tree. Pixels, not rem: the logo does not grow with text. */
+.logo {
+  width: auto;
+  height: 48px;
+}
+.site-footer .logo {
+  height: 64px;
+}
+.logo-dark {
+  display: none;
+}
+[data-theme="dark"] {
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: block; /* Tailwind's preflight shows every img as a block */
+  }
+}
+
+.nobr { white-space: nowrap; }
+
+/* The new-tab icon after a link to another website (src/lib/external.ts); it sits a little below the text's own line. */
+/* Hidden to the eye, not to a screen reader, and anchored to the link's right edge so it grows leftwards and never widens the
+   page; no overflow: hidden, which the layout tests read as clipped text. */
+a[target="_blank"] {
+  position: relative;
+}
+.new-tab {
+  position: absolute;
+  right: 0;
+  clip-path: inset(50%);
+}
+/* An empty CSS cue has no accessible text. Vite emits the pinned SVG once, on this origin, not a CSP-blocked data URL. */
+a:has(> .new-tab)::after {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-inline-start: 0.2em;
+  vertical-align: -0.1em;
+  background: currentColor;
+  mask: url("@phosphor-icons/core/assets/regular/arrow-square-out.svg?no-inline") center / contain no-repeat;
+}
+@media (forced-colors: active) {
+  a:has(> .new-tab)::after {
+    forced-color-adjust: none;
+    background: LinkText;
+  }
+}
+
+/* The band (Pool Band v2): the header's blue, at full width, behind the home hero and a lesson's head. White words on
+   it, in every theme; in dark it is darker than the ground, never lighter. */
+.band {
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  background-color: var(--pool-a);
+  background-image: radial-gradient(34rem 22rem at calc(50% + 260px) 58%, rgb(107 201 222 / 0.14), transparent 70%), var(--band);
+  --focus: #fff;
+}
+.band a:not(.start) {
+  color: inherit;
+}
+/* In dark the cyan glow would paint the band lighter than the ground (the reader's light sensitivity), so the band is the plain gradient. */
+[data-theme="dark"] .band {
+  background-image: var(--band);
+}
+.band .switch input:checked {
+  background: var(--glow);
+}
+[data-theme="dark"] .band .switch input:checked {
+  background: var(--ground);
+}
+[data-theme="dark"] .band .switch input:checked::before {
+  background: var(--glow);
+}
+/* In dark nothing in main is lighter than the ground (the reader's light sensitivity), so the yellow button is an outline. */
+[data-theme="dark"] .start {
+  color: var(--signal);
+  background: var(--pool-a);
+  box-shadow: inset 0 0 0 2px var(--signal);
+}
+
+/* The drawings of Pool Band v2: a line drawing takes the colour of the element it sits in; a Phosphor icon is filled. The
+   emblem is a badge: a plate, a rim, the lesson's drawing, a bridge and a spark. */
+.kit {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.kit .dot,
+.dot {
+  fill: currentColor;
+  stroke: none;
+}
+.ph {
+  flex: none;
+  fill: currentColor;
+  stroke: none;
+}
+.emblem {
+  flex: none;
+  color: var(--glow);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sprite {
+  position: absolute;
+}
+:is(.emblem, .emblem-art) .plate {
+  fill: var(--plate);
+}
+:is(.emblem, .emblem-art) .rim-in {
+  stroke-width: 1.5;
+}
+:is(.emblem, .emblem-art) .bridge {
+  stroke: var(--signal);
+  stroke-width: 2.5;
+}
+:is(.emblem, .emblem-art) .spark {
+  fill: var(--signal);
+  stroke: none;
+}
+.emblem-art .plate {
+  stroke: currentColor;
+  stroke-width: 3;
+}
+.emblem .t {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.emblem .pop {
+  transform-box: fill-box;
+  transform-origin: center;
+}

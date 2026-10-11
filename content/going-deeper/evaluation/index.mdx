@@ -1,0 +1,258 @@
+---
+title: "Evaluation: keep, fix or switch off?"
+promise: Can read an AI test report and decide to keep, fix or switch off a system
+minutes: {simple: 10, deep: 16}
+tldr:
+  - "A fair test uses questions where the right answer is already known. It also asks what users make of the answers."
+  - "A total score can hide how a system treats one group. Look at the groups, and at which mistakes matter most."
+  - "The same report can lead to keep, fix or switch off. The call depends on what error rate people agree to accept."
+misconceptions: [M6, M10]
+interactive: keep-fix-or-switch-off
+inputs: [src/lib/keep-fix-or-switch-off.ts, src/components/KeepFixOrSwitchOff.astro]
+competencies: [UNESCO-AICFS-4.3.4, UNESCO-AICFS-CG4.3.4.1, UNESCO-AICFS-CG4.3.4.2, HEA-P3, HEA-ALT-4, AILIT-S2, AILIT-S1, AILIT-M4, AIF-3.c]
+checkin:
+  - question: NIST says accuracy numbers should come with test sets. What kind of test set?
+    options:
+      - text: One that is clearly defined, realistic and like the conditions of expected use.
+        why: Yes. NIST says accuracy should come with clearly defined, realistic test sets that are like expected use.
+        right: true
+      - text: One that the system builder wrote alone, with no checks.
+        why: Not this one. NIST does not say who writes the set. It says the set should be clearly defined and realistic.
+      - text: One that is as small as possible.
+        why: Not this one. NIST does not ask for a small set. It asks for one that is like real use.
+      - text: One taken from the system's own training material.
+        why: Not this one. NIST asks for conditions of expected use. It does not ask for training material.
+  - question: In the invented report, you accept about 1 wrong answer in 20. What is our call?
+    options:
+      - text: Fix, then test again. Group B had 8 wrong in 100, which is over 1 in 20.
+        why: Yes. All 200 answers together are under 1 in 20. Group B alone is over it, so we fix and test again.
+        right: true
+      - text: Switch off. The total is over 1 in 20.
+        why: Not this one. The total is 9 wrong in 200, which is under 1 in 20. Switch off happens when you accept only 1 in 50.
+      - text: Keep. The total is under 1 in 20, so nothing else matters.
+        why: Not this one. Our rule also looks at each group. Group B had 8 wrong in 100.
+      - text: No call is possible without more users.
+        why: Not this one. The report is invented, and our rule gives a call from its numbers.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You read a test report, and you saw how the call changes with the error rate you accept.
+glossary:
+  - term: test report
+    meaning: A short document that says how a system did on a test, and how the test was run.
+  - term: test set
+    meaning: Test questions with answers that are known or accepted as true. The system's answers are compared with them.
+  - term: wrong-answer rate
+    meaning: How many answers were wrong, compared with how many questions were asked. It is this report's own measure.
+  - term: benchmark
+    meaning: A set of tests. Many AI systems take it on the same terms, so their scores can be compared.
+  - term: red-teaming
+    meaning: A structured test where people probe an AI system to find flaws, such as inaccurate, harmful or discriminatory answers.
+  - term: false positive
+    meaning: In NIST's face test, photos of different people that the software says match.
+  - term: false negative
+    meaning: In NIST's face test, photos of the same person that the software says do not match.
+whereNext:
+  title: NIST, AI Risk Management Framework 1.0, section 3.1
+  text: This is a guide from a US government agency on managing the risks of AI. It is one PDF file with 48 pages. Section 3.1, "Valid and Reliable", covers accuracy and test sets. It starts on printed page 13, which is page 18 in a PDF viewer. On 9 October 2026 our test browser held 3 cookies from nist.gov after opening it, set before any choice. Their names are __cf_bm, __cflb and _cfuvid.
+  url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+sources:
+  - title: "NIST, Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1, January 2023"
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+    licence: No licence stated
+    use: link
+  - title: "NIST, Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile, NIST AI 600-1, July 2024"
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Grother, Ngan and Hanaoka, NISTIR 8280, Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects, December 2019"
+    url: https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf
+    licence: No licence stated
+    use: cite
+  - title: "UNESCO, AI competency framework for students, 2024 (published 8 August 2024), DOI 10.54675/JKJB9835"
+    url: https://www.unesco.org/en/articles/ai-competency-framework-students
+    licence: CC-BY-SA-3.0-IGO
+    use: cite
+  - title: "Liang and others, Holistic Evaluation of Language Models, arXiv:2211.09110, submitted 16 November 2022"
+    url: https://arxiv.org/abs/2211.09110
+    licence: CC BY 4.0
+    use: cite
+  - title: "Mitchell and others, Model Cards for Model Reporting, arXiv:1810.03993, submitted 5 October 2018"
+    url: https://arxiv.org/abs/1810.03993
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Deng and others, Investigating Data Contamination in Modern Benchmarks for Large Language Models, arXiv:2311.09783, submitted 16 November 2023, revised 3 April 2024"
+    url: https://arxiv.org/abs/2311.09783
+    licence: CC BY-NC-ND 4.0
+    use: cite
+  - title: "Microsoft, Learning from Tay's introduction, 25 March 2016"
+    url: https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+take:
+  paragraphs:
+    - "I trust a tool more once it's been tested. I trust it more again when I know where the test stopped. A test is a torch. It lights the spot you point it at. Everything else stays dark."
+    - "So a good report says two things. Here is what we measured. Here is what we didn't. Which part do I read first? The second. That's where the surprises are."
+    - "Then I ask who was in the test, and who was missing. **Measure it. Then say what you don't know.** Keeping a tool, fixing it or switching it off is a human decision. Honest limits make that decision possible."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## Test it on the real job
+
+<Simple>
+How do you know if an AI system does its job well? You test it. A fair test uses questions where the right answer is already known.
+
+The US National Institute of Standards and Technology (NIST) writes guides on managing AI risks. Its guide is the AI Risk Management Framework. It says a test should use questions like the ones the system will meet in real use.
+
+UNESCO is the United Nations agency for education. Its framework for students lists studying users' feedback as one way to check an AI system's wider impact. So user feedback is one more thing a test can gather.
+
+A test report is a short document that says how the system did and how the test was run.
+</Simple>
+
+<Deep>
+The NIST guide is the AI Risk Management Framework, version 1.0, January 2023. It says: "Accuracy measurements should always be paired with clearly defined and realistic test sets – that are representative of conditions of expected use – and details about test methodology; these should be included in associated documentation." Accuracy, it says, is defined by an international standard as "closeness of results of observations, computations, or estimates to the true values or the values accepted as being true." That is why a test set needs answers that people have checked first.
+
+The same guide says validation is "confirmation, through the provision of objective evidence, that the requirements for a specific intended use or application have been fulfilled". A system is checked against what it was meant to do.
+
+UNESCO's 2024 framework, goal CG4.3.4.1, lists "measuring the performance of the AI system; and studying users’ feedback to evaluate its broader societal and environmental impact".
+</Deep>
+
+## Count the mistakes, and count them by group
+
+<Simple>
+A report gives a number for the mistakes. In our report below, the number is the wrong-answer rate. It compares the wrong answers with the questions asked.
+
+A total can hide a lot. So reports can also split the results by group, such as people who write in different ways.
+
+NIST's guide says accuracy results may be split for different parts of the data. Accuracy means how close the results are to the true answers. The guide does not say results always must be split.
+
+Some mistakes matter more than others. Face software can make two kinds of mistake. It can say two photos match when they show different people. Or it can say they do not match when they show the same person.
+
+A NIST report on face software says each kind of mistake matters to different communities. In our report, a wrong deadline or fee counts as serious.
+</Simple>
+
+<Deep>
+The NIST guide also says measures of accuracy "should consider computational-centric measures (e.g., false positive and false negative rates)" and "demonstrate external validity (generalizable beyond the training conditions)". It adds: "Accuracy measurements may include disaggregation of results for different data segments." Disaggregation means splitting a total into parts.
+
+A false positive and a false negative are two kinds of mistake. NIST's 2019 report on face recognition software explains them. Comparing photos of different people should give a low match score. Comparing photos of the same person should give a high one. In practice, NIST writes, "some imposter scores are above a numeric threshold giving false positives, and some genuine comparisons yield scores below threshold giving false negatives." A threshold is the score above which the software says two photos match.
+
+In that report, NIST says it gives the two rates separately "because the consequences of each type of error are of importance to different communities". Its example: "in a one-to-one access control, false negatives inconvenience legitimate users; false positives undermine a system owners security goals." NIST also writes that accuracy is often "discussed without stating the quantity of interest".
+
+The 2019 paper on model cards proposes short documents that come with a trained model. They give "benchmarked evaluation in a variety of conditions, such as across different cultural, demographic, or phenotypic groups" that are relevant to the intended use.
+</Deep>
+
+## An invented test report
+
+<Simple>
+Here is a test report that we made up. The chatbot, the college and every number are invented for this lesson. No real system was tested.
+
+The chatbot is a college helpdesk chatbot. It answers students' questions about things like deadlines and fees.
+
+The test set has 200 questions. Staff checked every answer first. Half the questions came from students who write in English as a first language. Call them group A. Half came from students who write in English as a second language. Call them group B.
+
+The results:
+
+- **Group A:** 1 wrong answer in 100.
+- **Group B:** 8 wrong answers in 100.
+- **All 200 questions:** 9 wrong answers, about 1 in 22. This adds group A and group B together.
+- **Serious wrong answers, such as a wrong deadline or fee:** none found.
+
+The report did not test other kinds of question. It also did not ask students if the answers were usable.
+</Simple>
+
+<Deep>
+The report follows the NIST guide in two ways. It has a defined test set with checked answers, and it splits the results by group. The groups and the label "serious" are ours, not NIST's.
+
+It does not follow the UNESCO list in one way: it has no user feedback. So the call below rests on the numbers alone. Nothing in it shows if students could act on the answers.
+
+With 200 questions, one wrong answer moves the total by 1 in 200. A mistake that happens less often than that may not show up at all.
+</Deep>
+
+## Keep, fix or switch off?
+
+<Simple>
+Keep, fix or switch off? Keep means keep using it. Fix means change it and test again. Switch off means stop using it. Our call is which of these three we pick.
+
+In this activity you read the report and predict our call. Then you see it, with our reasons.
+
+After that, you choose the wrong-answer rate you would accept. The choices are about 1 in 50, 1 in 20, 1 in 10 and 1 in 5. The report's numbers do not change. Watch where the call moves.
+
+The rule is ours. We made it up for this invented report. It is not a standard.
+
+1. If all the questions together are over the rate you accept, switch off.
+2. If one group is over, and a serious answer was wrong, switch off.
+3. If one group is over, or a serious answer was wrong, fix it and test again.
+4. Otherwise keep it, and keep testing.
+</Simple>
+
+<Deep>
+UNESCO's 2024 framework describes three decisions after tests and feedback. They are optimization, reconfiguration and shutting down. Optimization means "optimizing the datasets, algorithms, model, design functionalities and/or interface". Reconfiguration means "revisiting problem scoping and reconfiguring the AI system". Shutting down is for the case "where it is proven that the AI system violates human rights or harms vulnerable groups".
+
+Our three calls are simpler. Our "fix" covers both optimization and reconfiguration. Our "switch off" is a classroom rule about error rates. It does not use UNESCO's test of "proven". The framework also suggests students write a report on what decision to take and why, which includes "explanations of decisions to optimize, reconfigure and shut down the system".
+
+The framework describes what to teach students. It does not give a number that makes a call automatic.
+</Deep>
+
+<TryIt />
+
+## What a score cannot tell you
+
+<Simple>
+A good score is about one system, on one test, on one day. It does not tell you how the system does on other questions.
+
+NIST's guide says accuracy results should hold up beyond the conditions the system was trained in. A test can only show what it asked about.
+
+A benchmark is a set of tests. Many AI systems take it on the same terms, so their scores can be compared. Even then, a score covers only the tests in the benchmark.
+
+Groups can get different results. In 2019, NIST tested 189 face recognition programs from 99 developers. They compare photos of faces. This was not a chatbot test. For many of them, wrongly matching two different people was much more common for some groups than for others.
+</Simple>
+
+<Deep>
+A team at Stanford University built a benchmark called HELM, short for Holistic Evaluation of Language Models. Its abstract says "now all 30 models have been densely benchmarked on the same core scenarios and metrics under standardized conditions". It measured 7 things, such as accuracy and fairness. It says this "ensures metrics beyond accuracy don't fall to the wayside". It also lists what it missed, such as "question answering for neglected English dialects". The paper was first posted on 16 November 2022.
+
+Another group asked if test material leaks into training material. Deng and others wrote in 2023 that "recent observations have underscored a disparity between the inflated benchmark scores and the actual performance of LLMs", short for large language models. They say the issue "is especially critical for closed-source models", where the training data is not shared. They report that "certain commercial LLMs could surprisingly guess the missing option in various test sets". That abstract does not say how far the problem goes for any one model.
+
+In NIST's December 2019 report, the 189 programs processed "18.27 million images of 8.49 million people". NIST writes: "Across demographics, false positives rates often vary by factors of 10 to beyond 100 times. False negatives tend to be more algorithm-specific, and vary often by factors below 3." It says the false positive differences exist "across many, but not all, algorithms tested". These are results for face recognition programs in that test. They are not error rates for chatbots or for all AI.
+</Deep>
+
+## When a chatbot was taken offline
+
+<Simple>
+In March 2016, Microsoft launched a chatbot called Tay. It was made for 18- to 24-year-olds in the US, for entertainment. This is Microsoft's own account, dated 25 March 2016.
+
+Microsoft says it had tested Tay first, under many conditions. It calls these stress tests.
+
+Microsoft says that within 24 hours a group of people attacked a weakness in Tay. Microsoft says Tay then posted offensive words and images. It says it had made "a critical oversight for this specific attack". Microsoft says Tay is now offline.
+
+Red-teaming is another kind of test. People probe a system to find flaws, such as inaccurate, harmful or discriminatory answers. NIST defined it in July 2024.
+</Simple>
+
+<Deep>
+Microsoft wrote: "we planned and implemented a lot of filtering and conducted extensive user studies with diverse user groups. We stress-tested Tay under a variety of conditions". It then wrote: "Unfortunately, in the first 24 hours of coming online, a coordinated attack by a subset of people exploited a vulnerability in Tay. Although we had prepared for many types of abuses of the system, we had made a critical oversight for this specific attack."
+
+Microsoft said: "Tay is now offline and we’ll look to bring Tay back only when we are confident we can better anticipate malicious intent that conflicts with our principles and values." We did not find a later statement, so we do not say what happened next.
+
+NIST's July 2024 profile for generative AI defines red-teaming as "A structured testing exercise used to probe an AI system to find flaws and vulnerabilities such as inaccurate, harmful, or discriminatory outputs, often in a controlled environment and in collaboration with system developers." It treats this as one kind of structured testing next to feedback from affected communities and users.
+</Deep>
+
+## How to read a test report
+
+<Simple>
+These habits come from the sources in this lesson.
+
+- **Find the test set.** Ask what the questions were, and who checked the answers.
+- **Look for the groups.** A total can hide a group that does worse.
+- **Look for the mistakes that matter.** One wrong fee is not the same as one wrong greeting.
+- **Look for the users.** Ask if the people who will use the system were part of the test.
+- **Say what is not known.** A report covers the questions that were asked, and nothing else.
+</Simple>
+
+<Deep>
+A report that gives only a total, with no test set and no groups, cannot be checked against the NIST guide. The guide asks for "details about test methodology". Our invented report did not give enough to say how it would do on other kinds of question, so we say that is not known.
+
+A high score also does not show that a problem is solved. HELM lists what it left out. Deng and others raise concern that scores can be inflated.
+</Deep>

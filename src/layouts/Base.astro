@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import '../styles/lesson.css';
+import '../styles/outline.css';
+// boot.js runs first in <body>, before the first paint (D2): the stored settings become data-* attributes on <html>, "Match my
+// device" resolves to a theme, and ?depth= opens a page at that depth over the stored choice (D5). It carries no comments: they
+// would ship in every page. astro.config.mjs puts its sha256 in the CSP.
+import boot from '../boot.js?raw';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import Settings from '../components/Settings.astro';
+
+interface Props {
+  title: string;
+  search?: boolean; // a lesson: Pagefind indexes its main (D12)
+  wide?: boolean; // the home page and a lesson draw their own bands, so their main is the whole width
+  activity?: string; // a lesson's interactive id: its own styles load, no other activity's
+  description?: string; // the page's meta description and og:description; a noindex page has none
+  noindex?: boolean; // a page that is not for search: no canonical, no description, no share tags
+  article?: boolean; // og:type article (a lesson)
+  image?: string; // an absolute lesson share image; other pages use the site card
+  imageAlt?: string; // lesson card description for share previews
+  ld?: object; // the page's JSON-LD graph
+}
+const { title, search, wide, activity, description, noindex, article, ld, image: customImage, imageAlt } = Astro.props;
+// The suffix rule, in one place: a title that names Stillpool stays as written, any other gets " | Stillpool".
+const fullTitle = title.includes('Stillpool') ? title : `${title} | Stillpool`;
+const ogTitle = title.replace(/ \| NeuroBridgeEDU$/, '');
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const image = customImage ?? new URL('/share.png', Astro.site).href;
+// src/styles/activities/<id>.css, when that file exists. Here, not in the lesson page: a ?url import there moves the page's own CSS before Base.
+const sheets = import.meta.glob<string>('../styles/activities/*.css', { query: '?url', import: 'default', eager: true });
+const sheet = sheets[`../styles/activities/${activity}.css`];
+const current = (href: string) => (Astro.url.pathname === href ? 'page' : undefined);
+// The same controls in the same place on every page (spec P14). Settings opens with HTML invoker commands, so it
+// needs no script. Header and footer sit on one frame (--frame); where the header is narrow, a label hides to the eye
+// and stays the control's name (global.css). The header is always the dark band, so it always carries the dark logo.
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/public-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <title>{fullTitle}</title>
+    {noindex ? <meta name="robots" content="noindex" /> : (
+      <>
+        {description && <meta name="description" content={description} />}
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={ogTitle} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:url" content={canonical} />
+        <meta property="og:type" content={article ? 'article' : 'website'} />
+        <meta property="og:site_name" content="Stillpool" />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={imageAlt ?? 'Stillpool: free lessons about AI'} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={image} />
+      </>
+    )}
+    {ld && <script type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')} />}
+    {sheet && <link rel="stylesheet" href={sheet} />}
+  </head>
+  <body>
+    <script is:inline set:html={boot} />
+    <a class="skip" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="frame">
+        <a class="home" href="/">
+          <img class="logo" src="/brand/nbedu-logo-dark.png" alt="NeuroBridgeEDU" width="309" height="168" />
+          <span class="label name">Stillpool</span>
+        </a>
+        <nav aria-label="Site">
+          <a href="/" aria-current={current('/')}><Icon name="map-trifold" /><span class="label">Lesson map</span></a>
+          <a href="/search/" aria-current={current('/search/')}><Icon name="magnifying-glass" /><span class="label">Search</span></a>
+          <a href="/help/" aria-current={current('/help/')}><Icon name="question" /><span class="label">Help</span></a>
+          <button type="button" commandfor="settings" command="show-modal"><Icon name="gear" /><span class="label">Settings</span></button>
+        </nav>
+      </div>
+    </header>
+    <Settings />
+    <div class="page">
+      {/* Below the header row, so it never pushes the controls down on a phone (pr6-review SHOULD-FIX 1), and before
+          main as its own landmark, so the skip link lands on the lesson (design-review S2). */}
+      <slot name="aside" />
+      <main id="main" tabindex="-1" class:list={{ wide }} data-pagefind-body={search ? '' : undefined}>
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
+
+<script>
+  import '../header.ts';
+</script>

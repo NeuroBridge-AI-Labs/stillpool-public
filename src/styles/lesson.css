@@ -1,0 +1,697 @@
+/* The lesson page (Pool Band v2, approved by Emanuel 04-10-26; .ops/design/mockups/lesson-v1). The head is the band, the
+   rail beside the lesson is where you are in it, and the lesson is white cards and plain reading on the page's ground.
+   Calm: nothing here moves by itself. Borders carry the dark theme, where nothing in main is lighter than the ground. */
+
+/* The page is one grid, so the band can run the full width while the rail and the lesson keep the frame. main is a subgrid
+   of it, so the rail (before main, its own landmark: design-review S2) can sit in the row of the lesson it belongs to.
+   Narrow, or with large text, the rail is one closed Contents disclosure between the head and the lesson. */
+.page:has(> .rail) {
+  display: grid;
+  grid-template-columns: [full-start] minmax(var(--gutter), 1fr) [rail-start art-start] minmax(0, var(--frame)) [rail-end art-end] minmax(var(--gutter), 1fr) [full-end];
+  grid-template-rows: auto auto auto;
+}
+.page:has(> .rail) > main {
+  display: grid;
+  grid-column: full-start / full-end;
+  grid-row: 1 / span 3;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+.lesson-head {
+  grid-column: full-start / full-end;
+  grid-row: 1;
+}
+.article {
+  grid-column: art-start / art-end;
+  grid-row: 3;
+  min-width: 0;
+  padding-bottom: var(--s5);
+}
+.page > .rail {
+  grid-column: art-start / art-end;
+  grid-row: 2;
+  margin-block: var(--s3) 0;
+  z-index: 1;
+}
+/* With room, at the standard sizes: the rail is a sidebar that stays in view as the lesson scrolls. */
+@media (min-width: 80em) {
+  html:not([data-size="3"], [data-size="4"], [data-size="5"], [data-focus]) {
+    .page:has(> .rail) {
+      grid-template-columns: [full-start] minmax(var(--gutter), 1fr) [rail-start] 15rem [rail-end] var(--s5) [art-start] minmax(0, calc(var(--frame) - 15rem - var(--s5))) [art-end] minmax(var(--gutter), 1fr) [full-end];
+      grid-template-rows: auto 1fr;
+    }
+    .page:has(> .rail) > main {
+      grid-row: 1 / span 2;
+    }
+    .article {
+      grid-row: 2;
+    }
+    .page > .rail {
+      grid-column: rail-start / rail-end;
+      grid-row: 2;
+      position: sticky;
+      top: calc(var(--header-h, 5rem) + var(--s3));
+      align-self: start;
+      max-height: calc(100dvh - var(--header-h, 5rem) - var(--s5));
+      margin-top: var(--s4);
+      overflow-y: auto;
+    }
+    /* The list is always open; its summary is hidden and the list shows through. */
+    @supports selector(::details-content) {
+      .rail .toc-all {
+        background: none;
+        border: 0;
+      }
+      .rail .toc-all > summary {
+        display: none;
+      }
+      .rail .toc-all::details-content {
+        content-visibility: visible;
+      }
+    }
+    .in-short {
+      margin-top: calc(var(--s6) * -1);
+    }
+    .lesson-head {
+      padding-bottom: calc(var(--s6) + var(--s5));
+    }
+    /* Hide contents and Contents (run 26) work with JavaScript only. Hidden, the lesson takes the middle of the page and
+       Contents stays at the left, in view as the lesson scrolls. */
+    &[data-js]:not([data-sidebar="off"]) .rail > .sidebar-toggle {
+      display: inline-flex;
+      margin-bottom: 0.75rem;
+    }
+    &[data-sidebar="off"] {
+      .page > .rail {
+        display: none;
+      }
+      .page > .sidebar-toggle {
+        display: inline-flex;
+        position: sticky;
+        top: calc(var(--header-h, 5rem) + var(--s3));
+        grid-column: rail-start / rail-end;
+        grid-row: 2;
+        align-self: start;
+        margin-top: var(--s4);
+        z-index: 1;
+      }
+      .article {
+        grid-column: rail-start / art-end;
+        width: min(100%, 52rem);
+        justify-self: center;
+      }
+    }
+  }
+}
+html[data-focus] .page > .rail {
+  display: none;
+}
+html[data-focus] .in-short {
+  margin-top: var(--s3);
+}
+
+/* The head, on the band. */
+.lesson-head {
+  padding: var(--s4) 0 var(--s5);
+}
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  list-style: none;
+  color: var(--pool-muted);
+}
+/* The slash ends the item before it, not starts the next: a long last word then wraps within its own line. */
+.breadcrumb li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+}
+.lesson-title {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s3);
+  align-items: start;
+  margin-top: var(--s3);
+}
+.lesson-tile {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  color: var(--glow);
+  background: #18223f;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: var(--radius-frame);
+}
+[data-theme="dark"] .lesson-tile {
+  background: var(--pool-a);
+}
+.lesson-tile :is(.kit, .ph) {
+  width: 52px;
+  height: 52px;
+}
+.lesson-no {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--pool-muted);
+}
+.lesson-head h1 {
+  margin: 0;
+  font-size: max(1rem, min(2.1rem, 7vw));
+  line-height: 1.15;
+}
+.promise {
+  max-width: 40rem;
+  margin: var(--s1) 0 0;
+  font-size: 1.1rem;
+}
+.lesson-head .notice {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--s2) 0 0;
+  border-color: var(--pool-muted);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2) var(--s4);
+  margin-top: var(--s3);
+  font-size: 0.9rem;
+  color: var(--pool-muted);
+}
+.meta .time {
+  margin: 0;
+}
+
+/* Simple and Deep, and Read aloud: pills, the chosen one filled and bold, never colour alone. In dark the chosen one is
+   outlined, as nothing in main is lighter than the ground. */
+.depth,
+.read {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1);
+  margin: var(--s2) var(--s3) var(--s3) 0;
+}
+.meta .depth {
+  margin: 0;
+}
+.read audio {
+  max-width: 100%;
+}
+.read [role="status"] {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.depth button[aria-pressed="true"] {
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.band .depth button {
+  color: #fff;
+  background: transparent;
+  border-color: var(--pool-muted);
+}
+.band .depth button:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+.band .depth button[aria-pressed="true"] {
+  color: var(--pool-a);
+  background: var(--glow);
+  border-color: var(--glow);
+}
+[data-theme="dark"] main .depth button[aria-pressed="true"] {
+  color: var(--accent);
+  background: var(--ground);
+  border: var(--border-width-strong) solid var(--accent);
+}
+[data-theme="dark"] .band .depth button[aria-pressed="true"] {
+  color: var(--glow);
+  background: transparent;
+  border-color: var(--glow);
+}
+/* Each control's picture is a mask in the button's own colour, so it costs the page no markup (the 60 KB budget). */
+.read button:is([data-read="start"], [data-read="stop"], [data-read="speed"])::before {
+  content: "";
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  background: currentColor;
+  mask: url("@phosphor-icons/core/assets/regular/speaker-high.svg?no-inline") center / contain no-repeat;
+}
+.read button[data-read="stop"]::before {
+  mask-image: url("@phosphor-icons/core/assets/regular/stop.svg?no-inline");
+}
+.read button[data-read="speed"]::before {
+  mask-image: url("@phosphor-icons/core/assets/regular/gauge.svg?no-inline");
+}
+@media (forced-colors: active) {
+  .read button::before {
+    forced-color-adjust: none;
+    background: ButtonText;
+  }
+}
+
+/* In short: a white card that rises over the band. */
+.in-short {
+  position: relative;
+  margin-top: var(--s3);
+  padding: var(--s3) var(--s4) var(--s4);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-card);
+}
+.in-short h2 {
+  margin: 0;
+}
+.in-short ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: var(--s2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.in-short li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+}
+.in-short li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin-top: 0.5em;
+  background: var(--glow);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+
+/* A section: a line above its heading (not above the first), its two controls, then the layers the reader chose. The
+   line is on the heading itself, so the rail's link lands on it. */
+[data-part]:not([data-part="tldr"]) > h2,
+[data-part="sources"] summary {
+  margin-top: var(--s5);
+  padding-top: var(--s5);
+  border-top: var(--border-width) solid var(--branch);
+}
+[data-part="core"] > h2:first-of-type,
+[data-part="tryit"] > h2#part-try-it {
+  border-top: 0;
+}
+[data-part="core"] > h2:first-of-type {
+  padding-top: 0;
+}
+[data-part="tryit"] > h2#part-try-it {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+[data-part="sources"] summary,
+[data-part="take"] summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+}
+[data-part="sources"] summary::-webkit-details-marker,
+[data-part="take"] summary::-webkit-details-marker {
+  display: none;
+}
+[data-part="sources"] summary > .icon,
+[data-part="take"] summary > .icon {
+  transition: transform var(--motion-duration) var(--motion-ease);
+}
+[data-part="sources"] details[open] > summary > .icon,
+[data-part="take"] details[open] > summary > .icon {
+  transform: rotate(90deg);
+}
+[data-part="sources"] h2,
+[data-part="take"] h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+/* Emanuel's take: a card with an amber edge (the one use of --signal in a lesson body), so it reads as another voice. */
+[data-part="take"] details {
+  margin-top: var(--s5);
+  padding: var(--s3);
+  background: var(--card); /* not --surface-raised: the dark theme's is lighter than its ground (layout.spec.ts) */
+  border: var(--border-width) solid var(--border);
+  border-left: var(--s1) solid var(--signal);
+  border-radius: var(--radius-large);
+}
+[data-part="take"] summary {
+  flex-wrap: wrap;
+}
+[data-part="take"] :is(.kicker, .byline) {
+  margin: var(--s2) 0 0;
+  color: var(--text-muted);
+}
+[data-part="take"] summary > .kicker {
+  flex-basis: 100%;
+  margin: 0;
+}
+[data-part="take"] p:not(.kicker) {
+  max-width: 40rem;
+  margin-top: var(--s2);
+}
+[data-part="sources"] ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: var(--s1);
+  padding-left: 1.2rem;
+}
+[data-layer] > :is(p, ul, ol, blockquote, h3) {
+  max-width: 40rem;
+}
+[data-layer] > * + * {
+  margin-top: var(--s2);
+}
+[data-layer] ul {
+  list-style: disc;
+}
+div[data-layer] ol { /* div: the prose wrapper only; a component with data-layer (the layer explorer) keeps its own lists */
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  list-style: decimal;
+}
+[data-layer] li + li {
+  margin-top: 6px;
+}
+[data-layer="deep"] {
+  position: relative;
+  padding: var(--s3);
+  background: var(--tint-soft);
+  border: var(--border-width) solid var(--tint-line);
+  border-left: 4px solid var(--pool-b);
+  border-radius: 0 var(--radius-large) var(--radius-large) 0;
+}
+[data-theme="dark"] [data-layer="deep"] {
+  border-left-color: var(--accent);
+}
+[data-layer="deep"]::before {
+  content: "Deep";
+  display: inline-block;
+  margin-bottom: var(--s1);
+  padding: 0 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--pool-b);
+  border-radius: var(--radius-pill);
+}
+[data-theme="dark"] [data-layer="deep"]::before {
+  color: var(--accent);
+  background: transparent;
+  border: var(--border-width) solid var(--accent);
+}
+
+/* The activity's frame: a white card with its title above a line. What is inside is the activity's own. */
+.shell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s3);
+  margin-top: var(--s5);
+  padding: var(--s4);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-frame);
+  box-shadow: var(--shadow-card);
+}
+.shell > :not(h2, .shell-text) {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.shell .kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+.shell .colon {
+  position: absolute;
+  clip-path: inset(50%);
+}
+.shell-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Check-in: each answer opens its own explanation. Nothing is scored or counted. */
+.question {
+  overflow-wrap: anywhere; /* a long word wraps inside its box with the largest text, never widens the page */
+  margin-top: var(--s3);
+  padding: var(--s3);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-card);
+}
+.question > p:first-child {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.question details {
+  margin-top: var(--s1);
+  margin-bottom: 0;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+.question summary {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.question summary::-webkit-details-marker {
+  display: none;
+}
+.question summary::before {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15em;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+.question details[open] {
+  background: var(--tint-soft);
+  border-color: var(--accent);
+}
+.question details[open] summary::before {
+  background: radial-gradient(var(--accent) 45%, transparent 50%);
+  border-color: var(--accent);
+}
+.question details[open][data-right] {
+  border-color: var(--state-done);
+}
+.question details[open][data-right] summary::before {
+  background: radial-gradient(var(--state-done) 45%, transparent 50%);
+  border-color: var(--state-done);
+}
+.question .why {
+  margin: 0;
+  padding: 0 16px 12px 46px;
+}
+/* Earning the badge is said here in one quiet line, with a link to it. Empty, it takes no room. */
+.earned-note {
+  margin: 0;
+}
+.earned-note:has(.celebration:not(:empty)) {
+  margin-top: var(--s3);
+  padding: 12px 16px;
+  background: var(--tint-soft);
+  border: var(--border-width) solid var(--state-done);
+  border-radius: var(--radius-large);
+}
+.to-badge {
+  margin-left: var(--s1);
+  font-weight: 700;
+}
+
+/* The badge, once both check-ins are answered. */
+.badge-frame {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+  margin-top: var(--s5);
+  padding: var(--s4) var(--s5);
+  color: #fff;
+  background-color: var(--pool-a);
+  background-image: var(--band);
+  border: 0;
+  border-radius: var(--radius-frame);
+  box-shadow: var(--shadow-card);
+  --focus: #fff;
+}
+.badge-frame > div:last-child {
+  flex: 1 1 16rem;
+}
+.badge-frame h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.can {
+  margin: var(--s1) 0 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.closeup {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+.closeup .emblem {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 16px 28px rgb(5 8 25 / 0.55));
+}
+/* The badge moment, once, when it is earned: 0 to 900 ms the emblem is traced. Base styles are the finished
+   picture; a keyframe only says where the motion starts from. "playing" is set by src/components/Badge.astro only for a
+   badge earned just now, and never in Focus mode, with Reduce motion or with progress hidden. */
+.playing .plate {
+  animation: fade 500ms var(--ease-out) backwards;
+}
+.playing .t {
+  animation: trace 900ms var(--ease-out) backwards;
+}
+.playing .pop {
+  animation: pop 350ms var(--ease-out) 550ms backwards;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes trace {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+[data-part="glossary"] dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s2);
+  margin: var(--s2) 0 0;
+}
+[data-part="glossary"] dt {
+  margin: 0;
+  font-weight: 700;
+}
+[data-part="glossary"] dd {
+  margin: 2px 0 0;
+}
+.next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s1);
+  max-width: 40rem;
+  margin-top: var(--s2);
+  padding: var(--s3);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+.next p {
+  margin: 0;
+}
+.next a {
+  display: inline-block; /* not flex: the new-tab icon is then text and follows the last word of a wrapped link */
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding-block: 0.6rem; /* fallback for a browser without the lh unit */
+  padding-block: calc((45px - 1lh) / 2); /* 1 px of slack so the 44 px target cannot round down */
+  font-weight: 700;
+}
+[data-part="finish"] {
+  margin: var(--s5) 0 0;
+}
+[data-part="finish"] a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 var(--s3);
+  font-weight: 700;
+  color: var(--on-accent);
+  text-decoration: none;
+  background: var(--accent);
+  border: var(--border-width-strong) solid var(--accent);
+  border-radius: var(--radius-pill);
+}
+[data-part="finish"] a:hover {
+  text-decoration: underline;
+}
+[data-theme="dark"] [data-part="finish"] a {
+  color: var(--link);
+  background: var(--ground);
+}
+/* The provisional notice (D10): a bordered line, never a lighter fill (the dark theme). */
+.notice {
+  padding: 0.5rem 0.75rem;
+  border: var(--border-width-strong) solid var(--border);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 700px) {
+  .lesson-title {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .shell {
+    padding: var(--s2);
+  }
+  .in-short {
+    padding: var(--s2);
+  }
+  .badge-frame {
+    padding: var(--s3);
+  }
+}
+
+/* A narrow phone at the largest text leaves an answer box about 270 px of line: the card's side borders and insets go (its top
+   and bottom borders still frame it) so an ordinary long word gets the whole text column and stays whole. A media query
+   counts in CSS pixels, not in the reader's text size. */
+@media (max-width: 360px) {
+  .shell {
+    padding-inline: 0;
+    border-inline: 0;
+    border-radius: 0;
+  }
+}

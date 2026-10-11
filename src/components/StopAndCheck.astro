@@ -1,0 +1,7 @@
+---
+// 4.5's "Stop and check" (stage I, static): three invented scenarios, real, fake or can't tell yet, then the checks that settle it. Nothing is scored, stored or sent.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/stop-and-check.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Stop and check" name="stop-and-check" noun="Case" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

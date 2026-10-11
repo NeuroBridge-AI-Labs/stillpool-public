@@ -1,0 +1,156 @@
+/* "Earning a badge" (Pool Band v2 mock-up #badge): a blue frame like the band, your badge on the left, what you can do on the
+   right. Before Preview only the first emblem shows, so nothing moves or appears until the reader asks. */
+.badge-preview {
+  margin-top: var(--s6);
+}
+.badge-preview > p {
+  max-width: 70ch;
+}
+.preview-tag {
+  color: var(--text-muted);
+}
+.preview-lesson {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-card);
+}
+.preview-lesson > div {
+  flex: 1 1 16rem;
+}
+.preview-lesson :is(h3, p) {
+  margin: 0;
+}
+.preview-num {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.preview-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+  gap: var(--s5);
+  margin-top: var(--s3);
+  padding: var(--s4);
+  color: #fff;
+  background-color: var(--pool-a);
+  background-image: var(--band);
+  border-radius: var(--radius-frame);
+  box-shadow: var(--shadow-card);
+  --focus: #fff;
+}
+.preview-frame h3 {
+  margin: 0 0 var(--s3);
+}
+.preview-await {
+  max-width: 18rem;
+  color: var(--pool-muted);
+}
+.preview-demo:not(.earned) .preview-earned,
+.preview-demo.earned .preview-await {
+  display: none;
+}
+.preview-frame .closeup {
+  width: 168px;
+  height: 168px;
+  margin-bottom: var(--s3);
+}
+.preview-frame .closeup .emblem {
+  width: 168px;
+  height: 168px;
+}
+.preview-net {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--s5);
+  align-items: center;
+}
+.preview-hub {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  color: var(--glow);
+}
+.preview-hub .kit {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.preview-hub span {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  width: 7rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--pool-muted);
+  transform: translateX(-50%);
+}
+.preview-items {
+  display: grid;
+  gap: var(--s3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.preview-items li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s2);
+}
+.preview-items .emblem {
+  width: 84px;
+  height: 84px;
+}
+.preview-items p {
+  flex: 1 1 9rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.preview-items small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--pool-muted);
+}
+.preview-hidden {
+  display: none;
+  color: var(--text-muted);
+}
+html[data-progress="hide"] .preview-demo {
+  display: none;
+}
+html[data-progress="hide"] .preview-hidden {
+  display: block;
+}
+html:not([data-js]) .preview-demo button {
+  display: none;
+}
+@media (max-width: 800px) {
+  .preview-frame {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s4);
+    padding: var(--s4);
+  }
+  .preview-net {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--s5);
+  }
+}
+@media (max-width: 480px) {
+  .preview-frame {
+    padding: var(--s3);
+  }
+  .preview-frame .closeup,
+  .preview-frame .closeup .emblem {
+    width: 128px;
+    height: 128px;
+  }
+}

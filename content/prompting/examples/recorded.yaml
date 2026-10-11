@@ -1,0 +1,20 @@
+R-2.4:
+  summary: |
+    With two example cards, Claude Sonnet 5.5 gave plain Q and A lines in all three runs. Without them, it gave titles and bold labels in all three.
+
+    Ministral 3 14B did not give plain lines in any run. With the cards, it used Q and A labels, but added a line before, bold and dashes.
+
+    In one Claude run, the answers matched a quirk of card 1. We cannot say why. The other two Claude runs match card 2. That cannot show copying, since the models wrote that way anyway.
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: 227ff1ae145fbdda95d8f1f14f9e3b0ba2a667cbff849d32fdd4a0966fec9975
+  marks:
+    - {variant: A, maker: B, run: 1, shows: false, note: 'No examples. It used Front and Back, and gave other ways to cut "strawberry" that the notes do not give.'}
+    - {variant: A, maker: B, run: 2, shows: false, note: 'No examples. It used Front and Back, and gave other ways to cut "strawberry" that the notes do not give.'}
+    - {variant: A, maker: B, run: 3, shows: false, note: 'No examples. It used Front and Back, and gave other ways to cut "strawberry" that the notes do not give.'}
+    - {variant: B, maker: A, run: 1, shows: true, note: 'Plain Q and A lines. Five answers begin with a small letter and none ends with a full stop, like card 1. This is the one run that matched the small letters and missing full stops of card 1.'}
+    - {variant: B, maker: A, run: 2, shows: true, note: 'Plain Q and A lines. Every answer has a capital letter and a full stop, like card 2 and like its own answers without examples.'}
+    - {variant: B, maker: A, run: 3, shows: true, note: 'Plain Q and A lines. Every answer has a capital letter and a full stop, like card 2 and like its own answers without examples.'}
+    - {variant: B, maker: B, run: 1, shows: false, note: 'Q and A labels, but with a line before, bold labels and dashes. One answer says each token takes up space in the memory of the model, which the notes do not say.'}
+    - {variant: B, maker: B, run: 2, shows: false, note: 'Q and A labels, but with a line before, bold labels and dashes.'}
+    - {variant: B, maker: B, run: 3, shows: false, note: 'Q and A labels, but with a line before, bold labels and dashes.'}

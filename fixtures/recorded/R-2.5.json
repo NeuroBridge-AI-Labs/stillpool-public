@@ -1,0 +1,249 @@
+{
+ "id": "R-2.5",
+ "model": {
+  "id": "test-fixture-model-a",
+  "name": "Test fixture model A",
+  "host": "Test fixture host A"
+ },
+ "date": "2000-01-01",
+ "settings": {
+  "max_tokens": 4000,
+  "temperature": "not set, so the model's default",
+  "tools": "no tools",
+  "system prompt": "in each variant that has one"
+ },
+ "variants": [
+  {
+   "label": "A",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent A"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply A A run 1"
+    },
+    {
+     "reply": "Test fixture reply A A run 2"
+    },
+    {
+     "reply": "Test fixture reply A A run 3"
+    }
+   ]
+  },
+  {
+   "label": "A",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent A"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply A B run 1"
+    },
+    {
+     "reply": "Test fixture reply A B run 2 Test fixture false claim"
+    },
+    {
+     "reply": "Test fixture reply A B run 3"
+    }
+   ]
+  },
+  {
+   "label": "B",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent B"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply B A run 1"
+    },
+    {
+     "reply": "Test fixture reply B A run 2"
+    },
+    {
+     "reply": "Test fixture reply B A run 3"
+    }
+   ]
+  },
+  {
+   "label": "B",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent B"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply B B run 1"
+    },
+    {
+     "reply": "Test fixture reply B B run 2"
+    },
+    {
+     "reply": "Test fixture reply B B run 3"
+    }
+   ]
+  },
+  {
+   "label": "D1",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent D1\n\nAnswer in exactly three bullets."
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply D1 A run 1"
+    },
+    {
+     "reply": "Test fixture reply D1 A run 2"
+    },
+    {
+     "reply": "Test fixture reply D1 A run 3"
+    }
+   ]
+  },
+  {
+   "label": "D1",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent D1\n\nAnswer in exactly three bullets."
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply D1 B run 1"
+    },
+    {
+     "reply": "Test fixture reply D1 B run 2"
+    },
+    {
+     "reply": "Test fixture reply D1 B run 3"
+    }
+   ]
+  },
+  {
+   "label": "D2",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent D2\n\nAnswer in exactly three bullets.\n\nAnswer in exactly three bullets."
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply D2 A run 1"
+    },
+    {
+     "reply": "Test fixture reply D2 A run 2"
+    },
+    {
+     "reply": "Test fixture reply D2 A run 3"
+    }
+   ]
+  },
+  {
+   "label": "D2",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent D2\n\nAnswer in exactly three bullets.\n\nAnswer in exactly three bullets."
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply D2 B run 1"
+    },
+    {
+     "reply": "Test fixture reply D2 B run 2"
+    },
+    {
+     "reply": "Test fixture reply D2 B run 3"
+    }
+   ]
+  }
+ ]
+}

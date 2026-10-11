@@ -1,0 +1,88 @@
+{
+ "id": "R-5.1",
+ "message": "Test fixture question",
+ "model": {
+  "id": "test-fixture-base",
+  "name": "Test fixture base model",
+  "host": "Test fixture host"
+ },
+ "date": "2000-01-01",
+ "settings": {
+  "max_tokens": 80,
+  "temperature": 0.7
+ },
+ "variants": [
+  {
+   "model": {
+    "id": "test-fixture-base",
+    "name": "Test fixture base model",
+    "host": "Test fixture host"
+   },
+   "settings": {
+    "endpoint": "/v1/completions",
+    "temperature": 0.7,
+    "max_tokens": "80; the base model was stopped here",
+    "chat template": "none: the text was sent raw"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture base reply 1 with a false piece",
+     "finish_reason": "length",
+     "usage": {
+      "completion_tokens": 80
+     }
+    },
+    {
+     "reply": "Test fixture base reply 2",
+     "finish_reason": "length",
+     "usage": {
+      "completion_tokens": 80
+     }
+    },
+    {
+     "reply": "Test fixture base reply 3",
+     "finish_reason": "length",
+     "usage": {
+      "completion_tokens": 80
+     }
+    }
+   ]
+  },
+  {
+   "model": {
+    "id": "test-fixture-tuned",
+    "name": "Test fixture tuned model",
+    "host": "Test fixture host"
+   },
+   "settings": {
+    "endpoint": "/v1/chat/completions",
+    "temperature": 0.7,
+    "max_tokens": 80,
+    "chat template": "Test fixture template"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture tuned reply 1",
+     "finish_reason": "stop",
+     "usage": {
+      "completion_tokens": 8
+     }
+    },
+    {
+     "reply": "Test fixture tuned reply 2",
+     "finish_reason": "stop",
+     "usage": {
+      "completion_tokens": 8
+     }
+    },
+    {
+     "reply": "Test fixture tuned reply 3",
+     "finish_reason": "stop",
+     "usage": {
+      "completion_tokens": 8
+     }
+    }
+   ]
+  }
+ ]
+}

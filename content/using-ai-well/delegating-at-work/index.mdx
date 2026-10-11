@@ -1,0 +1,289 @@
+---
+title: Delegating at work
+promise: Can split a task into parts and decide which parts AI should do
+minutes: {simple: 8, deep: 14}
+tldr:
+  - Most jobs are a chain of steps. Decide for each step whether you do it, AI helps, or AI does it.
+  - AI is better at some tasks than others, and studies at work give mixed results.
+  - Giving a step to AI does not give away the responsibility. Name who checks and who answers.
+misconceptions: [M10]
+interactive: split-the-task
+inputs: [src/lib/split-the-task.ts, src/lib/after-cases.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.1.4, UNESCO-AICFS-CG4.1.4.2, HEA-PEA-2.3.1-b, HEA-PEA-2.3.1-e, HEA-ALT-4, AIF-1, AIF-1.a, AIF-1.c, AILIT-M3, AILIT-M1]
+checkin:
+  - question: In the 2023 Boston Consulting Group study, what happened on the task outside GPT-4's reach?
+    options:
+      - text: Consultants using AI were less likely to give a correct answer than consultants without it.
+        why: Yes. The authors report that consultants using AI were less likely to produce correct solutions on that task.
+        right: true
+      - text: Consultants using AI did better, as on every other task.
+        why: Not this one. On the tasks inside GPT-4's reach they did better. On the task outside it, they were less likely to be correct.
+      - text: The study showed AI is bad at all consulting work.
+        why: Not this one. On 18 tasks chosen to be inside its reach, consultants using AI did more, faster. Their work was rated higher.
+      - text: The study found AI works equally well on every task.
+        why: Not this one. The authors describe a jagged edge. AI does some tasks well and others badly, even when they look equally hard.
+  - question: In our newsletter example, why does a person keep the step that sends it?
+    options:
+      - text: Sending puts the newsletter in every member's inbox, and the person who sends it answers for what it says.
+        why: Yes. The framework's fourth skill, Diligence, includes verifying and vouching for AI-assisted output before it is released.
+        right: true
+      - text: AI is not allowed to send email.
+        why: Not this one. The lesson does not say what AI is allowed to do. It says who checks and who answers.
+      - text: The framework says a person must do every step by hand.
+        why: Not this one. The framework describes ways of working in which AI performs a task or helps a person with it.
+      - text: Sending is the easiest step, so AI is not needed.
+        why: Not this one. The reason is who answers for the result. It is not how easy the step is.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You split a job into steps and said who checks each one and who answers.
+glossary:
+  - term: framework
+    meaning: A written model of how to do something, set out in parts.
+  - term: AI literacy
+    meaning: Knowing how AI systems work, judging what they produce, and using them in an ethical and creative way.
+  - term: automation
+    meaning: In the AI Fluency Framework, AI does a task from a person's direct instructions.
+  - term: augmentation
+    meaning: In the AI Fluency Framework, a person and AI do a task together, in turns, towards a goal.
+  - term: jagged technological frontier
+    meaning: The uneven edge of what AI can do. It does some tasks well and others badly, even when they look equally hard.
+  - term: oversight
+    meaning: A person watching what an AI system does, and being able to step in or override it.
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+whereNext:
+  title: The AI Fluency Framework website
+  text: The site lists free courses based on the framework by Rick Dakan and Joseph Feller. In our test on 9 October 2026, it loaded files from seven other hosts. They were www.youtube.com, i.ytimg.com, fonts.gstatic.com, www.google.com, jnn-pa.googleapis.com, googleads.g.doubleclick.net and static.doubleclick.net. Five cookies, all from .youtube.com, were set before any choice.
+  url: https://aifluencyframework.org/
+sources:
+  - title: "European Commission and OECD, Interactive AILit Framework, competence Manage AI 3 (page read 9 October 2026)"
+    url: https://ailiteracyframework.org/frameworks/
+    licence: Copyright 2026 OECD, all rights reserved (page footer)
+    use: cite
+  - title: "European Commission, Empowering learners for the age of AI, EU publication, 18 June 2026"
+    url: https://school-education.ec.europa.eu/en/discover/publications/empowering-learners-age-ai
+    licence: CC-BY-4.0 (site legal notice, unless otherwise indicated)
+    use: cite
+  - title: "European Union, European Commission (institution profile)"
+    url: https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles/european-commission_en
+    licence: CC-BY-4.0 (site legal notice, unless otherwise indicated)
+    use: cite
+  - title: "European Union, EU countries"
+    url: https://european-union.europa.eu/principles-countries-history/eu-countries_en
+    licence: CC-BY-4.0 (site legal notice, unless otherwise indicated)
+    use: cite
+  - title: "Dakan and Feller, The AI Fluency Framework: A Descriptive and Normative Model of Human-AI Interaction for Higher Education, version 1.1, Higher Education Authority, December 2025"
+    url: https://hub.teachingandlearning.ie/wp-content/uploads/2025/12/hea-genai-fluency-framework.pdf
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "The AI Fluency Framework website"
+    url: https://aifluencyframework.org/
+    licence: Site text with no licence stated; its courses are CC BY-NC-SA
+    use: link
+  - title: "European Commission High-Level Expert Group on AI, Ethics Guidelines for Trustworthy AI, 8 April 2019"
+    url: https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=60419
+    licence: EU document, reuse under Decision 2011/833/EU
+    use: cite
+  - title: "Higher Education Authority, Generative AI in Higher Education Teaching and Learning: Evidence for the HEA's National Policy Framework, version 1.0, December 2025"
+    url: https://hub.teachingandlearning.ie/wp-content/uploads/2025/12/hea-genai-policy-evidence-ph6k-mn37.pdf
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Dell'Acqua and others, Navigating the Jagged Technological Frontier, Harvard Business School Working Paper 24-013, 22 September 2023 (MIT Sloan's copy of the PDF)"
+    url: https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Brynjolfsson, Li and Raymond, Generative AI at Work, arXiv:2304.11771 version 2, 6 November 2024"
+    url: https://arxiv.org/abs/2304.11771
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Brynjolfsson, Li and Raymond, Generative AI at Work, The Quarterly Journal of Economics 140(2), 889-942, online 4 February 2025 (record read through Crossref)"
+    url: https://doi.org/10.1093/qje/qjae044
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "METR, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, 10 July 2025"
+    url: https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+    licence: No licence stated
+    use: cite
+  - title: "Wikipedia, Working paper (definition used in a gloss; page last edited 25 June 2026, read 9 October 2026)"
+    url: https://en.wikipedia.org/wiki/Working_paper
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Wikipedia, Percentage point (definition used in a gloss; page last edited 6 October 2026, read 9 October 2026)"
+    url: https://en.wikipedia.org/wiki/Percentage_point
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Wikipedia, Fortune 500 (definition used in a gloss; page last edited 25 September 2026, read 9 October 2026)"
+    url: https://en.wikipedia.org/wiki/Fortune_500
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Wikipedia, Open-source software (definition used in a gloss; page last edited 7 October 2026, read 9 October 2026)"
+    url: https://en.wikipedia.org/wiki/Open-source_software
+    licence: CC-BY-SA-4.0
+    use: cite
+signed: false
+---
+
+## Splitting a job into steps
+
+<Simple>
+Most jobs are not one thing. They are a chain of steps. A report, for example, means gathering facts, writing, checking and sending.
+
+AI may suit one step and not the next. So the useful question is not "Should AI do this job?" It is "Which steps, and how?"
+
+To help split a job, we use a framework from the European Commission. The Commission is the executive arm of the European Union (EU). Ireland belongs to the EU. The framework is about AI literacy. A framework is a written model, set out in parts.
+
+AI literacy is knowing how AI works and judging what it makes.
+
+One skill in it is to "break a problem into component parts". The next part is to "consider ways AI might help with specific steps".
+</Simple>
+
+<Deep>
+The Commission wrote the framework with the OECD, the Organisation for Economic Cooperation and Development. The Commission's page for it, dated 18 June 2026, says its four domains "define what every student should know and be able to do in a world influenced by AI". The framework is written for school learners, and the skill we quote is one sentence on one page. We read that page on 9 October 2026.
+
+The skill is named "Manage AI 3". Its headline is: "Decompose a problem to determine when and how AI systems should be used to automate or augment tasks." It has three levels. The basic level: "Learners identify the type of problem at hand and consider whether AI might help solve it." The middle level is the one we quote above. The advanced level: "Learners deliberately assign tasks within a multi-step process based on appropriate human strengths and relevant AI capabilities."
+
+The page does not define "automate" or "augment". The next section takes those two words from another framework and says so. The page's footer carries an OECD copyright notice that reserves all rights, so we quote a short line and adapt nothing.
+</Deep>
+
+## Four choices for each step
+
+<Simple>
+For each step you can pick one of four choices. The labels are ours.
+
+- **Do it yourself.** You do the step, with no AI.
+- **Let AI help.** You and the AI work on the step together, in turns.
+- **Let AI do it, then check.** You give clear instructions, AI does the step, and you check the result.
+- **Don't use AI here.** You decide this step is better without it.
+
+The middle two come from a second framework, the AI Fluency Framework. It calls "Let AI help" augmentation. It calls "Let AI do it, then check" automation. Two professors wrote it, Rick Dakan and Joseph Feller. Ireland's Higher Education Authority published it in December 2025.
+
+The last choice follows the EU expert group. It is an independent expert group on AI that the European Commission set up in June 2018. It says human control can include "the decision not to use an AI system in a particular situation".
+
+The AI Fluency Framework names four skills. The fourth is Diligence, which means taking responsibility for the final product made with AI. All four are listed near the end.
+</Simple>
+
+<Deep>
+The framework describes automation like this: "AI performs tasks based on direct human instructions (e.g. in response to a prompt). This modality is particularly useful for improving the efficiency of repetitive, time-consuming, or data-intensive tasks. It requires clear task definition and quality control measures. Examples include emails, summaries, social media posts, and basic coding."
+
+It describes augmentation like this: "AI and human co-define and co-execute tasks in an iterative way, collaborating towards an end goal." It also names a third way, agency, where a person sets up an AI to perform future tasks on its own. This lesson does not use it.
+
+The framework lists three ways, not four. "Do it yourself" is our label. "Don't use AI here" follows the EU expert group's description of human control, which "can include the decision not to use an AI system in a particular situation". The expert group is an independent group the European Commission set up in June 2018. Its guidelines of 8 April 2019 are not law: "Nothing in this document shall create legal rights nor impose legal obligations towards third parties."
+
+The framework's first skill, Delegation, includes the "ability to analyse and deconstruct a task into AI, human, and collaborative components". Its version 1.1 is dated December 2025, and the Higher Education Authority published it "in support of its policy framework for generative AI in higher education teaching and learning".
+</Deep>
+
+## Split the task
+
+<Simple>
+Split the task shows one invented job: writing a monthly newsletter for a volunteer group. It has five steps. For each step, you pick one of the four choices.
+
+Then you see our split, the reason for it and who answers if it goes wrong. Our split is one reasonable answer, not the only one. Nothing is scored or saved.
+</Simple>
+
+<Deep>
+Everything in the scene is made up: the group, the newsletter and the five steps. The reasons use only the ideas from the sources in this lesson. A made-up fact in a step, such as "the layout is the same every month", only tells you which idea applies. It shows nothing about real newsletters.
+
+You can read the sources for those ideas in the sections below before or after you try it.
+</Deep>
+
+<TryIt />
+
+## AI is better at some tasks than others
+
+<Simple>
+Two tasks can look equally hard to a person. AI may do one well and the other badly. Researchers call this the "jagged technological frontier". A frontier here is the edge of what AI can do.
+
+One study tested this in spring 2023. Boston Consulting Group, a management consulting firm, took part. In all, 758 of its consultants were given GPT-4, an AI model from OpenAI, or were not. This was decided at random.
+
+On 18 tasks chosen to be inside GPT-4's reach, consultants using it did more tasks, faster. Their work was rated higher.
+
+One task was chosen to be outside its reach. There, they were less likely to be correct than consultants who did not use AI. The authors say it can be hard to know where the edge is.
+</Simple>
+
+<Deep>
+This is Working Paper 24-013 of Harvard Business School, by Fabrizio Dell'Acqua and eight co-authors, dated 22 September 2023. A working paper is a research paper that has not been peer reviewed or published in an academic journal. Authors share it to get feedback. We read the copy that MIT Sloan hosts, because the Harvard page refused our requests. We did not read any later journal version.
+
+The experiment was pre-registered: its design and main analysis were registered in advance. The 758 consultants were about 7% of the firm's individual-contributor consultants. They were put in one of three groups: no AI, GPT-4, or GPT-4 with a short overview of prompting. GPT-4 was "the most capable of the AI models at the time of the experiments (Spring 2023)", used as it was "at the end of April, 2023, and using default system prompts and temperature".
+
+For the 18 tasks inside the frontier, the abstract reports that consultants using AI "completed 12.2% more tasks on average, and completed tasks 25.1% more quickly", and produced "more than 40% higher quality compared to a control group". The control group is the people who did not use AI. For "a task selected to be outside the frontier", they were "19 percentage points less likely to produce correct solutions compared to those without AI". A percentage point is the difference between two percentages: moving from 40% to 44% is 4 percentage points. The authors designed that task "so that GPT-4 would make an error".
+
+The paper says: "it can be hard for professionals to grasp exactly what the boundary of this frontier might be". It also describes two ways people worked. "Centaurs" divided their work between themselves and the AI. "Cyborgs" integrated their work with the AI all the way through. This is one firm, one tool and one season.
+</Deep>
+
+## Other studies, other results
+
+<Simple>
+In a second study, a software company gave an AI assistant to its customer-support agents. These agents answer customers' questions in chat. The company gave the assistant to agents in stages, mostly in 2020 and 2021. The assistant suggested replies. Agents could ignore or edit them.
+
+On average, agents resolved more issues per hour. Less experienced agents gained the most. The most experienced agents had small gains in speed, and the quality of their chats dipped slightly.
+
+A third study, from early 2025, tested experienced people who write software. They worked on projects they had known for years. They took longer when AI tools were allowed. METR, the group that ran it, now says that result is out of date.
+
+The three studies point different ways. Each studied particular tasks, workers, tools and periods.
+</Simple>
+
+<Deep>
+The support-agent study is Brynjolfsson, Li and Raymond, "Generative AI at Work". We read version 2 on arXiv, revised on 6 November 2024. The journal is The Quarterly Journal of Economics, volume 140, issue 2, online on 4 February 2025. Its page refused our requests, so we did not read the journal text. The first version, from 23 April 2023, had other numbers, and we do not use them.
+
+It used data from "5,172 customer support agents" at one Fortune 500 company (a company on Fortune magazine's yearly list of the 500 largest US companies by revenue) that sells business software to small and medium-sized businesses in the United States. The tool was "built on a recent version of the Generative Pre-trained Transformer (GPT) family of large language models developed by OpenAI". It "monitors customer chats and provides agents with real-time suggestions for how to respond". The authors say it "is designed to augment agents, who remain responsible for the conversation and are free to ignore or edit the AI’s suggestions".
+
+The abstract reports a rise in issues resolved per hour "by 15% on average". It adds that "Less experienced and lower-skilled workers improve both the speed and quality of their output while the most experienced and highest-skilled workers see small gains in speed and small declines in quality". The introduction gives an "approximate increase of 30%" in issues resolved per hour for the less skilled and less experienced.
+
+The third study is from METR, dated 10 July 2025. It had "16 experienced developers" from large open-source projects (open-source software has code that is public for anyone to use, study and change), who worked on "246 total" real issues, such as bug fixes and new features. Each issue was set at random to allow or forbid AI tools, used "primarily Cursor Pro with Claude 3.5/3.7 Sonnet". With AI allowed, issues took "19% longer". The developers had expected AI to speed them up by 24%. Afterwards they still believed it had sped them up by 20%.
+
+METR lists what its study does not show, and it says: "We only study software development". Its page now carries a notice: "These results are out of date. We have released results that are current as of early 2026". We did not read those newer results. We make no forecast and no claim about jobs.
+</Deep>
+
+## Who checks, and who answers
+
+<Simple>
+Giving a step to AI does not give away the responsibility. Diligence, the fourth skill of the AI Fluency Framework, is about this. It means taking responsibility for the final product made with AI.
+
+Part of it is verifying and vouching for what AI makes. That includes fact-checking and testing before release. In the support study, agents stayed responsible for each chat.
+
+The EU expert group says someone should answer for AI systems and what they do. It asks for ways to make sure of this. So when a step goes to AI, decide who checks it and who answers.
+
+Before any step, check your workplace's rules on AI tools. Other lessons here cover what is safe to type and where your words end up.
+</Simple>
+
+<Deep>
+The framework describes Diligence as "Taking responsibility and vouching for final products created using AI". Its part called Deployment Diligence is "Taking responsibility for verifying and vouching for AI-assisted outputs, including thorough fact-checking, testing for accuracy, and validating claims. Implementing appropriate safety checks and testing procedures before releasing AI-assisted work."
+
+The expert group's requirement of accountability "necessitates that mechanisms be put in place to ensure responsibility and accountability for AI systems and their outcomes, both before and after their development, deployment and use". The sentence about who checks a step in a newsletter is ours. It is a conclusion from these two sources, not a quotation.
+</Deep>
+
+## Check as much as the risk needs
+
+<Simple>
+Not every step needs the same checking. The EU expert group says to take steps against AI's risks "proportionately to the magnitude of the risk". That means a bigger risk needs more steps against it.
+
+The group also says this. If other things are equal, the less oversight a person has over an AI system, the more testing it needs. Oversight means watching what the system does and being able to step in.
+
+In the newsletter job, sending reaches every member. The editor cannot change what each member received. So a person does that step.
+</Simple>
+
+<Deep>
+The expert group writes: "Adopt adequate measures to mitigate these risks when appropriate, and proportionately to the magnitude of the risk." On oversight it writes: "All other things being equal, the less oversight a human can exercise over an AI system, the more extensive testing and stricter governance is required." It also says that a person stepping in "in every decision cycle of the system" is "in many cases neither possible nor desirable". So checking every single decision is not always the answer. It adds that "These assessments must be proportionate to the risk that the AI systems pose", about impact assessments.
+
+Ireland's Higher Education Authority wrote an evidence paper in December 2025. In it, the Authority describes the Irish public-service guidelines for responsible AI use, of 2025. It says that for risk assessment "the likelihood and severity of harms must be weighed against expected benefits, with documented decisions and clear accountability". That is the Authority's description of those guidelines. We did not read the guidelines themselves, because the government page refused our requests.
+</Deep>
+
+## The four skills, named
+
+<Simple>
+The AI Fluency Framework names four skills, called the 4 Ds. Here is each one in a line.
+
+- **Delegation:** knowing when and how to use AI tools.
+- **Description:** telling AI clearly what you want.
+- **Discernment:** judging how useful the result is.
+- **Diligence:** taking responsibility for the final product.
+
+This lesson was about the first and the last. The framework's own courses go further. They are linked under Where next.
+</Simple>
+
+<Deep>
+The framework words them this way. Delegation is "the ability to identify when and how to use AI tools and modalities effectively in creative and problem-solving processes". Description covers "the skills needed to effectively communicate ideas, requirements, constraints, and other aspects of creative visions to AI systems". Discernment is "Accurately assessing the usefulness of AI outputs". Diligence is "Taking responsibility and vouching for final products created using AI".
+
+Its authors are Rick Dakan of Ringling College of Art and Design in Florida and Joseph Feller of University College Cork in Ireland. The document says it is licensed under CC BY-SA 4.0, and that its four open courses are CC BY-NC-SA, made by Dakan, Feller and Anthropic with support from the Higher Education Authority. We name and link the framework and adapt none of it.
+</Deep>

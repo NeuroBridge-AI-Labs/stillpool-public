@@ -1,0 +1,110 @@
+---
+// 2.3's "Which rule wins?" (stage I, R-2.3). Part 1 is recorded: a rule behind the message clashes with a request, and
+// both models answered it three times. Part 2 is not recorded: four invented rules put in order by clicking (buttons,
+// never drag-only), then the lesson's order with a reason each. Nothing is scored, and no model is called.
+import { loadRecorded, modelOf, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import { RULES, START } from '../lib/which-rule.ts';
+import AllRuns from './AllRuns.astro';
+import Runs from './Runs.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-2.3', 'roles-and-ground-rules');
+const [claude, mini] = (['A', 'B'] as const).map((m) => modelOf(rec, variantOf(rec, 'C', m)).name);
+const clash = variantOf(rec, 'C', 'A');
+const CHOICES = ['It rewrote the paragraph.', 'It declined and gave notes.', 'It was mixed across the three runs.'];
+const SAID: [string, string[]][] = [
+  [claude, ['you said it rewrote the paragraph. It did not: it declined in all three runs.', 'you said it declined and gave notes. It did, in all three runs.', 'you said the runs were mixed. They were not: it declined in all three runs.']],
+  [mini, ['you said it rewrote the paragraph. It did, in all three runs. The rule did not win.', 'you said it declined and gave notes. It did not: it rewrote the paragraph in all three runs, so the rule did not win.', 'you said the runs were mixed. They were not: it rewrote the paragraph in all three runs.']],
+];
+---
+
+<Shell title="Which rule wins?" reveal="Show what happened" class="which-rule-wins">
+  <p>A study-helper chatbot was given a rule by its owner, behind the student's message. The rule is invented.</p>
+  <blockquote class="sent">{clash.system}</blockquote>
+  <p>The student then sent this message. The paragraph is invented too.</p>
+  <blockquote class="sent">{clash.messages![0].content}</blockquote>
+  <p>We sent it to two AI models, three times each.</p>
+  {
+    SAID.map(([name, said], q) => (
+      <fieldset>
+        <legend>{name}: what did it do in its three runs?</legend>
+        {CHOICES.map((text, i) => <label><input type="radio" name={`rule-${q + 1}`} value={i + 1} data-said={`${name}: ${said[i]}`} />{text}</label>)}
+        {q === 0 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>What all the runs showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={['A', 'B', 'C']} />
+    <h3>The clash, run 1 of each model</h3>
+    <Runs rec={rec} items={[{ label: 'C', maker: 'A' }, { label: 'C', maker: 'B' }]} />
+    <AllRuns rec={rec} said={said} labels={[['A', 'A plain request for feedback'], ['B', 'A role and a rule in the message'], ['C', 'The rule behind the message, and the request to break it']]} />
+  </Fragment>
+</Shell>
+
+<section class="rule-order" aria-labelledby="rule-order-h">
+  <h3 id="rule-order-h">Put four rules in order</h3>
+  <p>This part was not recorded. No AI answered it. The four rules are invented, for a study-helper chatbot.</p>
+  <div class="order-play">
+    <p id="rule-order-how">Put the rule that is hardest to change at the top, and the easiest to change at the bottom. Use the buttons to move a rule up or down.</p>
+    <ol class="order-list" aria-describedby="rule-order-how">
+      {
+        START.map((id) => (
+          <li data-id={id}>
+            <span>{RULES[id].rule}</span>
+            <button type="button" data-move="-1" aria-label={`Move up: ${RULES[id].rule}`}>Move up</button>
+            <button type="button" data-move="1" aria-label={`Move down: ${RULES[id].rule}`}>Move down</button>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="order-said" role="status"></p>
+    <button type="button" data-check>Show the order in the lesson</button>
+  </div>
+  <div class="order-answer" tabindex="-1" aria-labelledby="rule-order-answer-h">
+    <h4 id="rule-order-answer-h">The order in the lesson</h4>
+    <p>From the hardest to change to the easiest to change. There is no wrong order here.</p>
+    <ol>
+      {RULES.map((r, id) => <li data-id={id}><strong>{r.rule}</strong> {r.reason} <span class="yours"></span></li>)}
+    </ol>
+  </div>
+</section>
+
+<script>
+  import { check, move, ORDINAL, RULES } from '../lib/which-rule.ts';
+  for (const part of document.querySelectorAll<HTMLElement>('.rule-order')) {
+    const list = part.querySelector<HTMLElement>('.order-list')!;
+    const said = part.querySelector<HTMLElement>('.order-said')!;
+    const answer = part.querySelector<HTMLElement>('.order-answer')!;
+    const order = () => [...list.children].map((li) => Number((li as HTMLElement).dataset.id));
+    answer.setAttribute('data-off', '');
+    const settle = () =>
+      [...list.children].forEach((li, i, all) => {
+        const [up, down] = li.querySelectorAll('button');
+        up.setAttribute('aria-disabled', String(i === 0));
+        down.setAttribute('aria-disabled', String(i === all.length - 1));
+      });
+    settle();
+    list.addEventListener('click', (e) => {
+      const button = (e.target as Element).closest<HTMLButtonElement>('[data-move]');
+      const item = button?.closest<HTMLElement>('li');
+      if (!button || !item) return;
+      const now = order();
+      const id = Number(item.dataset.id);
+      const next = move(now, now.indexOf(id), Number(button.dataset.move) as -1 | 1);
+      const name = RULES[id].rule;
+      if (next.join() === now.join()) return void (said.textContent = `${name} is already ${button.dataset.move === '1' ? 'last' : 'first'}.`);
+      for (const rule of next) list.append(list.querySelector(`[data-id="${rule}"]`)!);
+      settle();
+      button.focus(); // moving a node can drop focus, so the reader keeps their place
+      said.textContent = `${name} is now ${ORDINAL[next.indexOf(id)]}.`;
+    });
+    part.querySelector('[data-check]')?.addEventListener('click', () => {
+      for (const [id, row] of check(order()).entries()) answer.querySelector(`[data-id="${id}"] .yours`)!.textContent = row.yours;
+      answer.removeAttribute('data-off');
+      answer.focus();
+    });
+  }
+</script>

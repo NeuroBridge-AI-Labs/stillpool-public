@@ -1,0 +1,4 @@
+# The recordings lesson 1.1 uses, so its fact-check hash covers them (p6 D4, D5), each with what a person wrote after
+# reading every run. check:content and check:readability read it as lesson text; the model's words stay in data/recorded.
+R-1.1:
+  summary: The warm replies said sorry and ended with an emoji. The brief replies were short and began "It's okay", with no sorry or emoji. The AI answered three times for each instruction, and all six runs showed this. Runs with the same instruction were very alike.

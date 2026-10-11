@@ -1,0 +1,146 @@
+R-2.7:
+  summary: 'With the card, every run gave three lists headed Decisions, Actions and Open questions. That held for both models and both transcripts, in all twelve card runs. Without the card, no run had
+    all three headings, and the layouts varied.
+
+
+    The card did not make the notes correct. On the second transcript, four card runs put an unsettled item under Decisions.
+
+
+    Without the card, three Ministral 3 14B runs added things the transcript did not say. We found no invented name or date in the twelve card runs.
+
+
+    This is 24 runs of two models on one day.
+
+    '
+  checked: '2026-10-03'
+  by: claude-sonnet-5-5
+  recordingSha256: d4f5dbc5a29449e7b2f5cd372389425d36a32be7f93a086fab7b42da371695dc
+  marks:
+  - variant: T1 A
+    maker: A
+    run: 1
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say.
+  - variant: T1 A
+    maker: A
+    run: 2
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say.
+  - variant: T1 A
+    maker: A
+    run: 3
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say.
+  - variant: T1 A
+    maker: B
+    run: 1
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say. Bold topics.
+  - variant: T1 A
+    maker: B
+    run: 2
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say. Numbered topics.
+  - variant: T1 A
+    maker: B
+    run: 3
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings. It wrote the closing time as pm, which the transcript does not say. It added something the transcript does not say. Numbered topics.
+    falseText: Coach booked by the society
+    reason: In the transcript the coach is not booked yet. Jonah says he will book it by Friday 28 February.
+  - variant: T1 B
+    maker: A
+    run: 1
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions. It wrote "unclear" for the decision date.
+  - variant: T1 B
+    maker: A
+    run: 2
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions. It wrote "unclear" for the decision date.
+  - variant: T1 B
+    maker: A
+    run: 3
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions. It wrote "unclear" for the decision date.
+  - variant: T1 B
+    maker: B
+    run: 1
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions.
+  - variant: T1 B
+    maker: B
+    run: 2
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions.
+  - variant: T1 B
+    maker: B
+    run: 3
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions.
+  - variant: T2 A
+    maker: A
+    run: 1
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings.
+  - variant: T2 A
+    maker: A
+    run: 2
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings.
+  - variant: T2 A
+    maker: A
+    run: 3
+    shows: false
+    note: Claude Sonnet 5.5. No card. It did not use all three headings.
+  - variant: T2 A
+    maker: B
+    run: 1
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings. It added something the transcript does not say.
+    falseText: Pay table fee (ASAP)
+    reason: The transcript gives no hurry. Sam says "please do it when you can".
+  - variant: T2 A
+    maker: B
+    run: 2
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings. It added something the transcript does not say.
+    falseText: 'Omar: Confirm room booking and prize details'
+    reason: Omar says he will book the room. Nobody gives him the prizes.
+  - variant: T2 A
+    maker: B
+    run: 3
+    shows: false
+    note: Ministral 3 14B. No card. It did not use all three headings.
+  - variant: T2 B
+    maker: A
+    run: 1
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions.
+  - variant: T2 B
+    maker: A
+    run: 2
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions. It put the film society's unclear answer under Decisions.
+  - variant: T2 B
+    maker: A
+    run: 3
+    shows: true
+    note: Claude Sonnet 5.5. Card. Three lists headed Decisions, Actions and Open questions.
+  - variant: T2 B
+    maker: B
+    run: 1
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions. It put the prizes, an unsettled item, under Decisions.
+  - variant: T2 B
+    maker: B
+    run: 2
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions. It put the prizes, an unsettled item, under Decisions.
+  - variant: T2 B
+    maker: B
+    run: 3
+    shows: true
+    note: Ministral 3 14B. Card. Three lists headed Decisions, Actions and Open questions. It put the prizes, an unsettled item, under Decisions. It also added a task to clarify the film society event.
+    falseText: '**Clarify joint event with film society**'
+    reason: The transcript gives nobody this task. The model added it, so it was not a meeting decision.

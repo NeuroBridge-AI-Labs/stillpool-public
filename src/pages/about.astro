@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// Every sentence has a source: the platform from docs/plan/plan.md and the ledger; the editorial paragraph, the team and
+// the badge rule from Emanuel's brief of 05-10-26; the motto from neurobridgeedu.eu; the founder from his published posts.
+const toc = [
+  { id: 'what', title: 'What Stillpool is' },
+  { id: 'learning', title: 'How learning works' },
+  { id: 'written', title: 'How lessons are written and checked' },
+  { id: 'people', title: 'The people' },
+  { id: 'company', title: 'The company' },
+  { id: 'why', title: 'Why it was built' },
+  { id: 'reuse', title: 'Reuse and contact' },
+];
+---
+
+<Base title="About Stillpool" description="Stillpool is a free site for learning about AI. It puts neurodivergent learners first, with short lessons on calm pages." wide>
+  <InfoPage title="About Stillpool" {toc}>
+    <p slot="intro" class="lede">
+      Stillpool is a free site for learning about AI, or artificial intelligence. AI systems can do tasks such as working with language or
+      recognising images. It puts neurodivergent learners first: people who think, learn or process information in different ways.
+    </p>
+
+    <h2 id="what">What Stillpool is</h2>
+    <p>
+      It is for anyone who wants to learn about AI. It explains how AI works, how to ask useful questions, how its use affects people. It
+      also covers how to use it well, and how these tools are built. No background is needed. It is free, has no adverts, needs no account and sets no cookies. Lessons are short steps on calm pages that
+      nothing times or counts.
+    </p>
+    <p>
+      The lessons are planned in five pillars: How AI works, Prompting, Ethics and society, Using AI well, and Going deeper. Your progress and
+      settings stay in this browser, on your device.
+    </p>
+
+    <h2 id="learning">How learning works</h2>
+    <p>
+      Each part of a lesson is written twice. Simple says the idea in short, plain words. Deep adds the detail and the examples. You choose
+      which to read, and you can change the font, text size, colours and movement in Settings. There is more in <a href="/help/">Help</a>.
+    </p>
+    <p>If you teach or train a group, read <a href="/teachers/">For teachers</a>.</p>
+    <p>
+      A badge is earned by doing a lesson's activity, such as the short check-in questions near its end. Finishing a lesson on its own does
+      not earn one.
+    </p>
+
+    <h2 id="written">How lessons are written and checked</h2>
+    <p>
+      Every lesson lists its sources. An AI model is a computer program that has learned patterns from large amounts of data. The lessons are
+      written with the help of leading AI models from OpenAI and Anthropic, and they build on research carried out separately over six weeks.
+      Before a lesson is final, an AI model made by a different company checks every claim, number and source. Emanuel Covasa then reads
+      every lesson before it is published.
+    </p>
+
+    <h2 id="people">The people</h2>
+    <dl class="people">
+      <dt>Emanuel Covasa</dt>
+      <dd>Founder. Designed and directed Stillpool.</dd>
+      <dt>Luc Dober</dt>
+      <dd>Co-founder · Education</dd>
+    </dl>
+
+    <h2 id="company">The company</h2>
+    <p>
+      Stillpool is made by <a href="https://neurobridgeedu.eu" rel="noopener">NeuroBridgeEDU</a>. In its own words: "NeuroBridgeEDU isn't just
+      software – it's a bridge to a future where education works for everyone."
+    </p>
+    <p>The lessons do not promote NeuroBridgeEDU's products.</p>
+
+    <h2 id="why">Why it was built</h2>
+    <p>
+      <a href="https://emmi.zone" rel="noopener">Emanuel Covasa</a>, founder of NeuroBridgeEDU, designed and directed Stillpool. He has written
+      that after twenty years in the professional world he went back to study and found text-heavy resources and timed assessments. He is
+      dyslexic and has ADHD, and he started building tools so that the system could fit his brain, instead of forcing his brain to fit the
+      system. When he tried AI literacy courses, he found them text-dense and video-heavy, so Stillpool is his answer: free, interactive and
+      calm. He writes more at <a href="https://emmi.zone" rel="noopener">emmi.zone</a>.
+    </p>
+
+    <h2 id="reuse">Reuse and contact</h2>
+    <p>
+      The lessons are under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>: you may share and
+      adapt them for free, with credit, under the same licence, but you may not use them to make money. The site's code is all rights
+      reserved. The <a href="/licences/">licences page</a> has the detail.
+    </p>
+    <p>A read-only copy of the site's source is <a href="https://github.com/NeuroBridge-AI-Labs/stillpool-public" rel="noopener">public on GitHub</a>.</p>
+    <p>
+      To tell us what you think of Stillpool, use the <a href="/feedback/">feedback page</a>.
+    </p>
+    <p>
+      To report a mistake in a lesson or a barrier in the site, write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>.
+      Read how the site treats your information in the <a href="/privacy/">Privacy notice</a> and how accessible it is in the <a href="/accessibility/">Accessibility statement</a>.
+    </p>
+  </InfoPage>
+</Base>

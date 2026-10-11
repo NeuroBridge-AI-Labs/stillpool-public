@@ -1,0 +1,4 @@
+# The recordings lesson 1.4 uses, so its fact-check hash covers them (p6 D4, D5). What it says about R-1.1 is
+# worked out by the rule in its brief (spread() in src/lib/next-word.ts), so no person writes a summary here.
+R-1.1:
+  summary: by rule

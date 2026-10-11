@@ -1,0 +1,7 @@
+---
+// 4.9's "Good fit or not?" (stage I, static): six invented situations, one at a time, and whether AI fits, needs care, or a person is better.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/good-fit-or-not.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Good fit or not?" name="good-fit-or-not" noun="Situation" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

@@ -1,0 +1,68 @@
+---
+// 3.2's "Sort the dataset" (stage I, an engine): a tiny model learns one cut-off from invented fruit, and is retrained in
+// your browser when you change the one data choice. The words are built from src/lib/sort-the-dataset.ts, here at build time
+// for the text version and without JavaScript, and again in the browser. Nothing is scored, stored or sent.
+import { compare, LIMITS, lines, run, verdict, wrongIn } from '../lib/sort-the-dataset.ts';
+import Shell from './Shell.astro';
+
+const [a, b] = [run(1), run(3)];
+const GUESS: [string, 'amber' | 'brill' | 'same'][] = [['Ambers', 'amber'], ['Brills', 'brill'], ['About the same', 'same']];
+---
+
+<Shell title="Sort the dataset" reveal="Show what the model learned" class="sort-the-dataset">
+  <p>This is a toy with invented fruit. No real people or groups are in it.</p>
+  <p>There are two invented kinds of fruit, ambers and brills. Every fruit has a squeeze score from 1 (hard) to 10 (soft). In our toy, an amber is ripe from score 5, and a brill is ripe from score 7.</p>
+  <p>A tiny model learns one cut-off from examples. A fruit at or above the cut-off counts as ripe. It picks the cut-off with the fewest mistakes on its examples, and the lower one if two tie. Then we test it on 20 new ambers and 20 new brills.</p>
+  <fieldset>
+    <legend>The model learns from 20 ambers and 10 brills. Which kind will it get wrong more often?</legend>
+    {GUESS.map(([text, pick], i) => <label><input type="radio" name="sort-1" value={i + 1} data-said={`${verdict(pick, a)} Ambers: ${wrongIn(a.amber)}. Brills: ${wrongIn(a.brill)}.`} />{text}</label>)}
+    <p>There is no wrong guess here.</p>
+  </fieldset>
+  <Fragment slot="after">
+    <h3>What the model learned from 10 brill examples</h3>
+    <p>These results follow from the examples above.</p>
+    <div class="result" data-brills="1">{lines(a).map((l) => <p>{l}</p>)}</div>
+    <section class="change" aria-labelledby="change-h">
+      <h3 id="change-h">Change one thing: the brill examples</h3>
+      <p>There were 10 brill examples, one at each score. Now there will be 30, three at each score. The 20 amber examples stay the same.</p>
+      <fieldset>
+        <legend>With 30 brill examples, which kind will it get wrong more often?</legend>
+        {GUESS.map(([text], i) => <label><input type="radio" name="sort-2" value={i + 1} />{text}</label>)}
+      </fieldset>
+      <button type="button" data-retrain disabled>Add brill examples and retrain</button>
+      <div class="change-answer case-answer" data-answer tabindex="-1" aria-label="What changed with 30 brill examples">
+        <p class="yours"></p>
+        <h4>What the model learned from 30 brill examples</h4>
+        <div class="result" data-brills="3">{lines(b).map((l) => <p>{l}</p>)}</div>
+        <p>{compare(a, b)}</p>
+      </div>
+    </section>
+    {LIMITS.map((l) => <p>{l}</p>)}
+  </Fragment>
+</Shell>
+
+<script>
+  import { lines, run, verdict } from '../lib/sort-the-dataset.ts';
+  const paragraphs = (words: string[]) => words.map((w) => Object.assign(document.createElement('p'), { textContent: w }));
+  // The model is trained here, in the browser, on the invented fruit: the build's words are only the text version.
+  for (const result of document.querySelectorAll<HTMLElement>('.sort-the-dataset .result')) {
+    result.replaceChildren(...paragraphs(lines(run(Number(result.dataset.brills)))));
+    result.dataset.live = '';
+  }
+  for (const part of document.querySelectorAll<HTMLElement>('.sort-the-dataset .change')) {
+    const fieldset = part.querySelector('fieldset')!;
+    const button = part.querySelector<HTMLButtonElement>('[data-retrain]')!;
+    const answer = part.querySelector<HTMLElement>('[data-answer]')!;
+    answer.setAttribute('data-off', '');
+    fieldset.addEventListener('input', () => (button.disabled = false));
+    button.addEventListener('click', () => {
+      const picks = ['amber', 'brill', 'same'] as const;
+      const pick = picks[Number(fieldset.querySelector<HTMLInputElement>(':checked')!.value) - 1];
+      answer.querySelector('.yours')!.textContent = verdict(pick, run(3));
+      fieldset.disabled = true;
+      button.hidden = true;
+      answer.removeAttribute('data-off');
+      answer.focus(); // the button just went
+    });
+  }
+</script>

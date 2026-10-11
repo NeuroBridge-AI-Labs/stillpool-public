@@ -1,0 +1,28 @@
+# R-4.3: four texts written by two models, rated by the pretend detector. Counting rule in the lesson's pack, section 3.
+R-4.3:
+  summary: |
+    We asked two models for about 80 words on two topics. We recorded one run each on 8 October 2026. Maker A is Claude Sonnet 5.5. Maker B is Ministral 3 14B.
+
+    The pretend detector flagged none of the four model texts.
+
+    Walk home, maker A: not flagged. 3 pieces in 93 were seen in the book.
+
+    Walk home, maker B: not flagged. 9 pieces in 106 were seen.
+
+    Cup of tea, maker A: not flagged. 1 piece in 101 was seen.
+
+    Cup of tea, maker B: not flagged. 1 piece in 96 was seen.
+
+    It did flag one text that a person wrote, the passage by James Joyce. All 72 pieces in it were seen, because the passage is in the book.
+
+    So here the AI texts were not flagged, and a person's text was. This shows how the pretend detector works. It does not show how real detectors work.
+
+    Two models, one run each, on one day, show nothing about how all AI writes.
+  checked: 2026-10-09
+  by: claude-sonnet-5-5
+  recordingSha256: 612188f22589d99dc5f8b50b39c948d670a7b0ff9426546a3c8cfb4dbef0b9de
+  marks:
+    - {variant: street, maker: A, run: 1, shows: false, note: "Not flagged. 3 pieces in 93 were seen in the book."}
+    - {variant: street, maker: B, run: 1, shows: false, note: "Not flagged. 9 pieces in 106 were seen in the book."}
+    - {variant: tea, maker: A, run: 1, shows: false, note: "Not flagged. 1 piece in 101 was seen in the book."}
+    - {variant: tea, maker: B, run: 1, shows: false, note: "Not flagged. 1 piece in 96 was seen in the book."}

@@ -1,0 +1,73 @@
+Licences for what this site ships
+Stillpool
+
+The site's lessons are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+licence (CC BY-NC-SA 4.0). You may copy, share and remix them with credit, not for money, and if you share your version, it must carry
+the same licence. Legal code: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+The credit to give: "<lesson title>" by Emanuel Covasa, from Stillpool, licensed under CC BY-NC-SA 4.0, with a link
+to the lesson and a note of any changes you made. The site's own code is all rights reserved and its
+working repository is private. A read-only public copy of the source of each release is at
+https://github.com/NeuroBridge-AI-Labs/stillpool-public. The licences are unchanged.
+Third-party parts keep their own licences, listed here.
+The NeuroBridgeEDU name and logo belong to Emanuel Covasa and are not covered by the CC BY-NC-SA 4.0 licence.
+The logo files are /brand/, /favicon.ico and /apple-touch-icon.png.
+
+Packages (every runtime dependency in package.json), each MIT licensed:
+- @astrojs/mdx 8.0.2, MIT, Copyright (c) 2021 Fred K. Schott
+- @nanostores/persistent 1.3.5, MIT, Copyright 2020 Andrey Sitnik <andrey@sitnik.es>
+- @phosphor-icons/core 2.1.1, MIT, Copyright (c) 2023 Phosphor Icons. Its icons are drawn into each page when
+  the site is built, and its full notice is also at /notices.
+- @tailwindcss/vite 4.3.3, MIT, Copyright (c) Tailwind Labs, Inc.
+- astro 7.3.5, MIT, Copyright (c) 2021 Fred K. Schott. It includes parts of SvelteKit, Copyright (c) 2020
+  the SvelteKit contributors, and of Vite, Copyright (c) 2019-present, Yuxi (Evan) You and Vite contributors,
+  both MIT.
+- gpt-tokenizer 4.0.0, MIT, Copyright (c) 2023-2024 Bazyli Brzoska. It splits text into tokens in lesson 1.3,
+  and its full notice is also at /notices.
+- lean-qr 2.7.4, MIT, Copyright (c) 2021-2025 David Evans
+- nanostores 1.5.4, MIT, Copyright 2020 Andrey Sitnik <andrey@sitnik.es>
+- tailwindcss 4.3.3, MIT, Copyright (c) Tailwind Labs, Inc.
+
+The search index and its scripts, in /pagefind/, are written at build time by a development tool:
+- pagefind 1.5.2, MIT, Copyright (c) Pagefind
+
+Emma's voice, in /voice/: audio made with Kokoro-82M v1.0 and its Emma voice (bf_emma), both under the Apache
+License 2.0 (https://www.apache.org/licenses/LICENSE-2.0), from https://huggingface.co/hexgrad/Kokoro-82M through
+https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX. The site serves the audio, not the model.
+
+Fonts, each under the SIL Open Font License 1.1, whose full text sits next to the font:
+- Lexend (latin, variable), from @fontsource-variable/lexend 5.3.0. Copyright 2019 The Lexend Project
+  Authors (https://github.com/googlefonts/lexend). Licence: /fonts/OFL-Lexend.txt
+- Public Sans (latin, variable), from @fontsource-variable/public-sans 5.3.0. Copyright 2015 The Public
+  Sans Project Authors (https://github.com/uswds/public-sans). Licence: /fonts/OFL-PublicSans.txt
+- OpenDyslexic Regular, unmodified, from https://github.com/antijingoist/opendyslexic. Copyright (c)
+  2019-07-29, Abbie Gonzalez (https://abbiecod.es), with Reserved Font Name OpenDyslexic.
+  Licence: /fonts/OFL-OpenDyslexic.txt
+
+Data, in lesson 1.9: the Quick, Draw! drawings and the two small models trained on them.
+- Quick, Draw! dataset made available by Google, Inc.; drawings contributed by players. CC BY 4.0
+  (https://creativecommons.org/licenses/by/4.0/). Dataset: https://github.com/googlecreativelab/quickdraw-dataset
+  What changed: we kept 2,000 of each of six kinds, drew them on a 28 by 28 grid and trained two small models on them.
+
+Text, in the lessons "The next word" and "AI detectors: what a flag proves": the full text of Dubliners.
+- James Joyce, Dubliners (1914), Project Gutenberg eBook 2814 (https://www.gutenberg.org/ebooks/2814). Public domain in
+  Ireland and the USA. What changed: we removed the Project Gutenberg header and footer. The text is in data/training/dubliners.txt.
+
+The MIT licence, as each package above carries it with its own copyright line:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

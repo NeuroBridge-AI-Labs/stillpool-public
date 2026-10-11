@@ -1,0 +1,15 @@
+- id: p
+  title: A pillar
+  topics:
+    - title: Topic one
+      lessons: [plain, signed, code-tags, take]
+- id: prompting
+  title: Prompting
+  topics:
+    - title: Topic one
+      lessons: [promptsage-ok]
+- id: using-ai-well
+  title: Using AI well
+  topics:
+    - title: Topic one
+      lessons: [when-text-tricks-the-ai]

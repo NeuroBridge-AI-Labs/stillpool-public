@@ -1,0 +1,19 @@
+---
+// "Show all runs" (stage I): every run of the variants named, each under its label, in recording order.
+import RunCard from './RunCard.astro';
+import { variantOf, type Rec, type Said } from '../lib/p2-runs.ts';
+interface Props { rec: Rec; said: Said; labels: [label: string, caption: string][]; sent?: boolean }
+const { rec, said, labels, sent } = Astro.props;
+---
+
+<details class="all-runs">
+  <summary>Show all runs</summary>
+  {
+    labels.map(([label, caption]) => (
+      <section>
+        <h3>{caption}</h3>
+        {(['A', 'B'] as const).flatMap((maker) => variantOf(rec, label, maker).runs.map((_, i) => <RunCard rec={rec} said={said} label={label} maker={maker} n={i + 1} sent={sent} />))}
+      </section>
+    ))
+  }
+</details>

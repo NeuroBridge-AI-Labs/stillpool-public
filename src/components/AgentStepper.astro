@@ -1,0 +1,8 @@
+---
+// 5.3's "Agent stepper" (stage I, static): the shared stepper (src/components/Steps.astro) on one invented agent run. No
+// recording, no slots, and no model is called.
+import { INTRO, NAME, NOTES, STAGE_LIST, STAGES, TITLE } from '../lib/agent-stepper.ts';
+import Steps from './Steps.astro';
+---
+
+<Steps title={TITLE} name={NAME} intro={INTRO} stages={STAGES} stageListLabel={STAGE_LIST} notes={NOTES} />

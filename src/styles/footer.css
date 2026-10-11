@@ -1,0 +1,69 @@
+/* The footer's layout (F3); global.css has its frame, border and links. */
+.stillpool-footer {
+  padding-block: var(--s4);
+  color: var(--text);
+}
+.stillpool-footer > .frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s3);
+}
+.stillpool-footer .brand p {
+  color: var(--text-muted);
+}
+.stillpool-footer .logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: 44px;
+  margin-bottom: var(--s1);
+}
+.stillpool-footer .groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s3);
+  overflow-wrap: anywhere; /* at 320 px with the largest text a long word must reflow (WCAG 1.4.10) */
+}
+.stillpool-footer h2 {
+  margin: 0 0 var(--s1);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+.stillpool-footer ul {
+  margin: 0;
+}
+.stillpool-footer li a {
+  color: var(--text);
+}
+.stillpool-footer li a:not(:hover, :focus-visible) {
+  text-decoration-color: var(--text-muted);
+}
+.stillpool-footer .legal {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--text-muted);
+}
+@media (min-width: 640px) {
+  .stillpool-footer .brand {
+    grid-column: 1 / -1;
+  }
+  .stillpool-footer .groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .stillpool-footer > .frame {
+    grid-template-columns: 1.4fr 3.6fr;
+    gap: var(--s3) var(--s4);
+  }
+  .stillpool-footer .brand {
+    grid-column: auto;
+  }
+  .stillpool-footer .groups {
+    grid-template-columns: 0.8fr 1.2fr 1.6fr;
+    gap: var(--s3);
+  }
+  .stillpool-footer .legal {
+    grid-column: 1 / -1;
+  }
+}

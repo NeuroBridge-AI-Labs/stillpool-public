@@ -1,0 +1,7 @@
+---
+// 4.2's "Help or hand-in?" (stage I, static): eight study uses, one at a time, then our reading and why. Nothing is scored, stored or sent.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/help-or-hand-in.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Help or hand-in?" name="help-or-hand-in" noun="Case" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

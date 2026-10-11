@@ -1,0 +1,6 @@
+---
+// A legal identifier such as 5(1)(f) is one word: it never breaks across two lines.
+const { text } = Astro.props as { text: string };
+const parts = text.split(/(\b\d+(?:\([0-9a-z]+\))+)/);
+---
+{parts.map((part, i) => (i % 2 ? <span class="nobr">{part}</span> : part))}

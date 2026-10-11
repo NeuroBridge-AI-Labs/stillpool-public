@@ -1,0 +1,407 @@
+{
+  "id": "R-5.1",
+  "message": "What is the capital of Ireland?",
+  "model": {
+    "id": "allenai/OLMo-2-0425-1B",
+    "name": "OLMo 2 1B, base",
+    "host": "this Mac, llama.cpp llama-server"
+  },
+  "date": "2026-10-08",
+  "settings": {
+    "max_tokens": 80,
+    "temperature": 0.7
+  },
+  "variants": [
+    {
+      "model": {
+        "id": "allenai/OLMo-2-0425-1B",
+        "name": "OLMo 2 1B, base",
+        "host": "this Mac, llama.cpp llama-server"
+      },
+      "settings": {
+        "endpoint": "/v1/completions",
+        "file": "OLMo-2-0425-1B-Q8_0.gguf",
+        "llama.cpp build": "b10450-ece963f41",
+        "temperature": 0.7,
+        "max_tokens": "80; the base model was stopped here",
+        "chat template": "none: the text was sent raw"
+      },
+      "runs": [
+        {
+          "reply": " Dublin, of course. No need to even ask. In fact, it may be a good idea to ask it anyway, because you may be surprised to find that it's not the capital of the Republic of Ireland.\n\nThe Republic of Ireland is a country in Europe. It's about the size of the state of Washington, with a population of about 4.5 million.\n\nIt's in Europe",
+          "finish_reason": "length",
+          "usage": {
+            "completion_tokens": 80,
+            "prompt_tokens": 7,
+            "total_tokens": 87,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:19:56.862Z",
+              "request": {
+                "prompt": "What is the capital of Ireland?",
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "text": " Dublin, of course. No need to even ask. In fact, it may be a good idea to ask it anyway, because you may be surprised to find that it's not the capital of the Republic of Ireland.\n\nThe Republic of Ireland is a country in Europe. It's about the size of the state of Washington, with a population of about 4.5 million.\n\nIt's in Europe",
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "length"
+                  }
+                ],
+                "created": 1791501597,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "text_completion",
+                "usage": {
+                  "completion_tokens": 80,
+                  "prompt_tokens": 7,
+                  "total_tokens": 87,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  }
+                },
+                "id": "chatcmpl-jdgnqyefhJepKOPW5iyEq2zIE0bUG2lD",
+                "timings": {
+                  "cache_n": 0,
+                  "prompt_n": 7,
+                  "prompt_ms": 88.529,
+                  "prompt_per_token_ms": 12.647,
+                  "prompt_per_second": 79.07013520993121,
+                  "predicted_n": 80,
+                  "predicted_ms": 945.805,
+                  "predicted_per_token_ms": 11.972215189873417,
+                  "predicted_per_second": 83.5267311972341
+                }
+              }
+            }
+          ]
+        },
+        {
+          "reply": " Dublin\n\nWhat are the four major rivers in Ireland?\n\nThe River Shannon is the largest river in Ireland, and the longest river on the island of Ireland. The River Slaney is the second longest river in Ireland. The River Boyne is the third longest river in Ireland.\n\nWhat are the 3 largest cities in Ireland?\n\n\n  • Dublin. The capital of Ireland is the largest city in the country",
+          "finish_reason": "length",
+          "usage": {
+            "completion_tokens": 80,
+            "prompt_tokens": 7,
+            "total_tokens": 87,
+            "prompt_tokens_details": {
+              "cached_tokens": 6
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:19:57.905Z",
+              "request": {
+                "prompt": "What is the capital of Ireland?",
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "text": " Dublin\n\nWhat are the four major rivers in Ireland?\n\nThe River Shannon is the largest river in Ireland, and the longest river on the island of Ireland. The River Slaney is the second longest river in Ireland. The River Boyne is the third longest river in Ireland.\n\nWhat are the 3 largest cities in Ireland?\n\n\n  • Dublin. The capital of Ireland is the largest city in the country",
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "length"
+                  }
+                ],
+                "created": 1791501598,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "text_completion",
+                "usage": {
+                  "completion_tokens": 80,
+                  "prompt_tokens": 7,
+                  "total_tokens": 87,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 6
+                  }
+                },
+                "id": "chatcmpl-FGquGXJ8GuFBbwM4yU01Wei8Ik61rUat",
+                "timings": {
+                  "cache_n": 6,
+                  "prompt_n": 1,
+                  "prompt_ms": 12.65,
+                  "prompt_per_token_ms": 12.65,
+                  "prompt_per_second": 79.05138339920948,
+                  "predicted_n": 80,
+                  "predicted_ms": 941.923,
+                  "predicted_per_token_ms": 11.923075949367089,
+                  "predicted_per_second": 83.87097459134134
+                }
+              }
+            }
+          ]
+        },
+        {
+          "reply": " Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland",
+          "finish_reason": "length",
+          "usage": {
+            "completion_tokens": 80,
+            "prompt_tokens": 7,
+            "total_tokens": 87,
+            "prompt_tokens_details": {
+              "cached_tokens": 6
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:19:58.864Z",
+              "request": {
+                "prompt": "What is the capital of Ireland?",
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "text": " Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland? Dublin\n\nWhat is the capital of Ireland",
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "length"
+                  }
+                ],
+                "created": 1791501599,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "text_completion",
+                "usage": {
+                  "completion_tokens": 80,
+                  "prompt_tokens": 7,
+                  "total_tokens": 87,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 6
+                  }
+                },
+                "id": "chatcmpl-bB0WdljV9wbiXmlPhJ3e9MFEAKEx3yZ3",
+                "timings": {
+                  "cache_n": 6,
+                  "prompt_n": 1,
+                  "prompt_ms": 12.629,
+                  "prompt_per_token_ms": 12.629,
+                  "prompt_per_second": 79.18283316177053,
+                  "predicted_n": 80,
+                  "predicted_ms": 926.213,
+                  "predicted_per_token_ms": 11.724215189873417,
+                  "predicted_per_second": 85.2935555860261
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": {
+        "id": "allenai/OLMo-2-0425-1B-Instruct",
+        "name": "OLMo 2 1B, tuned (Instruct)",
+        "host": "this Mac, llama.cpp llama-server"
+      },
+      "settings": {
+        "endpoint": "/v1/chat/completions",
+        "file": "OLMo-2-0425-1B-Instruct-Q8_0.gguf",
+        "llama.cpp build": "b10450-ece963f41",
+        "temperature": 0.7,
+        "max_tokens": 80,
+        "chat template": "the model's own, applied by the server: {{ bos_token }}{% for message in messages %}{% if message['role'] == 'system' %}{{ '<|system|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'user' %}{{ '<|user|>\n' + message['content'] + '\n' }}{% elif message['role'] == 'assistant' %}{% if not loop.last %}{{ '<|assistant|>\n'  + message['content'] + eos_token + '\n' }}{% else %}{{ '<|assistant|>\n'  + message['content'] + eos_token }}{% endif %}{% endif %}{% if loop.last and add_generation_prompt %}{{ '<|assistant|>\n' }}{% endif %}{% endfor %}"
+      },
+      "runs": [
+        {
+          "reply": "The capital of Ireland is Dublin.",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 18,
+            "total_tokens": 26,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:19:59.810Z",
+              "request": {
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "What is the capital of Ireland?"
+                  }
+                ],
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "message": {
+                      "role": "assistant",
+                      "content": "The capital of Ireland is Dublin."
+                    }
+                  }
+                ],
+                "created": 1791501599,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Instruct-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "chat.completion",
+                "usage": {
+                  "completion_tokens": 8,
+                  "prompt_tokens": 18,
+                  "total_tokens": 26,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  }
+                },
+                "id": "chatcmpl-fP70VLNzkAOxLPVT4NE7iQUAezPoZwM8",
+                "timings": {
+                  "cache_n": 0,
+                  "prompt_n": 18,
+                  "prompt_ms": 70.844,
+                  "prompt_per_token_ms": 3.9357777777777776,
+                  "prompt_per_second": 254.07938569250751,
+                  "predicted_n": 8,
+                  "predicted_ms": 87.165,
+                  "predicted_per_token_ms": 12.452142857142858,
+                  "predicted_per_second": 80.30746285779843
+                }
+              }
+            }
+          ]
+        },
+        {
+          "reply": "The capital of Ireland is Dublin.",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 18,
+            "total_tokens": 26,
+            "prompt_tokens_details": {
+              "cached_tokens": 17
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:19:59.977Z",
+              "request": {
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "What is the capital of Ireland?"
+                  }
+                ],
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "message": {
+                      "role": "assistant",
+                      "content": "The capital of Ireland is Dublin."
+                    }
+                  }
+                ],
+                "created": 1791501600,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Instruct-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "chat.completion",
+                "usage": {
+                  "completion_tokens": 8,
+                  "prompt_tokens": 18,
+                  "total_tokens": 26,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 17
+                  }
+                },
+                "id": "chatcmpl-XqaoGCk5SShtyQiaaX1o2SGuKK8V7zzq",
+                "timings": {
+                  "cache_n": 17,
+                  "prompt_n": 1,
+                  "prompt_ms": 91.997,
+                  "prompt_per_token_ms": 91.997,
+                  "prompt_per_second": 10.86991967129363,
+                  "predicted_n": 8,
+                  "predicted_ms": 120.627,
+                  "predicted_per_token_ms": 17.23242857142857,
+                  "predicted_per_second": 58.03012592537327
+                }
+              }
+            }
+          ]
+        },
+        {
+          "reply": "The capital of Ireland is Dublin. Dublin is the political, economic, and cultural center of the country, and it is the location of the Irish Parliament and the offices of the President of Ireland. The city also hosts many museums, theaters, and historical landmarks.",
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 53,
+            "prompt_tokens": 18,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 17
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:20:00.195Z",
+              "request": {
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "What is the capital of Ireland?"
+                  }
+                ],
+                "max_tokens": 80,
+                "temperature": 0.7
+              },
+              "response": {
+                "choices": [
+                  {
+                    "finish_reason": "stop",
+                    "index": 0,
+                    "message": {
+                      "role": "assistant",
+                      "content": "The capital of Ireland is Dublin. Dublin is the political, economic, and cultural center of the country, and it is the location of the Irish Parliament and the offices of the President of Ireland. The city also hosts many museums, theaters, and historical landmarks."
+                    }
+                  }
+                ],
+                "created": 1791501600,
+                "model": "/Users/emmi/.cache/stillpool-models/OLMo-2-0425-1B-Instruct-Q8_0.gguf",
+                "system_fingerprint": "b10450-ece963f41",
+                "object": "chat.completion",
+                "usage": {
+                  "completion_tokens": 53,
+                  "prompt_tokens": 18,
+                  "total_tokens": 71,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 17
+                  }
+                },
+                "id": "chatcmpl-0bv8U1kwn3FguXtmuBLsbrBYQQlha0y3",
+                "timings": {
+                  "cache_n": 17,
+                  "prompt_n": 1,
+                  "prompt_ms": 14.928,
+                  "prompt_per_token_ms": 14.928,
+                  "prompt_per_second": 66.98821007502679,
+                  "predicted_n": 53,
+                  "predicted_ms": 702.591,
+                  "predicted_per_token_ms": 13.511365384615384,
+                  "predicted_per_second": 74.01176502403247
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

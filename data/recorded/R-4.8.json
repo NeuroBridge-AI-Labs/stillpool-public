@@ -1,0 +1,757 @@
+{
+  "id": "R-4.8",
+  "model": {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-10-08",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "summary",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this text in two sentences:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Gradient descent repeatedly adjusts a model's numbers by stepping in the direction that lowers the loss fastest, with step size set by a chosen learning rate (too small is slow, too large makes the loss bounce or rise). For yes-or-no models like the one in the lesson, going downhill reliably reaches the lowest loss (possibly at several equivalent settings), unless a straight line separates the dots perfectly, in which case the loss keeps falling forever, and for large neural networks it may get stuck and never find the lowest level.",
+          "usage": {
+            "input_tokens": 294,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 174,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:19.865Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this text in two sentences:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfqcie9SLp6949VxjxekV",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Gradient descent repeatedly adjusts a model's numbers by stepping in the direction that lowers the loss fastest, with step size set by a chosen learning rate (too small is slow, too large makes the loss bounce or rise). For yes-or-no models like the one in the lesson, going downhill reliably reaches the lowest loss (possibly at several equivalent settings), unless a straight line separates the dots perfectly, in which case the loss keeps falling forever, and for large neural networks it may get stuck and never find the lowest level."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 294,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 174,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "summary",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this text in two sentences:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501139,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Gradient descent is an optimization method that adjusts model parameters by moving in the direction of steepest descent in the loss function, with the step size controlled by the learning rate—too small slows progress, while too large risks instability. While simple models like binary classifiers reliably reach the global minimum, complex systems (e.g., large neural networks) may get trapped in suboptimal solutions, failing to find the lowest loss.",
+          "usage": {
+            "prompt_tokens": 210,
+            "total_tokens": 295,
+            "completion_tokens": 85,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:21.952Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this text in two sentences:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "1721539a33164173b0c10f694c8aece9",
+                "created": 1791501142,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 210,
+                  "total_tokens": 295,
+                  "completion_tokens": 85,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Gradient descent is an optimization method that adjusts model parameters by moving in the direction of steepest descent in the loss function, with the step size controlled by the learning rate—too small slows progress, while too large risks instability. While simple models like binary classifiers reliably reach the global minimum, complex systems (e.g., large neural networks) may get trapped in suboptimal solutions, failing to find the lowest loss."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "plain words",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Rewrite this text in simpler words:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Gradient descent is how the computer decides how to change its numbers. It checks which direction makes the error (the \"loss\") drop fastest, then moves the numbers a small step that way.\n\nHow big each step is depends on a number people pick, called the learning rate. If it's too small, training takes too long. If it's too big, the loss can jump around or even get worse.\n\nIn this lesson's example, the steps get smaller each round. That's because the slope of the loss gets flatter as it goes down.\n\nFor a yes-or-no model like this one, the textbook says the loss has no other low spots to get stuck in. So going downhill will reach the lowest point. More than one set of numbers can reach that same lowest point.\n\nBut if a straight line can perfectly separate the dots, there is no lowest point. The loss just keeps dropping as the numbers get bigger and bigger.\n\nFor the huge neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest point.",
+          "usage": {
+            "input_tokens": 295,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 308,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:24.191Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Rewrite this text in simpler words:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqcixENSispiAUKNQEjH",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Gradient descent is how the computer decides how to change its numbers. It checks which direction makes the error (the \"loss\") drop fastest, then moves the numbers a small step that way.\n\nHow big each step is depends on a number people pick, called the learning rate. If it's too small, training takes too long. If it's too big, the loss can jump around or even get worse.\n\nIn this lesson's example, the steps get smaller each round. That's because the slope of the loss gets flatter as it goes down.\n\nFor a yes-or-no model like this one, the textbook says the loss has no other low spots to get stuck in. So going downhill will reach the lowest point. More than one set of numbers can reach that same lowest point.\n\nBut if a straight line can perfectly separate the dots, there is no lowest point. The loss just keeps dropping as the numbers get bigger and bigger.\n\nFor the huge neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest point."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 295,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 308,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "plain words",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Rewrite this text in simpler words:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501139,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here’s a simpler version of your text:\n\n---\n\n**Gradient descent** is a way to find the best numbers for a model. It looks for the fastest way to reduce the error (called the \"loss\") and takes small steps in that direction. The size of each step is controlled by a number called the **learning rate**.\n\n- If the learning rate is too small, learning takes too long.\n- If it’s too big, the error might jump around or even get worse.\n\nIn this lesson, the steps get smaller over time because the slope of the error becomes flatter.\n\nFor a simple yes-or-no model (like this one), the textbook says there are no other low points to get stuck in—just going downhill will find the lowest error. Sometimes, different settings can give the same lowest error. If a straight line can perfectly separate the data, the error can keep getting smaller forever (no real lowest point).\n\nFor big models like those in chatbots, the textbook says gradient descent might get stuck and never reach the true lowest error.\n\n---",
+          "usage": {
+            "prompt_tokens": 208,
+            "total_tokens": 423,
+            "completion_tokens": 215,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:27.425Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Rewrite this text in simpler words:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "3c44cbf2d3e84f399ca465d1a91645c7",
+                "created": 1791501147,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 208,
+                  "total_tokens": 423,
+                  "completion_tokens": 215,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a simpler version of your text:\n\n---\n\n**Gradient descent** is a way to find the best numbers for a model. It looks for the fastest way to reduce the error (called the \"loss\") and takes small steps in that direction. The size of each step is controlled by a number called the **learning rate**.\n\n- If the learning rate is too small, learning takes too long.\n- If it’s too big, the error might jump around or even get worse.\n\nIn this lesson, the steps get smaller over time because the slope of the error becomes flatter.\n\nFor a simple yes-or-no model (like this one), the textbook says there are no other low points to get stuck in—just going downhill will find the lowest error. Sometimes, different settings can give the same lowest error. If a straight line can perfectly separate the data, the error can keep getting smaller forever (no real lowest point).\n\nFor big models like those in chatbots, the textbook says gradient descent might get stuck and never reach the true lowest error.\n\n---"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "bullet points",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn this text into bullet points:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "- **Gradient descent** is the method that finds each change to the model's numbers.\n- **How it works:** It figures out which direction makes the loss fall fastest, then moves the numbers one step that way.\n- **Learning rate:** People choose the step size, and it is set by a number called the learning rate.\n  - Too small: training takes too long.\n  - Too big: the loss can bounce around or even go up.\n- **Shrinking steps:** In this lesson's run, the steps get smaller round by round because the slope of the loss gets flatter.\n- **Yes-or-no models like this one:**\n  - The textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level.\n  - Several settings can sit at that same lowest level.\n- **Special case:** If a straight line can split the dots perfectly, there is no lowest level. The loss keeps falling as the numbers grow.\n- **Large neural networks (e.g., those behind chatbots):** The textbook says gradient descent may get stuck and never find the lowest level.",
+          "usage": {
+            "input_tokens": 293,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 338,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:32.605Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn this text into bullet points:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqcjaSTbSgHS2rLNSzTX",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "- **Gradient descent** is the method that finds each change to the model's numbers.\n- **How it works:** It figures out which direction makes the loss fall fastest, then moves the numbers one step that way.\n- **Learning rate:** People choose the step size, and it is set by a number called the learning rate.\n  - Too small: training takes too long.\n  - Too big: the loss can bounce around or even go up.\n- **Shrinking steps:** In this lesson's run, the steps get smaller round by round because the slope of the loss gets flatter.\n- **Yes-or-no models like this one:**\n  - The textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level.\n  - Several settings can sit at that same lowest level.\n- **Special case:** If a straight line can split the dots perfectly, there is no lowest level. The loss keeps falling as the numbers grow.\n- **Large neural networks (e.g., those behind chatbots):** The textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 293,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 338,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "bullet points",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn this text into bullet points:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501139,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here’s your text converted into bullet points:\n\n- **Gradient descent** is a method that finds the optimal changes to minimize loss by moving in the direction where the loss decreases the fastest.\n- The **size of each step** is controlled by a **learning rate** (a chosen number).\n  - If the learning rate is **too small**, training takes **too long**.\n  - If it’s **too big**, the loss may **bounce around** or even **increase**.\n- In this lesson’s example, **steps get smaller over time** because the slope of the loss curve becomes flatter.\n- For **yes-or-no models** (like this one), the textbook states:\n  - The loss has **no other low points** to get stuck in, so descending always reaches the **lowest level**.\n  - Multiple settings can **share the same lowest level**.\n  - If a **straight line can perfectly split the data**, the loss **keeps decreasing indefinitely** as the model scales.\n- For **large neural networks** (e.g., behind chatbots), the textbook notes:\n  - Gradient descent **may get stuck** and **never reach the lowest level**.",
+          "usage": {
+            "prompt_tokens": 208,
+            "total_tokens": 451,
+            "completion_tokens": 243,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:35.578Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn this text into bullet points:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "2dfc2c11f0144e8bbe1694b1365a0ac3",
+                "created": 1791501155,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 208,
+                  "total_tokens": 451,
+                  "completion_tokens": 243,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s your text converted into bullet points:\n\n- **Gradient descent** is a method that finds the optimal changes to minimize loss by moving in the direction where the loss decreases the fastest.\n- The **size of each step** is controlled by a **learning rate** (a chosen number).\n  - If the learning rate is **too small**, training takes **too long**.\n  - If it’s **too big**, the loss may **bounce around** or even **increase**.\n- In this lesson’s example, **steps get smaller over time** because the slope of the loss curve becomes flatter.\n- For **yes-or-no models** (like this one), the textbook states:\n  - The loss has **no other low points** to get stuck in, so descending always reaches the **lowest level**.\n  - Multiple settings can **share the same lowest level**.\n  - If a **straight line can perfectly split the data**, the loss **keeps decreasing indefinitely** as the model scales.\n- For **large neural networks** (e.g., behind chatbots), the textbook notes:\n  - Gradient descent **may get stuck** and **never reach the lowest level**."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "outline",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn this text into an outline with headings:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "# Gradient Descent\n\n## I. What Gradient Descent Does\n- Finds each change to make to the model's numbers\n- Works out which direction makes the loss fall fastest\n- Moves the numbers one step in that direction\n\n## II. The Learning Rate\n- Sets the size of each step\n- Is a number that people choose\n- **Too small:** training takes too long\n- **Too big:** the loss can bounce around or even go up\n\n## III. Step Size in This Lesson's Run\n- Steps get smaller round by round\n- Reason: the slope of the loss gets flatter\n\n## IV. Reaching the Lowest Level\n### A. Yes-or-no models like this one\n- Per the textbook, the loss has no other low points to get stuck in\n- Going downhill therefore reaches the lowest level\n- Several settings can sit at that same lowest level\n\n### B. Special case: a straight line splits the dots perfectly\n- There is no lowest level\n- The loss keeps falling as the numbers grow\n\n### C. Large neural networks (e.g., those behind chatbots)\n- Per the textbook, gradient descent may get stuck\n- It may never find the lowest level",
+          "usage": {
+            "input_tokens": 295,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 372,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:40.906Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn this text into an outline with headings:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqckC2cQBQ8KpZXVukbZ",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Gradient Descent\n\n## I. What Gradient Descent Does\n- Finds each change to make to the model's numbers\n- Works out which direction makes the loss fall fastest\n- Moves the numbers one step in that direction\n\n## II. The Learning Rate\n- Sets the size of each step\n- Is a number that people choose\n- **Too small:** training takes too long\n- **Too big:** the loss can bounce around or even go up\n\n## III. Step Size in This Lesson's Run\n- Steps get smaller round by round\n- Reason: the slope of the loss gets flatter\n\n## IV. Reaching the Lowest Level\n### A. Yes-or-no models like this one\n- Per the textbook, the loss has no other low points to get stuck in\n- Going downhill therefore reaches the lowest level\n- Several settings can sit at that same lowest level\n\n### B. Special case: a straight line splits the dots perfectly\n- There is no lowest level\n- The loss keeps falling as the numbers grow\n\n### C. Large neural networks (e.g., those behind chatbots)\n- Per the textbook, gradient descent may get stuck\n- It may never find the lowest level"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 295,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 372,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "outline",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn this text into an outline with headings:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791501139,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "### **Outline: Gradient Descent**\n\n#### **I. Introduction to Gradient Descent**\n   A. Definition\n      - A method for finding the optimal parameters by minimizing loss\n   B. Core Principle\n      - Moves in the direction where the loss decreases most rapidly\n\n#### **II. Key Components of Gradient Descent**\n   A. **Learning Rate**\n      1. Definition\n         - A hyperparameter controlling step size\n      2. Impact of Learning Rate\n         - Too small → Slow convergence\n         - Too large → Loss may oscillate or increase\n\n#### **III. Behavior of Gradient Descent in Training**\n   A. **Step Size Adjustment**\n      - Steps shrink as the loss function flattens (less steep gradient)\n   B. **Convergence in Simple Models (e.g., Yes/No Classification)**\n      1. No Local Minima\n         - Loss function has no other low points to get stuck in\n      2. Global Minimum\n         - Gradient descent reliably reaches the lowest loss level\n      3. Perfect Separability\n         - If data is linearly separable, loss can keep decreasing indefinitely (no true minimum)\n\n#### **IV. Challenges in Complex Models (e.g., Large Neural Networks)**\n   A. **Potential for Getting Stuck**\n      - May fail to reach the global minimum\n      - Risk of converging to a suboptimal solution (local minimum or saddle point)\n   B. **Implications for Modern AI (e.g., Chatbots)**\n      - Gradient descent may not guarantee optimal performance in high-dimensional spaces\n\n---\n**Note:** This outline can be expanded with subpoints (e.g., mathematical formulations, visualizations, or real-world applications) as needed.",
+          "usage": {
+            "prompt_tokens": 211,
+            "total_tokens": 570,
+            "completion_tokens": 359,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:12:43.756Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn this text into an outline with headings:\n\nGradient descent is the method that finds each change. It works out which way the loss goes down fastest, and moves the numbers a step that way. The size of each step is set by a number that people choose, called the learning rate. If the learning rate is too small, training takes too long; if it is too big, the loss can bounce around or even go up. In this lesson's run, the steps get smaller round by round, because the slope of the loss gets flatter. For a yes-or-no model like this one, the textbook says the loss has no other low points to get stuck in, so going downhill reaches the lowest level. Several settings can sit at that same lowest level. If a straight line can split the dots perfectly, there is no lowest level at all: the loss keeps falling as the numbers grow. For the large neural networks behind chatbots, the textbook says gradient descent may get stuck and never find the lowest level."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "47c86d28754a4af6b04d849f28e7105a",
+                "created": 1791501163,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 211,
+                  "total_tokens": 570,
+                  "completion_tokens": 359,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "### **Outline: Gradient Descent**\n\n#### **I. Introduction to Gradient Descent**\n   A. Definition\n      - A method for finding the optimal parameters by minimizing loss\n   B. Core Principle\n      - Moves in the direction where the loss decreases most rapidly\n\n#### **II. Key Components of Gradient Descent**\n   A. **Learning Rate**\n      1. Definition\n         - A hyperparameter controlling step size\n      2. Impact of Learning Rate\n         - Too small → Slow convergence\n         - Too large → Loss may oscillate or increase\n\n#### **III. Behavior of Gradient Descent in Training**\n   A. **Step Size Adjustment**\n      - Steps shrink as the loss function flattens (less steep gradient)\n   B. **Convergence in Simple Models (e.g., Yes/No Classification)**\n      1. No Local Minima\n         - Loss function has no other low points to get stuck in\n      2. Global Minimum\n         - Gradient descent reliably reaches the lowest loss level\n      3. Perfect Separability\n         - If data is linearly separable, loss can keep decreasing indefinitely (no true minimum)\n\n#### **IV. Challenges in Complex Models (e.g., Large Neural Networks)**\n   A. **Potential for Getting Stuck**\n      - May fail to reach the global minimum\n      - Risk of converging to a suboptimal solution (local minimum or saddle point)\n   B. **Implications for Modern AI (e.g., Chatbots)**\n      - Gradient descent may not guarantee optimal performance in high-dimensional spaces\n\n---\n**Note:** This outline can be expanded with subpoints (e.g., mathematical formulations, visualizations, or real-world applications) as needed."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+---
+// A lesson's or a pillar's drawing (src/lib/glyphs.ts), decorative: the words beside it name it. Coloured by the
+// element that uses it (currentColor).
+import { lessonGlyph, pillarGlyph, symbolId } from '../lib/glyphs.ts';
+
+const { lesson, pillar, sprite, class: extra } = Astro.props as { lesson?: string; pillar?: string; sprite?: boolean; class?: string };
+const { view, kit, inner } = pillar ? pillarGlyph(pillar) : lessonGlyph(lesson ?? '');
+---
+
+{
+  sprite ? (
+    <svg class:list={[kit ? 'kit' : 'ph', extra]} viewBox={`0 0 ${view} ${view}`} aria-hidden="true" focusable="false"><use href={`#${pillar ? `p-${pillar}` : symbolId(lesson ?? '')}`} /></svg>
+  ) : (
+    <svg class:list={[kit ? 'kit' : 'ph', extra]} viewBox={`0 0 ${view} ${view}`} aria-hidden="true" focusable="false" set:html={inner} />
+  )
+}

@@ -1,0 +1,27 @@
+---
+import { compact, replyHtml } from '../lib/reply-html.ts';
+import { checkText, notFoundText } from '../lib/made-up-answer.ts';
+type Search = { where: string; rule: string; date: string; found: boolean | string; url?: string };
+type Check = Parameters<typeof checkText>[0] & { line: number; note?: string; doi?: string; resolves?: boolean; related?: { note: string; searched?: Search[] }[] }; interface Props { reply: string; lines: Check[]; afterPick?: boolean }
+const { reply, lines, afterPick = false } = Astro.props;
+let numbered = 0; const joined = String.fromCharCode(0x2013, 0x2014);
+// The searches we ran, linked by where they ran; the control searches stay in recorded.yaml and the pack.
+// Keep dash-joined words together in the escaped text nodes, without touching generated tags.
+const formatted = (raw: string) => replyHtml(raw).split(/(<[^>]+>)/).map((part, i) => i % 2 ? part : part.replace(new RegExp(`(\\S+[${joined}]\\S+)`, 'g'), '<span class="answer-token">$1</span>')).join('');
+const ran = (list: Search[] = []) => list.filter((s) => s.url && !s.rule.startsWith('control'));
+---
+<div data-answer tabindex="0" aria-label="Recorded answer text">
+  {reply.split('\n').map((raw) => {
+    const check = raw.trim() ? lines[numbered++] : undefined;
+    const line = <div class="reply" data-answer-line set:html={compact(formatted(raw))} />;
+    return <div>
+      {check?.kind === 'study' ? <div class="study-line"><strong>Study {check.study}: </strong>{line}</div> : line}
+      {check && <p data-check={check.line} class:list={{ 'after-pick': afterPick }}>
+        {checkText(check)} {check.note}
+        {check.doi && <span> Record: {check.resolves ? <a href={`https://doi.org/${check.doi}`}>doi.org/{check.doi.split(/([/.])/g).map((part) => <span class="doi-part">{part}</span>)}</a> : `doi.org/${check.doi}`}.</span>}
+        {ran(check.searched).map((s) => <> <a href={s.url}>Search: {s.where}</a></>)}
+        {check.related?.map((r) => <> Related study: {r.note} {notFoundText(r.searched)}{ran(r.searched).map((s) => <> <a href={s.url}>Search: {s.where}</a></>)}</>)}
+      </p>}
+    </div>;
+  })}
+</div>

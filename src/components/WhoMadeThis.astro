@@ -1,0 +1,8 @@
+---
+// 3.6's "Who made this?" (stage I, static): five invented pieces of work, how to credit each, what its licence allows and a
+// one-line disclosure.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/who-made-this.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Who made this?" name="who-made-this" noun="Piece" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

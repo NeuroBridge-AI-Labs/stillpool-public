@@ -1,0 +1,7 @@
+---
+// p6-0-review-r2 SHOULD-FIX 4: this component imports a src/lib file that its lesson does not list under inputs:.
+import { sortMessages } from '../lib/sort-messages.ts';
+const sorted = sortMessages();
+---
+
+<p>{sorted.length}</p>

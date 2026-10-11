@@ -1,0 +1,24 @@
+---
+tldr:
+  - A model reads your words in small parts. It guesses which part comes next.
+checkin:
+  - question: 'A friend says, "Is it done?" What do you say?'
+    options:
+      - text: Not yet.
+        why: 'The rule says: "The reply is built one small part at a time and each part is picked from the parts that were most likely to come next."'
+glossary:
+  - term: token
+    meaning: A small part of a word. The model reads and writes them one at a time.
+whereNext:
+  title: A page
+  text: One short page about tokens, written for people who are new to them. It is on a different website, with no login and no cost. It sends your clicks to its own server, and it loads files from two other sites. Type nothing private there, and close the page when you are done.
+  url: https://example.org/
+---
+
+<Simple>
+A model reads your words. It cuts them into small parts called tokens. Then it guesses which part comes next. It picks one and adds it to the reply. It does this again and again until the reply is done.
+</Simple>
+
+<Deep>
+Autoregressive transformer architectures factorise the joint probability of a token sequence into conditional distributions, estimated through multi-head self-attention over learned positional representations.
+</Deep>

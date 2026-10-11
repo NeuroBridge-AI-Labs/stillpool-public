@@ -1,0 +1,143 @@
+---
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { load } from 'js-yaml';
+import poster from '../assets/tour-poster.jpg';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Outline from '../components/Outline.astro';
+import Map from '../components/Map.astro';
+import BadgePreview from '../components/BadgePreview.astro';
+
+const order = (load(readFileSync('content/map.yaml', 'utf8')) as { id: string }[]).map((p) => p.id);
+const pillars = (await getCollection('map')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const ORG = 'https://www.neurobridgeedu.eu/#organization';
+const TOUR_SRC: string = '/tour.mp4';
+const captions = TOUR_SRC.replace(/\.mp4$/, '.en.vtt');
+// One source: these paragraphs are the visible transcript and the VideoObject's `transcript`.
+const TRANSCRIPT = [
+  'Welcome to Stillpool: a free place to understand artificial intelligence, and use it well.',
+  'Explore how AI works, how to ask useful questions, how its use affects people, how to use it well, and how these tools are built. Choose a lesson from the map and begin wherever you need.',
+  'Start with a simple explanation, or open the Deep sections for more detail.',
+  'Prefer to listen? Emma reads every part aloud, at the speed you choose.',
+  'Then try a short activity. Each answer comes with an explanation, so you can understand the reasoning and try again.',
+  "Earn a badge by doing the lesson's activity. Finishing a lesson alone does not earn one.",
+  'Adjust the text, spacing and colours to make reading comfortable. Ready? Start with lesson 1.1.',
+];
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': 'https://learn.neurobridgeedu.eu/#website', url: 'https://learn.neurobridgeedu.eu/', name: 'Stillpool', alternateName: 'Stillpool by NeuroBridgeEDU', inLanguage: 'en', publisher: { '@id': ORG } },
+    {
+      '@type': 'Course', '@id': 'https://learn.neurobridgeedu.eu/#course', url: 'https://learn.neurobridgeedu.eu/', name: 'Stillpool: understand AI, and use it well',
+      description: `A free AI literacy course: ${(await getCollection('lessons')).length} short lessons in ${pillars.length} topics. No account, no cookies, no adverts.`,
+      inLanguage: 'en', isAccessibleForFree: true, license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/', teaches: pillars.map((p) => p.data.title), provider: { '@id': ORG }, publisher: { '@id': ORG },
+    },
+    ...(TOUR_SRC ? [{
+      '@type': 'VideoObject', '@id': 'https://learn.neurobridgeedu.eu/#tour', name: 'Stillpool demo tour',
+      description: 'A 50-second tour of a Stillpool lesson, an activity and a badge, with captions and read aloud.',
+      thumbnailUrl: new URL(poster.src, Astro.site).href, contentUrl: new URL(TOUR_SRC, Astro.site).href,
+      uploadDate: '2026-10-09T22:33:20+01:00', duration: 'PT50S', inLanguage: 'en', transcript: TRANSCRIPT.join(' '),
+    }] : []),
+    { '@type': 'Organization', '@id': ORG, name: 'NeuroBridgeEDU', url: 'https://www.neurobridgeedu.eu/', founder: { '@id': 'https://emmi.zone/#person' } },
+    { '@type': 'Person', '@id': 'https://emmi.zone/#person', name: 'Emanuel Covasa', url: 'https://emmi.zone/' },
+  ],
+};
+---
+
+<Base title="Stillpool: free lessons about AI | NeuroBridgeEDU" description="Free lessons on how AI works, how to ask useful questions, how its use affects people. They also cover how to use it well, and how these tools are built." ld={ld} wide>
+  <div class="band">
+    <div class="frame hero">
+      <div>
+        {/* Emanuel's choice (27-09-26): a short, plain welcome and one Start button, above the map. */}
+        <h1>Understand AI, and <span>use it well.</span></h1>
+        <p class="intro">AI means artificial intelligence: computer systems that do tasks such as working with language or recognising images. These free lessons explain how AI works, how to ask useful questions, how its use affects people. They also cover how to use it well, and how these tools are built. Choose a simple explanation or more detail.</p>
+        <a class="start" href="/learn/how-ai-works/what-ai-is-and-is-not/">
+          Start with lesson 1.1
+          <span class="start-icon"><Icon name="arrow-right" /></span>
+          <svg class="orbit" aria-hidden="true" focusable="false"><rect class="orbit-edge" /><g class="orbit-light"><rect class="tail" pathLength="100" /><rect class="mid" pathLength="100" /><rect class="head" pathLength="100" /></g></svg>
+        </a>
+        <label class="hero-switch switch"><input type="checkbox" name="motion" value="reduce" form="settings-form" />Reduce motion</label>
+        <p class="device-note">Your device asks for reduced motion, so this page stays still.</p>
+        <p class="intro">A prompt is the words you type to ask an AI for something. You can try writing one in the optional <a href="/lab/">practice lab</a>.</p>
+      </div>
+      {/* The video slot (Emanuel's round 2): the 50-second tour plays in .poster, with its captions and its own
+          controls; the arcs and the caption stay. Without a tour, the poster picture shows alone. */}
+      <figure class:list={['media', { tour: TOUR_SRC }]}>
+        <div class="surface">
+          <svg class="deco tr" viewBox="0 0 248 188" aria-hidden="true" focusable="false">
+            <path d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <path class="outer" d="M104 8H184A56 56 0 0 1 240 64V104" />
+            <path class="tip" data-node="0" pathLength="100" stroke-dasharray="12 88" d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <path class="tip" data-node="1" pathLength="100" stroke-dasharray="0 88 12" d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <path class="tip" data-node="2" pathLength="100" stroke-dasharray="18 82" d="M104 8H184A56 56 0 0 1 240 64V104" />
+            <path class="pulse tail" pathLength="100" d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <path class="pulse mid" pathLength="100" d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <path class="pulse head" pathLength="100" d="M24 28H184A36 36 0 0 1 220 64V164" />
+            <g class="node"><circle class="halo" cx="24" cy="28" r="12" /><circle class="core" cx="24" cy="28" r="4" /></g>
+            <g class="node"><circle class="halo" cx="220" cy="164" r="12" /><circle class="core" cx="220" cy="164" r="4" /></g>
+            <g class="node amber"><circle class="halo" cx="104" cy="8" r="12" /><circle class="core" cx="104" cy="8" r="4" /></g>
+          </svg>
+          <svg class="deco bl" viewBox="0 0 248 188" aria-hidden="true" focusable="false">
+            <path d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <path class="outer" d="M8 84V124A56 56 0 0 0 64 180H144" />
+            <path class="tip" data-node="3" pathLength="100" stroke-dasharray="12 88" d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <path class="tip" data-node="4" pathLength="100" stroke-dasharray="0 88 12" d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <path class="tip" data-node="5" pathLength="100" stroke-dasharray="0 82 18" d="M8 84V124A56 56 0 0 0 64 180H144" />
+            <path class="pulse tail" pathLength="100" d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <path class="pulse mid" pathLength="100" d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <path class="pulse head" pathLength="100" d="M28 24V124A36 36 0 0 0 64 160H224" />
+            <g class="node"><circle class="halo" cx="28" cy="24" r="12" /><circle class="core" cx="28" cy="24" r="4" /></g>
+            <g class="node"><circle class="halo" cx="224" cy="160" r="12" /><circle class="core" cx="224" cy="160" r="4" /></g>
+            <g class="node"><circle class="halo" cx="144" cy="180" r="12" /><circle class="core" cx="144" cy="180" r="4" /></g>
+          </svg>
+          <div class="poster">
+            {
+              TOUR_SRC ? (
+                <video class="tour-video" aria-label="Stillpool demo tour" src={TOUR_SRC} poster={poster.src} width={poster.width} height={poster.height} playsinline controls preload="none">
+                  <track kind="captions" srclang="en" label="English" src={captions} default />
+                </video>
+              ) : (
+                <img src={poster.src} width={poster.width} height={poster.height} fetchpriority="high" alt="" />
+              )
+            }
+          </div>
+        </div>
+        <figcaption class="poster-copy">
+          <span class="poster-label"><Icon name="video-camera" />Demo video</span>
+          <p class="poster-text">
+            <strong>{TOUR_SRC ? 'An approximately 50-second tour' : 'A tour is coming'}</strong>
+            <span>See a lesson, an activity and a badge, with captions and read aloud.</span>
+          </p>
+        </figcaption>
+        {
+          TOUR_SRC && (
+            <>
+              <div class="tour-tools">
+                <button type="button" class="tour-enlarge">Enlarge video</button>
+                <details class="tour-transcript">
+                  <summary>Transcript</summary>
+                  {TRANSCRIPT.map((p) => <p>{p}</p>)}
+                </details>
+              </div>
+              <p class="tour-error" hidden>The tour video could not load. The picture above is all that shows for now.</p>
+              <dialog class="tour-dialog" aria-label="Demo video, enlarged">
+                <form method="dialog"><button>Close</button></form>
+              </dialog>
+            </>
+          )
+        }
+      </figure>
+    </div>
+  </div>
+  <div class="frame front">
+    <p id="restore-status" aria-live="polite"></p>
+    <Map />
+    <Outline />
+    <BadgePreview />
+  </div>
+</Base>
+
+<script>
+  import '../home.ts';
+</script>

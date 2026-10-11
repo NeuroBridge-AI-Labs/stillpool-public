@@ -1,0 +1,71 @@
+---
+// /done/<pillar>/<slug>/ (plan T8.1): marks the lesson finished on load, shows it on the map as just finished, then
+// the save code and the lesson's Where next.
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import '../../styles/done.css';
+import Emblem from '../../components/Emblem.astro';
+import Map from '../../components/Map.astro';
+import SaveCode from '../../components/SaveCode.astro';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((lesson) => ({ params: { slug: lesson.id }, props: { lesson } }));
+}
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lesson } = Astro.props;
+const { title, whereNext } = lesson.data;
+---
+
+<Base title={`Lesson finished: ${title}`} noindex wide>
+  <div class="frame done-page">
+    <header class="done-summary">
+      <h1 data-finish={lesson.id}>Lesson finished</h1>
+      <p class="done-title">{title}</p>
+      <p>This lesson is marked as finished on this device. Nothing here is a test, and you can leave whenever you like.</p>
+      <p class="needs-js">Your progress needs JavaScript, which is off in this browser, so nothing here is kept.</p>
+      <div class="done-badge" data-pending>
+        <p class="earned-note" hidden>
+          <Emblem lesson={lesson.id} label="Badge earned" sprite />
+          <span>Badge earned.</span>
+        </p>
+        <p class="badge-missing">
+          Your badge is earned separately. A check-in is a few short questions near the end of a lesson, and answering them earns the badge.{' '}
+          <a href={`/learn/${lesson.id}/#part-checkin`}>Go to the check-in</a>
+        </p>
+      </div>
+    </header>
+    <div class="done-actions">
+      <section class="done-save" aria-labelledby="done-save">
+        <h2 id="done-save">Your save code</h2>
+        <p>Keep this code to restore your finished lessons and badges in another browser or on another device. Your progress stays in this browser until you do.</p>
+        <SaveCode />
+      </section>
+      <section class="done-next" aria-labelledby="done-next">
+        <h2 id="done-next">Where next</h2>
+        <p>{whereNext.text}</p>
+        <p>{whereNext.url ? <a href={whereNext.url}>{whereNext.title}</a> : whereNext.title}</p>
+        <p><a href="/feedback/">Tell us what you thought of this lesson</a></p>
+      </section>
+    </div>
+    <Map here={lesson.id} />
+  </div>
+</Base>
+
+<script>
+  import { finish, localProgressChange, progress } from '../../progress/store.ts';
+
+  const id = document.querySelector<HTMLElement>('[data-finish]')?.dataset.finish;
+  if (id) finish(id);
+  // Finished is not earned: the badge comes from the check-in, so say which of the two this learner has.
+  const badge = (earned: boolean) => {
+    document.querySelector<HTMLElement>('.done-badge')!.removeAttribute('data-pending');
+    document.querySelector<HTMLElement>('.done-badge .earned-note')!.hidden = !earned;
+    document.querySelector<HTMLElement>('.done-badge .badge-missing')!.hidden = earned;
+  };
+  const sync = () => badge(!!id && progress.get().badges.includes(id));
+  progress.listen(() => { if (localProgressChange) sync(); });
+  sync();
+</script>

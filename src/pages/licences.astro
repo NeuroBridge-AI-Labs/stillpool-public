@@ -1,0 +1,34 @@
+---
+import { readFileSync } from 'node:fs';
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+import LicencesPlain from '../components/LicencesPlain.astro';
+import { blocks, pieces } from '../lib/licences.ts';
+// Polish U6: the same file that is served at /licences.txt (src/lib/licences.ts).
+const source = readFileSync('public/licences.txt', 'utf8');
+const [heading, ...rest] = source.split('\n');
+const [, ...body] = blocks(source);
+// One visible link to the public source on this page: the plain-language block above has it, so here it is plain text.
+const SOURCE = 'https://github.com/NeuroBridge-AI-Labs/stillpool-public';
+---
+
+<Base title="Licences and credits" description="Licences and credits for Stillpool: the lessons, the code and everything the site ships." wide>
+  <InfoPage title={heading} toc={[{ id: 'what-licences-allow', title: 'What the licences let you do' }, { id: 'credits', title: 'Credits' }]}>
+  <p slot="intro" class="lede">{rest.find((line) => line.trim())}</p>
+  <LicencesPlain level="h2" />
+  <h2 id="credits">Credits</h2>
+  <div class="credits">
+  {
+    body.map(({ text, items }) => (
+      <Fragment>
+        {text && <p>{pieces(text).map((p) => (p.href && p.href !== SOURCE ? <a href={p.href} rel="noopener">{p.text}</a> : p.text))}</p>}
+        {items.length > 0 && (
+          <ul>{items.map((item) => <li>{pieces(item).map((p) => (p.href && p.href !== SOURCE ? <a href={p.href} rel="noopener">{p.text}</a> : p.text))}</li>)}</ul>
+        )}
+      </Fragment>
+    ))
+  }
+  </div>
+  <p>The same list as plain text: <a href="/licences.txt">licences.txt</a>. Two notices word for word: <a href="/notices/">Notices</a>.</p>
+  </InfoPage>
+</Base>

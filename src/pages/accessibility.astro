@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// What is tested is what the repo runs: checks/axe.ts (every page in every theme of tokens.css), checks/lhci.ts, checks/contrast.ts
+// and the keyboard paths in e2e/. Limits are the ones the brief of 05-10-26 names. No conformance is claimed, only a target.
+const toc = [
+  { id: 'commitment', title: 'Our commitment' },
+  { id: 'target', title: 'The standard we aim for' },
+  { id: 'tested', title: 'What is tested' },
+  { id: 'help', title: 'Settings that help' },
+  { id: 'limits', title: 'Known limits' },
+  { id: 'report', title: 'Report a barrier' },
+];
+---
+
+<Base title="Accessibility statement" description="The accessibility statement for Stillpool, the free AI lessons by NeuroBridgeEDU." wide>
+  <InfoPage title="Accessibility statement" {toc} updated="5 October 2026">
+    <p slot="intro" class="lede">
+      Stillpool is made for neurodivergent learners first, so it is built to be used in different ways: by keyboard, by ear, in large text, with
+      less movement and with fewer things on the screen.
+    </p>
+
+    <h2 id="commitment">Our commitment</h2>
+    <p>
+      Anyone should be able to read, hear and use these lessons. If something stops you, that is a fault in the site and we want to hear about it.
+    </p>
+
+    <h2 id="target">The standard we aim for</h2>
+    <p>
+      The Web Content Accessibility Guidelines (WCAG) are the international rules for accessible websites. Stillpool aims to meet WCAG 2.2 at level
+      AA. That is a target, not a certificate: it has not been audited by an outside body, and this page does not claim it is met everywhere.
+    </p>
+
+    <h2 id="tested">What is tested</h2>
+    <p>Every change to the site is held to these automatic checks:</p>
+    <ul>
+      <li>An accessibility scan (axe-core, with its WCAG 2.2 rules) of every page in every colour theme: light, dark and high contrast.</li>
+      <li>A Lighthouse accessibility score of 1 on every page.</li>
+      <li>A contrast check of the colours used for text, links, borders and the focus mark, on every background, in every theme.</li>
+      <li>Tests that move through pages and activities with the keyboard alone, and check that the focus mark is visible.</li>
+    </ul>
+    <p>These checks find many problems, not all of them. A person using a screen reader can find what a machine cannot.</p>
+
+    <h2 id="help">Settings that help</h2>
+    <p>The Settings button is in the same place on every page. Changes apply at once and stay in this browser.</p>
+    <ul>
+      <li><strong>Reading:</strong> the font, including one made for dyslexia, the text size and the space between letters, words and lines.</li>
+      <li><strong>Colour and movement:</strong> light, dark, high contrast, or match your device, and a switch to reduce motion. The site also follows your device's own reduced motion setting.</li>
+      <li><strong>Focus:</strong> a reading ruler, and Focus mode, which hides everything around the lesson.</li>
+      <li><strong>Simple and Deep:</strong> each part is written in short, plain words first, with the detail one switch away.</li>
+      <li><strong>Listening:</strong> Read aloud, with a recorded voice made for this site or a voice on your device, at normal speed or up to 1.5 times faster.</li>
+      <li><strong>Text versions:</strong> a switch to show the activities as plain text.</li>
+      <li><strong>Progress:</strong> a switch to hide your progress.</li>
+    </ul>
+    <p>Every page can be used with the keyboard, and a link or control shows a clear mark when it has focus.</p>
+
+    <h2 id="limits">Known limits</h2>
+    <ul>
+      <li>A person has not yet tested the whole site with a keyboard and a screen reader. That pass is still to come.</li>
+      <li>The demo video is not out yet, so there is no captioned video.</li>
+      <li>Read aloud with a device voice depends on the voices your device has. A device with none can use only the recorded voice.</li>
+    </ul>
+
+    <h2 id="report">Report a barrier</h2>
+    <p>
+      Write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>. It helps to say which page, what device and browser you
+      used, and what stopped you. We do not promise a reply time, but every report is read. Method and wording follow the
+      <a href="https://www.w3.org/WAI/planning/statements/" rel="noopener">W3C guidance on accessibility statements</a>.
+    </p>
+    <p>
+      If you are in Ireland and are not satisfied with a reply, you can contact the National Disability Authority at
+      <a href="https://nda.ie" rel="noopener">nda.ie</a>.
+    </p>
+  </InfoPage>
+</Base>

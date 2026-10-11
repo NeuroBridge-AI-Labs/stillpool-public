@@ -1,0 +1,84 @@
+---
+import { readFileSync } from 'node:fs';
+import { recorded, recording } from '../lesson-schema.ts';
+import { fill, labelsIfReady, summary, WORDS } from '../lib/still-know-name.ts';
+import Shell from './Shell.astro';
+type Msg = { role: string; content: string };
+const file = `${process.env.RECORDED_FIXTURE === '1' ? 'fixtures' : 'data'}/recorded/R-1.8.json`;
+const said = 'content/how-ai-works/attention-and-the-context-window/recorded.yaml';
+const entry = labelsIfReady(file, said);
+const labels = entry ? recorded.parse({ 'R-1.8': entry })['R-1.8'].runs?.map((r) => r.answer) : undefined;
+const rec = labels ? recording.parse(JSON.parse(readFileSync(file, 'utf8'))) : undefined;
+const { kept = [], dropped = [] } = (rec?.trim ?? {}) as { kept?: Msg[]; dropped?: Msg[][] };
+const cut = dropped.flat();
+const chat = [...cut, ...kept];
+const runs = (rec?.variants[0].runs ?? []).map((r) => ({ reply: r.reply, call: r.calls?.at(-1) as { at: string; request: { max_tokens: number }; response: { model: string; usage: { prompt_tokens: number; completion_tokens: number } } } }));
+const num = (n: number) => n.toLocaleString('en-IE');
+const day = (d: string) => new Date(d).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const card = rec?.model.card as { max_context_length: number; default_model_temperature: number | null } | undefined;
+const recordedOn = rec ? day(rec.date) : '';
+const words = kept.reduce((n, m) => n + [...new Intl.Segmenter('en', { granularity: 'word' }).segment(m.content)].filter((s) => s.isWordLike).length, 0);
+const who = (m: Msg) => (m.role === 'user' ? 'You' : 'AI');
+const TITLE = 'Will it still know your name?';
+// ponytail: R-1.8 stores a default of 0.3; a null one leaves [value] empty, so fill() fails the build until the brief's
+// null-default line is added.
+const shown = runs.map(({ reply, call: { at, request, response } }, i) => ({
+  reply,
+  lines: [
+    ['check', WORDS.check[labels![i]]],
+    ['meta', `${rec!.model.name} (${response.model}), on ${rec!.model.host}. ${day(at)}, ${at.slice(11, 16)} UTC.`],
+    ['tokens', `Tokens, as Mistral counted them: ${num(response.usage.prompt_tokens)} sent and ${num(response.usage.completion_tokens)} in this answer.`],
+    ['settings', fill(WORDS.settings, { value: card?.default_model_temperature?.toString() ?? '', date: recordedOn, max_tokens: num(request.max_tokens) })],
+  ],
+}));
+---
+{
+  !rec ? (
+    <section data-part="tryit" aria-labelledby="part-try-it">
+      <h2 id="part-try-it">Try it: {TITLE}</h2>
+      {WORDS.pending.map((p) => <p>{p}</p>)}
+    </section>
+  ) : (
+    <Shell title={TITLE} reveal={WORDS.reveal} class="still-know-name">
+      {WORDS.setup.map((p) => <p>{p}</p>)}
+      <p>{fill(WORDS.model, { 'model name': rec.model.name, date: recordedOn })}</p>
+      <p class="as-text">{WORDS.asText}</p>
+      <ul class="chat shape">
+        <li class="msg"><strong>{who(chat[0])}:</strong> <span>{chat[0].content}</span></li>
+        <li><details><summary>{WORDS.rest}</summary><ul class="chat">{chat.slice(1, -1).map((m) => <li class="msg"><strong>{who(m)}:</strong> <span>{m.content}</span></li>)}</ul></details></li>
+        <li class="msg"><strong>{who(chat.at(-1)!)}:</strong> <span>{chat.at(-1)!.content}</span></li>
+      </ul>
+      {[WORDS.know, WORDS.sent].map((q, n) => (
+        <fieldset>
+          <legend>{q.question}</legend>
+          {q.options.map((o, i) => <label><input type="radio" name={`still-know-name-${n}`} value={i + 1} data-said={q.said[i]} />{o}</label>)}
+          {n === 0 && <p>{WORDS.noWrong}</p>}
+        </fieldset>
+      ))}
+      <Fragment slot="after">
+        <p>{WORDS.here}</p>
+        <section class="cut" aria-labelledby="still-cut">
+          <h3 id="still-cut">{WORDS.cut}</h3>
+          <ul class="chat"><li class="msg"><strong class="name-here">{WORDS.nameHere}</strong> <strong>{who(cut[0])}:</strong> <span>{cut[0].content}</span></li></ul>
+          <p>{fill(WORDS.moreCut, { K: num(cut.length - 1) })}</p>
+          <details><summary>{WORDS.otherCut}</summary><ul class="chat">{cut.slice(1).map((m) => <li class="msg"><strong>{who(m)}:</strong> <span>{m.content}</span></li>)}</ul></details>
+        </section>
+        <section class="window" aria-labelledby="still-window">
+          <h3 id="still-window">{WORDS.window}</h3>
+          {[WORDS.trim, WORDS.limit, fill(WORDS.sentTokens, { P: num(runs[0].call.response.usage.prompt_tokens) }), fill(WORDS.words, { W: num(words) })].map((p) => <p>{p}</p>)}
+          <details><summary>{WORDS.how}</summary><p>{WORDS.counted}</p></details>
+          <p>{fill(WORDS.earlier, { M: num(kept.length - 3) })}</p>
+          <details><summary>{WORDS.otherSent}</summary><ul class="chat">{kept.slice(0, -3).map((m) => <li class="msg"><strong>{who(m)}:</strong> <span>{m.content}</span></li>)}</ul></details>
+          <ul class="chat">{kept.slice(-3).map((m) => <li class="msg"><strong>{who(m)}:</strong> <span>{m.content}</span></li>)}</ul>
+        </section>
+        {shown.slice(0, 1).map((r) => <article class="run" aria-label={WORDS.answerLabel}><h3>{WORDS.answer}</h3><p class="reply">{r.reply}</p>{r.lines.map(([c, t]) => <p class={c}>{t}</p>)}</article>)}
+        <div class="summary">{summary(labels!).map((s) => <p>{s}</p>)}</div>
+        <details>
+          <summary>{WORDS.allRuns}</summary>
+          {shown.map((r, i) => <article class="run" aria-label={`Run ${i + 1}`}><h4>Run {i + 1}</h4><p class="reply">{r.reply}</p>{r.lines.map(([c, t]) => <p class={c}>{t}</p>)}</article>)}
+        </details>
+        {[WORDS.result, fill(WORDS.most, { max_context_length: num(card!.max_context_length), 'date read': recordedOn }), WORDS.onward].map((p) => <p>{p}</p>)}
+      </Fragment>
+    </Shell>
+  )
+}

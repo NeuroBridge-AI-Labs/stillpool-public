@@ -1,0 +1,47 @@
+---
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { load } from 'js-yaml';
+import Base from '../layouts/Base.astro';
+import { numbers } from '../contents.ts';
+import '../styles/search.css';
+// Search (plan T9.2, D12): a type-ahead over the lesson titles, built here from the map's order (the same read as Map.astro), and
+// Pagefind's index of the lesson pages for free text, loaded only when the reader searches (src/search.ts). A result is a
+// link and its excerpt as plain text, never markup. The title list carries id, title, url, number and pillar, nothing more.
+const built = await getCollection('lessons');
+const byId = new Map(built.map((l) => [l.id, l]));
+const numbered = numbers(built);
+const order = (load(readFileSync('content/map.yaml', 'utf8')) as { id: string }[]).map((p) => p.id);
+const pillars = (await getCollection('map')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const lessons = pillars.flatMap(({ data: p }) =>
+  p.topics.flatMap((t) =>
+    t.lessons.flatMap((slug) => {
+      const id = `${p.id}/${slug}`;
+      const lesson = byId.get(id);
+      return lesson ? [{ id, title: lesson.data.title, url: `/learn/${id}/`, number: numbered.get(id), pillar: p.title }] : [];
+    }),
+  ),
+);
+---
+
+<Base title="Search" noindex>
+  <h1>Search</h1>
+  <p class="needs-js">Search needs JavaScript, which is off in this browser.</p>
+  <form id="search" role="search" data-lessons={JSON.stringify(lessons)}>
+    <label for="q">Search the lessons</label>
+    <div class="search-row">
+      <div class="combo">
+        <input id="q" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions" autocomplete="off" required />
+        <ul id="suggestions" role="listbox" aria-label="Lesson titles" hidden></ul>
+      </div>
+      <button type="submit">Search</button>
+    </div>
+  </form>
+  <p role="status" id="search-status"></p>
+  <ul id="results" aria-label="Results"></ul>
+  <p id="search-map" hidden><a href="/">Browse the lesson map</a></p>
+</Base>
+
+<script>
+  import '../search.ts';
+</script>

@@ -1,0 +1,401 @@
+{
+ "id": "R-5.5",
+ "model": {
+  "id": "test-fixture-model-a",
+  "name": "Test fixture model A",
+  "host": "Test fixture host A"
+ },
+ "date": "2000-01-01",
+ "settings": {
+  "max_tokens": 4000,
+  "temperature": "not set, so the model's default",
+  "tools": "no tools",
+  "system prompt": "in each variant that has one"
+ },
+ "variants": [
+  {
+   "label": "Q1",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q1"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q1 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q1",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q1"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q1 B run 1 Test fixture altered piece."
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q2",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q2 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q2",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q2 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q3",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q3"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q3 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q3",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q3"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q3 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q4",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q4"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q4 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q4",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q4"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q4 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q5",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q5"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q5 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q5",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q5"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q5 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q6",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q6"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q6 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q6",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q6"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q6 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q7",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q7"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q7 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q7",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q7"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q7 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  },
+  {
+   "label": "Q8",
+   "maker": "A",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q8"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q8 A run 1"
+    }
+   ]
+  },
+  {
+   "label": "Q8",
+   "maker": "B",
+   "system": "Test fixture instruction.",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Test fixture sent Q8"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply Q8 B run 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   }
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+---
+// Reads R-9.9 by a built path, which no string rule sees; the recording itself is what fails (p6-0-review S4).
+const DIR = "data";
+const id = "R-9.9";
+const rec = await import(`../../${DIR}/recorded/${id}.json`);
+---
+<p>{rec.note}</p>

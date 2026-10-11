@@ -1,0 +1,75 @@
+---
+// 4.8's "Same text, your way" (stage II, R-4.8): one paragraph, four kinds of copy from two tools. Predict which copy to read,
+// how many kinds lost something and which key point went missing most; then the recorded summary, the two tools, and "Show me:"
+// puts one kind of copy from each tool side by side. Each recorded run is in the page once (in "Show all runs") and the script
+// copies it into the slots, as Runs does. As text, or without JavaScript, the slots are empty and every copy is written out.
+import { cut, loadRecorded, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import { ASK, COPIES, FACTS, NOTICE, ORIGINAL } from '../lib/same-text-your-way.ts';
+import AllRuns from './AllRuns.astro';
+import Shell from './Shell.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-4.8', 'ai-for-access', 'using-ai-well');
+const asked = (label: string) => variantOf(rec, label, 'A').messages![0].content.split('\n')[0];
+---
+
+<Shell title="Same text, your way" reveal="Show what happened" class="same-text-your-way">
+  <p>We gave two AI tools this paragraph from lesson 1.7, Training. We asked each for four copies of it: a summary, plain words, bullet points and an outline.</p>
+  <blockquote class="sent">{cut(ORIGINAL, FACTS.map((f) => f.span)).map(([t, bold]) => (bold ? <strong>{t}</strong> : t))}</blockquote>
+  <p>These are five of the ten key points in the paragraph, in bold above. We wrote down a list of ten and compared each copy with it.</p>
+  <ol>{FACTS.map((f) => <li>{f.point}</li>)}</ol>
+  {
+    ASK.map((q) => (
+      <fieldset>
+        <legend>{q.question}</legend>
+        {q.choices.map(([text, after], i) => <label><input type="radio" name={`same-${q.name}`} value={i + 1} data-said={after} data-copy={q.name === 'first' ? COPIES[i].label : undefined} />{text}</label>)}
+        {q.name === 'first' && <p>There is no wrong choice here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>What all the copies showed</h3>
+    {paragraphs(said).map((p) => <p>{p}</p>)}
+    <TheAIs rec={rec} labels={COPIES.map((c) => c.label)} />
+    <fieldset class="show-me">
+      <legend>Show me:</legend>
+      {COPIES.map((c) => <label><input type="radio" name="same-show" value={c.label} />{c.name}</label>)}
+    </fieldset>
+    <p aria-live="polite" data-status></p>
+    <div class="runs-pair" data-versions>
+      <div class="slot" data-slot data-maker="A"></div>
+      <div class="slot" data-slot data-maker="B"></div>
+      <p class="as-text">These copies are written out in full at the end of this activity.</p>
+    </div>
+    <p>{NOTICE}</p>
+    <AllRuns rec={rec} said={said} labels={COPIES.map((c) => [c.label, `${c.name}. We asked: "${asked(c.label)}"`])} />
+  </Fragment>
+</Shell>
+
+<script>
+  const html = document.documentElement;
+  const shell = document.querySelector<HTMLElement>('.same-text-your-way');
+  const group = shell?.querySelector<HTMLElement>('[data-versions]');
+  const status = shell?.querySelector<HTMLElement>('[data-status]');
+  if (shell && group && status) {
+    const radios = [...shell.querySelectorAll<HTMLInputElement>('input[name="same-show"]')];
+    const slots = [...group.querySelectorAll<HTMLElement>('[data-slot]')];
+    const fill = () => {
+      const label = radios.find((r) => r.checked)?.value;
+      const showing = label && !html.hasAttribute('data-textversion');
+      status.textContent = showing ? `Showing the ${label} copy from both tools.` : ''; // the replies stay outside the live region
+      for (const slot of slots) {
+        const run = showing ? document.querySelector(`.all-runs [data-key="${label}|${slot.dataset.maker}|1"]`) : null;
+        slot.replaceChildren(...(run ? [run.cloneNode(true)] : []));
+      }
+    };
+    radios.forEach((r) => r.addEventListener('change', fill));
+    // The first question's choice is shown at the reveal; the text setting can change after the page loads.
+    new MutationObserver(() => {
+      const first = shell.querySelector<HTMLInputElement>('input[data-copy]:checked')?.dataset.copy;
+      if (shell.classList.contains('revealed') && !radios.some((r) => r.checked)) radios.find((r) => r.value === first)!.checked = true;
+      fill();
+    }).observe(shell, { attributes: true, attributeFilter: ['class'] });
+    new MutationObserver(fill).observe(html, { attributes: true, attributeFilter: ['data-textversion'] });
+  }
+</script>

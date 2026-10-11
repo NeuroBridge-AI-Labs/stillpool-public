@@ -1,0 +1,1563 @@
+{
+  "id": "R-5.5",
+  "model": {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-10-08",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "Q1",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] token (from the lesson \"Attention and the context window\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[2] token (from the lesson \"Context\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: What is a token?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "A token is \"a small piece of text, often part of a word, that a language model works with\" [1]. The same definition appears in another lesson [2]. A third passage describes it slightly differently, as \"a small piece of text that an AI reads, such as a word, part of a word or a letter\" [3].",
+          "usage": {
+            "input_tokens": 246,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 90,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:33:49.607Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] token (from the lesson \"Attention and the context window\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[2] token (from the lesson \"Context\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: What is a token?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqeMjQbLxsU9Mhu3aEKU",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "A token is \"a small piece of text, often part of a word, that a language model works with\" [1]. The same definition appears in another lesson [2]. A third passage describes it slightly differently, as \"a small piece of text that an AI reads, such as a word, part of a word or a letter\" [3]."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 246,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 90,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q1",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] token (from the lesson \"Attention and the context window\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[2] token (from the lesson \"Context\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: What is a token?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The passages describe a **token** as \"a small piece of text, often part of a word, that a language model works with\" [1].\n\nThey also define it as \"a small piece of text, often part of a word, that a language model works with\" [2].\n\nAdditionally, it is described as \"a small piece of text that an AI reads, such as a word, part of a word, or a letter\" [3].",
+          "usage": {
+            "prompt_tokens": 197,
+            "total_tokens": 291,
+            "completion_tokens": 94,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:33:51.562Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] token (from the lesson \"Attention and the context window\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[2] token (from the lesson \"Context\"): A small piece of text, often part of a word, that a language model works with (lesson 1.3).\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: What is a token?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "94d568fe083c4f65a14b4993c2796e9d",
+                "created": 1791502431,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 197,
+                  "total_tokens": 291,
+                  "completion_tokens": 94,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The passages describe a **token** as \"a small piece of text, often part of a word, that a language model works with\" [1].\n\nThey also define it as \"a small piece of text, often part of a word, that a language model works with\" [2].\n\nAdditionally, it is described as \"a small piece of text that an AI reads, such as a word, part of a word, or a letter\" [3]."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q2",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] language model (from the lesson \"Tokens\"): A program trained on a large amount of text that works out a likely next piece of text. Chatbots like ChatGPT run on large ones.\n[2] language model (from the lesson \"The next word\"): A program trained on a large amount of text that works out chances for the next piece of text. Chatbots like ChatGPT run on large ones.\n[3] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n\nQuestion: What does temperature change in a language model?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "The passages do not say what temperature changes in a language model. They define a language model [1][2] and attention [3], but none of them mentions temperature, so I can't answer the question from them.",
+          "usage": {
+            "input_tokens": 299,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 57,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:33:59.662Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] language model (from the lesson \"Tokens\"): A program trained on a large amount of text that works out a likely next piece of text. Chatbots like ChatGPT run on large ones.\n[2] language model (from the lesson \"The next word\"): A program trained on a large amount of text that works out chances for the next piece of text. Chatbots like ChatGPT run on large ones.\n[3] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n\nQuestion: What does temperature change in a language model?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqeNTEGiLYwZ4aBwyw4j",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "The passages do not say what temperature changes in a language model. They define a language model [1][2] and attention [3], but none of them mentions temperature, so I can't answer the question from them."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 299,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 57,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q2",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] language model (from the lesson \"Tokens\"): A program trained on a large amount of text that works out a likely next piece of text. Chatbots like ChatGPT run on large ones.\n[2] language model (from the lesson \"The next word\"): A program trained on a large amount of text that works out chances for the next piece of text. Chatbots like ChatGPT run on large ones.\n[3] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n\nQuestion: What does temperature change in a language model?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The passages provided do not answer the question about what temperature changes in a language model.",
+          "usage": {
+            "prompt_tokens": 223,
+            "total_tokens": 241,
+            "completion_tokens": 18,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:01.201Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] language model (from the lesson \"Tokens\"): A program trained on a large amount of text that works out a likely next piece of text. Chatbots like ChatGPT run on large ones.\n[2] language model (from the lesson \"The next word\"): A program trained on a large amount of text that works out chances for the next piece of text. Chatbots like ChatGPT run on large ones.\n[3] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n\nQuestion: What does temperature change in a language model?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "2c4c7116e4b644f6ba6d67e81851199b",
+                "created": 1791502441,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 223,
+                  "total_tokens": 241,
+                  "completion_tokens": 18,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The passages provided do not answer the question about what temperature changes in a language model."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q3",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] tag character (from the lesson \"Context\"): One of 96 Unicode characters, from U+E0020 to U+E007F. The first 95 match plain ASCII characters. The last one ends a tag.\n[2] Unicode (from the lesson \"Context\"): A standard that gives every character a number, so different computers can share text.\n[3] code point (from the lesson \"Context\"): A character's number in Unicode, written like U+200B.\n\nQuestion: How many tag characters are there in Unicode, and what are they used for?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Unicode has 96 tag characters, ranging from U+E0020 to U+E007F [1]. According to the passage, \"The first 95 match plain ASCII characters\" [1]. The last one \"ends a tag\" [1]. The passages say nothing more about what tag characters are used for, so I can't give a fuller answer [1].",
+          "usage": {
+            "input_tokens": 265,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 379,
+            "output_tokens_details": {
+              "thinking_tokens": 272
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:01.694Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] tag character (from the lesson \"Context\"): One of 96 Unicode characters, from U+E0020 to U+E007F. The first 95 match plain ASCII characters. The last one ends a tag.\n[2] Unicode (from the lesson \"Context\"): A standard that gives every character a number, so different computers can share text.\n[3] code point (from the lesson \"Context\"): A character's number in Unicode, written like U+200B.\n\nQuestion: How many tag characters are there in Unicode, and what are they used for?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqeNbYLKoKgtskAosUza",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQStwoKEAgSGAI4AUIIdGhpbmtpbmcSDEAq7rsYLJz6i4MZiRoM5XUUVjzW97zImsLrIjCFlJZiYTiIFs4JN9sON4X+CYSfT1uhP1jM6LmLj2ZKpO7fLx+qkio09UWboiriI/Iq1AlBntacI+ihXJsg1XIrXbmFEjQidBCbzsfaAj/TIXLopVdoLM+Niiqgf4puNBmxln0DqAWbH1skjkW9EtgawNRqcqBpkDiTZpQ4OfqTol8Z6SJJBV1re0h0SdxBbpM0GTlMfRZSyJ4npREWYUgyGwi910pc6DjT7rWIcMFhU9N4IrBt0CcJoWs4PoAOUx/JEobZcgPuHd4FH4G/n1ATWHPf2jPBgPR3u/iM3u7fBbWczBgCAUEBJht3ZuQiYn6K/Z3rrBP+u8WP5WPhZs1gnrB4/ZNIzqFaQUZfHmg1X9D0EimuJRoxlRAXWsPFuIA+e4Nj/PecdoTCH3XhQcTIBqMVL84z5kWdxGscxnZRNGhjAwRBIuw73CynA8I71CCyfNC0fRtF5DUvU3I63MQuM3HwHW6GoAQ8QLPffA9ixeo5LQtmSlBYPGorMx4AX9R4GehnfWHhV73y2GqN+x6TzDLlZy0qMU8vyp14eGD0PdXu6K45qV9uLnUIcJt6F95lA7tIzyqYROAft3xaVgmMESYocNDXAt25AsRAN29xInhjG9ZrRjA3xve4tjWmC+o0XH66Td04TkaOrJexWWHsuBwGVXxkV58BHJV1hWkh204EZlSQH7sxa0BDMbehiXKOaZPF2DErYlJEUMczsMjieSH5nU6suu11n0sdNgy5xOciH0IUQ7zE6bgATl6lB3Grd+OCVGhu4wP4Dks7Qhfjj/uwy5Dqd4BJn2+VKWnOmjEswvCktltXYVm9QeHNPUwVqy29k2M2hmvvQEpNXd63kXgxgSSwOjuBJN+Y371VGP8E2oELrvkwc2sFKQPlGNovkIfD7rJ2oxUpjQNJaI4L/pK+fM+a63QAyatWLRTxbgXmEQWSRF2gYv0yAxTjrq1uAXIkB9E740+vdyfTxpYxz24ubdLsmFzSqVQvo5OkYlX36Aski2I6J7uTyZu+CVHwtFeDGmnkpIWzzsDRtb4ZJFHDcEI+69ernridpD9+Ec/3VB+8lLr7ehJ4SLNk72edr3sHkYum2Vy+xuvJ8KLxBd6g+P3ZMLG/ZWJ/tUAtppRDCCuaDLLJknx3MWf5QGGKQTOKq05DrmjQ+9z2E94nSMdKFnqSw6FjcchhERIlqpXE2H6uckebO8uy4gbQfx3ToiE2nrosgTle5Zwd/cgbxGv3VVIkulY7BwdhBj9ImRBcRJr+CBHP7H/c8XVf7a2nRzy/z3SKuBAglv08cT0k1NXxa2tJfF0YvAs4asSClVKFQp3yeMZ6nbQMqxQGL5zNyBA9nhxIUasUmqWnp8rmyf1wi4elhcRJajshOv8VZx7M7arBMmFBkMEty60Sb0zqRzA6AyA10TtGvBhDvu3SEf39TKEqjX+NcnqMRhuFRpoDHzoup2xOuIDwVy0eATClnxJ/046vhlIodGZnqdsm2v4l92zXzsAETlGc9u55FifXamoyux6/N+2R65WDxtG+zxVkT0sdFcoTjWmJFTIcLUBY2uqxye5+TV0i6ysEgOqLBOL+KztJRXLnLJPZAcNRCByhhUBtba2cNhUOHupBehevGGDkNZdL2Y+ztj8tq0MEgR7TrZ36EtvuFk4Cv7NmedKYOwALGM9NP6UnXZRCdgvsTlLwaQmMcJBdhYPtA2+CvL0qtPEYAQ=="
+                  },
+                  {
+                    "type": "text",
+                    "text": "Unicode has 96 tag characters, ranging from U+E0020 to U+E007F [1]. According to the passage, \"The first 95 match plain ASCII characters\" [1]. The last one \"ends a tag\" [1]. The passages say nothing more about what tag characters are used for, so I can't give a fuller answer [1]."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 265,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 379,
+                  "output_tokens_details": {
+                    "thinking_tokens": 272
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q3",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] tag character (from the lesson \"Context\"): One of 96 Unicode characters, from U+E0020 to U+E007F. The first 95 match plain ASCII characters. The last one ends a tag.\n[2] Unicode (from the lesson \"Context\"): A standard that gives every character a number, so different computers can share text.\n[3] code point (from the lesson \"Context\"): A character's number in Unicode, written like U+200B.\n\nQuestion: How many tag characters are there in Unicode, and what are they used for?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "There are **96 tag characters** in Unicode, specifically from **U+E0020 to U+E007F** [\"One of 96 Unicode characters, from U+E0020 to U+E007F\" [1]].\n\nThey are used to **\"end a tag\"** [\"The last one ends a tag\" [1]]. The first 95 of these characters **\"match plain ASCII characters\"** [\"The first 95 match plain ASCII characters\" [1]].",
+          "usage": {
+            "prompt_tokens": 204,
+            "total_tokens": 313,
+            "completion_tokens": 109,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:05.579Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] tag character (from the lesson \"Context\"): One of 96 Unicode characters, from U+E0020 to U+E007F. The first 95 match plain ASCII characters. The last one ends a tag.\n[2] Unicode (from the lesson \"Context\"): A standard that gives every character a number, so different computers can share text.\n[3] code point (from the lesson \"Context\"): A character's number in Unicode, written like U+200B.\n\nQuestion: How many tag characters are there in Unicode, and what are they used for?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "31942773265a4585b05b39f6ab2b1284",
+                "created": 1791502445,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 204,
+                  "total_tokens": 313,
+                  "completion_tokens": 109,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "There are **96 tag characters** in Unicode, specifically from **U+E0020 to U+E007F** [\"One of 96 Unicode characters, from U+E0020 to U+E007F\" [1]].\n\nThey are used to **\"end a tag\"** [\"The last one ends a tag\" [1]]. The first 95 of these characters **\"match plain ASCII characters\"** [\"The first 95 match plain ASCII characters\" [1]]."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q4",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] epoch (from the lesson \"Training\"): Google's word for one round, one pass over all the examples.\n[2] round (from the lesson \"Training\"): One pass over all the examples. After each round, training changes the model's numbers a little.\n[3] training (from the lesson \"Training\"): Changing a model's numbers, round after round, so its guesses on the examples get less wrong.\n\nQuestion: What is the difference between a round and an epoch in training?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "The passages give no difference in meaning: an epoch is \"Google's word for one round, one pass over all the examples.\" [1] A round is defined in the same way, as \"One pass over all the examples.\" [2] So \"epoch\" is simply Google's name for a round. [1]",
+          "usage": {
+            "input_tokens": 241,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 302,
+            "output_tokens_details": {
+              "thinking_tokens": 218
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:07.160Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] epoch (from the lesson \"Training\"): Google's word for one round, one pass over all the examples.\n[2] round (from the lesson \"Training\"): One pass over all the examples. After each round, training changes the model's numbers a little.\n[3] training (from the lesson \"Training\"): Changing a model's numbers, round after round, so its guesses on the examples get less wrong.\n\nQuestion: What is the difference between a round and an epoch in training?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqeNzzUrfbAHPQfA95gf",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQSxQkKEAgSGAI4AUIIdGhpbmtpbmcSDN+e4v7wx/WG2cqTNxoMRA9+YEMPejvWEL6YIjA52OvegFVXEQYR0N1xGHKc2xLYbOZKni4nOQS39SaMQP3y7MHZjYYawUoFBn67KbIq4giSKTplJyT4J5SpdOQHnRW9lS9gmre47lzd4w8Zpr9DbbwHoH5aV+NBRdZih+54UA76D3ZraJbeFbW0IlB24r1MTAU8Durk1tvDGf357xxExfmSHnQWYHgUjkKIK4Z5m70/BmQAtDa9r/R2dSr6Cfwj9GCIDPyadGh2liLmvyXGb3vzUyavZelL3A7s5VPh6f2VRSCK0qef6HXefr4NK92ClLYp1U7fE16ToNBBb0uDFl6p+Jr2FcLjqddWFSZ5g9ERVeZsBbXfRIS0evgoEq/i7od4eZK/4Kxc8XlVpDbIYIlCDKJWAW3/a/uZSyp0YzARxqGTtV04oaxW6Eas8nDGejUlL80c+O/mwbSzQE2ypr89An3ccYqiy8Gy6/2L55eaPIg4sY0WhBxSElBFj6NpEKtrqQVtpa9+aVwd1Tnp6lr5uRY2RwhQKyIq8R/iottSbehvS3kALt0BDgsWFeQZXBOa5kK5FXBSTApgRnfwxrfJtlNp9T1hVNOicbO3BQWzvSbDWKudAYWXVYVApMup+F8N1o8lgI7E1skUrw46Ba5J1IP26WNMV9pPiYzUJMwBm3RhtCzTLdg4xl2VPqmjQbco3Ii93UCyjgQ/B7l/h+j4ShBlMDI0Pr53d+ZDfbeduPz7zJrtRMWyUR55gwSLbgMl7hKjfizwBIPpcvxVERf/vuLJfXM090cmx2djUYrOhTMYFw9vmrsb4imkL+wSeelIr1+8V+gPjIDi0paV/EBxqhf/MVSSc4ONbLutsLzWer86G1+xBIWXCMxWMneIe5tz70gUHrJAFK9oR9RcuJrG/JbGVKAKk4Bgt4U5kAFrzY3NivQ0wRp8OughyleOVjOpUIwKE5aa4E89tSzBOrypxF2V0l8an223X7pt6eir3EfA8M05LXFpttP8lMWxfuEMbcWsrbHT2GKxcBVL6/aWfs+2CL42erI/Qv5jvm8PLNfIipjP7CHh+t3Cn811SmvnoKvHSaWKrieY15gmIMCG+8hLKfZHsDJBKgwrht3AJcZdHE4LphzLTqxM0uSrR351+CJ75IXaq17czwENrpAzbYNHAF1+HS1PvvCiNpy9sw7kXiyePUbKPRCm3itl4ufCotTT9GyYxLDu/MuTVbBDeyxXRlH8IoCltf59ES8VHjo9XFg39sfN2Gsb/FxZpmElfjIxsHg5+Q/uC+Rl6R82KEVZs9oYb/piMJiVdKIkYO/SVOQLNptIUnHI+lTMMu9xNZ5kFpOclPDio352eE8qklg445/ZqdgvWptINFJMFTdfSuqBM+JR4mkv5PdwGScv14LAD19yTdABxwz+bHWVOeU0NnHGYhb84cAcpZjpTkMAu4TNR+sVCTXU75RXJQpEh8wPbQUUwuxBi6HbHL2LueghOqRxutkd3gxnwBzx0FXMcPLhmUQLgpzRQNPGxyOUVradZSYKsbXIReUNk04Zes2VFqRX6J+AarCeCyMIIOdrZy64M1FLIZQsi4nLOK0YAQ=="
+                  },
+                  {
+                    "type": "text",
+                    "text": "The passages give no difference in meaning: an epoch is \"Google's word for one round, one pass over all the examples.\" [1] A round is defined in the same way, as \"One pass over all the examples.\" [2] So \"epoch\" is simply Google's name for a round. [1]"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 241,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 302,
+                  "output_tokens_details": {
+                    "thinking_tokens": 218
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q4",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] epoch (from the lesson \"Training\"): Google's word for one round, one pass over all the examples.\n[2] round (from the lesson \"Training\"): One pass over all the examples. After each round, training changes the model's numbers a little.\n[3] training (from the lesson \"Training\"): Changing a model's numbers, round after round, so its guesses on the examples get less wrong.\n\nQuestion: What is the difference between a round and an epoch in training?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The passages do not provide a clear difference between a round and an epoch in training. Both terms are used interchangeably in the given passages:\n\n- \"[1] epoch: Google's word for one round, one pass over all the examples.\"\n- \"[2] round: One pass over all the examples.\"",
+          "usage": {
+            "prompt_tokens": 180,
+            "total_tokens": 242,
+            "completion_tokens": 62,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:10.224Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] epoch (from the lesson \"Training\"): Google's word for one round, one pass over all the examples.\n[2] round (from the lesson \"Training\"): One pass over all the examples. After each round, training changes the model's numbers a little.\n[3] training (from the lesson \"Training\"): Changing a model's numbers, round after round, so its guesses on the examples get less wrong.\n\nQuestion: What is the difference between a round and an epoch in training?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "572712649a1d4a18af0a6f7fc475cde5",
+                "created": 1791502450,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 180,
+                  "total_tokens": 242,
+                  "completion_tokens": 62,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The passages do not provide a clear difference between a round and an epoch in training. Both terms are used interchangeably in the given passages:\n\n- \"[1] epoch: Google's word for one round, one pass over all the examples.\"\n- \"[2] round: One pass over all the examples.\""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q5",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n[2] model (from the lesson \"Bad and good prompts\"): The AI system that writes the answer. This lesson uses two, Claude Sonnet 5.5 and Ministral 3 14B.\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: How many tokens fit in the context window of Claude Sonnet 5?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "The passages do not say how many tokens fit in the context window of Claude Sonnet 5. Passage [1] defines the context window only in general terms, as \"The most text a model can take in at once, counted in tokens; it includes the model's answer.\" [1] Passage [2] mentions \"Claude Sonnet 5.5\" as one of two models used in a lesson, but it gives no token limit. [2] Passage [3] defines a token as \"A small piece of text that an AI reads, such as a word, part of a word or a letter.\" [3] None of them gives a figure, and the version named in [2] is 5.5 rather than 5, so I can't answer the question from these passages.",
+          "usage": {
+            "input_tokens": 285,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 211,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:11.188Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n[2] model (from the lesson \"Bad and good prompts\"): The AI system that writes the answer. This lesson uses two, Claude Sonnet 5.5 and Ministral 3 14B.\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: How many tokens fit in the context window of Claude Sonnet 5?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqePJ97ZSHFQ2HLFTTWd",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "The passages do not say how many tokens fit in the context window of Claude Sonnet 5. Passage [1] defines the context window only in general terms, as \"The most text a model can take in at once, counted in tokens; it includes the model's answer.\" [1] Passage [2] mentions \"Claude Sonnet 5.5\" as one of two models used in a lesson, but it gives no token limit. [2] Passage [3] defines a token as \"A small piece of text that an AI reads, such as a word, part of a word or a letter.\" [3] None of them gives a figure, and the version named in [2] is 5.5 rather than 5, so I can't answer the question from these passages."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 285,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 211,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q5",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n[2] model (from the lesson \"Bad and good prompts\"): The AI system that writes the answer. This lesson uses two, Claude Sonnet 5.5 and Ministral 3 14B.\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: How many tokens fit in the context window of Claude Sonnet 5?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The passages provided do not answer the question about how many tokens fit in the context window of Claude Sonnet 5. They do not mention this specific model's context window size.",
+          "usage": {
+            "prompt_tokens": 211,
+            "total_tokens": 248,
+            "completion_tokens": 37,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:13.565Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n[2] model (from the lesson \"Bad and good prompts\"): The AI system that writes the answer. This lesson uses two, Claude Sonnet 5.5 and Ministral 3 14B.\n[3] token (from the lesson \"Examples\"): A small piece of text that an AI reads, such as a word, part of a word or a letter.\n\nQuestion: How many tokens fit in the context window of Claude Sonnet 5?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "30edd7d2dc004d74898cb09377e649ef",
+                "created": 1791502453,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 211,
+                  "total_tokens": 248,
+                  "completion_tokens": 37,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The passages provided do not answer the question about how many tokens fit in the context window of Claude Sonnet 5. They do not mention this specific model's context window size."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q6",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] citation (from the lesson \"Where your question goes\"): A note in an answer that points to a page. In Anthropic's web search tool, it gives the page's address, title and up to 150 characters of its text.\n[2] citation (from the lesson \"Why they make things up\"): A reference to a source, such as a study, so a reader can find it. It gives details like the authors, year and journal.\n[3] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n\nQuestion: How much of a page's text does a citation show?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "In Anthropic's web search tool, a citation gives the page's address, title and \"up to 150 characters of its text\" [1]. The passages do not say how much text a citation shows in any other setting. Passage [2] describes citations to sources such as studies, but it only lists details like authors, year and journal and does not mention any amount of text [2].",
+          "usage": {
+            "input_tokens": 287,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 107,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:14.301Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] citation (from the lesson \"Where your question goes\"): A note in an answer that points to a page. In Anthropic's web search tool, it gives the page's address, title and up to 150 characters of its text.\n[2] citation (from the lesson \"Why they make things up\"): A reference to a source, such as a study, so a reader can find it. It gives details like the authors, year and journal.\n[3] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n\nQuestion: How much of a page's text does a citation show?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqePXX2dZsunTmZhMTfa",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "In Anthropic's web search tool, a citation gives the page's address, title and \"up to 150 characters of its text\" [1]. The passages do not say how much text a citation shows in any other setting. Passage [2] describes citations to sources such as studies, but it only lists details like authors, year and journal and does not mention any amount of text [2]."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 287,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 107,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q6",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] citation (from the lesson \"Where your question goes\"): A note in an answer that points to a page. In Anthropic's web search tool, it gives the page's address, title and up to 150 characters of its text.\n[2] citation (from the lesson \"Why they make things up\"): A reference to a source, such as a study, so a reader can find it. It gives details like the authors, year and journal.\n[3] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n\nQuestion: How much of a page's text does a citation show?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "A citation in Anthropic's web search tool shows **\"up to 150 characters of its text\"** [1].",
+          "usage": {
+            "prompt_tokens": 227,
+            "total_tokens": 253,
+            "completion_tokens": 26,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:16.160Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] citation (from the lesson \"Where your question goes\"): A note in an answer that points to a page. In Anthropic's web search tool, it gives the page's address, title and up to 150 characters of its text.\n[2] citation (from the lesson \"Why they make things up\"): A reference to a source, such as a study, so a reader can find it. It gives details like the authors, year and journal.\n[3] context window (from the lesson \"Attention and the context window\"): The most text a model can take in at once, counted in tokens; it includes the model's answer.\n\nQuestion: How much of a page's text does a citation show?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "d242e1bb1da14e098475ec45fdc2fc8f",
+                "created": 1791502456,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 227,
+                  "total_tokens": 253,
+                  "completion_tokens": 26,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "A citation in Anthropic's web search tool shows **\"up to 150 characters of its text\"** [1]."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q7",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] deployer (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever uses an AI system under its authority. Personal, non-professional use is left out.\n[2] provider (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever develops an AI system, or has one developed. It puts the system on the market under its own name.\n[3] high-risk AI system (from the lesson \"The law: AI rules in Ireland and the EU\"): An AI system the AI Act puts under extra rules. The uses on its Annex III list are high-risk.\n\nQuestion: Under the AI Act, who counts as a deployer?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Under the AI Act, a deployer is \"whoever uses an AI system under its authority.\" [1] Personal, non-professional use is left out of this definition. [1]",
+          "usage": {
+            "input_tokens": 323,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 53,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:16.931Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] deployer (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever uses an AI system under its authority. Personal, non-professional use is left out.\n[2] provider (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever develops an AI system, or has one developed. It puts the system on the market under its own name.\n[3] high-risk AI system (from the lesson \"The law: AI rules in Ireland and the EU\"): An AI system the AI Act puts under extra rules. The uses on its Annex III list are high-risk.\n\nQuestion: Under the AI Act, who counts as a deployer?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqePifjeWyxftAreTujS",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Under the AI Act, a deployer is \"whoever uses an AI system under its authority.\" [1] Personal, non-professional use is left out of this definition. [1]"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 323,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 53,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q7",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] deployer (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever uses an AI system under its authority. Personal, non-professional use is left out.\n[2] provider (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever develops an AI system, or has one developed. It puts the system on the market under its own name.\n[3] high-risk AI system (from the lesson \"The law: AI rules in Ireland and the EU\"): An AI system the AI Act puts under extra rules. The uses on its Annex III list are high-risk.\n\nQuestion: Under the AI Act, who counts as a deployer?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Under the AI Act, a **deployer** is defined as \"whoever uses an AI system under its authority.\" [1]\n\nThe passage also clarifies that \"Personal, non-professional use is left out,\" meaning deployers are typically those using AI systems in a professional or organizational capacity. [1]",
+          "usage": {
+            "prompt_tokens": 231,
+            "total_tokens": 296,
+            "completion_tokens": 65,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:17.919Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] deployer (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever uses an AI system under its authority. Personal, non-professional use is left out.\n[2] provider (from the lesson \"The law: AI rules in Ireland and the EU\"): In the AI Act, whoever develops an AI system, or has one developed. It puts the system on the market under its own name.\n[3] high-risk AI system (from the lesson \"The law: AI rules in Ireland and the EU\"): An AI system the AI Act puts under extra rules. The uses on its Annex III list are high-risk.\n\nQuestion: Under the AI Act, who counts as a deployer?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "aee5407b8f654b96b8f634a6848f2011",
+                "created": 1791502458,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 231,
+                  "total_tokens": 296,
+                  "completion_tokens": 65,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Under the AI Act, a **deployer** is defined as \"whoever uses an AI system under its authority.\" [1]\n\nThe passage also clarifies that \"Personal, non-professional use is left out,\" meaning deployers are typically those using AI systems in a professional or organizational capacity. [1]"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q8",
+      "maker": "A",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n[2] regulation (from the lesson \"The law: AI rules in Ireland and the EU\"): An EU law that is binding in full and applies directly in every EU country.\n[3] made-up detail (from the lesson \"Why they make things up\"): A detail in an answer that sounds real and is not. It could be a study that does not exist, a wrong year, or a name that does not belong.\n\nQuestion: What is fine-tuning?"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "The passages do not define fine-tuning, so I can't answer the question from them. [1] They cover only \"attention,\" \"regulation,\" and \"made-up detail,\" and none of those entries mentions fine-tuning. [2]",
+          "usage": {
+            "input_tokens": 296,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 69,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:19.156Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n[2] regulation (from the lesson \"The law: AI rules in Ireland and the EU\"): An EU law that is binding in full and applies directly in every EU country.\n[3] made-up detail (from the lesson \"Why they make things up\"): A detail in an answer that sounds real and is not. It could be a study that does not exist, a wrong year, or a name that does not belong.\n\nQuestion: What is fine-tuning?"
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CfqePtDinoZguLH351G6k",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "The passages do not define fine-tuning, so I can't answer the question from them. [1] They cover only \"attention,\" \"regulation,\" and \"made-up detail,\" and none of those entries mentions fine-tuning. [2]"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 296,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 69,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Q8",
+      "maker": "B",
+      "system": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else.",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Passages:\n[1] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n[2] regulation (from the lesson \"The law: AI rules in Ireland and the EU\"): An EU law that is binding in full and applies directly in every EU country.\n[3] made-up detail (from the lesson \"Why they make things up\"): A detail in an answer that sounds real and is not. It could be a study that does not exist, a wrong year, or a name that does not belong.\n\nQuestion: What is fine-tuning?"
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791502429,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "The passages provided do not answer the question about **fine-tuning**.",
+          "usage": {
+            "prompt_tokens": 218,
+            "total_tokens": 233,
+            "completion_tokens": 15,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-08T23:34:20.336Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else."
+                  },
+                  {
+                    "role": "user",
+                    "content": "Passages:\n[1] attention (from the lesson \"Attention and the context window\"): In a language model, the weighing of earlier pieces of text, done with numbers, to write the next piece. The word is borrowed from people.\n[2] regulation (from the lesson \"The law: AI rules in Ireland and the EU\"): An EU law that is binding in full and applies directly in every EU country.\n[3] made-up detail (from the lesson \"Why they make things up\"): A detail in an answer that sounds real and is not. It could be a study that does not exist, a wrong year, or a name that does not belong.\n\nQuestion: What is fine-tuning?"
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "8830b15915e14bd69f849c6ac7b2e5fc",
+                "created": 1791502460,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 218,
+                  "total_tokens": 233,
+                  "completion_tokens": 15,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "The passages provided do not answer the question about **fine-tuning**."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

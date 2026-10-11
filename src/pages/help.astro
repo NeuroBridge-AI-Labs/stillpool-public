@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// Help, by task (F4). The count's sentence and row show only in a build that has it (D11), so this page always says what the
+// build sends, and /privacy/ uses the same flag. Button names in the save steps are the ones lane B gives SaveCode.
+const count = import.meta.env.PUBLIC_ANALYTICS === '1';
+const toc = [
+  { id: 'start', title: 'Start a lesson' },
+  { id: 'layers', title: 'Short or detailed explanations' },
+  { id: 'comfort', title: 'Make reading comfortable' },
+  { id: 'listen', title: 'Listen to a lesson' },
+  { id: 'badge', title: 'Finish a lesson and earn a badge' },
+  { id: 'move', title: 'Keep or move your progress' },
+  { id: 'restore', title: 'Restore or delete progress' },
+  { id: 'find', title: 'Find a lesson' },
+  { id: 'lab', title: 'Practise writing prompts' },
+  { id: 'leaves', title: 'What leaves your device' },
+  { id: 'contact', title: 'Get help' },
+];
+---
+
+<Base title="Help" description="Help with using Stillpool, the free AI lessons by NeuroBridgeEDU." wide>
+  <InfoPage title="Help with Stillpool" {toc}>
+    <p slot="intro" class="lede">Short answers to the things people ask most, one task at a time.</p>
+
+    <h2 id="start">Start a lesson</h2>
+    <p>
+      The Start button on the home page opens lesson 1.1. The lesson map below it lets you open any lesson you like. Every lesson is open and there is no
+      order you have to follow.
+    </p>
+
+    <h2 id="layers">Short or detailed explanations</h2>
+    <p>
+      Each part of a lesson is written twice. Simple says the idea in short, plain words. Deep adds the detail and the examples. Simple always
+      shows.
+    </p>
+    <ul>
+      <li>The switch at the top of a lesson adds Deep under every part, or takes it away.</li>
+      <li>The switch by a heading does the same for that part only.</li>
+    </ul>
+    <p>The site remembers your choice for next time.</p>
+
+    <h2 id="comfort">Make reading comfortable</h2>
+    <p>The Settings button is in the header on every page. Changes apply as you make them and stay in this browser. Settings let you change:</p>
+    <ul>
+      <li>the font, the size of the text, and the space between letters, words and lines;</li>
+      <li>the colours, and whether things move;</li>
+      <li>a reading ruler, and Focus, which hides everything around the lesson;</li>
+      <li>whether your progress is shown, and whether activities appear as plain text.</li>
+    </ul>
+
+    <h2 id="listen">Listen to a lesson</h2>
+    <p>
+      Each part of a lesson has a Read aloud button. It reads the layers you can see, Simple first and then Deep, and Stop ends it. Emma is a voice
+      recorded for this site. Where a part has no recording, a voice on your device reads it, and you can choose one in Settings. If neither is
+      available, the button tells you.
+    </p>
+    <p>
+      You can make the voice faster. Press Speed while a part is reading, or open Settings and choose a Reading speed. Normal is 1. The choice is
+      kept in this browser and used on every page.
+    </p>
+
+    <h2 id="badge">Finish a lesson and earn a badge</h2>
+    <p>
+      Finishing a lesson and earning its badge are two different things. A lesson is finished when you reach its end and open the finish page. A
+      badge is earned by doing the lesson's activity, such as the check-in, the short questions near the end of a lesson. Finishing alone does not
+      earn one.
+    </p>
+
+    <h2 id="move">Keep or move your progress</h2>
+    <p>Your progress stays in this browser. To carry it to another browser or device:</p>
+    <ol>
+      <li>Open Settings and open Move or delete progress.</li>
+      <li>Choose Copy code, or Copy restore link. Or choose Show QR code and scan it with the other device.</li>
+      <li>On the other browser or device, open Stillpool and open Settings, then Move or delete progress.</li>
+      <li>Paste the code and choose Restore. A restore link or a scanned QR code does this for you.</li>
+    </ol>
+    <p>A code holds the lessons you finished and the badges you earned. It does not hold your reading settings.</p>
+
+    <h2 id="restore">Restore or delete progress</h2>
+    <p>
+      Restore adds to the progress already in this browser; it never removes any. A code that is wrong shows a message that says so. Delete my
+      progress on this device removes your finished lessons and badges from this browser only. A code you kept, and other devices, still hold
+      theirs. Clearing all of this site's data in your browser also clears your settings and map choices.
+    </p>
+
+    <h2 id="find">Find a lesson</h2>
+    <p>
+      Choose Search in the header. As you type, lessons whose titles match appear in a list: use the arrow keys and Enter, or tap one, to open it,
+      and Escape to close the list. Press Enter on the words you typed to search the text of every lesson instead.
+    </p>
+
+    <h2 id="lab">Practise writing prompts</h2>
+    <p>
+      A prompt is the words you type to ask an AI for something. The <a href="/lab/">practice lab</a> lets you write one, send it to a real AI, and read
+      the answer with a few tips. It is optional, and the lessons do not need it.
+    </p>
+
+    <h2 id="leaves">What leaves your device</h2>
+    <dl class="facts">
+      <dt>Page, style, script, font and recording requests</dt>
+      <dd>To this site's own server, when a page loads.</dd>
+      <dt>Your IP address and browser details</dt>
+      <dd>To the host of this site, Vercel, as with any web request.</dd>
+      {
+        count && (
+          <>
+            <dt>A count of page visits</dt>
+            <dd>
+              To Vercel, when a page opens with nothing after its address, so never with a save code. It sets no cookie. The{' '}
+              <a href="/privacy/">privacy notice</a> lists what it records.
+            </dd>
+          </>
+        )
+      }
+      <dt>A prompt you send in the practice lab</dt>
+      <dd>To this site's server and then to Mistral AI in Paris, only when you press Send.</dd>
+      <dt>A message you send on the feedback page</dt>
+      <dd>To this site's server and then to a tool run by NeuroBridgeEDU in the EU, which saves it, only when you press Send feedback.</dd>
+      <dt>Anything else</dt>
+      <dd>Nothing.</dd>
+    </dl>
+    <p>
+      Stillpool sets no cookies and does not call an AI service while you use the lessons. The practice lab is the one exception. Pages and audio load from this site. Read more in the
+      <a href="/privacy/">Privacy notice</a>.
+    </p>
+
+    <h2 id="contact">Get help</h2>
+    <p>
+      Write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a>. Say which page you were on, which device and browser you
+      use, and what went wrong. Please do not email a save code.
+    </p>
+    <p>To tell us what you think of Stillpool, use the <a href="/feedback/">feedback page</a>.</p>
+
+    <h3>If something is missing</h3>
+    <details>
+      <summary>My progress has gone</summary>
+      <p>Progress lives in this browser. Clearing its data, using a private window or switching browser starts you from the beginning. A save code brings it back.</p>
+    </details>
+    <details>
+      <summary>My progress is not being kept</summary>
+      <p>Some browsers block storage in private windows or when it is full. Lessons still work; save a code before you leave.</p>
+    </details>
+    <details>
+      <summary>Read aloud has no voice</summary>
+      <p>The recorded voice, Emma, needs no setup. A device voice needs one installed on your device; its own settings add more.</p>
+    </details>
+    <details>
+      <summary>The voice is too fast or too slow</summary>
+      <p>Open Settings and choose Normal under Reading speed. The browser's own player menu can also change speed, for that part only.</p>
+    </details>
+    <details>
+      <summary>Search will not load</summary>
+      <p>Choose Search again. The title list works without the full search, so you can still open a lesson from it.</p>
+    </details>
+  </InfoPage>
+</Base>

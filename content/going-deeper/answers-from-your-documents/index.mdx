@@ -1,0 +1,332 @@
+---
+title: Answers from your documents (RAG)
+promise: Can explain how a system finds passages before it answers, and why it can still misquote them
+minutes: {simple: 10, deep: 16}
+tldr:
+  - A RAG system first finds the passages most like your question. Then a language model writes an answer from them.
+  - A close match is not a right answer. The answer can still change a word, or add a claim the passage never made.
+  - Read the passage beside the answer. Compare them sentence by sentence.
+misconceptions: [M1, M5, M9]
+interactive: find-then-answer
+inputs: [src/lib/find-then-answer.ts, src/lib/find-then-answer-words.ts, data/interactive/glossary-vectors.json, src/lib/p2-runs.ts, src/components/FindThenAnswer.astro, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.4, UNESCO-AICFS-CG4.2.4.1, HEA-ALT-2, HEA-PEA-2.3.1-a, AILIT-S3, AILIT-M2]
+checkin:
+  - question: In this lesson's activity, what does a "close" match tell you?
+    options:
+      - text: The question and the passage are alike, by one model's lists of numbers. You still read the passage.
+        why: Yes. Similarity compares two lists of numbers. It does not show that the passage answers the question.
+        right: true
+      - text: The passage answers the question.
+        why: Not this one. For a question the snapshot does not cover, the system still returned five entries. None of them was close.
+      - text: The passage is true.
+        why: Not this one. The number compares two lists of numbers. It does not check whether a passage is true.
+      - text: You did well.
+        why: Not this one. The similarity is about a question and a passage. It says nothing about you.
+  - question: A model was given three passages and wrote an answer that quotes one of them. What is the safest next step?
+    options:
+      - text: Compare the quote, and each claim, with the passage's own words.
+        why: Yes. In our test, one answer changed "ends a tag" to "end a tag". Another added a claim the passage did not make.
+        right: true
+      - text: Trust it, because a passage number follows each sentence.
+        why: Not this one. A number says where the model says a claim came from. The study counted answers that cite a source which does not support the claim as bad.
+      - text: Trust it, because the three passages were very close matches.
+        why: Not this one. For our first question, all three passages were very close. One answer still changed a quote.
+      - text: Trust it, because the model was told to use only the passages.
+        why: Not this one. We told both models that. Four of the sixteen answers still changed a quote or added a claim.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can explain how a system finds passages first, and how to check its answer against them.
+glossary:
+  - term: RAG
+    meaning: Retrieval-augmented generation. A system first finds passages in a store of text, then a language model writes an answer using them.
+  - term: token
+    meaning: A small piece of text, often part of a word, that a language model works with.
+  - term: chunk
+    meaning: A short piece cut from a longer text. The 2020 RAG paper cut each Wikipedia article into chunks of 100 words.
+  - term: passage
+    meaning: A short piece of text that a system finds for a question. In this lesson, a passage is one chunk.
+  - term: embedding
+    meaning: A list of numbers that stands for a piece of text. Pieces that are alike should get lists that sit close together.
+  - term: similarity
+    meaning: How close two embeddings are. Here it is the cosine of the angle between them. It does not show that a passage is true or answers the question.
+  - term: training data
+    meaning: The large body of text that a language model is trained on.
+  - term: temperature
+    meaning: A setting that controls how random a model's output is.
+  - term: context window
+    meaning: The amount of text a model can look back on when it writes.
+whereNext:
+  title: Lewis and others, Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, abstract page on arXiv
+  text: The 2020 paper that used the name RAG. arXiv is a website where researchers share papers. The page has the summary and a link to the full paper. NLP in the title means natural language processing, the handling of human-language information by a computer. It is written for researchers. The page loads files from arxiv.org, static.arxiv.org, code.jquery.com and cdn.jsdelivr.net. A cookie is a small piece of data that a site sends to your web browser. It sets one cookie, named arxiv_labs, before any choice. We saw no other hosts. We checked this on 9 October 2026.
+  url: https://arxiv.org/abs/2005.11401
+sources:
+  - title: "Lewis and others, Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, arXiv 2005.11401, first submitted 22 May 2020 (abstract page, v4 of 12 April 2021)"
+    url: https://arxiv.org/abs/2005.11401
+    licence: arXiv non-exclusive licence to distribute
+    use: link
+  - title: "Lewis and others, Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, full text (section 3, Experiments)"
+    url: https://arxiv.org/pdf/2005.11401
+    licence: arXiv non-exclusive licence to distribute
+    use: cite
+  - title: "Magesh and others, Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools, Journal of Empirical Legal Studies 22(2), 216 to 242, published 23 April 2025 (abstract)"
+    url: https://doi.org/10.1111/jels.12413
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "Magesh and others, Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools, arXiv 2405.20362, version 1, 30 May 2024 (full text: sections 4.2, 4.3, 5.3 and 6.1)"
+    url: https://arxiv.org/pdf/2405.20362
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Crash Course, Embeddings: Embedding space and static embeddings, last updated 25 August 2025"
+    url: https://developers.google.com/machine-learning/crash-course/embeddings/embedding-space
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary, entries parameter, dimensions (vector), epoch, iteration, temperature and fine-tuning, last updated 10 April 2026"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google for Developers, Machine Learning, Clustering: Supervised similarity measure, last updated 25 August 2025"
+    url: https://developers.google.com/machine-learning/clustering/dnn-clustering/supervised-similarity
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Nomic AI, nomic-embed-text-v1.5, model card on Hugging Face (licence and 768 numbers per embedding)"
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    licence: Apache-2.0
+    use: cite
+  - title: "Wikipedia, About"
+    url: https://en.wikipedia.org/wiki/Wikipedia:About
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "arXiv, About"
+    url: https://info.arxiv.org/about/index.html
+    licence: No licence stated
+    use: cite
+  - title: "Regulation (EU) 2024/1689 (the AI Act), Official Journal L, 12 July 2024, on EUR-Lex (title and date, as checked for lesson 3.7), and the consolidated text of 27 July 2026, Articles 3 and 6"
+    url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+    licence: EU law, reuse under the Commission's reuse decision
+    use: cite
+  - title: "The Unicode Standard, Version 17.0, Chapter 23, section 23.9, Tag Characters, and the Unicode glossary"
+    url: https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-23/
+    licence: Unicode Terms of Use
+    use: cite
+  - title: "Unicode FAQ, Language Tagging and Tag Characters"
+    url: https://www.unicode.org/faq/languagetagging.html
+    licence: Unicode Terms of Use
+    use: cite
+  - title: "Claude Platform Docs, Models overview (reliable knowledge cutoff and training data cutoff), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
+    licence: No licence stated
+    use: cite
+  - title: "Claude Platform Docs, Glossary (context window, fine-tuning, pretraining), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/about-claude/glossary
+    licence: No licence stated
+    use: cite
+  - title: "Claude Platform Docs, Web search tool (citations), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
+    licence: No licence stated
+    use: cite
+  - title: "Wikipedia, Natural language processing"
+    url: https://en.wikipedia.org/wiki/Natural_language_processing
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Our recording R-5.5, 8 October 2026, and our glossary vectors, computed 9 October 2026 (data/recorded/R-5.5.json, data/interactive/glossary-vectors.json)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## Why give an AI your documents
+
+<Simple>
+A language model is a program trained on a large amount of text. It works out chances for the next piece of text. Chatbots run on large ones.
+
+A model learns from the text it was trained on. Your private documents may not be in that text. How do you get answers from them?
+
+In 2020, Patrick Lewis and eleven co-authors wrote about this problem. They said these models keep facts inside the model itself. They said updating those facts, and showing where an answer came from, were still open problems.
+
+Their proposal was to give the model a store of text to look in first. They called this retrieval-augmented generation, or RAG.
+
+A maker can say when a model's training text ends. Anthropic is an AI company, and Claude Sonnet 5.5 is one of its models. For it, Anthropic lists a "reliable knowledge cutoff" and a "training data cutoff". Both are June 2026. Lesson 1.5, Where your question goes, covers it.
+</Simple>
+
+<Deep>
+The paper says large models trained in advance "store factual knowledge in their parameters". Here the parameters are the numbers a model learns during training. It says "their ability to access and precisely manipulate knowledge is still limited". It adds that "providing provenance for their decisions and updating their world knowledge remain open research problems." That is how its authors described the field when they posted the paper on 22 May 2020.
+
+The paper's RAG models combine two kinds of memory. The first is the model's own numbers, which the paper calls parametric. The second is a store of text that the system can search, which it calls non-parametric.
+
+In the paper's tests, the RAG models did better than earlier systems on three question-answering tests. For language generation, they made "more specific, diverse and factual language" than a model with no store. Those are results for that paper's models, on its tests, in 2020. They do not show that every system called RAG is reliable. The sections below show where one can fail.
+</Deep>
+
+## Step one: find the passages
+
+<Simple>
+A RAG system works in two steps. First it finds passages. Then a language model writes an answer from them. Finding passages is called retrieval.
+
+A passage is a short piece of a longer text. The 2020 paper cut Wikipedia articles into pieces of 100 words. Wikipedia is a free online encyclopedia. The paper called the pieces chunks. In this lesson we say passage.
+
+Retrieval does not look up one stored answer. It finds passages. The model then writes new text from them.
+</Simple>
+
+<Deep>
+In the paper, the store was one copy of Wikipedia, from December 2018. It held 21 million pieces of 100 words each. For each question, the system retrieved the top few pieces. The authors used five or ten while training the model.
+
+In the paper, the store was only as current as that copy. In our own test, the models read the passages we sent. Nothing in our setup checked whether a passage was true or up to date.
+</Deep>
+
+## What "similar" means
+
+<Simple>
+How does the system pick passages? It uses embeddings. An embedding is a list of numbers that stands for a piece of text. A model makes it.
+
+Pieces that are alike should get lists that sit close together.
+
+The glossary is the list of terms and meanings in our lessons. In our activity, the store of text is a fixed snapshot of it. It holds 159 entries from the first 25 lessons, as they stood on 9 October 2026. Each entry is one passage.
+
+A list is made for the question too. The passages whose lists sit closest are picked.
+
+The similarity is a score for how close two lists are. In this lesson it is the cosine of the angle between the lists. That number is higher when the lists point more nearly the same way.
+
+The number says how alike two lists are. It does not say that a passage is true. It does not say that a passage answers the question.
+</Simple>
+
+<Deep>
+Google's course says an embedding is "a vector representation of data in embedding space", and that embeddings "place similar items closer together". A vector is a list of numbers. Its page on similarity lists three ways to score closeness: Euclidean distance, cosine and dot product. For cosine, the score "increases" as similarity increases.
+
+We made our lists once, on 9 October 2026, with a model called nomic-embed-text. It has 137 million parameters, an Apache 2.0 licence and 768 numbers in each list. We made one list for every entry in that snapshot, and one for each of eight questions. The page never runs the model.
+
+Our words "very close", "close" and "not close" are ours. We set the cut-offs by looking at the eight questions. A raw cosine of 0.80 or more is "very close". From 0.65 up to 0.80 is "close".
+
+Here is a case where the right passage exists and is not found. Question 2 asks what temperature changes in a language model. In lesson 1.4, The next word, temperature is a setting that changes how even the chances are before a piece is picked. The snapshot has an entry for it. It ranked sixth, with a raw cosine of 0.64. The three entries we sent to the models scored 0.76, 0.75 and 0.71. None of them was about temperature.
+</Deep>
+
+## Find, then answer
+
+<Simple>
+The activity Find, then answer has eight questions. You pick one. You predict whether the first match is the entry for a term the question asks about. Question 4 asks about two, round and epoch. You also predict whether both answers will stay inside the passages.
+
+Staying inside means every claim and quote comes from the passages and nothing is added.
+
+The questions use some terms that may be new:
+
+- **Temperature:** a setting that controls how random a model's output is.
+- **Tag characters:** invisible format characters in Unicode, a standard that gives every character a number. They are used to build tags.
+- **Epoch:** one full pass through the examples used to train a model. Our glossary also calls it a round.
+- **Context window:** the amount of text a model can look back on when it writes.
+- **Citation:** a note in an answer that points to its source.
+- **AI Act:** a law of the European Union (EU) about AI. A deployer is whoever uses an AI system under its authority. Personal, non-professional use is left out.
+- **Fine-tuning:** further training of a language model on more data.
+
+Then you see the five closest entries. Each one shows how close it is, in words, and the lesson it comes from. After that you see the answers two models wrote from the top three, with anything that goes beyond them marked.
+
+Very close, close and not close are our own labels for ranges of the score. One question asks about fine-tuning, which the snapshot lacks. Five entries still come back, and none is close. Lessons 5.1 and 5.6 do have entries for it, but they are not in the snapshot.
+
+Nothing is counted or saved. The answers were recorded on 8 October 2026.
+</Simple>
+
+<Deep>
+The snapshot is our own text, from the lessons on this site. Some terms appear more than once, in different lessons, with slightly different wording. For example, the question "What is a token?" finds five entries for token, from five lessons, worded a little differently. In this store, near-copies like these can fill several of the top matches.
+
+The eighth question, "What is fine-tuning?", is about a term the snapshot does not cover. The system still returns five entries. All five are "not close". A system that always returns its top few passages will return some, even when none is about the question.
+</Deep>
+
+<TryIt />
+
+## Step two: the answer
+
+<Simple>
+The second step is the answer. We sent each of the eight questions to two models, with the top three passages our own code found. They were Claude Sonnet 5.5, a model from Anthropic, and Ministral 3 14B, a model from Mistral AI.
+
+Each got each question once, on 8 October 2026.
+
+We told both the same rules. Use only the passages. Put the passage number after each sentence. Quote the passage's own words at least once. If the passages do not answer, say so.
+
+The models did not search. They saw only what we sent. We then checked every sentence of all sixteen answers against the three passages.
+</Simple>
+
+<Deep>
+Our system prompt was: "Answer the question using only the passages. After each sentence of your answer, give the number of the passage it comes from in square brackets, like [2]. Quote the passage's own words in double quotation marks at least once. If the passages do not answer the question, say so, and do not answer from anything else." It is a plain, strict instruction. We did not soften it to make mistakes more likely.
+
+We ran each question once per model. Neither model had tools. We did not set the temperature, so the services used their own default value. Every run is on the page, with its model, date and settings.
+</Deep>
+
+## What sixteen answers show
+
+<Simple>
+Claude Sonnet 5.5 stayed inside the passages in all eight answers. Every quote matched the passage word for word.
+
+Ministral 3 14B stayed inside in four answers. In four it did not.
+
+- **Question 1, what a token is.** A token is a small piece of text, often part of a word, that a language model works with. Ministral added a comma before "or a letter" in a quote. The passage has no comma there.
+- **Question 3, tag characters.** Both models said Unicode has 96 tag characters. Unicode counts 97. The passage's 96 are a range of them, not all. The passage says only the last one ends a tag. Ministral wrote "end a tag", and said they are used to end a tag.
+- **Question 4, round and epoch.** Ministral's two quotes begin with the passage number and term, such as "[1] epoch:". They leave out the lesson name that the passage holds.
+- **Question 7, deployers.** In the AI Act, a deployer is whoever uses an AI system under its authority. Ministral added that deployers are "typically" people using AI at work. The passage says only that personal, non-professional use is left out.
+
+Staying inside the passages is not the same as being true. Our passages are short glossary entries, and they leave things out. An answer built from a store can repeat the store's gaps.
+
+Questions 2, 5 and 8 had passages that did not hold the answer. All six answers said so. We had told both models to say that when the passages did not hold the answer.
+
+This is eight questions, two models and one day. It does not show how often any system misquotes.
+</Simple>
+
+<Deep>
+We counted two things. A quote is altered when a word or punctuation mark inside the quote marks is added, left out or changed. A statement goes beyond the passages when the passages do not say it, even if it is true. We ignored the quote marks, spacing and a capital letter at the start of a quote. We also ignored a comma or full stop placed just inside the closing quote mark.
+
+By that rule, four quotes were altered, all in Ministral 3 14B answers. Ministral also made two statements that go beyond the passages. One says tag characters are used to "end a tag". The other says deployers are "typically those using AI systems in a professional or organizational capacity". Two of the four altered quotes are in one answer, to question 4. Another sits in an answer that also goes beyond its passage. In all, four of sixteen answers changed a quote or went beyond the passages: none of Claude's eight, four of Ministral's eight.
+
+Both answers to question 3 say Unicode has 96 tag characters. The Unicode Standard says its Tags block "encodes a set of 97 special-use tag characters". One of the 97, U+E0001, is deprecated, which Unicode defines as a character "whose use is strongly discouraged". The 96 in our passage run from U+E0020 to U+E007F. A passage can support an answer and still be incomplete. The Unicode Standard does not say that all of them are used to end a tag. It says they are encoded "to enable the construction of tags".
+
+In Ministral's answer to question 4, the quotes begin with the passage's number and term, such as "[1] epoch:". They leave out the lesson name that the passage holds. The words of the entry itself match, but under our rule the quotes are altered, so we counted them.
+
+Claude's answer to the fine-tuning question put "[1]" after a sentence about all three passages, and "[2]" after a sentence that names all three. A single passage does not cover either sentence. We marked this as a note.
+
+Two of the passages for question 7 leave something out. Article 3(3) of the AI Act counts as a provider a body that "places it on the market or puts the AI system into service under its own name or trademark". Our provider entry names only the market. Article 6(3) says an Annex III system "shall not be considered to be high-risk" where it "does not pose a significant risk of harm". It lists conditions where this applies, such as performing "a narrow procedural task". Our high-risk entry says the Annex III uses "are high-risk".
+
+The round entry says "After each round, training changes the model's numbers a little." Google's glossary says an epoch is a full pass over the training set. It says an epoch "represents N/batch size training iterations", and an iteration is "A single update of a model's parameters". So the numbers can change many times in one epoch.
+
+Question 2 shows a different limit. Both models said the three passages did not answer. That was right for those passages. It does not mean the snapshot lacks the answer. The retrieval step had missed it.
+</Deep>
+
+## A study of tools that find first
+
+<Simple>
+Do real products that find first still make mistakes? A study run in 2024 asked this about three legal research tools. These tools help with tasks such as searching case law, the opinions that judges have written.
+
+The researchers asked each tool the same 202 legal questions. People checked every answer by hand. They counted an answer as bad if it had a false statement. They also counted it if it said a source backs a claim when it does not.
+
+Lexis+ AI was bad in 17% of answers, about 1 in 6. Ask Practical Law AI was bad in 17%, about 1 in 6. Westlaw AI-Assisted Research was bad in 33%, about 1 in 3.
+
+The study ran from March to May 2024. It describes those versions on those dates. It does not describe the products today.
+</Simple>
+
+<Deep>
+The three tools come from two companies. LexisNexis makes Lexis+ AI. Thomson Reuters makes Westlaw AI-Assisted Research and Ask Practical Law AI. Queries on Lexis+ AI, Ask Practical Law AI and GPT-4 ran from 22 March to 22 April 2024. Queries on Westlaw ran from 23 to 27 May 2024. The paper appeared in the Journal of Empirical Legal Studies on 23 April 2025.
+
+The authors define a hallucination as "a response that contains either incorrect information or a false assertion that a source supports a proposition". GPT-4, from OpenAI, is a general chatbot model. The authors asked it with no retrieval step. It was bad in 43% of answers, about 4 in 10. The authors write that hallucinations were "reduced relative to general-purpose chatbots (GPT-4)". The three tools still made them. The authors also write: "Because these are closed systems, we are not able to clearly identify a single point of failure for each hallucination." The authors report that the companies' claims of "hallucination-free" results were overstated.
+
+The study also uses a word for our topic. An answer is "misgrounded" when its key claims are cited but "misinterpret the source or reference an inapplicable source". The authors note that their use of "grounded" "deviates somewhat from the notion in computer science". We use a plainer test: does the answer stay inside the passages?
+</Deep>
+
+## How to check an answer against its passages
+
+<Simple>
+These habits come from the sixteen answers and the study.
+
+- **Read the passage beside the answer.** A number after a sentence only says where the model claims it came from.
+- **Compare quotes word for word.** One missing letter changed "ends a tag" into "end a tag".
+- **Look for what was added.** "Typically" was not in the passage.
+- **Look for limits that were dropped.** One passage said personal use is left out.
+- **Check whose rule it is.** In question 6, one passage gave a limit for one tool only. Both answers said so.
+
+A close match, a passage number and a plain instruction did not stop mistakes in our test. Comparing the passages with the answers is what revealed them.
+</Simple>
+
+<Deep>
+"I can't answer from these passages" can be the right reply. It does not mean the answer is missing from your documents. In question 2 it only meant that the retrieval step had missed it.
+
+The study found that systems can also cite a source that does not support the claim. So a citation is a pointer, not a proof. Open the passage and find the words.
+
+Lesson 4.1, Check it before you use it, covers checking an answer against real sources. Lesson 5.6, Prompt, RAG or fine-tune?, compares RAG with two other ways to shape an AI.
+</Deep>

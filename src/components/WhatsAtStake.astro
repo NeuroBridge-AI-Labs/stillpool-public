@@ -1,0 +1,8 @@
+---
+// 3.8's "What's at stake?" (stage I, static): five invented cases, the requirement most at stake and why, one design choice
+// and what it moves, then a last pick that is never scored or sent.
+import { CASES, INTRO, QUESTION, REQUIREMENTS } from '../lib/whats-at-stake.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="What's at stake?" name="whats-at-stake" noun="Case" intro={INTRO} question={QUESTION} options={REQUIREMENTS} cases={CASES} />

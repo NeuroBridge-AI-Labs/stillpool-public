@@ -1,0 +1,1 @@
+const engine = "eSpeak NG";

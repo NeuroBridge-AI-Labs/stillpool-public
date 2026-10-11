@@ -1,0 +1,137 @@
+---
+// Lesson 1.3's "Token splitter" (its brief, Interactive) on the shared shell (p6 D2). The five items' pieces and IDs are
+// worked out here at build time by src/lib/tokenizer.ts from data/interactive/token-splitter.json, so the page ships
+// only the results. The browser loads the tokeniser only for "Try your own words", through a dynamic import(), which
+// gives it its own tokenizer.*.js chunk (check:budget). Each piece is said as the brief's table says (spoken()). The
+// splits stay out of search: a one-letter piece such as "ž" matched any search starting with z.
+import { readFileSync } from 'node:fs';
+import { type Piece, spoken, split } from '../lib/tokenizer.ts';
+import Shell from './Shell.astro';
+
+const NAMES = ['"cat"', '"unbelievable"', '"strawberry"', 'The English sentence', 'The Irish sentence'];
+const texts: string[] = JSON.parse(readFileSync('data/interactive/token-splitter.json', 'utf8'));
+const items = texts.map((text, i) => ({ text, name: NAMES[i], lang: i === 4 ? 'ga' : undefined, pieces: split(text) }));
+const count = (n: number) => `${n} ${n === 1 ? 'piece' : 'pieces'}`;
+const INVISIBLE = /^\p{Cf}+$/u;
+const hex = (bytes: number[]) => bytes.map((b) => b.toString(16).padStart(2, '0')).join(' ');
+const LINE =
+  "Tokeniser: o200k_base (gpt-tokenizer 4.0.0). OpenAI's tiktoken library lists it for GPT-4o, GPT-4.1, GPT-5 and its o-series models. Other tokenisers split the same text differently.";
+// The brief's one sentence, with its number worked out from the two splits (the brief's T3 pins it at 14).
+const more = items[4].pieces.length - items[3].pieces.length;
+---
+
+<Shell title="Token splitter" reveal="Show the split" class="token-splitter">
+  <p>
+    A chatbot like ChatGPT does not take in text letter by letter. A tool called a tokeniser cuts it into small pieces called
+    tokens, and each piece gets a number.
+  </p>
+  <p>{LINE}</p>
+  {
+    items.map((it, i) => (
+      <Fragment>
+        {i === 3 && <p>This sentence is from an AI framework by the OECD and the European Union.</p>}
+        {i === 4 && <p>Here is the same sentence in Irish, from the Irish edition of the same framework.</p>}
+        <fieldset data-step>
+          <legend lang={it.lang}>{it.text}</legend>
+          <label>
+            How many pieces will this tokeniser cut it into?
+            <input type="number" min="1" step="1" name={`t${i + 1}`} data-said="" data-name={it.name} data-made={it.pieces.length} />
+          </label>
+          {i === 0 && <p>There is no wrong guess here.</p>}
+        </fieldset>
+      </Fragment>
+    ))
+  }
+  <Fragment slot="after">
+    <p>{LINE}</p>
+    {
+      items.map((it, i) => (
+        <Fragment>
+          <p>{it.name} became {count(it.pieces.length)} with this tokeniser.</p>
+          <ol class="pieces" data-item={i + 1} data-pagefind-ignore>
+            {it.pieces.map((p: Piece) => {
+              const [words, quoted] = spoken(p);
+              return (
+                <li>
+                  <span class="sr">{words}{quoted && <Fragment>"<span lang={it.lang}>{quoted}</span>"</Fragment>}, number {p.id}</span>
+                  <span class:list={['box', { part: 'bytes' in p }]} aria-hidden="true" lang={it.lang}>
+                    {'bytes' in p ? `part of a character, bytes ${hex(p.bytes)}` : INVISIBLE.test(p.text) ? words : (
+                      <Fragment>{p.text.startsWith(' ') && <span class="space">·</span>}{p.text.startsWith(' ') ? p.text.slice(1) : p.text}</Fragment>
+                    )}
+                  </span>
+                  <span class="id" aria-hidden="true">ID {p.id}</span>
+                </li>
+              );
+            })}
+          </ol>
+          {i === 2 && <p>The three r's are in two pieces: one in "raw" and two in "berry".</p>}
+        </Fragment>
+      ))
+    }
+    <p>This tokeniser cuts text into pieces from its own list, and the Irish sentence needed {more} more pieces.</p>
+    <div class="own">
+      <h3>Try your own words</h3>
+      <p>The first time you use this box, it downloads the tokeniser, about 1 MB.</p>
+      <label>Nothing you type leaves this page or is kept. <input type="text" maxlength="200" /></label>
+      <label>How many pieces will this tokeniser cut it into? <input type="number" min="1" step="1" /></label>
+      <button type="button" disabled>Show the split</button>
+      <p aria-live="polite"></p>
+      <ol class="pieces"></ol>
+    </div>
+    <p>Lesson 1.4 shows how a chatbot picks a likely next piece.</p>
+  </Fragment>
+</Shell>
+
+<script>
+  import type { Piece } from '../lib/tokenizer.ts';
+
+  // Each prediction said in words for the shell; and the box, which loads the tokeniser on its first use only.
+  const count = (n: number) => `${n} ${n === 1 ? 'piece' : 'pieces'}`;
+  const span = (className: string, text: string, hidden = true) => {
+    const s = Object.assign(document.createElement('span'), { className, textContent: text });
+    if (hidden) s.setAttribute('aria-hidden', 'true');
+    return s;
+  };
+  // The same markup as the five items' lists above, built for the learner's own words.
+  const item = ([words, quoted]: [string, string], p: Piece) => {
+    const box = span('bytes' in p ? 'box part' : 'box', '');
+    if ('bytes' in p) box.textContent = `part of a character, bytes ${p.bytes.map((b) => b.toString(16).padStart(2, '0')).join(' ')}`;
+    else if (/^\p{Cf}+$/u.test(p.text)) box.textContent = words;
+    else box.append(...(p.text.startsWith(' ') ? [span('space', '·', false), p.text.slice(1)] : [p.text]));
+    const li = document.createElement('li');
+    li.append(span('sr', `${words}${quoted && `"${quoted}"`}, number ${p.id}`, false), box, span('id', `ID ${p.id}`));
+    return li;
+  };
+
+  for (const shell of document.querySelectorAll<HTMLElement>('.token-splitter')) {
+    for (const input of shell.querySelectorAll<HTMLInputElement>('input[data-said]'))
+      input.addEventListener('input', () => {
+        input.dataset.said = `${input.dataset.name}: you said ${count(input.valueAsNumber)}. This tokeniser made ${input.dataset.made}.`;
+      });
+    const own = shell.querySelector<HTMLElement>('.own');
+    const [words, guess, show, heard, list] = ['input', 'input[type=number]', 'button', '[aria-live]', 'ol'].map((q) => own?.querySelector<HTMLElement>(q));
+    if (!(own && words instanceof HTMLInputElement && guess instanceof HTMLInputElement && show instanceof HTMLButtonElement && heard && list)) continue;
+    own.addEventListener('input', () => (show.disabled = !words.value || !guess.value || !guess.validity.valid));
+    let lib: typeof import('../lib/tokenizer.ts') | undefined;
+    show.addEventListener('click', async () => {
+      list.replaceChildren();
+      if (!lib) heard.textContent = 'Loading the tokeniser.';
+      try {
+        lib ??= await import('../lib/tokenizer.ts');
+      } catch {
+        heard.textContent = 'The tokeniser could not load, so this box cannot split your words right now. The five splits above still work.';
+        return;
+      }
+      let pieces: Piece[];
+      try {
+        pieces = lib.split(words.value);
+      } catch {
+        heard.textContent = 'This tokeniser keeps that text for its own use, so it cannot split it here.';
+        return;
+      }
+      const said = lib.spoken;
+      heard.textContent = `You said ${count(guess.valueAsNumber)}. This tokeniser made ${pieces.length}. Your words became ${count(pieces.length)} with this tokeniser.`;
+      list.replaceChildren(...pieces.map((p) => item(said(p), p)));
+    });
+  }
+</script>

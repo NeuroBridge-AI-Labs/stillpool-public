@@ -1,0 +1,171 @@
+---
+// The map on / (plan T5.3, D9; spec 3.1 and 7): pillars, topics and lessons in content/map.yaml's order. Every lesson
+// is a card with its promise, its time and a state tag in words, an icon and a colour (spec P20), and nothing is ever
+// locked (P15). The Hide my progress switch, beside the map's heading, belongs to the Settings form (form="settings-form"), so it is the same
+// stored setting. "What you can do" lists earned badges only: no count, no empty slot. On /done, `here` is the lesson
+// just finished. Pool Band v2: a pillar is a row of the tree, a lesson a card on its branch, and "What you can do" a blue
+// frame with one branch of earned badge emblems per pillar.
+import '../styles/front.css';
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { load } from 'js-yaml';
+import { numbers } from '../contents.ts';
+import Emblem from './Emblem.astro';
+import Glyph from './Glyph.astro';
+import Sprite from './Sprite.astro';
+import Icon from './Icon.astro';
+
+const { here } = Astro.props as { here?: string };
+
+// getCollection returns entries by id, not file order; content/map.yaml's order is the map's.
+const order = (load(readFileSync('content/map.yaml', 'utf8')) as { id: string }[]).map((p) => p.id);
+const pillars = (await getCollection('map')).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const built = await getCollection('lessons');
+const lessons = new Map(built.map((l) => [l.id, l]));
+const numbered = numbers(built);
+// check:content refuses a map entry with no lesson; the build refuses it too, rather than drop a node.
+const lessonAt = (id: string) => {
+  const lesson = lessons.get(id);
+  if (!lesson) throw new Error(`content/map.yaml: ${id} is on the map but has no lesson`);
+  return lesson;
+};
+// With no lesson finished (the home page), the first topic opens, as in the approved first view.
+const first = (p: number, t: number) => !here && p === 0 && t === 0;
+---
+
+<div class="map" data-here={here}>
+<Sprite lessons={[...lessons.keys()]} pillars={pillars.map((p) => p.data.id)} />
+<div class="map-head">
+  <h2 id="map-title">The lesson map</h2>
+  <label class="map-switch switch">
+    Hide my progress
+    <input type="checkbox" name="progress" value="hide" form="settings-form" />
+  </label>
+</div>
+{
+  pillars.map(({ data: pillar }, p) => (
+    <section aria-labelledby={`pillar-${pillar.id}`}>
+      <div class="pillar-head">
+        <Glyph pillar={pillar.id} sprite class="pillar-glyph" />
+        <h3 id={`pillar-${pillar.id}`}>{pillar.title}</h3>
+      </div>
+      <div class="tree">
+        {pillar.topics.map((topic, t) => (
+          <details class="map-topic" data-topic={`${pillar.id}/${topic.title}`} data-default={first(p, t) ? '' : undefined} open={first(p, t) || topic.lessons.some((slug) => `${pillar.id}/${slug}` === here)}>
+            <summary>
+              <Icon name="caret-right" />
+              <h4>{topic.title}</h4>
+              <span class="count">{topic.lessons.length} {topic.lessons.length === 1 ? 'lesson' : 'lessons'}</span>
+            </summary>
+            <ul class="topic">
+              {topic.lessons.map((slug) => {
+                const { id, data } = lessonAt(`${pillar.id}/${slug}`);
+                return (
+                  <li data-lesson={id} data-state="todo">
+                    <div class="card-top">
+                      <span class="tile"><Glyph lesson={id} sprite /></span>
+                      <Emblem lesson={id} label="Badge earned" sprite />
+                      <span class="num">{numbered.get(id)}</span>
+                    </div>
+                    <a href={`/learn/${id}/`}>{data.title}</a>
+                    <p>{data.promise}</p>
+                    <p class="time">
+                      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock" /></svg>
+                      About {data.minutes.simple} minutes, or {data.minutes.deep} with the Deep layers
+                    </p>
+                    <div class="card-status">
+                    <span class="state">
+                      <svg class="icon todo" aria-hidden="true" focusable="false"><use href="#i-circle-dashed" /></svg>
+                      <svg class="icon done" aria-hidden="true" focusable="false"><use href="#i-check-circle" /></svg>
+                      <svg class="icon here" aria-hidden="true" focusable="false"><use href="#i-seal-check" /></svg>
+                      <span>Not yet</span>
+                    </span>
+                    <p class="badge-note">No badge yet. Answer the check-in questions in the lesson to earn it.</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </details>
+        ))}
+      </div>
+    </section>
+  ))
+}
+<section class="can-do" aria-labelledby="can-do" hidden>
+  <h3 id="can-do">What you can do</h3>
+  <ul class="nets">
+    {
+      pillars.map(({ data: pillar }) => (
+        <li class="net" hidden>
+          <div class="hub">
+            <Glyph pillar={pillar.id} sprite />
+            <span>{pillar.title}</span>
+          </div>
+          <ul class="items">
+            {pillar.topics.flatMap((t) => t.lessons).map((slug) => {
+              const { id, data } = lessonAt(`${pillar.id}/${slug}`);
+              return (
+                <li class="item" data-badge={id} hidden>
+                  <Emblem lesson={id} sprite />
+                  <p><small>{data.title}</small>{data.promise}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+</div>
+
+<script>
+  import { localProgressChange, progress, type Progress } from '../progress/store.ts';
+
+  const LABEL = { todo: 'Not yet', done: 'Finished', here: 'Just finished' };
+  const here = document.querySelector<HTMLElement>('.map')?.dataset.here;
+  const show = ({ finished, badges }: Progress) => {
+    for (const li of document.querySelectorAll<HTMLElement>('.map li[data-lesson]')) {
+      const id = li.dataset.lesson ?? '';
+      const state = !finished.includes(id) ? 'todo' : id === here ? 'here' : 'done';
+      li.dataset.state = state;
+      (li.querySelector('.state > span') as HTMLElement).textContent = LABEL[state];
+      li.toggleAttribute('data-earned', badges.includes(id));
+    }
+    for (const badge of document.querySelectorAll<HTMLElement>('.map .item[data-badge]')) badge.hidden = !badges.includes(badge.dataset.badge ?? '');
+    // Each pillar shows only once it holds an earned badge, and its first and last badge carry the ends of its branch.
+    for (const net of document.querySelectorAll<HTMLElement>('.map .net')) {
+      const shown = [...net.querySelectorAll<HTMLElement>('.item')].filter((item) => !item.hidden);
+      net.hidden = !shown.length;
+      shown.forEach((item, i) => (item.dataset.edge = shown.length === 1 ? 'only' : i === 0 ? 'first' : i === shown.length - 1 ? 'last' : 'mid'));
+    }
+    (document.querySelector('.map .can-do') as HTMLElement).hidden = !document.querySelector('.map .item:not([hidden])');
+  };
+  progress.listen(() => { if (localProgressChange) show(progress.get()); });
+  show(progress.get());
+
+  // Which topics the learner opened, on this device only (nbl:topics). Blocked or broken storage changes nothing but
+  // the memory: the disclosures still work.
+  const KEY = 'nbl:topics';
+  const topics = [...document.querySelectorAll<HTMLDetailsElement>('.map-topic')];
+  // With nothing chosen yet, the first topic is open (the approved first view); a saved choice, even an empty one, replaces that.
+  let opened = topics.filter((d) => d.hasAttribute('data-default')).map((d) => d.dataset.topic ?? '');
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) ?? 'null');
+    if (Array.isArray(raw)) opened = raw.filter((t) => typeof t === 'string');
+  } catch {}
+  // Only the learner's own click (a keyboard press on a summary is a click too) is remembered: the completion page
+  // opens a topic by itself, and restoring the memory opens topics too; neither is saved.
+  for (const d of topics) {
+    const name = d.dataset.topic ?? '';
+    if (opened.includes(name)) d.open = true;
+    else if (d.hasAttribute('data-default')) d.open = false;
+    d.querySelector('summary')?.addEventListener('click', () => {
+      opened = d.open ? opened.filter((t) => t !== name) : [...opened, name]; // the click is about to flip d.open
+      try {
+        localStorage.setItem(KEY, JSON.stringify(opened));
+      } catch {}
+    });
+  }
+</script>

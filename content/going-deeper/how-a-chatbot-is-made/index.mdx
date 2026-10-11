@@ -1,0 +1,353 @@
+---
+title: How a chatbot is made
+promise: Can describe the stages that turn a text predictor into a chatbot, and why answers change over time
+minutes: {simple: 10, deep: 15}
+tldr:
+  - "A chatbot starts as a text predictor, trained on a huge collection of text. Later stages teach it to answer, using examples and people's choices."
+  - "We ran one small open model before and after tuning. The base version continued our text. The tuned version answered it."
+  - Companies release new versions and retire old ones. So the same chatbot name can answer differently later.
+misconceptions: [M7, M9]
+interactive: pipeline-stepper
+inputs: [src/lib/pipeline-stepper.ts, src/lib/steps.ts, src/components/Steps.astro, src/components/PipelineStepper.astro, data/recorded/R-5.1.json, src/lib/p2-runs.ts]
+competencies: [UNESCO-AICFS-4.1.3, UNESCO-AICFS-CG4.1.3.2, HEA-ALT-2, HEA-PEA-2.3.1-a, AILIT-S3, AILIT-E2]
+checkin:
+  - question: In the 2023 study of two OpenAI models, what did the researchers find when they compared March and June versions?
+    options:
+      - text: The same service gave quite different results on some tests. The result went up for one chatbot and down for the other on one test.
+        why: Yes. On the maths test, GPT-4 went down and GPT-3.5 went up. The paper also reports some tasks where GPT-4 did better.
+        right: true
+      - text: Both chatbots got worse at everything.
+        why: Not this one. GPT-3.5 did better in June on the maths test. The paper reports other tasks where GPT-4 did better.
+      - text: Nothing changed, so a chatbot name always means the same answers.
+        why: Not this one. The paper says the behaviour of the same service can change a lot in a short time.
+      - text: The paper showed which training step caused each change.
+        why: Not this one. The paper says when and how these models are updated is opaque. It does not trace changes to a step.
+  - question: What did the base version of OLMo 2 1B do when we sent it "What is the capital of Ireland?"
+    options:
+      - text: All three times, it began with "Dublin" and kept writing until we stopped it.
+        why: Yes. The base version continued our text. It did not stop by itself in any of the three runs.
+        right: true
+      - text: All three times, it answered in one sentence and stopped by itself.
+        why: Not this one. That is what the tuned version did. The base version kept writing until we stopped it.
+      - text: It said it could not help.
+        why: Not this one. All three base replies began with "Dublin".
+      - text: It stopped after one word each time.
+        why: Not this one. Each base reply reached the 80-token limit we set, and we stopped it there.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You described the stages that turn a text predictor into a chatbot, and why its answers can change.
+glossary:
+  - term: language model
+    meaning: A model trained on a vast amount of text. Anthropic says such models can generate human-like text and answer questions.
+  - term: pretraining
+    meaning: The first stage. Anthropic's glossary says a language model is trained on a large collection of text to predict the next word.
+  - term: base model
+    meaning: Ai2's name for the model as it is after pretraining, before the tuning steps.
+  - term: token
+    meaning: A small piece of text. Anthropic's glossary says it can be a word, part of a word or a character.
+  - term: fine-tuning
+    meaning: Training a pretrained language model further, using more data. This is Anthropic's definition.
+  - term: instruction tuning
+    meaning: A 2021 paper defined it as fine-tuning a language model on a collection of tasks described through instructions.
+  - term: labeler
+    meaning: A person who writes or rates examples used to tune a model. The InstructGPT paper uses the word.
+  - term: reward model
+    meaning: In Meta's Llama 2 report, a model that scores an answer for quality, given a request and the answer.
+  - term: RLHF
+    meaning: Short for reinforcement learning with human feedback. Meta's report uses the scores of a reward model as rewards to improve the chat model.
+  - term: safety tuning
+    meaning: Tuning with examples and choices about unsafe requests. Meta's report calls it safety fine-tuning.
+  - term: parameter
+    meaning: Google's machine learning glossary says parameters are the weights and biases that a model learns during training.
+  - term: system prompt
+    meaning: Text a company puts at the start of every conversation. Anthropic says its apps use one to give the current date.
+  - term: temperature
+    meaning: A setting that controls how random a model's predictions are. This is Anthropic's definition.
+  - term: fully open
+    meaning: Ai2's word for releasing a model's files, training data, training code, logs and saved copies from during training.
+  - term: retired
+    meaning: Anthropic's word for a model that is no longer available. Requests to it fail.
+whereNext:
+  title: Ai2, OLMo 2 project page
+  text: Ai2's own page about its OLMo 2 models, with links to the models, their data and their code. It is one web page. In our test it requested files from allenai.org and one other host, www.datocms-assets.com. It set no cookies before we made any choice. It has an email sign-up form, which we did not use. We checked this on 9 October 2026.
+  url: https://allenai.org/olmo2
+sources:
+  - title: "Touvron and others (Meta), Llama 2: Open Foundation and Fine-Tuned Chat Models, arXiv:2307.09288, submitted 18 July 2023, version 2 of 19 July 2023"
+    url: https://arxiv.org/abs/2307.09288
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Wei and others, Finetuned Language Models Are Zero-Shot Learners, arXiv:2109.01652, submitted 3 September 2021, last revised 8 February 2022"
+    url: https://arxiv.org/abs/2109.01652
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Ouyang and others (OpenAI), Training language models to follow instructions with human feedback, arXiv:2203.02155, submitted 4 March 2022"
+    url: https://arxiv.org/abs/2203.02155
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Bai and others (Anthropic), Constitutional AI: Harmlessness from AI Feedback, arXiv:2212.08073, submitted 15 December 2022"
+    url: https://arxiv.org/abs/2212.08073
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Rafailov and others, Direct Preference Optimization: Your Language Model is Secretly a Reward Model, arXiv:2305.18290, submitted 29 May 2023"
+    url: https://arxiv.org/abs/2305.18290
+    licence: CC-BY-4.0
+    use: cite
+  - title: "OLMo Team and others (Ai2), 2 OLMo 2 Furious, arXiv:2501.00656, submitted 31 December 2024"
+    url: https://arxiv.org/abs/2501.00656
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Lambert and others (Ai2), Tulu 3: Pushing Frontiers in Open Language Model Post-Training, arXiv:2411.15124, submitted 22 November 2024, last revised 14 April 2025"
+    url: https://arxiv.org/abs/2411.15124
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Ai2, model card for allenai/OLMo-2-0425-1B (the base model), read 9 October 2026"
+    url: https://huggingface.co/allenai/OLMo-2-0425-1B
+    licence: Apache-2.0
+    use: cite
+  - title: "Ai2, model card for allenai/OLMo-2-0425-1B-Instruct (the tuned model), read 9 October 2026"
+    url: https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct
+    licence: Apache-2.0
+    use: cite
+  - title: "Ai2, GGUF files for OLMo-2-0425-1B and OLMo-2-0425-1B-Instruct (Q8_0), read 9 October 2026"
+    url: https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct-GGUF
+    licence: No licence stated on the page
+    use: cite
+  - title: "llama.cpp, quantize tool README, read 9 October 2026"
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md
+    licence: MIT
+    use: cite
+  - title: "Wei and others, Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, arXiv:2201.11903, submitted 28 January 2022"
+    url: https://arxiv.org/abs/2201.11903
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Chen, Zaharia and Zou, How is ChatGPT's behavior changing over time?, arXiv:2307.09009, submitted 18 July 2023, version 3 of 31 October 2023"
+    url: https://arxiv.org/abs/2307.09009
+    licence: arXiv.org perpetual, non-exclusive licence
+    use: cite
+  - title: "Narayanan and Kapoor, Is GPT-4 getting worse over time?, 19 July 2023, read 9 October 2026"
+    url: https://www.normaltech.ai/p/is-gpt-4-getting-worse-over-time
+    licence: "The page shows a copyright notice, © 2026 Sayash Kapoor and Arvind Narayanan, and states no licence"
+    use: cite
+  - title: "Anthropic, Glossary (Claude Platform Docs), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/about-claude/glossary
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, Model deprecations (Claude Platform Docs), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic, System prompts (Claude Platform Docs), read 9 October 2026"
+    url: https://platform.claude.com/docs/en/release-notes/system-prompts
+    licence: No licence stated
+    use: cite
+  - title: "OpenAI, Deprecations (OpenAI API docs), read 9 October 2026"
+    url: https://developers.openai.com/api/docs/deprecations
+    licence: No licence stated
+    use: cite
+  - title: "Google, Gemini deprecations (Gemini API docs), last updated 7 October 2026, read 9 October 2026"
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Geological Survey Ireland, Geology of Ireland, read 9 October 2026"
+    url: https://www.gsi.ie/geoscience-topics/geology/geology-of-ireland/
+    licence: No licence stated on the page
+    use: cite
+  - title: "US Census Bureau, State and Local Geography Guides 2010: Washington, read 9 October 2026"
+    url: https://www.census.gov/geographies/reference-files/2010/geo/state-local-geo-guides-2010/washington.html
+    licence: No licence stated on the page
+    use: cite
+  - title: "Central Statistics Office, Ireland and Northern Ireland: A Joint Census Publication 2021-2022, Population and Age, read 9 October 2026"
+    url: https://www.cso.ie/en/releasesandpublications/ep/p-cpini/irelandandnorthernireland-ajointcensuspublication2021-2022/populationandage/
+    licence: CC BY 4.0 (the site's Copyright and Re-use Policy, linked in the page footer)
+    use: cite
+  - title: "Uisce Éireann, Regional Water Resources Plan South East, 2023, read 9 October 2026"
+    url: https://www.water.ie/sites/default/files/docs/projects/strategic-plans/national-water-resources/rwrp/2023/Regional-Water-Resources-Plan-South-East.pdf
+    licence: No licence stated in the document
+    use: cite
+  - title: "Google, Machine Learning Glossary, entry parameter, read 9 October 2026"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: Creative Commons Attribution 4.0 (the page footer)
+    use: cite
+  - title: "Hugging Face, Hub docs, GGUF, read 9 October 2026"
+    url: https://huggingface.co/docs/hub/gguf
+    licence: No licence stated on the page
+    use: cite
+  - title: "Dublin City Council, Dublin City Development Plan 2022-2028, 6.1 Introduction, read 9 October 2026"
+    url: https://www.dublincity.ie/dublin-city-development-plan-2022-2028/written-statement/chapter-6-city-economy-and-enterprise/61-introduction
+    licence: No licence stated
+    use: cite
+  - title: "Ai2, OLMo 2 project page, read 9 October 2026"
+    url: https://allenai.org/olmo2
+    licence: "All rights reserved (the page footer: © The Allen Institute for Artificial Intelligence)"
+    use: link
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## Stage one: a text predictor
+
+<Simple>
+A chatbot starts as a language model. Anthropic is the company that makes the chatbot Claude. Its glossary says these models are "trained on vast amounts of text data".
+
+The first stage is called **pretraining**. Anthropic's glossary says a pretrained model learns to "predict the next word". It does this "given the previous context of text in the document".
+
+It also says these models "are not inherently good at answering questions or following instructions". So a chatbot needs more stages. Ai2, the Allen Institute for AI, calls the model at this point the **base model**.
+
+Pretraining uses a lot of text, counted in tokens. A token is a small piece of text. Anthropic's glossary says it can be a word, part of a word or a character.
+
+Lesson 1.3, Tokens, shows how text is split up. Lesson 1.4, The next word, shows how a chatbot picks each word.
+
+A company called Meta released a model called Llama 2. Its report says Llama 2 "was pretrained on 2 trillion tokens of data from publicly available sources". Two trillion is a very large number.
+</Simple>
+
+<Deep>
+Ai2's card for OLMo 2 1B, the model we ran for this lesson, lists two parts of pretraining. The first part used "4 trillion tokens". The second part, which the card calls mid-training, used "50B tokens", meaning 50 billion, of a different mix of data. The card also gives a "Date cutoff" of "Dec. 2023". Lesson 1.5, Where your question goes, covers what a cut-off date means.
+
+Ai2 calls OLMo 2 "fully open". The OLMo 2 paper says that means "model weights, full training data, training code and recipes, training logs and thousands of intermediate checkpoints". That is Ai2's own definition for its own releases. A checkpoint is a saved copy of the model from partway through training. The card's example name, "stage1-step140000-tokens294B", is a copy saved after 294 billion tokens.
+</Deep>
+
+## Stage two: examples of good answers
+
+<Simple>
+The second stage teaches the model to answer. Makers train it further on examples. Each example is a request with a good answer.
+
+Anthropic's glossary calls this **fine-tuning**: "further training a pretrained language model using additional data". The model then copies patterns in that data.
+
+A 2021 research paper by Wei and others named one version **instruction tuning**. Its abstract defines it as "finetuning language models on a collection of tasks described via instructions".
+
+A company called OpenAI described another version in 2022, in its InstructGPT paper. People it calls labelers wrote "demonstrations of the desired model behavior". A labeler is a person who writes or rates examples.
+</Simple>
+
+<Deep>
+Meta's Llama 2 report gives numbers for its version of this stage. It says it "started the SFT stage with publicly available instruction tuning data". SFT is the report's short name for supervised fine-tuning. Meta then collected its own examples, and it "stopped annotating SFT after collecting a total of 27,540 annotations". An annotation is one prompt with its answer.
+
+The report's Table 5 caption says "the annotator has written both the prompt and its answer". These are the numbers for one model family in 2023. They are not a ratio that every chatbot follows.
+
+The Wei paper tuned one pretrained model on more than 60 tasks, each written out as instructions. It reports that the tuned model did much better than the untouched one on task types it had not seen.
+</Deep>
+
+## Stage three: people choose between answers
+
+<Simple>
+The third stage uses people's choices. A person sees two answers to one request and picks the one they prefer.
+
+Meta's Llama 2 report describes it. People were asked to "choose between two sampled model responses, based on provided criteria". Meta's two criteria were helpfulness and safety.
+
+Meta then trained a **reward model** on choices like these. The report says it takes a request and an answer, and gives the answer a score for quality.
+
+Meta used those scores as rewards to improve the chat version of Llama 2. The chat model is tuned to earn higher scores. The report calls this RLHF, short for reinforcement learning with human feedback.
+
+OpenAI also tuned a model with human feedback. Its InstructGPT paper says the model "still makes simple mistakes". So this stage improves answers. It does not make them always right.
+</Simple>
+
+<Deep>
+Table 6 of the Llama 2 report counts the choices. Meta collected 1,418,091 safety and helpfulness comparisons itself. The reward models also used open-source sets. The table prints a total of 2,919,326 comparisons. Its eight rows add up to 2,920,903, so we give the printed total as the report's own figure. The table note says each comparison has two responses, a chosen one and a rejected one. So these are comparisons of answers, not 2.9 million conversations.
+
+The InstructGPT abstract describes the same idea: "a dataset of rankings of model outputs" used to "further fine-tune this supervised model using reinforcement learning from human feedback".
+
+A later method, DPO, short for Direct Preference Optimization, uses the same kind of choices. Its abstract says RLHF is "a complex and often unstable procedure, first fitting a reward model". It says DPO solves the same problem "with only a simple classification loss". It calls DPO "stable, performant, and computationally lightweight". Ai2's cards list DPO as one of the tuning steps for OLMo 2 1B.
+</Deep>
+
+## Stage four: safety tuning
+
+<Simple>
+The fourth stage teaches a model how to handle risky requests. Meta's report calls it safety fine-tuning. We call it **safety tuning**.
+
+In the report, people wrote requests "that they think could potentially induce the model to exhibit unsafe behavior". They then wrote "a safe and helpful response that the model should produce". Meta also trained a separate "safety reward model".
+
+Anthropic's 2022 Constitutional AI paper tried a different route. People wrote "a list of rules or principles". The model then wrote critiques of its own answers and revised them. A model also chose the better of two answers. So some of the choices came from a model, not from people.
+
+Ai2's card for the tuned model we ran says: "The OLMo-2 models have limited safety training". So makers do not all do the same amount of safety work.
+</Simple>
+
+<Deep>
+Meta's report says that "after gathering only a few thousand supervised demonstrations, we switched entirely to RLHF" for safety. The Constitutional AI abstract describes two phases. In the first, the model makes "self-critiques and revisions", and is fine-tuned on the revised answers. In the second, "a model" picks the better of two answers and a preference model is trained on "AI preferences". The authors report a "harmless but non-evasive AI assistant". That is their result, on their tests.
+
+These four stages are a teaching outline, not a fixed recipe. Ai2's two cards for the 1B model do not agree on the last step. The base card's table says "SFT+DPO+GRPO". The tuned card says "final RLVR training". RLVR is Ai2's name for "Reinforcement Learning with Verifiable Rewards", a method the Tulu 3 abstract calls "novel". We follow the tuned card and do not teach RLVR here.
+</Deep>
+
+## The Pipeline stepper
+
+<Simple>
+The Pipeline stepper sends one question through five stages. The question is "What is the capital of Ireland?" At each stage you predict how the answer will look. Then you see what the stage changes.
+
+Two stages show real answers: the first and the fourth. These are recorded answers from one small model, in its base version and its tuned version.
+
+The fourth stage shows the finished tuned model. That model went through all of Ai2's tuning steps, not only the fourth. The stages in between were not recorded one by one, and the stepper says so.
+
+The fifth stage is about updates after a model is released. It shows no answer.
+</Simple>
+
+<Deep>
+The stepper claims nothing about what the middle stages would answer on their own. Ai2 published saved copies of OLMo 2 1B after its SFT step and after its DPO step, and its card lists them. We did not run them.
+
+The tuned release is the finished chat version, after all of Ai2's tuning steps. It shows what tuning does overall. It does not show what safety tuning alone adds.
+</Deep>
+
+<TryIt />
+
+## One small model, before and after tuning
+
+<Simple>
+The lesson's authors ran one small open model on their own computer. Ai2 calls its OLMo 2 models "fully open", and it publishes the model files.
+
+This one is OLMo 2 1B. Ai2's card calls it "the smallest model in the OLMo 2 family". The 1B is a size label, short for one billion parameters. Parameters are the numbers a model learns in training.
+
+We ran two published versions: the base version, and the tuned version, which Ai2 calls Instruct. We sent each the same text, "What is the capital of Ireland?", three times. We ran them on 8 October 2026.
+
+All three base replies began with "Dublin". None stopped by itself. We stopped each at the limit we set, 80 tokens.
+
+One base reply added more facts. Two added questions, and one of those repeated our question. You can read all six replies in the activity above.
+
+In one of the three base replies, the model named Dublin. Then it said "it's not the capital of the Republic of Ireland". It reads as if "it" means Dublin. That is false.
+
+Four more claims in the base replies are false: the size of Ireland, its population and two river ranks. The activity marks them.
+
+Dublin City Council's plan says: "As the State’s capital, Dublin performs a significant economic, administrative and cultural role."
+
+All three tuned replies began with "The capital of Ireland is Dublin." All three stopped by themselves. Two were that one sentence. One added two more sentences about Dublin. None added a safety or politeness line.
+
+The three base replies were all different. A setting called temperature controls how random a model's predictions are. Anthropic's glossary says higher temperatures lead to "more creative and diverse outputs". That is why the same question can give different replies. We set it to 0.7.
+
+This is one small model, one question and three runs of each. It is not how a large chatbot looked before tuning.
+</Simple>
+
+<Deep>
+We sent the base version the raw text, with no chat template. We sent the tuned version our text as one user message, and the server applied the model's own chat template. A chat template is the layout that marks who wrote each message in a chat, and Ai2's card shows it. That template, which we recorded, adds no system message. Every setting is shown beside the recorded answers.
+
+We ran the Q8_0 files that Ai2 publishes in GGUF format. Hugging Face's docs call GGUF "a binary format that is optimized for quick loading and saving of models". These are quantized copies, which are smaller than the original. The llama.cpp guide says quantization "reduces the precision of model weights" (the numbers the model stores), shrinks the model, and "may introduce some accuracy loss". So runs of the original files could differ from ours.
+
+The tuned model's card says it was fine-tuned on a version of the Tulu 3 data, then trained with DPO, then with RLVR. Its card also says the models "are not deployed automatically with in-the-loop filtering of responses like ChatGPT".
+
+We checked the facts in the base replies that we could check against a source. We marked five false statements in all, each with its source. We did not check every claim in the base replies. A claim without a mark is not proof that it is true.
+</Deep>
+
+## Stage five: why answers change over time
+
+<Simple>
+Makers keep releasing new models and switching old ones off. Anthropic's page about retiring models says: "As safer and more capable models launch, Anthropic regularly retires older ones."
+
+OpenAI's page says almost the same: "As we launch safer and more capable models, we regularly retire older models." Anthropic says a retired model "is no longer available for use".
+
+Makers also change the instructions they add. A system prompt is text a company puts at the start of every conversation. Anthropic says its apps use one to give the current date.
+
+Anthropic also says: "This prompt is periodically updated to improve Claude's responses." Lesson 2.3, Roles and ground rules, shows how to write your own instructions.
+
+A 2023 study tested two OpenAI models, named GPT-3.5 and GPT-4. It compared a March version and a June version of each.
+
+On one maths test of 1,000 questions, GPT-4 got about 84 in 100 right in March. In June it got about 51 in 100 right.
+
+GPT-3.5 went up, from about 50 in 100 to about 76 in 100. The same service can change a lot in a few months.
+</Simple>
+
+<Deep>
+Google's page defines the steps: a deprecation is "the announcement that we no longer provide support for a model", and after a model is "shutdown", it "is completely turned off". The page says its listed dates "indicate the earliest possible dates on which a model might be retired". OpenAI's page gives generally available models "At least 6 months" of notice, unless safety or compliance concerns need a faster timeline. It says preview models "may be retired with much shorter notice, such as 2 weeks". Anthropic says it gives "at least 60 days' notice before model retirement for publicly released models". Each of these is one company's claim on its own page, read on 9 October 2026.
+
+Anthropic's system prompts page says that updates to the prompt "do not apply to the Claude API". It also says that from the Claude 4.6 generation "each model ID is a single fixed snapshot". The Chen paper uses the word for the model as it was on one date: "one snapshotted in March 2023".
+
+In the study by Chen, Zaharia and Zou, the test had 1,000 questions asking whether a number is prime or composite. The paper used chain-of-thought prompting, which prompts the model with intermediate reasoning steps, as Wei and others described in 2022. The Chen paper calls it "a standard approach for reasoning-heavy tasks". Without it, GPT-4 scored 59.6% in March and 51.0% in June (Table 1). The abstract says the GPT-4 drop on this test is "partly explained by a drop in GPT-4's amenity to follow chain-of-thought prompting". The paper also reports tasks where GPT-4 did better in June, and says "when and how these models are updated over time is opaque". So a changed answer alone does not tell you which step, or which change to the service, caused it.
+
+Mixed evidence stays mixed. On 19 July 2023, two other researchers, Narayanan and Kapoor, wrote that the study by Chen, Zaharia and Zou was "widely misinterpreted", and that "A model that has a capability may or may not display that capability in response to a particular prompt." In July 2023 they wrote that the authors "picked 500 numbers, but all of them were prime!" The version of the paper that we read, of 31 October 2023, describes 500 primes and 500 composite numbers.
+</Deep>

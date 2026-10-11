@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>stillness corners</title>
+<style>
+.media, .surface, .box { position: relative; width: 200px; height: 100px; overflow: clip; }
+.deco { position: absolute; width: 40px; height: 40px; fill: none; stroke: #000; }
+.deco.tr { top: 0; right: 0; animation: drift 4s ease-in-out infinite; }
+.deco.bl { bottom: 0; left: 0; animation: drift 4s ease-in-out infinite; --drift: -2px; }
+@keyframes drift { 50% { transform: translate(var(--drift, 2px), calc(var(--drift, 2px) * -1)); } }
+@media (prefers-reduced-motion: reduce) { .deco.tr, .deco.bl { animation: none; } }
+</style>
+</head>
+<body>
+<figure class="media"><div class="surface"><svg class="deco tr"><path d="M0 0h40v40"/></svg><svg class="deco bl"><path d="M0 0h40v40"/></svg><div class="box"><svg class="deco tr"><path d="M0 0h40v40"/></svg></div></div></figure>
+</body>
+</html>

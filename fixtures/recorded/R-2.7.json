@@ -1,0 +1,249 @@
+{
+ "id": "R-2.7",
+ "model": {
+  "id": "test-fixture-model-a",
+  "name": "Test fixture model A",
+  "host": "Test fixture host A"
+ },
+ "date": "2000-01-01",
+ "settings": {
+  "max_tokens": 4000,
+  "temperature": "not set, so the model's default",
+  "tools": "no tools",
+  "system prompt": "in each variant that has one"
+ },
+ "variants": [
+  {
+   "label": "T1 A",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Summarise this meeting transcript:\n\nTest fixture transcript 1"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply T1 A A run 1"
+    },
+    {
+     "reply": "Test fixture reply T1 A A run 2"
+    },
+    {
+     "reply": "Test fixture reply T1 A A run 3"
+    }
+   ]
+  },
+  {
+   "label": "T1 A",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Summarise this meeting transcript:\n\nTest fixture transcript 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply T1 A B run 1"
+    },
+    {
+     "reply": "Test fixture reply T1 A B run 2"
+    },
+    {
+     "reply": "Test fixture reply T1 A B run 3"
+    }
+   ]
+  },
+  {
+   "label": "T1 B",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nTest fixture transcript 1"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply T1 B A run 1"
+    },
+    {
+     "reply": "Test fixture reply T1 B A run 2"
+    },
+    {
+     "reply": "Test fixture reply T1 B A run 3"
+    }
+   ]
+  },
+  {
+   "label": "T1 B",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nTest fixture transcript 1"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply T1 B B run 1"
+    },
+    {
+     "reply": "Test fixture reply T1 B B run 2"
+    },
+    {
+     "reply": "Test fixture reply T1 B B run 3"
+    }
+   ]
+  },
+  {
+   "label": "T2 A",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Summarise this meeting transcript:\n\nTest fixture transcript 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply T2 A A run 1"
+    },
+    {
+     "reply": "Test fixture reply T2 A A run 2"
+    },
+    {
+     "reply": "Test fixture reply T2 A A run 3"
+    }
+   ]
+  },
+  {
+   "label": "T2 A",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Summarise this meeting transcript:\n\nTest fixture transcript 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply T2 A B run 1 Test fixture false claim"
+    },
+    {
+     "reply": "Test fixture reply T2 A B run 2"
+    },
+    {
+     "reply": "Test fixture reply T2 A B run 3"
+    }
+   ]
+  },
+  {
+   "label": "T2 B",
+   "maker": "A",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nTest fixture transcript 2"
+    }
+   ],
+   "runs": [
+    {
+     "reply": "Test fixture reply T2 B A run 1"
+    },
+    {
+     "reply": "Test fixture reply T2 B A run 2"
+    },
+    {
+     "reply": "Test fixture reply T2 B A run 3"
+    }
+   ]
+  },
+  {
+   "label": "T2 B",
+   "maker": "B",
+   "messages": [
+    {
+     "role": "user",
+     "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nTest fixture transcript 2"
+    }
+   ],
+   "model": {
+    "id": "test-fixture-model-b",
+    "name": "Test fixture model B",
+    "host": "Test fixture host B",
+    "card": {
+     "default_model_temperature": 0.3
+    }
+   },
+   "settings": {
+    "model": "test-fixture-model-b",
+    "max_tokens": 4000,
+    "default_model_temperature": 0.3,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+   },
+   "runs": [
+    {
+     "reply": "Test fixture reply T2 B B run 1"
+    },
+    {
+     "reply": "Test fixture reply T2 B B run 2"
+    },
+    {
+     "reply": "Test fixture reply T2 B B run 3"
+    }
+   ]
+  }
+ ]
+}

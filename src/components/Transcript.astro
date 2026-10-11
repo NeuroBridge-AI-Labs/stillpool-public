@@ -1,0 +1,22 @@
+---
+// A meeting transcript, one speaker per row (2.7). Each speaker has a colour, an initial and a name on every turn, and the
+// rows keep the recorded order, so no speaker is told apart by colour alone. A text that is not made of speaker lines
+// is shown as it is.
+import { turns } from '../lib/transcript.ts';
+interface Props { text: string; label: string }
+const { text, label } = Astro.props;
+const rows = turns(text);
+---
+
+{
+  rows.length ? (
+    <ol class="transcript" aria-label={label}>
+      {rows.map((t) => (
+        <li class={`turn sp-${t.speaker}`}>
+          <div class="who"><b aria-hidden="true">{t.name[0]}</b><span><strong>{t.name}</strong>{t.role && <small>{t.role}</small>}</span></div>
+          <p>{t.words}</p>
+        </li>
+      ))}
+    </ol>
+  ) : <blockquote class="sent">{text}</blockquote>
+}

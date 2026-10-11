@@ -1,0 +1,440 @@
+/* Tailwind here is its preflight and one utility, sr-only (the check-in uses it). Nothing else in the site is styled with a
+   utility class, so it reads no file: every word in a component or a lesson (container, table, ring...) would emit a
+   utility nobody wrote, and the 60 KB page budget has no room for them (04-10-26). A class a component does want is added
+   with @source inline below. */
+@source not "../..";
+@source inline("sr-only");
+/* Reader settings (D2). src/boot.js copies nbl:settings onto <html> as data-* attributes before the first paint,
+   and these rules do the rest. A look never touches this file (docs/adr/0002-themes.md). Defaults: Lexend, text
+   size step 2 of 5, normal spacing, line height 1.5. */
+html {
+  --font-body: "Lexend", system-ui, sans-serif;
+  font-size: 112.5%;
+  line-height: 1.5;
+}
+html[data-font="public-sans"] {
+  --font-body: "Public Sans", system-ui, sans-serif;
+}
+html[data-font="system"] {
+  --font-body: system-ui, sans-serif;
+}
+html[data-font="opendyslexic"] {
+  --font-body: "OpenDyslexic", system-ui, sans-serif;
+}
+
+/* Five sizes: 16, 18, 20, 22 and 24 px at the browser's default, kept relative to the reader's own base size. */
+html[data-size="1"] {
+  font-size: 100%;
+}
+html[data-size="3"] {
+  font-size: 125%;
+}
+html[data-size="4"] {
+  font-size: 137.5%;
+}
+html[data-size="5"] {
+  font-size: 150%;
+}
+
+/* The reader's spacing, line spacing and font reach every element, each scaling with its own font size, and win over
+   an element's own, a Tailwind hover: or dark: variant included (!important, as for motion); code keeps its
+   monospace. One control moves letter and word spacing together, word spacing 3.5 times letter spacing (R4 P1). Only a
+   font the reader chose has a rule: a stored default (Lexend) changes nothing, so headings keep the look's font. */
+html[data-spacing="wide"] * {
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.175em !important;
+}
+html[data-spacing="wider"] * {
+  letter-spacing: 0.1em !important;
+  word-spacing: 0.35em !important;
+}
+html[data-lines="1.75"] * {
+  line-height: 1.75 !important;
+}
+html[data-lines="2"] * {
+  line-height: 2 !important;
+}
+html:is([data-font="public-sans"], [data-font="system"], [data-font="opendyslexic"]) :not(pre, code, kbd, samp, math, pre *, code *, kbd *, samp *, math *) {
+  font-family: var(--font-body) !important;
+}
+
+/* Without JavaScript the dialog still opens (invoker commands) but its controls do nothing, so it says so. Progress
+   needs it too, so no state, Hide switch or save code shows (pr5-review NICE 3, pr8-review NICE 1). */
+html[data-js] .needs-js,
+html:not([data-js]) :is(.state, .map-switch, .hero-switch, .save-code, [aria-labelledby="done-save"]) {
+  display: none;
+}
+
+/* Depth (D5, spec 3.4): Simple always shows, Deep adds under it when chosen; a section's own flip (data-flip on its Deep,
+   src/depth.ts) wins over the global choice. Without JavaScript both layers show and the depth controls are hidden. */
+html[data-js]:not([data-depth="deep"]) [data-layer="deep"]:not([data-flip]),
+[data-flip="hide"],
+html:not([data-js]) :is(.depth, .read) {
+  display: none;
+}
+
+/* Interactives as text (D2, the shell): with no JavaScript, or "Show interactives as text", every step shows and
+   nothing in it can be pressed. The shell's own text switch needs JavaScript, so it shows only with it. */
+html[data-js]:not([data-textversion]) .shell:not(.revealed) .after-pick,
+html[data-js]:not([data-textversion]) .shell.revealed [data-reveal],
+html[data-js]:not([data-textversion]) .examples ul:not(.shown),
+html[data-js]:not([data-textversion]) .examples:not(.open) :is(ul, [data-turn]),
+html:is(:not([data-js]), [data-textversion]) .shell :is([data-step] :is(label, button), [data-reveal]),
+html:not([data-js]) .shell-text {
+  display: none;
+}
+/* Stage I's runs as text: every run of every slot and every run under "Show all runs" written out, nothing to open. */
+html:is(:not([data-js]), [data-textversion]) :is(.all-runs, .zoom) > summary {
+  display: none;
+}
+html:is(:not([data-js]), [data-textversion]) :is(.all-runs, .zoom)::details-content {
+  content-visibility: visible;
+}
+html:is(:not([data-js]), [data-textversion]) .runs-pair .as-text {
+  display: block;
+}
+/* What a stage I script switches off with data-off (an answer not yet asked for, a card not picked) shows again as text. "Your card" needs the picks, so it stays off. */
+[data-off] {
+  display: none;
+}
+html[data-textversion] [data-off]:not(.your-card) {
+  display: block;
+}
+/* 2.5's layer explorer as text or without JavaScript: the rules, their layers and the built prompt are written out, and
+   nothing is left to choose. */
+html:is(:not([data-js]), [data-textversion]) .layer-explorer .explorer-play {
+  display: none;
+}
+/* 1.9's "Doodle guesser": with JavaScript, only the picked doodle's results show, and the copy's only in its own region
+   after the switch; as text or without JavaScript, every example's description and results show, and the pad does not. */
+html[data-js]:not([data-textversion]) .doodle-guesser :is([data-for]:not(.shown), [data-for] .copy, .as-text),
+html:is(:not([data-js]), [data-textversion]) .doodle-guesser :is(.pad, [data-for="own"], .copy-said) {
+  display: none;
+}
+
+/* Motion (D17, Q12): the switch forces reduced motion on; switched off, the device decides. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+html[data-motion="reduce"] *,
+html[data-motion="reduce"] ::before,
+html[data-motion="reduce"] ::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Focus mode (Q13) hides the Map and Help links, the breadcrumb and the footer; Settings stays. */
+html[data-focus] :is(.site-header nav a, .breadcrumb, .site-footer) {
+  display: none;
+}
+
+/* Hide my progress (spec 7): map states, badges and the celebration go, on every page. */
+html[data-progress="hide"] :is(.state, .can-do, [data-part="badge"], .earned-note) {
+  display: none;
+}
+
+/* The reading ruler: a band across the page that src/settings.ts moves from mid-screen to the pointer or the focused element. It takes
+   no clicks, so it never covers what the reader points at. */
+.ruler {
+  display: none;
+}
+html[data-ruler] .ruler {
+  display: block;
+  position: fixed;
+  top: calc(50% - 1.25em); /* mid-screen until the pointer or the focus moves it */
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 2.5em;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-block: var(--border-width) solid var(--accent);
+}
+
+/* The ruler is hidden while Settings is open: the panel is the reader's one place then (7d point 4). */
+body:has(dialog[open]) .ruler {
+  display: none;
+}
+
+/* The Settings panel (design polish D3): full height at the right, the whole screen on a phone. Its head and foot
+   stay put and only the body scrolls, so Close and Done are always in reach. It slides in when opened, and not at all
+   with reduced motion (the rules above). */
+#settings {
+  width: min(24rem, calc(100vw - 2rem));
+  max-width: none;
+  height: calc(100dvh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  margin: 1rem 1rem 1rem auto;
+  padding: 0;
+  border: var(--border-width-strong) solid var(--border);
+  border-radius: 12px;
+}
+@media (max-width: 767px) {
+  #settings {
+    width: calc(100vw - 16px);
+    height: calc(100dvh - 16px);
+    max-height: calc(100dvh - 16px);
+    margin: 8px;
+  }
+}
+#settings[open] {
+  display: flex;
+  flex-direction: column;
+  animation: slide-in 180ms var(--motion-ease);
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+#settings :is(.panel-head, .panel-foot) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 8px 16px;
+}
+#settings .panel-head {
+  border-bottom: var(--border-width) solid var(--border);
+}
+#settings .panel-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+#settings .panel-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+}
+#settings .panel-foot {
+  justify-content: flex-end;
+  border-top: var(--border-width) solid var(--border);
+}
+#settings .panel-foot button {
+  min-width: 7rem;
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+#settings fieldset {
+  margin-bottom: 1.5rem;
+}
+#settings legend {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+#settings label,
+.shell label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+}
+.shell :is([type="radio"], [type="checkbox"]) {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--accent);
+}
+/* A radio group is a row of segments, fonts and themes a grid of tiles: each a native radio, unseen but covering its
+   label, so a click, the arrow keys and a screen reader all work as before. The chosen one is filled and bold, never
+   colour alone. */
+#settings .segments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-large);
+}
+#settings .tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
+}
+#settings .segments label {
+  position: relative;
+  flex: 1 1 auto;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 44px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.875rem;
+  text-align: center;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+#settings .tiles label {
+  flex-direction: column;
+  padding-block: 0.5rem;
+}
+#settings .segments input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+#settings .segments label:hover {
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+}
+#settings .segments label:has(:checked) {
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+}
+#settings .segments label:has(:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.aa::before {
+  content: "Aa" / "";
+  font-size: 1.125rem;
+  line-height: 1;
+}
+.aa-lexend::before {
+  font-family: "Lexend", system-ui, sans-serif;
+}
+.aa-public-sans::before {
+  font-family: "Public Sans", system-ui, sans-serif;
+}
+.aa-system::before {
+  font-family: system-ui, sans-serif;
+}
+.aa-opendyslexic::before {
+  font-family: "OpenDyslexic", system-ui, sans-serif;
+}
+/* A theme's swatch is drawn by its own token block: its ground with its accent in the corner. */
+.swatch {
+  display: flex;
+  overflow: clip;
+  width: 1.5rem;
+  height: 1rem;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+.swatch > span {
+  flex: 1;
+  background: linear-gradient(135deg, var(--ground) 60%, var(--accent) 60%);
+}
+#settings .why summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* A setting you switch on or off is drawn as a switch, in Settings and on the map: the knob moves and the track fills. */
+label.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 44px;
+}
+label.switch input {
+  flex: none;
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  appearance: none;
+  background: var(--ground);
+  border: var(--border-width-strong) solid var(--border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--motion-duration) var(--motion-ease);
+}
+label.switch input::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.5rem - 4px - 2 * var(--border-width-strong));
+  aspect-ratio: 1;
+  background: var(--border);
+  border-radius: 50%;
+  transition: transform var(--motion-duration) var(--motion-ease);
+}
+label.switch input:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+label.switch input:checked::before {
+  background: var(--on-accent);
+  transform: translateX(1.25rem);
+}
+/* The panel's secondary groups are native disclosures, open by default so no control is hidden: Reading layout, More reading controls, Reading voice and speed,
+   and Move or delete progress. A disclosure never submits or changes a setting by opening or closing. */
+#settings .applies {
+  margin-block: 0 var(--s1);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+#settings details.group {
+  border-top: var(--border-width) solid var(--border);
+}
+#settings details.group > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+}
+#settings details.group[open] > summary {
+  margin-bottom: var(--s1);
+}
+#settings .note {
+  margin-top: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+/* This device's code wraps in even parts, so a short last group is never taken for its end (pr8-review NICE 2). One
+   line would scroll sideways: 302 px of code in 296 px at 390, and more with larger text. It is a box of its own, as the
+   thing to keep. */
+.save-code .code {
+  padding: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-wrap: balance;
+  background: var(--ground);
+  border: var(--border-width) solid var(--border);
+  border-radius: 8px;
+}
+.save-code :is(.code, .link) {
+  overflow-wrap: anywhere;
+}
+#settings .save-code .code {
+  padding: 12px;
+  font-size: 1rem;
+}
+/* Move your progress: the code field takes the line and wraps over two rows, so the end of a code, the part a
+   refusal asks the reader to check, is never out of sight on a phone (pr7-review SHOULD-FIX 3). The reading voice
+   (T9.1) is a box like it, so it reads as a control and not as a line of text. */
+#save-code,
+#voice {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.25rem 0.5rem;
+  color: var(--text);
+  background: var(--ground);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+#save-code {
+  margin-bottom: 0.5rem;
+  resize: none;
+}
+#voice {
+  margin-top: 0.25rem;
+}

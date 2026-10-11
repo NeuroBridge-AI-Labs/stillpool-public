@@ -1,0 +1,49 @@
+---
+import '../styles/footer.css';
+// The footer (F3): the brand and who made it, three named groups of links, and the licence line. The logo is an external
+// link; src/lib/external.ts adds its new-tab words and icon to the finished HTML, as for every link to another site.
+---
+
+<footer class="site-footer stillpool-footer">
+  <div class="frame">
+    <div class="brand">
+      <a class="logo-link" href="https://neurobridgeedu.eu">
+        <img class="logo logo-light" src="/brand/nbedu-logo-light.png" alt="NeuroBridgeEDU" width="309" height="168" loading="lazy" />
+        <img class="logo logo-dark" src="/brand/nbedu-logo-dark.png" alt="NeuroBridgeEDU" width="309" height="168" loading="lazy" />
+      </a>
+      <p>Stillpool is a free learning project by <a href="https://neurobridgeedu.eu">NeuroBridgeEDU</a>, founded by <a href="https://emmi.zone">Emanuel Covasa</a>.</p>
+    </div>
+    <nav aria-label="Footer" class="groups">
+        <section>
+          <h2>Learn</h2>
+          <ul>
+            <li><a href="/">Lesson map</a></li>
+            <li><a href="/search/">Search</a></li>
+            <li><a href="/help/">Help</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Project</h2>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/teachers/">For teachers</a></li>
+            <li><a href="https://neurobridgeedu.eu/mission">NeuroBridgeEDU's mission</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Policies and credits</h2>
+          <ul>
+            <li><a href="/privacy/">Privacy notice</a></li>
+            <li><a href="/accessibility/">Accessibility statement</a></li>
+            <li><a href="/terms/">Terms of use</a></li>
+            <li><a href="/licences/">Licences and credits</a></li>
+            <li><a href="/notices/">Notices</a></li>
+          </ul>
+        </section>
+    </nav>
+    <p class="legal">
+      Lessons: CC BY-NC-SA 4.0. Code: all rights reserved. The NeuroBridgeEDU name and logo belong to Emanuel Covasa and are not covered by the
+      CC BY-NC-SA 4.0 licence. <a href="/licences/">Licence detail</a>
+    </p>
+  </div>
+</footer>

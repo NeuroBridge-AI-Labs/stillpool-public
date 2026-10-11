@@ -1,0 +1,235 @@
+---
+// Lesson 1.4's "Guess the next word" (its brief, Interactive) on the shared shell (p6 D2). Every chance is worked out
+// here at build time by src/lib/next-word.ts from data/training/dubliners.txt, at all three temperatures, so the page
+// ships results, not a model. The temperature only shows one set; the browser only makes the random pick, over every
+// word the toy saw after the two words (the brief's T7), never only the five shown.
+import { existsSync, readFileSync } from 'node:fs';
+import { load } from 'js-yaml';
+import { recorded, recording, shownSetting } from '../lesson-schema.ts';
+import { after, atTemp, pieces, spread, TEMPS, words } from '../lib/next-word.ts';
+import { spoken } from '../lib/tokenizer.ts';
+import Shell from './Shell.astro';
+
+type Temp = keyof typeof TEMPS;
+const NAMES = Object.keys(TEMPS) as Temp[];
+const DESC = {
+  Low: 'The most likely word is picked more often.',
+  Standard: "The toy's own chances.",
+  High: 'The chances are evened out, so less likely words are picked more often.',
+};
+const LINE =
+  "This toy counts which word came next after the last two words in one book, Dubliners by James Joyce (1914). A chatbot's language model learns from far more text, and works differently.";
+const data: { starts: { text: string; guesses: string[] }[] } = JSON.parse(readFileSync('data/interactive/next-word.json', 'utf8'));
+const PS = pieces(readFileSync('data/training/dubliners.txt', 'utf8'));
+const starts = data.starts.map((s, i) => {
+  const cut = s.text.split(' ');
+  const pair = cut.slice(-2).join(' ');
+  const [a, b] = pieces(pair);
+  const at = Object.fromEntries(NAMES.map((t) => [t, atTemp(after(PS, a, b), TEMPS[t])])) as Record<Temp, Map<string, number>>;
+  return { ...s, n: i + 1, lead: cut.slice(0, -2).join(' '), pair, at, top: [...at.Standard][0] };
+});
+type Start = (typeof starts)[number];
+// The five most seen, then all other words together (brief, "The chances the page shows").
+const shown = (c: Map<string, number>): [string, number][] => {
+  const rest = [...c].slice(5).reduce((sum, [, p]) => sum + p, 0);
+  return rest ? [...[...c].slice(0, 5), ['all other words together', rest]] : [...c];
+};
+const only = (s: Start) => (s.at.Standard.size === 1 ? 'only' : 'most likely');
+const best = (s: Start) => `Its ${only(s)} word here: ${s.top[0]}, ${words(s.top[1])}.`;
+// The reveal names the guess in words, at the toy's own chances (brief, screens 2 and 5).
+const guessed = (s: Start, g: string) => {
+  const p = s.at.Standard.get(g);
+  if (p === undefined) return `You guessed ${g}. The toy never saw "${g}" after "${s.pair}", so it never picks it. ${best(s)}`;
+  if (g === s.top[0]) return `You guessed ${g}. It is the toy's ${only(s)} word here: ${words(p)}.`;
+  return `You guessed ${g}. The toy's chance: ${words(p)}. ${best(s)}`;
+};
+// The R-1.1 part (P6.10): run 1 of the warm reply, named in the lesson's recorded.yaml (p6 D4), each piece's chance e to
+// the power of its stored logprob. Scaleway stores an emoji as pieces with empty text, and each run ends with </s>
+// (the R-1.1 data PR); the data stays as recorded, so they show as "no text", claiming nothing about what each holds
+// (p6-10-review N3), and "the end marker". Every other piece is read as 1.3's box reads it: `space, then "I"`, `comma`
+// (p6-10-review S1).
+const said = (text: string) => ((w, q) => w + (q && `"${q}"`))(...spoken({ text }));
+const named = 'R-1.1' in recorded.parse(load(readFileSync('content/how-ai-works/the-next-word/recorded.yaml', 'utf8')));
+const rec = named && existsSync('data/recorded/R-1.1.json') ? recording.parse(JSON.parse(readFileSync('data/recorded/R-1.1.json', 'utf8'))) : undefined;
+const warm = rec?.variants.find((v) => /warm/i.test(v.instruction ?? ''))?.runs[0].pieces ?? [];
+const played = warm.map(({ text, logprob }) => {
+  const [kind, shown] = text === '</s>' ? ['the end marker', 'end'] : text ? [said(text), text.trimStart()] : ['a piece with no text', 'no text'];
+  return { kind, shown, space: text.startsWith(' '), chance: Math.exp(logprob) };
+});
+const day = rec && new Date(rec.date).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const HOW = ['Most had a high chance', 'Most had a low chance', 'About half and half'];
+---
+
+<Shell title="Guess the next word" reveal="Show the chances" class="next-word">
+  <p>
+    A chatbot like ChatGPT writes one piece at a time. For each piece, its language model works out chances for what could
+    come next, and one is picked. This toy does the same with whole words, using counts from one book.
+  </p>
+  <p>{LINE}</p>
+  <p>Which word do you think comes next? The toy looks only at the two words in a box.</p>
+  {
+    starts.map((s) => (
+      <fieldset data-step data-top={`The toy's ${only(s)} word after "${s.pair}": ${s.top[0]}, ${words(s.top[1])}.`}>
+        <legend>
+          {s.lead} <span class="pair">{s.pair}</span> ...
+        </legend>
+        <p class="looks">The toy looks only at: {s.pair}.</p>
+        {s.guesses.map((g) => (
+          <label>
+            <input type="radio" name={`s${s.n}`} data-said={guessed(s, g)} />
+            {g}
+          </label>
+        ))}
+        {s.n === 1 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  {
+    rec && (
+      <fieldset data-step>
+        <legend>
+          Remember the caring reply from lesson 1.1? A language model wrote it one piece at a time, each piece picked from
+          chances. Before you look: did most pieces of this reply have a high chance, or a low one?
+        </legend>
+        {HOW.map((h) => (
+          <label>
+            <input type="radio" name="r11" data-said={`About the caring reply, you guessed: ${h.toLowerCase()}.`} data-guess={`You guessed: ${h.toLowerCase()}.`} />
+            {h}
+          </label>
+        ))}
+      </fieldset>
+    )
+  }
+  <button type="button" data-skip>Show me without guessing</button>
+  <Fragment slot="after">
+    <p>{LINE}</p>
+    <fieldset>
+      <legend>Temperature</legend>
+      {
+        NAMES.map((t) => (
+          <label>
+            <input type="radio" name="temp" value={t} checked={t === 'Standard'} />
+            {t}
+            <span data-layer="deep">({TEMPS[t]})</span>: {DESC[t]}
+          </label>
+        ))
+      }
+    </fieldset>
+    <p data-layer="deep">The rule: each count to the power 1 over the temperature, then rescaled to add up to 1.</p>
+    {
+      starts.map((s) => (
+        <Fragment>
+          {NAMES.map((t) => (
+            <div class:list={['chances', { shown: t === 'Standard' }]} data-temp={t}>
+              <p>
+                After "{s.pair}", the toy's chances at {t}.
+              </p>
+              <ol data-start={s.n} data-pair={s.pair}>
+                {shown(s.at[t]).map(([w, p]) => (
+                  <li>
+                    {w}, {words(p)}
+                    <svg aria-hidden="true" viewBox="0 0 100 1" preserveAspectRatio="none">
+                      <rect width={p * 100} height="1" />
+                    </svg>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </Fragment>
+      ))
+    }
+    <p>In the whole book, "cup of" comes once: "his cup of beef-tea". So the toy is sure, and it is not what you expected.</p>
+    <p>The toy's chances are counts from one book, and likely is not the same as true.</p>
+    <p>Chances are rounded, so they may not add up to exactly 100.</p>
+    <fieldset>
+      <legend>Pick the next word after</legend>
+      {
+        starts.map((s) => (
+          <label>
+            <input
+              type="radio"
+              name="for"
+              checked={s.n === 1}
+              data-text={s.text}
+              data-chances={JSON.stringify(Object.fromEntries(NAMES.map((t) => [t, [...s.at[t]]])))}
+            />
+            {s.pair}
+          </label>
+        ))
+      }
+    </fieldset>
+    <button type="button" data-pick="1">Pick a word</button>
+    <button type="button" data-pick="10">Pick ten</button>
+    <button type="button" data-clear>Clear the list</button>
+    <p class="heard" aria-live="polite"></p>
+    <ol class="sentences"></ol>
+    {
+      rec && (
+        <div class="r11">
+          <h3>The caring reply, piece by piece</h3>
+          <p>
+            The AI: {rec.model.name} ({rec.model.id}), on {rec.model.host}. Recorded on {day}. Temperature: {shownSetting(rec.settings.temperature)}.
+          </p>
+          <p>
+            {spread(played.map((p) => p.chance))} <span data-guess />
+          </p>
+          <ol class="reply" data-pagefind-ignore>
+            {played.map((p) => (
+              <li>
+                <span class="sr">{p.kind}, {words(p.chance)}</span>
+                <span class:list={['box', { part: p.kind === 'a piece with no text' }]} aria-hidden="true">
+                  {p.space && <span class="space">·</span>}
+                  {p.shown}
+                </span>
+                <span class:list={{ less: p.chance < 0.5 }} aria-hidden="true">{words(p.chance)}{p.chance < 0.5 && ', less likely'}</span>
+              </li>
+            ))}
+          </ol>
+          <p>A caring tone is not proof of caring.</p>
+        </div>
+      )
+    }
+    <p>Lesson 1.6 shows why a chatbot can make things up.</p>
+  </Fragment>
+</Shell>
+
+<script>
+  import { pick } from '../lib/next-word.ts';
+
+  // "Show me without guessing", the temperature, and the picks; the chances themselves were all worked out at build.
+  for (const shell of document.querySelectorAll<HTMLElement>('.next-word')) {
+    const said = shell.querySelector<HTMLElement>('.picked');
+    const heard = shell.querySelector<HTMLElement>('.heard');
+    const list = shell.querySelector<HTMLElement>('.sentences');
+    const checked = (name: string) => shell.querySelector<HTMLInputElement>(`[name="${name}"]:checked`);
+    shell.querySelector('[data-skip]')?.addEventListener('click', () => {
+      shell.classList.add('revealed');
+      if (said) said.textContent = [...shell.querySelectorAll<HTMLElement>('[data-top]')].map((f) => f.dataset.top).join('\n');
+      said?.focus();
+    });
+    shell.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      for (const guess of input.name === 'r11' ? shell.querySelectorAll('span[data-guess]') : []) guess.textContent = input.dataset.guess ?? '';
+      if (input.name !== 'temp' || !heard) return;
+      for (const c of shell.querySelectorAll<HTMLElement>('.chances')) c.classList.toggle('shown', c.dataset.temp === input.value);
+      const lists = [...shell.querySelectorAll<HTMLElement>('.chances.shown ol')];
+      heard.textContent = `${input.value}. ${lists.map((ol) => `After "${ol.dataset.pair}": ${[...ol.children].map((li) => li.textContent).join('; ')}.`).join(' ')}`;
+    });
+    for (const button of shell.querySelectorAll<HTMLElement>('[data-pick]'))
+      button.addEventListener('click', () => {
+        const from = checked('for');
+        const chances = new Map<string, number>(JSON.parse(from?.dataset.chances ?? '{}')[checked('temp')?.value ?? 'Standard']);
+        // A picked mark joins without a space; a picked word ends the sentence with a full stop.
+        const made = Array.from({ length: Number(button.dataset.pick) }, () => pick(chances, Math.random())).map(
+          (w) => [w, `${from?.dataset.text}${/^[.,;:!?]$/.test(w) ? w : ` ${w}.`}`] as const,
+        );
+        list?.prepend(...made.map(([, s]) => Object.assign(document.createElement('li'), { textContent: s })).reverse());
+        if (heard) heard.textContent = made.length === 1 ? `Picked: ${made[0][0]}. ${made[0][1]}` : 'Picked ten words. The list shows the new sentences.';
+      });
+    shell.querySelector('[data-clear]')?.addEventListener('click', () => {
+      list?.replaceChildren();
+      if (heard) heard.textContent = 'The list is empty.';
+    });
+  }
+</script>

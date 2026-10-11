@@ -1,0 +1,170 @@
+---
+// Lesson 1.7's "Watch it learn" (its brief, Interactive) on the shared shell (p6 D2). Every dot, line, ring, word and
+// point is worked out here at build time by src/lib/watch-it-learn.ts from data/interactive/watch-it-learn.json. The
+// script computes nothing: each press of Back or Next round shows another round, and nothing moves by itself.
+import { readFileSync } from 'node:fs';
+import { ends, learnData, watchItLearn, where } from '../lib/watch-it-learn.ts';
+import Shell from './Shell.astro';
+
+const data = learnData.parse(JSON.parse(readFileSync('data/interactive/watch-it-learn.json', 'utf8')));
+const { dots, rounds, closest } = watchItLearn(data);
+const L = data.limit;
+const last = rounds.length - 1;
+// The brief's drawing rules: the dot chart from (10, 10) to (310, 310); the "How wrong" chart 320 by 120.
+const X = (x: number) => +(10 + (x + L) * 30).toFixed(2);
+const Y = (y: number) => +(310 - (y + L) * 30).toFixed(2);
+const edge = (w: [number, number, number]) => {
+  const [[, x1, y1], [, x2, y2]] = ends(w, L);
+  return { x1: X(x1), y1: Y(y1), x2: X(x2), y2: Y(y2) };
+};
+const L0 = Math.max(rounds[0].loss, rounds[0].newLoss);
+const points = (key: 'loss' | 'newLoss', r: number) => rounds.slice(0, r + 1).map((o) => `${20 + 28 * o.r},${+(110 - (100 * o[key]) / L0).toFixed(2)}`).join(' ');
+const CHOICES = [
+  ['A', 'Line A slopes down from the top left to the bottom right.', 'You picked line A.'],
+  ['B', 'Line B is flat, across the middle.', 'You picked line B.'],
+  ['C', 'Line C is upright, down the middle.', 'You picked line C.'],
+  ['', 'I am not sure.', 'You were not sure.'],
+];
+const DASH: Record<string, string> = { A: '8 4', B: '2 4', C: '12 4 2 4' };
+const letters = Object.entries(data.candidates);
+const setup = `The thick line is the model's first try. ${where(data.start, L)}`;
+const name = (r: number) => `${rounds[r].words} ${rounds[r].where}`;
+const at = (i: number) => ({ cx: X(dots[i].x), cy: Y(dots[i].y) });
+// The brief's one sentence; true while T4 and T5 in src/lib/watch-it-learn.test.ts pass.
+const SENTENCE = "Each round changed the model's numbers and moved the line: in the end, fewer dots were wrong, but not none.";
+---
+
+<Shell title="Watch it learn" reveal="Start training" class="watch-it-learn">
+  <p>These dots are made up for this lesson. Each dot is an example.</p>
+  <p>Circles and squares are two groups. A model will learn to split them with a straight line.</p>
+  {/* Design run 33 D4 (Emanuel, 28-09-26): the start line alone, named on the chart; each choice has its own picture. */}
+  <svg viewBox="0 0 320 320" role="img" aria-label={setup} data-chart="setup">
+    <rect x="10" y="10" width="300" height="300" fill="none" stroke="currentColor" />
+    <g fill="currentColor">{dots.map((d, i) => !d.new && (d.square ? <rect data-dot={i} x={at(i).cx - 6} y={at(i).cy - 6} width="12" height="12" /> : <circle data-dot={i} {...at(i)} r="6" />))}</g>
+    <line data-line="start" {...edge(data.start)} stroke-width="3" />
+    <text x="302" y={edge(data.start).y2 + 42} text-anchor="end">The model's first try</text>
+  </svg>
+  <p>The thick line is the model's first try. It is in the wrong place. Each round of training moves it a little.</p>
+  <p class="as-text">{CHOICES.slice(0, 3).map((c) => c[1]).join(' ')} Where will the line end up? The answer is below, so decide first if you want to guess.</p>
+  <fieldset class="pictures">
+    <legend>Which picture shows where the line will end up?</legend>
+    {
+      CHOICES.map(([value, label, said]) => (
+        <label>
+          <input type="radio" name="wil-pick" value={value} data-said={said} />
+          {value && (
+            <svg viewBox="0 0 320 320" aria-hidden="true" class="pick">
+              <rect x="10" y="10" width="300" height="300" fill="none" stroke="currentColor" />
+              <g fill="currentColor">{dots.map((d, i) => !d.new && (d.square ? <rect data-dot={i} x={at(i).cx - 6} y={at(i).cy - 6} width="12" height="12" /> : <circle data-dot={i} {...at(i)} r="6" />))}</g>
+              <line data-line={value} {...edge(data.candidates[value])} stroke-width="3" stroke-dasharray={DASH[value]} vector-effect="non-scaling-stroke" />
+            </svg>
+          )}
+          {label}
+        </label>
+      ))
+    }
+  </fieldset>
+  <p>There is no wrong guess here.</p>
+  <Fragment slot="after">
+    <p>Squares go above the line. Circles go below it. A ring means the dot is on the wrong side.</p>
+    <p data-layer="deep">Hollow dots are new dots. The model did not learn from them.</p>
+    <svg viewBox="0 0 320 320" role="img" aria-label={name(last)} data-chart="dots">
+      <rect x="10" y="10" width="300" height="300" fill="none" stroke="currentColor" />
+      {dots.map((d, i) => (
+        <g data-layer={d.new ? 'deep' : undefined} fill={d.new ? 'none' : 'currentColor'}>
+          {d.square ? <rect data-dot={i} x={at(i).cx - 6} y={at(i).cy - 6} width="12" height="12" /> : <circle data-dot={i} {...at(i)} r="6" />}
+        </g>
+      ))}
+      {letters.map(([k, c]) => (
+        <g data-pick={k} display="none" stroke-opacity="0.6">
+          <line {...edge(c)} stroke-width="2" stroke-dasharray={DASH[k]} />
+          <text x={edge(c).x2 - 14} y={edge(c).y2 - 6}>{k}</text>
+        </g>
+      ))}
+      {rounds.map((o) => (
+        <g data-round={o.r} data-last={o.r === last ? '' : undefined} class:list={[{ now: !o.r }]} data-wrong={o.wrong.join(' ')} data-new-wrong={o.newWrong.join(' ')} data-w={o.w.join(' ')}>
+          <line {...edge(o.w)} stroke-width="3" />
+          {o.wrong.map((i) => <circle data-ring={i} {...at(i)} r="11" />)}
+          <g data-layer="deep">{o.newWrong.map((i) => <circle data-ring={i} {...at(i)} r="11" />)}</g>
+        </g>
+      ))}
+    </svg>
+    <p class="legend">Solid line: the model's line. <span data-key hidden>Dashed line: your guess.</span></p>
+    <div class="rounds">
+      {
+        rounds.map((o) => (
+          <div data-round={o.r} data-last={o.r === last ? '' : undefined} class:list={[{ now: !o.r }]}>
+            <p>{o.words}</p>
+            <p>{o.where}</p>
+            {o.deep && <p data-layer="deep">{o.deep}</p>}
+            {o.r === last && (
+              <Fragment>
+                <p>This was the last round. Training stopped here.</p>
+                <p>The line ended up closest to line {closest}. <span data-picked></span></p>
+                <p>{SENTENCE}</p>
+                <p>We made these dots up, and we chose where the line starts, so you can see it move.</p>
+                <p>Lesson 1.8 shows how a chatbot uses the earlier words in a chat.</p>
+                <p data-layer="deep">Both lines fell, round by round. If the dashed line had started to rise, that would suggest overfitting.</p>
+              </Fragment>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <p class="sr" aria-live="polite" data-live></p>
+    <button type="button" data-turn="-1" aria-disabled="true">Back</button>
+    <button type="button" data-turn="1">Next round</button>
+    <h3>How wrong the guesses are</h3>
+    <svg viewBox="0 0 320 120" role="img" aria-label={name(last)} data-chart="loss">
+      <text x="30" y="12">More wrong</text>
+      <text x="4" y="118">Less wrong</text>
+      <text x="316" y="118" text-anchor="end">Rounds</text>
+      {
+        rounds.map((o) => (
+          <g data-round={o.r} data-last={o.r === last ? '' : undefined} class:list={[{ now: !o.r }]}>
+            <polyline data-loss="example" points={points('loss', o.r)} stroke-width="2" />
+            <polyline data-loss="new" data-layer="deep" points={points('newLoss', o.r)} stroke-width="2" stroke-dasharray="6 4" />
+            <circle fill="currentColor" cx={20 + 28 * o.r} cy={+(110 - (100 * o.loss) / L0).toFixed(2)} r="3" />
+          </g>
+        ))
+      }
+    </svg>
+    <p data-layer="deep">Solid line: the example dots. Dashed line: the new dots.</p>
+  </Fragment>
+</Shell>
+
+<script>
+  // One round at a time, by button only: the round's groups show, its words go to the live region and name both charts.
+  for (const box of document.querySelectorAll<HTMLElement>('.watch-it-learn')) {
+    const groups = [...box.querySelectorAll<HTMLElement>('[data-round]')];
+    const end = Math.max(...groups.map((g) => Number(g.dataset.round)));
+    const said = box.querySelector('[data-live]');
+    const [back, next] = box.querySelectorAll<HTMLElement>('[data-turn]');
+    let round = 0;
+    const show = () => {
+      for (const g of groups) g.classList.toggle('now', Number(g.dataset.round) === round);
+      const [words, where] = [...box.querySelectorAll(`.rounds [data-round="${round}"] p`)].map((p) => p.textContent);
+      for (const chart of box.querySelectorAll('[data-chart="dots"], [data-chart="loss"]')) chart.setAttribute('aria-label', `${words} ${where}`);
+      back.setAttribute('aria-disabled', String(round === 0));
+      next.setAttribute('aria-disabled', String(round === end));
+      return words;
+    };
+    for (const turn of [back, next])
+      turn.addEventListener('click', () => {
+        const to = round + Number(turn.dataset.turn);
+        if (to >= 0 && to <= end) round = to;
+        if (said) said.textContent = to < 0 ? 'This is the start, before training.' : to > end ? 'This is the last round.' : show();
+      });
+    // The reveal says round 0's words (brief, screen 3).
+    box.querySelector('[data-reveal]')?.addEventListener('click', () => said && (said.textContent = show()));
+    box.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement;
+      for (const g of box.querySelectorAll('[data-pick]')) g.setAttribute('display', g.getAttribute('data-pick') === input.value ? 'inline' : 'none');
+      const key = box.querySelector<HTMLElement>('[data-key]');
+      if (key) key.hidden = !input.value;
+      const picked = box.querySelector('[data-picked]');
+      if (picked) picked.textContent = input.dataset.said ?? '';
+    });
+    show();
+  }
+</script>

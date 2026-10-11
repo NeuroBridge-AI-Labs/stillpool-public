@@ -1,0 +1,69 @@
+{
+  "id": "R-4.1",
+  "model": {
+    "id": "test-fixture-model-a",
+    "name": "Test fixture model A",
+    "host": "Test fixture host A"
+  },
+  "date": "2000-01-01",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "P",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Test fixture sent P"
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Test fixture reply P A run 1"
+        },
+        {
+          "reply": "Test fixture reply P A run 2"
+        }
+      ]
+    },
+    {
+      "label": "P",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Test fixture sent P"
+        }
+      ],
+      "model": {
+        "id": "test-fixture-model-b",
+        "name": "Test fixture model B",
+        "host": "Test fixture host B",
+        "card": {
+          "default_model_temperature": 0.3
+        }
+      },
+      "settings": {
+        "model": "test-fixture-model-b",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Test fixture reply P B run 1 Test fixture bad citation one"
+        },
+        {
+          "reply": "Test fixture reply P B run 2 Test fixture bad citation two"
+        }
+      ]
+    }
+  ]
+}

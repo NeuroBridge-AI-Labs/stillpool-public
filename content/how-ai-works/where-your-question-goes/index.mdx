@@ -1,0 +1,325 @@
+---
+title: Where your question goes
+promise: Can identify web search in this lesson's recorded answers
+interactive: search-on-off
+inputs: [src/lib/search-lines.ts, src/lib/reply-html.ts]
+minutes: {simple: 9, deep: 15}
+tldr:
+  - When you type into a chatbot app, your question usually travels over the internet to computers in a data centre.
+  - Anthropic says Claude Sonnet 5 learned from data up to January 2026. Anthropic's web search tool can give it live pages.
+  - In this lesson, the signs of a search are the searches that ran and the pages cited. Searched is not checked.
+misconceptions: [M1, M9, M7]
+competencies: [UNESCO-AICFS-4.1.4, UNESCO-AICFS-CG4.1.4.3, UNESCO-AICFS-4.1.3, HEA-ALT-3, HEA-PEA-2.3.4-a, AILIT-M2, AIF-1.b]
+checkin:
+  - question: In this lesson, the search-off request has no tools, and its only message is the question. What does its answer have to go on?
+    options:
+      - text: What Claude Sonnet 5 learned up to January 2026, the question, and an instruction Anthropic adds.
+        why: Yes. Anthropic says the model's training data stops at January 2026. The request switches thinking on, so Anthropic says it adds its own instruction.
+        right: true
+      - text: The website of the GAA, the body that runs hurling.
+        why: Not this one. The request has no tools, so it has no way to get web pages.
+      - text: Everything online today.
+        why: Not this one. With no tools, the request has no way to get web pages.
+      - text: What other people asked it that week.
+        why: Not this one. The only message in the request is the question.
+  - question: An answer lists pages that its searches found. Does that make it right?
+    options:
+      - text: Yes. A searched answer has been checked.
+        why: Not this one. A search gives the model pages to use. It does not check them.
+      - text: Not always. A searched answer can still report a page wrongly, so open the pages that matter.
+        why: Yes. A searched answer is not a checked one. The pages it lists are where you check.
+        right: true
+      - text: No. Never trust an answer that searched.
+        why: Not this one. A searched answer can be wrong, but not always. Open the pages that matter and see.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You worked out what an answer had to go on.
+glossary:
+  - term: data centre
+    meaning: A building that houses many computers (servers), with storage and network equipment.
+  - term: on-device
+    meaning: Running on the phone or laptop itself, not on computers in a data centre.
+  - term: training data
+    meaning: The data an AI system learned from.
+  - term: training cut-off
+    meaning: For a model such as Claude Sonnet 5, the date its training data stops. Anthropic calls it the "training data cutoff".
+  - term: API
+    meaning: A way for one computer program to send a request to another and get an answer back. In this lesson, Anthropic's API.
+  - term: tool
+    meaning: Something a developer adds to a request to a model, such as Anthropic's web search tool.
+  - term: search tool
+    meaning: A tool that runs web searches and gives the model the pages it finds.
+  - term: citation
+    meaning: A note in an answer that points to a page. In Anthropic's web search tool, it gives the page's address, title and up to 150 characters of its text.
+  - term: grounding
+    meaning: Basing all or part of a model's answer on information fetched from sources.
+whereNext:
+  title: News Integrity in AI Assistants, from the EBU and the BBC
+  text: A free report, published October 2025, as a PDF of 69 pages. No login is needed. It is on a different website.
+  url: https://www.ebu.ch/files/live/sites/ebu/files/Publications/Intelligence/open/EBU-Intelligence-BBC_News_Integrity_in_AI_Assistants_Report_2025.pdf
+sources:
+  - title: "International Energy Agency, Energy and AI: Energy demand from AI, What is a data centre?"
+    url: https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Android Developers, Gemini Nano"
+    url: https://developer.android.com/ai/gemini-nano
+    licence: CC-BY-2.5
+    use: cite
+  - title: "Anthropic, Transparency Hub, Claude Sonnet 5 summary table"
+    url: https://www.anthropic.com/transparency
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Models overview: Compare models"
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Claude Sonnet 5"
+    url: https://platform.claude.com/docs/en/models/sonnet-5/overview
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Web search tool"
+    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Web fetch tool"
+    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Adaptive thinking: Pricing"
+    url: https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Tool use with Claude: Pricing"
+    url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Data residency"
+    url: https://platform.claude.com/docs/en/manage-claude/data-residency
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic Privacy Center, How long do you store my organization's data?"
+    url: https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic Privacy Center, How long do you store my data?"
+    url: https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic Privacy Center, How Do You Use Personal Data in Model Training?"
+    url: https://privacy.claude.com/en/articles/10023555-how-do-you-use-personal-data-in-model-training
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Commercial Terms of Service, Customer Content"
+    url: https://www.anthropic.com/legal/commercial-terms
+    licence: All rights reserved
+    use: cite
+  - title: "Google for Developers, Machine Learning Glossary, entries static, dynamic, groundedness, grounding and retrieval-augmented generation"
+    url: https://developers.google.com/machine-learning/glossary
+    licence: CC-BY-4.0
+    use: cite
+  - title: "EBU and BBC, News Integrity in AI Assistants: An international PSM study"
+    url: https://www.ebu.ch/files/live/sites/ebu/files/Publications/Intelligence/open/EBU-Intelligence-BBC_News_Integrity_in_AI_Assistants_Report_2025.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Liu, Zhang and Liang, Evaluating Verifiability in Generative Search Engines, Findings of EMNLP 2023"
+    url: https://aclanthology.org/2023.findings-emnlp.467/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Pew Research Center, How Teens Use and View AI"
+    url: https://www.pewresearch.org/internet/2026/02/24/how-teens-use-and-view-ai/
+    licence: All rights reserved
+    use: cite
+  - title: "Schneller, Seier, Huber, Loi and Albert, Behind the screen: laypersons' mental models about ChatGPT, Frontiers in Computer Science"
+    url: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1915035/full
+    licence: CC BY
+    use: cite
+  - title: "Searchlight Institute and Tavern Research, AI Toplines"
+    url: https://www.searchlightinstitute.org/wp-content/uploads/2025/12/Searchlight-AI-Survey-Toplines.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "Searchlight Institute and Tavern Research, AI Survey Crosstabs, question 91"
+    url: https://www.searchlightinstitute.org/wp-content/uploads/2025/12/Crosstabs-AI-Polling-Survey-v2-20250730.pdf
+    licence: All rights reserved
+    use: cite
+  - title: "GAA.ie, All-Ireland SHC Final: Limerick triumph again"
+    url: https://www.gaa.ie/article/all-ireland-shc-final-limerick-triumph-again
+    licence: All rights reserved
+    use: cite
+  - title: "GAA.ie, All-Ireland SHC Final: Glory for Tipperary"
+    url: https://www.gaa.ie/article/all-ireland-shc-final-glory-for-tipperary
+    licence: All rights reserved
+    use: cite
+  - title: "OECD and European Union, Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education"
+    url: https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/06/empowering-learners-for-the-age-of-ai_2f8315e7/65cd27d4-en.pdf
+    licence: CC-BY-4.0
+    use: cite
+  - title: "O'Sullivan, Lowry, Woods and Conlon, Generative AI in Higher Education Teaching and Learning: AI Literacy Training, HEA"
+    url: https://hub.teachingandlearning.ie/wp-content/uploads/2025/12/hea-genai-literacy-training-3sxr-z770.pdf
+    licence: CC-BY-SA-4.0
+    use: cite
+provenance:
+  model: claude-opus-5-5
+  date: 2026-09-27
+signed: false
+---
+
+## Who won the final?
+
+<Simple>
+Who won the most recent All-Ireland senior hurling final (hurling is an Irish sport), and what was the score?
+
+You could ask a chatbot. But how would you know if its answer came from a web search, or from its training? Its training means the text it learned from before you asked. This lesson shows what to look for.
+</Simple>
+
+<Deep>
+In a survey of 1,458 US teens aged 13 to 17 (fieldwork 25 September to 9 October 2025, published February 2026), more than half (57%) said they had used AI chatbots "to search for information". That measures a habit, not a belief. It shows how many people meet the question this lesson asks.
+
+The belief itself shows up in an interview study of 21 adults with no computing background (interviewed in November and December 2024, published September 2026): a group of 4 described ChatGPT as searching the internet, picking out information and putting it together into an answer.
+
+The limits: the survey is from the US, and the interview study is small (21 people, most interviews in German). Neither is from Ireland.
+</Deep>
+
+## Where your question goes
+
+<Simple>
+Most training and running of AI models happens in data centres. A data centre is a building that houses many computers, with storage and network equipment.
+
+So when you type into a chatbot app, your question usually travels over the internet. It usually goes to computers in a data centre.
+
+This lesson uses one model as its example: Claude Sonnet 5, made by Anthropic. A question sent to it through Anthropic's API goes to Anthropic. An API is a way for one program to send a request to another.
+
+Not every model runs far away. Some small models process a question on the phone or laptop itself.
+
+Google says Android apps can use Gemini Nano to process prompts on the device itself (checked in September 2026). Gemini Nano is one of its small models. A prompt is the text you send to a model. An app may still send or store a copy elsewhere.
+</Simple>
+
+<Deep>
+The International Energy Agency (published 10 April 2025) puts it this way: "Artificial intelligence (AI) model training and deployment occur mainly in data centres." Running AI takes a lot of computing, and computing takes resources. The OECD and European Union's framework for AI literacy, the skills and knowledge to use AI in an informed way, names "energy, minerals and water".
+
+Anthropic says it developed Claude Sonnet 5 on "Cloud computing resources from Amazon Web Services and Google Cloud Platform". That is where the model was built. Where a question to it is answered is another matter.
+
+For Anthropic's API, the default is: "Inference may run in any available geography for optimal performance and availability." Inference means the model answering a question. A developer can ask for the US only. Anthropic stores the data in the US, the only choice today (checked in September 2026).
+
+On the device, Google says Android's AICore "doesn't store any record of the input data or the resulting outputs after processing them". That is Google's statement about its own software (checked in September 2026).
+</Deep>
+
+## Learned up to a date
+
+<Simple>
+Claude Sonnet 5 learned from data up to a date. Anthropic calls that date the training data cut-off.
+
+Anthropic says Claude Sonnet 5's training data stops at January 2026 (checked in September 2026). Anthropic says its knowledge is most complete and reliable up to then.
+
+The 2026 final was played on 19 July 2026. That is about six months after the cut-off. So that final is not in its training data.
+</Simple>
+
+<Deep>
+Anthropic's Transparency Hub says: "Claude Sonnet 5 has a knowledge cutoff date of January 2026." Its model page lists "Training data cutoff Jan 2026".
+
+A cut-off belongs to one model. Anthropic lists two dates for each: a "reliable knowledge" cut-off and a "training data" cut-off. For Claude Sonnet 5, both are January 2026. For Claude Haiku 4.5, they are February 2025 and July 2025. For Claude Opus 5.5, both are June 2026 (all checked in September 2026).
+
+Not every model is trained up to one date and then left. Google's glossary names both kinds. A static model is "trained once and then used for a while". A dynamic model "is retrained frequently or continuously".
+
+Models are also replaced. Claude Sonnet 5 was released on 30 June 2026, and Anthropic says it will not retire it before 30 June 2027. A recorded answer is a record of one model on one date.
+</Deep>
+
+## A search tool
+
+<Simple>
+Anthropic's API has a web search tool. It gives the model live web pages. A developer adds it to a request.
+
+Whether a search then runs depends on the question. Anthropic says Claude "determines when to search based on the prompt". The API runs the searches, and the results go back to the model.
+
+This lesson's recorded answers came from two kinds of request with the same question. The search-off requests had no tools at all. Their only message was the question. So they had no way to get web pages.
+
+Each search-off request still had one hidden extra. It switched on a setting Anthropic calls thinking. Anthropic says this adds its own instruction, which we did not write and cannot see.
+
+The search-on request has the same, plus the web search tool. Anthropic says it adds a second instruction when a tool is in the request.
+
+Search is not the only way to get live text. For example, people can paste text into a question.
+
+The answers are in the activity below.
+</Simple>
+
+<Deep>
+Anthropic says the tool "gives Claude direct access to real-time web content, allowing it to answer questions with up-to-date information beyond its knowledge cutoff". It adds: "The API runs the searches and provides Claude with the results. This process can repeat multiple times throughout a single request."
+
+A system prompt is an instruction placed before your message, which you usually cannot see. On the instructions Anthropic adds, Anthropic says: "When thinking is active, a specialized system prompt is automatically included to support this feature." And: "When you use tools, the API also automatically includes a special system prompt for the model that enables tool use."
+
+Anthropic's API also has a web fetch tool. Anthropic says it lets Claude "retrieve full content from specified web pages and PDF documents". So "no search tool" does not mean "no live text" in general. It does in this lesson's search-off request, which has no tools and no message but the question.
+
+Search tools are one kind of retrieval: fetching text from outside the model and giving it to the model with the question, so the answer can be based on it. Google's glossary calls this grounding: "The process of basing all or part of an LLM's response on information retrieved from one or more trusted sources." Retrieval-augmented generation (RAG) is a common way to do it. Reasons include knowledge the model was not trained on, and letting it cite sources. Lesson 5.5 will cover this in full.
+
+What Anthropic's web search tool returns (checked in September 2026): each search's words; then, for each result, its address, its title and its page age, "When the site was last updated"; then the answer with citations. Each citation gives the address, the title and up to 150 characters of the cited text. Several searches can run for one question, and a developer can cap them. Anthropic says: "Citations are always enabled for web search".
+</Deep>
+
+<TryIt />
+
+## How to tell
+
+<Simple>
+In this lesson, the record of each answer shows the searches that ran. It also shows the pages the answer cites.
+
+These appear only when the search tool ran. So they are the sign of a search.
+
+Which final the answer names is not a sure sign either way. A search can find nothing, fail, or be reported wrongly. So a searched answer can still give an older final.
+
+And an answer with no search that names a recent result needs checking, not trust.
+
+In this lesson's search-off request, there is nothing to look up. The model writes the answer piece by piece, from what it learned and the input it has (lesson 1.4).
+</Simple>
+
+<Deep>
+With search off, the answer has no search results to use. So whatever it gives was written by the model, piece by piece (lesson 1.4), from what it learned and the input it had. It was not fetched from a store of ready answers. Anthropic says of its models: "Models do not store text like a database". It also says "they do not have access to or pull from the original training data once the models have been trained" (checked in September 2026). That is Anthropic's own claim about its models.
+
+With search on, any pages it had came from its searches. That is still not a database of ready answers. In a search-on request, no search may run, or a search may find nothing.
+
+In the interview study, the largest group, 9 of the 21, described ChatGPT as looking up ready answers in a database. Question 91 in an August 2025 online survey asked what an AI like ChatGPT does when answering. The survey sampled 2,301 US adults; 2,296 answered this question. Almost half (45%) chose "looking up the exact answer in a database".
+
+This lesson's recording does not show how any other app marks a search. Some products also use documents or saved memory: lesson 5.5 and lesson 3.3 will cover those.
+</Deep>
+
+## Searched is not checked
+
+<Simple>
+A searched answer is not a checked answer. It can report a page wrongly. Or it can cite a page that does not say what the answer says.
+
+In late May and early June 2025, journalists checked answers to news questions. The answers came from free versions of ChatGPT, Copilot, Perplexity and Gemini.
+
+About 3 in 10 (31%) had a significant sourcing issue. For example, the cited source did not back up a claim. The study was published October 2025.
+
+So open the pages that matter, and see what they say.
+</Simple>
+
+<Deep>
+Google's glossary puts it simply: "Note that a grounded model is not always a factual model."
+
+The first study: in late May and early June 2025, journalists from 22 public service media organisations in 18 countries checked 2,709 answers to news questions (published October 2025). The answers came from the free versions of ChatGPT, Copilot, Perplexity and Gemini. The questions asked the assistants to use the broadcasters' own sources where possible. About 3 in 10 (31%) had a significant sourcing issue: a claim the cited source did not support, no source, or a wrong or unverifiable sourcing claim. Almost half (45%) had at least one significant issue of any kind.
+
+The second study: in late February to late March 2023, researchers checked answers from four search chatbots of that time, Bing Chat, NeevaAI, perplexity.ai and YouChat (published December 2023). About half (51.5%) of the sentences were fully backed by their citations. About 3 in 4 (74.5%) of the citations backed the sentence they were attached to. These products are from 2023.
+
+Why it happens, in outline: with search on, the answer is still written by the language model, piece by likely piece (lesson 1.4). In that study's four systems, the model wrote from the question plus retrieved content. The results can be wrong, and the written answer can drift from them. That study found that the answers "are fluent and appear informative, but frequently contain unsupported statements and inaccurate citations".
+
+The limits: both studies tested named products on stated dates. Newer versions were not tested, and neither study tested Claude. Lesson 4.1 will show how to check an answer's claims and citations.
+</Deep>
+
+## What is kept
+
+<Simple>
+What you type may be kept by the company that runs the model. The same company can treat data differently in different products.
+
+For its API, Anthropic says it deletes questions and answers within 30 days, with exceptions. For its own Claude app, Anthropic says it may use your chats to train later models, if you allow it. Both were checked in September 2026.
+
+Lesson 1.8 says more about what a chatbot can use from your chat. Lesson 3.3 will say more about where your words go.
+</Simple>
+
+<Deep>
+For Anthropic's API, Anthropic says: "For Anthropic API users, we automatically delete inputs and outputs on our backend within 30 days of receipt or generation, except:". The exceptions it lists include a service the customer uses to keep data longer, a separate agreement, enforcing its Usage Policy, and the law. It then adds a rule for what it calls Covered Models (checked in September 2026).
+
+For Anthropic's consumer app (Claude Free, Pro and Max), Anthropic says a deleted chat is removed from its back-end within 30 days. There are exceptions. A chat flagged under its Usage Policy is kept up to 2 years. Chats may be kept as the law requires, or to resolve disputes. If you allow Anthropic to use your chats to improve Claude, it may keep them "in a de-identified format for up to 5 years" for training. A chat already used stays in models already trained (checked in September 2026).
+
+So the same company can treat data differently in different products. Anthropic's Commercial Terms, which cover its API, say it "may not train models on Customer Content from Services". A college's own deployment may have agreed protections that a public app does not. The AI literacy training of Ireland's Higher Education Authority (HEA) asks people to "distinguish between institutional deployments with negotiated data protections and public-facing tools without such protections".
+
+In the interview study, the group of 4 believed ChatGPT learns straight away from their corrections. They believed it keeps what it learned for later, even for other users. That is one small study (21 people, most interviews in German).
+</Deep>

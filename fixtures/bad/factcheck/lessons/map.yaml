@@ -1,0 +1,11 @@
+- id: p
+  title: A pillar
+  topics:
+    - title: Topic 1
+      lessons: [same-family, writer-no-family, two-families, no-checker, template-verdict]
+    - title: Topic 2
+      lessons: [checked-mismatch, writer-mismatch, pasted-hash, twin-a, twin-b]
+    - title: Topic 3
+      lessons: [dup-sha, checker-no-family, linked, review-link, review-dir]
+    - title: Topic 4
+      lessons: [which-reply]

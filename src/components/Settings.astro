@@ -1,0 +1,162 @@
+---
+import Icon from './Icon.astro';
+import SaveCode from './SaveCode.astro';
+
+// The Settings dialog (plan T4.1, D2), a panel at the right (design polish D3). The header's Settings button opens it
+// with HTML invoker commands; Close and Done, pinned above and below its scrolling body, and Escape shut it. Each
+// choice is a native radio or checkbox drawn as a segment, a tile or a switch (settings.css). src/settings.ts stores each change and sets it on <html>; boot.js reads it back on every page. Move
+// your progress is its own form, so a typed code is never stored as a setting (src/restore.ts).
+const radios = {
+  theme: ['Theme', [['light', 'Light'], ['dark', 'Dark'], ['contrast', 'High contrast'], ['system', 'Same as my device']]],
+  font: ['Font', [['lexend', 'Lexend'], ['public-sans', 'Public Sans'], ['system', 'The system font'], ['opendyslexic', 'OpenDyslexic']]],
+  size: ['Text size', [['1', 'Small'], ['2', 'Standard'], ['3', 'Large'], ['4', 'Larger'], ['5', 'Largest']]],
+  spacing: ['Letter and word spacing', [['normal', 'Normal'], ['wide', 'Wide'], ['wider', 'Wider']]],
+  lines: ['Line spacing', [['1.5', 'Normal'], ['1.75', 'More'], ['2', 'Most']]],
+  speed: ['Reading speed', [['1', 'Normal'], ['1.1', '1.1'], ['1.2', '1.2'], ['1.3', '1.3'], ['1.4', '1.4'], ['1.5', '1.5']]],
+} as const;
+// What a reader has before choosing anything (D2). src/settings.ts reads these from the checked inputs.
+const defaults: Record<string, string> = { font: 'lexend', size: '2', spacing: 'normal', lines: '1.5', theme: 'system', speed: '1' };
+const switches = {
+  motion: ['reduce', 'Reduce motion'],
+  ruler: ['on', 'Reading ruler'],
+  focus: ['on', 'Focus mode'],
+  progress: ['hide', 'Hide my progress'],
+  textversion: ['on', 'Show interactives as text'],
+  sidebar: ['on', 'Contents sidebar in lessons'],
+} as const;
+// What shows at once (theme, font, size and Reduce motion) and what sits in a closed disclosure (F11). Every control stays
+// in the one form, so src/settings.ts finds them all by name.
+const groups: { title?: string; radios: Exclude<keyof typeof radios, 'speed'>[]; switches: (keyof typeof switches)[]; note?: string }[] = [
+  { radios: ['theme', 'font', 'size'], switches: ['motion'] },
+  { title: 'Reading layout', radios: ['spacing', 'lines'], switches: ['ruler', 'sidebar'] },
+  {
+    title: 'More reading controls',
+    radios: [],
+    switches: ['focus', 'progress', 'textversion'],
+    note: 'Focus mode hides the Map and Help links, the breadcrumb and the footer, so only the page you are reading is left.',
+  },
+];
+---
+
+<dialog id="settings" aria-labelledby="settings-title">
+  <div class="panel-head">
+    <h2 id="settings-title">Settings</h2>
+    <button type="button" commandfor="settings" command="close"><Icon name="x" />Close</button>
+  </div>
+  <div class="panel-body">
+    <p class="needs-js">These settings need JavaScript, which is off in this browser, so choosing one changes nothing.</p>
+    <p class="applies">Changes apply as you choose them.</p>
+    <form id="settings-form">
+      {
+        groups.map((group) => {
+          const Tag = group.title ? 'details' : 'div';
+          return (
+            <Tag class="group" {...(group.title ? { open: true } : {})}>
+              {group.title && <summary>{group.title}</summary>}
+              {group.radios.map((name) => {
+                const [legend, options] = radios[name];
+                return (
+                  <fieldset aria-describedby={name === 'font' ? 'font-note' : undefined}>
+                    <legend>{legend}</legend>
+                    <div class:list={['segments', { tiles: name === 'font' || name === 'theme' }]}>
+                      {options.map(([value, label]) => (
+                        <label>
+                          <input type="radio" name={name} value={value} checked={defaults[name] === value} />
+                          {/* A sample in the font itself (settings.css draws it) and the theme's own colours from its token
+                              block. Neither has words, so each choice is named by its label alone. */}
+                          {name === 'font' && <span class={`aa aa-${value}`} />}
+                          {name === 'theme' && (
+                            <span class="swatch" aria-hidden="true">
+                              {(value === 'system' ? ['light', 'dark'] : [value]).map((theme) => <span data-theme={theme} />)}
+                            </span>
+                          )}
+                          {label}
+                        </label>
+                      ))}
+                    </div>
+                    {name === 'font' && (
+                      <details class="why">
+                        <summary>Why these fonts?</summary>
+                        <p id="font-note">
+                          Choose the font you find easiest to read. Studies have not found that special "dyslexia fonts" help people
+                          read faster or more accurately. More space between letters and words does help some readers, so try the
+                          spacing setting too.
+                        </p>
+                      </details>
+                    )}
+                  </fieldset>
+                );
+              })}
+              {group.switches.map((name) => {
+                const [value, label] = switches[name];
+                return (
+                  <label class="switch">
+                    {label}
+                    {/* The one switch that starts on: switched off, it is stored as sidebar: off (src/settings.ts). */}
+                    <input type="checkbox" name={name} value={value} checked={name === 'sidebar'} />
+                  </label>
+                );
+              })}
+              {group.note && <p class="note">{group.note}</p>}
+            </Tag>
+          );
+        })
+      }
+      <details class="group" open>
+        <summary>Reading voice and speed</summary>
+        <p>
+          {/* Filled by src/readaloud.ts with Emma and the voices on this device (D13); no name, so it is not a form setting. */}
+          <label for="voice">Reading voice</label>
+          <select id="voice" aria-describedby="voice-note"><option value="emma">Emma (en-GB), made for this site</option></select>
+        </p>
+        <p id="voice-note">
+          Emma is a computer voice, made with the open Kokoro model. Her readings are saved on this site. Where a part has
+          no Emma reading yet, your device's own voice reads it.
+        </p>
+        <fieldset aria-describedby="speed-note">
+          <legend>{radios.speed[0]}</legend>
+          <div class="segments">
+            {radios.speed[1].map(([value, label]) => (
+              <label>
+                <input type="radio" name="speed" value={value} checked={defaults.speed === value} />
+                {label}
+              </label>
+            ))}
+          </div>
+          <p id="speed-note">The number is how many times faster than normal. 1.5 is one and a half times as fast. The voice keeps its pitch.</p>
+        </fieldset>
+      </details>
+    </form>
+    <details class="group" open>
+      <summary>Move or delete progress</summary>
+      <form id="move-progress">
+        <fieldset>
+          <legend>Move your progress</legend>
+          <label for="save-code">Your save code</label>
+          <textarea id="save-code" name="code" rows="2" autocomplete="off" autocapitalize="characters" spellcheck="false"></textarea>
+          <button type="submit">Restore</button>
+          <p class="restored" aria-live="polite"></p>
+          <p>This device's save code:</p>
+          <SaveCode />
+          <p><button type="button" data-delete="ask">Delete my progress on this device</button></p>
+          <p class="delete-check" hidden>
+            This removes every finished lesson and badge from this browser. A save code you kept still brings them back.
+            <button type="button" data-delete="yes">Yes, delete it</button>
+            <button type="button" data-delete="no">Cancel</button>
+          </p>
+        </fieldset>
+      </form>
+    </details>
+  </div>
+  <div class="panel-foot">
+    <button type="button" commandfor="settings" command="close">Done</button>
+  </div>
+</dialog>
+<div class="ruler" aria-hidden="true"></div>
+
+<script>
+  import '../settings.ts';
+  import '../count.ts'; // before restore.ts: see count.ts
+  import '../restore.ts';
+  import '../readaloud.ts';
+</script>

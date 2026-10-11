@@ -1,0 +1,29 @@
+---
+const prompt = 'Type a prompt (a question for the AI).';
+const type = { font: 'Lexend', italic: false };
+---
+
+<p>{prompt}</p>
+<button type="button" class="not-italic md:font-bold">Show the badge</button>
+<p>Lexend is our default font.</p>
+<p class:list={['not-italic', 'normal-case']}>The EU AI Act applies to some uses.</p>
+<p>Your {badgeName} badge is ready.</p>
+<p>The {ministry} of {country} published new guidance.</p>
+<p>
+  Choose the font you find easiest to read. Studies have not found that special "dyslexia fonts" help people read
+  faster or more accurately. More space between letters and words does help some readers, so try the spacing setting
+  too.
+</p>
+<p>Font: we never set words in italic, and this page says so.</p>
+<p class={`px-4 ${quiet ? 'normal-case' : 'not-italic'}`}>Quiet</p>
+<p class="font-bold leading-relaxed tracking-normal">Plain</p>
+<p class="!font-bold font-semibold!">Weight is not a reader setting (fold-review NICE 2)</p>
+<p class:list={{ 'font-bold': !plain }}>Stop!</p>
+<style>
+  p {
+    font-style: normal;
+  }
+  a {
+    text-decoration: underline;
+  }
+</style>

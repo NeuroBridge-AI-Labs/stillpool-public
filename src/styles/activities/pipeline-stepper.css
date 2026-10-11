@@ -1,0 +1,6 @@
+/* The shared stepper's styles (src/components/Steps.astro); agent-stepper.css imports this file. */
+.steps .stages { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+.steps .stages li { border: var(--border-width) solid var(--border); border-radius: var(--radius-pill); }
+.steps .stages li[aria-current] { border-color: var(--accent); box-shadow: inset 0 0 0 var(--border-width-strong) var(--accent); }
+.steps .stages a { display: block; padding: 0.65rem 1rem; color: inherit; text-decoration: none; }
+.steps .stages a:is(:hover, :focus-visible) { text-decoration: underline; }

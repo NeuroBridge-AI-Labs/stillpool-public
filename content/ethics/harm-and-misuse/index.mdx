@@ -1,0 +1,314 @@
+---
+title: Harm and misuse
+promise: Can use a real incident to show what went wrong and who was responsible
+minutes: {simple: 9, deep: 15}
+tldr:
+  - "A harm from AI often has several causes: the data, the design, how people used it, and who checked it."
+  - Court orders, judgments and inquiry reports show where a case went wrong and who answered for it.
+  - "Not every case here is a chatbot. In each record, people and organisations answered, not the system."
+misconceptions: [M11, M2]
+interactive: incident-casebook
+inputs: [src/lib/incident-casebook.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.2.1, UNESCO-AICFS-CG4.2.1.1, UNESCO-AICFS-CG4.1.2.1, HEA-P1, HEA-PEA-2.3.1-d, AILIT-E1, AILIT-E7]
+checkin:
+  - question: In the 2023 Mata v Avianca order, what did the court say about lawyers and AI tools?
+    options:
+      - text: Using a reliable AI tool is not the fault, but lawyers must check that their filings are accurate.
+        why: Yes. The court said there is nothing inherently improper about using a reliable AI tool. It said lawyers have a gatekeeping role for accuracy.
+        right: true
+      - text: Lawyers must never use an AI tool.
+        why: Not this one. The court said using a reliable AI tool for help is not improper in itself.
+      - text: The chatbot was the one that answered for the fake cases.
+        why: Not this one. The court ordered two lawyers and their firm to pay a penalty and to write letters.
+      - text: Nobody needed to check the cases, because the chatbot sounded sure.
+        why: Not this one. The court said the lawyers abandoned their responsibilities when they stood by fake opinions.
+  - question: Why did a Hague court say in 2020 that the SyRI law did not bind the groups that sued?
+    options:
+      - text: The law was not open enough. The court and the people flagged could not check the risk model.
+        why: Yes. The court said the law was insufficiently transparent and verifiable. It gave no insight into the risk model.
+        right: true
+      - text: The court proved that SyRI used deep learning.
+        why: Not this one. The court accepted that deep learning was not in use at that time.
+      - text: The court said every fraud check is illegal.
+        why: Not this one. The court ruled on this law. It said use in problem districts need not be wrong in all cases.
+      - text: The court said SyRI was too slow.
+        why: Not this one. Speed was not the reason. The reason was that the law gave no insight into the risk model.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You used real records to show what went wrong and who answered for it.
+glossary:
+  - term: incident
+    meaning: Something that went wrong when a system was used, and that people wrote down.
+  - term: record
+    meaning: An official account, such as a court order or an inquiry report.
+  - term: oversight
+    meaning: Checking a system, and being able to question it, stop it or fix it.
+  - term: sanction
+    meaning: A penalty ordered by a court.
+  - term: risk model
+    meaning: A set of rules that gives each case a score for how likely something is.
+whereNext:
+  title: The AI Incident Database, About page
+  text: A free list of reports of AI failures, with no login needed. It is one web page, and it is not a court. Its page says to submit an event when in doubt. So an entry is a lead to the record, not a verdict. The page loads Google Tag Manager, Google Analytics, Google Fonts and an error-reporting service. It also loads many images. It set Google Analytics cookies before any choice in our test, and it showed no cookie notice. We checked this on 3 October 2026.
+  url: https://incidentdatabase.ai/about/
+sources:
+  - title: "US District Court, Southern District of New York, Mata v. Avianca, Inc., 22-cv-1461 (PKC), Opinion and Order on Sanctions, Document 54, 22 June 2023"
+    url: https://storage.courtlistener.com/recap/gov.uscourts.nysd.575368/gov.uscourts.nysd.575368.54.0.pdf
+    licence: No licence stated
+    use: cite
+  - title: "The Hague District Court, judgment of 5 February 2020, ECLI:NL:RBDHA:2020:1878 (SyRI), English translation"
+    url: https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBDHA:2020:1878
+    licence: No licence stated
+    use: cite
+  - title: "House of Representatives of the Netherlands, Parliamentary committee of inquiry into Fraud Policy and Public Service Provision presents its findings, 26 February 2024"
+    url: https://www.houseofrepresentatives.nl/node/1217
+    licence: No licence stated
+    use: cite
+  - title: "Parliamentary committee of inquiry into Fraud Policy and Public Service, Blind voor mens en recht, English summary of the report"
+    url: https://www.houseofrepresentatives.nl/sites/default/files/2024-05/20240514%20PEFD%20Rapport%20Engels.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Human Rights Law Centre, The Federal Court approves a $112 million settlement for the failures of the Robodebt system (case summary of Prygodicz v Commonwealth of Australia (No 2) [2021] FCA 634)"
+    url: https://www.hrlc.org.au/case-summaries/2021-9-30-the-federal-court-approves-a-112-million-settlement-for-the-failures-of-the-robodebt-system
+    licence: No licence stated
+    use: cite
+  - title: "Prime Minister of Australia, Final report of the Royal Commission into the Robodebt Scheme, media statement, 7 July 2023"
+    url: https://www.pm.gov.au/media/final-report-royal-commission-robodebt-scheme
+    licence: No licence stated
+    use: cite
+  - title: "Federal Court of Australia, Prygodicz v Commonwealth of Australia (No 2) [2021] FCA 634, Murphy J, 11 June 2021"
+    url: https://www.judgments.fedcourt.gov.au/judgments/Judgments/fca/single/2021/2021fca0634
+    licence: No licence stated
+    use: cite
+  - title: "Federal Trade Commission, FTC Launches Inquiry into AI Chatbots Acting as Companions, 11 September 2025"
+    url: https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions
+    licence: No licence stated
+    use: cite
+  - title: "Papadopoulos, The Use of AI Chatbots for Autistic People: A Double-Edged Sword of Digital Support and Companionship, Neurodiversity, 17 August 2025 (abstract read through Crossref)"
+    url: https://doi.org/10.1177/27546330251370657
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "Guingrich and Graziano, A Longitudinal Randomized Control Study of Companion Chatbot Use: Anthropomorphism and Its Mediating Role on Social Impacts, AIES 2025, 15 October 2025"
+    url: https://ojs.aaai.org/index.php/AIES/article/view/36618
+    licence: No licence stated
+    use: cite
+  - title: "Fang and others (MIT Media Lab and OpenAI), How AI and Human Behaviors Shape Psychosocial Effects of Extended Chatbot Use: A Longitudinal Controlled Study, 21 March 2025"
+    url: https://www.media.mit.edu/publications/how-ai-and-human-behaviors-shape-psychosocial-effects-of-chatbot-use-a-longitudinal-controlled-study/
+    licence: No licence stated
+    use: cite
+  - title: "AI Incident Database, About"
+    url: https://incidentdatabase.ai/about/
+    licence: Site text under the site's terms
+    use: link
+  - title: "AI Incident Database, Terms of Use (Data License)"
+    url: https://incidentdatabase.ai/terms-of-use/
+    licence: CC-BY-SA, named collections, version not stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "The atom didn't decide to become a bomb. People decided. I keep that close when I read about AI harm."
+    - "It's tempting to blame the tool. It's also tempting to blame the person who got hurt. I think both are wrong turns. Who answers when a system harms someone? The people who built it, sold it, and chose to use it. Name them, and name their roles."
+    - "I picture a chain, where each link is one person's choice. Harm travels along it. So does care. **A tool has no intentions. People have them.** That's where responsibility lives. It's also where repair begins."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## What counts as harm
+
+<Simple>
+A wrong answer is not the only way AI can cause harm. The records in this lesson name harms such as wasted time and money, unequal treatment and distress.
+
+Our site's line is: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values."
+
+Not every case here is a chatbot. Some were data systems that governments ran. The records we read do not call them AI. We include them because the questions are the same: what went wrong, and who answered?
+
+Lesson 3.1 shows who shapes what AI shows. Lesson 3.2 covers bias. This lesson looks at real cases.
+</Simple>
+
+<Deep>
+Each case below comes from a record: a court order, a court judgment, a parliamentary inquiry report or a settlement approval. A record is one body's account on one date. We say who said what, and we add no blame that the record does not state.
+
+Three of the four are not described as AI in the records we opened. The Hague court in the SyRI case accepted that deep learning was not in use at that time. The Robodebt judgment calls it "an automated debt-collection system" (paragraph 2). Only the Mata case involves a chatbot. We kept the other three because who answers for an automated system is the same question for AI.
+</Deep>
+
+## Four places to look
+
+<Simple>
+To compare cases, we sort each one by where it went wrong. This sorting is ours. No court or inquiry uses it.
+
+- **Data:** what the system was fed, and how that data was used.
+- **Design:** how the system was built, and what it was set to do.
+- **Use:** what people did with the system and its output.
+- **Oversight:** who could check the system, question it and fix it.
+
+Most cases show more than one place. We name the one each record stresses most.
+</Simple>
+
+<Deep>
+A court asks a legal question, and our sorting does not replace it. The Hague court asked whether a law met Article 8 of the European Convention on Human Rights. The US court applied Rule 11, which asks lawyers to check their filings. The sorting is only a way to compare. In Robodebt, for example, the data was real tax-office data; the record stresses the method that used it.
+</Deep>
+
+## The Incident casebook
+
+<Simple>
+The Incident casebook shows four real incidents, one at a time. For each, you predict where it went wrong: data, design, use or oversight. Then you see what the record says.
+
+The record is each case's account, with its link and date. You can read the four records below before or after you try it.
+</Simple>
+
+<Deep>
+The casebook uses our summaries and links to the records. It copies none of their text. The four labels are ours, and the casebook says that several records show more than one place.
+</Deep>
+
+<TryIt />
+
+## A court order about fake cases
+
+<Simple>
+A man sued an airline, Avianca, over a knee injury on a flight. His lawyers filed a paper that cited court cases that did not exist.
+
+One lawyer had used ChatGPT to find cases. He told the court he thought it was like a super search engine. The other lawyer signed and filed the paper without reading the cases.
+
+**Where it went wrong: use.** The court said nothing is wrong with using a reliable AI tool for help. But it said lawyers must check that their filings are accurate.
+
+**Who answered:** on 22 June 2023, a US federal court ordered two lawyers and their firm to pay $5,000. It also ordered letters to the client and to each judge named in the fake cases.
+
+The record is the court's order in Mata v Avianca, 22 June 2023. Lesson 1.6 shows why AI makes things up. Lesson 2.6 shows why asking it to check itself is weak. Lesson 4.1 will cover checking an answer.
+</Simple>
+
+<Deep>
+The court wrote: "there is nothing inherently improper about using a reliable artificial intelligence tool for assistance. But existing rules impose a gatekeeping role on attorneys to ensure the accuracy of their filings." It said the lawyers "abandoned their responsibilities when they submitted non-existent judicial opinions with fake quotes and citations created by the artificial intelligence tool ChatGPT, then continued to stand by the fake opinions after judicial orders called their existence into question."
+
+The airline's lawyers wrote on 15 March 2023 that they were "unable to locate most of the case law cited". The order says "no Respondent sought to withdraw the March 1 Affirmation", and that the court could not find several of the cases either. The lawyer who wrote the paper said: "I falsely assumed was like a super search engine called ChatGPT, and that’s what I used." The order found bad faith on the part of the individual lawyers "based upon acts of conscious avoidance and false and misleading statements to the Court". That came after the problem was raised.
+
+The court listed harms: "The opposing party wastes time and money in exposing the deception. The Court’s time is taken from other important endeavors. The client may be deprived of arguments based on authentic judicial precedents." The penalty was imposed "jointly and severally" on the two lawyers and the firm. The chatbot was not a party.
+</Deep>
+
+## A Dutch court and a risk model
+
+<Simple>
+SyRI was a Dutch government tool. It linked data files to make risk reports. A risk report said a person was worth investigating for fraud.
+
+Civil society groups and two people, joined by a trade union, took the Dutch State to court. Civil society groups are groups outside government and business. They argued that SyRI went against human rights law.
+
+**Where it went wrong: oversight.** The law did not tell the court how the risk model worked. It did not tell the people it flagged either. The State said its inspectorate had checked the model.
+
+**Who answered:** on 5 February 2020, a Hague court ruled that the law was not open enough to check.
+
+It said two parts of the law did not bind the groups that sued, or those they speak for. Not bound means the law could not be used against them.
+
+The court did not say that every fraud check is illegal. It also did not find that deep learning was in use. Deep learning is a kind of AI that learns patterns from many examples. The record is the court's judgment of 5 February 2020.
+</Simple>
+
+<Deep>
+The court wrote that the legislation "is insufficiently transparent and verifiable" and that Section 65 of the SUWI Act and Chapter 5a of the SUWI Decree "have no binding effect, being contrary to Article 8 paragraph 2 ECHR". The operative order is limited: no binding effect "with respect to" the four claimant organisations "and on those whose interests these parties represent", so it is a ruling for those parties on 5 February 2020. It said the law "does not provide information on the functioning of the risk model, for instance the type of algorithms used in the model", and that "the court consequently lacks such insight in these proceedings." It added that it was "difficult to comprehend how a data subject could be able to defend themselves against the fact that a risk report has been submitted about him or her."
+
+The State confirmed that SyRI had "only been applied to so-labelled ‘problem districts’". The court said this did not make its use wrong in all cases. But it found "a risk that SyRI inadvertently creates links based on bias, such as a lower socio-economic status or an immigration background", and that "it cannot be assessed whether this risk is sufficiently neutralised". It also said the human check in the process was "deemed insufficient", because "the manner in which the definitive risk selection takes place is not public".
+
+On deep learning, the court accepted "as a factual assumption" that no use of it was made "at this point in time". The claimants were supported by the trade union FNV and by the UN Special Rapporteur on extreme poverty and human rights. This is one court's ruling about one law in one country on one date.
+</Deep>
+
+## A parliament looks at fraud checks
+
+<Simple>
+In 2024, a committee of the Dutch parliament published a report on how the government fought fraud. It looked at risk profiles and at how agencies shared data.
+
+The report says some groups of people were more likely to be flagged as possible fraudsters. It says rights to privacy and equal treatment were violated.
+
+**Where it went wrong: data.** The committee points to how data was used and shared. It also points to risk scores with no solid basis. Its main conclusion names failed laws and failed legal protection too.
+
+**Who answered:** the committee says the cabinet, parliament, the agencies that carry out policy and the courts each fell short. It presented the report on 26 February 2024.
+
+This record is about fraud policy as a whole, not one program. It builds on an earlier inquiry about childcare benefits, which we did not read.
+</Simple>
+
+<Deep>
+The summary says the committee paid "particular attention" to "the use of discriminatory risk profiles and the sharing of information and data". It says "Structural deficiencies in the implementation practice of risk-based supervision in relation to social security and benefits have made certain groups of people more likely to be identified as potential fraudsters", and that "The sharing of unlawfully processed data and unsubstantiated risk scores have exacerbated the negative impact on people."
+
+The main conclusion says: "The cabinet and parliament have fallen short, the implementing organisations have acted unlawfully and the judiciary has failed to protect people." Two sub-conclusions read: "Wrong decisions in the design, introduction, implementation and adaptation of laws and regulations have caused untold suffering" and "People who made small mistakes were treated as ‘fraudsters’". The committee says "The underlying patterns that caused this persist to this day."
+
+On presenting the report, the committee chair, Michiel van Nispen, said: "when you send people a letter saying they have to pay back 125,000 euros in a short period of time, when you treat people who have not committed fraud like criminals, when you draft bills and pass laws without considering how they will affect people, when people are denied justice even in court, then there is blindness." The page is the House of Representatives' own account of its committee's report.
+</Deep>
+
+## An Australian debt system
+
+<Simple>
+Robodebt was an automated debt system that the Australian government ran from about July 2015 to November 2019. It took pay data from the tax office for a review period. It spread that pay evenly over fortnights, to guess a person's income.
+
+The system sent a letter. It asked the person to confirm or update their income information within a specified period.
+
+If the person gave no or too little information by the date, the system made an assumption.
+
+It assumed the tax-office pay data showed what the person earned, in equal fortnightly amounts. If that showed the person was entitled to less benefit, it sent a letter saying they owed a debt.
+
+**Where it went wrong: design.** The judgment says many social security recipients "do not earn a stable or constant income". For them, an assumed fortnightly income based on averaging is "unlikely to be the same as their actual fortnightly income".
+
+**Who answered:** on 11 June 2021, the Federal Court of Australia approved a settlement. The Commonwealth admitted it had no proper legal basis for debts based on income averaging. The Commonwealth is the Australian government. The court said the evidence shows it unlawfully asserted such debts.
+
+The Commonwealth agreed to pay $112 million, which includes legal costs.
+
+A Royal Commission reported on 7 July 2023. A Royal Commission is a formal public inquiry. It said Robodebt was "a crude and cruel mechanism, neither fair nor legal". The records call it automated. They do not call it AI.
+</Simple>
+
+<Deep>
+We read the Federal Court's judgment in Prygodicz v Commonwealth of Australia (No 2) [2021] FCA 634, Murphy J, 11 June 2021, which is in the sources. The court's site refused our automated requests, so an independent reviewer read the judgment in a browser and checked every quotation here against it, with its paragraph numbers. The judgment calls Robodebt "the Commonwealth's use of an automated debt-collection system between July 2015 and November 2019". It says the system used "PAYG income information of social security recipients kept by the Australian Taxation Office", "evenly apportioning that income over fortnightly increments in the review period", "to determine that person's notional or assumed fortnightly income" (paragraph 2). It does not say the pay data were yearly. It speaks of a review period. If by the specified date a person "had supplied no or insufficient further information", the system "made an assumption that the person's previously reported income was incorrect" (paragraph 40). The Commonwealth "admitted that it did not have a proper legal basis to raise, demand or recover asserted debts which were based on income averaging from ATO data", and the judge wrote "The evidence shows that the Commonwealth unlawfully asserted such debts" (paragraph 4). The settlement was to "pay $112 million inclusive of legal costs" (paragraph 8).
+
+The judge wrote "It should have been obvious to the senior public servants charged with overseeing the Robodebt system and to the responsible Minister at different points that many social security recipients do not earn a stable or constant income" (paragraph 5). Paragraph 6 separates what they "should have known" about an "unreliable basis" from proof that "they actually knew that the operation of the Robodebt system was unlawful". It says: "There is little in the materials to indicate that the evidence rises to that level." The judgment refers to "about 648,000 group members" (paragraph 13), and the Commonwealth agreed to "not raise, demand or recover from any Category 1 Group Member or Category 2 Group Member" "any invalid debt as described in the Declarations" (paragraph 8). The Human Rights Law Centre also published a summary. It is a secondary source, and where it differs from the judgment we follow the judgment.
+
+The Prime Minister's media statement of 7 July 2023 quotes the Royal Commission's report, page xxix: "Robodebt was a crude and cruel mechanism, neither fair nor legal, and it made many people feel like criminals. In essence, people were traumatised on the off-chance they might owe money. It was a costly failure of public administration, in both human and economic terms." We read that page, not the report itself.
+</Deep>
+
+## Who answered
+
+<Simple>
+Look at who answered in each record. In none of them did the system answer. A court, a parliament or a government did.
+
+In Mata, the people who used the tool were sanctioned. In the other three, the records point to laws, rules and the bodies that ran the systems.
+
+These are four cases. They do not show how every AI incident goes. Lesson 3.7 covers the law in Ireland and the EU. Lesson 3.8 covers what trustworthy AI needs.
+</Simple>
+
+<Deep>
+The records are different kinds of text. One is a sanctions order, one is a ruling on a law, one is an inquiry by the body that passed the laws, and one is a settlement approval. They answer different questions, so their findings are not scores to compare. A settlement is not a trial: paragraph 8 says the Commonwealth will act "without admission of liability". The judge wrote "I was though troubled as to whether the proposed settlement was fair and reasonable inter se" (paragraph 12), because it "provides no financial benefit to Ineligible Category 3 Group Members and Category 4 Group Members" (paragraph 13).
+</Deep>
+
+## Companion chatbots and over-reliance
+
+<Simple>
+The four records above show harms such as wasted time and money, unequal treatment and distress. This last case is a different harm: trusting a chatbot too much. It comes from a study by a US government agency, not from a court.
+
+Some chatbots are made to act like a friend. In September 2025, the US Federal Trade Commission said they can "mimic human characteristics, emotions, and intentions". It said some users, especially children and teens, may trust them and form relationships with them.
+
+The FTC asked seven companies how they test for harm. That was a study. It did not find that any company did wrong.
+
+We do not have good evidence on how often serious harm happens, or what causes it. A few short studies exist, and they point different ways. So we make no claim about that.
+
+Lesson 1.1 explains that a kind reply is not a feeling. Lesson 4.9 will cover when a person is the better choice.
+</Simple>
+
+<Deep>
+The FTC release of 11 September 2025 says the orders use its 6(b) authority, "which authorizes the Commission to conduct wide-ranging studies that do not have a specific law enforcement purpose". The seven recipients are Alphabet, Character Technologies, Instagram, Meta Platforms, OpenAI, Snap and X.AI. The release says chatbots "generally are designed to communicate like a friend or confidant".
+
+A 2025 commentary on autistic people and AI chatbots says companions "can offer low-pressure social interaction, consistent acceptance". It also names "Cases of AI companions amplifying social withdrawal, encouraging harmful behaviours", and "The lack of accountability and regulation around AI companion apps". It argues that companions "should neither be vilified nor uncritically embraced". We read the abstract only. It is a commentary that draws on cases and literature, not a count of how often harm happens. We did not find a study that counts how often severe harm happens or what causes it. Some controlled studies exist. Guingrich and Graziano (Princeton, 15 October 2025) assigned 183 people to 21 days of companion-chatbot use or word games. They report that social health and relationships "were not significantly impacted" over those 21 days. Fang and others (MIT Media Lab and OpenAI, 21 March 2025) ran a four-week trial with 981 people using a general-purpose chatbot, not a companion app. They found that people who chose to use it more had worse outcomes, whatever they were assigned. These are short studies of other measures, so the evidence on severe harm stays thin.
+</Deep>
+
+## How to read an incident report
+
+<Simple>
+These habits come from the four records.
+
+- **Find the record.** A court order or an inquiry report is closer to the facts than a news story.
+- **Check the date.** A ruling is true on its date, and later rulings can change it.
+- **Keep claims and findings apart.** A claim in a lawsuit is not a finding by the court.
+- **Say what the record covers.** A ruling on one law is not a ruling on every system like it.
+
+The AI Incident Database lists reports of AI failures. It is not a court, and an entry is a lead to a record.
+</Simple>
+
+<Deep>
+The AI Incident Database's About page says its first set of "more than 1,000 incident reports have been intentionally broad in nature", and "When in doubt of whether an event qualifies as an incident, please submit it". Its Terms of Use say named collections, including incidents and entities, "are licensed under the Creative Commons attribution share-alike license". The terms name no version. They do not cover the reports' text field, or the source of images and videos. So the database is a good place to find a lead, and the lead still needs its record.
+</Deep>

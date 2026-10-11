@@ -1,0 +1,227 @@
+---
+title: Examples
+promise: Can show an AI an example of the answer you want
+minutes: {simple: 7, deep: 12}
+tldr:
+  - You can describe the answer you want, or show one finished example of it. An example mostly fixes the shape of an answer.
+  - In this recording, two example cards fixed the shape for Claude Sonnet 5.5, not for Ministral 3 14B.
+  - An answer may match an example's small quirks too, and an example does not make an answer true.
+misconceptions: [M12]
+interactive: with-or-without-an-example
+inputs: [src/lib/p2-runs.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.3, HEA-PEA-2.3.1-e, AIF-2.a, AIF-2.b, AILIT-C3]
+checkin:
+  - question: In the recording, Claude Sonnet 5.5 got the notes and two example cards. How did its three answers look?
+    options:
+      - text: All three were plain Q and A lines, with nothing added.
+        why: Yes. No title, no bold labels and no extra note. Each answer matched the example cards.
+        right: true
+      - text: All three had a title and bold labels, as without examples.
+        why: Not this one. Those three answers came from the request with no examples.
+      - text: Only one matched the cards.
+        why: Not this one. All three matched. Only one differed from the others, in how its answers were written.
+  - question: Your example card starts its answer with a small letter. What might the AI do?
+    options:
+      - text: It may copy that too.
+        why: Yes. In one recorded run, Claude Sonnet 5.5 began its answers with small letters, like card 1 in the request.
+        right: true
+      - text: It will always fix the card for you.
+        why: Not this one. A model follows the pattern it is shown, and the recording shows one run that did.
+      - text: It will ignore the small letter every time.
+        why: Not this one. In the recording, one run matched a quirk of card 1. The runs differed.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You worked out what an example does to an answer.
+glossary:
+  - term: example
+    meaning: One finished piece of the answer you want, put in your request. Models are asked to make more that look like it.
+  - term: few-shot prompt
+    meaning: A request that includes a few examples of the answer you want. A request with none is called zero-shot.
+  - term: token
+    meaning: A small piece of text that an AI reads, such as a word, part of a word or a letter.
+  - term: run
+    meaning: One time a request was sent and one answer came back. This lesson recorded three runs of each request.
+  - term: template
+    meaning: A ready-made example or outline that you keep and reuse for the same kind of request.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: Language Models are Few-Shot Learners, by Brown and others
+  text: A free paper from May 2020, as a PDF of 75 pages. No login is needed. It is long and technical, and it is on a different website. The three settings are described on page 6.
+  url: https://arxiv.org/pdf/2005.14165v4
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Brown et al., Language Models are Few-Shot Learners, arXiv:2005.14165, version 4 (revised 22 July 2020)"
+    url: https://arxiv.org/abs/2005.14165v4
+    licence: arXiv non-exclusive licence
+    use: cite
+  - title: "Min et al., Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?, EMNLP 2022, arXiv:2202.12837"
+    url: https://arxiv.org/abs/2202.12837
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Zhao et al., Calibrate Before Use: Improving Few-Shot Performance of Language Models, ICML 2021, arXiv:2102.09690"
+    url: https://arxiv.org/abs/2102.09690
+    licence: arXiv non-exclusive licence
+    use: cite
+  - title: "Lu et al., Fantastically Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order Sensitivity, ACL 2022, arXiv:2104.08786"
+    url: https://arxiv.org/abs/2104.08786
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Prompting best practices: Use examples effectively"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+    licence: All rights reserved
+    use: cite
+  - title: "Google, Gemini API docs, Prompt design strategies: Zero-shot vs few-shot prompts"
+    url: https://ai.google.dev/gemini-api/docs/prompting-strategies
+    licence: CC-BY-4.0
+    use: cite
+  - title: "OpenAI, Prompt engineering guide: Few-shot learning"
+    url: https://developers.openai.com/api/docs/guides/prompt-engineering
+    licence: All rights reserved
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+signed: false
+---
+
+## Say it, or show it
+
+<Simple>
+You can describe the answer you want. You can also show it.
+
+An example is one finished piece of the answer, written the way you want. Say you want flashcards. You write one card as "Q: question" and "A: answer". Then you ask for more like it.
+
+Lesson 2.1 shows how to say clearly what you want. Lesson 2.5 shows how to ask for a shape or a reading level. This lesson is about showing one.
+</Simple>
+
+<Deep>
+Brown and others (arXiv, submitted 28 May 2020, version 4 revised 22 July 2020) tested a language model called GPT-3 by putting examples in the request. They call this the few-shot setting: "the model is given a few demonstrations of the task at inference time as conditioning". Inference time means when the model answers. They add "but no weight updates are allowed". Weight updates would change the model's numbers, as in lesson 1.7. Nothing is retrained. The examples are part of the request, so they use up room in the context window (lesson 1.8). The paper "typically" set the number of examples between 10 and 100, "as this is how many examples can fit in the model’s context window". Lesson 5.6 will cover when to prompt and when to train.
+
+The paper also gives a reason to show, not only tell: "By contrast it is sometimes difficult to communicate the content or format of a task if no examples are given." Its abstract says few-shot performance was "sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches".
+
+The limits: these are findings about GPT-3, on that paper's tests, from 2020. The paper did not test Claude or Ministral.
+</Deep>
+
+## The same notes, two requests
+
+<Simple>
+This lesson uses one task. A model turns six lines of notes into flashcards. The notes come from lesson 1.3 on tokens. They say what a token is, and how one tokeniser cuts the word "strawberry".
+
+Two requests were recorded. Request A is the notes and the words "Turn these notes into flashcards". Request B adds two example cards and the words "Use exactly this format".
+
+Request A says nothing about the format. So these runs cannot say whether the words or the examples did the work in request B.
+
+Each request went to two models, three times each. The models are Claude Sonnet 5.5 and Ministral 3 14B. They were recorded on 3 October 2026. That gives twelve answers.
+
+The two example cards are about Ireland, not tokens. Each has one small quirk. Card 1 starts its answer with a small letter and has no full stop. Card 2 ends its answer with a full stop.
+
+In the activity below, you predict which request gives plain Q and A lines with nothing added. Then you see the answers side by side.
+</Simple>
+
+<Deep>
+Settings, as recorded: no tools, no system prompt, a limit of 4000 tokens for each answer. No temperature was sent, so each model used its own default. The same request can give different answers in different runs, so each was sent three times.
+
+The two models come from two makers. Claude Sonnet 5.5 was called through Anthropic's API. An API is a way for one program to send a request to another. Ministral 3 14B was called through Mistral AI's API.
+
+The recording is one task, in one wording, on one day. It does not test examples in general.
+</Deep>
+
+<TryIt />
+
+## What the runs showed
+
+<Simple>
+Claude Sonnet 5.5, request A, with no examples: all three answers had a title and bold labels. Each card was headed "Card 1" and so on. All three added fill-in-the-blank cards too.
+
+Claude Sonnet 5.5, request B, with examples: all three answers were plain Q and A lines. They had no title, no bold and no extra note.
+
+Ministral 3 14B, request A: all three used the words Front and Back, not Q and A. Each opened with a line of its own. One ended by asking if you want changes.
+
+Ministral 3 14B, request B: all three used Q and A labels. But none gave plain lines. Each opened with "Here are your flashcards in the requested format:". Each put bold on the labels and a line of dashes between cards.
+
+So the examples fixed the shape for Claude Sonnet 5.5 in all three runs. For Ministral 3 14B they did not fix it in any run, though its answers moved closer.
+</Simple>
+
+<Deep>
+Bold here means the reply holds Markdown stars, which many chat apps show as bold. "Plain" means every line starts with "Q: " or "A: " and nothing else is in the reply.
+
+Claude Sonnet 5.5, request A: run one had eight cards, the last two fill-in-the-blank. Runs two and three had six cards and then a list headed "Optional cloze versions". Request B, runs one to three: six cards each and no extras.
+
+Ministral 3 14B, request A: all three spelled the word "tokenizer" with a z. The notes spell it "tokeniser". In request B, all three used the notes' spelling, "tokeniser".
+
+What this does not show: why Ministral 3 14B added its extras, or whether another wording of the request would remove them. Only one wording was recorded.
+</Deep>
+
+## Copying the quirks
+
+<Simple>
+The two example cards disagreed on purpose. Card 1 had a small first letter and no full stop. Card 2 had a capital letter and a full stop.
+
+Did the answers copy a quirk? For most runs, we cannot tell. Without examples, both models already wrote capital letters and full stops. So copying card 2 would look the same as not copying.
+
+One run did differ. In Claude Sonnet 5.5's first run with examples, every answer ended with no full stop. All but one began with a small letter. That is card 1.
+
+To fit card 1, the model reworded the notes. One answer began "a small piece of text, such as a whole word". The notes word it differently.
+
+So one run matched a quirk of card 1: the first of Claude Sonnet 5.5. We cannot say why it differed from its other runs. Its runs two and three matched card 2, which is also what it wrote without examples.
+</Simple>
+
+<Deep>
+Counts, by run, for the six answers in each reply. Claude Sonnet 5.5, request B: run one, five answers began with a small letter and none ended with a full stop; the sixth was "Yes". Runs two and three, six capitals and six full stops. Ministral 3 14B, request B: all three runs, six capitals and six full stops. Without examples, Claude Sonnet 5.5's six plain cards had capitals and full stops in all three runs.
+
+Other sources say what to do about this. Anthropic's page says examples should be "Diverse: Cover edge cases and vary enough that Claude doesn't pick up unintended patterns" (Anthropic's advice for its Claude models, read on 3 October 2026). Google's page says: "Make sure that the structure and formatting of few-shot examples are the same to avoid responses with undesired formats." That is Google's advice for its Gemini models, on a page dated 17 September 2026. The two cards here broke that rule on purpose.
+
+Three papers on older GPT models show the same kind of sensitivity. Min and others (EMNLP 2022) found that "randomly replacing labels in the demonstrations barely hurts performance" on classification and multi-choice tasks, across 12 models including GPT-3. They say the demonstrations matter for "the label space", "the distribution of the input text" and "the overall format of the sequence". That is classification, not writing flashcards. Zhao and others found that "the choice of prompt format, training examples, and even the order of the training examples can cause accuracy to vary from near chance to near state-of-the-art" for GPT-3. Lu and others (ACL 2022) found that order alone "can make the difference between near state-of-the-art and random guess performance", and that a good order for one model is not transferable to another. No run here changed the order of examples.
+</Deep>
+
+## An example is not a check
+
+<Simple>
+An example can guide the shape of an answer. It does not make the facts right. A better request does not guarantee a true answer.
+
+Look at what Ministral 3 14B added. With no examples, all three answers gave other ways to cut "strawberry". They wrote "straw-berry" and similar cuts. The notes do not say that.
+
+With examples, those extra cuts were gone. But one answer said each token takes up space in the model's memory. The notes say only that more pieces fill up the room a model has for text.
+
+Nothing in this lesson checked those extra claims. So read the content, not only the shape. Lesson 2.6 shows how to ask again and check. Lesson 4.1 shows how to check an answer against real sources.
+</Simple>
+
+<Deep>
+Every answer in this recording was compared with the six notes by the writer. Claude Sonnet 5.5's six plain cards stayed inside the notes in all six runs. Where a run adds a claim, that run's note says so. None of the added claims was found false by this lesson's writer, and none was checked against a source, so they are called "not in the notes", not "wrong".
+
+Companies say examples help. OpenAI says few-shot learning "lets you steer a large language model toward a new task by including a handful of input/output examples in the prompt, rather than fine-tuning the model". Anthropic says: "Examples are one of the most reliable ways to steer Claude's output format, tone, and structure." Google says: "We recommend to always include few-shot examples in your prompts." Each is that company's advice for its own models, read on 3 October 2026. This lesson's recording tests one task and does not confirm or refute any of them.
+</Deep>
+
+## Keep an example you like
+
+<Simple>
+Suppose you ask for the same kind of thing often. Keep your best example. Paste it in each time. A saved example you reuse is a template.
+
+How many examples? Anthropic advises three to five for its Claude models. Google warns that too many can make a model copy the examples too closely. These runs used two. So they say nothing about the right number.
+
+Lesson 2.7 shows how to write a repeated task down as a procedure.
+</Simple>
+
+<Deep>
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. This lesson shows how a finished reply can guide an answer; PromptSage keeps reusable reply examples in named parts. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+PromptSage is one worked framework for writing prompts, not a standard. Templates are not a layer of it. They are parts of two layers, and the paper's outline lists them as tags inside the prompt. `response_templates` sits inside each mode in layer 4, Mode Control. `refusal_templates` sits in layer 5, Behavioral Protocols. The outline shows `response_templates` only as an empty tag. The paper fills in only the refusal templates.
+
+A refusal template is a scripted reply that the prompt tells the model to give when a trigger happens. The paper says: "Scripted refusal responses improve consistency and empathy when rejecting manipulation attempts". Its first example, for a student asking for an answer in examiner mode: "I understand this is challenging. In examiner mode, I assess your knowledge rather than provide answers. Please share your best attempt, and I'll evaluate it."
+
+That is the same idea as this lesson, kept for reuse: one finished reply, written the way you want, that the model is shown. The risk from this lesson applies too: an answer may match an example's quirks, as one run did here.
+
+The paper's own limits: "All prompt-level constraints are advisory, not absolute." and "Current findings are based on controlled testing rather than large-scale deployment." This lesson tested no template.
+</Deep>

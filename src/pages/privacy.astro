@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import InfoPage from '../components/InfoPage.astro';
+// Every fact is Stillpool's own: the three nbl: keys (settings.ts and boot.js, progress/store.ts, Map.astro), the save code
+// (progress/code.ts, SaveCode.astro), read aloud (readaloud.ts) and the count (analytics.ts). The count's paragraphs show only
+// in a build that has it, as on /help/. Rights and the regulator follow the NeuroBridgeEDU privacy page.
+const count = import.meta.env.PUBLIC_ANALYTICS === '1';
+const toc = [
+  { id: 'summary', title: 'In short' },
+  { id: 'stored', title: 'What is stored on your device' },
+  { id: 'received', title: 'What the host receives' },
+  { id: 'lab', title: 'The practice lab' },
+  { id: 'feedback', title: 'Feedback' },
+  ...(count ? [{ id: 'count', title: 'Counting visits' }] : []),
+  { id: 'cookies', title: 'Cookies and why there is no banner' },
+  { id: 'use', title: 'How this information is used' },
+  { id: 'choices', title: 'Your choices' },
+  { id: 'rights', title: 'Your rights' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+
+<Base title="Privacy notice" description="The privacy notice for Stillpool, the free AI lessons by NeuroBridgeEDU." wide>
+  <InfoPage title="Privacy notice" {toc} updated="10 October 2026">
+    <p slot="intro" class="lede">
+      This notice describes Stillpool at learn.neurobridgeedu.eu. Stillpool has no accounts and sets no cookies. What it keeps on your device is
+      only what you asked it to keep: your progress and your settings.
+    </p>
+
+    <h2 id="summary">In short</h2>
+    <ul>
+      <li>There are no accounts and no cookies.</li>
+      <li>Your settings, progress and map choices are kept in this browser and are not sent anywhere.</li>
+      <li>Loading a page or a recording is a request to this site, which is hosted by Vercel.</li>
+      <li>The lessons do not call an AI service. The practice lab does, only when you press Send.</li>
+      <li>A message you send on the feedback page is saved on a server in the EU. Nothing is sent until you press Send feedback.</li>
+      {count && <li>A cookieless Vercel count records visits to pages. See "Counting visits".</li>}
+    </ul>
+
+    <h2 id="stored">What is stored on your device</h2>
+    <p>
+      Stillpool uses local storage, the browser's own storage for one site. It is not a cookie and is never sent with a request. It holds three
+      items, all kept until you remove them or clear this site's data in your browser:
+    </p>
+    <dl class="facts">
+      <dt>Settings</dt>
+      <dd>
+        Font, text size, spacing, colours, motion, reading ruler, the other reading choices, the reading voice, the reading speed and whether lessons show Simple or
+        Deep. Stored as <code>nbl:settings</code>.
+      </dd>
+      <dt>Progress</dt>
+      <dd>
+        The lessons you finished, the badges you earned and the activity steps you completed. Stored as <code>nbl:progress</code>. If your browser
+        blocks or fills its storage, progress may not be kept.
+      </dd>
+      <dt>Map choices</dt>
+      <dd>Which topics you opened on the lesson map. Stored as <code>nbl:topics</code>.</dd>
+    </dl>
+    <p>
+      The save code and its QR code hold your finished lessons and badges, and nothing else: not your settings, map choices or activity steps. They
+      are made on your device and go nowhere unless you share them. Anyone who has your code can see which lessons you finished. A restore link
+      carries the code after a <code>#</code> in the address, the part a browser does not send to a server, and Stillpool removes it from the
+      address once it has used it. Restoring adds to the progress already in the browser; it does not erase it.
+    </p>
+
+    <h2 id="received">What the host receives</h2>
+    <p>
+      Opening a page, or playing a recording, asks this site's server for files. Stillpool is hosted by Vercel, which receives ordinary request
+      information such as your IP address and browser details, and keeps server logs. Read
+      <a href="https://vercel.com/legal/privacy-policy" rel="noopener">Vercel's privacy policy</a>.
+    </p>
+    <p>
+      Read aloud uses Emma, a computer voice recorded in advance and hosted on this site. Where a recording is missing, it uses a voice already on
+      your device. Only voices that run on the device are offered, so the lesson's words are not sent to a speech service.
+    </p>
+    <h2 id="lab">The practice lab</h2>
+    <p>
+      The practice lab at <a href="/lab/">/lab/</a> is the one place on Stillpool that uses an AI service. It is optional, and nothing is sent until you
+      open it and press Send. When you do, the text you typed in the lab is sent to Mistral AI, a company in Paris, which writes the reply.
+    </p>
+    <p>
+      The text goes through this site's server, so Vercel and Mistral process it to answer you. Stillpool keeps no copy, stores nothing on your device
+      and logs no text. This notice says nothing about what Mistral keeps. Read
+      <a href="https://legal.mistral.ai/terms/privacy-policy" rel="noopener">Mistral's privacy policy</a>, and leave out names and other personal
+      details.
+    </p>
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      The feedback page at <a href="/feedback/">/feedback/</a> is optional, and nothing is sent until you press Send feedback. When you do, what is
+      sent is your message and what it is about: the whole site, the practice lab or one lesson.
+    </p>
+    <p>
+      The message goes to this site's server, then to a workflow tool run by NeuroBridgeEDU on its own server in the EU. There it is saved in a
+      table that the makers read. Stillpool asks for no name and no account, and does not store the message on your device. The host's usual logs
+      apply, as for any request.
+    </p>
+    <p>
+      To ask for a message to be removed, write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a> and quote its text.
+      Please do not write your name, your email or anything private in a message.
+    </p>
+    {
+      count && (
+        <>
+          <h2 id="count">Counting visits</h2>
+          <p>
+            Stillpool counts how many times its pages are opened, so its makers can see if anyone uses it. Vercel, the company that hosts this
+            site, does the counting with Vercel Web Analytics.
+          </p>
+          <p>When a page opens, the count records:</p>
+          <ul>
+            <li>the page address</li>
+            <li>the site that linked here</li>
+            <li>the time</li>
+            <li>the country, and the region and city where they are known</li>
+            <li>the kind of device, with its system and browser, and their versions</li>
+            <li>the version of the counting script</li>
+          </ul>
+          <p>
+            It does not use cookies. It tells visits apart with a code made from the request, and Vercel resets
+            that code every day. It does not follow you across sites or build a profile of you. The data is used for combined totals only.
+          </p>
+          <p>
+            A page opened with a save code, or any other text after its address, is not counted. Your answers, settings, progress and save code
+            are not sent to the count. Read
+            <a href="https://vercel.com/docs/analytics/privacy-policy" rel="noopener">how Vercel describes this count</a>.
+          </p>
+        </>
+      )
+    }
+
+    <h2 id="cookies">Cookies and why there is no banner</h2>
+    <p>
+      A cookie is a small file a site asks your browser to keep and send back on every request. Stillpool sets none. A cookie banner asks for
+      consent to store things that are not needed. Here the only things stored on your device are the progress and settings you asked for{
+        count ? ', and the count sets no cookie' : ''
+      }, so there is nothing to consent to.
+    </p>
+
+    <h2 id="use">How this information is used</h2>
+    <ul>
+      <li>Settings change how lessons look and read to you.</li>
+      <li>Progress shows your finished lessons and badges.</li>
+      <li>Map choices keep your topics open or closed as you left them.</li>
+      <li>Text you send from the practice lab is used to write the reply to you.</li>
+      <li>A message you send as feedback is saved and read by the makers, to improve the site.</li>
+      <li>The host serves the site and keeps logs to run it{count ? '; the count shows how often pages are visited' : ''}.</li>
+    </ul>
+
+    <h2 id="choices">Your choices</h2>
+    <p>
+      In Settings, Delete my progress removes finished lessons, badges and steps from this browser. It leaves your settings and map choices. To
+      remove all three, clear this site's data in your browser. A save code you kept can bring your progress back, so delete the code too if you
+      do not want that.
+    </p>
+
+    <h2 id="rights">Your rights</h2>
+    <p>
+      Under the General Data Protection Regulation (GDPR), the European law on personal data, you may ask what is held about you, ask for it to be
+      corrected or erased, object to its use and ask for a copy. Stillpool has no accounts, so the only personal data it can see is what the
+      host's logs hold, any email you send and any text you send from the practice lab, which it does not keep. A feedback message is kept: see "Feedback". You may complain to the Irish Data Protection Commission at
+      <a href="https://www.dataprotection.ie" rel="noopener">dataprotection.ie</a>.
+    </p>
+
+    <h2 id="contact">Contact</h2>
+    <p>
+      Write to <a href="mailto:contact@neurobridgeedu.eu">contact@neurobridgeedu.eu</a> and put "Privacy" in the subject. Please do not email a
+      save code.
+    </p>
+  </InfoPage>
+</Base>

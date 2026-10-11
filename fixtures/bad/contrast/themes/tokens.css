@@ -1,0 +1,106 @@
+[data-theme="light"] {
+  --ground: #FFFFFF;
+  --surface: #F0EDE8;
+  --text: #1F1D1A;
+  --text-muted: #524D46;
+  --link: #1D4ED8;
+  --focus: #1D4ED8;
+  --accent: #1D4ED8;
+  --on-accent: #FFFFFF;
+  --border: #77716A;
+  --state-todo: #77716A;
+  --state-done: #2E6B3F;
+  --state-here: #1D4ED8;
+  --surface-raised: #F0EDE8;
+  --accent-2-ink: #524D46;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+}
+[data-theme="calm"] {
+  --ground: #F4F1EA;
+  --surface: #F4F1EA;
+  --text: #2B2A22;
+  --text-muted: #333333;
+  --link: #767676;
+  --focus: #9DB5AF;
+  --accent: #1D4ED8;
+  --on-accent: #FFFFFF;
+  --border: #555555;
+  --state-todo: #555555;
+  --state-done: #2E6B3F;
+  --state-here: #1D4ED8;
+  --surface-raised: #F4F1EA;
+  --accent-2-ink: #333333;
+  --border-width: 1px;
+  --border-width-strong: thin;
+}
+[data-theme="dark"] {
+  --ground: #111111;
+  --surface: #111111;
+  --text: #EEEEEE;
+  --text-muted: #BFB7AC;
+  --link: #8AB4F8;
+  --accent: #8DB6F9;
+  --on-accent: #1C1A17;
+  --border: #8E877D;
+  --state-todo: #8E877D;
+  --state-done: #7FC28D;
+  --state-here: #8DB6F9;
+  --surface-raised: #111111;
+  --accent-2-ink: #BFB7AC;
+  --border-width: 1px;
+}
+[data-theme="contrast"] {
+  --ground: #FFFFFF;
+  --surface: #FFFFFF;
+  --text: #000000;
+  --text-muted: #666666;
+  --link: #0A3A8C;
+  --focus: #000000;
+  --accent: #000000;
+  --on-accent: #FFFFFF;
+  --border: #000000;
+  --state-todo: #3B3B3B;
+  --state-done: #0B4D26;
+  --state-here: #0A3A8C;
+  --surface-raised: #FFFFFF;
+  --accent-2-ink: #1F1F1F;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+}
+[data-theme="warm"] {
+  --ground: #F9F9F0;
+  --surface: #F9F9F0;
+  --text: #1F1D1A;
+  --text-muted: #524D46;
+  --link: #1D4ED8;
+  --focus: #1D4ED8;
+  --accent: #1D4ED8;
+  --on-accent: #FFFFFF;
+  --border: #77716A;
+  --state-todo: #77716A;
+  --state-done: #2E6B3F;
+  --state-here: #C8C0B4;
+  --surface-raised: #F9F9F0;
+  --accent-2-ink: #524D46;
+  --border-width: 0px;
+  --border-width-strong: 2px;
+}
+[data-theme="button"] {
+  --ground: #FFFFFF;
+  --surface: #FFFFFF;
+  --text: #1F1D1A;
+  --text-muted: #524D46;
+  --link: #1D4ED8;
+  --focus: #1D4ED8;
+  --accent: #7FB0FF;
+  --on-accent: #FFFFFF;
+  --border: #77716A;
+  --state-todo: #77716A;
+  --state-done: #2E6B3F;
+  --state-here: #1D4ED8;
+  --surface-raised: #FFFFFF;
+  --accent-2-ink: #7FB0FF;
+  --border-width: 1px;
+  --border-width-strong: 2px;
+}

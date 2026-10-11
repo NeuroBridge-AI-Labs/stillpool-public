@@ -1,0 +1,12 @@
+# Pillar 2: a mark must point at a variant, maker and run the recording holds, and a falseText must be in that reply.
+R-9.2:
+  summary: Fine words.
+  marks:
+    - {variant: A, maker: A, run: 9, shows: true, note: Fine words.}
+    - {variant: Z, maker: A, run: 1, shows: true, note: Fine words.}
+    - {variant: A, maker: B, run: 1, shows: false, note: Fine words.}
+    - {variant: A, maker: A, run: 1, shows: false, note: Fine words., falseText: The sky is blue., reason: Wrong.}
+R-9.1:
+  summary: Fine words.
+  marks:
+    - {variant: A, maker: A, run: 1, shows: true, note: Fine words.}

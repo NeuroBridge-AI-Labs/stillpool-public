@@ -1,0 +1,292 @@
+---
+title: When not to use AI
+promise: Can decide when a person, a book or your own thinking is the better tool
+minutes: {simple: 8, deep: 13}
+tldr:
+  - Ask two questions first. What happens if the AI makes a mistake, and who do I need?
+  - Do it yourself when you want to learn the skill. Ask a person when a mistake would be serious or the matter is private.
+  - In one study, many chatbot answers about news had a significant problem. In another, answers in Irish scored lower than in English.
+misconceptions: [M10, M11]
+interactive: good-fit-or-not
+inputs: [src/lib/good-fit-or-not.ts, src/lib/cases.ts, src/components/Cases.astro]
+competencies: [UNESCO-AICFS-4.1.4, UNESCO-AICFS-CG4.1.4.1, UNESCO-AICFS-CG4.1.1.2, HEA-P5, HEA-P2, AILIT-M1, AIF-1.a]
+checkin:
+  - question: In the Turkey study, how did students with an answer chatbot do on the test without it?
+    options:
+      - text: They scored lower than students who never had the chatbot.
+        why: Yes. The study reports a drop for that group on the test without the chatbot. The group with the hint chatbot largely avoided it.
+        right: true
+      - text: They scored higher than students who never had the chatbot.
+        why: Not this one. They did better while they had the chatbot. On the test without it, they did worse.
+      - text: Their scores did not change at all.
+        why: Not this one. The study reports a clear drop for the group with the answer chatbot.
+      - text: Only the students with the hint chatbot scored lower.
+        why: Not this one. The hint chatbot largely removed the drop. The drop was in the answer chatbot group.
+  - question: In the 2026 Nature Medicine study, 1,298 UK adults got written health situations from a set of ten. Some used a chatbot and some used their usual sources. What happened to the people who used a chatbot?
+    options:
+      - text: People who used a chatbot did no better than people who used their usual sources.
+        why: Yes. The chatbots did well alone, but the people using them did no better than the comparison group.
+        right: true
+      - text: People who used a chatbot did much better than people who used their usual sources.
+        why: Not this one. The paper reports that the people using chatbots were no better than the comparison group.
+      - text: The chatbots could not name the conditions, even when tested alone.
+        why: Not this one. Tested alone, the chatbots named the relevant conditions in nearly all cases.
+      - text: The study shows chatbots are safe to use for mixing medicines.
+        why: Not this one. The study was about naming a condition and choosing care. It did not test mixing medicines.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You asked what a mistake would cost and who you need before you chose a tool.
+glossary:
+  - term: preprint
+    meaning: A paper shared online before a journal has reviewed it. The arXiv site says it does not peer-review what it hosts.
+  - term: peer review
+    meaning: Outside experts read a paper and advise the editors on whether to publish it. Nature Portfolio describes this for its journals.
+  - term: significant issue
+    meaning: The BBC and EBU study's words for a problem that could mislead the user in a way that matters.
+  - term: pharmacist
+    meaning: A person you can ask about medicines. The HSE website tells readers to ask one.
+whereNext:
+  title: News Integrity in AI Assistants Toolkit (BBC and EBU, PDF)
+  text: A free 2025 toolkit from the BBC and EBU study of chatbots and news. It lists the kinds of problem the reviewers found, such as out-of-date information. It is one document file, a PDF, of about 2 MB. We downloaded it on 9 October 2026 and did not open it in a viewer program. The page it comes from, ebu.ch, refused our script, so we link the file. When we fetched the file, ebu.ch set four cookies before any choice.
+  url: https://www.ebu.ch/files/live/sites/ebu/files/Publications/Intelligence/open/EBU-Intelligence-BBC_News_Integrity_in_AI_Assistants_Toolkit_2025.pdf
+sources:
+  - title: "Bastani and others, Generative AI without guardrails can harm learning: Evidence from high school mathematics, Proceedings of the National Academy of Sciences 122(26), e2422633122, 25 June 2025"
+    url: https://pubmed.ncbi.nlm.nih.gov/40560616/
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Bastani and others, Generative AI without guardrails can harm learning (full text, Europe PMC PMC12232635)"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Correction for Bastani et al., Proceedings of the National Academy of Sciences 122(34), e2518204122, 20 August 2025"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12403119/
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Lee and others, The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers, CHI '25, Yokohama, 26 April to 1 May 2025"
+    url: https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Kosmyna and others, Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task, arXiv 2506.08872, version 2, 31 December 2025 (preprint)"
+    url: https://arxiv.org/abs/2506.08872
+    licence: CC-BY-NC-SA-4.0
+    use: cite
+  - title: "MIT Media Lab, Your Brain on ChatGPT, project overview and FAQ"
+    url: https://www.media.mit.edu/projects/your-brain-on-chatgpt/overview/
+    licence: Site text under the site's terms
+    use: cite
+  - title: "Bean and others, Reliability of LLMs as medical assistants for the general public: a randomized preregistered study, Nature Medicine 32, 609 to 615, 9 February 2026"
+    url: https://www.nature.com/articles/s41591-025-04074-y
+    licence: CC-BY-4.0
+    use: cite
+  - title: "World Health Organization, WHO releases AI ethics and governance guidance for large multi-modal models, news release, 18 January 2024"
+    url: https://www.who.int/news/item/18-01-2024-who-releases-ai-ethics-and-governance-guidance-for-large-multi-modal-models
+    licence: (c) WHO. WHO publications are CC BY-NC-SA 3.0 IGO (Permissions and licensing page); that page does not name news releases
+    use: cite
+  - title: "Health Service Executive, Antihistamines: medicines to relieve allergies (page last reviewed 9 June 2024, read 9 October 2026)"
+    url: https://www2.hse.ie/medicines/antihistamines/
+    licence: Site text under the site's terms
+    use: cite
+  - title: "Federal Trade Commission, FTC Launches Inquiry into AI Chatbots Acting as Companions, 11 September 2025 (Internet Archive copy of 23 December 2025)"
+    url: https://web.archive.org/web/20251223001625/https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions
+    licence: No licence stated
+    use: cite
+  - title: "Samaritans Ireland (read 9 October 2026)"
+    url: https://www.samaritans.org/ireland/samaritans-ireland/
+    licence: Site text under the site's terms
+    use: cite
+  - title: "BBC and EBU, News Integrity in AI Assistants Toolkit, October 2025"
+    url: https://www.ebu.ch/files/live/sites/ebu/files/Publications/Intelligence/open/EBU-Intelligence-BBC_News_Integrity_in_AI_Assistants_Toolkit_2025.pdf
+    licence: No licence stated
+    use: link
+  - title: "Tran, O'Sullivan and Nguyen, IRLBench: A Multi-modal, Culturally Grounded, Parallel Irish-English Benchmark for Open-Ended LLM Reasoning Evaluation, arXiv 2505.13498, 16 May 2025 (preprint)"
+    url: https://arxiv.org/abs/2505.13498
+    licence: CC-BY-NC-ND-4.0
+    use: cite
+  - title: "Tran and others, IRLBench, Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.1, online 20 April 2026 (record read through Crossref)"
+    url: https://doi.org/10.1145/3770854.3785693
+    licence: No licence stated in the Crossref record
+    use: cite
+  - title: "Singh and others, Global MMLU: Understanding and Addressing Cultural and Linguistic Biases in Multilingual Evaluation, ACL 2025 (long paper)"
+    url: https://aclanthology.org/2025.acl-long.919/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Kandpal and others, Large Language Models Struggle to Learn Long-Tail Knowledge, arXiv 2211.08411, version 2, 27 July 2023"
+    url: https://arxiv.org/abs/2211.08411
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Magesh and others, Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools, Journal of Empirical Legal Studies 22, 216 to 242, accepted 14 March 2025"
+    url: https://doi.org/10.1111/jels.12413
+    licence: CC-BY-NC-4.0
+    use: cite
+  - title: "Placenames Database of Ireland (logainm.ie), About this website (read 9 October 2026)"
+    url: https://www.logainm.ie/en/about
+    licence: Government of Ireland data; site text under the site's terms
+    use: cite
+  - title: "Nature Portfolio, Editorial policies: Peer review (read 9 October 2026)"
+    url: https://www.nature.com/nature-portfolio/editorial-policies/peer-review
+    licence: Site text under the site's terms
+    use: cite
+  - title: "arXiv, About (read 9 October 2026)"
+    url: https://info.arxiv.org/about/index.html
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## A better question than "can it?"
+
+<Simple>
+Many people ask whether an AI tool can do a job. A better question is what happens if it makes a mistake. Then ask who you need.
+
+By AI here, we mean chatbots that answer questions and write text for you.
+
+We use four choices. They are our labels, not a rule from anyone else.
+
+- **AI fits:** a mistake would be small, and you would spot it.
+- **Check carefully:** AI can help, but you check it against a source you trust.
+- **Ask a person:** a person, such as a pharmacist or a friend, is the better tool.
+- **Do it yourself:** you want to learn the skill, so the practice is the point.
+</Simple>
+
+<Deep>
+The four choices simplify. One task can need more than one. A question about medicine may need a pharmacist and the leaflet that comes with the medicine. A study task may need a book as well as your own work.
+
+The lesson sorts tasks by the cost of a mistake and by what you need, not by whether AI is able to do them.
+
+Each study below tests named systems on stated dates. AI tools change, so read the date with every result.
+</Deep>
+
+## Good fit or not?
+
+<Simple>
+Good fit or not? shows six invented situations, one at a time. For each, you predict which of the four choices fits best.
+
+Then you see our reading, our reasons and what to check if you use AI anyway. Nothing is counted or saved. Asking a person is a good choice.
+</Simple>
+
+<Deep>
+No person, company or place in the six situations is real. Each reading is ours. It is not a ruling, and a different pick can be reasonable.
+
+Where a reading rests on a study, the activity names the study and its date. The sections below hold the studies behind those notes.
+</Deep>
+
+<TryIt />
+
+## When the practice is the point
+
+<Simple>
+Does practising with a chatbot help you learn? A study in a high school in Turkey tested this. Students practised maths in class. Some had a chatbot that gave answers. Some had a chatbot built to give hints. Some had neither.
+
+Then the chatbots were taken away for a test. The students who had the answer chatbot scored lower than the students who never had one. The hint chatbot largely removed the drop.
+
+The students with the answer chatbot did not notice they had learned less. The authors say these students often asked for answers and copied them.
+
+This is one study. It was maths, in one school, in the 2023-2024 school year. It did not test writing.
+
+That is one reason "do it yourself" is a choice. If you use AI, one option is to ask for hints, not the finished work. Another lesson on this site, Study honestly with AI, covers this.
+</Simple>
+
+<Deep>
+The paper is by Bastani and others. It is a journal paper in the Proceedings of the National Academy of Sciences, published online on 25 June 2025 (received 3 November 2024, accepted 5 May 2025). It is a randomized controlled trial: the paper says students were randomly assigned to classrooms. It ran "four 90-min sessions for about fifty 9th, 10th, and 11th-grade classes, comprising nearly 1,000 students".
+
+There were three groups: no AI; "GPT Base", which "mimics a standard ChatGPT interface" (ChatGPT is a chatbot made by OpenAI); and "GPT Tutor", "with prompts designed to safeguard learning". The paper says both tools were based on GPT-4. While practising with the tool, grades were 48% higher for GPT Base and 127% higher for GPT Tutor than for the group with no AI. On the test without the tool, GPT Base students scored 17% lower than that group. The authors write that the negative effect "is essentially eradicated in the GPT Tutor arm, though we still do not observe a positive effect". So the hint version removed the harm, but the study did not show a gain.
+
+The GPT Tutor students "perceived that they performed significantly better" on the test, though they did not score higher. The authors list limits: "a single topic (mathematics) deployed in a single high school in Turkey", "Fall 2023, when generative AI was still very new", models that "have significantly improved in performance since then", and short-term outcomes only. They add that objective marking exists for maths "which is unavailable in other important subjects such as writing".
+
+Two more studies looked at thinking, not test scores. Their evidence is weaker. Lee and others, from Carnegie Mellon University and Microsoft Research, presented a conference paper at the CHI Conference on Human Factors in Computing Systems (Yokohama, 26 April to 1 May 2025). It is a survey: 319 people who use generative AI at work at least once a week shared 936 examples. They reported their own thinking, so the results are self-reports. The paper finds that "higher confidence in GenAI is associated with less critical thinking, while higher self-confidence is associated with more critical thinking". That is an association, not proof of a cause. The authors note that people "occasionally conflated reduced effort in using GenAI with reduced effort in critical thinking", which may lead to "inaccurate self-reporting". The survey was in English only.
+
+Kosmyna and others, at the MIT Media Lab, posted a preprint on arXiv in June 2025 (version 2 is dated 31 December 2025). The MIT project page says it "has not yet been peer-reviewed, thus all the conclusions are to be treated with caution and as preliminary". We found no journal version on 9 October 2026. A group wrote essays with a chatbot, a search engine or no tool, while EEG (electroencephalography) recorded their brain activity. The paper recruited 54 people for three sessions, and 18 completed a fourth. The authors report differences in the EEG between the groups, and that the chatbot group reported low ownership of its essays. They say the findings "may not generalize across tasks", and the project page says it is not safe to read the study as showing that these tools make people "dumber".
+</Deep>
+
+## When a mistake would be serious
+
+<Simple>
+A mistake about health can cost more than time. The Health Service Executive (HSE) is Ireland's publicly funded health care system. Its website covers antihistamines, which are medicines to relieve allergies.
+
+It says to ask a pharmacist for advice if you take other medicines. It also says to read the leaflet that comes with your medicine.
+
+In January 2024, the World Health Organization said large multi-modal models can produce false or incomplete statements. These are a kind of AI that takes in text, images or video.
+
+The WHO said such statements could harm people who use them to make health decisions. Its page names ChatGPT as one such platform.
+
+A 2026 study in the journal Nature Medicine gave 1,298 UK adults written health situations. They came from a set of ten. Each adult had to name the condition and choose what care to get.
+
+Some used a chatbot, and some used their usual sources. People who used a chatbot did no better than people who used their usual sources.
+
+Tested alone, the chatbots named the conditions in nearly all cases. The gap came when people used them. The study was about symptoms, not mixing medicines.
+
+Another lesson on this site, Check it before you use it, covers checking.
+</Simple>
+
+<Deep>
+The study is by Bean and others, in Nature Medicine, volume 32, pages 609 to 615, published on 9 February 2026. The article page carries peer review information, so it was peer-reviewed. It was a randomized trial with 1,298 UK adults, recruited online, with data collected between 21 August 2024 and 14 October 2024. Participants were given scenarios from a set of ten. The paper's Methods say each was assigned two. The authors say they preregistered their study design, data collection strategy and analysis plan. Preregistering means specifying a research plan in advance and submitting it to a registry. Three groups used chatbots built on large language models (LLMs): GPT-4o, Llama 3 or Command R+. A control group could use "a source of their choice". Most of the control group used internet search or their own knowledge.
+
+Tested alone, the chatbots were "correctly identifying conditions in 94.9% of cases and disposition in 56.3% on average". Disposition means the care to choose. People using the same chatbots "identified relevant conditions in fewer than 34.5% of cases and disposition in fewer than 44.2%, both no better than the control group". The authors conclude that "Standard benchmarks for medical knowledge and simulated patient interactions do not predict the failures we find with human participants". A benchmark is a set of test questions. The study tested GPT-4o, Llama 3 and Command R+, as they stood in August to October 2024.
+
+The HSE page is the HSE's own guidance for antihistamines and was last reviewed on 9 June 2024. It says "Ask a pharmacist or GP for advice", and lists taking other medicines as a reason. GP stands for general practitioner, a doctor who practises general medicine. The WHO statement comes from its news release of 18 January 2024 about large multi-modal models. We read the release, not the guidance it announces.
+
+Tools built for one field also make mistakes. Magesh and others, in the Journal of Empirical Legal Studies (accepted 14 March 2025), tested AI research tools for lawyers. They ran queries between 22 March and 22 April 2024, and from 23 to 27 May 2024. They report that Lexis+ AI, Westlaw AI-Assisted Research and Ask Practical Law AI "each hallucinate between 17% and 33% of the time". Hallucinate is the paper's word for making up false information.
+</Deep>
+
+## Private lives and people who care
+
+<Simple>
+Your friend's story is theirs. Our site's rule is never to paste other people's information into an AI tool. Another lesson on this site, Privacy habits, covers this.
+
+A different risk comes from chatbots made to sound like a friend.
+
+The US Federal Trade Commission is a government agency. In September 2025, it said chatbots "can effectively mimic human characteristics, emotions, and intentions". It said this may lead some users, especially children and teens, to trust them and form relationships with them.
+
+Another lesson on this site, Harm and misuse, covers chatbots made to act like friends. This lesson does not repeat it.
+
+When you need someone who knows you, ask a person. Samaritans is a charity in Ireland. They say they answer on 116 123, free, day or night.
+</Simple>
+
+<Deep>
+The Samaritans line comes from the charity's own Ireland page, read on 9 October 2026. The Federal Trade Commission quotation is from its news release of 11 September 2025. We do not repeat the studies on companion chatbots, which Lesson 3.5 holds, and the evidence there is mixed.
+</Deep>
+
+## New topics and languages it handles poorly
+
+<Simple>
+AI is not equally good at everything. Results differ by topic and by language. Two studies show some of the gaps.
+
+The BBC, a British public service broadcaster, and the European Broadcasting Union (EBU) ran a study. The EBU describes itself as an alliance of public service media.
+
+In 2025, journalists at 22 media organisations in 18 countries checked more than 3,000 chatbot answers to news questions. They found a significant issue in 45% of answers, nearly half. A significant issue is one that could mislead the user in a way that matters.
+
+The study counted out-of-date information as one kind. Is very recent news harder for a chatbot? That study did not compare new events with old ones. We found no study that says why. So the habit is to check news against the source that runs the story.
+
+A 2025 test used exam questions from Ireland's Leaving Certificate, the final exam at the end of secondary school. The best model scored 76.2% in English, about 3 in 4. It scored 55.8% in Irish, a little over half.
+
+These numbers come from a 2025 preprint: a paper shared online before a journal has reviewed it. The work was later published in the papers of a 2026 research conference.
+
+For a rare name, a small language or yesterday's news, "check carefully" is a good choice. For Irish place names, one place to check is the Placenames Database of Ireland, at logainm.ie. It calls itself "a comprehensive management system for the placenames data, records and research of the State".
+</Simple>
+
+<Deep>
+The news study is the BBC and EBU's, with journalists from 22 public service media organisations. The EBU is the European Broadcasting Union, which describes itself as "the world’s leading alliance of public service media". The reviewers checked four chatbots between June and July 2025: ChatGPT, Microsoft Copilot, Perplexity and Google Gemini. The toolkit says 45% of responses had "a significant issue – something which could materially mislead the user", across "all 18 countries, 14 languages and 22 participant" organisations. It defines out-of-date information as statements "that may have been true in the past but no longer are". We read the toolkit that accompanies the report, not the report.
+
+The Irish test is IRLBench by Tran, O'Sullivan and Nguyen. The numbers here come from its arXiv preprint of 16 May 2025. The work was later published in the proceedings of KDD 2026, the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, on 20 April 2026. We did not compare that version's numbers with the preprint's. It uses 12 subjects from the 2024 Leaving Certificate, in English and in Irish. Another AI model marked the answers, using the official marking scheme. The best model was o4-mini, and all the models scored below 60% in Irish. They were the models of spring 2025, and the test is of exam questions, not of everyday Irish.
+
+Two more results bear on uneven ability, for different reasons. Singh and others (ACL 2025, a conference paper; ACL is the Association for Computational Linguistics) report that "state-of-the-art models excel primarily by learning Western-centric concepts" and that rankings on a benchmark "change when evaluated on a subset of questions marked as culturally sensitive". Kandpal and others (arXiv, version 2 of July 2023) studied older models and found that "a language model's ability to answer a fact-based question relates to how many documents associated with that question were seen during pre-training". We read only the abstracts of both. Neither study tested Irish placenames.
+</Deep>
+
+## How much to trust each study
+
+<Simple>
+Studies differ in strength. A journal paper has been through a journal's process. A preprint has not been reviewed by a journal yet. Peer review means outside experts read a paper and advise the editors.
+
+The school study and the health study were published in journals. The health study says it was peer-reviewed. The Irish exam numbers come from a preprint. The work was later published in conference proceedings.
+
+None of these studies covers all AI. Each tests named systems on stated dates. Mixed results stay mixed: the hint chatbot avoided the drop but did not show a gain.
+</Simple>
+
+<Deep>
+The status of each, as of 9 October 2026: Bastani and others is a journal paper (PNAS, 2025). We did not open PNAS's own page on its review, so we do not call it peer-reviewed. Bean and others is peer-reviewed (Nature Medicine, 2026). Lee and others is a CHI 2025 conference paper, and we did not open a CHI page on its review. Kosmyna and others is a preprint. The IRLBench numbers here are from its May 2025 preprint, and the work was later published in the KDD 2026 proceedings. Singh and others is an ACL 2025 conference paper. Magesh and others is a journal paper (2025). The news study is a report by the organisations that ran it.
+
+Nature Portfolio describes peer review for its journals: papers are sent "typically to two or three reviewers", and "The editors then make a decision based on the reviewers' advice". The arXiv site says "Material is not peer-reviewed by arXiv".
+</Deep>

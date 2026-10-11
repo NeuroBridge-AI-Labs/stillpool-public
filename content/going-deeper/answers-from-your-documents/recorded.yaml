@@ -1,0 +1,135 @@
+# R-5.5: what each of the 16 answers does with the three passages it was sent. Counting rule in the lesson's pack, section 3.
+R-5.5:
+  summary: |
+    We sent eight questions to two models. Each question went with the three passages our own code found for it. That makes sixteen answers, recorded on 8 October 2026.
+
+    We checked every quote and every sentence against the three passages.
+
+    Claude Sonnet 5.5: none of the eight answers changed a quote or went beyond its passages.
+
+    Ministral 3 14B: four of the eight answers did.
+
+    Question 1: one quote is altered, by one comma.
+
+    Question 3: one quote is altered. The answer also says all tag characters are used to end a tag. The passage says only the last one ends a tag.
+
+    Both question 3 answers say Unicode has 96 tag characters. The passage says 96, and the answers match it. Unicode counts 97. Staying inside the passage is not the same as being true.
+
+    Question 4: two quotes are altered. They begin with the passage number and the term, such as "[1] epoch:". They leave out the lesson name that the passage holds. The words of the entry itself match.
+
+    Question 7: the answer adds that deployers are typically professional or organizational users. The passage does not say that.
+
+    Questions 2, 5 and 8 had passages that did not hold the answer. All six answers said so.
+
+    For question 2, the snapshot does have an entry on what the question asks about. Our retrieval ranked it sixth, so it was not among the three we sent. That is a miss in finding, not in the answer.
+
+    We told both models to use only the passages. Twelve of the sixteen answers did. Four did not.
+
+    This is eight questions, one answer each, from two models on one day. It does not show how often any system misquotes.
+
+    An answer is marked when a word or punctuation mark inside quote marks is added, left out or changed. It is also marked when it says something the passages do not say, even if that is true.
+
+    We ignore the quote marks, spacing and a capital letter at the start of a quote. We also ignore a comma or full stop just inside the closing quote mark.
+
+    By this rule four quotes were altered and two statements went beyond the passages, in four answers in all. A citation number placed after a sentence it does not fully cover is noted, not counted.
+
+    The passages are our own short glossary entries, and they leave things out. An answer built from a store can repeat the store's gaps.
+
+    Question 4: the round entry says training changes the model's numbers after each round. Google's glossary says one full pass is made of training iterations, and each iteration updates the numbers. So the numbers can change many times in one round.
+
+    Question 7: the provider entry leaves out a body that puts a system into service under its own name. The high-risk entry leaves out the exceptions in Article 6(3) of the AI Act.
+  checked: 2026-10-09
+  by: claude-sonnet-5-5
+  recordingSha256: 6b8884ab23fd7852504bb2d6d5573127caecb99bf1f39dac81553933f3750bfb
+  marks:
+    - variant: Q1
+      maker: A
+      run: 1
+      shows: false
+      note: 'stayed inside the passages. Both quotes match, and it says the second passage repeats the first.'
+    - variant: Q1
+      maker: B
+      run: 1
+      shows: true
+      note: 'one quote is altered. A comma was added before "or a letter". Passage 3 reads "such as a word, part of a word or a letter", with no comma before "or". This changes the quote. It does not make the definition false.'
+    - variant: Q2
+      maker: A
+      run: 1
+      shows: false
+      note: 'said the passages do not answer. True for these passages.'
+    - variant: Q2
+      maker: B
+      run: 1
+      shows: false
+      note: 'said the passages do not answer. True for these passages.'
+    - variant: Q3
+      maker: A
+      run: 1
+      shows: false
+      note: 'gave the count and the range, and said the passages say no more about use. Every quote matches. It repeated the passage''s count of 96, which is not Unicode''s count.'
+      falseText: 'Unicode has 96 tag characters'
+      reason: 'The Unicode Standard says its Tags block "encodes a set of 97 special-use tag characters". One of them, U+E0001, is deprecated. The 96 in the passage run from U+E0020 to U+E007F.'
+    - variant: Q3
+      maker: B
+      run: 1
+      shows: true
+      note: 'one quote is altered and one claim goes beyond the passage. The passage says "ends a tag", and says only that the last character ends a tag. The model wrote "end a tag" and said all of them are used to end a tag.'
+      falseText: 'They are used to **"end a tag"**'
+      reason: 'The passage says "The last one ends a tag", one character and not all of them. The Unicode Standard says tag characters are encoded "to enable the construction of tags".'
+    - variant: Q3
+      maker: B
+      run: 1
+      shows: false
+      note: 'repeated the passage''s count of 96, which is not Unicode''s count.'
+      falseText: 'There are **96 tag characters** in Unicode'
+      reason: 'The Unicode Standard says its Tags block "encodes a set of 97 special-use tag characters". One of them, U+E0001, is deprecated. The 96 in the passage run from U+E0020 to U+E007F.'
+    - variant: Q4
+      maker: A
+      run: 1
+      shows: false
+      note: 'said the passages give no difference. Every quote matches.'
+    - variant: Q4
+      maker: B
+      run: 1
+      shows: true
+      note: 'said the passages give no difference. Its two quotes are altered. They start with the passage number and the term and leave out the lesson name, which the passage holds. The words of the entry itself match.'
+    - variant: Q5
+      maker: A
+      run: 1
+      shows: false
+      note: 'said the passages give no figure. Every quote matches.'
+    - variant: Q5
+      maker: B
+      run: 1
+      shows: false
+      note: 'said the passages give no figure.'
+    - variant: Q6
+      maker: A
+      run: 1
+      shows: false
+      note: 'gave the limit for the one tool the passage names, and said the passages give no other amount. Every quote matches.'
+    - variant: Q6
+      maker: B
+      run: 1
+      shows: false
+      note: 'gave the limit for the one tool the passage names. The quote matches.'
+    - variant: Q7
+      maker: A
+      run: 1
+      shows: false
+      note: 'kept the exception for personal use. Every quote matches.'
+    - variant: Q7
+      maker: B
+      run: 1
+      shows: true
+      note: 'one claim goes beyond the passage. It adds that deployers are typically those using AI systems in a professional or organizational capacity. The passage says only that personal, non-professional use is left out. We do not call the added claim false, only unsupported by the passage.'
+    - variant: Q8
+      maker: A
+      run: 1
+      shows: false
+      note: 'said the passages do not define the term. It put "[1]" and "[2]" after sentences that cover all three passages.'
+    - variant: Q8
+      maker: B
+      run: 1
+      shows: false
+      note: 'said the passages do not answer.'

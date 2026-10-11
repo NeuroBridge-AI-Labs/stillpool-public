@@ -1,0 +1,919 @@
+# The fixture build's stand-in for lesson 1.1's recorded.yaml (p6 D4): read only when RECORDED_FIXTURE=1.
+R-1.1:
+  summary: Test fixture summary. Nothing here was recorded.
+R-1.6:
+  summary: by rule
+  checked: "2000-01-01"
+  by: Test fixture reviewer
+  answers:
+    - maker: A
+      run: 1
+      lines: [{line: 1, kind: other, verdict: no-claim}, {line: 2, kind: study, study: 1, result: found, verdict: outside-the-request, doi: 10.1/test}, {line: 3, kind: other, verdict: no-claim}]
+    - maker: B
+      run: 1
+      lines: [{line: 1, kind: other, verdict: no-claim}]
+# Stage I (Pillar 2): the fixture's stand-ins for each prompting lesson's recorded.yaml.
+R-2.1:
+  summary: |
+    Test fixture summary of R-2.1, first paragraph.
+
+    Test fixture summary of R-2.1, second paragraph.
+  marks:
+    - variant: "A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note A A run 1.
+    - variant: "A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note A A run 2.
+    - variant: "A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note A A run 3.
+    - variant: "A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note A B run 1.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note A B run 2.
+    - variant: "A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note A B run 3.
+    - variant: "step 1"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note step 1 A run 1.
+    - variant: "step 1"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note step 1 B run 1.
+    - variant: "step 2"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note step 2 A run 1.
+    - variant: "step 2"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note step 2 B run 1.
+      falseText: Test fixture false claim
+      reason: Test fixture reason.
+    - variant: "step 3"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note step 3 A run 1.
+    - variant: "step 3"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note step 3 B run 1.
+    - variant: "B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note B A run 1.
+    - variant: "B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note B A run 2.
+    - variant: "B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note B A run 3.
+    - variant: "B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note B B run 1.
+    - variant: "B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note B B run 2.
+    - variant: "B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note B B run 3.
+R-2.2:
+  summary: |
+    Test fixture summary of R-2.2, first paragraph.
+
+    Test fixture summary of R-2.2, second paragraph.
+  marks:
+    - variant: "A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note A A run 1.
+    - variant: "A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note A A run 2.
+    - variant: "A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note A A run 3.
+    - variant: "A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note A B run 1.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note A B run 2.
+    - variant: "A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note A B run 3.
+    - variant: "B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note B A run 1.
+    - variant: "B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note B A run 2.
+    - variant: "B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note B A run 3.
+    - variant: "B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note B B run 1.
+    - variant: "B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note B B run 2.
+    - variant: "B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note B B run 3.
+R-2.3:
+  summary: |
+    Test fixture summary of R-2.3, first paragraph.
+
+    Test fixture summary of R-2.3, second paragraph.
+  marks:
+    - variant: "A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note A A run 1.
+    - variant: "A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note A A run 2.
+    - variant: "A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note A A run 3.
+    - variant: "A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note A B run 1.
+      falseText: Test fixture false claim
+      reason: Test fixture reason.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note A B run 2.
+    - variant: "A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note A B run 3.
+    - variant: "B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note B A run 1.
+    - variant: "B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note B A run 2.
+    - variant: "B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note B A run 3.
+    - variant: "B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note B B run 1.
+    - variant: "B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note B B run 2.
+    - variant: "B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note B B run 3.
+    - variant: "C"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note C A run 1.
+    - variant: "C"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note C A run 2.
+    - variant: "C"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note C A run 3.
+    - variant: "C"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note C B run 1.
+    - variant: "C"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note C B run 2.
+    - variant: "C"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note C B run 3.
+R-2.4:
+  summary: |
+    Test fixture summary of R-2.4, first paragraph.
+
+    Test fixture summary of R-2.4, second paragraph.
+  marks:
+    - variant: "A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note A A run 1.
+    - variant: "A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note A A run 2.
+    - variant: "A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note A A run 3.
+    - variant: "A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note A B run 1.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note A B run 2.
+    - variant: "A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note A B run 3.
+    - variant: "B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note B A run 1.
+    - variant: "B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note B A run 2.
+    - variant: "B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note B A run 3.
+    - variant: "B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note B B run 1.
+    - variant: "B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note B B run 2.
+    - variant: "B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note B B run 3.
+R-2.5:
+  summary: |
+    Test fixture summary of R-2.5, first paragraph.
+
+    Test fixture summary of R-2.5, second paragraph.
+  marks:
+    - variant: "A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note A A run 1.
+    - variant: "A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note A A run 2.
+    - variant: "A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note A A run 3.
+    - variant: "A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note A B run 1.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note A B run 2.
+      falseText: Test fixture false claim
+      reason: Test fixture reason.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture second note A B run 2.
+      falseText: Test fixture reply
+      reason: Test fixture second reason.
+    - variant: "A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture third note A B run 2.
+      falseText: run 2
+      reason: Test fixture third reason.
+    - variant: "A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note A B run 3.
+    - variant: "B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note B A run 1.
+    - variant: "B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note B A run 2.
+    - variant: "B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note B A run 3.
+    - variant: "B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note B B run 1.
+    - variant: "B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note B B run 2.
+    - variant: "B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note B B run 3.
+    - variant: "D1"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note D1 A run 1.
+    - variant: "D1"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note D1 A run 2.
+    - variant: "D1"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note D1 A run 3.
+    - variant: "D1"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note D1 B run 1.
+    - variant: "D1"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note D1 B run 2.
+    - variant: "D1"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note D1 B run 3.
+    - variant: "D2"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note D2 A run 1.
+    - variant: "D2"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note D2 A run 2.
+    - variant: "D2"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note D2 A run 3.
+    - variant: "D2"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note D2 B run 1.
+    - variant: "D2"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note D2 B run 2.
+    - variant: "D2"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note D2 B run 3.
+R-2.6:
+  summary: |
+    Test fixture summary of R-2.6, first paragraph.
+
+    Test fixture summary of R-2.6, second paragraph.
+  marks:
+    - variant: "turns"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note turns A run 1.
+    - variant: "turns"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note turns A run 2.
+    - variant: "turns"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note turns A run 3.
+    - variant: "turns"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note turns B run 1.
+    - variant: "turns"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note turns B run 2.
+    - variant: "turns"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note turns B run 3.
+    - variant: "S1"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note S1 A run 1.
+    - variant: "S1"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note S1 A run 2.
+    - variant: "S1"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note S1 A run 3.
+    - variant: "S1"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note S1 B run 1.
+      falseText: Test fixture false claim
+      reason: Test fixture reason.
+    - variant: "S1"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note S1 B run 2.
+    - variant: "S1"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note S1 B run 3.
+    - variant: "S2"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note S2 A run 1.
+    - variant: "S2"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note S2 A run 2.
+    - variant: "S2"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note S2 A run 3.
+    - variant: "S2"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note S2 B run 1.
+    - variant: "S2"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note S2 B run 2.
+    - variant: "S2"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note S2 B run 3.
+    - variant: "S3"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note S3 A run 1.
+    - variant: "S3"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note S3 A run 2.
+    - variant: "S3"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note S3 A run 3.
+    - variant: "S3"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note S3 B run 1.
+    - variant: "S3"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note S3 B run 2.
+    - variant: "S3"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note S3 B run 3.
+    - variant: "S5"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note S5 A run 1.
+    - variant: "S5"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note S5 A run 2.
+    - variant: "S5"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note S5 A run 3.
+    - variant: "S5"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note S5 B run 1.
+    - variant: "S5"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note S5 B run 2.
+    - variant: "S5"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note S5 B run 3.
+    - variant: "S4"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note S4 A run 1.
+    - variant: "S4"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note S4 A run 2.
+    - variant: "S4"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note S4 A run 3.
+    - variant: "S4"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note S4 B run 1.
+    - variant: "S4"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note S4 B run 2.
+    - variant: "S4"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note S4 B run 3.
+R-2.7:
+  summary: |
+    Test fixture summary of R-2.7, first paragraph.
+
+    Test fixture summary of R-2.7, second paragraph.
+  marks:
+    - variant: "T1 A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note T1 A A run 1.
+    - variant: "T1 A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note T1 A A run 2.
+    - variant: "T1 A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note T1 A A run 3.
+    - variant: "T1 A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note T1 A B run 1.
+    - variant: "T1 A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note T1 A B run 2.
+    - variant: "T1 A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note T1 A B run 3.
+    - variant: "T1 B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note T1 B A run 1.
+    - variant: "T1 B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note T1 B A run 2.
+    - variant: "T1 B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note T1 B A run 3.
+    - variant: "T1 B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note T1 B B run 1.
+    - variant: "T1 B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note T1 B B run 2.
+    - variant: "T1 B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note T1 B B run 3.
+    - variant: "T2 A"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note T2 A A run 1.
+    - variant: "T2 A"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note T2 A A run 2.
+    - variant: "T2 A"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note T2 A A run 3.
+    - variant: "T2 A"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note T2 A B run 1.
+      falseText: Test fixture false claim
+      reason: Test fixture reason.
+    - variant: "T2 A"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note T2 A B run 2.
+    - variant: "T2 A"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note T2 A B run 3.
+    - variant: "T2 B"
+      maker: A
+      run: 1
+      shows: true
+      note: Test fixture note T2 B A run 1.
+    - variant: "T2 B"
+      maker: A
+      run: 2
+      shows: true
+      note: Test fixture note T2 B A run 2.
+    - variant: "T2 B"
+      maker: A
+      run: 3
+      shows: true
+      note: Test fixture note T2 B A run 3.
+    - variant: "T2 B"
+      maker: B
+      run: 1
+      shows: false
+      note: Test fixture note T2 B B run 1.
+    - variant: "T2 B"
+      maker: B
+      run: 2
+      shows: false
+      note: Test fixture note T2 B B run 2.
+    - variant: "T2 B"
+      maker: B
+      run: 3
+      shows: false
+      note: Test fixture note T2 B B run 3.
+R-3.1:
+  summary: |
+    Test fixture summary of R-3.1, first paragraph.
+
+    Test fixture summary of R-3.1, second paragraph.
+  marks:
+    - {variant: P1, maker: A, run: 1, shows: true, note: "Test fixture note P1 A run 1."}
+    - {variant: P1, maker: A, run: 2, shows: true, note: "Test fixture note P1 A run 2."}
+    - {variant: P1, maker: B, run: 1, shows: true, note: "Test fixture note P1 B run 1."}
+    - {variant: P1, maker: B, run: 2, shows: true, note: "Test fixture note P1 B run 2."}
+    - {variant: P2, maker: A, run: 1, shows: true, note: "Test fixture note P2 A run 1."}
+    - {variant: P2, maker: A, run: 2, shows: true, note: "Test fixture note P2 A run 2."}
+    - {variant: P2, maker: B, run: 1, shows: true, note: "Test fixture note P2 B run 1."}
+    - {variant: P2, maker: B, run: 2, shows: true, note: "Test fixture note P2 B run 2."}
+    - {variant: P3, maker: A, run: 1, shows: true, note: "Test fixture note P3 A run 1."}
+    - {variant: P3, maker: A, run: 2, shows: true, note: "Test fixture note P3 A run 2."}
+    - {variant: P3, maker: B, run: 1, shows: true, note: "Test fixture note P3 B run 1."}
+    - {variant: P3, maker: B, run: 2, shows: true, note: "Test fixture note P3 B run 2."}
+    - {variant: P4, maker: A, run: 1, shows: true, note: "Test fixture note P4 A run 1."}
+    - {variant: P4, maker: A, run: 2, shows: true, note: "Test fixture note P4 A run 2."}
+    - {variant: P4, maker: B, run: 1, shows: true, note: "Test fixture note P4 B run 1."}
+    - {variant: P4, maker: B, run: 2, shows: true, note: "Test fixture note P4 B run 2."}
+    - {variant: P5, maker: A, run: 1, shows: true, note: "Test fixture note P5 A run 1."}
+    - {variant: P5, maker: A, run: 2, shows: true, note: "Test fixture note P5 A run 2."}
+    - {variant: P5, maker: B, run: 1, shows: true, note: "Test fixture note P5 B run 1."}
+    - {variant: P5, maker: B, run: 2, shows: true, note: "Test fixture note P5 B run 2."}
+
+# Stage I (Pillar 4): 4.1 and 4.6, the fixtures for Source checker and Injection spotter.
+R-4.1:
+  summary: |
+    Test fixture summary of R-4.1, first paragraph.
+
+    Test fixture summary of R-4.1, second paragraph.
+  marks:
+    - {variant: P, maker: A, run: 1, shows: true, note: "Test fixture note P A run 1."}
+    - {variant: P, maker: A, run: 2, shows: true, note: "Test fixture note P A run 2."}
+    - {variant: P, maker: B, run: 1, shows: true, note: "Test fixture note P B run 1.", falseText: "Test fixture bad citation one", reason: "Test fixture reason P B run 1."}
+    - {variant: P, maker: B, run: 2, shows: true, note: "Test fixture note P B run 2.", falseText: "Test fixture bad citation two", reason: "Test fixture reason P B run 2."}
+R-4.6:
+  summary: |
+    Test fixture summary of R-4.6, first paragraph.
+
+    Test fixture summary of R-4.6, second paragraph.
+  marks:
+    - {variant: control, maker: A, run: 1, shows: true, note: "Test fixture note control A run 1."}
+    - {variant: control, maker: A, run: 2, shows: true, note: "Test fixture note control A run 2."}
+    - {variant: control, maker: B, run: 1, shows: true, note: "Test fixture note control B run 1."}
+    - {variant: control, maker: B, run: 2, shows: true, note: "Test fixture note control B run 2."}
+    - {variant: poem, maker: A, run: 1, shows: true, note: "Test fixture note poem A run 1."}
+    - {variant: poem, maker: A, run: 2, shows: true, note: "Test fixture note poem A run 2."}
+    - {variant: poem, maker: B, run: 1, shows: true, note: "Test fixture note poem B run 1.", falseText: "Test fixture followed line", reason: "Test fixture reason poem B run 1."}
+    - {variant: poem, maker: B, run: 2, shows: true, note: "Test fixture note poem B run 2."}
+    - {variant: marker, maker: A, run: 1, shows: true, note: "Test fixture note marker A run 1."}
+    - {variant: marker, maker: A, run: 2, shows: true, note: "Test fixture note marker A run 2.", falseText: "Test fixture marker word", reason: "Test fixture reason marker A run 2."}
+    - {variant: marker, maker: B, run: 1, shows: true, note: "Test fixture note marker B run 1."}
+    - {variant: marker, maker: B, run: 2, shows: true, note: "Test fixture note marker B run 2."}
+
+# Stage II (Pillar 4): the fixture's stand-in for lesson 4.3's recorded.yaml.
+R-4.3:
+  summary: |
+    Test fixture summary of R-4.3, first paragraph.
+
+    Test fixture summary of R-4.3, second paragraph.
+  marks:
+    - {variant: street, maker: A, run: 1, shows: false, note: Test fixture note street A run 1.}
+    - {variant: street, maker: B, run: 1, shows: false, note: Test fixture note street B run 1.}
+    - {variant: tea, maker: A, run: 1, shows: false, note: Test fixture note tea A run 1.}
+    - {variant: tea, maker: B, run: 1, shows: false, note: Test fixture note tea B run 1.}
+
+# Stage II (Pillar 4): the fixture's stand-in for lesson 4.8's recorded.yaml.
+R-4.8:
+  summary: |
+    Test fixture summary of R-4.8, first paragraph.
+
+    Test fixture summary of R-4.8, second paragraph.
+  marks:
+    - {variant: summary, maker: A, run: 1, shows: true, note: "What was lost: test fixture note summary A run 1."}
+    - {variant: summary, maker: B, run: 1, shows: true, note: "What was lost: test fixture note summary B run 1."}
+    - {variant: plain words, maker: A, run: 1, shows: true, note: "What was lost: test fixture note plain words A run 1."}
+    - {variant: plain words, maker: B, run: 1, shows: true, note: "What was lost: test fixture note plain words B run 1."}
+    - {variant: bullet points, maker: A, run: 1, shows: true, note: "What was lost: test fixture note bullet points A run 1."}
+    - {variant: bullet points, maker: B, run: 1, shows: true, note: "What was lost: test fixture note bullet points B run 1.", falseText: reply bullet points B, reason: Test fixture reason bullet points B}
+    - {variant: outline, maker: A, run: 1, shows: true, note: "What was lost: test fixture note outline A run 1."}
+    - {variant: outline, maker: B, run: 1, shows: true, note: "What was lost: test fixture note outline B run 1."}
+R-5.1:
+  summary: |
+    Test fixture summary of R-5.1, first paragraph.
+
+    Test fixture summary of R-5.1, second paragraph.
+  marks:
+    - {variant: BASE, maker: A, run: 1, shows: true, note: "Test fixture note BASE run 1.", falseText: "a false piece", reason: "Test fixture reason BASE run 1."}
+    - {variant: BASE, maker: A, run: 2, shows: true, note: "Test fixture note BASE run 2."}
+    - {variant: BASE, maker: A, run: 3, shows: true, note: "Test fixture note BASE run 3."}
+    - {variant: TUNED, maker: B, run: 1, shows: true, note: "Test fixture note TUNED run 1."}
+    - {variant: TUNED, maker: B, run: 2, shows: true, note: "Test fixture note TUNED run 2."}
+    - {variant: TUNED, maker: B, run: 3, shows: true, note: "Test fixture note TUNED run 3."}
+R-5.5:
+  summary: |
+    Test fixture summary of R-5.5, first paragraph.
+
+    Test fixture summary of R-5.5, second paragraph.
+  marks:
+    - {variant: Q1, maker: A, run: 1, shows: false, note: "Test fixture note Q1 A."}
+    - {variant: Q1, maker: B, run: 1, shows: true, note: "Test fixture note Q1 B.", falseText: "Test fixture altered piece.", reason: "Test fixture reason."}
+    - {variant: Q2, maker: A, run: 1, shows: false, note: "Test fixture note Q2 A."}
+    - {variant: Q2, maker: B, run: 1, shows: false, note: "Test fixture note Q2 B."}
+    - {variant: Q3, maker: A, run: 1, shows: false, note: "Test fixture note Q3 A."}
+    - {variant: Q3, maker: B, run: 1, shows: false, note: "Test fixture note Q3 B."}
+    - {variant: Q4, maker: A, run: 1, shows: false, note: "Test fixture note Q4 A."}
+    - {variant: Q4, maker: B, run: 1, shows: false, note: "Test fixture note Q4 B."}
+    - {variant: Q5, maker: A, run: 1, shows: false, note: "Test fixture note Q5 A."}
+    - {variant: Q5, maker: B, run: 1, shows: false, note: "Test fixture note Q5 B."}
+    - {variant: Q6, maker: A, run: 1, shows: false, note: "Test fixture note Q6 A."}
+    - {variant: Q6, maker: B, run: 1, shows: false, note: "Test fixture note Q6 B."}
+    - {variant: Q7, maker: A, run: 1, shows: false, note: "Test fixture note Q7 A."}
+    - {variant: Q7, maker: B, run: 1, shows: false, note: "Test fixture note Q7 B."}
+    - {variant: Q8, maker: A, run: 1, shows: false, note: "Test fixture note Q8 A."}
+    - {variant: Q8, maker: B, run: 1, shows: false, note: "Test fixture note Q8 B."}

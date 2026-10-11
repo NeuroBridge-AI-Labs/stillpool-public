@@ -1,0 +1,80 @@
+---
+import '../styles/lab.css';
+import Base from '../layouts/Base.astro';
+import { EXERCISES, MAX_PROMPT, MODEL } from '../../api/lab.ts';
+// The one page that talks to a model, through api/lab.ts only (lab-spec F, ADR 0004). Its CSP gains connect-src 'self' here
+// and nowhere else (V15); e2e/analytics.spec.ts pins that. The page requests nothing on load: check:privacy only loads it.
+Astro.csp?.insertDirective("connect-src 'self'");
+// The model's date is configuration, set at build; with none set the page shows the model alone.
+const date = import.meta.env.PUBLIC_LAB_MODEL_DATE;
+const model = `${MODEL.name} (${MODEL.id}${date ? `, ${date}` : ''})`;
+---
+
+<Base title="Practice lab" description="An optional practice lab on Stillpool: write a prompt, send it to a real AI, and read the answer with a few tips.">
+  <article class="lab" data-lab data-state="idle" data-model={model}>
+    <h1>Practice lab</h1>
+    <p class="lede">You are talking to an AI system, not a person. It runs on {model}. The AI can be wrong. Check anything that matters.</p>
+    <noscript><p class="plain">The lab needs JavaScript. The lessons do not.</p></noscript>
+
+    <section class="card" data-when="idle" aria-labelledby="lab-notice">
+      <h2 id="lab-notice">Before you start</h2>
+      <p>
+        You are about to talk to an AI. Nothing is sent until you press Send. When you do, the exercise and the words you typed go to Mistral, an AI
+        company in Paris, over our own server. Leave out names, emails and health details. We keep no account and no history.
+      </p>
+      <button type="button" data-start hidden>I understand. Start.</button>
+    </section>
+
+    <p class="card" data-when="off" data-off-line tabindex="-1">The practice lab is closed for now. Your prompt is still in the box, and the lessons work as always.</p>
+
+    <form data-when="form" novalidate>
+      <fieldset>
+        <legend tabindex="-1" data-first>Pick one exercise</legend>
+        {
+          Object.entries(EXERCISES).map(([id, { title, task }]) => (
+            <label><input type="radio" name="exercise" value={id} /><span><strong>{title}.</strong> {task}</span></label>
+          ))
+        }
+        <p class="hint" data-pick-hint>Pick one exercise first.</p>
+      </fieldset>
+      <label class="field" for="lab-prompt">Your prompt</label>
+      <textarea id="lab-prompt" name="prompt" rows="6" maxlength={MAX_PROMPT} aria-describedby="lab-limit"></textarea>
+      <p class="hint" id="lab-limit">Up to {MAX_PROMPT.toLocaleString('en-IE')} characters</p>
+      <label class="check"><input type="checkbox" name="example" />Also show an improved version of my prompt</label>
+      <p class="actions">
+        <button type="button" data-send disabled>Send</button>
+        <button type="button" data-cancel hidden>Cancel</button>
+      </p>
+      <p class="hint">Pressing Send sends your text to Mistral in Paris.</p>
+    </form>
+
+    <p role="status" data-live></p>
+    <p class="card" role="status" data-problem tabindex="-1"></p>
+    <p class="hint" data-code></p>
+
+    <section class="answer" data-answer aria-labelledby="lab-answer" hidden>
+      <h2 id="lab-answer" tabindex="-1">The AI's answer</h2>
+      <p class="reply" data-field="ai_answer"></p>
+      <p class="hint">Written by {model}. It is an AI, and it can be wrong.</p>
+      <div class="card coaching">
+        <dl>
+          <div data-row="note" hidden><dt>A note</dt><dd data-field="note"></dd></div>
+          <div><dt>What worked</dt><dd data-field="worked"></dd></div>
+          <div><dt>Try next</dt><dd data-field="try_next"></dd></div>
+          <div><dt>Why</dt><dd data-field="why"></dd></div>
+          <div data-row="example_prompt" hidden><dt>An improved version</dt><dd><blockquote class="sent" data-field="example_prompt"></blockquote></dd></div>
+        </dl>
+      </div>
+      <p class="actions" data-actions>
+        <button type="button" data-again>Try again with this prompt</button>
+        <button type="button" data-new>Start a new prompt</button>
+      </p>
+    </section>
+
+    <p class="care">If you are in distress or at risk, do not use this page. Call 112 or 999, or Samaritans on 116 123.</p>
+  </article>
+</Base>
+
+<script>
+  import '../lab-page.ts';
+</script>

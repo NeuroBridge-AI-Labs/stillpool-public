@@ -1,0 +1,25 @@
+{
+  "id": "R-1.1",
+  "message": "Test fixture message. This is not a recording.",
+  "model": { "id": "test-fixture-model", "name": "Test fixture model", "host": "no host: a test fixture" },
+  "date": "2000-01-01",
+  "settings": { "temperature": "test fixture value", "chance of each piece (logprobs)": "on" },
+  "variants": [
+    {
+      "instruction": "Test fixture instruction A.",
+      "runs": [
+        { "reply": "Test fixture reply A, run one.", "pieces": [{ "text": "Test", "logprob": -0.5 }] },
+        { "reply": "Test fixture reply A, run two." },
+        { "reply": "Test fixture reply A, run three." }
+      ]
+    },
+    {
+      "instruction": "Test fixture instruction B.",
+      "runs": [
+        { "reply": "Test fixture reply B, run one." },
+        { "reply": "Test fixture reply B, run two." },
+        { "reply": "Test fixture reply B, run three." }
+      ]
+    }
+  ]
+}

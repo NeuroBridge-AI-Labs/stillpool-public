@@ -1,0 +1,17 @@
+---
+// 4.7's "Split the task" (stage I, static): one invented job in five steps, one step at a time, who should do each.
+// Our whole split gives later answers away, so it waits for the last answer (src/lib/after-cases.ts).
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/split-the-task.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Split the task" name="split-the-task" noun="Step" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} />
+
+<section data-after-cases="split-the-task">
+  <h3>Our whole split</h3>
+  {NOTES.map((n) => <p>{n}</p>)}
+</section>
+
+<script>
+  import '../lib/after-cases.ts';
+</script>

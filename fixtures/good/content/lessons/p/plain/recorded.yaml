@@ -1,0 +1,7 @@
+R-9.8:
+  summary: A summary the lesson shows.
+R-9.2:
+  summary: A summary the lesson shows.
+  marks:
+    - {variant: A, maker: A, run: 1, shows: false, note: This run named the wrong colour., falseText: The sky is green., reason: The sky is blue on a clear day.}
+    - {variant: B, maker: B, run: 2, shows: true, note: This run named the right colour.}

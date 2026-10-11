@@ -1,0 +1,65 @@
+---
+// The badge (plan T8.2; spec 7; Pool Band v2): the lesson's promise on a blue frame with its emblem, shown only once earned,
+// never counted and never an empty slot. It comes after Where next, in the lesson's order; earning it is said once at the
+// check-in (CheckIn.astro) and the emblem is drawn once, never in Focus mode, with Reduce motion (the device's or the site's)
+// or with progress hidden. A badge already earned is simply shown, finished, and never drawn again.
+import Emblem from './Emblem.astro';
+
+interface Props {
+  id: string;
+  promise: string;
+  celebration: string;
+}
+const { id, promise, celebration } = Astro.props;
+---
+
+<section data-part="badge" class="badge-frame" aria-labelledby="part-badge" data-badge-for={id} data-celebration={celebration} hidden>
+  <div class="closeup">
+    <Emblem lesson={id} />
+  </div>
+  <div>
+    <h2 id="part-badge" tabindex="-1">Your badge</h2>
+    <p class="can">{promise}</p>
+  </div>
+</section>
+
+<script>
+  import { localProgressChange, progress, type Progress } from '../progress/store.ts';
+
+  const badge = document.querySelector<HTMLElement>('[data-badge-for]');
+  const id = badge?.dataset.badgeFor ?? '';
+  const root = document.documentElement;
+  const device = matchMedia('(prefers-reduced-motion: reduce)');
+  const still = () => device.matches || root.dataset.motion === 'reduce' || 'focus' in root.dataset || root.dataset.progress === 'hide';
+  let had = progress.get().badges.includes(id);
+  let run = 0;
+  // Ends a drawing at once and leaves the finished badge; a later earning would start a new one, a setting never does.
+  const stop = () => {
+    run++;
+    badge?.classList.remove('playing');
+  };
+  const draw = () => {
+    if (!badge || still()) return;
+    const mine = ++run;
+    badge.classList.add('playing');
+    Promise.allSettled(badge.getAnimations({ subtree: true }).map((a) => a.finished)).then(() => {
+      if (mine === run) stop();
+    });
+  };
+  const show = ({ badges }: Progress) => {
+    if (!badge) return;
+    const earned = badges.includes(id);
+    if (badge.hidden === earned) badge.hidden = !earned;
+    if (earned && !had) {
+      (document.querySelector('.celebration') as HTMLElement).textContent = badge.dataset.celebration ?? '';
+      (document.querySelector('.to-badge') as HTMLElement).hidden = false;
+      draw();
+    }
+    had = earned;
+  };
+  progress.listen((p) => { if (localProgressChange) show(p); });
+  show(progress.get());
+  // Reduce motion, Focus mode or hidden progress ends a drawing at once; switching them off never starts one.
+  device.addEventListener('change', () => still() && stop());
+  addEventListener('change', () => queueMicrotask(() => still() && stop()));
+</script>

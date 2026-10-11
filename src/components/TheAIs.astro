@@ -1,0 +1,20 @@
+---
+// The two AIs, the day and every stored setting (stage I), shown once after the reveal.
+import { day, modelOf, settingRows, type Rec } from '../lib/p2-runs.ts';
+interface Props { rec: Rec; labels: string[] }
+const { rec, labels } = Astro.props;
+const makers = (['A', 'B'] as const).map((m) => rec.variants.filter((v) => v.maker === m && labels.includes(v.label!)));
+---
+
+<section class="the-ais" aria-labelledby="p2-ais">
+  <h3 id="p2-ais">The two AIs and their settings</h3>
+  {
+    makers.map((vs, i) => (
+      <div data-maker={'AB'[i]}>
+        <h4>{modelOf(rec, vs[0]).name}</h4>
+        <p>{modelOf(rec, vs[0]).id}, on {modelOf(rec, vs[0]).host}. Recorded on {day(rec)}.</p>
+        <ul>{settingRows(rec, vs).map(([name, value]) => <li>{name}: {value}</li>)}</ul>
+      </div>
+    ))
+  }
+</section>

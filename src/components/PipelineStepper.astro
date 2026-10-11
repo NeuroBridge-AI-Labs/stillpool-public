@@ -1,0 +1,40 @@
+---
+// 5.1's "Pipeline stepper" (stage I, R-5.1): the shared stepper (src/components/Steps.astro) with recorded runs at stages 1
+// and 4. AllRuns assumes two makers for every label and R-5.1 has one per label, so "Show all runs" is written here with RunCard.
+import { day, modelOf, paragraphs, settingRows, variantOf } from '../lib/p2-runs.ts';
+import { INTRO, loadPipeline, NAME, NOTES, STAGE_LIST, STAGES, TITLE, VARIANTS } from '../lib/pipeline-stepper.ts';
+import RunCard from './RunCard.astro';
+import Runs from './Runs.astro';
+import Steps from './Steps.astro';
+
+const { rec, said } = loadPipeline();
+const facts = ([label, maker]: (typeof VARIANTS)[number]) => {
+  const v = variantOf(rec, label, maker);
+  return { label, maker, v, model: modelOf(rec, v), rows: settingRows(rec, [v]) };
+};
+const [base, tuned] = VARIANTS.map(facts);
+---
+
+<Steps title={TITLE} name={NAME} intro={INTRO} stages={STAGES} stageListLabel={STAGE_LIST} notes={NOTES}>
+  <Fragment slot="after-1">
+    <Runs rec={rec} items={[{ label: base.label, maker: base.maker }]} />
+    <div class="the-ais"><div data-maker={base.maker}><h4>{base.model.name}</h4><p>{base.model.id}, on {base.model.host}. Recorded on {day(rec)}.</p><ul>{base.rows.map(([k, v]) => <li>{k}: {v}</li>)}</ul></div></div>
+  </Fragment>
+  <Fragment slot="after-4">
+    <Runs rec={rec} items={[{ label: tuned.label, maker: tuned.maker }]} />
+    <div class="the-ais"><div data-maker={tuned.maker}><h4>{tuned.model.name}</h4><p>{tuned.model.id}, on {tuned.model.host}. Recorded on {day(rec)}.</p><ul>{tuned.rows.map(([k, v]) => <li>{k}: {v}</li>)}</ul></div></div>
+  </Fragment>
+  <h3>What all the runs showed</h3>
+  {paragraphs(said).map((p) => <p>{p}</p>)}
+  <details class="all-runs">
+    <summary>Show all runs</summary>
+    {
+      [base, tuned].map((x) => (
+        <section>
+          <h3>{x.model.name}</h3>
+          {x.v.runs.map((_, i) => <RunCard rec={rec} said={said} label={x.label} maker={x.maker} n={i + 1} sent />)}
+        </section>
+      ))
+    }
+  </details>
+</Steps>

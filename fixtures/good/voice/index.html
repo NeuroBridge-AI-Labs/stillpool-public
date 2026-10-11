@@ -1,0 +1,10 @@
+<h2 id="intro">Intro</h2><div class="read" data-voice="intro"><button data-read="start">Read aloud</button><audio hidden data-simple="/voice/intro-simple.mp3" data-deep="/voice/nested/intro-deep.mp3"></audio></div><div data-layer="simple">Hello, learner.</div><div data-layer="deep" hidden>Welcome.</div>
+<section data-part="tryit"><p>The activity.</p></section><section class="layer-explorer" data-layer="deep" hidden>The explorer is the activity's own widget, not narration.</section><section class="skill-own" data-layer="deep" hidden><form><label>Paste</label></form></section>
+<script>
+document.querySelector('[data-layer=deep]').hidden = !location.search.includes('depth=deep');
+addEventListener('click', (e) => {
+  if (!e.target.matches('[data-read=start]')) return;
+  const audio = e.target.parentElement.querySelector('audio');
+  for (const el of document.querySelectorAll('[data-layer]')) if (el.getClientRects().length) { audio.src = audio.dataset[el.dataset.layer]; audio.play(); }
+});
+</script>

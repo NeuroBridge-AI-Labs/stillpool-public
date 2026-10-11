@@ -1,0 +1,37 @@
+# The map (plan D9): pillars in order, each with topics of one to five lesson slugs, from the signed lesson list
+# (docs/curriculum/lesson-list.md). A lesson joins the map in the PR that builds it.
+- id: how-ai-works
+  title: How AI works
+  topics:
+    - title: What AI is and how it answers
+      lessons: [what-ai-is-and-is-not, rules-or-examples, tokens, the-next-word, where-your-question-goes]
+    - title: How it learns, and where it goes wrong
+      lessons: [why-they-make-things-up, training, attention-and-the-context-window, images-and-sound, feeds]
+- id: prompting
+  title: Prompting
+  topics:
+    - title: Tell it what you need
+      lessons: [bad-and-good-prompts, context, roles-and-ground-rules, examples]
+    - title: Shape it, check it, reuse it
+      lessons: [format, iterate-and-check, a-skill-is-a-written-procedure]
+- id: ethics
+  title: Ethics and society
+  topics:
+    - title: What goes into AI
+      lessons: [who-shapes-what-ai-shows, bias, privacy-where-your-words-go, environmental-cost]
+    - title: Who answers for AI
+      lessons: [harm-and-misuse, work-creativity-and-credit, the-law, what-trustworthy-ai-needs]
+- id: using-ai-well
+  title: Using AI well
+  topics:
+    - title: Using AI for study
+      lessons: [check-it-before-you-use-it, study-honestly-with-ai, ai-detectors, privacy-habits]
+    - title: Using AI day to day and at work
+      lessons: [real-or-fake, when-text-tricks-the-ai, delegating-at-work, ai-for-access, when-not-to-use-ai]
+- id: going-deeper
+  title: Going deeper
+  topics:
+    - title: How a model is made and tested
+      lessons: [how-a-chatbot-is-made, evaluation]
+    - title: Building with a model
+      lessons: [agents-and-tools, anatomy-of-a-skill-file, answers-from-your-documents, prompt-rag-or-fine-tune, open-models-on-your-own-machine]

@@ -1,0 +1,215 @@
+---
+title: Bad and good prompts
+promise: Can turn a vague request into a clear prompt
+minutes: {simple: 9, deep: 15}
+tldr:
+  - A prompt is the text you give an AI. A vague prompt leaves it to guess what you want.
+  - In the recorded answers, adding a length and a tone made both models write much shorter emails.
+  - A clear prompt is not a ready email. Every recorded reply still had blanks to fill and things to check.
+misconceptions: [M12]
+interactive: fix-the-bad-prompt
+inputs: [src/lib/p2-runs.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.3, HEA-PEA-2.3.1-e, HEA-ALT-2, AIF-2, AIF-2.a, AILIT-C3]
+checkin:
+  - question: In the recorded answers, which added piece made both models write much shorter emails?
+    options:
+      - text: The length and the tone, such as "short", "under 120 words" and "polite".
+        why: Yes. After that step, both answers were about 100 words, and the tips were gone.
+        right: true
+      - text: The request, "asking for a one-week extension".
+        why: Not this one. After that step, both emails were still long. They were about the extension, though.
+      - text: The reader and the reason, "Dr Byrne" and "I was ill".
+        why: Not this one. Both models named Dr Byrne and the illness. The emails stayed over 200 words.
+      - text: Nothing. The answers were the same length each time.
+        why: Not this one. The length changed a lot, from over 200 words to about 100.
+  - question: A very clear prompt got you an email draft. What should you do before you send it?
+    options:
+      - text: Send it. A clear prompt means the draft is right.
+        why: Not this one. Every recorded reply had blanks. One model wrote that a note was attached when nothing was.
+      - text: Fill in the blanks and check every claim, such as an attached note.
+        why: Yes. A clear prompt changes what you ask for. It does not check the draft for you.
+        right: true
+      - text: Fix only the blanks. Checking the claims is the model's job.
+        why: Not this one. The model wrote "attached" with nothing attached. You know what you attached, so you check.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You saw what each piece of a prompt changed, and what it did not.
+glossary:
+  - term: prompt
+    meaning: The text you give an AI to tell it what to do.
+  - term: model
+    meaning: The AI system that writes the answer. This lesson uses two, Claude Sonnet 5.5 and Ministral 3 14B.
+  - term: template
+    meaning: A draft with blanks in it, ready for you to fill in.
+  - term: placeholder
+    meaning: A blank in square brackets, such as [Your Name], where you add a detail.
+  - term: run
+    meaning: One time a model answered a prompt. The same prompt can give a different answer each run.
+  - term: system prompt
+    meaning: Instructions to a model that sit behind your message. The recorded runs in this lesson have none of ours.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: "Lesson 2.2: Context"
+  text: It shows how to give an AI the facts or text to work from. It also shows how pasted text can hide things.
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Anthropic, Claude Platform Docs, Prompting best practices: General principles, Be clear and direct"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+    licence: All rights reserved
+    use: cite
+  - title: "Google AI for Developers, Gemini API, Prompt design strategies"
+    url: https://ai.google.dev/gemini-api/docs/prompting-strategies
+    licence: CC-BY-4.0
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "I think in structure. Headings, keywords, one idea in each box. So when I write a prompt, I build it the way I'd want to read it."
+    - "What I want. Who it's for. What shape the answer should take. I call that a scaffold. A scaffold isn't the building. It holds the work steady while it goes up."
+    - "Does structure promise a good answer? No. It gives a clear request, and a clear request is easier to check. That's my experience, not a law. **Structure is how I think.** Clear thinking shows up as **clear asking**."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## One prompt, two models
+
+<Simple>
+Here is a prompt: "Write an email to my lecturer."
+
+A prompt is the text you give an AI to tell it what to do. This one does not say what the email is for. It does not say who the lecturer is, or how long the email should be. The model has to guess.
+
+We gave this prompt to two models on 3 October 2026. Claude Sonnet 5.5 is made by Anthropic. Ministral 3 14B is made by Mistral AI.
+
+"Bad" here means the prompt leaves out what the model needs. It does not mean you did something wrong.
+</Simple>
+
+<Deep>
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. This lesson asks what each part of a clear request does; PromptSage shows one way to keep those parts separate. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked framework, not the standard.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+This lesson's prompts are short, plain sentences, so they use no PromptSage layers and no XML tags. The table below maps the seven layers, so that each later Deep section can say which layer it is.
+
+The paper itself says: "All prompt-level constraints are advisory, not absolute." and "Current findings are based on controlled testing rather than large-scale deployment."
+
+The paper names its layers like this, in its own US spelling:
+
+| Layer | Name in the paper | In plain words | Taught in |
+|---|---|---|---|
+| 1 | Immutable Security Boundary | Rules meant to come first, whatever anyone types. No prompt can guarantee it. | No lesson |
+| 2 | Identity | Who the AI is in this job, what it is for, and what it is not. | Lesson 2.3 |
+| 3 | Core Directives | The standing rules from whoever set it up, its ethics, and what wins when rules clash. | No lesson |
+| 4 | Mode Control | Its different jobs, like tutor or examiner. Each job lists what it may and may not do. | Lesson 2.7 |
+| 5 | Behavioral Protocols | Habits it runs every time: check the answer before sending, refuse politely, pass hard cases to a person. | Lesson 2.6 |
+| 6 | Customizable Defaults | Settings you may change, like language, tone and length. | Lesson 2.5 |
+| 7 | Sandwich Reinforcement | The most important rules, repeated at the very end. | Lesson 2.5 |
+
+Two layers have no lesson. Layer 1 is left out because its name sounds like rules that cannot be broken, and a prompt cannot promise that: the paper's own limit above says so. Layer 3 is left out because it holds the standing rules a tool's owner sets, and lesson 2.3's four tiers already cover who may change which rule.
+
+This lesson's idea is the paper's first step, Structure: "Wrap behavioral instructions in nested XML tags that create clear boundaries." The paper says the framework uses "standard XML tags inside an AI model's system prompt", so it is written for a tool's owner, not for a chat message. Structure is not one of the seven layers. It is how the layers are written down: each piece sits in its own fenced part, not in one block of text.
+
+Our recorded prompts have no tags and no system prompt, so the recording does not test Structure. What it does show is plainer: which pieces of a short prompt changed the answers.
+</Deep>
+
+## Three things to say
+
+<Simple>
+You can make a prompt clearer by saying three things.
+
+First, say what you want. Second, say who it is for and why. Third, say the shape of the answer: how long, and what tone.
+
+Two companies give the same advice. Anthropic's guide says: "Claude responds well to clear, explicit instructions." Google's Gemini guide says to give the model the information it needs, instead of assuming it already has it. We read both pages on 3 October 2026.
+
+These are the companies' own words about their own models. The activity below tests the advice on two models, on one day.
+</Simple>
+
+<Deep>
+Anthropic's page, in its section "Be clear and direct", also gives a test: "Golden rule: Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they'd be confused, Claude will be too." It adds a list item: "Be specific about the desired output format and constraints." The page lists Claude Sonnet 5.5 among the models it covers, and it carries no date (read on 3 October 2026).
+
+Google's page was last updated on 17 September 2026 (read on 3 October 2026). It says: "An effective and efficient way to customize model behavior is to provide it with clear and specific instructions." On context: "You can include instructions and information in a prompt that the model needs to solve a problem, instead of assuming that the model has all of the required information." On shape: "Specify any constraints on reading the prompt or generating a response." and "You can give instructions that specify the format of the response."
+
+Both pages are advice, not a test. Neither page says how much each piece changes a given answer. The recording in this lesson is a small test of that, and it is only two models, on one day.
+</Deep>
+
+## Fix the bad prompt
+
+<Simple>
+In the activity below, you start with the bad prompt. Then you add one piece at a time. The steps are the request, then the reader and the reason, then the length and tone, then the ending.
+
+Before each step, predict what the new piece will change. Then see what the two models wrote.
+
+Each step has one recorded run per model. The first and last prompts have three runs per model. The answers were recorded on 3 October 2026. We did not edit them.
+</Simple>
+
+<Deep>
+The recording is `R-2.1`. Each prompt was sent as one user message, with no tools and no system prompt of our own. The temperature was not set, so each model used its own default. The limit was 4000 tokens. Claude Sonnet 5.5 was called through Anthropic's Messages API. An API is a way for one program to send a request to another. Ministral 3 14B (`ministral-14b-2512`) was called through Mistral AI's API. The Claude replies to the first prompt each include a thinking step of about 60 tokens, and its text is empty in the saved file. We do not know what else a service adds behind a request.
+
+Word counts in this lesson split the whole reply at spaces, so the subject line, greeting and sign-off count. Where the lesson counts the email text alone, it says so.
+
+The four prompts are, in order. Prompt A: "Write an email to my lecturer." Step 1: "Write an email to my lecturer asking for a one-week extension on my essay." Step 2: "Write an email to my lecturer, Dr Byrne, asking for a one-week extension on my essay because I was ill last week. I have a doctor's note." Step 3 adds: "Write a short email ... Keep it under 120 words, polite and a little formal." Prompt B adds one more piece: "and end by offering to send the note."
+
+Every name and detail is made up. Do not paste real names, grades or health details into an AI to practise.
+</Deep>
+
+<TryIt />
+
+## What the runs showed
+
+<Simple>
+Adding the length and tone made both models write much shorter emails. After step 3, each answer was about 100 words. The earlier answers had a tips section after the email. At step 3 the tips were gone.
+
+Adding the request, then the reader and the reason, did not make the answers shorter. It changed what they said. Both models wrote about an extension. Both named Dr Byrne and the illness.
+
+The bad prompt got a template with blanks from both models. Claude asked what the email was for, in all three runs. Ministral did not ask in any of its three runs. Its templates were also about twice as long.
+
+The ending changed little. Claude offered to send the note in all three runs, as it had at step 3. Ministral offered in two runs and said a note was attached in two.
+
+Only one of the six runs of the last prompt ended on the offer. That is three runs for each model.
+
+Each step has one run per model, so this is a sign, not proof. A different day or a different model could go another way.
+</Simple>
+
+<Deep>
+Prompt A, Claude Sonnet 5.5: three templates of 223, 198 and 261 words. All three open with "Here's a general template you can adapt. If you tell me the purpose, I can tailor it." Ministral 3 14B: three templates of 478, 424 and 465 words, each with a tips section and example paragraphs.
+
+The steps, one run each, as word counts of the whole reply. Step 1: Claude 234, Ministral 327. Step 2: Claude 212, Ministral 231. Step 3: Claude 106, Ministral 109. Steps 1 and 2 kept a tips or notes section. Step 3 did not. The step 3 prompt added both "short" and a word limit, so the runs do not say which one removed the tips.
+
+Prompt B, three runs per model. Claude: 92, 95 and 93 words. Ministral: 123, 106 and 112. Counting only the email text from the greeting to the thanks line, all six are under 120 words (between 79 and 105). One Ministral reply is over 120 words when the subject line and sign-off are counted. The prompt did not say which way to count.
+
+The runs went against the expected effect in two places. First, length did not fall at steps 1 and 2. Second, "end by offering to send the note" was not followed as an ending in five of six runs. The offer sits in a middle paragraph in Claude's three runs and in Ministral's first run. Ministral's second run has no offer. Ministral's third run ends on it: "I’d be happy to send the note directly if needed."
+
+Whether the tone became polite and a little formal was not measured. The replies read as polite and formal to the writer of this lesson, and a fact-checker or a reader may disagree.
+</Deep>
+
+## A clear prompt is not a ready email
+
+<Simple>
+Every recorded reply still has blanks in square brackets, such as [Your Name]. The prompts did not give the model those details. A clear prompt does not make the model know them.
+
+Ministral wrote that a doctor's note was attached in four of its five replies to the last three steps. Those steps add the reader and reason, the length and tone, and the ending. Nothing was attached. We only said you have a note.
+
+So a clear prompt is not a ready email. Fill in the blanks. Then check every claim in the draft before you send it.
+
+Lesson 2.2 shows how to give a model the facts to work from. Lesson 1.6 shows how models can make up answers. Lesson 4.1 will cover how to check an answer.
+</Simple>
+
+<Deep>
+Anthropic and Google both advise giving the model the information it needs. In this recording, even prompt B did not give the module, the dates or the name, and every reply left a blank for the name. Claude's three replies also left blanks for the module and the dates. Ministral's three replies had no module blank, and one of them had no date blank. The unchecked claim was "attached".
+
+The email task has few facts that could be wrong, so these runs cannot show a made-up fact. Lesson 1.6 does. They show two smaller things: blanks left for you, and a statement in a draft that was not true.
+
+Lesson 2.6 covers improving a draft step by step and checking it. Lesson 2.3 shows how a role and rules change a reply. Lesson 2.4 shows how an example of the answer you want changes it. Lesson 2.5 shows how asking for a format changes it.
+</Deep>

@@ -1,0 +1,53 @@
+---
+// 5.2's "Keep, fix or switch off?" (stage I, static): an invented test report, a prediction of the call, then our call at the
+// wrong-answer rate the reader would accept. All four calls are written here at build time (src/lib/keep-fix-or-switch-off.ts);
+// the script only hides the three not chosen, so the text version and no-JavaScript show every one. Nothing is scored, stored or sent.
+import { decide, DEFAULT_TOLERANCE, flipLine, NOTICE, REPORT, reportLines, RULE, TOLERANCES } from '../lib/keep-fix-or-switch-off.ts';
+import Shell from './Shell.astro';
+
+const GUESS = ['Keep', 'Fix', 'Switch off'];
+---
+
+<Shell title="Keep, fix or switch off?" reveal="Show our call" class="keep-fix-or-switch-off">
+  <h3>{REPORT.title}</h3>
+  <p>{REPORT.intro}</p>
+  <ul>{reportLines(REPORT).map((l) => <li>{l}</li>)}</ul>
+  <fieldset>
+    <legend>What is your call for this chatbot?</legend>
+    {GUESS.map((g, i) => <label><input type="radio" name="kfs-call" value={i + 1} data-said={`You predicted ${g}.`} />{g}</label>)}
+    <p>Nothing is counted or saved.</p>
+  </fieldset>
+  <Fragment slot="after">
+    <h3>Our call</h3>
+    <p>Our rule is made up for this invented report. It is not a standard.</p>
+    <ol>{RULE.map((r) => <li>{r}</li>)}</ol>
+    <fieldset>
+      <legend>The error rate you would accept</legend>
+      {TOLERANCES.map((k) => <label><input type="radio" name="kfs-rate" value={k} checked={k === DEFAULT_TOLERANCE} />about 1 wrong in {k}</label>)}
+    </fieldset>
+    <div class="results" aria-live="polite">
+      {
+        TOLERANCES.map((k) => {
+          const { call, reasons } = decide(REPORT, k);
+          return (
+            <div class="result" data-k={k}>
+              <p><strong>Our call at about 1 wrong in {k}: {call}.</strong></p>
+              {reasons.map((r) => <p>{r}</p>)}
+            </div>
+          );
+        })
+      }
+    </div>
+    <p>{flipLine(REPORT)}</p>
+    <p>{NOTICE}</p>
+  </Fragment>
+</Shell>
+
+<script>
+  // Only the chosen rate's call shows. The build wrote all four, so the text version and no-JavaScript show every one.
+  for (const shell of document.querySelectorAll<HTMLElement>('.keep-fix-or-switch-off')) {
+    const show = (k: string) => shell.querySelectorAll<HTMLElement>('.result').forEach((r) => r.toggleAttribute('data-off', r.dataset.k !== k));
+    show(shell.querySelector<HTMLInputElement>('[name="kfs-rate"]:checked')!.value);
+    shell.addEventListener('input', (e) => (e.target as HTMLInputElement).name === 'kfs-rate' && show((e.target as HTMLInputElement).value));
+  }
+</script>

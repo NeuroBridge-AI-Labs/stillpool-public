@@ -1,0 +1,227 @@
+---
+title: Privacy habits
+promise: Can decide what is safe to type into an AI tool, and read its terms for three answers
+minutes: {simple: 8, deep: 13}
+tldr:
+  - Keep real names, addresses and other people's information out of an AI tool. Use invented details instead.
+  - Read the terms for three answers. Does it train on your chats, can you turn that off, and how long does it keep them?
+  - If the terms do not say, write down that they do not say. Real policies differ by company and account, and they change.
+misconceptions: [M7]
+interactive: read-the-small-print
+inputs: [src/lib/read-the-small-print.ts, src/lib/cases.ts, src/components/Cases.astro, src/components/ReadTheSmallPrint.astro]
+competencies: [UNESCO-AICFS-4.2.2, UNESCO-AICFS-CG4.2.2.2, HEA-P4, HEA-ALT-3, HEA-PEA-2.3.4-a, AIF-1.b, AILIT-M1]
+checkin:
+  - question: Which message follows the habit of using invented details?
+    options:
+      - text: Help me write a kind reply to a made-up friend, Sam, who is having a hard week.
+        why: Yes. Sam is invented, so no real person's information is in the message.
+        right: true
+      - text: Help me reply to my friend Aoife Byrne, who told me about her diagnosis.
+        why: Not this one. It has a real name and health information about a real person.
+      - text: Here is my customer's complaint. Write a reply.
+        why: Not this one. A customer's complaint is another person's information, and it is not yours to paste.
+      - text: Here is my home address. Plan my route.
+        why: Not this one. The Data Protection Commission's page lists location data as one way a person can be identified.
+  - question: The terms say nothing about turning off training. What is the honest answer to "Can I turn it off?"
+    options:
+      - text: The terms do not say. Write it down as not found, then check the settings or ask.
+        why: Yes. When the small print is silent, "it does not say" is the answer.
+        right: true
+      - text: No, you cannot turn it off.
+        why: Not this one. Silence is not a No. The terms simply do not say.
+      - text: Yes, there must be an off switch somewhere in the terms.
+        why: Not this one. If no clause mentions a setting, the terms give you no answer to find.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You can choose what to type into an AI tool, and you know what to look for in its terms.
+glossary:
+  - term: terms of service
+    meaning: The legal agreement between a company and the people who use its service. In this lesson we also call it the small print.
+  - term: train on your chats
+    meaning: A company uses your chats to improve its AI models. That is how company pages word it.
+  - term: personal data
+    meaning: Information about a living person who is identified or could be identified.
+  - term: GDPR
+    meaning: The General Data Protection Regulation of the European Union (EU). Ireland is an EU member state. Article 9 of it lists kinds of personal data that get extra protection.
+  - term: HEA
+    meaning: The Higher Education Authority. Its framework covers generative AI in Irish higher education.
+whereNext:
+  title: The HEA's AI Literacy Training standard
+  text: A 10-page PDF from the Higher Education Authority, December 2025. Page 4 asks people to read terms of service for data protection and training. We downloaded it on 9 October 2026 and checked that it is a PDF file. We did not test what the program you open it with loads.
+  url: https://hub.teachingandlearning.ie/wp-content/uploads/2025/12/hea-genai-literacy-training-3sxr-z770.pdf
+sources:
+  - title: "Wikipedia, Terms of service (first sentence of the article, page timestamp 10 September 2026)"
+    url: https://en.wikipedia.org/wiki/Terms_of_service
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "Higher Education Authority, Generative AI in Higher Education Teaching & Learning: AI Literacy Training, Version 1.0, December 2025, DOI 10.82110/3sxr-z770"
+    url: https://hub.teachingandlearning.ie/wp-content/uploads/2025/12/hea-genai-literacy-training-3sxr-z770.pdf
+    licence: CC-BY-SA-4.0
+    use: cite
+  - title: "National Forum, Resource Hub: Generative AI in Higher Education Teaching & Learning: National Policy Framework"
+    url: https://hub.teachingandlearning.ie/genai/policy-framework/
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Google, Gemini Apps Privacy Hub (Last updated: September 24, 2026), read 9 October 2026"
+    url: https://support.google.com/gemini/answer/13594961
+    licence: No licence stated
+    use: cite
+  - title: "Google, The Keyword, The Gemini app will offer enterprise-grade data protection for all Google Workspace for Education institutions, 28 March 2025"
+    url: https://blog.google/products-and-platforms/products/education/gemini-enterprise-grade-data-protection/
+    licence: No licence stated
+    use: cite
+  - title: "Google for Education, Google Workspace with Gemini, read 9 October 2026"
+    url: https://edu.google.com/intl/ALL_us/workspace-for-education/add-ons/google-workspace-with-gemini/
+    licence: No licence stated
+    use: cite
+  - title: "Microsoft Learn, Data, Privacy, and Security for Microsoft Copilot (Last updated on 08/18/2026), read 9 October 2026"
+    url: https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy
+    licence: Microsoft documentation terms; no open licence stated
+    use: cite
+  - title: "Anthropic Privacy Center, Is my data used for model training? (March 16, 2026), read 9 October 2026"
+    url: https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic Privacy Center, How long do you store my data? (July 1, 2026), read 9 October 2026"
+    url: https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data
+    licence: No licence stated
+    use: cite
+  - title: "Anthropic Privacy Center, How do I change my model improvement privacy settings? (August 3, 2026), read 9 October 2026"
+    url: https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings
+    licence: No licence stated
+    use: cite
+  - title: "Search Engine Journal, OpenAI Is Pulling Shared ChatGPT Chats From Google Search, 31 July 2025"
+    url: https://www.searchenginejournal.com/openai-is-pulling-shared-chatgpt-chats-from-google-search/552671/
+    licence: No licence stated
+    use: cite
+  - title: "Data Protection Commission (Ireland), Definition of key terms, read 9 October 2026"
+    url: https://dataprotection.ie/en/individuals/data-protection-basics/definition-key-terms
+    licence: No licence stated
+    use: cite
+  - title: "Data Protection Commission (Ireland), Special category data, read 9 October 2026"
+    url: https://dataprotection.ie/en/organisations/know-your-obligations/lawful-processing/special-category-data
+    licence: No licence stated
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-09
+signed: false
+---
+
+## What the small print is
+
+<Simple>
+Many online tools come with small print. Its proper name is terms of service. They are the legal agreement between a company and the people who use its service. You must agree to them to use the service.
+
+This lesson is about two things. First, what to keep out of an AI tool. Second, how to read its terms for three answers.
+
+Another lesson on this site, Privacy: where your words go, covers where your words go after you send them.
+</Simple>
+
+<Deep>
+The Higher Education Authority (HEA) published a training standard in December 2025. It is part of its national framework for generative AI in Irish higher education. It says people should be able to "evaluate terms of service to determine whether user data is protected or harvested for model training". It also says they should "distinguish between institutional deployments with negotiated data protections and public-facing tools without such protections".
+
+That is the skill this lesson practises. A company's page is that company's own claim. It is not a check by anyone else.
+</Deep>
+
+## Three habits before you type
+
+<Simple>
+These habits are our advice. They are not a rule from any company.
+
+- **Use invented details.** Write "Student A" instead of a real name. Write "a small town" instead of an address.
+- **Leave other people's information out.** A friend's message or a customer's complaint is not yours to paste.
+- **Check which account you are in.** A personal account and a school or work account can have different terms. Check which one you are using.
+
+The Data Protection Commission is an Irish body. It monitors how data protection law is applied. Its page lists location data as one way a person can be identified.
+</Simple>
+
+<Deep>
+Personal data is the legal term for what these habits protect. The Data Protection Commission (DPC) is an Irish body that publishes data protection guidance. Its page says personal data is "any information concerning or relating to an living person who is either identified or identifiable". The page keeps that spelling.
+
+A name is not the only way to point to someone. The DPC page says a person can be identified "directly or indirectly", by "a name, an identification number, location data, an online identifier" or other details about who they are. So swapping a name may not be enough. Change the details that point to a real person.
+
+Some personal data gets extra protection under the GDPR. GDPR is the EU's General Data Protection Regulation. The DPC lists seven kinds, including "Data concerning health", "Political opinions" and "Religious or philosophical beliefs". It says "Processing of these special categories is prohibited, except in limited circumstances set out in Article 9 of the GDPR." Processing means any use of data, such as storing, collecting or combining it. This is a reason to keep health details out of a public tool.
+
+Sharing is part of privacy too. Search Engine Journal reported on 31 July 2025 that OpenAI removed a feature that let people make shared ChatGPT chats findable by search engines. OpenAI said people had to opt in, and called it "a short-lived experiment". It said the feature "introduced too many opportunities for folks to accidentally share things they didn't intend to, so we're removing the option." Check a tool's sharing settings as well as its training settings.
+</Deep>
+
+## Three answers to look for
+
+<Simple>
+Read the terms for three answers.
+
+1. **Does it train on what you type?** To train on your chats means to use them to improve its AI models. Company pages word it this way.
+2. **Can you turn that off?** Look for a setting, and for who controls it.
+3. **How long does it keep your messages?** Look for a length of time.
+
+Sometimes the terms do not say. Then the honest answer is that they do not say. Write it down as not found.
+</Simple>
+
+<Deep>
+The three questions are separate. A tool can answer one and be silent on another. Google's Gemini Apps Privacy Hub shows this. It says that with the setting Keep Activity off, "Future chats are still saved for 72 hours so Gemini can respond to you, process your feedback, and protect Google, its users, and the public." So "not used for training" and "not kept" are different answers.
+
+Turning training off may not undo what has happened. Anthropic's page How long do you store my data? (1 July 2026), for Claude Free, Pro and Max, says: "Your data will still be included in model training runs that are already in progress, or in models that have been trained." It says turning the setting off stops future use of previous and new chats.
+
+Deleting is not the same as gone at once. The same page says a deleted chat is "Removed from your chat history immediately" and "Deleted from our back-end storage systems within 30 days".
+
+Read the date on every page, and write down the account type. A company can change its policy, and a different account can have different terms.
+</Deep>
+
+## Read the small print
+
+<Simple>
+Read the small print shows invented terms for a made-up tool called Lumen. The terms are ours, and Lumen is not a real tool. Here they are. This is invented text, not a real company's words:
+
+1. **Clause 1, who we are:** Lumen is a writing helper.
+2. **Clause 2, your account:** you need an account to use Lumen.
+3. **Clause 3, what you send:** you own the messages you send to Lumen.
+4. **Clause 4, making Lumen better:** we may use the messages you send to train Lumen.
+5. **Clause 5, keeping messages:** when you delete a chat, we remove it from our servers after 90 days.
+6. **Clause 6, changes:** we may change these terms. We will post the new terms on our site.
+
+You answer three questions about the text, one at a time. For each, you pick Yes, No or It does not say. Then you see the numbered part of the terms, called a clause, that answers it.
+</Simple>
+
+<Deep>
+The Lumen text is short on purpose. Real terms are much longer. The clause that answers question 1 sits under a heading that does not say "training". Question 2 has no clause at all, because the terms are silent. That is a real result too.
+</Deep>
+
+<TryIt />
+
+## What some real pages said
+
+<Simple>
+A page is a company's own claim, and it can change. We read each one on 9 October 2026. Each line is about one product and one account type.
+
+- **Google, Gemini Apps.** Keep Activity is a setting that saves your chats in your Activity. Feedback is something you choose to send Google. With it off, future chats are not used to train its AI models, unless you send feedback. They are still saved for 72 hours.
+- **Google, Gemini Apps, human review.** Google's page says a subset of Gemini chats are reviewed by human reviewers.
+- **Anthropic, Claude Free, Pro and Max.** Anthropic makes Claude. Its page lists three cases when it uses chats to improve its models. You allow it, a chat is flagged for safety review, or you explicitly opt in to training. The setting is called Help Improve our AI models.
+- **Anthropic, Claude Free, Pro and Max, feedback.** Feedback sent with the thumbs up or down button may also be used to train its models.
+- **Microsoft Copilot, with an organisation's Microsoft 365.** Microsoft Copilot gives AI-powered help in the Microsoft 365 apps, such as Word and PowerPoint. Microsoft says prompts and responses are not used to train the AI models behind Copilot.
+- **Google, Gemini app with a school account.** On 28 March 2025 Google said school chats are not human reviewed. It said they are not used to train AI models.
+</Simple>
+
+<Deep>
+Here are the exact words, with what each page does not say.
+
+Google, Gemini Apps Privacy Hub (last updated 24 September 2026): "Your future chats won’t appear in your Activity, and won’t be used to train our AI models, unless you choose to send Google feedback." With Keep Activity on, "Google uses your activity to provide, develop, and improve its services (including training generative AI models)". The page says "A subset of chats are reviewed by human reviewers", and reviewed chats "are retained for up to three years". It says deleting your activity does not delete them. It does not say whether Keep Activity is on for a new account.
+
+Anthropic, Is my data used for model training? (16 March 2026): "We will use your chats and coding sessions (including to improve our models) if" you choose to allow it, your chat is flagged for safety review, or you explicitly opt in to training. The setting page (3 August 2026) says "Under Help Improve our AI models, click the button to toggle it off/on". Flagged chats "may still be used" for safety work. The Feedback section of the training page says that when you use the thumbs up or down button, it stores the whole related chat, and Anthropic may use your feedback to "train our AI models as permitted under applicable laws". None of the three pages says what a new account starts with. The page How long do you store my data? (1 July 2026) says Anthropic keeps inputs and outputs for up to 2 years if a chat is flagged as breaking its usage policy.
+
+Microsoft Copilot (page shows "Last updated on 08/18/2026"): "Prompts, responses, and data accessed through Microsoft Graph aren't used to train foundation LLMs, including those used by Microsoft Copilot." LLM stands for large language model. Microsoft Graph is how it reaches content you have permission to open. Admins, the people who manage Microsoft 365 for an organisation, can "use Microsoft Purview to set retention policies". Purview is a Microsoft tool that admins can use to view and manage the stored record of Copilot chats, and a retention policy is a rule for how long data is kept. Users can delete their Copilot activity history. The page says that if you use an agent, "check the privacy statement and terms of use of the agent". An agent is a connected helper that Copilot can send a search query to. The page speaks of Microsoft 365 commercial customers. It says nothing about a personal account.
+
+Google, The Keyword (28 March 2025): "All Google Workspace for Education users have added data protection in the Gemini app, meaning their chats with Gemini are not human reviewed or used to train AI models." This is a statement about a rollout. Google's Workspace for Education page for Google Workspace with Gemini, a different product, says "your data is not reviewed by anyone to improve AI models, used to train AI models, or shared with other users or institutions."
+</Deep>
+
+## College and work tools
+
+<Simple>
+A college or a workplace may have its own agreement with a company. Its terms can differ from the free version of the same tool.
+
+So do not assume. Ask which tool your college or work has approved. If you need to use real information, ask the person who handles data protection there.
+</Simple>
+
+<Deep>
+The HEA standard asks people to tell apart "institutional deployments with negotiated data protections" and "public-facing tools without such protections". The pages above show why the account matters. Google and Microsoft each describe different promises for a school or organisation account than for a personal one, or say nothing about a personal one. None of that makes a tool safe for everything. An organisation may still keep records of chats, and it may limit what you can upload. Check its rules first.
+</Deep>

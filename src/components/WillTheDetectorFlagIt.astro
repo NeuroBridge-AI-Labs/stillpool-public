@@ -1,0 +1,40 @@
+---
+// 4.3's "Will the detector flag it?" (stage I, engine + R-4.3): lesson 1.4's word-counting model, used as a pretend detector, rates
+// six texts one at a time. The ratings are worked out here, at build time, by src/lib/pretend-detector.ts; the page ships only
+// words. After the last answer come the recorded summary, the two models and every recorded run. Nothing here calls a model.
+import { readFileSync } from 'node:fs';
+import { loadRecorded, paragraphs, variantOf } from '../lib/p2-runs.ts';
+import { trigrams } from '../lib/pretend-detector.ts';
+import { detectorCases, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/will-the-detector-flag-it.ts';
+import AllRuns from './AllRuns.astro';
+import Cases from './Cases.astro';
+import TheAIs from './TheAIs.astro';
+
+const { rec, said } = loadRecorded('R-4.3', 'ai-detectors', 'using-ai-well');
+const cases = detectorCases(rec, trigrams(readFileSync('data/training/dubliners.txt', 'utf8')));
+const LABELS = [['street', 'Walk home'], ['tea', 'Cup of tea']];
+const sentBy = (label: string) => variantOf(rec, label, 'A').messages![0].content;
+---
+
+<Cases title="Will the detector flag it?" name="will-the-detector-flag-it" noun="Text" intro={INTRO} question={QUESTION} options={OPTIONS} cases={cases} notes={NOTES} />
+<div class="detector-after" data-detector-after>
+  <h3>What the recorded texts showed</h3>
+  {paragraphs(said).map((p) => <p>{p}</p>)}
+  <TheAIs rec={rec} labels={LABELS.map(([l]) => l)} />
+  <AllRuns rec={rec} said={said} labels={LABELS.map(([l, name]) => [l, `${name}: ${sentBy(l)}`])} />
+</div>
+
+<script>
+  // The recorded summary names which texts were flagged, so it waits for the last answer. As text, or without JavaScript, it is all there.
+  const last = [...document.querySelectorAll<HTMLElement>('.will-the-detector-flag-it .case-answer')].at(-1);
+  const after = document.querySelector<HTMLElement>('[data-detector-after]');
+  if (last && after) {
+    after.setAttribute('data-off', ''); // set here, so without JavaScript it stays written out
+    const watch = new MutationObserver(() => {
+      if (last.hasAttribute('data-off')) return;
+      after.removeAttribute('data-off');
+      watch.disconnect();
+    });
+    watch.observe(last, { attributes: true, attributeFilter: ['data-off'] });
+  }
+</script>

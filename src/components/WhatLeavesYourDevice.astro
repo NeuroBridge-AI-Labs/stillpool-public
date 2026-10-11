@@ -1,0 +1,77 @@
+---
+// 3.3's "What leaves your device" (stage I): a mock chat with a made-up bot and three places that may hold what you typed,
+// then the live list of what this page loaded, read in your browser. The toy is invented, follows our own rules and
+// names no product. The list is the browser's own record, so the toy makes no request of its own and nothing is sent.
+import { CHAT, COUNT_NOTE, HOLDS, HOW_MANY, PLACES, WHO, WHY } from '../lib/what-leaves-your-device.ts';
+import Shell from './Shell.astro';
+---
+
+<Shell title="What leaves your device" reveal="Show what each place holds" class="what-leaves-your-device">
+  <p>This toy and its bot are invented. It follows our own rules, not any real product's. You type four lines to the bot, in one chat.</p>
+  <ol class="chat">{CHAT.map((line) => <li>{line}</li>)}</ol>
+  <p>Next week you start a new chat. What will each place still hold?</p>
+  {
+    PLACES.map((p, q) => (
+      <fieldset>
+        <legend>{p.name}</legend>
+        {HOLDS.map((h, i) => <label><input type="radio" name={`holds-${q + 1}`} value={i + 1} data-said={`${p.name}: you said it would hold ${h.toLowerCase()}.`} />{h}</label>)}
+        {q === 0 && <p>There is no wrong guess here.</p>}
+      </fieldset>
+    ))
+  }
+  <Fragment slot="after">
+    <h3>What each place holds next week</h3>
+    {PLACES.map((p) => <p><strong>{p.name}:</strong> {HOLDS[p.holds]}. {p.text}</p>)}
+    <p>{WHY}</p>
+    <section class="leaves" aria-labelledby="leaves-h">
+      <h3 id="leaves-h">What this page sends</h3>
+      <p>Now look at the page you are on.</p>
+      <fieldset>
+        <legend>About how many things will the browser's record for this page list?</legend>
+        {HOW_MANY.map((h, i) => <label><input type="radio" name="leaves-2" value={i + 1} />{h}</label>)}
+      </fieldset>
+      <fieldset>
+        <legend>And who does this page ask for them?</legend>
+        {WHO.map((w, i) => <label><input type="radio" name="leaves-3" value={i + 1} />{w}</label>)}
+      </fieldset>
+      <button type="button" data-list disabled>Show the list</button>
+      <div class="leaves-answer case-answer" data-answer tabindex="-1" aria-label="The list of what this page loaded">
+        <p class="as-text">This list is made in your browser when you press the button, so it cannot be written out here. What leaves your device is on the <a href="/help/">Help page</a>.</p>
+      </div>
+      <p>{COUNT_NOTE}</p>
+    </section>
+  </Fragment>
+</Shell>
+
+<script>
+  import { describe, type Entry, SCOPE } from '../lib/what-leaves-your-device.ts';
+  for (const part of document.querySelectorAll<HTMLElement>('.leaves')) {
+    const fieldsets = [...part.querySelectorAll('fieldset')];
+    const button = part.querySelector<HTMLButtonElement>('[data-list]')!;
+    const answer = part.querySelector<HTMLElement>('[data-answer]')!;
+    answer.setAttribute('data-off', '');
+    part.addEventListener('input', () => (button.disabled = !fieldsets.every((f) => f.querySelector(':checked'))));
+    button.addEventListener('click', () => {
+      // The browser's own record of what this page loaded, itself and its files: an address and sizes, read here and sent nowhere.
+      const entries = [...performance.getEntriesByType('navigation'), ...performance.getEntriesByType('resource')] as PerformanceResourceTiming[];
+      const { said, lines } = describe(entries as Entry[], location.origin);
+      const [many, who] = fieldsets.map((f) => f.querySelector<HTMLInputElement>(':checked')?.closest('label')?.textContent);
+      const yours = document.createElement('p');
+      yours.textContent = `You picked: ${many} things. ${who}`;
+      const total = document.createElement('p');
+      total.textContent = said;
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = 'The addresses';
+      const list = document.createElement('ul');
+      list.append(...lines.map((l) => Object.assign(document.createElement('li'), { textContent: l })));
+      details.append(summary, list);
+      const scope = Object.assign(document.createElement('p'), { textContent: SCOPE });
+      answer.replaceChildren(yours, total, details, scope);
+      for (const f of fieldsets) f.disabled = true;
+      button.hidden = true;
+      answer.removeAttribute('data-off');
+      answer.focus();
+    });
+  }
+</script>

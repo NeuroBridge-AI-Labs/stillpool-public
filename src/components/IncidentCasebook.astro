@@ -1,0 +1,8 @@
+---
+// 3.5's "Incident casebook" (stage I, static): four documented incidents, where each went wrong, who answered, and the
+// record linked and dated.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/incident-casebook.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Incident casebook" name="incident-casebook" noun="Incident" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

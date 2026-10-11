@@ -1,0 +1,10 @@
+{
+  "name": "stillpool-voice-tool",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "scripts/voice-tool/voice.ts only: Kokoro-82M on this Mac. Its own install, so the site's install and Vercel never fetch it.",
+  "dependencies": {
+    "kokoro-js": "1.2.1"
+  }
+}

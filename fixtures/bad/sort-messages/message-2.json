@@ -1,0 +1,32 @@
+{
+  "rule": "free",
+  "examples": [
+    {"text": "You have won a cash prize, click the link to claim it", "junk": true},
+    {"text": "The lecture on Monday starts at ten in room four", "junk": false},
+    {"text": "Claim your reward today, only a few left", "junk": true},
+    {"text": "Free tea and coffee at the study group tonight", "junk": false},
+    {"text": "Win a new phone, reply now to enter", "junk": true},
+    {"text": "Can you send me the notes from this week's class", "junk": false},
+    {"text": "Huge sale on shoes, click the link before midnight", "junk": true},
+    {"text": "The library is open late this week for students", "junk": false},
+    {"text": "Free gift card waiting for you, claim it now", "junk": true},
+    {"text": "Our group meets after the lab to plan the project", "junk": false},
+    {"text": "Congratulations, you are our lucky winner this month", "junk": true},
+    {"text": "Free printing for students in the library this week", "junk": false},
+    {"text": "Last chance to get the deal, click to buy now", "junk": true},
+    {"text": "Reminder: hand in the essay by Friday", "junk": false},
+    {"text": "Earn cash from home, reply to find out how", "junk": true},
+    {"text": "The bus to campus is running late this morning", "junk": false},
+    {"text": "Your prize is ready, follow the link to collect it", "junk": true},
+    {"text": "Sports club practice moves to Thursday this week", "junk": false},
+    {"text": "Get two pizzas for the price of one, order now", "junk": true},
+    {"text": "Are you coming to the class trip on Saturday", "junk": false}
+  ],
+  "messages": [
+    {"text": "Claim your free prize now, just click the link", "junk": true},
+    {"text": "Free cash prize, click the link to claim it now", "junk": true},
+    {"text": "You won a voucher, reply now to collect it", "junk": true},
+    {"text": "Free lunch for the class after the exam on Friday", "junk": false},
+    {"text": "The lab moves to room two on Tuesday", "junk": false}
+  ]
+}

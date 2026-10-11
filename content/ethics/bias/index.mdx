@@ -1,0 +1,313 @@
+---
+title: Bias
+promise: Can name four ways unfair patterns get into AI, and one way to check
+minutes: {simple: 9, deep: 16}
+tldr:
+  - Unfair patterns can get into AI through its data, its labels, its goals and the way people use it.
+  - This can happen when nobody means harm. People made each of those choices, so people can look at them.
+  - To check, count the mistakes for each group, not only overall. One overall number can hide a group with many more mistakes.
+misconceptions: [M8, M4]
+interactive: sort-the-dataset
+inputs: [src/lib/sort-the-dataset.ts]
+competencies: [UNESCO-AICFS-4.1.2, UNESCO-AICFS-CG4.1.2.1, UNESCO-AICFS-CG4.3.2.2, HEA-P2, HEA-PEA-2.3.3-b, AILIT-E6, AILIT-S3]
+checkin:
+  - question: In a 2017 test, one company's face tool was wrong for 12.1% of all faces, about 1 in 8. What did counting group by group show?
+    options:
+      - text: It was wrong for 34.7% of darker-skinned females, about 1 in 3, and for 0.3% of lighter-skinned males.
+        why: Yes. The overall number hid a big gap between groups. Counting each group separately showed it.
+        right: true
+      - text: Every group had about the same error rate.
+        why: Not this one. The error rates were very different. The tool was wrong much more often for darker-skinned females.
+      - text: Lighter-skinned males had the most mistakes.
+        why: Not this one. For this tool, lighter-skinned males had the fewest mistakes, and darker-skinned females had the most.
+      - text: Counting by group showed nothing that the overall number did not.
+        why: Not this one. The overall number was the same however the faces were split. Only the group counts showed where the mistakes were.
+  - question: Imagine a company builds a hiring tool that learns from ten years of its own past hiring records. Most people hired in those years were men. Which way can unfair patterns get in?
+    options:
+      - text: Through its data. The records show who was hired before, so the tool can repeat that pattern.
+        why: Yes. Data from an unfair past can teach a model that past. This is one of the four ways, and no one has to mean harm.
+        right: true
+      - text: It cannot happen, because a computer has no opinions.
+        why: Not this one. A model learns patterns from the examples it is given. If the examples are unfair, the patterns can be too.
+      - text: Only if the programmers meant to be unfair.
+        why: Not this one. NIST says bias can happen when nobody means harm.
+      - text: Only through how people use the tool later.
+        why: Not this one. Use is one of the four ways. Here the unfair pattern is already in the records.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You named four ways unfair patterns get into AI, and one way to check.
+glossary:
+  - term: bias
+    meaning: A pattern in an AI's results that is unfair to a group of people. It can happen when nobody means harm.
+  - term: label
+    meaning: The answer attached to an example, such as "ripe" or "not ripe". Sometimes a label is a stand-in for an idea, such as a credit score for "creditworthiness".
+  - term: error rate
+    meaning: How often a system is wrong. It can be counted for all items, or for one group of items.
+  - term: cut-off
+    meaning: A number that splits items into two sorts. At or above it means one sort, below it means the other.
+  - term: feedback loop
+    meaning: What a system does changes the data it learns from, and that data changes what it does next.
+whereNext:
+  title: Measuring Fairness, from Google's PAIR team
+  text: A free explorable on one web page. It uses a made-up medical model. It shows that mistakes can be measured in more than one way, and that the ways can disagree. It is a Google page, and it needs no login. In our test it loaded Google Tag Manager, Google Analytics and Google Fonts. It set Google Analytics cookies before any choice. We checked this on 3 October 2026.
+  url: https://pair.withgoogle.com/explorables/measuring-fairness/
+sources:
+  - title: "NIST, AI Risk Management Framework 1.0 (2023), page AI Risks and Trustworthiness, on the NIST AI Resource Center"
+    url: https://airc.nist.gov/airmf-resources/airmf/3-sec-characteristics/
+    licence: No licence stated (US federal government page)
+    use: cite
+  - title: "Suresh and Guttag, A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle, EAAMO 2021, arXiv 1901.10002"
+    url: https://arxiv.org/abs/1901.10002
+    licence: CC-BY-NC (as stated in the paper)
+    use: cite
+  - title: "Buolamwini and Gebru, Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification, Proceedings of Machine Learning Research 81, 2018"
+    url: https://proceedings.mlr.press/v81/buolamwini18a.html
+    licence: No licence stated on the page or in the paper
+    use: cite
+  - title: "Reuters, Amazon scraps secret AI recruiting tool that showed bias against women, October 2018 (read on the CNBC copy)"
+    url: https://www.cnbc.com/2018/10/10/amazon-scraps-a-secret-ai-recruiting-tool-that-showed-bias-against-women.html
+    licence: All rights reserved
+    use: cite
+  - title: "Ensign, Friedler, Neville, Scheidegger and Venkatasubramanian, Runaway Feedback Loops in Predictive Policing, Proceedings of Machine Learning Research 81, 2018"
+    url: https://proceedings.mlr.press/v81/ensign18a.html
+    licence: No licence stated on the page or in the paper
+    use: cite
+  - title: "ProPublica, How We Analyzed the COMPAS Recidivism Algorithm, 23 May 2016"
+    url: https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm
+    licence: All rights reserved
+    use: cite
+  - title: "Flores, Bechtel and Lowenkamp, False Positives, False Negatives, and False Analyses, Federal Probation 80(2), September 2016"
+    url: https://www.uscourts.gov/sites/default/files/80_2_6_0.pdf
+    licence: No licence stated
+    use: cite
+  - title: "Kleinberg, Mullainathan and Raghavan, Inherent Trade-Offs in the Fair Determination of Risk Scores, ITCS 2017"
+    url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITCS.2017.43
+    licence: CC BY 3.0
+    use: cite
+  - title: "Chouldechova, Fair prediction with disparate impact, arXiv 1703.00056, 28 February 2017"
+    url: https://arxiv.org/abs/1703.00056
+    licence: arXiv non-exclusive distribution licence
+    use: cite
+  - title: "Liang, Yuksekgonul, Mao, Wu and Zou, GPT detectors are biased against non-native English writers, Patterns 4(7), 2023"
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10382961/
+    licence: CC BY-NC-ND 4.0
+    use: cite
+  - title: "PAIR, Measuring Fairness, an explorable"
+    url: https://pair.withgoogle.com/explorables/measuring-fairness/
+    licence: Apache-2.0
+    use: link
+  - title: "PAIR, Datasets Have Worldviews, an explorable"
+    url: https://pair.withgoogle.com/explorables/dataset-worldviews/
+    licence: Apache-2.0
+    use: link
+  - title: "Survival of the Best Fit, a game about hiring bias in AI"
+    url: https://www.survivalofthebestfit.com/
+    licence: No licence stated
+    use: link
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+take:
+  paragraphs:
+    - "When an unfair result appears, people say the system decided. I don't accept that. The tool doesn't decide. People do. Someone chose the data. Someone chose the labels. Someone chose the goal, and where to use it."
+    - "I think of those choices as seeds. A seed is small and easy to miss. Later it's the whole field. **We harvest what we seed.** Plant a narrow picture of people and you harvest unfair results."
+    - "So who should check the field? The people who planted it, and the people who use it. **No design choice is neutral.** That's hard news, and good news. A choice can be made again."
+  by: Emanuel Covasa
+  approvedBy: Emanuel
+signed: true
+---
+
+## What bias means here
+
+<Simple>
+An AI can work well for some groups and badly for others. We call an unfair pattern like that bias.
+
+Bias can happen when nobody means any harm. NIST says so. NIST is a US government agency, and this comes from its AI risk framework (2023).
+
+Some people think maths cannot be unfair. But a model learns from examples that people chose, in a world that was not always fair. So it can repeat that unfairness.
+
+This site's own line is: "What AI can do is not good or bad by itself. The choices people make in designing and using it carry values." This lesson looks at those choices.
+</Simple>
+
+<Deep>
+In its AI Risk Management Framework 1.0 (2023), NIST says: "NIST has identified three major categories of AI bias to be considered and managed: systemic, computational and statistical, and human-cognitive. Each of these can occur in the absence of prejudice, partiality, or discriminatory intent." It adds: "Bias is broader than demographic balance and data representativeness." On systemic bias it says it "can be present in AI datasets, the organizational norms, practices, and processes across the AI lifecycle, and the broader society that uses AI systems." We read NIST's page on 3 October 2026. It says the framework is being updated and a revised version is in progress.
+
+Suresh and Guttag (2021) name one source of harm that does not need a flaw in the data. Historical bias, they write, "arises even if data is perfectly measured and sampled, if the world as it is or was leads to a model that produces harmful outcomes."
+
+In this lesson, "bias" means a pattern in results that is unfair to a group. NIST's three categories are wider than that, and an unfair pattern can be statistical, social or legal. Lesson 3.1 covers who shapes what AI shows.
+</Deep>
+
+## Four ways in
+
+<Simple>
+Here are four ways unfair patterns get into AI. They are data, labels, goals and use. The grouping is ours. It rests on a 2021 framework by two researchers, Suresh and Guttag.
+
+- **Data.** The examples may leave some people out. Or they may show an unfair past.
+- **Labels.** A label is the answer attached to an example. It is often a stand-in for an idea, such as a credit score for "creditworthiness". A stand-in can work worse for some groups.
+- **Goals.** A model is trained to do well on one measure, such as overall accuracy. That can leave one group with many more mistakes.
+- **Use.** A tool may be used for a job it was not built for. Or it may sit inside a process it was never tested in.
+
+People make each of these choices. So people can check them. Lesson 1.7 showed that people choose a model's training examples.
+</Simple>
+
+<Deep>
+Suresh and Guttag's framework names seven sources of harm, "spanning data collection, development, and deployment." Our four ways are a grouping of them. This list gives each source in the authors' words, and the way it belongs to.
+
+- **Historical bias (data):** "arises even if data is perfectly measured and sampled, if the world as it is or was leads to a model that produces harmful outcomes."
+- **Representation bias (data):** "occurs when the development sample underrepresents some part of the population, and subsequently fails to generalize well for a subset of the use population."
+- **Measurement bias (labels):** "occurs when choosing, collecting, or computing features and labels to use in a prediction problem." The authors' example is that "creditworthiness" is an idea often measured with "a measureable proxy like a credit score".
+- **Learning bias (goals):** "arises when modeling choices amplify performance disparities across different examples in the data." They name the objective a model optimises. Prioritising one objective, such as overall accuracy, can damage another.
+- **Deployment bias (use):** "arises when there is a mismatch between the problem a model is intended to solve and the way in which it is actually used."
+- **Aggregation bias:** "arises when a one-size-fits-all model is used for data in which there are underlying groups or types of examples that should be considered differently." It can lead to "a model that is not optimal for any group, or a model that is fit to the dominant population". Our toy below shows this one.
+- **Evaluation bias:** "occurs when the benchmark data used for a particular task does not represent the use population." Lesson 5.2 will cover testing a system.
+
+This is one framework. NIST's three categories are another, and they overlap. Neither is a complete list.
+</Deep>
+
+## Count the mistakes group by group
+
+<Simple>
+In April and May 2017, two researchers tested three companies' face tools. Each tool guessed whether a face was male or female. The researchers published the results in 2018.
+
+Older test sets were mostly lighter-skinned faces. In one, 79.6% were, about 8 in 10. In another, 86.2% were, nearly 9 in 10. So the researchers built a new set of 1,270 faces of members of parliament. Each group in it was well represented.
+
+IBM's tool was wrong for 12.1% of all faces, about 1 in 8. That one number hides a lot. For darker-skinned females it was wrong for 34.7%, about 1 in 3. For lighter-skinned males it was wrong for 0.3%, far less than 1 in 100.
+
+The other two tools also made the most mistakes on darker-skinned females. This is the check: count the mistakes for each group, not only for everyone.
+</Simple>
+
+<Deep>
+The paper is Buolamwini and Gebru, "Gender Shades" (Proceedings of Machine Learning Research 81, 2018). It dates the evaluation to April and May 2017. The three were Microsoft's Face API, IBM's Watson Visual Recognition and Face++. The paper says "darker-skinned females are the most misclassified group (with error rates of up to 34.7%)" and "The maximum error rate for lighter-skinned males is 0.8%."
+
+Those two numbers come from different tools, so we give each tool's own figures from the paper's Table 4. Each is an error rate on the 1,270-face set.
+
+- **Microsoft:** 6.3% for all faces, 20.8% for darker-skinned females, 0.0% for lighter-skinned males.
+- **Face++:** 10.0% for all faces, 34.5% for darker-skinned females, 0.8% for lighter-skinned males.
+- **IBM:** 12.1% for all faces, 34.7% for darker-skinned females, 0.3% for lighter-skinned males.
+
+On the data side, the paper counted lighter-skinned subjects at "79.6% for IJB-A and 86.2% for Adience", two benchmarks in use then.
+
+The limits are the paper's own. It used the binary labels "male" and "female" because the tested systems did. It used the Fitzpatrick skin type scale, which it calls "fairly coarse". The results are for three tools, one test set and one time. They are not a claim about every face tool. None of the companies' documents, the paper says, reported results on existing gender benchmarks.
+</Deep>
+
+## A hiring tool that learned from the past
+
+<Simple>
+In October 2018, Reuters reported on a hiring tool at Amazon. Reuters said five people who knew about it had spoken to its reporters. This is Reuters's account from those people. It was not an outside test.
+
+They said the tool gave job candidates one to five stars. It learned from résumés sent to Amazon over 10 years. Most came from men.
+
+By 2015, they said, the tool was not rating candidates in a gender-neutral way. It penalized résumés that had the word "women's". Amazon edited the programs to ignore those terms. But the people said that was no guarantee of fairness.
+
+Reuters said the team was disbanded by the start of 2017. Amazon declined to comment on the tool. Which of the four ways is this? It is data: most of the résumés it learned from came from men.
+</Simple>
+
+<Deep>
+We read the Reuters story on CNBC's copy, dated 10 October 2018 and updated 11 October. Reuters's own page blocks scripts. The story says Amazon's models "were trained to vet applicants by observing patterns in resumes submitted to the company over a 10-year period. Most came from men, a reflection of male dominance across the tech industry." It says the system "penalized resumes that included the word 'women's,'" and "downgraded graduates of two all-women's colleges, according to people familiar with the matter". The schools were not named.
+
+On the fix, it says Amazon "edited the programs to make them neutral to these particular terms. But that was no guarantee that the machines would not devise other ways of sorting candidates that could prove discriminatory". It also says recruiters "looked at the recommendations generated by the tool when searching for new hires, but never relied solely on those rankings", and that Amazon "declined to comment on the recruiting engine or its challenges". Everything here is what anonymous people told Reuters. It is not a public audit, and we do not know more than the report says.
+</Deep>
+
+## Sort the dataset
+
+<Simple>
+Now try it. In our toy, two invented kinds of fruit are sorted as ripe or not ripe. They are ambers and brills. Every fruit has a squeeze score from 1 (hard) to 10 (soft).
+
+A tiny model learns one cut-off from examples. A fruit at or above the cut-off counts as ripe. In our toy, an amber is ripe from a score of 5. A brill stays firmer, so it is ripe from 7.
+
+First you predict. The model learns from 20 ambers and 10 brills. Which kind will it get wrong more often? Then you change one choice: how many brill examples there are. You see how the mistakes for each kind change.
+
+It is a toy with invented fruit. No real people or groups are in it.
+</Simple>
+
+<Deep>
+The toy shows aggregation bias: one rule for two kinds of item that are not the same. Suresh and Guttag say such a model can be "fit to the dominant population". The design idea comes from the Google team PAIR's "Datasets Have Worldviews". The code is ours.
+
+The model in the toy has one number to learn, the cut-off. It picks the cut-off with the fewest mistakes on its examples. If two cut-offs tie, it takes the lower one. Real systems use many features and many more examples. The toy only keeps what is needed to see one effect.
+</Deep>
+
+<TryIt />
+
+## What the toy shows
+
+<Simple>
+With 20 ambers and 10 brills, the model learns a cut-off of 5. We then test it on 20 new ambers and 20 new brills.
+
+It gets no amber wrong. It gets 4 brills wrong, 20%, about 1 in 5. They are the brills with scores 5 and 6, which are not ripe yet.
+
+Now there are 30 brill examples. The cut-off moves to 7. The model gets no brill wrong. It gets 4 ambers wrong, 20%, about 1 in 5. They are the ambers with scores 5 and 6, which are ripe.
+
+Look at the overall count. It is 4 wrong in 40 both times, 10%, about 1 in 10. The overall number did not change. Who was wrong did.
+
+In our toy, no single cut-off is right for both kinds.
+
+A different design, such as one rule for each kind, is another choice. The toy does not show it. Counting by group is what let us see all this. Lesson 5.2 will cover testing a system on examples where you know the right answer.
+</Simple>
+
+<Deep>
+The answer follows from how the cut-off is chosen. With 10 brill examples, the cut-off at 5 makes 2 mistakes on the examples. The cut-offs 6 and 7 make 3 and 4. So the model follows the ambers, who have more examples. With 30 brill examples, the cut-off at 5 makes 6 mistakes, 6 makes 5 and 7 makes 4. So the model follows the brills.
+
+This is a toy result, not a finding about real systems. It also does not mean more data about a group always moves mistakes to another group. It shows that when one rule has to serve two groups that differ, the data decides whose pattern it follows. Overall accuracy cannot tell you which.
+</Deep>
+
+## Bias that feeds itself
+
+<Simple>
+Bias can also grow in a loop. A system sends police to places where it expects crime. Police find more crime where they look. That data goes back into the system.
+
+In 2018, researchers built a model of this loop. In their model, the system kept sending police back to the same places, whatever the true crime rate was. It was a model. It was not a test of a real police force.
+
+Lesson 1.10 showed a loop in a feed. What you open changes what you see next.
+</Simple>
+
+<Deep>
+The paper is Ensign and others, "Runaway Feedback Loops in Predictive Policing" (Proceedings of Machine Learning Research 81, 2018). Its abstract says: "Discovered crime data (e.g., arrest counts) are used to help update the model, and the process is repeated. Such systems have been shown susceptible to runaway feedback loops, where police are repeatedly sent back to the same neighborhoods regardless of the true crime rate."
+
+The authors built a mathematical model that, they say, "proves why this feedback loop occurs", and showed the problem in simulations. They also show how to change the inputs so that "the runaway feedback loop does not occur, allowing the true crime rate to be learned." These are results about a model. A claim about a real police deployment would need that deployment's own records.
+</Deep>
+
+## Fairness has more than one measure
+
+<Simple>
+How do you measure fair? There is more than one way, and the ways can disagree.
+
+COMPAS is a US tool that gives a person charged with a crime a score. The score is meant to say how likely they are to be arrested again.
+
+In 2016, ProPublica studied COMPAS scores in one US county. It looked at people who were not arrested again within two years.
+
+Among Black defendants who were not arrested again, 45% had been scored higher risk, nearly half. Among white defendants who were not arrested again, 23%, about 1 in 4.
+
+Other researchers used a different test. They found that a given score meant about the same chance of a new arrest for Black and white defendants. They found no evidence of racial bias in that sense.
+
+Later maths showed that some fairness tests cannot all be met at once, except in special cases. So people must choose which tests matter, and say so openly.
+</Simple>
+
+<Deep>
+ProPublica, 23 May 2016: it obtained COMPAS scores for people scored in 2013 and 2014 in Broward County, Florida, and counted a new arrest within two years as reoffending. After exclusions it kept 6,172 people. For the 5,278 of them who were Black or white, which is the group in the error rates below, it reports that "black defendants who did not recidivate over a two-year period were nearly twice as likely to be misclassified as higher risk compared to their white counterparts (45 percent vs. 23 percent)." It also reports that "white defendants who re-offended within the next two years were mistakenly labeled low risk almost twice as often as black re-offenders (48 percent vs. 28 percent)." It says overall predictive accuracy was alike: "62.5 percent for white defendants vs. 62.3 percent for black defendants".
+
+Flores, Bechtel and Lowenkamp answered in Federal Probation (September 2016). They re-analysed ProPublica's data and wrote: "a given COMPAS score translates into roughly the same likelihood of recidivism, whether a defendant is Black or White." They concluded that they found "no evidence of racial bias" in the tool's predictions. So one analysis looked at errors among people who did not reoffend, and the other at what a score means. Each is a valid measure. They disagree about whether the tool was fair.
+
+Then came two proofs. Kleinberg, Mullainathan and Raghavan (arXiv 19 September 2016, ITCS 2017) formalise three fairness conditions and prove that "except in highly constrained special cases, there is no method that can satisfy these three conditions simultaneously." Chouldechova (arXiv 28 February 2017) shows that "the criteria cannot all be simultaneously satisfied when recidivism prevalence differs across groups."
+
+These results do not say which measure is right, or that unfairness is acceptable. They say the choice is a human one. A court, a hospital or an employer has to make it and explain it.
+</Deep>
+
+## Detectors can be biased too
+
+<Simple>
+AI-writing detectors are tools that guess whether a person or an AI wrote a text. They can be biased too. Some people believe that they catch cheating fairly.
+
+In a 2023 study, researchers tested seven AI-writing detectors.
+
+They used 91 essays written by people who are not native English speakers, for an English test called TOEFL. A person wrote every one. The detectors labelled over half of them as AI-written. The average was 61.3%, about 6 in 10.
+
+The same detectors were accurate on a set of US 8th-grade essays. This is one study of seven detectors in 2023. Lesson 4.3 will cover AI detectors, and what a flag does and does not prove.
+</Simple>
+
+<Deep>
+The paper is Liang, Yuksekgonul, Mao, Wu and Zou, "GPT detectors are biased against non-native English writers" (Patterns, 10 July 2023). It tested "seven widely used GPT detectors on 91 TOEFL (Test of English as a Foreign Language) essays from a Chinese forum and 88 US eighth-grade essays from the Hewlett Foundation's ASAP dataset." It reports that the detectors "accurately classified the US student essays" but "incorrectly labeled more than half of the TOEFL essays as "AI-generated" (average false-positive rate: 61.3%)". An earlier preprint gave the average as 61.22%.
+
+The authors suggest the detectors may penalise writers with limited linguistic range, because the essays that all seven detectors flagged had lower "perplexity", a measure of how "surprised" a language model is when it guesses the next word. That is the authors' reading. The study is from 2023, and results for current detectors may differ.
+
+Two more links, both free and both about bias in data. PAIR's "Datasets Have Worldviews" is a large page. It loads Google Tag Manager, Google Analytics, Google Docs and Google Fonts. Survival of the Best Fit is a game about hiring bias. It says it takes about 6 minutes. It loads scripts from Facebook, LinkedIn, X and Cloudflare, and Google Analytics, and it set Google Analytics cookies in our test. We checked both on 3 October 2026: [Datasets Have Worldviews](https://pair.withgoogle.com/explorables/dataset-worldviews/) and [Survival of the Best Fit](https://www.survivalofthebestfit.com/).
+</Deep>

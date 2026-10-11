@@ -1,0 +1,1692 @@
+{
+  "id": "R-2.7",
+  "model": {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-10-03",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "T1 A",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "# Meeting Summary\n\n**Chair:** Priya | **Treasurer:** Jonah | **Secretary:** Clara | **Also present:** Dev, Ruth\n**Meeting closed:** 7:10 pm\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240, covered by the €400 currently in the account).\n\n## Open Item\n- **April event:** Whether to hold a second walk or a social evening instead is **undecided**. The members will be surveyed first.\n\n## Action Items\n| Who | Task | Deadline |\n|---|---|---|\n| Jonah | Book the coach | Fri 28 February |\n| Dev | Produce a draft of the poster | Mon 3 March |\n| Clara | Send Dev her wording changes on the poster draft | Wed 5 March |\n| Ruth | Put together and send out a short member survey on the April event | Fri 7 March |",
+          "usage": {
+            "input_tokens": 406,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 322,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:22.404Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1DJv7orpMLuGyTK64D",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Meeting Summary\n\n**Chair:** Priya | **Treasurer:** Jonah | **Secretary:** Clara | **Also present:** Dev, Ruth\n**Meeting closed:** 7:10 pm\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240, covered by the €400 currently in the account).\n\n## Open Item\n- **April event:** Whether to hold a second walk or a social evening instead is **undecided**. The members will be surveyed first.\n\n## Action Items\n| Who | Task | Deadline |\n|---|---|---|\n| Jonah | Book the coach | Fri 28 February |\n| Dev | Produce a draft of the poster | Mon 3 March |\n| Clara | Send Dev her wording changes on the poster draft | Wed 5 March |\n| Ruth | Put together and send out a short member survey on the April event | Fri 7 March |"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 406,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 322,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "# Meeting Summary\n\n**Attendees:** Priya (chair), Jonah (treasurer), Clara (secretary), Dev, Ruth\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240 for the day), which the current balance of €400 covers.\n\n## Open Item\n- **April event:** The group has not decided between a second walk and a social evening. Ruth suggested asking members first, and the item stays open until the survey results are in.\n\n## Action Items\n| Owner | Task | Deadline |\n|-------|------|----------|\n| Jonah | Book the coach | Fri 28 February |\n| Dev | Produce a draft poster | Mon 3 March |\n| Clara | Send Dev her wording changes on the draft | Wed 5 March |\n| Ruth | Put together and send out a short member survey on the April event | Fri 7 March |\n\nThe meeting closed at 7:10 pm.",
+          "usage": {
+            "input_tokens": 406,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 324,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:25.497Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1DXom5ZK1Hjg1EUzMT",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Meeting Summary\n\n**Attendees:** Priya (chair), Jonah (treasurer), Clara (secretary), Dev, Ruth\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240 for the day), which the current balance of €400 covers.\n\n## Open Item\n- **April event:** The group has not decided between a second walk and a social evening. Ruth suggested asking members first, and the item stays open until the survey results are in.\n\n## Action Items\n| Owner | Task | Deadline |\n|-------|------|----------|\n| Jonah | Book the coach | Fri 28 February |\n| Dev | Produce a draft poster | Mon 3 March |\n| Clara | Send Dev her wording changes on the draft | Wed 5 March |\n| Ruth | Put together and send out a short member survey on the April event | Fri 7 March |\n\nThe meeting closed at 7:10 pm."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 406,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 324,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "# Meeting Summary\n\n**Attendees:** Priya (chair), Jonah (treasurer), Clara (secretary), Dev, Ruth\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240), which the account balance (€400) covers.\n\n## Open item\n- **April activity:** Whether to hold a second walk or a social evening is undecided. The group agreed to survey members before deciding.\n\n## Action items\n| Who | Task | Deadline |\n|-----|------|----------|\n| Jonah | Book the coach | Fri 28 Feb |\n| Dev | Produce draft poster | Mon 3 Mar |\n| Clara | Send Dev wording changes on the poster | Wed 5 Mar |\n| Ruth | Put together and send out a member survey on the April options | Fri 7 Mar |\n\nThe meeting closed at 7:10 pm.",
+          "usage": {
+            "input_tokens": 406,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 314,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:28.620Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1Dm9hBrWVN89KVFMYP",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Meeting Summary\n\n**Attendees:** Priya (chair), Jonah (treasurer), Clara (secretary), Dev, Ruth\n\n## Decisions\n- **Spring walk:** The coastal path walk will take place on **Saturday 15 March**. The society will pay for the coach (€240), which the account balance (€400) covers.\n\n## Open item\n- **April activity:** Whether to hold a second walk or a social evening is undecided. The group agreed to survey members before deciding.\n\n## Action items\n| Who | Task | Deadline |\n|-----|------|----------|\n| Jonah | Book the coach | Fri 28 Feb |\n| Dev | Produce draft poster | Mon 3 Mar |\n| Clara | Send Dev wording changes on the poster | Wed 5 Mar |\n| Ruth | Put together and send out a member survey on the April options | Fri 7 Mar |\n\nThe meeting closed at 7:10 pm."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 406,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 314,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T1 A",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791062482,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here’s a concise summary of the meeting:\n\n**Spring Walk:**\n- Confirmed for **Saturday 15 March** along the coastal path.\n- The society will cover the **€240 coach cost** (funds available: €400).\n- **Jonah** will book the coach by **Friday 28 February**.\n\n**Poster:**\n- **Dev** will create a draft by **Monday 3 March**.\n- **Clara** will review wording and send feedback by **Wednesday 5 March**.\n\n**April Activity:**\n- Undecided: **Second walk or social evening**.\n- **Ruth** will send a **member survey by Friday 7 March** to gauge preference.\n\n**Meeting closed at 7:10 PM.**",
+          "usage": {
+            "prompt_tokens": 283,
+            "total_tokens": 439,
+            "completion_tokens": 156,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:31.640Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "0c634034704e449dae4ccb96fc07a19e",
+                "created": 1791062491,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 283,
+                  "total_tokens": 439,
+                  "completion_tokens": 156,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting:\n\n**Spring Walk:**\n- Confirmed for **Saturday 15 March** along the coastal path.\n- The society will cover the **€240 coach cost** (funds available: €400).\n- **Jonah** will book the coach by **Friday 28 February**.\n\n**Poster:**\n- **Dev** will create a draft by **Monday 3 March**.\n- **Clara** will review wording and send feedback by **Wednesday 5 March**.\n\n**April Activity:**\n- Undecided: **Second walk or social evening**.\n- **Ruth** will send a **member survey by Friday 7 March** to gauge preference.\n\n**Meeting closed at 7:10 PM.**"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here’s a concise summary of the meeting:\n\n**Meeting Summary:**\n1. **Spring Walk (15 March)** – Confirmed on the coastal path, with the society covering the **€240 coach cost** (funds available).\n   - *Action:* **Jonah** to book the coach by **28 February**.\n\n2. **Poster Design** – **Dev** will create a draft by **3 March**, with **Clara** reviewing wording by **5 March**.\n\n3. **April Activity** – Undecided (walk vs. social evening).\n   - *Action:* **Ruth** to send a **member survey by 7 March** to gauge preference.\n\n**Meeting adjourned at 7:10 PM.**",
+          "usage": {
+            "prompt_tokens": 283,
+            "total_tokens": 438,
+            "completion_tokens": 155,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:33.502Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "ead25bf5cad242248367d8bcaab6dce9",
+                "created": 1791062493,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 283,
+                  "total_tokens": 438,
+                  "completion_tokens": 155,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting:\n\n**Meeting Summary:**\n1. **Spring Walk (15 March)** – Confirmed on the coastal path, with the society covering the **€240 coach cost** (funds available).\n   - *Action:* **Jonah** to book the coach by **28 February**.\n\n2. **Poster Design** – **Dev** will create a draft by **3 March**, with **Clara** reviewing wording by **5 March**.\n\n3. **April Activity** – Undecided (walk vs. social evening).\n   - *Action:* **Ruth** to send a **member survey by 7 March** to gauge preference.\n\n**Meeting adjourned at 7:10 PM.**"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here’s a concise summary of the meeting:\n\n1. **Spring Walk Confirmation**\n   - **Date:** Saturday, 15 March (coastal path).\n   - **Transport:** Coach booked by the society (cost: €240, covered by the €400 account).\n   - **Action:** Jonah will book the coach by **Friday, 28 February**.\n\n2. **Poster for the Walk**\n   - **Dev** will create a draft by **Monday, 3 March**.\n   - **Clara** will review wording and send feedback by **Wednesday, 5 March**.\n\n3. **April Activity Decision**\n   - Undecided: Second walk or a social evening.\n   - **Action:** Ruth will send a **member survey by Friday, 7 March** to gauge preference.\n\n**Meeting closed at 7:10 PM.**",
+          "usage": {
+            "prompt_tokens": 283,
+            "total_tokens": 465,
+            "completion_tokens": 182,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:35.218Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "3139eab883a746ed89d161578dcd27d8",
+                "created": 1791062495,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 283,
+                  "total_tokens": 465,
+                  "completion_tokens": 182,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting:\n\n1. **Spring Walk Confirmation**\n   - **Date:** Saturday, 15 March (coastal path).\n   - **Transport:** Coach booked by the society (cost: €240, covered by the €400 account).\n   - **Action:** Jonah will book the coach by **Friday, 28 February**.\n\n2. **Poster for the Walk**\n   - **Dev** will create a draft by **Monday, 3 March**.\n   - **Clara** will review wording and send feedback by **Wednesday, 5 March**.\n\n3. **April Activity Decision**\n   - Undecided: Second walk or a social evening.\n   - **Action:** Ruth will send a **member survey by Friday, 7 March** to gauge preference.\n\n**Meeting closed at 7:10 PM.**"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T1 B",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "**Decisions**\n- The spring walk will take place on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro; the account holds 400).\n\n**Actions**\n- Jonah: book the coach. Due Friday 28 February.\n- Dev: have a draft of the poster ready. Due Monday 3 March.\n- Clara: send Dev her wording changes to the poster draft. Due Wednesday 5 March.\n- Ruth: put together and send out a short member survey on a second April walk versus a social evening. Due Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Undecided until the member survey results are in; the date for deciding is unclear.",
+          "usage": {
+            "input_tokens": 508,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 238,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:37.317Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1EQm8xhrfxt9gnPnRH",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "**Decisions**\n- The spring walk will take place on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro; the account holds 400).\n\n**Actions**\n- Jonah: book the coach. Due Friday 28 February.\n- Dev: have a draft of the poster ready. Due Monday 3 March.\n- Clara: send Dev her wording changes to the poster draft. Due Wednesday 5 March.\n- Ruth: put together and send out a short member survey on a second April walk versus a social evening. Due Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Undecided until the member survey results are in; the date for deciding is unclear."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 508,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 238,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Decisions**\n- The spring walk will take place on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro, covered by the 400 euro in the account).\n\n**Actions**\n- Jonah: book the coach by Friday 28 February.\n- Dev: have the poster draft ready by Monday 3 March.\n- Clara: send Dev her wording changes to the poster by Wednesday 5 March.\n- Ruth: send out a short member survey by Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Pending the member survey; decision date unclear.",
+          "usage": {
+            "input_tokens": 508,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 208,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:40.131Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1EcUajYKedVjVFxBJR",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "**Decisions**\n- The spring walk will take place on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro, covered by the 400 euro in the account).\n\n**Actions**\n- Jonah: book the coach by Friday 28 February.\n- Dev: have the poster draft ready by Monday 3 March.\n- Clara: send Dev her wording changes to the poster by Wednesday 5 March.\n- Ruth: send out a short member survey by Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Pending the member survey; decision date unclear."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 508,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 208,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Decisions**\n- The spring walk will be on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro; the account holds 400).\n\n**Actions**\n- Jonah: book the coach by Friday 28 February.\n- Dev: have the poster draft ready by Monday 3 March.\n- Clara: send Dev her wording changes to the poster by Wednesday 5 March.\n- Ruth: send out a short member survey by Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Undecided until members are surveyed; decision date unclear.",
+          "usage": {
+            "input_tokens": 508,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 205,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:42.417Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1EnCyAFTETE8PfJHXS",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "**Decisions**\n- The spring walk will be on the coastal path on Saturday 15 March.\n- The society will pay for the coach (240 euro; the account holds 400).\n\n**Actions**\n- Jonah: book the coach by Friday 28 February.\n- Dev: have the poster draft ready by Monday 3 March.\n- Clara: send Dev her wording changes to the poster by Wednesday 5 March.\n- Ruth: send out a short member survey by Friday 7 March.\n\n**Open questions**\n- Should there be a second walk in April or a social evening instead? Undecided until members are surveyed; decision date unclear."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 508,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 205,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T1 B",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791062482,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "**Decisions**\n- Spring walk: coastal path on **15 March** (coach cost covered by society funds).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording; send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create and send member survey by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback).",
+          "usage": {
+            "prompt_tokens": 355,
+            "total_tokens": 463,
+            "completion_tokens": 108,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:44.676Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "9224b6e4e2744f19815c9089e6f74bb9",
+                "created": 1791062504,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 355,
+                  "total_tokens": 463,
+                  "completion_tokens": 108,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "**Decisions**\n- Spring walk: coastal path on **15 March** (coach cost covered by society funds).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording; send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create and send member survey by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback)."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Decisions**\n- Spring walk: coastal path on **Saturday 15 March**, society covers coach cost (€240).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording, send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create and send member survey by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback).",
+          "usage": {
+            "prompt_tokens": 355,
+            "total_tokens": 467,
+            "completion_tokens": 112,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:46.142Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "05fe8cb31e8d4041884b9a2632328598",
+                "created": 1791062506,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 355,
+                  "total_tokens": 467,
+                  "completion_tokens": 112,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "**Decisions**\n- Spring walk: coastal path on **Saturday 15 March**, society covers coach cost (€240).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording, send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create and send member survey by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback)."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Decisions**\n- Spring walk: coastal path on **Saturday 15 March** (coach cost covered by society funds).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording; send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create member survey; send by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback).",
+          "usage": {
+            "prompt_tokens": 355,
+            "total_tokens": 465,
+            "completion_tokens": 110,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:47.574Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nPriya (chair): Thanks everyone for coming. Let's start with the spring walk. Are we agreed on the coastal path on Saturday 15 March?\nJonah (treasurer): Yes. The coach costs 240 euro for the day, and we have 400 in the account, so we can cover it.\nClara (secretary): Then it is decided. The walk is on 15 March and the society pays for the coach.\nPriya: Good. Jonah, can you book the coach by Friday 28 February?\nJonah: Yes, I will book it by the 28th.\nPriya: Next, the poster. Dev, you offered to make it.\nDev: I will have a draft ready by Monday 3 March, and Clara will check the wording.\nClara: Fine. I will send you my changes by Wednesday 5 March.\nPriya: Last item. Do we want a second walk in April, or a social evening instead?\nRuth: I think we should ask the members before we decide.\nPriya: Agreed. That stays open for now. Ruth, can you put a short survey together?\nRuth: Yes, I will send it out by Friday 7 March.\nPriya: Great. Meeting closed at ten past seven."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "9101741602ae4d2a97e3e6be8d4b6777",
+                "created": 1791062507,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 355,
+                  "total_tokens": 465,
+                  "completion_tokens": 110,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "**Decisions**\n- Spring walk: coastal path on **Saturday 15 March** (coach cost covered by society funds).\n\n**Actions**\n- Jonah: Book coach by **Friday 28 February**.\n- Dev: Provide poster draft by **Monday 3 March**.\n- Clara: Review poster wording; send changes to Dev by **Wednesday 5 March**.\n- Ruth: Create member survey; send by **Friday 7 March**.\n\n**Open Questions**\n- April event: second walk or social evening? (Decision pending member feedback)."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T2 A",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "# Meeting Summary\n\n**Chair:** Sam | **Attendees:** Lena (treasurer), Omar, Nia\n\n## Decisions and Actions\n\n**Society fair stall**\n- A table was agreed last week.\n- **Banner:** Needs collecting, but nobody knows who has it, and no one was assigned to collect it.\n- **Table fee:** Lena will pay it, but she doesn't know the deadline. Sam asked her to pay when she can.\n- Sam noted that the society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- **Room:** Omar will book it by **Thursday 20 March**.\n- **Prizes:** Unresolved. Omar thinks either the shop or the cafe donated something but can't remember which. To be worked out later.\n\n**New members' welcome email**\n- Nia will send it by **Monday 24 March**, using the list she holds.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they said yes, but possibly \"maybe.\" Nia wasn't present for the reply, so it remains unconfirmed.\n\n## Open Issues\n1. Who has the banner, and who will collect it?\n2. What is the table fee deadline?\n3. Who donated the quiz prizes (shop or cafe)?\n4. Did the film society confirm the joint event?\n\n## Deadlines\n| Date | Owner | Task |\n|---|---|---|\n| Thu 20 March | Omar | Book quiz night room |\n| Mon 24 March | Nia | Send welcome email |\n| Not known | Lena | Pay table fee |",
+          "usage": {
+            "input_tokens": 402,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 522,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:49.101Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1FHBzpQvkjjuiVx4SY",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Meeting Summary\n\n**Chair:** Sam | **Attendees:** Lena (treasurer), Omar, Nia\n\n## Decisions and Actions\n\n**Society fair stall**\n- A table was agreed last week.\n- **Banner:** Needs collecting, but nobody knows who has it, and no one was assigned to collect it.\n- **Table fee:** Lena will pay it, but she doesn't know the deadline. Sam asked her to pay when she can.\n- Sam noted that the society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- **Room:** Omar will book it by **Thursday 20 March**.\n- **Prizes:** Unresolved. Omar thinks either the shop or the cafe donated something but can't remember which. To be worked out later.\n\n**New members' welcome email**\n- Nia will send it by **Monday 24 March**, using the list she holds.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they said yes, but possibly \"maybe.\" Nia wasn't present for the reply, so it remains unconfirmed.\n\n## Open Issues\n1. Who has the banner, and who will collect it?\n2. What is the table fee deadline?\n3. Who donated the quiz prizes (shop or cafe)?\n4. Did the film society confirm the joint event?\n\n## Deadlines\n| Date | Owner | Task |\n|---|---|---|\n| Thu 20 March | Omar | Book quiz night room |\n| Mon 24 March | Nia | Send welcome email |\n| Not known | Lena | Pay table fee |"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 402,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 522,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "# Meeting Summary\n\n**Chair:** Sam | **Attendees:** Lena (treasurer), Omar, Nia\n\n## Decisions and Actions\n\n**Society fair stall**\n- The society will have a table, as agreed last week.\n- **Banner:** Needs collecting, but nobody knows who has it and no one was assigned.\n- **Table fee:** Lena will pay it, but the deadline is unknown. Sam asked her to pay when she can.\n- The society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- **Room:** Omar will book it by Thursday 20 March.\n- **Prizes:** Unresolved. Omar thinks either the shop or the cafe donated something but cannot remember which. To be worked out later.\n\n**New members' welcome email**\n- Nia will send it by Monday 24 March.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they agreed but may have said \"maybe\". Nia was not present for their reply, so it is unconfirmed.\n\n## Open Issues\n1. Who will collect the banner.\n2. The table fee deadline, which Lena should confirm.\n3. Which business (shop or cafe) donated the quiz prizes.\n4. Whether the film society confirmed the joint event. Someone should check with them.",
+          "usage": {
+            "input_tokens": 402,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 426,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:53.314Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1FatcY3p1DCBE5wCZ9",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Meeting Summary\n\n**Chair:** Sam | **Attendees:** Lena (treasurer), Omar, Nia\n\n## Decisions and Actions\n\n**Society fair stall**\n- The society will have a table, as agreed last week.\n- **Banner:** Needs collecting, but nobody knows who has it and no one was assigned.\n- **Table fee:** Lena will pay it, but the deadline is unknown. Sam asked her to pay when she can.\n- The society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- **Room:** Omar will book it by Thursday 20 March.\n- **Prizes:** Unresolved. Omar thinks either the shop or the cafe donated something but cannot remember which. To be worked out later.\n\n**New members' welcome email**\n- Nia will send it by Monday 24 March.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they agreed but may have said \"maybe\". Nia was not present for their reply, so it is unconfirmed.\n\n## Open Issues\n1. Who will collect the banner.\n2. The table fee deadline, which Lena should confirm.\n3. Which business (shop or cafe) donated the quiz prizes.\n4. Whether the film society confirmed the joint event. Someone should check with them."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 402,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 426,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Meeting summary**\n\n**Society fair stall**\n- The society will have a table, as agreed last week.\n- The banner needs collecting, but nobody knows who has it or who will bring it.\n- Lena will pay the table fee but doesn't know the deadline. Sam asked her to do it when she can.\n- The society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- Omar will book a room by Thursday 20 March.\n- Prizes are unresolved. Omar thinks they were donated by either the shop or the cafe but can't remember which. This will be worked out later.\n\n**New members' welcome email**\n- Nia will send it by Monday 24 March, using the list she holds.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they agreed but they may have said \"maybe\". Nia was not present when they replied.\n\n**Action items**\n| Owner | Action | Deadline |\n|---|---|---|\n| Omar | Book room for quiz night | Thu 20 March |\n| Nia | Send welcome email to new members | Mon 24 March |\n| Lena | Pay society fair table fee | None known; find out the deadline |\n| Unassigned | Collect the banner | None set |\n| Unassigned | Confirm prize donor (shop or cafe) | None set |\n| Unassigned | Confirm film society's response | None set |\n\n**Open issues:** the banner owner, the table fee deadline, the prize source, and the film society's answer all need follow-up, and no one was assigned to them.",
+          "usage": {
+            "input_tokens": 402,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 495,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:21:57.097Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1Fs1E7gxkpXs7T2WvG",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "**Meeting summary**\n\n**Society fair stall**\n- The society will have a table, as agreed last week.\n- The banner needs collecting, but nobody knows who has it or who will bring it.\n- Lena will pay the table fee but doesn't know the deadline. Sam asked her to do it when she can.\n- The society now has 40 members, so the table should look welcoming.\n\n**Quiz night**\n- Omar will book a room by Thursday 20 March.\n- Prizes are unresolved. Omar thinks they were donated by either the shop or the cafe but can't remember which. This will be worked out later.\n\n**New members' welcome email**\n- Nia will send it by Monday 24 March, using the list she holds.\n\n**Joint event with the film society**\n- Status unclear. Sam thinks they agreed but they may have said \"maybe\". Nia was not present when they replied.\n\n**Action items**\n| Owner | Action | Deadline |\n|---|---|---|\n| Omar | Book room for quiz night | Thu 20 March |\n| Nia | Send welcome email to new members | Mon 24 March |\n| Lena | Pay society fair table fee | None known; find out the deadline |\n| Unassigned | Collect the banner | None set |\n| Unassigned | Confirm prize donor (shop or cafe) | None set |\n| Unassigned | Confirm film society's response | None set |\n\n**Open issues:** the banner owner, the table fee deadline, the prize source, and the film society's answer all need follow-up, and no one was assigned to them."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 402,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 495,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T2 A",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791062482,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - **Action:** Lena (treasurer) will pay the table fee (deadline unclear).\n\n2. **Quiz Night**\n   - **Room booking:** Omar will secure a venue by **Thursday, 20 March**.\n   - **Prizes:** Unclear which shop/café provided them; to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - **Action:** Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear if they confirmed participation (possibly a \"maybe\").\n   - **Action:** Clarify their response.\n\n**Key Actions:**\n- Collect the banner.\n- Lena: Pay table fee (ASAP).\n- Omar: Book quiz room by **20 March**.\n- Nia: Send welcome email by **24 March**.\n- Follow up on film society’s commitment.",
+          "usage": {
+            "prompt_tokens": 276,
+            "total_tokens": 509,
+            "completion_tokens": 233,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:01.582Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "d33aff319c8d4e1f9ce05e6b5cb92cba",
+                "created": 1791062522,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 276,
+                  "total_tokens": 509,
+                  "completion_tokens": 233,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - **Action:** Lena (treasurer) will pay the table fee (deadline unclear).\n\n2. **Quiz Night**\n   - **Room booking:** Omar will secure a venue by **Thursday, 20 March**.\n   - **Prizes:** Unclear which shop/café provided them; to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - **Action:** Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear if they confirmed participation (possibly a \"maybe\").\n   - **Action:** Clarify their response.\n\n**Key Actions:**\n- Collect the banner.\n- Lena: Pay table fee (ASAP).\n- Omar: Book quiz room by **20 March**.\n- Nia: Send welcome email by **24 March**.\n- Follow up on film society’s commitment."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - Lena (treasurer) will pay the table fee but hasn’t confirmed the deadline.\n\n2. **Quiz Night**\n   - Omar will book a room by **Thursday, 20 March**.\n   - Prizes are unclear (possibly from a shop or café); details to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear response (possibly a \"yes\" or \"maybe\"); Nia wasn’t present for their reply.\n\n**Key Actions:**\n- Collect the banner.\n- Lena: Pay table fee (deadline pending).\n- Omar: Confirm room booking and prize details.\n- Nia: Send welcome email by 24 March.\n- Clarify Film Society’s commitment.",
+          "usage": {
+            "prompt_tokens": 276,
+            "total_tokens": 497,
+            "completion_tokens": 221,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:04.469Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "ec9e9206491c4e1b897953950937dade",
+                "created": 1791062524,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 276,
+                  "total_tokens": 497,
+                  "completion_tokens": 221,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 256
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - Lena (treasurer) will pay the table fee but hasn’t confirmed the deadline.\n\n2. **Quiz Night**\n   - Omar will book a room by **Thursday, 20 March**.\n   - Prizes are unclear (possibly from a shop or café); details to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear response (possibly a \"yes\" or \"maybe\"); Nia wasn’t present for their reply.\n\n**Key Actions:**\n- Collect the banner.\n- Lena: Pay table fee (deadline pending).\n- Omar: Confirm room booking and prize details.\n- Nia: Send welcome email by 24 March.\n- Clarify Film Society’s commitment."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - Lena (treasurer) will pay the table fee but needs the deadline clarified.\n\n2. **Quiz Night**\n   - Omar will book a room by **Thursday, 20 March**.\n   - Prizes are unclear (possibly from a shop or café); details to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear response (possibly a \"yes\" or \"maybe\"); Nia wasn’t present when the reply was given.\n\n**Action Items:**\n- Collect the banner.\n- Clarify the table fee deadline.\n- Confirm prize source.\n- Follow up on the film society’s response.",
+          "usage": {
+            "prompt_tokens": 276,
+            "total_tokens": 479,
+            "completion_tokens": 203,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:07.032Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Summarise this meeting transcript:\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "f90da47a297f4470a88a67faff67f697",
+                "created": 1791062527,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 276,
+                  "total_tokens": 479,
+                  "completion_tokens": 203,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here’s a concise summary of the meeting transcript:\n\n1. **Society Fair Stall**\n   - A table is confirmed, but the banner’s location is unknown—someone needs to collect it.\n   - Lena (treasurer) will pay the table fee but needs the deadline clarified.\n\n2. **Quiz Night**\n   - Omar will book a room by **Thursday, 20 March**.\n   - Prizes are unclear (possibly from a shop or café); details to be resolved later.\n\n3. **New Members’ Welcome Email**\n   - Nia will send the email by **Monday, 24 March** (she has the member list).\n\n4. **Joint Event with Film Society**\n   - Unclear response (possibly a \"yes\" or \"maybe\"); Nia wasn’t present when the reply was given.\n\n**Action Items:**\n- Collect the banner.\n- Clarify the table fee deadline.\n- Confirm prize source.\n- Follow up on the film society’s response."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T2 B",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "**Decisions**\n- Have a table at the society fair (agreed last week).\n\n**Actions**\n- Collect the banner. Owner: unclear. Date: unclear.\n- Pay the table fee. Owner: Lena. Date: unclear.\n- Book a room for the quiz night. Owner: Omar. Date: Thursday 20 March.\n- Send the new members' welcome email. Owner: Nia. Date: Monday 24 March.\n\n**Open questions**\n- Who has the banner? Unclear.\n- What is the deadline for the table fee? Unclear.\n- Who donated the quiz night prizes, the shop or the cafe? Unclear.\n- Did the film society say yes or maybe to the joint event? Unclear.",
+          "usage": {
+            "input_tokens": 504,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 538,
+            "output_tokens_details": {
+              "thinking_tokens": 298
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:08.978Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1Gk4JKgP9GJ1z9tr2J",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQS3AoKEAgSGAI4AUIIdGhpbmtpbmcSDLmfpNUqtX1doq3xoBoM/gbYwc2oZfUOpMVaIjDQjykX5zcckyQR9E1eyhBIGRmgxJu7AgiSPv9RKsCNHnlf71uyZXIarYgSLjLj+r4q+QlP7AZFoH3HBwjMokgx98yIIZVMR/s6BKrAku2VKA9+EcR1clcHZAhnsrh34eZDA6cmbLpeBmM2jQ9yP7mUJNuyl6UYUh4ZHdI8+cZrJ1xuVPySRZxkI8koOANLZofq4M3bvnwG2Iw7ov92M1Lnz9sWP9RNQm8ErHpsZVxajjMd1GHqwtWX4eK1w7mEwb3M8lfmFaUvSz/cMK6oC0abh7Tb+O/DZ5jvyE6z2NZbL3N5se8PTIm8mCdQ5DZOXUI4I1cNZKoyQ/Zs0v7b3eIUrkUSABUkgvZs2dz8/dVpog5wTQ0ilsgSXx69t7cOBq6ChC3Egeq+hmnjdEnth5+VsZdD832F1zH4iSS4YX4PLEpvRPkPSvrZzOI5NDnt35QQMVes54iIHonV4V+yMSt0+QQuRyI5pQzpAbd8KfIolzZt0bJeANAl9ur1aoXrdvB/FmaDuVlJEa+JRbP2ozbIrFIA2SdPX9oNeU2I9eqDqYf020zVgXbUJatdAcqmaiQ0TOIzZsNE+EdeaQakGaNDE3JpAQM+iMHO6S7RxrCPeqskgicgHCy5RAPgYTTMytQZl1ieoOo7EQaMEuZK6NXOJxmR1IQnY+SUpZaH+zxE9nMgtq2LKwjbXBGp0KYg2HRZOQcmrLM0/ubmrJqvIvXbAs3miDZSUd8H1iCGG8/fbr70B90CFFOBXOXQupV2u8pIQ6/k1iJbWFiJZNSqtn0q9VHRGJerzteC48r4095X2c33NngcCSrKkqp2CMGP1wIKbRPwr1hYOaJxav+Xicqy33JZgI/WMZ4yDMB0VXgnH0hJHgu67ab50BmcPZ2xt6mOke9TLJv7I7A6FhYTW/GiqtnuPZ2foW650voLc1QDeCe1y+Vg3N5h4wnI6TN7djmjmv+zNqCKeImBfecLvsv0rFKrWr4s+Uw3P/IbqSFFPteyliRAw+G29MbPC+Q7gB3xz5j0VyPO36OxPAyTyFrZT40HTtUmiAqXYWnn+Dy250+SanIV9U06aVUY/VcFz51Ns1GI/dwcbUIrtiVRA5atXk+50IFNvGkEjnAMAIGB7HaZXRnwH84n1MCLG5zBM7Rb4lTAngUIkH5kFvDczsT5Y5u7ASitA514UnrBug5fKMAO4VsIXHgMojcAhB8r7ZW0n+dFc2EbwCoD8zg9Ym7M8e2lJIA/oK4tgxaNgWv3H5HmZ4Q1V5EdJHDfFTXdwPaWrlo5Hcg3evk0AwR6CEAoyxNkOLccG3aAUU9Wepri/RhfCfAav/Xu6/c3jYY7TiC5ewpXIvzWeSPvgNldGvNOg8TxH9JIzzFZm2pJj/klfzHOHsScbM2R0mPmzimDXqnGhJxPZ5eoSJRsQtxuxOr0uXWRZUZ8hasNNLvRJX7o/PPXcojhw3Nb4v/AuNNDZYJWPC+/UtZhbHMaUWwhSIluIjwwluf0Cc1Qwlpu8Q6qHKc9/1izHuCXxLoya8ED+vs166f902R6oAvV1QaZxkfIT6u7AejoU5AaPUIeCM4ggRUfwO/1eBWxzNu9NVpRILxeKRhnsM4YgGpZm4rv4xf+zZWuGA2wrO0JRBl5sviJCVCbvaUAXZ75FMzvNUCwO+tSKyk3pTzk5/hRAeUwACVvRqOgNROlmUAae4mWq9DPvzo4TtAUOB/hMy0VlZKsTZSNczx1fuL8uDlUulqXuMCILk9mge6snc9pjuSoGAE="
+                  },
+                  {
+                    "type": "text",
+                    "text": "**Decisions**\n- Have a table at the society fair (agreed last week).\n\n**Actions**\n- Collect the banner. Owner: unclear. Date: unclear.\n- Pay the table fee. Owner: Lena. Date: unclear.\n- Book a room for the quiz night. Owner: Omar. Date: Thursday 20 March.\n- Send the new members' welcome email. Owner: Nia. Date: Monday 24 March.\n\n**Open questions**\n- Who has the banner? Unclear.\n- What is the deadline for the table fee? Unclear.\n- Who donated the quiz night prizes, the shop or the cafe? Unclear.\n- Did the film society say yes or maybe to the joint event? Unclear."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 504,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 538,
+                  "output_tokens_details": {
+                    "thinking_tokens": 298
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "**Decisions**\n- Have a table at the society fair (agreed last week).\n- Joint event with the film society: unclear (they may have said yes or maybe).\n\n**Actions**\n- Collect the banner: owner unclear, date unclear.\n- Pay the table fee: Lena, date unclear.\n- Book a room for the quiz night: Omar, Thursday 20 March.\n- Send the new members' welcome email: Nia, Monday 24 March.\n\n**Open questions**\n- Who has the banner, and who will bring it to the fair?\n- What is the deadline for the table fee?\n- Who donated the quiz prizes, the shop or the cafe?\n- Did the film society say yes or maybe to the joint event?",
+          "usage": {
+            "input_tokens": 504,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 574,
+            "output_tokens_details": {
+              "thinking_tokens": 342
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:13.585Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1H5ScvCvWwJcr7H1xs",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQSywsKEAgSGAI4AUIIdGhpbmtpbmcSDDJw2KneTgzSwaQQURoMhzzHavj1osmnQhIdIjA4EDdzf3oN5qz6xARRD6ZK3GWP9opUw3pdBYPgSlFlqbYUJC7+dn7o8oIQXuSBheAq6Ao00n03CASabTn9W8YR4g6a3U/6nBbzCZRxoQ1VT0qQacmaHixTd9vDtClWtqLMMw01mVCIHBgKJ8fYeg2guYHtCl6Bbe281ws1EjYHM3lXFW/MNHsJ4VxvlcxUdUVWWBi8dbxkvbLeUEHW8iwjbAg94+hMHCMlJev3YOQ7WXfdDH2UyNy8CdtMn7BPoExj9US4/Zcqsy9DJE3LVdrl/mP8Vkx/IT/xV8RtV3muJnsj8o0ifuH8w/pjxPiU6/NHjAXPqW2kzrFa5jrAJkRLjL8+p03x17G/4qTpow5ydEsFf0vixtOMCoD0OqCVeMtIy2QSOR2Z8ky8bLrHkALbxQKXkJ8PhRX1pKVUSZexsBrPRbkQjtLCuq46ThhGFMQ6IARNv14C0/xtvOFol7h6NGo+x2gz/KKdWODkWVd5Nj8Vw9Htm+RJQKU92hqgF+SqStu/BJ/nkd3PKwmRCBL/idypYPk3SBXKaAajZIh24DkUGph4DgRpjF5fm9Bgx6uNMJDb1SPiqb69mZ0ZOL/qd9eApCnvNo7exFRbEE/5TMp4moKtzWpQZWixfKaj4cfKMJhzN0Tqv0XrD+KAeGLDXDwQ7dY1NV1xxgyJEh1a+GImVYNZlh2kB5W3gHDAn1Z5dUlvmupxHl0wi4MckSbBe9/c7KAbSyqbmf4pl+GKbs/g3sAyCJi91vPzaWsxEjyq3E/wpucoaJKTTiVlWaC09/AQu/jfc67Vkki193O6AkXmXLTy/UPE15PXnxby0PelFzksqwN1tHYL1pIf2uL1aKQ0ttANiCr1AuVfqfz6vsAkhLB2m3ScXzT/+WKyzL4tk9pBYJQHSsqc6xWxbVqNXtu6pcyx1zuvMSd8KFmcFKJoGoxxm5bECp38TC5Fb4Tmt+LHpDp5GzARBlYDdd03BVmi8roap9YKDounuuCxmQTMmPj6nldM5fpNQ1BgVi01egcknCpqcp7MBL457ZZcnw0EP4DgBYAKZWG/jH+DpAiTL/xofNgXPPid+qI6ZMwQLlMDvk3ci1aQTY++bx4fJQ+zmKeaXxBvwoW6xB5srssPJR6Fd+z3k91KnspSwMfLrPxUxwTjKQqICsrqoSQ3him08WwmzFru/0d1F74YIEPxvaTZYLPSfzeNd9BRvTOgOpGfobk9qSsJ8WjWZPPl9sdirmewzsEKYM2V8/D3MNgcWxJ//9/G4CYrwtLJefCB1UjFS5TKEksXTEnrE6Fd/ktUZtxZ1tJvvTO50ApY1T1RzyJ2Wt6XHcmKsbrw+BrGFFJ2Qa/J0GwYZawRobBmqsbYNIkoBSS1rYjQWd1YclKdzt8XCrXjzb0yTWe6veq/J8ltP/lc6+25Bh2hbE8Wiurudxwtb6wno8TaS5WXxddsYTT/05JYJoUcRqLo4d8aml+ByfPwZNhp4ugWV+fcRsD+d1KIIS0cg2LuM4CCzKeeTnDt+sQBO1X7SxSvc7cPdhCNN6ccod2CxWdFO+N2Bj3/LKmzawzaDYIv/49tnjEWoRLW8mAAuEscNmk9Sk217/cpvULfGC3oLX1SQ+pTaOBv0DzNcleVCHPTqBq6suDv6glt8mZybHIwJRxvCV1veXQ3YYLoReu77ddzhbHMLceO2yxlBMiJh7S7FPaEH56nSnW+CM+JyFyX5Q9ybKrl9OoFRdiaGc3jcfca7wgSdiVk5z2dhKIWvwX9aBcp6TwvKRck07IrqaSwhZOo1hfBIo7bq5qBOYJUx6w1LGr9+67JhzIUddYpoI6c5WVkK1QJLpZF8mXeQDusHc3R6iIlC4p0QB9FkipCdQhbc01tJIMuiFG3Leom79hRFY0H3qK/wJY6wdLlr8VmGAE="
+                  },
+                  {
+                    "type": "text",
+                    "text": "**Decisions**\n- Have a table at the society fair (agreed last week).\n- Joint event with the film society: unclear (they may have said yes or maybe).\n\n**Actions**\n- Collect the banner: owner unclear, date unclear.\n- Pay the table fee: Lena, date unclear.\n- Book a room for the quiz night: Omar, Thursday 20 March.\n- Send the new members' welcome email: Nia, Monday 24 March.\n\n**Open questions**\n- Who has the banner, and who will bring it to the fair?\n- What is the deadline for the table fee?\n- Who donated the quiz prizes, the shop or the cafe?\n- Did the film society say yes or maybe to the joint event?"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 504,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 574,
+                  "output_tokens_details": {
+                    "thinking_tokens": 342
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "## Decisions\n- Have a table at the society fair (agreed last week).\n\n## Actions\n- Collect the banner. Owner: unclear. Date: unclear.\n- Pay the table fee. Owner: Lena. Date: unclear (\"when you can\").\n- Book a room for the quiz night. Owner: Omar. Date: Thursday 20 March.\n- Send the new members' welcome email. Owner: Nia. Date: Monday 24 March.\n\n## Open questions\n- Who has the banner, and who will collect it?\n- What is the deadline for the table fee?\n- Who donated the quiz prizes, the shop or the cafe?\n- Did the film society say yes or maybe to the joint event? (unclear)",
+          "usage": {
+            "input_tokens": 504,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 534,
+            "output_tokens_details": {
+              "thinking_tokens": 301
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:17.968Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011Cfg1HQAjznQyb9LpjCRPG",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQSvgoKEAgSGAI4AUIIdGhpbmtpbmcSDMi3JMtL2OfFtM1E1BoMe51TKRI3NYZXmVU1IjDt98JQ32Ra4zozO7mH+RniNSd4T2EyTjo8Nv4aGvKjr/xd0tXp3fr96Aiv8Fmf0/cq2wn07DWYXJ8ruXxq3BMGcezJEspYERVNEV6wO7v7ah9nHLyCYK8xVZgIjV0l1VWZXACc1P9chDhi5Jg7OQeB+NZ0/xCHV2Kbw/G0UgPchHGKhr3bFaK7BMCLbyvUBIrjbTt7TCimnWW9J9Yfvue8MeD4gnuVRsGiEanErjb+Tg9HDPJYouLLfsEtU674WwFWIHWS7q8NSokZXjI6LCpb3DKA+5TFSB5XhjbblUuyvmLxp2W7Mn2Ngbe74hYQek7nopsCi4DwnhJpxKkELxf4eDi4buTCc0iP9TKSJLAhWoX5lE3ecWQyeYjzoBFR3D3T46vFNL82Y6cud4z9AwclC+1/BQdBhEGztJ5gnvcaZtcnAy0+9mdFiuFHjlEM8eW/4s/kOmsBpHO7OU2+7zi6EYqyA6bsBi4DDYMLos8I+aIRWhneCUF0AnHiKgcRwfSywQmsXjeRbpkgxwqlCygmO4NdHSBy+hLuk44S0Blb1HP0jpv8f27nTFxzXaqDYs/gear3CK05hUiPtmVNt69gaH/0p0f1BV68IXOOLw+DpDCisbqjA/MdGqtDEMaTdbVhiBXU8Pn6dw0/+jmc86FCjZIS4UtStXhi+2pDBaBku5+JxLdvIaSytT26PsF7nXaPsjq1A5ruN5Gsni7EiKYsxdq63hLCWASh0En116vZpMwriFBbBVL+jGL8+aGRsjBFettFHOncN0jP3C89W/CefXUeE4ncSfoE9VKkBpd0r/FdJP4IPlmi6Ns42vGCqkYSgv3lZ3JT/EyvsIfDdfmO1bBbHUVbc4lgN5DvRRbowrIIAYWrnX1IeB6vSvQ6SyFXGc8r4drepATxYRzDV7nEPWlNPkvbzArG9Vy2y7v3UUtS92HTfzqVH/vSRvpb0IHuRqIXND8gPyKQ6SF9PbT4/q1DQIpfF8zVU3vNMKqRi3EHUO5Rt3pl69AeGWiOTksmmYRBecU3S+40doJVLRCyH9ZrZBYxdgYWqXn7ub1g58gVg+LiFBIlsv5kO54IYPizhQE7Dt9OWLOmv0ihSmr9OiWIx23mbnOGssapitl4D63vaqUuMhFD3wvNIUHAPvjMb5/hreNoKnP88PaEnDvNpwAdoeRe1DonloxRUurUz4A0WkafYJd5xBlDXtLEKRTYAv+QwM4OZTcKtCr1osRa7vq7J6oSCFijno5zgyrZYaty/ddBenPkFU4R8mOoMyDgjglVbQenitwyNhki+rw9PX7iXXXPGBJepcbnSl0QEMSRffDSMni1FgYZTU7mFHs3xrgGSwQ/Me+ly39pyKL35uszqTfnB2A/+UV6hhLMFnki326dKA4GdTs4038xqe8UWrW194tv9axJbTf12ieqHv+wPvya4tx0/9KahE3QxoiGP6fmCVoxu0DYOauha577t53BE23UTa2aIp9r5B6bf/dvSiCPKTjpiJpytHZ7MPwRE2yaFj2/UmjAwkmN3lDjmpVyG/HCoyFlxfphBJZt12mRmHekDi4YtNGs6+80qV9gL5767IkBiCRsS4Q9zPR7lKl20fJkFgNc9+1btEE9B2BIpUxl2tRWbOPALl0aorPELMPgvyTIFoW92hGH7vlMK3YGyd2jtpspWg9uJjRvwpc4BB6R9y4nwdTGaEDK2WSl3PXnZHhN8gEzKTS9GAE="
+                  },
+                  {
+                    "type": "text",
+                    "text": "## Decisions\n- Have a table at the society fair (agreed last week).\n\n## Actions\n- Collect the banner. Owner: unclear. Date: unclear.\n- Pay the table fee. Owner: Lena. Date: unclear (\"when you can\").\n- Book a room for the quiz night. Owner: Omar. Date: Thursday 20 March.\n- Send the new members' welcome email. Owner: Nia. Date: Monday 24 March.\n\n## Open questions\n- Who has the banner, and who will collect it?\n- What is the deadline for the table fee?\n- Who donated the quiz prizes, the shop or the cafe?\n- Did the film society say yes or maybe to the joint event? (unclear)"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 504,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 534,
+                  "output_tokens_details": {
+                    "thinking_tokens": 301
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "T2 B",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791062482,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "### **Decisions**\n- Society fair stall: Confirm table booking (agreed last week).\n- Quiz night: Book a room (Omar).\n- Quiz night prizes: Clarify source (unclear).\n- New members' welcome email: Send by Monday 24 March (Nia).\n\n### **Actions**\n- Collect society fair banner: **unclear** (owner) – **unclear** (date).\n- Pay society fair table fee: Lena – **unclear** (date).\n- Book quiz night room: Omar – Thursday 20 March.\n- Send new members' welcome email: Nia – Monday 24 March.\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the society fair table fee?\n- Source of quiz night prizes (shop or café)?\n- Confirmation of joint event with film society (yes/maybe/unclear).",
+          "usage": {
+            "prompt_tokens": 348,
+            "total_tokens": 537,
+            "completion_tokens": 189,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:22.032Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "a6447ff6ee2047d2b770fbbd41a962b2",
+                "created": 1791062542,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 348,
+                  "total_tokens": 537,
+                  "completion_tokens": 189,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "### **Decisions**\n- Society fair stall: Confirm table booking (agreed last week).\n- Quiz night: Book a room (Omar).\n- Quiz night prizes: Clarify source (unclear).\n- New members' welcome email: Send by Monday 24 March (Nia).\n\n### **Actions**\n- Collect society fair banner: **unclear** (owner) – **unclear** (date).\n- Pay society fair table fee: Lena – **unclear** (date).\n- Book quiz night room: Omar – Thursday 20 March.\n- Send new members' welcome email: Nia – Monday 24 March.\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the society fair table fee?\n- Source of quiz night prizes (shop or café)?\n- Confirmation of joint event with film society (yes/maybe/unclear)."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "### **Decisions**\n- Society fair stall: Confirm table booking (agreed last week).\n- Quiz night: Book a room (Omar).\n- Quiz night prizes: Clarify source (shop or café).\n\n### **Actions**\n- **Collect society fair banner** – *unclear owner* – *unclear date*\n- **Pay table fee** – Lena – *unclear date*\n- **Book quiz night room** – Omar – **Thursday 20 March**\n- **Send new members' welcome email** – Nia – **Monday 24 March**\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the table fee?\n- Source of quiz night prizes (shop or café).\n- Confirmation of joint event with film society (yes/maybe/unclear).",
+          "usage": {
+            "prompt_tokens": 348,
+            "total_tokens": 519,
+            "completion_tokens": 171,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:24.258Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "7749527703fd4f76abf3260c5f56f522",
+                "created": 1791062544,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 348,
+                  "total_tokens": 519,
+                  "completion_tokens": 171,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "### **Decisions**\n- Society fair stall: Confirm table booking (agreed last week).\n- Quiz night: Book a room (Omar).\n- Quiz night prizes: Clarify source (shop or café).\n\n### **Actions**\n- **Collect society fair banner** – *unclear owner* – *unclear date*\n- **Pay table fee** – Lena – *unclear date*\n- **Book quiz night room** – Omar – **Thursday 20 March**\n- **Send new members' welcome email** – Nia – **Monday 24 March**\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the table fee?\n- Source of quiz night prizes (shop or café).\n- Confirmation of joint event with film society (yes/maybe/unclear)."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "### **Decisions**\n- Society fair stall: Book a table.\n- Quiz night: Book a room (Omar).\n- Quiz night: Confirm prizes (unclear source).\n- New members' welcome email: Send by Monday 24 March (Nia).\n\n### **Actions**\n- **Collect society fair banner** – *unclear owner* – *unclear date*\n- **Pay table fee** – Lena – *unclear date*\n- **Book quiz night room** – Omar – Thursday 20 March\n- **Send new members' welcome email** – Nia – Monday 24 March\n- **Clarify joint event with film society** – *unclear owner* – *unclear date*\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the table fee?\n- Where did the quiz night prizes come from?\n- Did the film society confirm or say \"maybe\" to the joint event?",
+          "usage": {
+            "prompt_tokens": 348,
+            "total_tokens": 548,
+            "completion_tokens": 200,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:22:26.109Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Procedure: meeting notes. Purpose: turn a transcript into notes a busy team can read in one minute. Steps: 1. List decisions. 2. List actions, each with an owner and a date. 3. List open questions. Rules: never invent a name or a date; if something is unclear, write 'unclear'. Format: three headed lists, nothing else.\n\nSam (chair): Welcome back. First, the society fair stall. We agreed last week to have a table. Who is bringing the banner?\nLena (treasurer): Someone should bring the banner, but I do not know who has it.\nSam: Okay, the banner needs collecting. Moving on. Lena, can you pay the table fee?\nLena: Yes, I will pay it, but I have not heard what the deadline is.\nSam: Fine, please do it when you can. We have forty members now, so the table should look welcoming. Next, the quiz night. Omar, you said you would book a room.\nOmar: I will book the room by Thursday 20 March.\nSam: Great. And the prizes?\nOmar: Hmm, I think the shop gave us something, or maybe it was the cafe. I cannot remember which.\nSam: We will work it out later. Next, the new members' welcome email. Nia, you have the list.\nNia: I will send it by Monday 24 March.\nSam: Now the joint event with the film society. I think they said yes, but possibly they said maybe.\nNia: I was not there when they replied.\nSam: Okay, that is unclear. Let's close."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "f19beaf51bd8479791c53313f1dbcf7d",
+                "created": 1791062546,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 348,
+                  "total_tokens": 548,
+                  "completion_tokens": 200,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "### **Decisions**\n- Society fair stall: Book a table.\n- Quiz night: Book a room (Omar).\n- Quiz night: Confirm prizes (unclear source).\n- New members' welcome email: Send by Monday 24 March (Nia).\n\n### **Actions**\n- **Collect society fair banner** – *unclear owner* – *unclear date*\n- **Pay table fee** – Lena – *unclear date*\n- **Book quiz night room** – Omar – Thursday 20 March\n- **Send new members' welcome email** – Nia – Monday 24 March\n- **Clarify joint event with film society** – *unclear owner* – *unclear date*\n\n### **Open Questions**\n- Who has the society fair banner?\n- What is the deadline for paying the table fee?\n- Where did the quiz night prizes come from?\n- Did the film society confirm or say \"maybe\" to the joint event?"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

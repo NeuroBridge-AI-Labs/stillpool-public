@@ -1,0 +1,27 @@
+---
+// The MDX h2 override (plan T6.2, D5, F10): a Core heading keeps its id and gains a depth group that flips this
+// section only, named "Reading depth for <heading>" through the page's hidden #part-depth-for label and the heading.
+// src/depth.ts does the flipping; without JavaScript the group is hidden and both layers show. The read group (T9.1,
+// src/readaloud.ts) reads this section's visible layers with a voice on the device, named "Listen to <heading>". Where
+// scripts/voice-tool/voice.ts made Emma's audio for a layer, a hidden native player holds its URL, loaded only on
+// Read aloud; check:voice holds every file to the current text.
+import { existsSync, readFileSync } from 'node:fs';
+
+const { id } = Astro.props;
+const MANIFEST = 'public/voice/manifest.json';
+const made: [string, { page: string; part: string; layer: string }][] = Object.entries(existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {});
+const audio = (layer: string) => made.find(([, e]) => e.page === Astro.url.pathname && e.part === id && e.layer === layer)?.[0];
+const [simple, deep] = [audio('simple'), audio('deep')];
+---
+
+<h2 id={id} tabindex="-1"><slot /></h2>
+<div class="depth" role="group" aria-labelledby={`part-depth-for ${id}`} data-section data-pagefind-ignore>
+  <button type="button" data-depth="simple" aria-pressed="true">Simple only</button>
+  <button type="button" data-depth="deep" aria-pressed="false">Add Deep</button>
+</div>
+<div class="read" role="group" aria-labelledby={`part-read-for ${id}`} data-voice={id} data-pagefind-ignore>
+  <button type="button" data-read="start">Read aloud</button>
+  <button type="button" data-read="stop">Stop</button>
+  <span role="status"></span>
+  {(simple || deep) && <audio controls preload="none" hidden data-simple={simple && `/${simple}`} data-deep={deep && `/${deep}`} />}
+</div>

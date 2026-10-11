@@ -1,0 +1,236 @@
+---
+title: Format
+promise: Can ask for an answer in the shape and reading level you need
+minutes: {simple: 7, deep: 13}
+tldr:
+  - "A request can name the shape you want: a table, its columns, and how long each sentence may be."
+  - "In this lesson's recordings, asking for a shape got that shape. Count and read the answer to check it."
+  - "Saying a rule again at the end of a long message changed nothing we could count in these runs."
+misconceptions: [M12]
+interactive: shape-the-answer
+inputs: [src/lib/p2-runs.ts, src/lib/layer-explorer.ts, src/components/RunCard.astro, src/components/Runs.astro, src/components/AllRuns.astro, src/components/TheAIs.astro, src/lib/reply-html.ts]
+competencies: [UNESCO-AICFS-4.2.3, HEA-PEA-2.3.1-e, HEA-ALT-4, AIF-2.a, AIF-2.c, AILIT-C3]
+checkin:
+  - question: A request asked for a table with four named columns. What did the six recorded answers have?
+    options:
+      - text: A table with those four columns, in every run.
+        why: Yes. Both models gave that table in all three runs each. Ministral 3 14B also added one line before it.
+        right: true
+      - text: A long answer with headings, and no table.
+        why: Not this one. That is closer to the request with no shape. And even that request got a table.
+      - text: A table with different columns in each run.
+        why: Not this one. The four columns were the same in all six runs.
+      - text: A table in some runs, and a list in others.
+        why: Not this one. All six answers were tables.
+  - question: A long message asks for "exactly three bullet points". The rule sits once in the middle, or again at the end. What did repeating it change?
+    options:
+      - text: Nothing we could count. All twelve answers had three top-level bullets.
+        why: Yes. The rule was kept with or without the repeat, in both models. These runs cannot say more than that.
+        right: true
+      - text: It made the answers keep to three bullets.
+        why: Not this one. The answers kept to three bullets when the rule was said only once.
+      - text: It made the answers much shorter.
+        why: Not this one. The lengths of the answers overlapped. The rule counted bullets, not words.
+      - text: It proves that saying a rule again never helps.
+        why: Not this one. Twelve runs from two models on one day cannot prove that. They only show no change here.
+badge:
+  earnedBy: [checkin-1, checkin-2]
+  celebration: You worked out what asking for a shape got.
+glossary:
+  - term: prompt
+    meaning: The words you send to a model, such as a question or a task.
+  - term: run
+    meaning: One recorded answer. Each request in this lesson was sent three times to each model, so each has three runs.
+  - term: column
+    meaning: One vertical line of cells in a table. Its top cell says what the column holds.
+  - term: top-level bullet
+    meaning: A bullet that sits at the left edge of a list. A smaller bullet indented under it is not top-level.
+  - term: reading level
+    meaning: How hard a text is to read. Short sentences and common words make it easier.
+  - term: XML tag
+    meaning: A label in angle brackets. A start tag and an end tag mark a piece of text.
+whereNext:
+  title: Lost in the Middle, by Liu and others
+  text: A free paper, first posted in July 2023, with 7 authors. No login is needed. It is on a different website, and it is written for researchers.
+  url: https://arxiv.org/abs/2307.03172
+sources:
+  - title: "Anthropic, Claude Platform Docs, Structure prompts with XML tags (read 4 October 2026)"
+    url: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags
+    licence: All rights reserved
+    use: cite
+  - title: "Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni and Liang, Lost in the Middle: How Language Models Use Long Contexts, arXiv:2307.03172 (version 3, 20 November 2023)"
+    url: https://arxiv.org/abs/2307.03172
+    licence: arXiv non-exclusive licence 1.0
+    use: cite
+  - title: "OpenAI, Cookbook, GPT-4.1 Prompting Guide: Prompt Organization (page dated 14 April 2025)"
+    url: https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide
+    licence: MIT
+    use: cite
+  - title: "Zhang and others, LIFEBench: Evaluating Length Instruction Following in Large Language Models, arXiv:2505.16234 (version 2, 11 June 2025)"
+    url: https://arxiv.org/abs/2505.16234
+    licence: CC-BY-4.0
+    use: cite
+  - title: "Pashler, McDaniel, Rohrer and Bjork (2008), Psychological Science in the Public Interest, 9(3), 105-119"
+    url: https://doi.org/10.1111/j.1539-6053.2009.01038.x
+    licence: All rights reserved
+    use: cite
+  - title: "PromptSage V2, a prompt framework by Emanuel Covasa (written up as a paper, not yet published, 2026)"
+    unpublished: true
+    licence: All rights reserved
+    use: cite
+provenance:
+  model: claude-sonnet-5-5
+  date: 2026-10-03
+signed: false
+---
+
+## One task, two requests
+
+<Simple>
+Here is one task: compare three ways to revise for an exam. We sent it to two models in two ways.
+
+The first request was only that sentence. The second also named a shape: a table, four columns, plain words, and sentences under 15 words. The columns were method, what it helps with, time needed, and one tip.
+
+The models are Claude Sonnet 5.5, made by Anthropic, and Ministral 3 14B, made by Mistral AI. Each request went to each model three times. Every answer was recorded on 3 October 2026.
+</Simple>
+
+<Deep>
+The request said what to compare and nothing about the answer's shape. So the shape of each reply was the model's own choice. That is what the first request tests.
+
+Both models were called through each maker's API (a way for one program to send a request to another), with no tools and no system prompt, and the temperature was not set for either. Ministral 3 14B's model card in the recording lists a default temperature of 0.3. The reply limit was set to 4,000 tokens for both.
+
+What a model does with a request is a fact about that model on that day. Another model, or another day, can answer in another shape.
+
+This lesson looks at shape. It does not check whether the revision advice in the answers is right.
+</Deep>
+
+## Ask for the shape
+
+<Simple>
+You can ask for the content only. But you can also name the shape. You can name the layout, such as a table or a list. You can name the columns. You can name how long a sentence may be.
+
+A shape you can use as it comes saves you from reshaping the answer by hand.
+
+Below, the activity asks you to predict the shape of the answers before you see them. It shows every run, with its model and date. The answers are there.
+</Simple>
+
+<Deep>
+PromptSage is a prompt framework by Emanuel Covasa, written up as a paper that is not yet published. This lesson names the shape of an answer; PromptSage also names the parts of the prompt that asks for it. It splits a prompt into seven labelled layers, each written between XML tags, such as `<identity>` and `</identity>`. The opening and closing tags mark where each part starts and ends.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site. It is one worked framework, not the standard.
+
+Anthropic says XML tags help Claude read a prompt that mixes instructions with other content, such as context, examples and inputs. It says wrapping each kind of content in its own tag "reduces misinterpretation" (read on 4 October 2026). This is its advice for Claude, not a guarantee. You can learn more about XML tags in [Anthropic's guide](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#structure-prompts-with-xml-tags), a free page on a different website, written for developers.
+
+The activity has one more part, for the Deep layer: a layer explorer. It shows six to eight rules from an invented study-helper prompt. For each rule, you predict which of PromptSage's seven layers it belongs in. Then you see the same prompt built layer by layer. That prompt is not a recording. We wrote it for this lesson, and no model answered it.
+
+A request can also fix a shape by example. Lesson 2.4 shows that. This lesson uses a description of the shape instead.
+
+Lesson 2.1 shows the same idea in one line: say what shape the answer should take.
+
+</Deep>
+
+<TryIt />
+
+## What the answers had
+
+<Simple>
+With no shape asked for, all six answers were long. Each had headings, lists and a table. By our count, Claude Sonnet 5.5's answers ran between 323 and 352 words. Ministral 3 14B's ran between 637 and 720 words.
+
+So a table came even when we did not ask for one. Asking for the shape made the answers shorter and gave them the four columns we named.
+
+With the shape asked for, all six answers were a table with the four columns. They ran between 56 and 85 words.
+
+Claude Sonnet 5.5 gave only the table. Ministral 3 14B put one line before it: "Here’s a simple comparison table:". It did that in all three runs.
+
+The three ways chosen still changed from run to run. Lesson 2.6 covers how runs differ.
+</Simple>
+
+<Deep>
+We counted the replies ourselves, with a script, and the counts are in the research notes for this lesson. Words are counted as pieces of text that hold a letter or a digit.
+
+The rest of the no-shape answers differed by model. Claude Sonnet 5.5 chose re-reading and active recall in all three runs, then practice papers once and spaced repetition twice. Ministral 3 14B chose active recall, a method it called the Feynman Technique, and mixing topics in all three. It added star ratings in its table and ended each answer with an offer of a tailored plan.
+
+Three runs for each model is a small sample. It shows what these two models did on 3 October 2026. It does not show how often another model would give a table without being asked.
+
+Ministral 3 14B's no-shape answers also sorted students into kinds of learner, such as "visual/auditory learners" and "kinesthetic/active learners" in one run, "verbal learners" in another, and a similar split in the third. Pashler and others (2008) reviewed the evidence on teaching each student in the mode they prefer. They found no adequate evidence to justify it in general teaching. Each of those runs is marked on screen.
+</Deep>
+
+## Check that it kept to it
+
+<Simple>
+Asking is not the same as getting. So check. For a table, count the columns, and read the column headings. For sentence length, read each cell.
+
+We did that. In all six shaped answers, every sentence in the table was under 15 words. The longest had 11.
+
+We did not measure "plain words". We measured only sentence length. A short sentence can still use hard words.
+
+Ministral 3 14B's extra line was not asked for. It is harmless here. But if you paste the answer somewhere that needs only a table, you have to delete it.
+
+We did not ask for a word count. If you do, count the words yourself. Lesson 4.1 will cover checking an answer.
+</Simple>
+
+<Deep>
+Counts of words are the weak spot. LIFEBench (first posted 22 May 2025, version 2 of 11 June 2025) tested 26 models on 10,800 instances, with length asks from 16 to 8,192 words. Its abstract says: "most models reasonably follow short-length instructions but deteriorate sharply beyond a certain threshold".
+
+It tested models such as Claude 3.7 Sonnet and Mistral 7B Instruct v0.2. It did not test Claude Sonnet 5.5 or Ministral 3 14B. Our requests asked for sentence length, not a total. So this study says what to watch for. It does not say what these two models would do.
+
+Lesson 2.3 shows why a rule in a prompt is a request and not a lock. The same goes for a shape.
+
+There is no study in our research notes that measures how well models hit a reading level, such as "explain it for a 12 year old". We looked, and did not find one. So the lesson claims nothing about it.
+</Deep>
+
+## A rule in a long message
+
+<Simple>
+Now a longer message. We invented a message of about 300 words, from a student who runs a study group. It had one rule in the middle: "Answer in exactly three bullet points."
+
+We sent it two ways. In the first, the rule appeared once. In the second, the rule appeared again at the very end.
+
+All twelve answers had three top-level bullets. That is two models, three runs, and two messages. Saying the rule twice changed nothing we could count.
+
+Claude Sonnet 5.5 sometimes put smaller bullets inside a bullet. That happened in one run of the first message, and in three runs of the second. Whether that breaks "exactly three" depends on how you count. Say what you mean, such as "no smaller bullets".
+
+The rule counted bullets. It did not make the bullets short. Claude Sonnet 5.5's three bullets held between 348 and 451 words in all.
+
+This message was long for a request, but short for a model. Lesson 1.8 shows what happens when a chat gets much longer.
+</Simple>
+
+<Deep>
+The rule sat after the first paragraph, about two fifths of the way into the first message. In the second message it came again as the last line. Nothing else changed.
+
+These runs are twelve answers from two models. Both models also kept the rule when it appeared once. So there was no failure for the repeat to fix. A test of a repeat needs a message where the rule sometimes fails.
+
+What do the sources say about where a rule sits? Liu and others tested where relevant information sits in a long input. Their abstract says "performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models".
+
+The limit: they measured two tasks, answering a question from several documents and finding a stored value, on models from 2023, such as GPT-3.5-Turbo and Claude-1.3. They moved the facts a model needs. They did not move a rule. So the study says where a fact sits matters in a long input. It does not say where a rule sits matters.
+
+OpenAI's GPT-4.1 prompting guide, dated 14 April 2025, gives advice for its own models: "If you have long context in your prompt, ideally place your instructions at both the beginning and end of the provided context, as we found this to perform better than only above or below." It adds: "If you’d prefer to only have your instructions once, then above the provided context works better than below." And on clashing instructions: "GPT-4.1 tends to follow the one closer to the end of the prompt." That is OpenAI's own claim, about GPT-4.1. It is not about Claude Sonnet 5.5 or Ministral 3 14B.
+
+So here is the answer to this section's question: where should a rule sit? We found a study of where facts sit, and one maker's advice for one family of models. We found no study that measures where a format rule sits. Our own runs showed no difference.
+</Deep>
+
+## Two habits for a prompt you reuse
+
+<Simple>
+Two habits can help when you write a prompt you will use again.
+
+First, keep the choices a user may change in one place, such as the language, the tone and the length. Then they are easy to find and easy to change.
+
+Second, say your most important rules again at the end. In our runs, this changed nothing we could count. It costs one line.
+
+OpenAI advises it for long prompts to its GPT-4.1 models. We tested other models, with a short message.
+</Simple>
+
+<Deep>
+On the map of PromptSage's seven layers in lesson 2.1, layer 6 is Customizable Defaults. The paper's skeleton marks it `<defaults override="by_user">`, with `style`, `language` and `verbosity` inside. In plain words, these are the settings a user may change. The paper says its layers run "from immutable safety rules (Layer 1) to user-adjustable preferences (Layer 6)". It also says: "Higher layers always override lower layers". So a default is the lowest layer, and in the paper's design it is not meant to override the ones above. The paper also says prompt-level constraints are advisory, so that order has to be tested.
+
+Layer 7 is Sandwich Reinforcement, marked `<reinforcement>`. The paper describes the pattern like this: "Critical rules are placed at both the beginning and end of the system prompt, exploiting both primacy and recency attention biases". Its example restates a rule from the opening at the close.
+
+That reason is the paper's own claim. The closest sources above are Liu and others, who measured facts and not rules, and OpenAI's advice for one model family. Our twelve runs showed no change. So treat layer 7 as a habit one maker advises, not as a proven effect.
+
+The paper also describes a hybrid way to write a prompt: "using Markdown headers for top-level human-readable organization and XML tags for content boundaries and behavioral control". It says the hybrid "produces the strongest results across model families". That is a claim from the paper's own tests, and we did not test it. Note the difference: this is the format of the prompt, not of the answer.
+
+The paper says its own limits: "All prompt-level constraints are advisory, not absolute." and "Current findings are based on controlled testing rather than large-scale deployment." Lesson 2.3 shows the same limit on a recorded clash.
+
+Disclosure: PromptSage was created by Emanuel Covasa, who also created this site.
+</Deep>

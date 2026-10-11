@@ -1,0 +1,88 @@
+---
+// "Earning a badge" on the home page (Pool Band v2 mock-up, #badge): a sample of the moment a badge is earned, with a
+// Preview button and a Reset. It is an example only: nothing is read from or written to progress. Its classes and ids are
+// its own (.preview-*), so the map's real badge queries never see it. The emblems are drawn whole (no sprite), and the
+// pillar drawing reuses the symbol the map beside it already emits.
+import '../styles/badge-preview.css';
+import { getCollection } from 'astro:content';
+import { numbers } from '../contents.ts';
+import Emblem from './Emblem.astro';
+import Glyph from './Glyph.astro';
+
+const PILLAR = 'how-ai-works';
+const SAMPLE = `${PILLAR}/what-ai-is-and-is-not`;
+const SHOWN = `${PILLAR}/tokens`;
+const built = await getCollection('lessons');
+const lesson = (id: string) => built.find((l) => l.id === id)!;
+const sample = lesson(SAMPLE).data;
+const shown = lesson(SHOWN).data;
+const pillar = (await getCollection('map')).find((p) => p.data.id === PILLAR)!.data.title;
+const number = numbers(built).get(SAMPLE);
+---
+
+<section class="badge-preview" aria-labelledby="preview-title">
+  <h2 id="preview-title">Earning a badge</h2>
+  <p>
+    A badge is a small emblem for something you can now do. You earn it by doing the lesson's activity: the check-in, which is a few
+    short questions near the end of a lesson. Finishing a lesson does not earn one by itself.
+  </p>
+  <p class="preview-tag">Example preview. This does not change your progress.</p>
+  <div class="preview-demo">
+    <div class="preview-lesson">
+      <div>
+        <p class="preview-num">Lesson {number}</p>
+        <h3>{sample.title}</h3>
+        <p>{sample.promise}</p>
+      </div>
+      <button type="button" id="preview-button">Preview earned badge</button>
+    </div>
+    <div class="preview-frame">
+      <div>
+        <h3>The badge in this example</h3>
+        <p class="preview-await">The badge for this lesson appears here once it is earned.</p>
+        <div class="closeup preview-earned">
+          <Emblem lesson={SAMPLE} label={`Badge for ${sample.title}`} />
+        </div>
+        <p class="can preview-earned">{sample.promise}</p>
+      </div>
+      <div>
+        <h3>Badges in this example</h3>
+        <div class="preview-net">
+          <div class="preview-hub">
+            <Glyph pillar={PILLAR} sprite />
+            <span>{pillar}</span>
+          </div>
+          <ul class="preview-items">
+            <li><Emblem lesson={SHOWN} label={`Badge: ${shown.title}`} /><p><small>{shown.title}</small>{shown.promise}</p></li>
+            <li class="preview-earned"><Emblem lesson={SAMPLE} label={`Badge: ${sample.title}`} /><p><small>{sample.title}</small>{sample.promise}</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="preview-status sr-only" role="status" id="preview-status"></p>
+  </div>
+  <p class="preview-hidden">Your progress is hidden, so no badge is shown. Switch "Hide my progress" off to preview one.</p>
+</section>
+
+<script>
+  const root = document.documentElement;
+  const device = matchMedia('(prefers-reduced-motion: reduce)');
+  const still = () => device.matches || root.dataset.motion === 'reduce' || 'focus' in root.dataset;
+  const demo = document.querySelector<HTMLElement>('.preview-demo')!;
+  const button = document.querySelector<HTMLButtonElement>('#preview-button')!;
+  const closeup = demo.querySelector<HTMLElement>('.closeup')!;
+  const status = document.querySelector<HTMLElement>('#preview-status')!;
+  button.addEventListener('click', () => {
+    const earned = demo.classList.toggle('earned');
+    button.textContent = earned ? 'Reset the preview' : 'Preview earned badge';
+    status.textContent = earned ? 'Preview shown' : 'Preview reset';
+    closeup.classList.remove('playing');
+    if (!earned || still()) return;
+    closeup.classList.add('playing'); // the emblem is drawn once, as in a real lesson
+    Promise.allSettled(closeup.getAnimations({ subtree: true }).map((a) => a.finished)).then(() => closeup.classList.remove('playing'));
+  });
+  // Reduce motion or Focus mode ends a drawing at once, leaving the finished emblem.
+  const settle = () => still() && closeup.classList.remove('playing');
+  device.addEventListener('change', settle);
+  addEventListener('change', () => queueMicrotask(settle));
+</script>

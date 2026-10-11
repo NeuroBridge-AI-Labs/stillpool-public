@@ -1,0 +1,8 @@
+---
+// 3.4's "Energy and water" (stage I, static): six comparisons of a task with an everyday thing, each as the sourced range
+// in words, with its source, its date and what it counts.
+import { CASES, INTRO, NOTES, OPTIONS, QUESTION } from '../lib/energy-and-water.ts';
+import Cases from './Cases.astro';
+---
+
+<Cases title="Energy and water estimator" name="energy-and-water" noun="Comparison" intro={INTRO} question={QUESTION} options={OPTIONS} cases={CASES} notes={NOTES} />

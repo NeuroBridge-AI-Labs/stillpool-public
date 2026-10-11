@@ -1,0 +1,6 @@
+# R-1.8, in 1.8's hash (p6 D4, D5): each run's label, the first that applies after reading it (pack R9); summary by rule (R10)
+R-1.8:
+  summary: by rule
+  checked: 2026-09-28
+  by: Vanilla (claude-opus-5-5); L5 re-checks every label
+  runs: [{run: 1, answer: says-not-told}, {run: 2, answer: says-not-told}, {run: 3, answer: says-not-told}]

@@ -1,0 +1,7 @@
+/* 5.4's interactive. The status is a word first; the line beside it repeats it by shape, for a reader who does not see colour. */
+.skill-file-checker pre { padding: 0.75rem 1rem; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--tint); }
+.skill-own textarea { box-sizing: border-box; width: 100%; }
+:is(.skill-file-checker, .skill-own) dd[data-status] { padding-left: 0.75rem; border-left: 4px solid var(--accent); }
+:is(.skill-file-checker, .skill-own) dd[data-status="missing"] { border-left-style: dashed; }
+:is(.skill-file-checker, .skill-own) dd[data-status="vague"] { border-left-style: dotted; }
+:is(.skill-file-checker, .skill-own) dt { margin-top: 0.75rem; }

@@ -1,0 +1,23 @@
+.card-rows { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 0.25rem 1rem; margin: 0.75rem 0; }
+.card-rows dt { font-weight: 700; }
+.card-rows dd { margin: 0; }
+.your-card .match { color: var(--text-muted); }
+.your-card details { margin-bottom: 1rem; }
+.your-card .sent { margin: 0.75rem 0 0; padding: 0.75rem 1rem; background: var(--tint); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+html[data-js]:not([data-textversion]) .card-ran blockquote { display: none; }
+@media (max-width: 40rem) { .card-rows { grid-template-columns: minmax(0, 1fr); gap: 0; } .card-rows dd { margin-bottom: 0.5rem; } }
+/* A transcript: one turn per row. Each speaker has a colour, an initial in a square and the name on every turn, so the
+   colour is never the only cue. 2.7's skill card: the four labelled rows first, the assembled prompt in one disclosure. */
+.transcript { container-type: inline-size; margin: 0.75rem 0 1rem; padding: 0; list-style: none; background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.turn { --row: color-mix(in srgb, var(--sp) 9%, var(--surface)); display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); border-left: 5px solid var(--sp); }
+.turn + .turn { border-top: var(--border-width) solid color-mix(in srgb, var(--border) 40%, var(--surface)); }
+.turn:first-child { border-top-left-radius: var(--radius-large); }
+.turn:last-child { border-bottom-left-radius: var(--radius-large); }
+.who { display: flex; align-items: center; gap: 0.625rem; padding: 0.75rem; background: var(--row); }
+.who b { display: grid; flex: none; place-items: center; width: 2rem; height: 2rem; color: #fff; background: var(--sp); border-radius: var(--radius); }
+.who strong, .who small { display: block; line-height: 1.25; }
+.who small { font-size: 0.8rem; color: var(--text-muted); }
+.turn > p { margin: 0; padding: 0.75rem 1rem; }
+@container (max-width: 36rem) { .turn { grid-template-columns: minmax(0, 1fr); } .who { padding-bottom: 0.375rem; } .turn > p { padding-top: 0.5rem; } }
+.sp-1 { --sp: var(--sp-1); } .sp-2 { --sp: var(--sp-2); } .sp-3 { --sp: var(--sp-3); } .sp-4 { --sp: var(--sp-4); } .sp-5 { --sp: var(--sp-5); }
+[data-theme="dark"] .turn { --row: color-mix(in srgb, var(--sp) 10%, #000); }

@@ -1,0 +1,862 @@
+{
+  "id": "R-2.4",
+  "model": {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "host": "Anthropic Messages API"
+  },
+  "date": "2026-10-03",
+  "settings": {
+    "max_tokens": 4000,
+    "temperature": "not set, so the model's default",
+    "tools": "no tools",
+    "system prompt": "in each variant that has one"
+  },
+  "variants": [
+    {
+      "label": "A",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that each token has of its own.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will every tokeniser cut the same word in the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n**Card 7 (cloze)**\n**Q:** Each token has its own number, called its ______ ______.\n**A:** token ID\n\n**Card 8 (cloze)**\n**Q:** A ______ cuts text into tokens, and different ones can cut the same word in ______ ways.\n**A:** tokeniser; different",
+          "usage": {
+            "input_tokens": 162,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 416,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:31.336Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzPKggCRsQd9AzFTpEy",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that each token has of its own.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will every tokeniser cut the same word in the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n**Card 7 (cloze)**\n**Q:** Each token has its own number, called its ______ ______.\n**A:** token ID\n\n**Card 8 (cloze)**\n**Q:** A ______ cuts text into tokens, and different ones can cut the same word in ______ ways.\n**A:** tokeniser; different"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 162,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 416,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that belongs to each token.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will every tokeniser cut the same word in the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n---\n\n**Optional cloze versions:**\n\n1. A token can be a whole word, part of a word, or a single ______.\n   *(letter)*\n2. Each token has its own number, called its ______ ______.\n   *(token ID)*\n3. The o200k_base tokeniser cuts \"strawberry\" into \"st\", \"raw\" and \"______\".\n   *(berry)*",
+          "usage": {
+            "input_tokens": 162,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 428,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:34.752Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzPZpigDSsAi94Evkeg",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that belongs to each token.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will every tokeniser cut the same word in the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n---\n\n**Optional cloze versions:**\n\n1. A token can be a whole word, part of a word, or a single ______.\n   *(letter)*\n2. Each token has its own number, called its ______ ______.\n   *(token ID)*\n3. The o200k_base tokeniser cuts \"strawberry\" into \"st\", \"raw\" and \"______\".\n   *(berry)*"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 162,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 428,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that each token has of its own.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will different tokenisers always cut the same word the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n---\n\n**Optional cloze versions:**\n\n1. A ______ is a small piece of text: a whole word, part of a word, or a single letter. *(token)*\n2. Each token has its own number, called its ______. *(token ID)*\n3. The o200k_base tokeniser cuts \"strawberry\" into \"st\", \"raw\" and \"______\". *(berry)*\n4. More tokens use up more of the ______ a model has for text. *(room)*",
+          "usage": {
+            "input_tokens": 162,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 452,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:37.970Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzPoKpXQhTdwAsJGhYA",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "# Flashcards: Tokens and Tokenisers\n\n**Card 1**\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n**Card 2**\n**Q:** What is a token ID?\n**A:** The number that each token has of its own.\n\n**Card 3**\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n**Card 4**\n**Q:** Will different tokenisers always cut the same word the same way?\n**A:** No. Different tokenisers can cut the same word in different ways.\n\n**Card 5**\n**Q:** How does the o200k_base tokeniser cut \"strawberry\"?\n**A:** Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\n**Card 6**\n**Q:** Why does it matter if a text is cut into more pieces?\n**A:** More pieces fill up the room a model has for text.\n\n---\n\n**Optional cloze versions:**\n\n1. A ______ is a small piece of text: a whole word, part of a word, or a single letter. *(token)*\n2. Each token has its own number, called its ______. *(token ID)*\n3. The o200k_base tokeniser cuts \"strawberry\" into \"st\", \"raw\" and \"______\". *(berry)*\n4. More tokens use up more of the ______ a model has for text. *(room)*"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 162,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 452,
+                  "output_tokens_details": {
+                    "thinking_tokens": 0
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791061831,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here are your flashcards based on the notes:\n\n### **Front (Question) / Back (Answer)**\n\n1. **What is a token?**\n   A small piece of text that can be a whole word, part of a word, or a single letter.\n\n2. **What is a token ID?**\n   A unique number assigned to each token.\n\n3. **What is a tokenizer?**\n   A tool that breaks text into tokens.\n\n4. **How can different tokenizers process the same word differently?**\n   They may split it into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-berr-y\").\n\n5. **How does the *o200k_base* tokenizer split \"strawberry\"?**\n   It cuts it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n6. **What happens when text is split into more tokens?**\n   It fills up the model’s available space for processing text (more tokens = more memory/space used).\n\n---\nWould you like any modifications (e.g., simpler language, more examples)?",
+          "usage": {
+            "prompt_tokens": 114,
+            "total_tokens": 348,
+            "completion_tokens": 234,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:41.350Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "faa5d740f7334a9fab90dcc6ce604948",
+                "created": 1791061841,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 114,
+                  "total_tokens": 348,
+                  "completion_tokens": 234,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are your flashcards based on the notes:\n\n### **Front (Question) / Back (Answer)**\n\n1. **What is a token?**\n   A small piece of text that can be a whole word, part of a word, or a single letter.\n\n2. **What is a token ID?**\n   A unique number assigned to each token.\n\n3. **What is a tokenizer?**\n   A tool that breaks text into tokens.\n\n4. **How can different tokenizers process the same word differently?**\n   They may split it into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-berr-y\").\n\n5. **How does the *o200k_base* tokenizer split \"strawberry\"?**\n   It cuts it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n6. **What happens when text is split into more tokens?**\n   It fills up the model’s available space for processing text (more tokens = more memory/space used).\n\n---\nWould you like any modifications (e.g., simpler language, more examples)?"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here are the flashcards based on your notes:\n\n---\n\n**Front:** What is a token?\n**Back:** A small piece of text that can be a whole word, part of a word, or a single letter.\n\n---\n\n**Front:** What is a token ID?\n**Back:** A unique number assigned to each token.\n\n---\n\n**Front:** What is a tokenizer?\n**Back:** A tool that breaks text into tokens.\n\n---\n\n**Front:** How can different tokenizers handle the same word differently?\n**Back:** They may split it into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-ber-ry\").\n\n---\n\n**Front:** How does the **o200k_base** tokenizer split \"strawberry\"?\n**Back:** It cuts it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n---\n\n**Front:** What happens when text is split into more tokens?\n**Back:** It fills up the model’s text capacity (room) faster, potentially limiting input length.\n\n---",
+          "usage": {
+            "prompt_tokens": 114,
+            "total_tokens": 332,
+            "completion_tokens": 218,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:43.875Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "4f2cc85d9f0d4125a8ce50202cca1547",
+                "created": 1791061843,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 114,
+                  "total_tokens": 332,
+                  "completion_tokens": 218,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are the flashcards based on your notes:\n\n---\n\n**Front:** What is a token?\n**Back:** A small piece of text that can be a whole word, part of a word, or a single letter.\n\n---\n\n**Front:** What is a token ID?\n**Back:** A unique number assigned to each token.\n\n---\n\n**Front:** What is a tokenizer?\n**Back:** A tool that breaks text into tokens.\n\n---\n\n**Front:** How can different tokenizers handle the same word differently?\n**Back:** They may split it into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-ber-ry\").\n\n---\n\n**Front:** How does the **o200k_base** tokenizer split \"strawberry\"?\n**Back:** It cuts it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n---\n\n**Front:** What happens when text is split into more tokens?\n**Back:** It fills up the model’s text capacity (room) faster, potentially limiting input length.\n\n---"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here are the flashcards based on your notes:\n\n---\n\n**Front:** What is a token?\n**Back:** A small piece of text that can be a whole word, part of a word, or a single letter.\n\n---\n\n**Front:** What is a token ID?\n**Back:** A unique number assigned to each token.\n\n---\n\n**Front:** What is a tokenizer?\n**Back:** A tool that breaks text into tokens.\n\n---\n\n**Front:** How can different tokenizers handle the same word differently?\n**Back:** They may split words into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-ber-ry\").\n\n---\n\n**Front:** How does the **o200k_base** tokenizer split the word \"strawberry\"?\n**Back:** It splits it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n---\n\n**Front:** What happens when text is split into more tokens?\n**Back:** It fills up the model's available space for processing text faster.\n\n---",
+          "usage": {
+            "prompt_tokens": 114,
+            "total_tokens": 329,
+            "completion_tokens": 215,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:46.536Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "af0aa7cc828f4f86be3a3196d6e0a3d6",
+                "created": 1791061846,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 114,
+                  "total_tokens": 329,
+                  "completion_tokens": 215,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are the flashcards based on your notes:\n\n---\n\n**Front:** What is a token?\n**Back:** A small piece of text that can be a whole word, part of a word, or a single letter.\n\n---\n\n**Front:** What is a token ID?\n**Back:** A unique number assigned to each token.\n\n---\n\n**Front:** What is a tokenizer?\n**Back:** A tool that breaks text into tokens.\n\n---\n\n**Front:** How can different tokenizers handle the same word differently?\n**Back:** They may split words into different pieces (e.g., \"strawberry\" could be split as \"straw-berry\" or \"straw-ber-ry\").\n\n---\n\n**Front:** How does the **o200k_base** tokenizer split the word \"strawberry\"?\n**Back:** It splits it into three tokens: **\"st\", \"raw\", \"berry\"**.\n\n---\n\n**Front:** What happens when text is split into more tokens?\n**Back:** It fills up the model's available space for processing text faster.\n\n---"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "maker": "A",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+        }
+      ],
+      "runs": [
+        {
+          "reply": "Q: What is a token?\nA: a small piece of text, such as a whole word, part of a word, or a single letter\n\nQ: What is a token ID?\nA: the number that each token has of its own\n\nQ: What is a tokeniser?\nA: the tool that cuts text into tokens\n\nQ: Can different tokenisers cut the same word in different ways?\nA: Yes\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: into 3 pieces: \"st\", \"raw\" and \"berry\"\n\nQ: Why do more pieces matter for a model?\nA: they fill up the room the model has for text",
+          "usage": {
+            "input_tokens": 218,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 284,
+            "output_tokens_details": {
+              "thinking_tokens": 88
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:48.902Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzQcaTFfasRauHHuLgD",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQSxAYKEAgSGAI4AUIIdGhpbmtpbmcSDF1c5wC7ZwliQZpxEhoMYt80gmKelnWyAy8jIjDtICgugW1q0XD0voOPRmVE6NB7zNgLHdWAvcxS8SbdVzo0RWb2KX72QMWqlhgFWGkq4QWzz1X1GrvsNWuRku5o0pqEmhO+ENgVFPU2gqqRlhPzL2z0mb57RCb4JGBOOspeiXKgofwaG6XQrI0aHWS0NVcT1As0/FclopEiD7x+9yaDRJhfNHscLM/I/EacePG4ISRu0AOZCgjer3IrF5PwZBULFRRoh1ZuoJjyxo1WRLDPgznr5D8L8bLD0msiAj+hn/Nixdv9u6ZuKiKGuLTHfEOhI4YR+m8i3TBg6DCEE3UtG88BcT4SejIsmLyURfJ6Wkq6e/B0Ju2hdxe9zYAmDbRF7z0hvJnOAQbQI6PuywHVZ1czNr2c5r6k+4V6tMVLfJOjHpGamugwe1rqokxssglKSpuYRfxJGpEkct2RJ/e8eBjfe59DNxbi1K1Vel9fEYQIN/x1ZVxZH8lrQCuYglsYZHJAA8GEVLs6S4K1ekj4GrWSLneNBjLL8ZC/kRO6Rwg/JPkbAYsBhirLUHXXKrTT76G58O73jRsy0O7b3oBgvbsBv2gsx8MSXl56ILdz1k7PMaZqGAMgn/zJCabqSiEE8V/J3wY8Sm4VoALazb7QiN5zLuE4prsaQWyq7nKjd/S8LSN//eOL3Pgn2GyFcwsrJXMV50FcvTA9aG0S9QtnSdzL9XA//wC9XOmUNwUT59PTSxUVh4ZvkdJgcvc085PgZLMYi5zv8kME+2/U9ao0Z68PsbyIr15sN+zKYFLuNfwdljeQBLwHwEr7eWNnE9ThdCTeJkvq8XukC/TWL0xhzDN43+0Sks7t5WjH+pGii0u2OmZtbRlumTTiqsad2+jmadmy2WdPdxI6c8Wl6fZsYGpBuB0WA+iNu4bZYgRXWdnnGq9q7S4TUO+xplyNtVsUlV7FCq0JBj89ChQm58IApUGDVeZzNaJPihgas3U4hP3xzGC+ffQcuBcQjREAz0tPSGjXqJlX3Glmsd1KSfuq1LNLaI7khm8g9JyoAwixWAmnKBtviFRCJQ+RDL7T+JyPTRgB"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Q: What is a token?\nA: a small piece of text, such as a whole word, part of a word, or a single letter\n\nQ: What is a token ID?\nA: the number that each token has of its own\n\nQ: What is a tokeniser?\nA: the tool that cuts text into tokens\n\nQ: Can different tokenisers cut the same word in different ways?\nA: Yes\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: into 3 pieces: \"st\", \"raw\" and \"berry\"\n\nQ: Why do more pieces matter for a model?\nA: they fill up the room the model has for text"
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 218,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 284,
+                  "output_tokens_details": {
+                    "thinking_tokens": 88
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Q: What is a token?\nA: A small piece of text. It can be a whole word, part of a word, or a single letter.\n\nQ: What is a token ID?\nA: The number that each token has of its own.\n\nQ: What is a tokeniser?\nA: The tool that cuts text into tokens.\n\nQ: Do all tokenisers cut the same word in the same way?\nA: No. Different tokenisers can cut the same word in different ways.\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\nQ: Why does it matter if a word is cut into more pieces?\nA: More pieces fill up the room a model has for text.",
+          "usage": {
+            "input_tokens": 218,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 337,
+            "output_tokens_details": {
+              "thinking_tokens": 110
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:51.529Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzQoP5PZ6jFqxvaKwzJ",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQS4gYKEAgSGAI4AUIIdGhpbmtpbmcSDJAfg3Evh8Dmd3goLRoMYazUHAtZzd/fu1oUIjAHWOhizJ+7vt47KqA2HIm0u2I7gBq0hXbhXQ3wIghLsHUv0IkM+QBt1gBmihXgzRUq/wUqfDA6eIEuB+HRLme41bgEnAtqHbxlR/+g4EiJ9VBd5RL0qI7c9PKORmg+91E/UEbNc4Kyn28g3eQNgoK/eLQ9mubmhfmgkfQmrTfTLQxBODKEk2TASCJkD168P7z3969vPmKnpOZVoVff/fpY6sw1mu85bOFI7+aAbP6t3MTz6ZsXSYyJuFevorhk9EV95cJnn7IjsP0WGmi2axugNHGjj12+IXM2iM7M7l0tzWGMlkbP5x041o7nC0N7XRHwZmUbQYOsB0leRXard7dCQwxGAPlpYGGhOBQNxpvjhoiCESdZ7+sGpiuSDdmscEuslDF3l+3AmzAgiEHlvFAMRmYtJ0KtVslMIQEH1E3zIl3GdxhmQ8GDbYSOT8KioRP3fZ7DeX0JLoHeV5HOf7ZP2Ph340IN0wGoT7YxstEJErBw/V5lln7i/rOfrwgaBWSLdeALdmnr6vlfrE5An8LhxVZC2fxFcJmF/s2JCZtt0OjLctTHVainm6LdJAOtCbgWIBLVWjYr/VS7Z/PDWbsZ6qRlUKTCjeaRp/gP5uKD6kPZwMWEqlGH76hPADCgouAcfksj2kqwB07l9dvcIl6UhXTwjd3ES074cKsJMJXVHzFs/1dcesqih0uWL7qv3hZkazhS/N9kFiVEujRW4DvfvNFJfm2PslrGUGhrtpgGgcz8FgETg636qaj4db1uMYoSxjHyCxKnU12wMINQOIRf0SgMRD/sfQ+LDTQT1tYbqQPc+MfVrEbAY8hug6Qf+0MReJyqGS7GvgHuMH6QH60YNG9Ppx+WqNvoYWn4kOnCRd90AfUxucBeqqfJenGox9O5JDA1/5UMSZ6Bbwim4PYAQMH4XJyVc63RAsd2CaiNZ02g97TFmFHCJeWrDT/qyZJKNqhtWKKMQ8Tw5LUSJXSBlU4jgaBy1zlTakO0kvK+CJC6CMOYXLEI8wFENSuZS74mq6N+x4xPi9zCJ0wt5hVIXxwNqIsNtmAd0xowCEW9OO/OTU7i0JYMh9xmSy2bIr5X6hgB"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Q: What is a token?\nA: A small piece of text. It can be a whole word, part of a word, or a single letter.\n\nQ: What is a token ID?\nA: The number that each token has of its own.\n\nQ: What is a tokeniser?\nA: The tool that cuts text into tokens.\n\nQ: Do all tokenisers cut the same word in the same way?\nA: No. Different tokenisers can cut the same word in different ways.\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\nQ: Why does it matter if a word is cut into more pieces?\nA: More pieces fill up the room a model has for text."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 218,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 337,
+                  "output_tokens_details": {
+                    "thinking_tokens": 110
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Q: What is a token?\nA: A small piece of text. It can be a whole word, part of a word, or a single letter.\n\nQ: What is a token ID?\nA: The number that each token has of its own.\n\nQ: What is a tokeniser?\nA: The tool that cuts text into tokens.\n\nQ: Do all tokenisers cut the same word in the same way?\nA: No. Different tokenisers can cut the same word in different ways.\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\nQ: Why does it matter if a word is cut into more pieces?\nA: More pieces fill up the room a model has for text.",
+          "usage": {
+            "input_tokens": 218,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 0
+            },
+            "output_tokens": 325,
+            "output_tokens_details": {
+              "thinking_tokens": 98
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:54.413Z",
+              "request": {
+                "model": "claude-sonnet-5-5",
+                "max_tokens": 4000,
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ]
+              },
+              "response": {
+                "model": "claude-sonnet-5-5",
+                "id": "msg_011CffzR1hFcLJP6tQfv2Frk",
+                "type": "message",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "thinking",
+                    "thinking": "",
+                    "signature": "CAQSzQYKEAgSGAI4AUIIdGhpbmtpbmcSDHJIsPuj1B2XaFaQ+xoM/ckjGBrvc2ZmtHsSIjAVMgooRuLvtqDwEdOvSzCKnEGXjMKUCMSOvuShwrMdgDXMKOvf3GLEJhpqRK/hw+kq6gVhCrdcoQ3eRZZebslLKsEk7b9J+dF5/wrNvzYwnweVD8cwA5wZutesHA7X0x4euwZ058uBRPWzkqiby33lGFsL6VTc0LHAf7Kd8BO2TW67xHH3mYwdrtL8BZFXM7FnQ8CdWjC3xmOl+GWPsjWFJfWiPiHtUSfIF2Y3jgWgswavBH2k6C2M7X2uXbr+YlDynrnbYP0bbr5YZfKF/chGjk9DZ13llafYieo5zGZ6kT0SYrhfs2KGtmNyOx3bbXFYCyxn0hZGbbYAJYkGLf2/f0HDXWhTO9WCY3ZzUv986JnXrq30Y0oZ21N9lFJ97YjGbB17mg5t/+5YM9SlPaCZTSw2g4m7xJybt2Q0tjJN+NBc2Cwq1QncfAdQ1gO0cHJZoEiJAc6nABlpLMi8bZK1/HySscQ2HgQ8s3ehLXGNcTEFYY16yF6DQ+OSNnvrMUmAzXdLybifmP6mrQxNg7hFBUDIvXGzIVBMvgA223QRTrNlVZE+EcarirZvJiIvMp2RPLCgYu/e/yUiGSpUatR9RrKHxa2QQK8G5+tSTn5/ev7CmxkGO4P4XRzOy3o/h8vK3Vg2nbhp7pbwoLkP9oalsWLOr6Ls4D4Rwq8peeI5b4v2thwhA/QkXyG/u0cbZq9a1tfCdZmI0orkK4LGKk5XnAPD6XHMWBYb1Bzonrd8mvB554FmOMNGdNyvDsYUxuWEnSDWTMXvA68rFJr3EG7fTRTzuh+/J6hRREKHNAXR19wcKwCqvVMIKdVCY8f1opwoef+fbZvBXw4o1akR00GCzIMuFHfjKz7H2854uBRuyl1gVEpHcKbgLRO5OIuSOHKcnNsZgxgQTl7vYy2R1S18RUCePF5hAExAAF74nA5Yv+HXBufCRbEq8AAU+G66jfRMXAkY4oW0rXaaN5liEXAe9IPcPiHfX9HG3fJG2L47YiCdICUI3qzP5T4dM8uPFQH+49Teb0wyGfBfIjVCrzjM0x8VF71gjCcZQG0S7hgB"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Q: What is a token?\nA: A small piece of text. It can be a whole word, part of a word, or a single letter.\n\nQ: What is a token ID?\nA: The number that each token has of its own.\n\nQ: What is a tokeniser?\nA: The tool that cuts text into tokens.\n\nQ: Do all tokenisers cut the same word in the same way?\nA: No. Different tokenisers can cut the same word in different ways.\n\nQ: How does the o200k_base tokeniser cut \"strawberry\"?\nA: Into 3 pieces: \"st\", \"raw\" and \"berry\".\n\nQ: Why does it matter if a word is cut into more pieces?\nA: More pieces fill up the room a model has for text."
+                  }
+                ],
+                "container": null,
+                "stop_reason": "end_turn",
+                "stop_sequence": null,
+                "stop_details": null,
+                "usage": {
+                  "input_tokens": 218,
+                  "cache_creation_input_tokens": 0,
+                  "cache_read_input_tokens": 0,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 0
+                  },
+                  "output_tokens": 325,
+                  "output_tokens_details": {
+                    "thinking_tokens": 98
+                  },
+                  "service_tier": "standard",
+                  "inference_geo": "global"
+                },
+                "diagnostics": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "maker": "B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+        }
+      ],
+      "model": {
+        "id": "ministral-14b-2512",
+        "name": "Ministral 3 14B",
+        "host": "Mistral AI API",
+        "card": {
+          "id": "ministral-14b-2512",
+          "object": "model",
+          "created": 1791061831,
+          "owned_by": "mistralai",
+          "capabilities": {
+            "completion_chat": true,
+            "function_calling": true,
+            "reasoning": false,
+            "completion_fim": false,
+            "fine_tuning": true,
+            "vision": true,
+            "ocr": false,
+            "classification": false,
+            "moderation": false,
+            "audio": false,
+            "audio_transcription": false,
+            "audio_transcription_realtime": false,
+            "audio_speech": false,
+            "unified_resources": false
+          },
+          "name": "ministral-14b-2512",
+          "description": "Ministral 3 (a.k.a. Tinystral) 14B Instruct.",
+          "max_context_length": 262144,
+          "aliases": [
+            "ministral-14b-latest"
+          ],
+          "deprecation": null,
+          "deprecation_replacement_model": null,
+          "default_model_temperature": 0.3,
+          "billing_model_name": "ministral-14b-2512",
+          "type": "base"
+        }
+      },
+      "settings": {
+        "model": "ministral-14b-2512",
+        "max_tokens": 4000,
+        "default_model_temperature": 0.3,
+        "temperature": "not set, so the model's default",
+        "tools": "no tools",
+        "system prompt": "in each variant that has one"
+      },
+      "runs": [
+        {
+          "reply": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number, called its token ID.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens fill up a model’s text capacity?\n**A:** Because each token takes up space in the model’s memory for processing text.",
+          "usage": {
+            "prompt_tokens": 147,
+            "total_tokens": 343,
+            "completion_tokens": 196,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:57.306Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "0b26c15b09e64b8190590e8a09fbc3c3",
+                "created": 1791061857,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 147,
+                  "total_tokens": 343,
+                  "completion_tokens": 196,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number, called its token ID.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens fill up a model’s text capacity?\n**A:** Because each token takes up space in the model’s memory for processing text."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number, called its token ID.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens fill up the model’s text capacity faster?\n**A:** Because each token takes up space in the model’s input limit.",
+          "usage": {
+            "prompt_tokens": 147,
+            "total_tokens": 342,
+            "completion_tokens": 195,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:10:59.738Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "e7af4ceced9e4a2aa3cad9de996ab3b6",
+                "created": 1791061859,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 147,
+                  "total_tokens": 342,
+                  "completion_tokens": 195,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number, called its token ID.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens fill up the model’s text capacity faster?\n**A:** Because each token takes up space in the model’s input limit."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "reply": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens matter in a model?\n**A:** More pieces fill up the model’s available space for text.",
+          "usage": {
+            "prompt_tokens": 147,
+            "total_tokens": 332,
+            "completion_tokens": 185,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            }
+          },
+          "calls": [
+            {
+              "at": "2026-10-03T21:11:01.840Z",
+              "request": {
+                "model": "ministral-14b-2512",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "Turn these notes into flashcards:\n\nA token is a small piece of text. It can be a whole word, part of a word, or a single letter.\nEach token has its own number, called its token ID.\nA tokeniser is the tool that cuts text into tokens.\nDifferent tokenisers can cut the same word in different ways.\nThe o200k_base tokeniser cuts \"strawberry\" into 3 pieces: \"st\", \"raw\" and \"berry\".\nMore pieces fill up the room a model has for text.\n\nUse exactly this format:\n\nQ: What is the longest river in Ireland?\nA: the Shannon\n\nQ: What is the capital of Ireland?\nA: Dublin."
+                  }
+                ],
+                "max_tokens": 4000
+              },
+              "response": {
+                "id": "989ea146fcdd4e4f9488ab95dd043e32",
+                "created": 1791061861,
+                "model": "ministral-14b-2512",
+                "usage": {
+                  "prompt_tokens": 147,
+                  "total_tokens": 332,
+                  "completion_tokens": 185,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 128
+                  },
+                  "service_tier": "standard"
+                },
+                "object": "chat.completion",
+                "choices": [
+                  {
+                    "index": 0,
+                    "finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "tool_calls": null,
+                      "content": "Here are your flashcards in the requested format:\n\n---\n**Q:** What is a token?\n**A:** A small piece of text. It can be a whole word, part of a word, or a single letter.\n\n---\n**Q:** What is a token ID?\n**A:** Each token has its own unique number.\n\n---\n**Q:** What is a tokeniser?\n**A:** The tool that cuts text into tokens.\n\n---\n**Q:** How can different tokenisers process the same word?\n**A:** They can cut it in different ways.\n\n---\n**Q:** How does the **o200k_base** tokeniser split the word *\"strawberry\"*?\n**A:** Into 3 pieces: *\"st\"*, *\"raw\"*, and *\"berry\"*.\n\n---\n**Q:** Why do more tokens matter in a model?\n**A:** More pieces fill up the model’s available space for text."
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

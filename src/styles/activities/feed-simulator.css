@@ -1,0 +1,15 @@
+/* 1.10's interactive: no list numbers, and each card's shape sits in line with its words (the base makes svg a block). */
+.feed-simulator ol {
+  list-style: none;
+  padding: 0;
+}
+.feed-simulator svg {
+  display: inline;
+}
+/* 1.10's Feed simulator: one state and the chosen control with JavaScript; as text, all, each named. */
+html[data-js]:not([data-textversion]) .feed-simulator :is([data-state]:not(.now), [data-end]:not(.now), [data-control]:not(.now), .as-text) {
+  display: none;
+}
+.feed-simulator ol { margin: 0.75rem 0; padding: 0; list-style: none; background: var(--card); border: var(--border-width) solid var(--border); border-radius: var(--radius-large); }
+.feed-simulator ol > li { padding: 0.5rem var(--ap); }
+.feed-simulator ol > li + li { border-top: var(--border-width) solid color-mix(in srgb, var(--border) 40%, var(--surface)); }
